@@ -1,13 +1,34 @@
 .shipping {
     width: 300px; 
     height: 300px;
-    background-image: url("https://eastline-logistics.uz/images/services/truck1.jpg");
     border-radius: 2rem;
+    background-size: cover;
+    color: #00000089;
+}
+.back1 {
+    background-image: url("https://eastline-logistics.uz/images/services/truck3.jpg");
+
+}
+.back2 {
+    background-image: url("https://img.freepik.com/premium-photo/international-logistics-and-freight-transportation-s_410516-18607.jpg");
+
+}
+.back3 {
+    background-image: url("https://img.freepik.com/free-photo/airplane-in-the-track-front-view-generative-ai_188544-7895.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702339200&semt=ais");
+
 }
 
 .shipping2 {
     width: 300px; 
     height: 100px;
-    background-image: url("https://eastline-logistics.uz/images/services/truck1.jpg");
     border-radius: 2rem;
+    background-color: #02012d;
+}
+
+.back-img {
+    width: 100%;
+    background-image: url("https://agat43.com/local/templates/agat/frontend/dev/assets/images/offer/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
