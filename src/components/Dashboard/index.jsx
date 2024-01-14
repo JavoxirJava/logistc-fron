@@ -1,8 +1,22 @@
 import DashboardProductCard from "./card";
 import Circle from "./statistics/cerclestatistic";
 import LineChart from "./statistics/linestatistic";
+import {useEffect, useState} from "react";
+import {getMe, setConfig} from "../api";
 
 function Dashboard() {
+
+    const [me, setMe] = useState(null);
+
+    useEffect(() => {
+        setConfig();
+        getMe(setMe);
+    }, []);
+
+    useEffect(() => {
+        sessionStorage.setItem('userId', me ? me.id : 0);
+    }, [me]);
+
     return (
         <div className="w-full flex lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-10 py-5">
             <div className="lg:w-7/12 w-full">
