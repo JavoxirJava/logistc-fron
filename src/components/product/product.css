@@ -1,6 +1,6 @@
 .product-main {
     width: 98.5vw;
-    height: 100vh;
+    height: 91.5vmin;
     max-height: 800px;
 }
 
@@ -10,10 +10,6 @@
 
 .col1 {
     background: #ECECEC;
-}
-
-.product-main {
-    border: 1px solid #003465;
 }
 
 .card-col-row {

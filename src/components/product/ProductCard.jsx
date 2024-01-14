@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ProductCard({className, number, status, etd, product, currentLocation, owner}) {
+function ProductCard({className, number, status, etd, product, currentLocation, owner, openEdit}) {
     return (
-        <div className={`flex card-main border border-blue-300 w-full h-[110px] bg-blue-100 ${className}`}>
-            <div className='card-col w-11/12 pt-3 ps-2'>
+        <div className={`flex card-main border border-blue-300 w-full h-[100px] bg-blue-100 ${className}`}>
+            <div className='card-col w-11/12 pt-2 ps-2'>
                 <div className='h-3/6 card-col-row w-full flex'>
                     <div className='w-[22%]'>
                         <p className='opacity-70'>Number</p>
@@ -34,11 +34,9 @@ function ProductCard({className, number, status, etd, product, currentLocation, 
                 </div>
             </div>
             <div className='card-col w-3/12 flex justify-center my-auto h-10'>
-                <button
+                <button onClick={openEdit}
                     className="inline-flex justify-center w-8/12 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
-                >
-                    Edit
-                </button>
+                >Edit</button>
             </div>
         </div>
     );
