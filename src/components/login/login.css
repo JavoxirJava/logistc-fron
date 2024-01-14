@@ -1,0 +1,10 @@
+.login-main {
+    width: 98.89vw;
+    height: 100vh;
+    background: linear-gradient(270deg, rgba(0, 52, 101, 0.20) 33.02%, rgba(0, 133, 255, 0.00) 40.76%), linear-gradient(91deg, #003465 0.4%, #0085FF 51.62%);
+    background-blend-mode: darken, normal;
+}
+
+.elements {
+
+}
