@@ -5,7 +5,7 @@ import LineChart from "./statistics/linestatistic";
 function Dashboard() {
     return (
         <div className="w-full flex lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-10 py-5">
-            <div className="lg:w-7/12 w-full">
+            <div className="lg:w-7/12 w-full ">
                 <div className="h-[320px] md:w-6/12 ">
                     <Circle />
                 </div>
