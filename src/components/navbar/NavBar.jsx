@@ -132,36 +132,66 @@ function NavBar() {
                     </div>
 
                     <div
+
                         className={` w-[700px] ${isModalOpen ? 'inline absolute left-1/4 top-1/4' : 'hidden'}
                         rounded-3xl shadow-lg overflow-hidden z-20`}>
+
                         <div className='bg-slate-200 p-8 flex justify-center items-center'>
                             <img
                                 className='rounded-full w-24 h-24'
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="img" />
+                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="img"
+                            />
                         </div>
                         <div className='bg-gradient-to-tl from-sky-500 to-sky-800 px-8 py-6'>
                             <div className=' font-bold text-black text-[1.1rem]'>
                                 <p className='opacity-50 pb-0 mb-0 mt-2'>name</p>
-                                <p className='mt-0 pt-0'>Name</p>
+                                <input
+                                    type="text"
+                                    className="px-3 py-2 border-gray-600 border-2 rounded-xl"
+                                    value="some thing"
+                                />
                             </div>
                             <div className=' font-bold text-black text-[1.1rem]'>
                                 <p className='opacity-50 pb-0 mb-0 mt-2'>id number</p>
-                                <p className='mt-0 pt-0'>Name</p>
+                                <input
+                                    type="text"
+                                    className=" px-3 py-2 border-gray-600 border-2 rounded-xl"
+                                    value=""
+                                />
                             </div>
                             <div className=' font-bold text-black text-[1.1rem]'>
                                 <p className='opacity-50 pb-0 mb-0 mt-2'>phone number</p>
-                                <p className='mt-0 pt-0'>Name</p>
+                                <input
+                                    type="text"
+                                    className="px-3 py-2 border-gray-600 border-2 rounded-xl"
+                                    value=""
+                                />
                             </div>
                             <div className=' font-bold text-black text-[1.1rem]'>
                                 <p className='opacity-50 pb-0 mb-0 mt-2'>password</p>
-                                <p className='mt-0 pt-0'>Name</p>
+                                <input
+                                    type="password"
+                                    className="px-3 py-2 border-gray-600 border-2 rounded-xl"
+                                    value=""
+                                />
                             </div>
                             <div className='flex justify-between items-center mt-3 font-bold text-white'>
-                                <button className='bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg' onClick={() => {
-                                    openModal();
-                                    openGetMe();
-                                }}>Edit</button>
-                                <button className='bg-red-600 px-5 py-1.5 rounded-lg shadow-lg' onClick={logout}>Log out</button>
+                                <button
+                                    className='bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg'
+                                    onClick={() => {
+                                        openModal();
+                                        openGetMe();
+                                    }}
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    className='bg-red-600 px-5 py-1.5 rounded-lg shadow-lg'
+                                    onClick={logout}
+                                >
+                                    Log out
+                                </button>
                             </div>
                         </div>
                     </div>
