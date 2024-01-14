@@ -12,3 +12,22 @@
     font-size: .8em;
     font-weight: 500;
 }
+
+.pagination-style {
+    position: fixed;
+    top: 90%;
+    width: 20%
+}
+
+.pagination-style ul {
+    display: flex;
+    justify-content: flex-start !important
+}
+
+.pagination-style ul li {
+    padding: 0 .8rem;
+}
+
+.relative {
+    position: relative!important;
+}

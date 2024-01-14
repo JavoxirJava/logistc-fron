@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import './product.css';
 import Dropdown from "../Dropdown";
 import ProductCard from "./ProductCard";
-import Pagination from "../Pagination";
 import {Map, Placemark, YMaps} from 'react-yandex-maps';
 import OffcanvasProduct from "./OffcanvasProduct";
 import {byId, config, url} from "../api";
 import axios from "axios";
 import {toast} from "react-toastify";
+import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
 
 function Product() {
 
@@ -16,10 +16,17 @@ function Product() {
     const [editOf, setEditOf] = useState(false);
     const [product, setProductObj] = useState(null);
     const [products, setProduct] = useState(null);
+    const [totalPage, setTotalPage] = useState(2);
+    const [pagination, setPagination] = useState(0);
 
     useEffect(() => {
-        getProduct()
+        getProduct(pagination, 4)
     }, []);
+
+    useEffect(() => {
+        if (((pagination - 1) * 4) < 0) setPagination(0);
+        else getProduct(Math.floor(pagination - 1), 4);
+    }, [pagination]);
 
     const openEdit = () => setEditOf(!editOf);
 
@@ -57,8 +64,13 @@ function Product() {
         }
     }
 
-    function getProduct() {
-        axios.get(`${url}product?page=3&size=4`, config).then(res => setProduct(res.data.body.object))
+    function getProduct(page, size) {
+        axios.get(`${url}product?page=${page}&size=${size}`, config).then(res => {
+            if (res.data.message) {
+                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+                setProduct(res.data.body.object);
+            }
+        })
     }
 
     function addProduct() {
@@ -82,8 +94,6 @@ function Product() {
         })
     }
 
-    console.log(products)
-
     return (
         <div className='product-main'>
             <div className="flex w-full row h-full">
@@ -98,12 +108,20 @@ function Product() {
                                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded">
                             Add
                         </button>
+                        <span className='me-5 pt-1.5 float-end'>Current page: {pagination}</span>
                         {products && products.map((item, i) =>
-                            <ProductCard className='mt-5' openEdit={openEdit} product={item} setProductObj={setProductObj}/>
+                            <ProductCard key={i} className='mt-5' openEdit={openEdit} product={item}
+                                         setProductObj={setProductObj}/>
                         )}
                     </div>
-                    <Pagination className='mt-5'/>
-
+                    <div className="pagination-style mt-4">
+                        <Pagination
+                            {...bootstrap5PaginationPreset}
+                            current={pagination}
+                            total={Math.floor(totalPage + 1)}
+                            onPageChange={setPagination}
+                        />
+                    </div>
                 </div>
                 <div className='w-11/12 h-full col2'>
                     <YMaps>

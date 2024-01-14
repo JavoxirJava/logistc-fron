@@ -5,7 +5,6 @@ import {useEffect, useState} from "react";
 import {getMe, setConfig} from "../api";
 
 function Dashboard() {
-
     const [me, setMe] = useState(null);
 
     useEffect(() => {
@@ -39,7 +38,7 @@ function Dashboard() {
                             className="px-3 py-2 border-gray-600 border-2 rounded-xl"
                         />
                     </div>
-                    <i class="fa-solid fa-bars text-2xl"></i>
+                    <i className="fa-solid fa-bars text-2xl"></i>
                 </div>
                 <div className="w-full h-screen all-shadow p-5">
                     <DashboardProductCard />

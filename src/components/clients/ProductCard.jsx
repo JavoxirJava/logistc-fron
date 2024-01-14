@@ -1,43 +1,43 @@
 import React from 'react';
 
-function ProductCard({ className, idNumber, fullName, phoneNumber, password, allProduct, comProduct, penProduct, cenProduct }) {
+function ProductCard({ className, product }) {
     return (
-        <div className={`flex card-main border border-blue-300 w-full h-[160px] bg-blue-100 ${className}`}>
-            <div className='card-col w-11/12 pt-4 ps-2'>
-                <div className='h-3/6 card-col-row w-full flex'>
+        <div className={`flex card-main border border-blue-300 w-full h-[100px] bg-blue-100 ${className}`}>
+            <div className='card-col w-11/12 pt-1 ps-2'>
+                <div className='h-12 card-col-row w-full flex'>
                     <div className='w-[20%]'>
                         <p className='opacity-70'>Number</p>
-                        <p className='font-bold text-[.9rem]'>{idNumber ? idNumber : 0}</p>
+                        <p className='font-bold text-[.9rem]'>{product ? product.idNumber : 0}</p>
                     </div>
                     <div className='w-[30%]'>
                         <p className='opacity-70'>Name</p>
-                        <p className='font-bold text-[.9rem]'>{fullName ? fullName : 'First Name'}</p>
+                        <p className='font-bold text-[.9rem]'>{product ? product.name : 'First Name'}</p>
                     </div>
                     <div className='w-[30%]'>
                         <p className='opacity-70'>Phone Number</p>
-                        <p className='font-bold text-[.9rem]'>{phoneNumber ? phoneNumber : "No number"}</p>
+                        <p className='font-bold text-[.9rem]'>{product ? product.phoneNumber : "No number"}</p>
                     </div>
                     <div className='w-[25%]'>
                         <p className='opacity-70'>Password</p>
-                        <p className='font-bold text-[.9rem]'>{password ? password : "No password"}</p>
+                        <p className='font-bold text-[.9rem]'>{product ? product.password : "No password"}</p>
                     </div>
                 </div>
                 <div className='h-3/6 card-col-row w-full flex'>
                     <div className='w-[25%]'>
                         <p className='opacity-70'>All Product</p>
-                        <p className='font-bold text-[.9rem] text-orange-500'>{allProduct ? allProduct : 0}</p>
+                        <p className='font-bold text-[.9rem] text-orange-500'>{product ? product.allProduct : 0}</p>
                     </div>
                     <div className='w-[25%]'>
-                        <p className='opacity-70'>Completed Porduct</p>
-                        <p className='font-bold text-[.9rem] text-green-500'>{comProduct ? comProduct : 0}</p>
+                        <p className='opacity-70'>Completed</p>
+                        <p className='font-bold text-[.9rem] text-green-500'>{product ? product.completed : 0}</p>
                     </div>
                     <div className='w-[35%]'>
-                        <p className='opacity-70'>Pending Porduct</p>
-                        <p className='font-bold text-[.9rem] text-purple-600'>{penProduct ? penProduct : 0}</p>
+                        <p className='opacity-70'>Pending</p>
+                        <p className='font-bold text-[.9rem] text-purple-600'>{product ? product.pending : 0}</p>
                     </div>
                     <div className='w-[25%]'>
                         <p className='opacity-70'>Cancel Porduct</p>
-                        <p className='font-bold text-[.9rem] text-purple-600'>{cenProduct ? cenProduct : 0}</p>
+                        <p className='font-bold text-[.9rem] text-purple-600'>{product ? product.cancel : 0}</p>
                     </div>
                 </div>
             </div>

@@ -139,11 +139,8 @@ function NavBar() {
                         </div>
                     </div>
 
-                    <div
-
-                        className={` w-[700px] ${isModalOpen ? 'inline absolute left-1/4 top-1/4' : 'hidden'}
+                    <div className={` w-[700px] ${isModalOpen ? 'inline absolute left-1/4 top-1/4' : 'hidden'}
                         rounded-3xl shadow-lg overflow-hidden z-20`}>
-
                         <div className='bg-slate-200 p-8 flex justify-center items-center'>
                             <img
                                 className='rounded-full w-24 h-24'
