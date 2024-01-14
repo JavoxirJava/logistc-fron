@@ -17,7 +17,7 @@ function App() {
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/product' element={<Product />} />
                 <Route path='/client' element={<Clients />} />
-                <Route path='/history' element={<History />} />
+                {/* <Route path='/history' element={<History />} /> */}
             </Routes>
         </div>
     );

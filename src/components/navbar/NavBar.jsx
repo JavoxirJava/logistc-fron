@@ -131,8 +131,8 @@ function NavBar() {
                         </div>
                     </div>
 
-                    {/* <div
-                        className={`${isModalOpen ? 'inline relative' : 'hidden'}
+                    <div
+                        className={` w-[700px] ${isModalOpen ? 'inline absolute left-1/4 top-1/4' : 'hidden'}
                         rounded-3xl shadow-lg overflow-hidden z-20`}>
                         <div className='bg-slate-200 p-8 flex justify-center items-center'>
                             <img
@@ -164,7 +164,7 @@ function NavBar() {
                                 <button className='bg-red-600 px-5 py-1.5 rounded-lg shadow-lg' onClick={logout}>Log out</button>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </nav>
         </div>
