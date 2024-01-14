@@ -69,6 +69,16 @@ background: linear-gradient(0deg, rgba(6,25,39,1) 4%, rgba(37,59,82,1) 100%);
   }
 }
 
+.animi {
+  transition: 0.5s !important;
+}
+.animi:hover {
+  border: 1px solid;
+  background-color: #fff;
+  color: #1A648C;
+  border-color: #1A648C;
+  transform: scale(1.1);
+}
 
 
 @media only screen and (max-width: 1031px) {

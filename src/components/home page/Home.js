@@ -131,7 +131,7 @@ function Home() {
           </div>
           <div className="">
             <button
-              className="shipping2 text-3xl text-white mb-3"
+              className="shipping2 text-3xl text-white mb-3 animi"
               data-aos="zoom-in"
               data-aos-easing="linear"
               data-aos-duration="1500"
