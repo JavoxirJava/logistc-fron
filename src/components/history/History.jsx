@@ -1,10 +1,13 @@
 import React from 'react';
 import './history.css';
 import HistoryInfo from './HistoryInfo';
+import NavBar from '../navbar/NavBar';
 
 const History = () => {
     return (
         <div className='history-bg'>
+            <NavBar />
+
             <div className='history-container flex justify-center items-center flex-wrap mt-5'>
                 <div className='flex flex-col'>
                     <label htmlFor="startDate" className='mx-5 text-slate-800 font-semibold tracking-wider'>Start date</label>

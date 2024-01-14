@@ -7,6 +7,7 @@ import {byId, byIdObj, config, getClientProduct, url} from "../api";
 import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
 import axios from "axios";
 import {toast} from "react-toastify";
+import NavBar from '../navbar/NavBar';
 
 const Clients = () => {
     const [isLoading, setIsloading] = useState(false);
@@ -46,6 +47,8 @@ const Clients = () => {
 
     return (
         <div className='clients-bg'>
+            <NavBar />
+
             <div className='w-2/5'>
                 <div className='flex justify-end items-center'>
                     <input

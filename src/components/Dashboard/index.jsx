@@ -4,6 +4,7 @@ import LineChart from "./statistics/linestatistic";
 import {useEffect, useState} from "react";
 import {config, getMe, setConfig, url} from "../api";
 import axios from "axios";
+import NavBar from "../navbar/NavBar";
 
 function Dashboard() {
     const [me, setMe] = useState(null);
@@ -21,6 +22,8 @@ function Dashboard() {
 
     return (
         <div className="w-full flex lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-10 py-5">
+            <NavBar />
+
             <div className="lg:w-7/12 w-full ">
                 <div className="h-[320px] md:w-6/12 ">
                     {productStatistics && <Circle s={productStatistics}/>}

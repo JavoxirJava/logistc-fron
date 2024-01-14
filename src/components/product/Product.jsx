@@ -8,6 +8,7 @@ import {byId, config, url} from "../api";
 import axios from "axios";
 import {toast} from "react-toastify";
 import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
+import NavBar from '../navbar/NavBar';
 
 function Product() {
 
@@ -106,6 +107,8 @@ function Product() {
 
     return (
         <div className='product-main'>
+            <NavBar  />
+
             <div className="flex w-full row h-full">
                 <div className='w-6/12 h-full col1 px-3'>
                     <div className='mt-4'>

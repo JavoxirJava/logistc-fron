@@ -15,7 +15,6 @@ function App() {
     AOS.init();
     return (
         <div>
-            <NavBar />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
@@ -23,7 +22,6 @@ function App() {
                 <Route path='/product' element={<Product />} />
                 <Route path='/client' element={<Clients />} />
                 <Route path='/history' element={<History />} />
-                <Route path='/footer' element={<HomeFooter />} />
             </Routes>
         </div>
     );
