@@ -1,0 +1,21 @@
+.history-bg {
+    background-image: url('./history-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90% 85%;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.history-container {
+    max-width: 1300px;
+}
+
+.history-info-bg {
+    background-color: #DEE6FF;
+}

@@ -19,6 +19,8 @@ function Product() {
                             Add
                         </button>
                         <ProductCard className='mt-5'/>
+                        <ProductCard className='mt-5'/>
+                        <ProductCard className='mt-5'/>
                     </div>
 
 

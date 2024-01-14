@@ -2,8 +2,8 @@ import React from 'react';
 
 function ProductCard({className, number, status, etd, product, currentLocation, owner}) {
     return (
-        <div className={`flex card-main border border-blue-300 w-full h-[120px] bg-blue-100 ${className}`}>
-            <div className='card-col w-11/12 pt-4 ps-2'>
+        <div className={`flex card-main border border-blue-300 w-full h-[110px] bg-blue-100 ${className}`}>
+            <div className='card-col w-11/12 pt-3 ps-2'>
                 <div className='h-3/6 card-col-row w-full flex'>
                     <div className='w-[22%]'>
                         <p className='opacity-70'>Number</p>
