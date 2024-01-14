@@ -1,86 +1,106 @@
 .shipping {
-    width: 300px; 
-    height: 300px;
-    border-radius: 2rem;
-    background-size: cover;
-    color: #00000089;
+  width: 300px;
+  height: 300px;
+  border-radius: 2rem;
+  background-size: cover;
+  color: #00000089;
 }
 .back1 {
-    background-image: url("https://eastline-logistics.uz/images/services/truck3.jpg");
-
+  background-image: url("https://eastline-logistics.uz/images/services/truck3.jpg");
 }
 .back2 {
-    background-image: url("https://img.freepik.com/premium-photo/international-logistics-and-freight-transportation-s_410516-18607.jpg");
-
+  background-image: url("https://img.freepik.com/premium-photo/international-logistics-and-freight-transportation-s_410516-18607.jpg");
 }
 .back3 {
-    background-image: url("https://img.freepik.com/free-photo/airplane-in-the-track-front-view-generative-ai_188544-7895.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702339200&semt=ais");
-
+  background-image: url("https://img.freepik.com/free-photo/airplane-in-the-track-front-view-generative-ai_188544-7895.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702339200&semt=ais");
 }
 
 .shipping2 {
-    width: 300px; 
-    height: 100px;
-    border-radius: 2rem;
-    background-color: #02012d;
+  width: 300px;
+  height: 100px;
+  border-radius: 2rem;
+  background-color: #02012d;
 }
 
 .back-img {
-    width: 100%;
-    background-image: url("https://agat43.com/local/templates/agat/frontend/dev/assets/images/offer/bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  width: 100%;
+  background-image: url("https://agat43.com/local/templates/agat/frontend/dev/assets/images/offer/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .futer-card {
-    background-color: #DCE7ED;
-    border-radius: 2rem;
+  background-color: #dce7ed;
+  border-radius: 2rem;
 }
 
 .borderF {
-    width: 100%;
-    border: 2px solid;
+  width: 100%;
+  border: 2px solid white;
 }
 .important {
-    margin-top: -80px;
-    z-index: 0;
+  margin-top: -80px;
+  z-index: 0;
 }
 .important2 {
-    z-index: -1;
-    margin-top: -80px;
+  z-index: -1;
+  margin-top: -80px;
+}
+/* 
+    253B52
+
+    6C9E7B
+
+    061927
+*/
+.oraliq {
+    background: rgb(6,25,39);
+background: linear-gradient(0deg, rgba(6,25,39,1) 4%, rgba(37,59,82,1) 100%);
+
 }
 
-@media only screen and (max-width:1031px) {
-    .important2 {
-        margin-top: -50px;
-    }
-    .important {
-        margin-top: 0px;
-        z-index: 0;
-    }
+.hov-card {
+  opacity: 0;
+  transition: all 0.5s;
+  &:hover {
+    opacity: 100%;
+    transform: scale(1.03);
+  }
 }
-@media only screen and (max-width:661px) {
-    .important2 {
-        margin-top: -30px;
-    }
-    .important {
-        margin-top: 0px;
-        z-index: 0;
-    }
+
+
+
+@media only screen and (max-width: 1031px) {
+  .important2 {
+    margin-top: -50px;
+  }
+  .important {
+    margin-top: 0px;
+    z-index: 0;
+  }
+}
+@media only screen and (max-width: 661px) {
+  .important2 {
+    margin-top: -30px;
+  }
+  .important {
+    margin-top: 0px;
+    z-index: 0;
+  }
 }
 .importand3 {
-    z-index: 100;
+  z-index: 100;
 }
 @media only screen and (max-width: 461px) {
-    .important2 {
-        margin-top: -14px;
-    }
-    .important {
-        margin-top: 0px;
-        z-index: 0;
-    }
+  .important2 {
+    margin-top: -14px;
+  }
+  .important {
+    margin-top: 0px;
+    z-index: 0;
+  }
 }
 .importand3 {
-    z-index: 100;
+  z-index: 100;
 }

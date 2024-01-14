@@ -7,13 +7,23 @@ function Home() {
     <div className="w-full">
       <div className="grid grid-cols-3 ps-20 pt-10">
         {/* <div> */}
-        <div className="col-span-3 зе-10">
+        <div
+          className="col-span-3 зе-10"
+          data-aos="fade-right"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+        >
           <h1 className="text-6xl font-semibold font-mono">
             We Will Deliver Your <br /> Packages Anywhere!
           </h1>
         </div>
 
-        <div className="mt-10 ">
+        <div
+          className="mt-10 "
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
+        >
           <h2 className="text-2xl">
             <span className="text-4xl font-light">
               FIND IT | BUY IT | SHIP IT
@@ -23,6 +33,9 @@ function Home() {
           </h2>
         </div>
         <img
+          data-aos="fade-left"
+          data-aos-duration="2000"
+          data-aos-easing="ease-in-sine"
           className="col-span-2"
           style={{
             objectFit: "cover",
@@ -39,17 +52,30 @@ function Home() {
         <img style={{ zIndex: "20" }} src={banner} alt="" />
         <div className="grid grid-cols-2 ps-20 pt-20">
           <div>
-            <h1 className="text-5xl font-semibold font-sans tracking-wider leading-normal">
+            <h1
+              className="text-5xl font-semibold font-sans tracking-wider leading-normal"
+              data-aos="fade-right"
+              data-aos-easing="linear"
+              data-aos-duration="1500"
+            >
               Deliver Your <span style={{ color: "#1A648C" }}>Logistic</span>{" "}
               <br /> Safely & Quickly
             </h1>
-            <h4 className="text-lg">
+            <h4
+              className="text-lg"
+              data-aos="fade-left"
+              data-aos-easing="linear"
+              data-aos-duration="1500"
+            >
               From start to finish, our seamless logistics service <br />{" "}
               ensures a successful delivery experience every time. <br /> Get
               started now and see the difference for yourself.
             </h4>
           </div>
           <img
+            data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
             style={{
               position: "absolute",
               width: "900px",
@@ -65,16 +91,25 @@ function Home() {
           className="text-5xl font-semibold tracking-wider"
           style={{ marginTop: "18rem", textAlign: "center" }}
         >
-          <h4>
+          <h4
+            data-aos="fade-left"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
+          >
             {" "}
             <span style={{ color: "#1A648C" }}>Shipping</span> & Logistic <br />{" "}
             Services
           </h4>
         </div>
         <div className="flex gap-5 justify-center mt-10">
-          <div className="shipping back1">
+          <div
+            className="shipping back1"
+            data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
+          >
             <div
-              className="w-full h-full flex justify-around "
+              className="w-full h-full flex justify-around hov-card"
               style={{
                 backgroundColor: "#00000089",
                 borderRadius: "2rem",
@@ -95,12 +130,22 @@ function Home() {
             </div>
           </div>
           <div className="">
-            <button className="shipping2 text-3xl text-white mb-3">
+            <button
+              className="shipping2 text-3xl text-white mb-3"
+              data-aos="zoom-in"
+              data-aos-easing="linear"
+              data-aos-duration="1500"
+            >
               SHARAIT ↗️
             </button>
-            <div className="shipping back2 ">
+            <div
+              className="shipping back2 "
+              data-aos="fade-up"
+              data-aos-easing="linear"
+              data-aos-duration="1500"
+            >
               <div
-                className="w-full h-full flex justify-around "
+                className="w-full h-full flex justify-around hov-card"
                 style={{
                   backgroundColor: "#00000089",
                   borderRadius: "2rem",
@@ -121,9 +166,14 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="shipping back3">
+          <div
+            className="shipping back3"
+            data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
+          >
             <div
-              className="w-full h-full flex justify-around "
+              className="w-full h-full flex justify-around hov-card"
               style={{
                 backgroundColor: "#00000089",
                 borderRadius: "2rem",
@@ -147,14 +197,21 @@ function Home() {
       </div>
 
       <div className="back-img ps-32 pt-10 mt-20">
-        <div className="flex">
+        <div className="flex" data-aos="zoom-out-right"
+     data-aos-easing="linear"
+     data-aos-duration="1500">
           <img
             className="mt-10 me-10"
             style={{ width: "100px", height: "100px", borderRadius: "1rem" }}
             src="https://www.rubaltic.ru/upload/iblock/1c7/1c77c148461d88a38c4fe32223695b12.jpg"
             alt=""
+            data-aos="flip-left"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
           />
-          <h1 className="text-5xl block font-semibold font-sans tracking-wider text-white">
+          <h1 className="text-5xl block font-semibold font-sans tracking-wider text-white" data-aos="zoom-out-left"
+     data-aos-easing="linear"
+     data-aos-duration="1500">
             Effortless Delivery <br /> With Our Logistic <br /> Solutions
           </h1>
         </div>
@@ -164,7 +221,7 @@ function Home() {
           src="https://img.freepik.com/fotos-premium/grande-caminhao-entrega-mercadorias-em-caixas-para-abrir-porao-de-aviao-de-carga_124507-44692.jpg"
           alt=""
         />
-        <div className="mt-10">
+        <div className="mt-10 pb-10">
           <h4
             className="text-lg font-semibold font-sans tracking-wider text-white"
             style={{ width: "30%" }}
@@ -172,20 +229,10 @@ function Home() {
             Our Support Team is Always Available And Ready To Help With Any
             Delivery Issue You Have. Ensuring A Smooth Experience
           </h4>
-          <button
-            className="mt-7 mb-10"
-            style={{
-              backgroundColor: "#fff",
-              padding: "0.5rem, 1.5rem",
-              borderRadius: "1rem",
-              color: "#3f3bf4",
-            }}
-          >
-            Quick response
-          </button>
         </div>
       </div>
-      <HomeFooter/>
+      <div className="oraliq p-20"></div>
+      <HomeFooter />
     </div>
   );
 }
