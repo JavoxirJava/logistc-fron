@@ -1,10 +1,11 @@
-import Circle from "./statistics/cercle";
-import LineChart from "./statistics/totop";
+import DashboardProductCard from "./card";
+import Circle from "./statistics/cerclestatistic";
+import LineChart from "./statistics/linestatistic";
 
 function Dashboard() {
     return (
         <div className="w-full flex lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-10 py-5">
-            <div className="lg:w-8/12 w-full">
+            <div className="lg:w-7/12 w-full">
                 <div className="h-[320px] md:w-6/12 ">
                     <Circle />
                 </div>
@@ -12,7 +13,7 @@ function Dashboard() {
                     <LineChart />
                 </div>
             </div>
-            <div className="lg:w-4/12 w-full lg:ml-5 lg:mt-0 mt-7">
+            <div className="lg:w-5/12 w-full lg:ml-5 lg:mt-0 mt-7">
                 <div className="mb-10 flex items-center">
                     <div className="flex justify-between w-full px-3">
                         <input
@@ -27,6 +28,10 @@ function Dashboard() {
                     <i class="fa-solid fa-bars text-2xl"></i>
                 </div>
                 <div className="w-full h-screen all-shadow p-5">
+                    <DashboardProductCard />
+                    <DashboardProductCard />
+                    <DashboardProductCard />
+                    <DashboardProductCard />
                 </div>
             </div>
         </div>
