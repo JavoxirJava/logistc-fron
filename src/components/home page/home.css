@@ -80,7 +80,10 @@ background: linear-gradient(0deg, rgba(6,25,39,1) 4%, rgba(37,59,82,1) 100%);
   transform: scale(1.1);
 }
 
-
+.btm:hover {
+  background-color: #fff !important;
+  cursor: pointer !important;
+}
 @media only screen and (max-width: 1031px) {
   .important2 {
     margin-top: -50px;

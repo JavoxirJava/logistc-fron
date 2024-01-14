@@ -2,9 +2,11 @@ import React from "react";
 import { banner, enter, kamaz, kontener } from "../../assets";
 import "./home.css";
 import HomeFooter from "./HomeFooter";
+import HomeNav from "../navbar/HomeNav";
 function Home() {
   return (
     <div className="w-full">
+        <HomeNav/>
       <div className="grid grid-cols-3 ps-20 pt-10">
         {/* <div> */}
         <div
@@ -79,7 +81,7 @@ function Home() {
             style={{
               position: "absolute",
               width: "900px",
-              top: " 38rem",
+              top: " 40rem",
               right: "5rem",
               zIndex: "-10",
             }}
@@ -216,12 +218,17 @@ function Home() {
           </h1>
         </div>
         <img
+         data-aos="fade-down"
+         data-aos-easing="linear"
+         data-aos-duration="1500"
           className="mt-10 ms-32 block"
           style={{ width: "100px", height: "100px", borderRadius: "1rem" }}
           src="https://img.freepik.com/fotos-premium/grande-caminhao-entrega-mercadorias-em-caixas-para-abrir-porao-de-aviao-de-carga_124507-44692.jpg"
           alt=""
         />
-        <div className="mt-10 pb-10">
+        <div className="mt-10 pb-10"  data-aos="fade-left"
+     data-aos-easing="linear"
+     data-aos-duration="1500">
           <h4
             className="text-lg font-semibold font-sans tracking-wider text-white"
             style={{ width: "30%" }}
