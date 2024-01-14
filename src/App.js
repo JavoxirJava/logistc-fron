@@ -4,6 +4,7 @@ import NavBar from "./components/navbar/NavBar";
 import Product from "./components/product/Product";
 import Home from "./components/home page/Home";
 import Dashboard from "./components/Dashboard";
+import "./Globallcss/style.css"
 
 function App() {
     return (

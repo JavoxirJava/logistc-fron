@@ -20,7 +20,7 @@ function LineChart() {
 
   return (
     <div>
-      <div className="bg-white rounded-lg shadow-md p-5">
+      <div className="bg-white p-5">
         <div style={{ height: '400px', width: '100%', display: "flex", flexDirection: "column" }}>
           <EChartsReact
             option={option}
