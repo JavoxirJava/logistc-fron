@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './product.css';
 import Dropdown from "../Dropdown";
 import ProductCard from "./ProductCard";
@@ -7,12 +7,19 @@ import {Map, Placemark, YMaps} from 'react-yandex-maps';
 import OffcanvasProduct from "./OffcanvasProduct";
 import {byId, config, url} from "../api";
 import axios from "axios";
+import {toast} from "react-toastify";
 
 function Product() {
 
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     const [editOf, setEditOf] = useState(false);
+    const [product, setProductObj] = useState(null);
+    const [products, setProduct] = useState(null);
+
+    useEffect(() => {
+        getProduct()
+    }, []);
 
     const openEdit = () => setEditOf(!editOf);
 
@@ -50,12 +57,32 @@ function Product() {
         }
     }
 
+    function getProduct() {
+        axios.get(`${url}product?page=3&size=4`, config).then(res => setProduct(res.data.body.object))
+    }
+
     function addProduct() {
         const userId = sessionStorage.getItem('userId')
-        axios.post(`${url}product?userId=${userId}`, setObj(0), config).then(res => {
-            console.log(res)
+        axios.post(`${url}product?userId=${userId}`, setObj(0), config).then(() => {
+            toast.success('successfully saved product')
+        }).catch(err => {
+            toast.error('product saved error');
+            console.log(err);
         });
     }
+
+    function editProduct() {
+        const userId = sessionStorage.getItem('userId')
+        axios.put(`${url}product?userId=${userId}`, setObj(product ? product.id : 0))
+            .then(() => {
+                toast.success('successfully Edit product')
+            }).catch((err) => {
+            toast.error('product Edit error')
+            console.log(err)
+        })
+    }
+
+    console.log(products)
 
     return (
         <div className='product-main'>
@@ -66,17 +93,16 @@ function Product() {
                                className='w-9/12 ps-2 h-10 focus:outline-0 border'/>
                         <Dropdown/>
                     </div>
-                    <div className='mt-8'>
+                    <div className='mt-4'>
                         <button onClick={handleToggleOffcanvas}
                                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded">
                             Add
                         </button>
-                        <ProductCard className='mt-5' openEdit={openEdit}/>
-                        <ProductCard className='mt-5' openEdit={openEdit}/>
-                        <ProductCard className='mt-5' openEdit={openEdit}/>
-                        <ProductCard className='mt-5' openEdit={openEdit}/>
+                        {products && products.map((item, i) =>
+                            <ProductCard className='mt-5' openEdit={openEdit} product={item} setProductObj={setProductObj}/>
+                        )}
                     </div>
-                    <Pagination className='mt-12'/>
+                    <Pagination className='mt-5'/>
 
                 </div>
                 <div className='w-11/12 h-full col2'>
@@ -93,7 +119,7 @@ function Product() {
             <OffcanvasProduct handleToggleOffcanvas={handleToggleOffcanvas} isOffcanvasOpen={isOffcanvasOpen}
                               name="Add product" btnName="Save" onSave={addProduct}/>
             <OffcanvasProduct handleToggleOffcanvas={openEdit} isOffcanvasOpen={editOf} name="Edit product"
-                              btnName="Edit"/>
+                              btnName="Edit" onSave={editProduct}/>
         </div>
     );
 }
