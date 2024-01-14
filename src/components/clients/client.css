@@ -1,0 +1,18 @@
+.clients-bg {
+    background-image: url('./bg-client.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90% 85%;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding-left: 6rem;
+    padding-right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-bg {
+    background-color: #DEE6FF;
+}
