@@ -43,7 +43,7 @@ function Circle() {
     return (
         <div>
             <div className="bg-white p-5">
-                <div className='flex justify-around w-84 ml-10'>
+                <div className='flex justify-around md:w-78 md:ml-0 text-2xl'>
                     <p>12</p>
                     <p>12</p>
                     <p>12</p>
