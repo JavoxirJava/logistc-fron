@@ -13,3 +13,13 @@ export const setConfig = () => config.headers.Authorization = sessionStorage.get
 export const getMe = (setMe) => {
     axios.get(`${url}user/getMe`, config).then(res => setMe(res.data.body))
 }
+
+export const getClientProduct = (page, size, setClientProduct, setTotalPage) => {
+    axios.get(`${url}user?page=${page}&size=${size}`, config)
+        .then(res => {
+            if (res.data.message) {
+                setClientProduct(res.data.body.object);
+                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2)
+            }
+        })
+}
