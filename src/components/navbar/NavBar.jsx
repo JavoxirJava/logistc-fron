@@ -148,7 +148,7 @@ function NavBar() {
                                 <input
                                     type="text"
                                     className="px-3 py-2 border-gray-600 border-2 rounded-xl"
-                                    value=""
+                                    value="some thing"
                                 />
                             </div>
                             <div className=' font-bold text-black text-[1.1rem]'>
