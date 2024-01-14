@@ -1,7 +1,7 @@
 import React from 'react';
 import EChartsReact from 'echarts-for-react';
 
-function Circle() {
+function Circle({s}) {
     const option = {
         tooltip: {
             trigger: 'item'
@@ -31,9 +31,9 @@ function Circle() {
                     show: false
                 },
                 data: [
-                    { value: 1048, name: 'Complete ' },
-                    { value: 735, name: 'Pending' },
-                    { value: 580, name: 'Cancel' },
+                    { value: s.completedCount, name: 'Complete ' },
+                    { value: s.pendingCount, name: 'Pending' },
+                    { value: s.canselCount, name: 'Cancel' },
 
                 ]
             }
@@ -44,9 +44,9 @@ function Circle() {
         <div>
             <div className="bg-white p-5">
                 <div className='flex justify-around md:w-78 md:ml-0 text-2xl'>
-                    <p>12</p>
-                    <p>12</p>
-                    <p>12</p>
+                    <p>{s.completedCount}</p>
+                    <p>{s.pendingCount}</p>
+                    <p>{s.canselCount}</p>
                 </div>
                 <div style={{ height: '300px', width: '100%', display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
                     <EChartsReact

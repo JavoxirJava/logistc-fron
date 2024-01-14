@@ -2,14 +2,17 @@ import DashboardProductCard from "./card";
 import Circle from "./statistics/cerclestatistic";
 import LineChart from "./statistics/linestatistic";
 import {useEffect, useState} from "react";
-import {getMe, setConfig} from "../api";
+import {config, getMe, setConfig, url} from "../api";
+import axios from "axios";
 
 function Dashboard() {
     const [me, setMe] = useState(null);
+    const [productStatistics, setProductStatistics] = useState(null);
 
     useEffect(() => {
         setConfig();
         getMe(setMe);
+        axios.get(`${url}product/diagramForAdmin`, config).then(res => setProductStatistics(res.data.body))
     }, []);
 
     useEffect(() => {
@@ -20,7 +23,7 @@ function Dashboard() {
         <div className="w-full flex lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-10 py-5">
             <div className="lg:w-7/12 w-full ">
                 <div className="h-[320px] md:w-6/12 ">
-                    <Circle />
+                    {productStatistics && <Circle s={productStatistics}/>}
                 </div>
                 <div className="h-[500px] rounded all-shadow">
                     <LineChart />
