@@ -2,9 +2,9 @@ import Circle from "./statistics/cercle";
 
 function Dashboard() {
     return (
-    <div>
-        <Circle />
-    </div>
+        <div>
+            <Circle />
+        </div>
     );
 }
 
