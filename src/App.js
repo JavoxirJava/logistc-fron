@@ -6,6 +6,8 @@ import Clients from "./components/clients/Clients";
 import Home from "./components/home page/Home";
 import Dashboard from "./components/Dashboard";
 import History from "./components/history/History";
+import "./Globallcss/style.css"
+import HomeFooter from "./components/home page/HomeFooter";
 
 function App() {
     return (
@@ -18,6 +20,7 @@ function App() {
                 <Route path='/product' element={<Product />} />
                 <Route path='/client' element={<Clients />} />
                 <Route path='/history' element={<History />} />
+                <Route path='/footer' element={<HomeFooter />} />
             </Routes>
         </div>
     );
