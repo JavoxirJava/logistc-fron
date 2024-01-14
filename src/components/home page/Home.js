@@ -1,6 +1,7 @@
 import React from "react";
 import { banner, enter, kamaz, kontener } from "../../assets";
 import "./home.css";
+import HomeFooter from "./HomeFooter";
 function Home() {
   return (
     <div className="w-full">
@@ -146,19 +147,45 @@ function Home() {
       </div>
 
       <div className="back-img ps-32 pt-10 mt-20">
-          <div className="flex">
-            <img className="mt-10 me-10" style={{width: "100px", height: "100px", borderRadius: "1rem"}} src="https://www.rubaltic.ru/upload/iblock/1c7/1c77c148461d88a38c4fe32223695b12.jpg" alt="" />
-            <h1 className="text-5xl block font-semibold font-sans tracking-wider text-white">Effortless Delivery <br /> With Our Logistic <br /> Solutions</h1>
-
-          </div>
-            <img className="mt-10 ms-32 block" style={{width: "100px", height: "100px", borderRadius: "1rem"}} src="https://img.freepik.com/fotos-premium/grande-caminhao-entrega-mercadorias-em-caixas-para-abrir-porao-de-aviao-de-carga_124507-44692.jpg" alt="" />
-            <div className="mt-10">
-              <h4 className="text-lg font-semibold font-sans tracking-wider text-white" style={{width: "30%"}}>
-                Our Support Team is Always Available And Ready To Help With Any Delivery Issue You Have. Ensuring A Smooth Experience
-              </h4>
-              <button className="mt-7 mb-10" style={{backgroundColor: "#fff", padding: "0.5rem, 1.5rem", borderRadius:"1rem", color: "#3f3bf4"}}>Quick response</button>
-            </div>
+        <div className="flex">
+          <img
+            className="mt-10 me-10"
+            style={{ width: "100px", height: "100px", borderRadius: "1rem" }}
+            src="https://www.rubaltic.ru/upload/iblock/1c7/1c77c148461d88a38c4fe32223695b12.jpg"
+            alt=""
+          />
+          <h1 className="text-5xl block font-semibold font-sans tracking-wider text-white">
+            Effortless Delivery <br /> With Our Logistic <br /> Solutions
+          </h1>
+        </div>
+        <img
+          className="mt-10 ms-32 block"
+          style={{ width: "100px", height: "100px", borderRadius: "1rem" }}
+          src="https://img.freepik.com/fotos-premium/grande-caminhao-entrega-mercadorias-em-caixas-para-abrir-porao-de-aviao-de-carga_124507-44692.jpg"
+          alt=""
+        />
+        <div className="mt-10">
+          <h4
+            className="text-lg font-semibold font-sans tracking-wider text-white"
+            style={{ width: "30%" }}
+          >
+            Our Support Team is Always Available And Ready To Help With Any
+            Delivery Issue You Have. Ensuring A Smooth Experience
+          </h4>
+          <button
+            className="mt-7 mb-10"
+            style={{
+              backgroundColor: "#fff",
+              padding: "0.5rem, 1.5rem",
+              borderRadius: "1rem",
+              color: "#3f3bf4",
+            }}
+          >
+            Quick response
+          </button>
+        </div>
       </div>
+      <HomeFooter/>
     </div>
   );
 }

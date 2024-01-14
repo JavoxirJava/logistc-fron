@@ -32,3 +32,13 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.futer-card {
+    background-color: #DCE7ED;
+    border-radius: 2rem;
+}
+
+.borderF {
+    width: 100%;
+    border: 2px solid;
+}
