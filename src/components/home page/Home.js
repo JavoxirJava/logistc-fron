@@ -9,6 +9,7 @@ function Home() {
             </div>
             <div className="grid grid-cols-2">
               <div>
+                
                 <h2>FIND IT | BUY IT | SHIP IT <br/> We let you shop around the world and ship to logisippo <br/> straight to your doorstep!</h2>
               </div>
             </div>
