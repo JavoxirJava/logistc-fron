@@ -8,8 +8,11 @@ import Dashboard from "./components/Dashboard";
 import History from "./components/history/History";
 import "./Globallcss/style.css"
 import HomeFooter from "./components/home page/HomeFooter";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
+    AOS.init();
     return (
         <div>
             <NavBar />
