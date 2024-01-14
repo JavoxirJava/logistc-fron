@@ -5,6 +5,7 @@ import Product from "./components/product/Product";
 import Clients from "./components/clients/Clients";
 import Home from "./components/home page/Home";
 import Dashboard from "./components/Dashboard";
+import "./Globallcss/style.css"
 
 function App() {
     return (
