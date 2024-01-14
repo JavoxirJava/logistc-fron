@@ -5,7 +5,7 @@ import Product from "./components/product/Product";
 import Clients from "./components/clients/Clients";
 import Home from "./components/home page/Home";
 import Dashboard from "./components/Dashboard";
-
+import History from "./components/history/History";
 
 function App() {
     return (
@@ -17,7 +17,7 @@ function App() {
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/product' element={<Product />} />
                 <Route path='/client' element={<Clients />} />
-                {/* <Route path='/history' element={<History />} /> */}
+                <Route path='/history' element={<History />} />
             </Routes>
         </div>
     );
