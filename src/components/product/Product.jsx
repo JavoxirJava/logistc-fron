@@ -94,14 +94,24 @@ function Product() {
         })
     }
 
+    function searchProduct(e) {
+        let text = e.target.value;
+        console.log(text)
+        // if (text === '') getProduct(pagination, 4);
+        // else axios.get(`${url}user/search?data=${text}`).then(res => {
+        //     console.log(res)
+        // })
+        // console.log(e.target.value)
+    }
+
     return (
         <div className='product-main'>
             <div className="flex w-full row h-full">
                 <div className='w-6/12 h-full col1 px-3'>
                     <div className='mt-4'>
-                        <input type='search' placeholder="🔍 Search id Numnber..."
-                               className='w-9/12 ps-2 h-10 focus:outline-0 border'/>
-                        <Dropdown/>
+                        <input type='search' placeholder="🔍 Search id Numnber..." onChange={searchProduct}
+                               className='w-11/12 ps-2 h-10 focus:outline-0 border'/>
+                        {/*<Dropdown/>*/}
                     </div>
                     <div className='mt-4'>
                         <button onClick={handleToggleOffcanvas}
