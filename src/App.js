@@ -3,6 +3,7 @@ import NavBar from "./components/navbar/NavBar";
 import Product from "./components/product/Product";
 import Home from "./components/home page/Home";
 import Dashboard from "./components/Dashboard";
+import Login from "./components/login/Login";
 
 function App() {
     return (
