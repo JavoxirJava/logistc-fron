@@ -1,10 +1,14 @@
-.login-main {
-    width: 98.89vw;
-    height: 100vh;
-    background: linear-gradient(270deg, rgba(0, 52, 101, 0.20) 33.02%, rgba(0, 133, 255, 0.00) 40.76%), linear-gradient(91deg, #003465 0.4%, #0085FF 51.62%);
-    background-blend-mode: darken, normal;
+.box {
+    border: 2px solid #72a4ee;
+    background-color: #5882c169;
 }
 
-.elements {
-
+.input {
+    border: 2px solid #5882c169;
+} 
+.button {
+    background-color: #003465;
+}
+.header-div {
+    background-image: url("./img/photo_2024-01-14_12-11-11.jpg");
 }

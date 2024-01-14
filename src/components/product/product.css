@@ -11,3 +11,12 @@
 .col1 {
     background: #ECECEC;
 }
+
+.product-main {
+    border: 1px solid #003465;
+}
+
+.card-col-row {
+    font-size: .8em;
+    font-weight: 500;
+}
