@@ -7,7 +7,6 @@ import Home from "./components/home page/Home";
 import Dashboard from "./components/Dashboard";
 import History from "./components/history/History";
 
-
 function App() {
     return (
         <div>

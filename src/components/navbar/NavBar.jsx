@@ -113,13 +113,13 @@ function NavBar() {
                                         </div>
                                         <div className='flex justify-between items-center mt-3 font-bold text-white'>
                                             <button
-                                                className='bg-yellow-500 px-5 py-1.5 rounded-lg 
+                                                className='bg-yellow-500 px-5 py-1.5 rounded-lg
                                                 shadow-lg active:scale-95 duration-200' onClick={() => {
                                                     openModal();
                                                     openGetMe();
                                                 }}>Edit</button>
                                             <button
-                                                className='bg-red-600 px-5 py-1.5 rounded-lg 
+                                                className='bg-red-600 px-5 py-1.5 rounded-lg
                                                 shadow-lg active:scale-95 duration-200' onClick={() => {
                                                     logout();
                                                     openGetMe();
@@ -132,9 +132,10 @@ function NavBar() {
                     </div>
 
                     <div
-                        className={`w-1/2 h-[570px]  ${isModalOpen ? ' absolute top-1/4 left-1/4' : 'hidden'}
-                    rounded-3xl shadow-lg overflow-hidden z-20`}
-                    >
+
+                        className={` w-[700px] ${isModalOpen ? 'inline absolute left-1/4 top-1/4' : 'hidden'}
+                        rounded-3xl shadow-lg overflow-hidden z-20`}>
+
                         <div className='bg-slate-200 p-8 flex justify-center items-center'>
                             <img
                                 className='rounded-full w-24 h-24'
