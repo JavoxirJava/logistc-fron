@@ -1,7 +1,7 @@
 import React from 'react';
 import EChartsReact from 'echarts-for-react';
 
-function Dashboard() {
+function Circle() {
     const option = {
         tooltip: {
             trigger: 'item'
@@ -55,4 +55,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default Circle;
