@@ -31,11 +31,10 @@ function Circle() {
                     show: false
                 },
                 data: [
-                    { value: 1048, name: 'Search Engine' },
-                    { value: 735, name: 'Direct' },
-                    { value: 580, name: 'Email' },
-                    { value: 484, name: 'Union Ads' },
-                    { value: 300, name: 'Video Ads' }
+                    { value: 1048, name: 'Complete ' },
+                    { value: 735, name: 'Pending' },
+                    { value: 580, name: 'Cancel' },
+
                 ]
             }
         ]
@@ -43,13 +42,18 @@ function Circle() {
 
     return (
         <div>
-            <div className="bg-white rounded-lg shadow-md p-5">
-                <div style={{ height: '400px', width: '100%', display: "flex", flexDirection: "column" }}>
+            <div className="bg-white p-5">
+                <div className='flex justify-around md:w-78 md:ml-0 text-2xl'>
+                    <p>12</p>
+                    <p>12</p>
+                    <p>12</p>
+                </div>
+                <div style={{ height: '300px', width: '100%', display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
                     <EChartsReact
                         option={option}
-                        style={{ height: '100%', width: '100%', display: "flex", justifyContent: "center" }}
+                        style={{ height: '100%', width: '100%' }}
                     />
-                </div>
+                </div> 
             </div>
         </div>
     );

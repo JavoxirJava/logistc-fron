@@ -12,7 +12,7 @@ function LineChart() {
     },
     series: [
       {
-        data: [150, 230, 224, 218, 135, 147, 260],
+        data: [150, 23, 224, 218, 135, 147, 260],
         type: 'line'
       }
     ]
@@ -20,7 +20,7 @@ function LineChart() {
 
   return (
     <div>
-      <div className="bg-white rounded-lg shadow-md p-5">
+      <div className="bg-white p-5">
         <div style={{ height: '400px', width: '100%', display: "flex", flexDirection: "column" }}>
           <EChartsReact
             option={option}
