@@ -22,8 +22,7 @@ function LineChart() {
     <div>
       <div className="bg-white p-5">
         <div style={{ height: '400px', width: '100%', display: "flex", flexDirection: "column" }}>
-          <EChartsReact
-            option={option}
+          <EChartsReact option={option}
             style={{ height: '100%', width: '100%', display: "flex", justifyContent: "center" }}
           />
         </div>
