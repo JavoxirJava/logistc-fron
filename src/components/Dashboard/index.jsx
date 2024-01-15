@@ -37,12 +37,7 @@ function Dashboard() {
                 <div className="lg:w-5/12 w-full lg:ml-5 lg:mt-0 mt-7">
                     <div className="mb-10 flex items-center">
                         <div className="flex justify-between w-full px-3">
-                            <input
-                                type="text"
-                                id="myInput"
-                                value=""
-                                onChange=""
-                                placeholder="Search Id Number..."
+                            <input id="myInput" placeholder="Search Id Number..."
                                 className="px-3 py-2 border-gray-600 border-2 rounded-xl"
                             />
                         </div>
