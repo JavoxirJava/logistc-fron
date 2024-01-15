@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/login/Login";
-import NavBar from "./components/navbar/NavBar";
 import Product from "./components/product/Product";
 import Clients from "./components/clients/Clients";
 import Home from "./components/home page/Home";
@@ -15,7 +14,6 @@ function App() {
     AOS.init();
     return (
         <div>
-            <NavBar/>
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='/login' element={<Login/>}/>
