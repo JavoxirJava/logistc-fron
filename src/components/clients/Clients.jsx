@@ -85,6 +85,9 @@ const Clients = () => {
             />
           </div>
         </div>
+
+
+
         <div className="lg:w-2/6 ">
           <p className="text-black text-2xl mb-5 font-bold tracking-wider text-center">
             New Client
