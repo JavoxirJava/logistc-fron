@@ -3,6 +3,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { config, url } from '../../api';
 import Dropdown from "./Dropdown";
+import '../../product/product.css'
+import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
 
 const Modal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
@@ -31,7 +33,7 @@ const Modal = ({ isOpen, onClose }) => {
     );
 };
 
-const DashboardProductCard = ({ className, number, status, etd, product, currentLocation, owner }) => {
+const DashboardProductCard = ({ className }) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [data, setProduct] = useState(null);
@@ -93,56 +95,62 @@ const DashboardProductCard = ({ className, number, status, etd, product, current
                         type="search"
                         placeholder="🔍 Search id Numnber..."
                         onChange={searchProduct}
-                        className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+                        className="lg:w-10/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                     />
-                    <Dropdown setSearchBy={setSearchBy} />
+                    <Dropdown setSearchBy={setSearchBy}/>
                 </div>
             </div>
-            {data &&
-                data.map((item, i) => (
-                    <div className={`flex mb-3 border border-blue-300 w-full h-[120px] ${className}` }>
-                        <div className='card-col w-11/12 h-max pt-4 ps-2' key={i}>
-                            <div className='h-3/6 card-col-row w-full flex'>
-                                <div className='w-[22%]'>
-                                    <p className='opacity-70'>Number</p>
-                                    <p className='font-bold'>{data ? item.productId : 0}</p>
-                                </div>
-                                <div className='w-[20%]'>
-                                    <p className='opacity-70'>Status</p>
-                                    <p className='font-bold'>{data ? item.status : 'no status'}</p>
-                                </div>
-                                <div className='w-[30%]'>
-                                    <p className='opacity-70'>ETD</p>
-                                    {/* <p className='font-bold'>{data ? item.product.createdAt.substring(0, 10) : "April 23, 2023"}</p> */}
-                                </div>
-                                <div className='w-[26%]'>
-                                    <p className='opacity-70'>Product</p>
-                                    <p className='font-bold'>{data ? item.name : "Iphone"}</p>
-                                </div>
+            {data && data.map((item, i) => (
+                <div className={`flex mb-3 border border-blue-300 w-full h-[120px] bg-blue-100 ${className}`}>
+                    <div className='card-col w-11/12 h-max pt-4 ps-2' key={i}>
+                        <div className='h-3/6 card-col-row w-full flex'>
+                            <div className='w-[18%]'>
+                                <p className='opacity-70'>Number</p>
+                                <p className='font-bold'>{item ? item.productId : 0}</p>
                             </div>
-                            <div className='h-3/6 card-col-row w-full flex'>
-                                <div className='w-[60%]'>
-                                    <p className='opacity-70'>Current  Location</p>
-                                    <p className='font-bold'>{data ? item.address : "No location"}</p>
-                                </div>
-                                <div className='w-[40%]'>
-                                    <p className='opacity-70'>Owner</p>
-                                    <p className='font-bold'>{data ? item.owner : console.log(item.owner)}</p>
-                                </div>
+                            <div className='w-[24%]'>
+                                <p className='opacity-70'>Status</p>
+                                <p className='font-bold'>{item ? item.status : 'no status'}</p>
+                            </div>
+                            <div className='w-[30%]'>
+                                <p className='opacity-70'>ETD</p>
+                                <p className='font-bold'>{item ? item.createdAt.substring(0, 10) : "April 23, 2023"}</p>
+                            </div>
+                            <div className='w-[26%]'>
+                                <p className='opacity-70'>Product</p>
+                                <p className='font-bold'>{item ? item.name : "Iphone"}</p>
                             </div>
                         </div>
-                        <div className='card-col w-3/12 flex justify-center my-auto h-10 pr-2'>
-                            <button
-                                className="inline-flex justify-center w-40 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
-                                onClick={openModal}
-                            >
-                                View Detail
-                            </button>
+                        <div className='h-3/6 card-col-row w-full flex'>
+                            <div className='w-[80%]'>
+                                <p className='opacity-70'>Current Location</p>
+                                <p className='font-bold'>{data ? item.address : "No location"}</p>
+                            </div>
+                            <div className='w-[20%]'>
+                                <p className='opacity-70'>Owner</p>
+                                <p className='font-bold'>{data ? item.owner : console.log(item.owner)}</p>
+                            </div>
                         </div>
-                        <Modal isOpen={isModalOpen} onClose={closeModal} />
                     </div>
-                ))}
-
+                    <div className='card-col w-3/12 flex justify-center my-auto h-10 pr-2'>
+                        <button
+                            className="inline-flex justify-center w-40 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
+                            onClick={openModal}
+                        >
+                            View Detail
+                        </button>
+                    </div>
+                    <Modal isOpen={isModalOpen} onClose={closeModal}/>
+                </div>
+            ))}
+            <div className="pagination-style mt-14">
+                <Pagination
+                    {...bootstrap5PaginationPreset}
+                    current={pagination}
+                    total={Math.floor(totalPage + 1)}
+                    onPageChange={setPagination}
+                />
+            </div>
         </div>
     );
 };
