@@ -35,7 +35,18 @@ function Dashboard() {
                     </div>
                 </div>
                 <div className="lg:w-5/12 w-full lg:ml-5 lg:mt-0 mt-7">
-                    <div className="w-full h-max all-shadow p-5">
+                    <div className="mb-10 flex items-center">
+                        <div className="flex justify-between w-full px-3">
+                            <input id="myInput" placeholder="Search Id Number..."
+                                className="px-3 py-2 border-gray-600 border-2 rounded-xl"
+                            />
+                        </div>
+                        <i className="fa-solid fa-bars text-2xl"></i>
+                    </div>
+                    <div className="w-full h-screen all-shadow p-5">
+                        <DashboardProductCard/>
+                        <DashboardProductCard/>
+                        <DashboardProductCard/>
                         <DashboardProductCard/>
                     </div>
                 </div>
