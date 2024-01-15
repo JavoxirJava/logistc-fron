@@ -14,17 +14,22 @@ function Home() {
           <div className="pt-10 flex">
             <div>
               <div className="w-full">
-                <h1 className="md:text-6xl text-4xl font-semibold font-mono md:mt-20">
+                <h1 className="md:text-6xl text-4xl font-semibold font-mono md:mt-20"
+                  data-aos="fade-right">
                   We Will Deliver Your <br /> Packages Anywhere!
                 </h1>
               </div>
 
               <div className="mt-10 ">
                 <h2 className="text-2xl">
-                  <span className="md:text-4xl text-3xl font-light">
+                  <span className="md:text-4xl text-3xl font-light"
+                    data-aos="fade-right"
+                    data-aos-duration="1500">
                     FIND IT | BUY IT | SHIP IT
                   </span>{" "}
-                  <br /> We let you shop around the world and ship
+                  <br
+                    data-aos="fade-top"
+                    data-aos-duration="1500" /> We let you shop around the world and ship
                   <br /> to logisippo straight to your doorstep!
                 </h2>
               </div>
@@ -49,11 +54,16 @@ function Home() {
           <img className="w-full importand3" src={banner} alt="" />
           <div className="important lg:px-20 px-5 lg:pt-20 w-full flex lg:flex-row flex-wrap-reverse">
             <div className="lg:w-6/12">
-              <h1 className="md:text-5xl text-3xl font-semibold font-sans tracking-wider leading-normal">
+              <h1
+                className="md:text-5xl text-3xl font-semibold font-sans tracking-wider leading-normal"
+                data-aos="fade-right"
+              >
                 Deliver Your <span style={{ color: "#1A648C" }}>Logistic</span>{" "}
                 <br /> Safely & Quickly
               </h1>
-              <h4 className="text-lg">
+              <h4 className="text-lg mt-5"
+                data-aos="fade-top"
+                data-aos-duration="1500">
                 From start to finish, our seamless logistics service <br />{" "}
                 ensures a successful delivery experience every time. <br /> Get
                 started now and see the difference for yourself.
@@ -75,7 +85,9 @@ function Home() {
             <div
               className="md:text-5xl text-3xl font-semibold tracking-wider mt-10 text-center"
             >
-              <h4>
+              <h4
+                data-aos="fade-top">
+
                 {" "}
                 <span style={{ color: "#1A648C" }}>Shipping</span> & Logistic <br />{" "}
                 Services
@@ -83,7 +95,9 @@ function Home() {
             </div>
             <div className="flex justify-center">
               <div className="flex justify-around flex-wrap mt-10 lg:w-9/12 md:w-10/12 w-full">
-                <div className="shipping back1 mb-3 lg:mb-0">
+                <div className="shipping back1 mb-3 lg:mb-0"
+                  data-aos="fade-top"
+                  data-aos-duration="1500">
                   <div
                     className="w-full h-full flex justify-around "
                     style={{
@@ -105,7 +119,9 @@ function Home() {
                     </svg>
                   </div>
                 </div>
-                <div className="lg:mb-0 mb-10">
+                <div className="lg:mb-0 mb-10"
+                  data-aos="fade-top"
+                  data-aos-duration="1500">
                   <button className="shipping2 text-3xl text-white mb-3">
                     SHARAIT ↗️
                   </button>
@@ -132,7 +148,9 @@ function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="shipping back3">
+                <div className="shipping back3"
+                  data-aos="fade-top"
+                  data-aos-duration="1500">
                   <div
                     className="w-full h-full flex justify-around "
                     style={{
@@ -165,15 +183,28 @@ function Home() {
         <div className="back-img md:px-20 px-5 pt-10 mt-20">
           <div className="flex">
             <img className="mt-10 me-10" style={{ width: "100px", height: "100px", borderRadius: "1rem" }} src="https://www.rubaltic.ru/upload/iblock/1c7/1c77c148461d88a38c4fe32223695b12.jpg" alt="" />
-            <h1 className="md:text-5xl text-2xl block font-semibold font-sans tracking-wider text-white">Effortless Delivery <br /> With Our Logistic <br /> Solutions</h1>
+            <h1 className="md:text-5xl text-2xl block font-semibold font-sans tracking-wider text-white"
+              data-aos="fade-top"
+
+            >Effortless Delivery <br /> With Our Logistic <br /> Solutions</h1>
 
           </div>
-          <img className="mt-10 ms-32 block" style={{ width: "100px", height: "100px", borderRadius: "1rem" }} src="https://img.freepik.com/fotos-premium/grande-caminhao-entrega-mercadorias-em-caixas-para-abrir-porao-de-aviao-de-carga_124507-44692.jpg" alt="" />
+          <img
+            className="mt-10 ms-32 block"
+            data-aos="fade-top"
+            style={{ width: "100px", height: "100px", borderRadius: "1rem" }}
+            src="https://img.freepik.com/fotos-premium/grande-caminhao-entrega-mercadorias-em-caixas-para-abrir-porao-de-aviao-de-carga_124507-44692.jpg"
+            alt="" />
           <div className="mt-10">
-            <h4 className="lg:text-lg font-semibold font-sans tracking-wider text-white md:w-5/12" >
+            <h4
+              className="lg:text-lg font-semibold font-sans tracking-wider text-white md:w-5/12"
+              data-aos="fade-top"
+            >
               Our Support Team is Always Available And Ready To Help With Any Delivery Issue You Have. Ensuring A Smooth Experience
             </h4>
-            <button className="mt-7 mb-10 px-8 py-3 bg-white rounded-lg text-slate-700" >Quick response</button>
+            <button className="mt-7 mb-10 px-8 py-3 bg-white rounded-lg text-slate-700"
+              data-aos="fade-top"
+            >Quick response</button>
           </div>
         </div>
         {/* end fourth section */}
