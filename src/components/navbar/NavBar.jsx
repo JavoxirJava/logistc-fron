@@ -164,11 +164,11 @@ function NavBar() {
                     <div className="bg-gradient-to-tl from-sky-500 to-sky-800 px-8 py-6">
                       <div className=" font-bold text-black text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">name</p>
-                        <p className="mt-0 pt-0">{me.name}</p>
+                        <p className="mt-0 pt-0 text-white">{me.name}</p>
                       </div>
                       <div className=" font-bold text-black text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">Id number</p>
-                        <p className="mt-0 pt-0">
+                        <p className="mt-0 pt-0 text-white">
                           {me.idNumber ? me.idNumber : "none"}
                         </p>
                       </div>
@@ -176,11 +176,11 @@ function NavBar() {
                         <p className="opacity-50 pb-0 mb-0 mt-2">
                           Phone number
                         </p>
-                        <p className="mt-0 pt-0">{me.phoneNumber}</p>
+                        <p className="mt-0 pt-0 text-white" >{me.phoneNumber}</p>
                       </div>
                       <div className=" font-bold text-black text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">password</p>
-                        <p className="mt-0 pt-0">******</p>
+                        <p className="mt-0 pt-0 text-white">******</p>
                       </div>
                       <div className="flex justify-between items-center mt-3 font-bold text-white">
                         <button
@@ -211,172 +211,91 @@ function NavBar() {
             </div>
           </div>
 
-          {/* <div className={` w-[500px] ${isModalOpen ? ' fixed z-50    ' : 'hidden'}
-                        rounded-3xl shadow-lg overflow-hidden z-20`}>
-                        <div className='bg-slate-200 p-8 flex justify-center items-center'>
-                            <img
-                                className='rounded-full w-24 h-24'
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt="img"
-                            />
-                        </div>
-                        <div className='bg-gradient-to-tl from-sky-500 to-sky-800 px-8 py-6'>
-                            <div className=' font-bold text-black text-[1.1rem]'>
-                                <p className='opacity-50 pb-0 mb-0 mt-2'>name</p>
-                                <input
-                                    type="text"
-                                    className="px-3 py-2 border-gray-600 border-2 rounded-xl"
-                                    value="some thing"
-                                />
-                            </div>
-                            <div className=' font-bold text-black text-[1.1rem]'>
-                                <p className='opacity-50 pb-0 mb-0 mt-2'>id number</p>
-                                <input
-                                    type="text"
-                                    className=" px-3 py-2 border-gray-600 border-2 rounded-xl"
-                                    value=""
-                                />
-                            </div>
-                            <div className=' font-bold text-black text-[1.1rem]'>
-                                <p className='opacity-50 pb-0 mb-0 mt-2'>phone number</p>
-                                <input
-                                    type="text"
-                                    className="px-3 py-2 border-gray-600 border-2 rounded-xl"
-                                    value=""
-                                />
-                            </div>
-                            <div className=' font-bold text-black text-[1.1rem]'>
-                                <p className='opacity-50 pb-0 mb-0 mt-2'>password</p>
-                                <input
-                                    type="password"
-                                    className="px-3 py-2 border-gray-600 border-2 rounded-xl"
-                                    value=""
-                                />
-                            </div>
-                            <div className='flex justify-between items-center mt-3 font-bold text-white'>
-                                <button
-                                    className='bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg'
-                                    onClick={() => {
-                                        openModal();
-                                        openGetMe();
-                                    }}
-                                >
-                                    Edit
-                                </button>
-                                <button
-                                    className='bg-red-600 px-5 py-1.5 rounded-lg shadow-lg'
-                                    onClick={() => {
-                                        openModal()
-                                    }}
-                                >
-                                    Close
-                                </button>
-                                <button
-                                    className='bg-blue-600 px-5 py-1.5 rounded-lg shadow-lg'
-                                    onClick={() => {
-                                        logout()
-                                    }}
-                                >
-                                    Log out
-                                </button>
-                            </div>
-                        </div>
-                    </div> */}
-
           {isModalOpen && (
-            <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-                <div className="flex">
-                  <button
-                    onClick={() => {
-                      openModal();
-                    }}
-                    className="text-gray-400 m-2 me-4 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-toggle="crud-modal"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 14"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                      />
-                    </svg>
-                    <span className="sr-only">Close modal</span>
-                  </button>
-                </div>
+            <div className="fixed inset-0 flex items-center justify-center z-50">
+              <div className="modal bg-white rounded-xl md:w-1/3 overflow-hidden shadow-2xl">
 
-                
                 <div className="">
-                  {/* <div className="grid mb-4 grid-cols-2"> */}
-                    <div className="bg-slate-200 p-8 flex justify-center items-center">
-                      <img
-                        className="rounded-full w-24 h-24"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="img"
+                  <div className="bg-slate-200 pb-8  flex flex-col justify-center items-center">
+                    <button
+                      onClick={() => {
+                        openModal();
+                      }}
+                      className="text-gray-400 m-2 me-4 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                      data-modal-toggle="crud-modal"
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 14"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                        />
+                      </svg>
+                      <span className="sr-only">Close modal</span>
+                    </button>
+                    <img
+                      className="rounded-full w-24 h-24"
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      alt="img"
+                    />
+                  </div>
+                  <div className="bg-gradient-to-tl w-full from-sky-500 to-sky-800 px-8 py-6">
+                    <div className=" font-bold text-black text-[1.1rem]">
+                      <p className="opacity-50 pb-0 mb-0 mt-2">Name</p>
+                      <input
+                        type="text"
+                        className="px-3 py-2 w-full border-gray-600 border-2 rounded-xl"
                       />
                     </div>
-                    <div className="bg-gradient-to-tl from-sky-500 to-sky-800 px-8 py-6">
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">name</p>
-                        <input
-                          type="text"
-                          className="px-3 py-2 border-gray-600 border-2 rounded-xl"
-                          value="some thing"
-                        />
-                      </div>
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">id number</p>
-                        <input
-                          type="text"
-                          className=" px-3 py-2 border-gray-600 border-2 rounded-xl"
-                          value=""
-                        />
-                      </div>
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">
-                          phone number
-                        </p>
-                        <input
-                          type="text"
-                          className="px-3 py-2 border-gray-600 border-2 rounded-xl"
-                          value=""
-                        />
-                      </div>
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">password</p>
-                        <input
-                          type="password"
-                          className="px-3 py-2 border-gray-600 border-2 rounded-xl"
-                          value=""
-                        />
-                      </div>
-                      <div className="flex justify-between items-center mt-3 font-bold text-white">
-                        <button
-                          className="bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg"
-                          onClick={() => {
-                            openModal();
-                            openGetMe();
-                          }}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="bg-red-600 px-5 py-1.5 rounded-lg shadow-lg"
-                          onClick={logout}
-                        >
-                          Log out
-                        </button>
-                      </div>
+                    <div className=" font-bold text-black text-[1.1rem]">
+                      <p className="opacity-50 pb-0 mb-0 mt-2">Id number</p>
+                      <input
+                        type="text"
+                        className=" px-3 w-full py-2 border-gray-600 border-2 rounded-xl"
+                      />
                     </div>
-                  {/* </div> */}
+                    <div className=" font-bold text-black text-[1.1rem]">
+                      <p className="opacity-50 pb-0 mb-0 mt-2">Phone number</p>
+                      <input
+                        type="text"
+                        className="px-3 py-2 w-full border-gray-600 border-2 rounded-xl"
+                      />
+                    </div>
+                    <div className=" font-bold text-black text-[1.1rem]">
+                      <p className="opacity-50 pb-0 mb-0 mt-2">Password</p>
+                      <input
+                        type="password"
+                        className="px-3 py-2 w-full border-gray-600 border-2 rounded-xl"
+                      />
+                    </div>
+                    <div className="flex justify-between items-center mt-3 font-bold text-white">
+                      <button
+                        className="bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg"
+                        onClick={() => {
+                          openModal();
+                          openGetMe();
+                        }}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="bg-red-600 px-5 py-1.5 rounded-lg shadow-lg"
+                        onClick={() => {
+                          logout()
+                        }}
+                      >
+                        Log out
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
