@@ -76,7 +76,10 @@ function Product() {
         axios.get(`${url}product?page=${page}&size=${size}`, config).then((res) => {
             if (res.data.message) {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
-                setProduct(res.data.body.object);
+                if (res.data.body.object.length > 4) setProduct(res.data.body.object.map((item, i) => {
+                    if (i < 4) return item;
+                }))
+                // setProduct(res.data.body.object);
             }
         });
     }
@@ -109,12 +112,13 @@ function Product() {
 
     function searchProduct(e) {
         let text = e.target.value;
-        console.log(searchByName)
         if (text === '') getProduct(pagination, 4);
-        else axios.get(`${url}product/admin/search?${searchByName()}=${text}`).then(res => {
-            console.log(res)
+        else axios.get(`${url}product/admin/search?${searchByName()}=${text}`, config).then(res => {
+            if (res.data.body) setProduct(res.data.body);
+            else setProduct([])
+        }).catch(err => {
+            console.log(err)
         })
-        console.log(e.target.value)
     }
 
     function searchByName() {
