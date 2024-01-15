@@ -39,14 +39,7 @@
   width: 100%;
   border: 2px solid white;
 }
-.important {
-  margin-top: -80px;
-  z-index: 0;
-}
-.important2 {
-  z-index: -1;
-  margin-top: -80px;
-}
+
 /* 
     253B52
 
@@ -83,6 +76,16 @@ background: linear-gradient(0deg, rgba(6,25,39,1) 4%, rgba(37,59,82,1) 100%);
 .btm:hover {
   background-color: #fff !important;
   cursor: pointer !important;
+}
+
+
+.important {
+  margin-top: -80px;
+  z-index: 0;
+}
+.important2 {
+  z-index: -1;
+  margin-top: -100px;
 }
 @media only screen and (max-width: 1031px) {
   .important2 {
