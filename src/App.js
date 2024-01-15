@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Login from "./components/login/Login";
 import NavBar from "./components/navbar/NavBar";
 import Product from "./components/product/Product";
@@ -15,15 +15,15 @@ function App() {
     AOS.init();
     return (
         <div>
-            <NavBar />
+            <NavBar/>
             <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/dashboard' element={<Dashboard />} />
-                <Route path='/product' element={<Product />} />
-                <Route path='/client' element={<Clients />} />
-                <Route path='/history' element={<History />} />
-                <Route path='/footer' element={<HomeFooter />} />
+                <Route path='/' element={<Home/>}/>
+                <Route path='/login' element={<Login/>}/>
+                <Route path='/dashboard' element={<Dashboard/>}/>
+                <Route path='/product' element={<Product/>}/>
+                <Route path='/client' element={<Clients/>}/>
+                <Route path='/history' element={<History/>}/>
+                <Route path='/footer' element={<HomeFooter/>}/>
             </Routes>
         </div>
     );

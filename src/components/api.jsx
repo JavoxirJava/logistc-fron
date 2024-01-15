@@ -11,7 +11,7 @@ export const config = {
 export const setConfig = () => config.headers.Authorization = sessionStorage.getItem('jwtKey');
 
 export const getMe = (setMe) => {
-    axios.get(`${url}user/getMe`, config).then(res => setMe(res.data.body))
+    axios.get(`${url}user/getMe`, config).then(res => setMe(res.data.body)).catch(err => console.log(err));
 }
 
 export const getClientProduct = (page, size, setClientProduct, setTotalPage) => {

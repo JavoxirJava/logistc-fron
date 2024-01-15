@@ -1,6 +1,7 @@
 import React from "react";
 import { banner, enter, kamaz, kontener } from "../../assets";
 import "./home.css";
+
 function Home() {
   return (
     <div className="w-full">
