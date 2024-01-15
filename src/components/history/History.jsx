@@ -25,10 +25,10 @@ const History = () => {
   };
 
   const searchHistory = () => {
-    const start = byId("startDate").value;
-    const finish = byId("endDate").value;
-    const userId = byId("userId").value;
-    const productId = byId("productId").value;
+    const start = byId("startDate");
+    const finish = byId("endDate");
+    const userId = byId("userId");
+    const productId = byId("productId");
     axios
       .get(
         `${url}product/admin/history/search/search?start=${start}&finish=${finish}&userIdNumber=${userId}&productIdNumber=${productId}`,

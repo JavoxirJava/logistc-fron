@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getMe } from "../api";
+import { byId, config, getMe, url } from "../api";
 import { logo } from "../../assets";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [me, setMe] = useState(null);
+  const [meId, setMeId] = useState('');
 
   const openGetMe = () => setIsOpen(!isOpen);
   const openModal = () => setIsModalOpen(!isModalOpen);
@@ -15,6 +18,24 @@ function NavBar() {
     document.getElementById("logout").click();
     sessionStorage.clear();
   };
+
+  const editUser = () => {
+    axios.put(url + "user/" + meId.id, {
+      id: meId.id,
+      name: byId("name"), 
+      idNumber: byId("idNumber"),
+      phoneNumber: byId("phoneNumber"),
+      password: byId("password")
+    } ,config)
+    .then(()=>{
+      toast.success("Succes!")
+      openModal()
+      logout()
+    })
+    .catch(()=>{
+      toast.error("Error?")
+      });
+  }
 
   useEffect(() => {
     getMe(setMe);
@@ -165,13 +186,15 @@ function NavBar() {
                       </div>
                       <div className=" font-bold text-black text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">password</p>
-                        <p className="mt-0 pt-0 text-white">******</p>
+                        
+                        <p className="mt-0 pt-0 text-white">{me.password}</p>
                       </div>
                       <div className="flex justify-between items-center mt-3 font-bold text-white">
                         <button
                           className="bg-yellow-500 px-5 py-1.5 rounded-lg
                                                 shadow-lg active:scale-95 duration-200"
                           onClick={() => {
+                            setMeId(me)
                             openModal();
                             openGetMe();
                           }}
@@ -237,6 +260,8 @@ function NavBar() {
                       <p className="opacity-50 pb-0 mb-0 mt-2">Name</p>
                       <input
                         type="text"
+                        defaultValue={me.name}
+                        id="name"
                         className="px-3 py-2 w-full border-gray-600 border-2 rounded-xl"
                       />
                     </div>
@@ -244,6 +269,8 @@ function NavBar() {
                       <p className="opacity-50 pb-0 mb-0 mt-2">Id number</p>
                       <input
                         type="text"
+                        defaultValue={me.idNumber}
+                        id="idNumber"
                         className=" px-3 w-full py-2 border-gray-600 border-2 rounded-xl"
                       />
                     </div>
@@ -251,6 +278,8 @@ function NavBar() {
                       <p className="opacity-50 pb-0 mb-0 mt-2">Phone number</p>
                       <input
                         type="text"
+                        id="phoneNumber"
+                        defaultValue={me.phoneNumber}
                         className="px-3 py-2 w-full border-gray-600 border-2 rounded-xl"
                       />
                     </div>
@@ -258,6 +287,8 @@ function NavBar() {
                       <p className="opacity-50 pb-0 mb-0 mt-2">Password</p>
                       <input
                         type="password"
+                        id="password"
+                        defaultValue={me.password}
                         className="px-3 py-2 w-full border-gray-600 border-2 rounded-xl"
                       />
                     </div>
@@ -265,8 +296,7 @@ function NavBar() {
                       <button
                         className="bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg"
                         onClick={() => {
-                          openModal();
-                          openGetMe();
+                            editUser();
                         }}
                       >
                         Edit
