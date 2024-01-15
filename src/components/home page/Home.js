@@ -9,7 +9,7 @@ function Home() {
       <HomeNav />
       <div className="w-full">
         {/* first section */}
-        <div className="w-full flex lg:flex-row flex-col h-max lg:px-20 px-5">
+        <div id="1" className="w-full flex lg:flex-row flex-col h-max lg:px-20 px-5">
           <div className="pt-10 flex">
             <div>
               <div className="w-full">
@@ -59,7 +59,7 @@ function Home() {
         {/* end section */}
 
         {/* start second section */}
-        <div className="lg:mt-5 pt-5  w-full">
+        <div id="2" className="lg:mt-5 pt-5  w-full">
           <img className="w-full importand3" src={banner} alt="" />
           <div className="important lg:px-20 px-5 lg:pt-20 w-full flex lg:flex-row flex-wrap-reverse">
             <div className="lg:w-6/12">
@@ -95,7 +95,7 @@ function Home() {
           {/* end second section */}
 
           {/* end third section */}
-          <div className="flex flex-col">
+          <div id="3" className="flex flex-col">
             <div className="md:text-5xl text-3xl font-semibold tracking-wider mt-10 text-center">
               <h4
                 data-aos="zoom-out"
@@ -111,11 +111,12 @@ function Home() {
               <div className="flex justify-around flex-wrap mt-10 lg:w-9/12 md:w-10/12 w-full">
                 <div
                   className="shipping back1 mb-3 lg:mb-0"
-                  data-aos="fade-top"
-                  data-aos-duration="1500"
+                  data-aos="fade-right"
+                  data-aos-easing="linear"
+                  data-aos-duration="2000"
                 >
                   <div
-                    className="w-full h-full flex justify-around "
+                    className="w-full h-full flex justify-around back-h"
                     style={{
                       backgroundColor: "#00000089",
                       borderRadius: "2rem",
@@ -137,15 +138,21 @@ function Home() {
                 </div>
                 <div
                   className="lg:mb-0 mb-10"
-                  data-aos="fade-top"
-                  data-aos-duration="1500"
+                  data-aos="zoom-out"
+                  data-aos-easing="linear"
+                  data-aos-duration="2000"
                 >
                   <button className="shipping2 text-3xl text-white mb-3">
                     SHARAIT ↗️
                   </button>
-                  <div className="shipping back2 lg:mb-5">
+                  <div
+                    className="shipping back2 lg:mb-5"
+                    data-aos="fade-up"
+                    data-aos-easing="linear"
+                    data-aos-duration="2000"
+                  >
                     <div
-                      className="w-full h-full flex justify-around "
+                      className="w-full h-full flex justify-around back-h"
                       style={{
                         backgroundColor: "#00000089",
                         borderRadius: "2rem",
@@ -168,11 +175,12 @@ function Home() {
                 </div>
                 <div
                   className="shipping back3"
-                  data-aos="fade-top"
-                  data-aos-duration="1500"
+                  data-aos="fade-left"
+                  data-aos-easing="linear"
+                  data-aos-duration="2000"
                 >
                   <div
-                    className="w-full h-full flex justify-around "
+                    className="w-full h-full flex justify-around back-h"
                     style={{
                       backgroundColor: "#00000089",
                       borderRadius: "2rem",
@@ -199,8 +207,13 @@ function Home() {
         {/* end third section */}
 
         {/* start forth section */}
-        <div className="back-img md:px-20 px-5 pt-10 mt-20">
-          <div className="flex">
+        <div id="4" className="back-img md:px-20 px-5 pt-10 mt-20">
+          <div
+            className="flex"
+            data-aos="fade-right"
+            data-aos-easing="linear"
+            data-aos-duration="2000"
+          >
             <img
               className="mt-10 me-10"
               style={{ width: "100px", height: "100px", borderRadius: "1rem" }}
@@ -215,24 +228,25 @@ function Home() {
             </h1>
           </div>
           <img
+            data-aos="zoom-out"
+            data-aos-easing="linear"
+            data-aos-duration="2000"
             className="mt-10 ms-32 block"
-            data-aos="fade-top"
             style={{ width: "100px", height: "100px", borderRadius: "1rem" }}
             src="https://img.freepik.com/fotos-premium/grande-caminhao-entrega-mercadorias-em-caixas-para-abrir-porao-de-aviao-de-carga_124507-44692.jpg"
             alt=""
           />
-          <div className="mt-10">
-            <h4
-              className="lg:text-lg font-semibold font-sans tracking-wider text-white md:w-5/12"
-              data-aos="fade-top"
-            >
+          <div
+            className="mt-10"
+            data-aos="fade-left"
+            data-aos-easing="linear"
+            data-aos-duration="2000"
+          >
+            <h4 className="lg:text-lg font-semibold font-sans tracking-wider text-white md:w-5/12">
               Our Support Team is Always Available And Ready To Help With Any
               Delivery Issue You Have. Ensuring A Smooth Experience
             </h4>
-            <button
-              className="mt-7 mb-10 px-8 py-3 bg-white rounded-lg text-slate-700"
-              data-aos="fade-top"
-            >
+            <button className="mt-7 mb-10 px-8 py-3 bg-white rounded-lg text-slate-700">
               Quick response
             </button>
           </div>
