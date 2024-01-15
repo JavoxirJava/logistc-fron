@@ -133,7 +133,7 @@ function Product() {
             <NavBar/>
             <div className="product-main">
                 <div className="flex w-full lg:flex-row flex-col lg:h-full h-max">
-                    <div className="lg:w-5/12 w-full h-[800px] lg:px-3 px-10 lg:py-0 py-5">
+                    <div className="lg:w-5/12 w-full lg:h-[870px] lg:px-3 md:px-10 px-3 lg:py-0 py-5">
                         <div className="mt-4 flex flex-wrap justify-between">
                             <input
                                 type="search"
