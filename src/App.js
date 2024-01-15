@@ -15,7 +15,6 @@ function App() {
     AOS.init();
     return (
         <div>
-            <NavBar/>
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='/login' element={<Login/>}/>
