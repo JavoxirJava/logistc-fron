@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const HistoryInfo = ({ history }) => {
-
-
+   
   return (
     <>
       {history.length &&

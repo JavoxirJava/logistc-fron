@@ -2,7 +2,7 @@ import React from 'react';
 
 function ProductCard({className, product, openEdit, setProductObj}) {
     return (
-        <div className={`flex card-main border border-blue-300 w-full h-[110px] bg-blue-100 ${className}`}>
+        <div className={`flex card-main border border-blue-300 w-full lg:h-[110px] h-max bg-blue-100 ${className}`}>
             <div className='card-col w-11/12 pt-2 ps-2'>
                 <div className='h-8/12 card-col-row w-full flex'>
                     <div className='w-[22%]'>

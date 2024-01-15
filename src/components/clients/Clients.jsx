@@ -57,9 +57,9 @@ const Clients = () => {
   return (
     <>
       <NavBar />
-      <div className="clients-bg">
-        <div className="w-2/5">
-          <div className="flex justify-end items-center">
+      <div className="clients-bg flex lg:flex-row flex-col">
+        <div className="lg:w-2/5 md:w-4/5 w-full lg:pl-10 md:px-0 px-2">
+          <div className="flex justify-between items-center">
             <input
               className="py-2 px-4 w-96 bg-slate-100 rounded-lg border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-200 shadow-md
@@ -85,11 +85,14 @@ const Clients = () => {
             />
           </div>
         </div>
-        <div className="w-2/6">
+
+
+
+        <div className="lg:w-2/6 ">
           <p className="text-black text-2xl mb-5 font-bold tracking-wider text-center">
             New Client
           </p>
-          <div className="add-bg px-3 py-6 w-full">
+          <div className="add-bg lg:px-3 px-10 py-6 w-full">
             <label htmlFor="nameC" className="ml-3.5">
               User name
             </label>
