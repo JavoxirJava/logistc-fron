@@ -9,7 +9,7 @@ function Home() {
       <HomeNav />
       <div className="w-full">
         {/* first section */}
-        <div className="w-full flex lg:flex-row flex-col h-max lg:px-20 px-5">
+        <div id="1" className="w-full flex lg:flex-row flex-col h-max lg:px-20 px-5">
           <div className="pt-10 flex">
             <div>
               <div className="w-full">
@@ -59,7 +59,7 @@ function Home() {
         {/* end section */}
 
         {/* start second section */}
-        <div className="lg:mt-5 pt-5  w-full">
+        <div id="2" className="lg:mt-5 pt-5  w-full">
           <img className="w-full importand3" src={banner} alt="" />
           <div className="important lg:px-20 px-5 lg:pt-20 w-full flex lg:flex-row flex-wrap-reverse">
             <div className="lg:w-6/12">
@@ -95,7 +95,7 @@ function Home() {
           {/* end second section */}
 
           {/* end third section */}
-          <div className="flex flex-col">
+          <div id="3" className="flex flex-col">
             <div className="md:text-5xl text-3xl font-semibold tracking-wider mt-10 text-center">
               <h4
                 data-aos="zoom-out"
@@ -207,7 +207,7 @@ function Home() {
         {/* end third section */}
 
         {/* start forth section */}
-        <div className="back-img md:px-20 px-5 pt-10 mt-20">
+        <div id="4" className="back-img md:px-20 px-5 pt-10 mt-20">
           <div
             className="flex"
             data-aos="fade-right"
