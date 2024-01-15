@@ -1,7 +1,7 @@
 import React from 'react';
 import EChartsReact from 'echarts-for-react';
 
-function Circle({s}) {
+function    Circle({s}) {
     const option = {
         tooltip: {
             trigger: 'item'
@@ -19,7 +19,7 @@ function Circle({s}) {
                 label: {
                     show: false,
                     position: 'center'
-                },
+                },  
                 emphasis: {
                     label: {
                         show: true,
