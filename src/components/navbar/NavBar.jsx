@@ -211,7 +211,7 @@ function NavBar() {
             </div>
           </div>
 
-          <div className={` w-[700px] ${isModalOpen ? 'inline left-1/4 top-1/9 fixed z-50    ' : 'hidden'}
+          {/* <div className={` w-[500px] ${isModalOpen ? ' fixed z-50    ' : 'hidden'}
                         rounded-3xl shadow-lg overflow-hidden z-20`}>
                         <div className='bg-slate-200 p-8 flex justify-center items-center'>
                             <img
@@ -266,6 +266,14 @@ function NavBar() {
                                 <button
                                     className='bg-red-600 px-5 py-1.5 rounded-lg shadow-lg'
                                     onClick={() => {
+                                        openModal()
+                                    }}
+                                >
+                                    Close
+                                </button>
+                                <button
+                                    className='bg-blue-600 px-5 py-1.5 rounded-lg shadow-lg'
+                                    onClick={() => {
                                         logout()
                                     }}
                                 >
@@ -273,11 +281,11 @@ function NavBar() {
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-          {/* {isModalOpen && (
-            <div className="fixed inset-0 flex items-center justify-center z-50 ">
-              <div className="modal bg-white rounded-xl overflow-hidden shadow-2xl">
+          {isModalOpen && (
+            <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
                 <div className="flex">
                   <button
                     onClick={() => {
@@ -306,8 +314,8 @@ function NavBar() {
                 </div>
 
                 
-                <div className="p-4 md:p-5">
-                  <div className="grid mb-4 grid-cols-2">
+                <div className="">
+                  {/* <div className="grid mb-4 grid-cols-2"> */}
                     <div className="bg-slate-200 p-8 flex justify-center items-center">
                       <img
                         className="rounded-full w-24 h-24"
@@ -368,11 +376,11 @@ function NavBar() {
                         </button>
                       </div>
                     </div>
-                  </div>
+                  {/* </div> */}
                 </div>
               </div>
             </div>
-          )} */}
+          )}
         </div>
       </nav>
     </div>
