@@ -4,11 +4,11 @@ import "./home.css";
 
 function HomeFooter() {
   return (
-    <div className="pb-10" style={{ backgroundColor: "#061927" }}>
-      <div className="flex px-32 ">
-        <div className="flex flex-col mt-10">
-          <img style={{ width: "35%", marginLeft: "10%" }} src={logo} alt="." />
-          <div className="flex gap-9 mt-5 ms-40">
+    <div className=" w-full flex flex-col" style={{ backgroundColor: "#061927" }}>
+      <div className="flex md:flex-row flex-col items-center px-20 ">
+        <div className="flex flex-col md:items-start items-center md:w-6/12">
+          <img className="w-44 md:mt-0 mt-5" src={logo} alt="." />
+          <div className="flex gap-9 mt-7">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="30"
@@ -47,16 +47,16 @@ function HomeFooter() {
             </svg>
           </div>
         </div>
-        <div className="flex flex-col mt-10">
+        <div className="flex flex-col md:mt-10 md:w-6/12">
           <div className="flex justify-start mt-10 mb-20">
-            <ul className="list-none text-white text-lg text-center">
+            <ul className="list-none text-white text-lg ">
               <li className="font-semibold">Quick links</li>
               <li>Home</li>
               <li>About</li>
               <li>Service</li>
               <li>Gallary</li>
             </ul>
-            <ul className="list-none text-white text-lg text-center ms-20">
+            <ul className="list-none text-white text-lg  ms-20">
               <li className="font-semibold">Company</li>
               <li>About us</li>
               <li>FAQs</li>
@@ -65,9 +65,12 @@ function HomeFooter() {
           </div>
         </div>
       </div>
-      <div className="borderF mb-10"></div>
-      <div className="text-center text-lg text-white">
-       @This website was created by IT CITY ACADEMY in 2024
+      <div>
+        <div className="borderF"></div>
+        <div className="flex justify-between md:flex-row flex-col items-center  md:px-10 px-5 py-10 text-lg text-white">
+          <p>© 2023 GSR Logistics</p>
+          <p>Powered by: IT City Academy </p>
+        </div>
       </div>
     </div>
   );

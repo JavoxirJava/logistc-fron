@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+
 .shipping {
   width: 300px;
   height: 300px;
@@ -39,14 +41,7 @@
   width: 100%;
   border: 2px solid white;
 }
-.important {
-  margin-top: -80px;
-  z-index: 0;
-}
-.important2 {
-  z-index: -1;
-  margin-top: -80px;
-}
+
 /* 
     253B52
 
@@ -80,9 +75,41 @@ background: linear-gradient(0deg, rgba(6,25,39,1) 4%, rgba(37,59,82,1) 100%);
   transform: scale(1.1);
 }
 
-.btm:hover {
-  background-color: #fff !important;
-  cursor: pointer !important;
+.btm{
+
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  color: #fff;
+  background: linear-gradient(90deg, #0066CC 0%, #c500cc 100%);
+  padding: 10px 38px;
+  border: none;
+  box-shadow: rgb(0, 0, 0) 0px 0px 19px -2px;
+  border-radius: 50px;
+  transition : 1000ms;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  }
+  
+  .btm:hover{
+  
+    transition : 842ms;
+    transform : translateY(-3px);
+    background: linear-gradient(90deg, #0066CC 0%, #c500cc 100%);
+    color: #ffffff;
+  }
+
+
+.important {
+  margin-top: -80px;
+  z-index: 0;
+}
+.important2 {
+  z-index: -1;
+  margin-top: -100px;
 }
 @media only screen and (max-width: 1031px) {
   .important2 {
