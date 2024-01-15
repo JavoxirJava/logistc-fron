@@ -2,27 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getMe } from "../api";
 import "../home page/home.css"
+import { logo } from "../../assets";
 
 function HomeNav() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [me, setMe] = useState(null);
-
-  const openGetMe = () => setIsOpen(!isOpen);
-  const openModal = () => setIsModalOpen(!isModalOpen);
-
-  const logout = () => {
-    document.getElementById("logout").click();
-    sessionStorage.clear();
-  };
-
-  useEffect(() => {
-    getMe(setMe);
-  }, []);
-
+    const login = () => document.getElementById("login").click()
   return (
     <div>
-      <Link to="/" id="logout"></Link>
       <nav className="bg-white">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
@@ -70,45 +55,46 @@ function HomeNav() {
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
                 <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                  className="h-10 w-auto"
+                  src={logo}
                   alt="Your Company"
                 />
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  <Link
-                    to="#"
+                  <a
+                    href="#1"
                     className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                     aria-current="page"
                   >
-                    Dashboard
-                  </Link>
-                  <Link
-                    to="#"
+                    Home
+                  </a>
+                  <a
+                    href="#2"
                     className="text-gray-600 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >
-                    Team
-                  </Link>
-                  <Link
-                    to="#"
+                    About
+                  </a>
+                  <a
+                    href="#3"
                     className="text-gray-600 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >
-                    Projects
-                  </Link>
-                  <Link
-                    to="#"
+                    Servises
+                  </a>
+                  <a
+                    href="#4"
                     className="text-gray-600 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >
-                    Calendar
-                  </Link>
+                    Gallary
+                  </a>
                 </div>
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <Link id="login" to='/login'>
               <button
-                type="button"
                 className="relative flex text-lg gap-3 rounded-full bg-gray-800 p-1 text-gray-400 px-4 py-2 btm"
+                onClick={login}
               >
                 Log In
                 <svg
@@ -121,6 +107,7 @@ function HomeNav() {
                   <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z" />
                 </svg>
               </button>
+                </Link>
             </div>
           </div>
         </div>
