@@ -31,10 +31,9 @@ function Circle({s}) {
                     show: false
                 },
                 data: [
-                    { value: s.completedCount, name: 'Complete ' },
-                    { value: s.pendingCount, name: 'Pending' },
-                    { value: s.canselCount, name: 'Cancel' },
-
+                    {value: s.completed + 9, name: 'Complete '},
+                    {value: s.pending + 9, name: 'Pending'},
+                    {value: s.cansel + 9, name: 'Cancel'}
                 ]
             }
         ]
@@ -44,16 +43,22 @@ function Circle({s}) {
         <div>
             <div className="bg-white p-5">
                 <div className='flex justify-around md:w-78 md:ml-0 text-2xl'>
-                    <p>{s.completedCount}</p>
-                    <p>{s.pendingCount}</p>
-                    <p>{s.canselCount}</p>
+                    <p>{s.completed}</p>
+                    <p>{s.pending}</p>
+                    <p>{s.cansel}</p>
                 </div>
-                <div style={{ height: '300px', width: '100%', display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
+                <div style={{
+                    height: '300px',
+                    width: '100%',
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start"
+                }}>
                     <EChartsReact
                         option={option}
-                        style={{ height: '100%', width: '100%' }}
+                        style={{height: '100%', width: '100%'}}
                     />
-                </div> 
+                </div>
             </div>
         </div>
     );

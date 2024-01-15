@@ -43,7 +43,6 @@ function Product() {
         const coords = e.get("coords");
         setCoordinates(coords);
         const apiKey = "1248def2-c2d9-4353-90a7-01b7e5703e21";
-
         const geocodeUrl = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${apiKey}&geocode=${coords[1]},${coords[0]}`;
 
         fetch(geocodeUrl)
@@ -76,10 +75,7 @@ function Product() {
         axios.get(`${url}product?page=${page}&size=${size}`, config).then((res) => {
             if (res.data.message) {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
-                if (res.data.body.object.length > 4) setProduct(res.data.body.object.map((item, i) => {
-                    if (i < 4) return item;
-                }))
-                // setProduct(res.data.body.object);
+                setProduct(res.data.body.object);
             }
         });
     }
@@ -114,11 +110,12 @@ function Product() {
         let text = e.target.value;
         if (text === '') getProduct(pagination, 4);
         else axios.get(`${url}product/admin/search?${searchByName()}=${text}`, config).then(res => {
-            if (res.data.body) setProduct(res.data.body);
-            else setProduct([])
-        }).catch(err => {
-            console.log(err)
-        })
+            if (res.data.body) {
+                if (res.data.body.object.length > 4) setProduct(res.data.body.object.map((item, i) => {
+                    if (i < 4) return item;
+                }))
+            } else setProduct([]);
+        }).catch(err => console.log(err));
     }
 
     function searchByName() {
