@@ -132,18 +132,18 @@ function Product() {
         <>
             <NavBar/>
             <div className="product-main">
-                <div className="flex w-full row h-full">
-                    <div className="w-6/12 h-full col1 px-3">
-                        <div className="mt-4">
+                <div className="flex w-full lg:flex-row flex-col lg:h-full h-max">
+                    <div className="lg:w-5/12 w-full h-[800px] lg:px-3 px-10 lg:py-0 py-5">
+                        <div className="mt-4 flex flex-wrap justify-between">
                             <input
                                 type="search"
                                 placeholder="🔍 Search id Numnber..."
                                 onChange={searchProduct}
-                                className="w-9/12 ps-2 h-10 focus:outline-0 border"
+                                className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                             />
                             <Dropdown setSearchBy={setSearchBy}/>
                         </div>
-                        <div className="mt-4">
+                        <div className="mt-4 flex flex-wrap justify-between">
                             <button
                                 onClick={handleToggleOffcanvas}
                                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
@@ -173,7 +173,7 @@ function Product() {
                             />
                         </div>
                     </div>
-                    <div className="w-11/12 h-full col2 z-10">
+                    <div className="xl:w-9/12 lg:w-8/12 w-full h-full col2 lg:z-10 -z-0">
                         <YMaps>
                             <Map
                                 defaultState={{center: [55.75, 37.57], zoom: 9}}
