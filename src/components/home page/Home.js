@@ -111,11 +111,12 @@ function Home() {
               <div className="flex justify-around flex-wrap mt-10 lg:w-9/12 md:w-10/12 w-full">
                 <div
                   className="shipping back1 mb-3 lg:mb-0"
-                  data-aos="fade-top"
-                  data-aos-duration="1500"
+                  data-aos="fade-right"
+                  data-aos-easing="linear"
+                  data-aos-duration="2000"
                 >
                   <div
-                    className="w-full h-full flex justify-around "
+                    className="w-full h-full flex justify-around back-h"
                     style={{
                       backgroundColor: "#00000089",
                       borderRadius: "2rem",
@@ -137,15 +138,21 @@ function Home() {
                 </div>
                 <div
                   className="lg:mb-0 mb-10"
-                  data-aos="fade-top"
-                  data-aos-duration="1500"
+                  data-aos="zoom-out"
+                  data-aos-easing="linear"
+                  data-aos-duration="2000"
                 >
                   <button className="shipping2 text-3xl text-white mb-3">
                     SHARAIT ↗️
                   </button>
-                  <div className="shipping back2 lg:mb-5">
+                  <div
+                    className="shipping back2 lg:mb-5"
+                    data-aos="fade-up"
+                    data-aos-easing="linear"
+                    data-aos-duration="2000"
+                  >
                     <div
-                      className="w-full h-full flex justify-around "
+                      className="w-full h-full flex justify-around back-h"
                       style={{
                         backgroundColor: "#00000089",
                         borderRadius: "2rem",
@@ -168,11 +175,12 @@ function Home() {
                 </div>
                 <div
                   className="shipping back3"
-                  data-aos="fade-top"
-                  data-aos-duration="1500"
+                  data-aos="fade-left"
+                  data-aos-easing="linear"
+                  data-aos-duration="2000"
                 >
                   <div
-                    className="w-full h-full flex justify-around "
+                    className="w-full h-full flex justify-around back-h"
                     style={{
                       backgroundColor: "#00000089",
                       borderRadius: "2rem",
@@ -200,7 +208,12 @@ function Home() {
 
         {/* start forth section */}
         <div className="back-img md:px-20 px-5 pt-10 mt-20">
-          <div className="flex">
+          <div
+            className="flex"
+            data-aos="fade-right"
+            data-aos-easing="linear"
+            data-aos-duration="2000"
+          >
             <img
               className="mt-10 me-10"
               style={{ width: "100px", height: "100px", borderRadius: "1rem" }}
@@ -215,24 +228,25 @@ function Home() {
             </h1>
           </div>
           <img
+            data-aos="zoom-out"
+            data-aos-easing="linear"
+            data-aos-duration="2000"
             className="mt-10 ms-32 block"
-            data-aos="fade-top"
             style={{ width: "100px", height: "100px", borderRadius: "1rem" }}
             src="https://img.freepik.com/fotos-premium/grande-caminhao-entrega-mercadorias-em-caixas-para-abrir-porao-de-aviao-de-carga_124507-44692.jpg"
             alt=""
           />
-          <div className="mt-10">
-            <h4
-              className="lg:text-lg font-semibold font-sans tracking-wider text-white md:w-5/12"
-              data-aos="fade-top"
-            >
+          <div
+            className="mt-10"
+            data-aos="fade-left"
+            data-aos-easing="linear"
+            data-aos-duration="2000"
+          >
+            <h4 className="lg:text-lg font-semibold font-sans tracking-wider text-white md:w-5/12">
               Our Support Team is Always Available And Ready To Help With Any
               Delivery Issue You Have. Ensuring A Smooth Experience
             </h4>
-            <button
-              className="mt-7 mb-10 px-8 py-3 bg-white rounded-lg text-slate-700"
-              data-aos="fade-top"
-            >
+            <button className="mt-7 mb-10 px-8 py-3 bg-white rounded-lg text-slate-700">
               Quick response
             </button>
           </div>
