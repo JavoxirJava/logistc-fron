@@ -5,20 +5,20 @@ const Modal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75">
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-10">
             <div className="bg-white p-8 rounded shadow-md w-[500px]">
                 <div className='bg-blue-800 flex justify-around items-center relative'>
                     <h1 className='text-2xl text-sky-200'>Phone</h1>
                     <h1 className='text-2xl text-green-300'>Going</h1>
                     <i class="fa-solid fa-xmark absolute right-2 text-2xl text-white" onClick={onClose}></i>
                 </div>
-                <div className='bg-sky-200 px-8 py-6 flex'>
-                    <div className=''>
-                        <p className='opacity-50 pb-0 mb-0 mt-2'>Name</p>
+                <div className='bg-sky-200  px-20    py-6 flex justify-between'>
+                    <div className=' '>
+                        <p className=' pb-0 mb-0 mt-2'>Name</p>
                         <p className='mt-0 pt-0'>John Doe</p>
                     </div>
                     <div>
-                        <p className='opacity-50 pb-0 mb-0 mt-2'>Name</p>
+                        <p className=' pb-0 mb-0 mt-2'>Name</p>
                         <p className='mt-0 pt-0'>John Doe</p>
                     </div>
                 </div>
