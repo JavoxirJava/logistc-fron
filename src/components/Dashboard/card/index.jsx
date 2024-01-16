@@ -42,19 +42,19 @@ const DashboardProductCard = ({ className }) => {
     const [searchBy, setSearchBy] = useState(null);
 
     useEffect(() => {
-        getProduct(pagination, 4);
+        getProduct(pagination, 7);
     }, []);
 
     useEffect(() => {
         if ((pagination - 1) * 4 < 0) setPagination(0);
-        else getProduct(Math.floor(pagination - 1), 4);
+        else getProduct(Math.floor(pagination - 1), 7);
     }, [pagination]);
 
     function getProduct(page, size) {
         axios.get(`${url}product?page=${page}&size=${size}`, config).then((res) => {
             setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
             setProduct(res.data.body.object);
-            console.log(data[0]);
+            console.log(data);
             console.log("keldi");
         }
         ).catch((err) => {
@@ -100,57 +100,51 @@ const DashboardProductCard = ({ className }) => {
                     <Dropdown setSearchBy={setSearchBy}/>
                 </div>
             </div>
-            {data && data.map((item, i) => (
-                <div className={`flex mb-3 border border-blue-300 w-full h-[120px] bg-blue-100 ${className}`}>
-                    <div className='card-col w-11/12 h-max pt-4 ps-2' key={i}>
-                        <div className='h-3/6 card-col-row w-full flex'>
-                            <div className='w-[18%]'>
-                                <p className='opacity-70'>Number</p>
-                                <p className='font-bold'>{item ? item.productId : 0}</p>
+            {data &&
+                data.map((item, i) => (
+                    <div className={`flex mb-3 border border-blue-300 w-full h-[120px] ${className}` }>
+                        <div className='card-col w-11/12 h-max pt-4 ps-2' key={i}>
+                            <div className='h-3/6 card-col-row w-full flex'>
+                                <div className='w-[22%]'>
+                                    <p className='opacity-70'>Number</p>
+                                    <p className='font-bold'>{data ? item.productId : 0}</p>
+                                </div>
+                                <div className='w-[20%]'>
+                                    <p className='opacity-70'>Status</p>
+                                    <p className='font-bold'>{data ? item.status : 'no status'}</p>
+                                </div>
+                                <div className='w-[30%]'>
+                                    <p className='opacity-70'>ETD</p>
+                                    {/* <p className='font-bold'>{data ? item.product.createdAt.substring(0, 10) : "April 23, 2023"}</p> */}
+                                </div>
+                                <div className='w-[26%]'>
+                                    <p className='opacity-70'>Product</p>
+                                    <p className='font-bold'>{data ? item.name : "Iphone"}</p>
+                                </div>
                             </div>
-                            <div className='w-[24%]'>
-                                <p className='opacity-70'>Status</p>
-                                <p className='font-bold'>{item ? item.status : 'no status'}</p>
-                            </div>
-                            <div className='w-[30%]'>
-                                <p className='opacity-70'>ETD</p>
-                                <p className='font-bold'>{item ? item.createdAt.substring(0, 10) : "April 23, 2023"}</p>
-                            </div>
-                            <div className='w-[26%]'>
-                                <p className='opacity-70'>Product</p>
-                                <p className='font-bold'>{item ? item.name : "Iphone"}</p>
+                            <div className='h-3/6 card-col-row w-full flex'>
+                                <div className='w-[60%]'>
+                                    <p className='opacity-70'>Current  Location</p>
+                                    <p className='font-bold'>{data ? item.address : "No location"}</p>
+                                </div>
+                                <div className='w-[40%]'>
+                                    <p className='opacity-70'>Owner</p>
+                                    <p className='font-bold'>{data ? item.owner : console.log(item.owner)}</p>
+                                </div>
                             </div>
                         </div>
-                        <div className='h-3/6 card-col-row w-full flex'>
-                            <div className='w-[80%]'>
-                                <p className='opacity-70'>Current Location</p>
-                                <p className='font-bold'>{data ? item.address : "No location"}</p>
-                            </div>
-                            <div className='w-[20%]'>
-                                <p className='opacity-70'>Owner</p>
-                                <p className='font-bold'>{data ? item.owner : console.log(item.owner)}</p>
-                            </div>
+                        <div className='card-col w-3/12 flex justify-center my-auto h-10 pr-2'>
+                            <button
+                                className="inline-flex justify-center w-40 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
+                                onClick={openModal}
+                            >
+                                View Detail
+                            </button>
                         </div>
+                        <Modal isOpen={isModalOpen} onClose={closeModal} />
                     </div>
-                    <div className='card-col w-3/12 flex justify-center my-auto h-10 pr-2'>
-                        <button
-                            className="inline-flex justify-center w-40 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
-                            onClick={openModal}
-                        >
-                            View Detail
-                        </button>
-                    </div>
-                    <Modal isOpen={isModalOpen} onClose={closeModal}/>
-                </div>
-            ))}
-            <div className="pagination-style mt-14">
-                <Pagination
-                    {...bootstrap5PaginationPreset}
-                    current={pagination}
-                    total={Math.floor(totalPage + 1)}
-                    onPageChange={setPagination}
-                />
-            </div>
+                ))}
+
         </div>
     );
 };
