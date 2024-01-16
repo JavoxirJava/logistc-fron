@@ -3,7 +3,7 @@ import "./product.css";
 import ProductCard from "./ProductCard";
 import {Map, Placemark, YMaps} from "react-yandex-maps";
 import OffcanvasProduct from "./OffcanvasProduct";
-import {config, url} from "../api";
+import {byId, config, url} from "../api";
 import axios from "axios";
 import {toast} from "react-toastify";
 import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
@@ -68,7 +68,6 @@ function Product() {
 
     function getProduct(page, size) {
         axios.get(`${url}product?page=${page}&size=${size}`, config).then((res) => {
-            console.log(res)
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
@@ -79,7 +78,6 @@ function Product() {
     function addProduct() {
         const userId = sessionStorage.getItem("userId");
         let data = {...product2, ...setObj()};
-        console.log(data)
         axios.post(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully saved product");
@@ -93,7 +91,7 @@ function Product() {
     function editProduct() {
         const userId = sessionStorage.getItem("userId");
         let data = {...product2, ...setObj()};
-        console.log(data);
+        console.log(product2);
         axios.put(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
@@ -190,6 +188,7 @@ function Product() {
                 </div>
 
                 <OffcanvasProduct
+                    isAdd={true}
                     getProduct={getProduct}
                     setProduct={setProductObj2}
                     product=""
@@ -200,6 +199,7 @@ function Product() {
                     onSave={addProduct}
                 />
                 <OffcanvasProduct
+                    isAdd={false}
                     getProduct={getProduct}
                     setProduct={setProductObj2}
                     product={product}
