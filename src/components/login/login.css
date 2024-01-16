@@ -7,7 +7,15 @@
     border: 2px solid #5882c169;
 } 
 .button {
-    background-color: #003465;
+  background-image: linear-gradient(
+    120deg,
+    hsl(199deg 100% 55%) 0%,
+    hsl(230deg 70% 43%) 20%,
+    hsl(220deg 73% 50%) 40%,
+    hsl(220deg 73% 50%) 60%,
+    hsl(230deg 70% 43%) 80%,
+    hsl(199deg 100% 55%) 100%
+  );
 }
 .header-div {
     background-image: url("./img/photo_2024-01-14_12-11-11.jpg");

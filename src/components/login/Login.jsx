@@ -63,10 +63,10 @@ function Login() {
           </button>
         </div>
         <button
-          className="button text-white p-3 w-full rounded-md  mt-10"
+          className="button text-white p-3 text-lg font-semibold w-full rounded-md  mt-10"
           onClick={login}
         >
-          {isLoading ? <span class="loader"></span> : "Sign In"}
+          {isLoading ? <span class="loader"></span> : "Log In"}
         </button>
       </div>
       <Link to="/dashboard" id="dashboard"></Link>
