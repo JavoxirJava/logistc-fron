@@ -23,22 +23,26 @@ function ProductCard({className, product, openEdit, setProductObj}) {
                     </div>
                 </div>
                 <div className='h-3/6 card-col-row w-full flex'>
-                    <div className='w-[74%]'>
+                    <div className='w-[60%]'>
                         <p className='opacity-70'>Current  Location</p>
                         <p className='font-bold'>{product ? product.address : "No location"}</p>
                     </div>
-                    <div className='w-[26%]'>
+                    <div className='w-[14%]'>
+                        <p className='opacity-70'>Measure</p>
+                        <p className='font-bold'>{product ? product.measure : "No location"}</p>
+                    </div>
+                    <div className='w-[26%] ps-1'>
                         <p className='opacity-70'>Owner</p>
                         <p className='font-bold'>{product ? product.owner : "No owner"}</p>
                     </div>
                 </div>
             </div>
-            <div className='card-col w-3/12 flex justify-center my-auto h-10'>
+            <div className='card-col w-2/12 flex justify-center my-auto h-10'>
                 <button onClick={() => {
                     openEdit();
                     setProductObj(product);
                 }}
-                    className="inline-flex justify-center w-8/12 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
+                    className="inline-flex justify-center w-9/12 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
                 >Edit</button>
             </div>
         </div>

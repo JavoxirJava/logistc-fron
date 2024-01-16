@@ -104,26 +104,29 @@ function NavBar() {
                 <div className="flex space-x-4">
                   <Link
                     to="/dashboard"
-                    className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                    className="text-gray-500 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white rounded-md px-3 py-2 text-sm font-medium"
                     aria-current="page"
                   >
                     Dashboard
                   </Link>
                   <Link
                     to="/product"
-                    className="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    className="text-gray-500 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    aria-current="page"
                   >
                     Products
                   </Link>
                   <Link
                     to="/client"
-                    className="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    className="text-gray-500 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    aria-current="page"
                   >
                     Clients
                   </Link>
                   <Link
                     to="/history"
-                    className="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    className="text-gray-500 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    aria-current="page"
                   >
                     History
                   </Link>
@@ -168,7 +171,7 @@ function NavBar() {
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                       alt="img"
                     />
-                    <i class="fa-solid fa-xmark absolute top-5 right-5 text-2xl" onClick={openGetMe}></i>
+                    <i class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer" onClick={openGetMe}></i>
                   </div>
                   {me && (
                     <div className="bg-gradient-to-tl from-sky-500 to-sky-800 px-8 py-6">

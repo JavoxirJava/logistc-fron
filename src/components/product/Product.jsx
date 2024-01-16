@@ -3,7 +3,7 @@ import "./product.css";
 import ProductCard from "./ProductCard";
 import {Map, Placemark, YMaps} from "react-yandex-maps";
 import OffcanvasProduct from "./OffcanvasProduct";
-import {byId, config, url} from "../api";
+import {config, url} from "../api";
 import axios from "axios";
 import {toast} from "react-toastify";
 import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
@@ -15,6 +15,7 @@ function Product() {
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     const [editOf, setEditOf] = useState(false);
     const [product, setProductObj] = useState(null);
+    const [product2, setProductObj2] = useState(null);
     const [products, setProduct] = useState(null);
     const [totalPage, setTotalPage] = useState(2);
     const [pagination, setPagination] = useState(0);
@@ -58,7 +59,7 @@ function Product() {
 
     function setObj() {
         return {
-
+            id: product ? product.id : 0,
             latitude: coordinates[0],
             longitude: coordinates[1],
             address: sessionStorage.getItem("address"),
@@ -68,6 +69,7 @@ function Product() {
     function getProduct(page, size) {
         axios.get(`${url}product?page=${page}&size=${size}`, config).then((res) => {
             if (res.data.message) {
+                console.log()
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
             }
@@ -80,22 +82,22 @@ function Product() {
             .then(() => {
                 toast.success("successfully saved product");
             }).catch((err) => {
-                toast.error("product saved error");
-                console.log(err);
-            });
+            toast.error("product saved error");
+            console.log(err);
+        });
     }
 
     function editProduct() {
         const userId = sessionStorage.getItem("userId");
-        let data = {...product, ...setObj()};
-        console.log(data)
+        let data = {...product2, ...setObj()};
+        console.log(data);
         axios.put(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
             }).catch((err) => {
-                toast.error("product Edit error");
-                console.log(err);
-            });
+            toast.error("product Edit error");
+            console.log(err);
+        });
     }
 
     function searchProduct(e) {
@@ -130,7 +132,7 @@ function Product() {
             <NavBar/>
             <div className="product-main">
                 <div className="flex w-full lg:flex-row flex-col lg:h-full h-max">
-                    <div className="lg:w-5/12 w-full lg:h-[870px] lg:px-3 md:px-10 px-3 lg:py-0 py-5">
+                    <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
                         <div className="mt-4 flex flex-wrap justify-between">
                             <input
                                 type="search"
@@ -150,16 +152,15 @@ function Product() {
                             <span className="me-5 pt-1.5 float-end">
                                 Current page: {pagination}
                               </span>
-                            {products &&
-                                products.map((item, i) => (
-                                    <ProductCard
-                                        key={i}
-                                        className="mt-5"
-                                        openEdit={openEdit}
-                                        product={item}
-                                        setProductObj={setProductObj}
-                                    />
-                                ))}
+                            {products && products.map((item, i) => (
+                                <ProductCard
+                                    key={i}
+                                    className="mt-5"
+                                    openEdit={openEdit}
+                                    product={item}
+                                    setProductObj={setProductObj}
+                                />
+                            ))}
                         </div>
                         <div className="pagination-style mt-4">
                             <Pagination
@@ -170,7 +171,7 @@ function Product() {
                             />
                         </div>
                     </div>
-                    <div className="xl:w-9/12 lg:w-8/12 w-full h-full col2 lg:z-10 -z-0">
+                    <div className="xl:w-7/12 lg:w-8/12 w-full h-full col2 lg:z-10 -z-0">
                         <YMaps>
                             <Map
                                 defaultState={{center: [55.75, 37.57], zoom: 9}}
@@ -185,7 +186,7 @@ function Product() {
                 </div>
 
                 <OffcanvasProduct
-                    setProduct={setProductObj}
+                    setProduct={setProductObj2}
                     product=""
                     handleToggleOffcanvas={handleToggleOffcanvas}
                     isOffcanvasOpen={isOffcanvasOpen}
@@ -194,7 +195,7 @@ function Product() {
                     onSave={addProduct}
                 />
                 <OffcanvasProduct
-                    setProduct={setProductObj}
+                    setProduct={setProductObj2}
                     product={product}
                     handleToggleOffcanvas={openEdit}
                     isOffcanvasOpen={editOf}
