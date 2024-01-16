@@ -68,7 +68,6 @@ function Product() {
 
     function getProduct(page, size) {
         axios.get(`${url}product?page=${page}&size=${size}`, config).then((res) => {
-            console.log(res)
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
@@ -79,7 +78,6 @@ function Product() {
     function addProduct() {
         const userId = sessionStorage.getItem("userId");
         let data = {...product2, ...setObj()};
-        console.log(data)
         axios.post(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully saved product");
@@ -93,7 +91,7 @@ function Product() {
     function editProduct() {
         const userId = sessionStorage.getItem("userId");
         let data = {...product2, ...setObj()};
-        console.log(data);
+        console.log(product2);
         axios.put(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
@@ -133,7 +131,7 @@ function Product() {
 
     return (
         <>
-            <NavBar/>
+            <NavBar product={'border-b-red-600 border-b text-slate-900'} />
             <div className="product-main">
                 <div className="flex w-full lg:flex-row flex-col lg:h-full h-max">
                     <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
@@ -190,6 +188,7 @@ function Product() {
                 </div>
 
                 <OffcanvasProduct
+                    isAdd={true}
                     getProduct={getProduct}
                     setProduct={setProductObj2}
                     product=""
@@ -200,6 +199,7 @@ function Product() {
                     onSave={addProduct}
                 />
                 <OffcanvasProduct
+                    isAdd={false}
                     getProduct={getProduct}
                     setProduct={setProductObj2}
                     product={product}

@@ -48,7 +48,7 @@ const History = () => {
 
     return (
         <>
-            <NavBar/>
+            <NavBar history={'border-b-red-600 border-b text-slate-900'}/>
             <div className="history-bg">
                 <div className="w-full flex justify-center items-center flex-wrap mt-5">
                     <div className="flex flex-col">
@@ -124,7 +124,7 @@ const History = () => {
                 </div>
 
                 {/* history table */}
-                <div className="history-container mb-5">
+                <div className="history-container mb-5 md:px-5 px-2">
                     {history && <HistoryInfo className="mt-6" history={history}/>}
                 </div>
                 <div className="pagination-style mt-4">

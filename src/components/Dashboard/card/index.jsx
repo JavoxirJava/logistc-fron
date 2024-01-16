@@ -1,16 +1,17 @@
 // DashboardProductCard.js
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { config, url } from '../../api';
+import React, {useEffect, useState} from 'react';
+import {config, url} from '../../api';
 import Dropdown from "./Dropdown";
 import '../../product/product.css'
 import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
 
-const Modal = ({ isOpen, onClose }) => {
+const Modal = ({isOpen, onClose}) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-10">
+        <div
+            className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-10">
             <div className="bg-white p-8 rounded shadow-md w-[500px]">
                 <div className='bg-blue-800 flex justify-around items-center relative'>
                     <h1 className='text-2xl text-sky-200'>Phone</h1>
@@ -33,33 +34,29 @@ const Modal = ({ isOpen, onClose }) => {
     );
 };
 
-const DashboardProductCard = ({ className }) => {
+const DashboardProductCard = ({className}) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [data, setProduct] = useState(null);
-    const [totalPage, setTotalPage] = useState(2);
+    const [totalPage, setTotalPage] = useState(1);
     const [pagination, setPagination] = useState(0);
     const [searchBy, setSearchBy] = useState(null);
 
     useEffect(() => {
-        getProduct(pagination, 7);
+        getProduct(pagination, 4);
     }, []);
 
     useEffect(() => {
         if ((pagination - 1) * 4 < 0) setPagination(0);
-        else getProduct(Math.floor(pagination - 1), 7);
+        else getProduct(Math.floor(pagination - 1), 4);
     }, [pagination]);
 
     function getProduct(page, size) {
         axios.get(`${url}product?page=${page}&size=${size}`, config).then((res) => {
-            setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
-            setProduct(res.data.body.object);
-            console.log(data);
-            console.log("keldi");
-        }
-        ).catch((err) => {
-            console.log("kelmadi");
-        });
+                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+                setProduct(res.data.body.object);
+            }
+        ).catch((err) => console.log(err));
     }
 
     function searchProduct(e) {
@@ -76,20 +73,24 @@ const DashboardProductCard = ({ className }) => {
 
     function searchByName() {
         switch (searchBy) {
-            case "Product id number": return "productIdNumber";
-            case "Product status": return "productStatus";
-            case "User id number": return "userIdNumber";
-            case "User id": return "userId";
-            default: return "productIdNumber";
+            case "Product id number":
+                return "productIdNumber";
+            case "Product status":
+                return "productStatus";
+            case "User id number":
+                return "userIdNumber";
+            case "User id":
+                return "userId";
+            default:
+                return "productIdNumber";
         }
     }
 
-    const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
     return (
         <div>
-            <div className="mb-10 flex items-center">
+            <div className="mb-5 flex items-center">
                 <div className="flex justify-between items-center w-full px-3">
                     <input
                         type="search"
@@ -100,51 +101,58 @@ const DashboardProductCard = ({ className }) => {
                     <Dropdown setSearchBy={setSearchBy}/>
                 </div>
             </div>
-            {data &&
-                data.map((item, i) => (
-                    <div className={`flex mb-3 border border-blue-300 w-full ${className}` }>
-                        <div className='card-col w-11/12 h-max py-4 ps-2' key={i}>
-                            <div className='h-3/6 card-col-row w-full flex'>
-                                <div className='w-[25%]'>
-                                    <p className='opacity-70'>Number</p>
-                                    <p className='font-bold'>{data ? item.productId : 0}</p>
-                                </div>
-                                <div className='w-[25%]'>
-                                    <p className='opacity-70'>Status</p>
-                                    <p className='font-bold'>{data ? item.status : 'no status'}</p>
-                                </div>
-                                <div className='w-[25%]'>
-                                    <p className='opacity-70'>ETD</p>
-                                    {/* <p className='font-bold'>{data ? item.product.createdAt.substring(0, 10) : "April 23, 2023"}</p> */}
-                                </div>
-                                <div className='w-[25%]'>
-                                    <p className='opacity-70'>Product</p>
-                                    <p className='font-bold'>{data ? item.name : "Iphone"}</p>
-                                </div>
+            <p className='mb-3'>Current Page: 2</p>
+            {data && data.map((item, i) => (
+                <div className={`flex mb-3 border border-blue-300 w-full bg-blue-200 ${className}`}>
+                    <div className='card-col w-11/12 h-max py-4 ps-2' key={i}>
+                        <div className='h-3/6 card-col-row w-full flex'>
+                            <div className='w-[25%]'>
+                                <p className='opacity-70'>Number</p>
+                                <p className='font-bold'>{item ? item.productId : 0}</p>
                             </div>
-                            <div className='h-3/6 card-col-row w-full flex'>
-                                <div className='w-[65%]'>
-                                    <p className='opacity-70'>Current  Location</p>
-                                    <p className='font-bold'>{data ? item.address : "No location"}</p>
-                                </div>
-                                <div className='w-[35%]'>
-                                    <p className='opacity-70'>Owner</p>
-                                    <p className='font-bold'>{data ? item.owner : console.log(item.owner)}</p>
-                                </div>
+                            <div className='w-[25%]'>
+                                <p className='opacity-70'>Status</p>
+                                <p className='font-bold'>{item ? item.status : 'no status'}</p>
+                            </div>
+                            <div className='w-[25%]'>
+                                <p className='opacity-70'>ETD</p>
+                                <p className='font-bold'>{item ? item.createdAt.substring(0, 10) : "April 23, 2023"}</p>
+                            </div>
+                            <div className='w-[25%]'>
+                                <p className='opacity-70'>Product</p>
+                                <p className='font-bold'>{item ? item.name : "Iphone"}</p>
                             </div>
                         </div>
-                        {/*<div className='card-col w-3/12 flex justify-center my-auto h-10 pr-2'>*/}
-                        {/*    <button*/}
-                        {/*        className="inline-flex justify-center w-40 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"*/}
-                        {/*        onClick={openModal}*/}
-                        {/*    >*/}
-                        {/*        View Detail*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        <Modal isOpen={isModalOpen} onClose={closeModal} />
+                        <div className='h-3/6 card-col-row w-full flex'>
+                            <div className='w-[65%]'>
+                                <p className='opacity-70'>Current Location</p>
+                                <p className='font-bold'>{item ? item.address : "No location"}</p>
+                            </div>
+                            <div className='w-[35%]'>
+                                <p className='opacity-70'>Owner</p>
+                                <p className='font-bold'>{item ? item.owner : console.log(item.owner)}</p>
+                            </div>
+                        </div>
                     </div>
-                ))}
-
+                    {/*<div className='card-col w-3/12 flex justify-center my-auto h-10 pr-2'>*/}
+                    {/*    <button*/}
+                    {/*        className="inline-flex justify-center w-40 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"*/}
+                    {/*        onClick={openModal}*/}
+                    {/*    >*/}
+                    {/*        View Detail*/}
+                    {/*    </button>*/}
+                    {/*</div>*/}
+                    <Modal isOpen={isModalOpen} onClose={closeModal}/>
+                </div>
+            ))}
+            <div className="pagination-style mt-4">
+                <Pagination
+                    {...bootstrap5PaginationPreset}
+                    current={pagination}
+                    total={Math.floor(totalPage + 1)}
+                    onPageChange={setPagination}
+                />
+            </div>
         </div>
     );
 };
