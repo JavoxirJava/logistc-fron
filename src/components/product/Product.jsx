@@ -59,7 +59,7 @@ function Product() {
 
     function setObj() {
         return {
-            id: product ? product.id : 0,
+            id: product ? product.productId : 0,
             latitude: coordinates[0],
             longitude: coordinates[1],
             address: sessionStorage.getItem("address"),
@@ -175,7 +175,7 @@ function Product() {
                             />
                         </div>
                     </div>
-                    <div className="xl:w-7/12 lg:w-8/12 w-full h-full col2 lg:z-10 -z-0">
+                    <div className="xl:w-7/12 lg:w-8/12 w-full h-full col2 lg:z-10 z-0 relative">
                         <YMaps>
                             <Map
                                 defaultState={{center: [55.75, 37.57], zoom: 9}}
