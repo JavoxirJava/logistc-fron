@@ -90,13 +90,14 @@ function HomeNav() {
                             </div>
                         </div>
                         <div
-                            className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                            className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0">
                             <Link id="login" to='/login'>
                                 <button
-                                    className="relative flex text-lg gap-3 rounded-full bg-gray-800 p-1 text-gray-400 px-4 py-2 btm"
+                                    className=" flex text-lg gap-3 rounded-full bg-gray-800 p-1 text-gray-400 px-4 py-2 btm"
                                     onClick={login}
                                 >
-                                    Log In
+                                    <p className="hidden md:block">Log In</p>
+                                    
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         height="26"
