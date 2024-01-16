@@ -82,7 +82,7 @@ function Home() {
                 From start to finish, our seamless logistics service <br />{" "}
                 ensures a successful delivery experience every time. <br /> Get
                 started now and see the difference for yourself.
-              </h4>
+              </h4> 
             </div>
             <div
               className="lg:w-6/12 important2"
@@ -243,13 +243,11 @@ function Home() {
             data-aos-easing="linear"
             data-aos-duration="2000"
           >
-            <h4 className="lg:text-lg font-semibold font-sans tracking-wider text-white md:w-5/12">
+            <h4 className="lg:text-lg mb-20 font-semibold font-sans tracking-wider text-white md:w-5/12">
               Our Support Team is Always Available And Ready To Help With Any
               Delivery Issue You Have. Ensuring A Smooth Experience
             </h4>
-            <button className="mt-7 mb-10 px-8 py-3 bg-white rounded-lg text-slate-700">
-              Quick response
-            </button>
+            
           </div>
         </div>
         {/* end fourth section */}

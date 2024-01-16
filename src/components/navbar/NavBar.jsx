@@ -8,11 +8,13 @@ import { toast } from "react-toastify";
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ismodalClose, setIsModalClose] = useState(true);
   const [me, setMe] = useState(null);
   const [meId, setMeId] = useState('');
 
   const openGetMe = () => setIsOpen(!isOpen);
   const openModal = () => setIsModalOpen(!isModalOpen);
+  const closeModal = () => setIsModalClose(!isModalOpen);
 
   const logout = () => {
     document.getElementById("logout").click();
@@ -22,18 +24,18 @@ function NavBar() {
   const editUser = () => {
     axios.put(url + "user/" + meId.id, {
       id: meId.id,
-      name: byId("name"), 
+      name: byId("name"),
       idNumber: byId("idNumber"),
       phoneNumber: byId("phoneNumber"),
       password: byId("password")
-    } ,config)
-    .then(()=>{
-      toast.success("Succes!")
-      openModal()
-      logout()
-    })
-    .catch(()=>{
-      toast.error("Error?")
+    }, config)
+      .then(() => {
+        toast.success("Succes!")
+        openModal()
+        logout()
+      })
+      .catch(() => {
+        toast.error("Error?")
       });
   }
 
@@ -130,7 +132,7 @@ function NavBar() {
               <h2
                 className="relative rounded-full  p-1 text-gray-700 "
               >
-               {me ? me.name : "Admin"}
+                {me ? me.name : "Admin"}
               </h2>
 
               <div className="relative ml-3">
@@ -154,17 +156,17 @@ function NavBar() {
                 </div>
 
                 <div
-                  className={`${
-                    isOpen ? "inline" : "hidden"
-                  } absolute w-80 bg-slate-400 -right-14 top-12 
+                  className={`${isOpen ? "inline" : "hidden"
+                    } absolute w-80 bg-slate-400 -right-14 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
                 >
-                  <div className="bg-slate-200 p-8 flex justify-center items-center">
+                  <div className="bg-slate-200 p-8 flex justify-center items-center relative">
                     <img
                       className="rounded-full w-24 h-24"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                       alt="img"
                     />
+                    <i class="fa-solid fa-xmark absolute top-5 right-5 text-2xl" onClick={openGetMe}></i>
                   </div>
                   {me && (
                     <div className="bg-gradient-to-tl from-sky-500 to-sky-800 px-8 py-6">
@@ -186,7 +188,7 @@ function NavBar() {
                       </div>
                       <div className=" font-bold text-black text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">password</p>
-                        
+
                         <p className="mt-0 pt-0 text-white">{me.password}</p>
                       </div>
                       <div className="flex justify-between items-center mt-3 font-bold text-white">
@@ -224,31 +226,8 @@ function NavBar() {
               <div className="modal bg-white rounded-xl md:w-1/3 overflow-hidden shadow-2xl">
 
                 <div className="">
-                  <div className="bg-slate-200 pb-8  flex flex-col justify-center items-center">
-                    <button
-                      onClick={() => {
-                        openModal();
-                      }}
-                      className="text-gray-400 m-2 me-4 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                      data-modal-toggle="crud-modal"
-                    >
-                      <svg
-                        className="w-5 h-5"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 14 14"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                        />
-                      </svg>
-                      <span className="sr-only">Close modal</span>
-                    </button>
+                  <div className="bg-slate-200 py-8  flex flex-col justify-center items-center relative">
+                      <i class="fa-solid fa-xmark absolute top-5 right-5 text-2xl" onClick={() => {openModal();}}></i>
                     <img
                       className="rounded-full w-24 h-24"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -296,7 +275,7 @@ function NavBar() {
                       <button
                         className="bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg"
                         onClick={() => {
-                            editUser();
+                          editUser();
                         }}
                       >
                         Edit
@@ -316,8 +295,8 @@ function NavBar() {
             </div>
           )}
         </div>
-      </nav>
-    </div>
+      </nav >
+    </div >
   );
 }
 

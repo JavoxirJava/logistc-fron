@@ -13,17 +13,18 @@ function LineChart() {
     series: [
       {
         data: [150, 23, 224, 218, 135, 147, 260],
-        type: 'line'
+        type: 'line',
+        areaStyle: {}
       }
     ]
   };
 
   return (
     <div>
-      <div className="bg-white p-5">
-        <div style={{ height: '400px', width: '100%', display: "flex", flexDirection: "column" }}>
+      <div className="bg-white">
+        <div style={{ height: '400px', width: '100%', display: "flex", flexDirection: "column", }}>
           <EChartsReact option={option}
-            style={{ height: '100%', width: '100%', display: "flex", justifyContent: "center" }}
+            style={{ height: '100%', width: '100%', display: "flex", justifyContent: "center", alignItems:"center", }}
           />
         </div>
       </div>

@@ -30,7 +30,7 @@ function Dashboard() {
                     <div className="h-[320px] md:w-6/12">
                         {productStatistics && <Circle s={productStatistics}/>}
                     </div>
-                    <div className="h-[500px] rounded all-shadow">
+                    <div className="h-[400px] mt-10 rounded all-shadow">
                         <LineChart/>
                     </div>
                 </div>
