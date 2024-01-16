@@ -124,7 +124,7 @@ const History = () => {
                 </div>
 
                 {/* history table */}
-                <div className="history-container mb-5">
+                <div className="history-container mb-5 md:px-5 px-2">
                     {history && <HistoryInfo className="mt-6" history={history}/>}
                 </div>
                 <div className="pagination-style mt-4">
