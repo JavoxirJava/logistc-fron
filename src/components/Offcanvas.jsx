@@ -11,7 +11,7 @@ const Offcanvas = ({isOpen, onClose, name, children}) => {
 
                 <section className="absolute inset-y-0 left-0 max-w-full flex outline-none">
                     <div className="w-screen max-w-lg">
-                        <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-auto w-[105%] col1">
+                        <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-auto w-[123%] col1 z-50">
                             <div className="px-4 sm:px-6 pt-[10%]">
                                 <h2 className="text-lg font-medium text-gray-900 inline-block">{name}</h2>
                                 <button type="button" onClick={onClose}

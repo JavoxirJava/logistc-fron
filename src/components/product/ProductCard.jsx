@@ -41,8 +41,7 @@ function ProductCard({className, product, openEdit, setProductObj}) {
                 <button onClick={() => {
                     openEdit();
                     setProductObj(product);
-                }}
-                    className="inline-flex justify-center w-9/12 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
+                }} className="inline-flex justify-center w-9/12 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
                 >Edit</button>
             </div>
         </div>
