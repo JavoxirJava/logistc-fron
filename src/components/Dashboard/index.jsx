@@ -35,7 +35,7 @@ function Dashboard() {
                     </div>
                 </div>
                 <div className="lg:w-5/12 w-full lg:ml-5 lg:mt-0 mt-7">
-                    <div className="w-full h-screen all-shadow p-5 bg-gray-200">
+                    <div className="w-full all-shadow p-5 bg-gray-200">
                         <DashboardProductCard />
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import "./product.css";
 import ProductCard from "./ProductCard";
 import {Map, Placemark, YMaps} from "react-yandex-maps";
 import OffcanvasProduct from "./OffcanvasProduct";
-import {byId, config, url} from "../api";
+import {config, url} from "../api";
 import axios from "axios";
 import {toast} from "react-toastify";
 import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";

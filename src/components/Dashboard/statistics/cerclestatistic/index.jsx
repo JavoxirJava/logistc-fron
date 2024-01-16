@@ -31,9 +31,9 @@ function    Circle({s}) {
                     show: false
                 },
                 data: [
-                    {value: s.completed + 9, name: 'Complete '},
-                    {value: s.pending + 9, name: 'Pending'},
-                    {value: s.cansel + 9, name: 'Cancel'}
+                    {value: s.completed, name: 'Complete '},
+                    {value: s.pending, name: 'Pending'},
+                    {value: s.cansel, name: 'Cancel'}
                 ]
             }
         ]
