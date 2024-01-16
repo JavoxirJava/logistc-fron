@@ -2,7 +2,7 @@ import React from 'react';
 
 function ProductCard({className, product, openEdit, setProductObj}) {
     return (
-        <div className={`flex card-main border border-blue-300 w-full lg:h-[110px] h-max bg-blue-100 ${className}`}>
+        <div className={`flex card-main border border-blue-300 w-full lg:h-[110px] h-max bg-blue-100 ${className} overflow-hidden`}>
             <div className='card-col w-11/12 pt-2 ps-2'>
                 <div className='h-8/12 card-col-row w-full flex'>
                     <div className='w-[22%]'>
@@ -23,15 +23,15 @@ function ProductCard({className, product, openEdit, setProductObj}) {
                     </div>
                 </div>
                 <div className='h-3/6 card-col-row w-full flex'>
-                    <div className='w-[60%]'>
+                    <div className='w-[64%]'>
                         <p className='opacity-70'>Current  Location</p>
                         <p className='font-bold'>{product ? product.address : "No location"}</p>
                     </div>
-                    <div className='w-[14%]'>
+                    <div className='w-[18%] ps-1'>
                         <p className='opacity-70'>Measure</p>
                         <p className='font-bold'>{product ? product.measure : "No location"}</p>
                     </div>
-                    <div className='w-[26%] ps-1'>
+                    <div className='w-[18%] ps-1'>
                         <p className='opacity-70'>Owner</p>
                         <p className='font-bold'>{product ? product.owner : "No owner"}</p>
                     </div>

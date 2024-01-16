@@ -68,8 +68,8 @@ function Product() {
 
     function getProduct(page, size) {
         axios.get(`${url}product?page=${page}&size=${size}`, config).then((res) => {
-            if (res.data.message) {
-                console.log()
+            console.log(res)
+            if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
             }
@@ -78,9 +78,12 @@ function Product() {
 
     function addProduct() {
         const userId = sessionStorage.getItem("userId");
-        axios.post(`${url}product?userId=${userId}`, setObj(), config)
+        let data = {...product2, ...setObj()};
+        console.log(data)
+        axios.post(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully saved product");
+                setProductObj2(null);
             }).catch((err) => {
             toast.error("product saved error");
             console.log(err);
@@ -94,6 +97,7 @@ function Product() {
         axios.put(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
+                setProductObj2(null);
             }).catch((err) => {
             toast.error("product Edit error");
             console.log(err);
@@ -186,6 +190,7 @@ function Product() {
                 </div>
 
                 <OffcanvasProduct
+                    getProduct={getProduct}
                     setProduct={setProductObj2}
                     product=""
                     handleToggleOffcanvas={handleToggleOffcanvas}
@@ -195,6 +200,7 @@ function Product() {
                     onSave={addProduct}
                 />
                 <OffcanvasProduct
+                    getProduct={getProduct}
                     setProduct={setProductObj2}
                     product={product}
                     handleToggleOffcanvas={openEdit}
