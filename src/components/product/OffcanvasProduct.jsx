@@ -6,14 +6,14 @@ function OffcanvasProduct({isOffcanvasOpen, handleToggleOffcanvas, name, btnName
 
     function setData() {
         setProduct({
-            id: product ? product.id : 0,
+            id: product ? product.prodctId : 0,
             idNumber: byId("idNumber"),
             name: byId("name"),
             measureCount: byId("measureCount"),
             transport: byId("transport"),
             measure: byId("measure"),
             productStatus: byId("productStatus"),
-            address: sessionStorage.getItem("address"),
+            address: sessionStorage.getItem("address")
         });
     }
 
@@ -28,7 +28,7 @@ function OffcanvasProduct({isOffcanvasOpen, handleToggleOffcanvas, name, btnName
             <label htmlFor="measureCount"
                    className="block text-gray-700 text-sm font-bold my-2">MeasureCount</label>
             <input type="number" id="measureCount" placeholder="MeasureCount"
-                   defaultValue={product ? product.measureCount : 0}
+                   defaultValue={product ? product.measureCount : ''}
                    className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
             <label htmlFor="transport" className="block text-gray-700 text-sm font-bold mb-2">Transport</label>
@@ -55,12 +55,12 @@ function OffcanvasProduct({isOffcanvasOpen, handleToggleOffcanvas, name, btnName
             <select id="productStatus"
                     className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4">
                 <option value="" selected disabled>Select product status</option>
-                <option value="PENDING" selected={product && product.productStatus === "PENDING"}>Pending</option>
-                <option value="GOING" selected={product && product.productStatus === "GOING"}>Going</option>
-                <option value="CANCEL" selected={product && product.productStatus === "CANCEL"}>Cancel</option>
-                <option value="ARRIVED" selected={product && product.productStatus === "ARRIVED"}>Arrived</option>
-                <option value="COMPLETED" selected={product && product.productStatus === "COMPLETED"}>Completed</option>
-                <option value="MOVED" selected={product && product.productStatus === "MOVED"}>Moved</option>
+                <option value="PENDING" selected={product && product.status === "PENDING"}>Pending</option>
+                <option value="GOING" selected={product && product.status === "GOING"}>Going</option>
+                <option value="CANCEL" selected={product && product.status === "CANCEL"}>Cancel</option>
+                <option value="ARRIVED" selected={product && product.status === "ARRIVED"}>Arrived</option>
+                <option value="COMPLETED" selected={product && product.status === "COMPLETED"}>Completed</option>
+                <option value="MOVED" selected={product && product.status === "MOVED"}>Moved</option>
             </select>
             <div className='mt-10 flex justify-between'>
                 <button onClick={handleToggleOffcanvas}
