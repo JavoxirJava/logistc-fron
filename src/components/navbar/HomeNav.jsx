@@ -68,43 +68,40 @@ function HomeNav() {
                     onClick={openMenu}
                   ></i>
                   <ul class="list-none">
-                    <li className="my-2">
-                      <Link
-                        to="/dashboard"
-                        className="text-gray-500 text-md hover:text-black rounded-md font-medium"
+                    <li className="my-2" onClick={openMenu}>
+                      <a
+                        href="#1"
+                        className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                         aria-current="page"
                       >
-                        Dashboard
-                      </Link>
+                        Home
+                      </a>
                     </li>
-                    <li>
-                      <Link
-                        to="/product"
-                        className="text-gray-500 text-md hover:text-black rounded-md font-medium"
-                        aria-current="page"
+                    <li onClick={openMenu}>
+                      <a
+                        href="#2"
+                        className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                       >
-                        Products
-                      </Link>
+                        About
+                      </a>
                     </li>
-                    <li className="my-2">
+                    <li className="my-2" onClick={openMenu}>
                       {" "}
-                      <Link
-                        to="/client"
-                        className="text-gray-500 text-md hover:text-black rounded-md font-medium"
-                        aria-current="page"
+                      <a
+                        href="#3"
+                        className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                       >
-                        Clients
-                      </Link>
+                        Services
+                      </a>
                     </li>
-                    <li>
+                    <li onClick={openMenu}>
                       {" "}
-                      <Link
-                        to="/history"
-                        className="text-gray-500 text-md hover:text-black rounded-md font-medium"
-                        aria-current="page"
+                      <a
+                        href="#4"
+                        className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                       >
-                        History
-                      </Link>
+                        Gallery
+                      </a>
                     </li>
                   </ul>
                 </div>
