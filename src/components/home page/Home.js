@@ -1,8 +1,9 @@
 import React from "react";
-import { banner, enter, kamaz, kontener } from "../../assets";
+import {banner, kamaz, kontener} from "../../assets";
 import "./home.css";
 import HomeFooter from "./HomeFooter";
 import HomeNav from "../navbar/HomeNav";
+
 function Home() {
   return (
     <>

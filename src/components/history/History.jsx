@@ -121,7 +121,6 @@ const History = () => {
                         />
                     </div>
                     <p className='mt-6 ms-3'>Current page: {pagination}</p>
-
                 </div>
 
                 {/* history table */}
