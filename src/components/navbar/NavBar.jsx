@@ -163,28 +163,28 @@ function NavBar({dashboard, product, client, history}) {
                                 <div className="flex space-x-4">
                                     <Link
                                         to="/dashboard"
-                                        className={`${dashboard} text-gray-500 mx-5 px-2 py-2 text-sm font-medium duration-300`}
+                                        className={`${dashboard} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
                                     // aria-current="page"
                                     >
                                         Dashboard
                                     </Link>
                                     <Link
                                         to="/product"
-                                        className={`${product} text-gray-500 mx-5 px-2 py-2 text-sm font-medium duration-300`}
+                                        className={`${product} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
                                     // aria-current="page"
                                     >
                                         Products
                                     </Link>
                                     <Link
                                         to="/client"
-                                        className={`${client} text-gray-500 mx-5 px-2 py-2 text-sm font-medium duration-300`}
+                                        className={`${client} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
                                     // aria-current="page"
                                     >
                                         Clients
                                     </Link>
                                     <Link
                                         to="/history"
-                                        className={`${history} text-gray-500 mx-5 px-2 py-2 text-sm font-medium duration-300`}
+                                        className={`${history} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
                                     // aria-current="page"
                                     >
                                         History
