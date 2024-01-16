@@ -113,39 +113,39 @@ function NavBar() {
                     onClick={openMenu}
                   ></i>
                   <ul class="list-none">
-                    <li className="my-2">
+                    <li className="my-2" onClick={openMenu}>
                       <Link
                         to="/dashboard"
-                        className="text-gray-500 text-md hover:text-black rounded-md font-medium"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
                         aria-current="page"
                       >
                         Dashboard
                       </Link>
                     </li>
-                    <li>
+                    <li onClick={openMenu}>
                       <Link
                         to="/product"
-                        className="text-gray-500 text-md hover:text-black rounded-md font-medium"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
                         aria-current="page"
                       >
                         Products
                       </Link>
                     </li>
-                    <li className="my-2">
+                    <li className="my-2" onClick={openMenu}>
                       {" "}
                       <Link
                         to="/client"
-                        className="text-gray-500 text-md hover:text-black rounded-md font-medium"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
                         aria-current="page"
                       >
                         Clients
                       </Link>
                     </li>
-                    <li>
+                    <li onClick={openMenu}>
                       {" "}
                       <Link
                         to="/history"
-                        className="text-gray-500 text-md hover:text-black rounded-md font-medium"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
                         aria-current="page"
                       >
                         History
