@@ -2,7 +2,7 @@ import React from 'react';
 import Offcanvas from "../Offcanvas";
 import {byId} from "../api";
 
-function OffcanvasProduct({isOffcanvasOpen, handleToggleOffcanvas, name, btnName, onSave, product, setProduct}) {
+function OffcanvasProduct({isOffcanvasOpen, handleToggleOffcanvas, name, btnName, onSave, product, setProduct, getProduct}) {
 
     function setData() {
         setProduct({
@@ -17,7 +17,6 @@ function OffcanvasProduct({isOffcanvasOpen, handleToggleOffcanvas, name, btnName
         });
     }
 
-    console.log(product)
     return (
         <Offcanvas isOpen={isOffcanvasOpen} name={name} onClose={handleToggleOffcanvas}>
             <label htmlFor="name" className="block text-gray-700 text-sm font-bold my-2">Name</label>
@@ -67,9 +66,11 @@ function OffcanvasProduct({isOffcanvasOpen, handleToggleOffcanvas, name, btnName
                         className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-gray-500 text-sm font-medium text-white"
                 >Close
                 </button>
-                <button onClick={() => {
-                    onSave();
-                    setData();
+                <button onClick={async () => {
+                    await setData();
+                    await onSave();
+                    await getProduct(0, 4);
+                    handleToggleOffcanvas();
                 }} className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
                 >{btnName}</button>
             </div>
