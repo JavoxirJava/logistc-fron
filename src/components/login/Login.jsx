@@ -69,6 +69,7 @@ function Login() {
           {isLoading ? <span class="loader"></span> : "Log In"}
         </button>
       </div>
+      
       <Link to="/dashboard" id="dashboard"></Link>
     </div>
   );
