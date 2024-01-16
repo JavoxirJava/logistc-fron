@@ -38,7 +38,10 @@ function Login() {
         <p>Phone Number</p>
         <input
           id="username"
-          className="w-full mb-5 border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500"
+          disabled={isLoading ? true : false}
+          className={`w-full ${
+            isLoading ? "cursor-not-allowed" : ""
+          } border-2 mb-5 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500`}
           placeholder="Number"
         />
         <p>Password</p>
@@ -46,8 +49,11 @@ function Login() {
           <input
             // onKeyDown={checkKeyPress}
             id="password"
+            disabled={isLoading ? true : false}
             type={showPassword ? "text" : "password"}
-            className="w-full border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500"
+            className={`w-full ${
+              isLoading ? "cursor-not-allowed" : ""
+            } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500`}
             placeholder="Enter password"
           />
           <button
@@ -63,12 +69,15 @@ function Login() {
           </button>
         </div>
         <button
-          className="button text-white p-3 w-full rounded-md  mt-10"
+          className={`button ${
+            isLoading ? "cursor-not-allowed" : "cursor-pointer"
+          } text-white p-3 text-lg font-semibold w-full rounded-md  mt-10`}
           onClick={login}
         >
-          {isLoading ? <span class="loader"></span> : "Sign In"}
+          {isLoading ? <span class="loader"></span> : "Log In"}
         </button>
       </div>
+
       <Link to="/dashboard" id="dashboard"></Link>
     </div>
   );
