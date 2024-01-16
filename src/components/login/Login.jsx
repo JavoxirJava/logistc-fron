@@ -7,13 +7,22 @@ import { Link } from "react-router-dom";
 
 function Login() {
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
 
     function login() {
+        setIsLoading(true);
+
         axios.post(`${url}user/login?phoneNumber=${byId('username')}&password=${byId('password')}`)
             .then(res => {
                 sessionStorage.setItem('jwtKey', `Bearer ${res.data.body}`);
+                setIsLoading(false);
+
                 byIdObj('dashboard').click();
-            }).catch(() => toast.error('User not found'));
+            }).catch(() => {
+                setIsLoading(false)
+                toast.error('User not found')
+            });
     }
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -22,7 +31,7 @@ function Login() {
             <div className="w-[450px] h-[470px] rounded-2xl box md:py-10 md:px-12 px-5 py-10 flex flex-col">
                 <p className='text-2xl mb-10'>Login</p>
                 <p>Phone Number</p>
-                <input id='username' className='w-full border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500'
+                <input id='username' className='w-full mb-5 border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500'
                     placeholder='Number' />
                 <p>Password</p>
                 
@@ -42,7 +51,13 @@ function Login() {
                         <i className={showPassword ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"} />
                     </button>
                 </div>
-                <button className='button text-white p-3 w-full rounded-md  mt-10' onClick={login}>Sign in</button>
+                <button className='button text-white p-3 w-full rounded-md  mt-10' onClick={login}>
+                {isLoading ? (
+                                <span class="loader"></span>
+                            ) : (
+                                "Sign In"
+                            )}
+                </button>
             </div>
             <Link to='/dashboard' id='dashboard'></Link>
         </div>
