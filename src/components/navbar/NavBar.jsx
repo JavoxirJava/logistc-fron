@@ -162,7 +162,7 @@ function NavBar() {
 
                 <div
                   className={`${isOpen ? "inline" : "hidden"
-                    } absolute w-80 bg-slate-400 -right-14 top-12 
+                    } absolute lg:w-80 w-72 bg-slate-400 lg:-right-8 right-1 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
                 >
                   <div className="bg-slate-200 p-8 flex justify-center items-center relative">
@@ -227,8 +227,8 @@ function NavBar() {
           </div>
 
           {isModalOpen && (
-            <div className="fixed inset-0 flex items-center justify-center z-50">
-              <div className="modal bg-white rounded-xl md:w-1/3 overflow-hidden shadow-2xl">
+            <div className="fixed inset-0 flex items-center px-3 justify-center z-50">
+              <div className="modal bg-white rounded-xl lg:w-1/3 sm:w-2/3  w-full overflow-hidden shadow-2xl">
 
                 <div className="">
                   <div className="bg-slate-200 py-8  flex flex-col justify-center items-center relative">
@@ -239,14 +239,14 @@ function NavBar() {
                       alt="img"
                     />
                   </div>
-                  <div className="bg-gradient-to-tl w-full from-sky-500 to-sky-800 px-8 py-6">
+                  <div className="bg-gradient-to-tl w-full from-sky-500 to-sky-800 md:px-8 px-3 md:py-6 py-2">
                     <div className=" font-bold text-black text-[1.1rem]">
                       <p className="opacity-50 pb-0 mb-0 mt-2">Name</p>
                       <input
                         type="text"
                         defaultValue={me.name}
                         id="name"
-                        className="px-3 py-2 w-full border-gray-600 border-2 rounded-xl"
+                        className="w-full border-2 text-gray-800 border-gray-200 p-2 rounded-xl outline-none focus:border-blue-400 duration-500"
                       />
                     </div>
                     <div className=" font-bold text-black text-[1.1rem]">
@@ -255,7 +255,7 @@ function NavBar() {
                         type="text"
                         defaultValue={me.idNumber}
                         id="idNumber"
-                        className=" px-3 w-full py-2 border-gray-600 border-2 rounded-xl"
+                        className="w-full border-2 text-gray-800 border-gray-200 p-2 rounded-xl outline-none focus:border-blue-400 duration-500"
                       />
                     </div>
                     <div className=" font-bold text-black text-[1.1rem]">
@@ -264,23 +264,18 @@ function NavBar() {
                         type="text"
                         id="phoneNumber"
                         defaultValue={me.phoneNumber}
-                        className="px-3 py-2 w-full border-gray-600 border-2 rounded-xl"
+                        className="w-full border-2 text-gray-800 border-gray-200 p-2 rounded-xl outline-none focus:border-blue-400 duration-500"
                       />
                     </div>
                     <div className=" font-bold text-black text-[1.1rem]">
                       <p className="opacity-50 pb-0 mb-0 mt-2">Password</p>
-                      <input
-                        type="password"
-                        id="password"
-                        defaultValue={me.password}
-                        className="px-3 py-2 w-full border-gray-600 border-2 rounded-xl"
-                      />
                       <div className="relative">
                         <input
                           // onKeyDown={checkKeyPress}
+                          defaultValue={me.password}
                           id="password"
                           type={showPassword ? "text" : "password"}
-                          className="w-full border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500"
+                          className="w-full border-2 text-gray-800 border-gray-200 p-2 rounded-xl outline-none focus:border-blue-400 duration-500"
                           placeholder="Enter password"
                         />
                         <button
