@@ -59,7 +59,7 @@ function Home() {
         {/* end section */}
 
         {/* start second section */}
-        <div id="2" className="lg:mt-5 pt-5  w-full">
+        <div id="2" className="lg:mt-5 pt-5  w-full overflow-hidden">
           <img className="w-full importand3" src={banner} alt="" />
           <div className="important lg:px-20 px-5 lg:pt-20 w-full flex lg:flex-row flex-wrap-reverse">
             <div className="lg:w-6/12">
@@ -207,7 +207,7 @@ function Home() {
         {/* end third section */}
 
         {/* start forth section */}
-        <div id="4" className="back-img md:px-20 px-5 pt-10 mt-20">
+        <div id="4" className="back-img md:px-20 px-5 pt-10 mt-20 overflow-hidden">
           <div
             className="flex"
             data-aos="fade-right"
