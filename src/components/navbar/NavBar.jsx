@@ -4,16 +4,19 @@ import { byId, config, getMe, url } from "../api";
 import { logo } from "../../assets";
 import axios from "axios";
 import { toast } from "react-toastify";
+import NavDrop from "./NavDrop";
 
 function NavBar() {
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ismodalClose, setIsModalClose] = useState(true);
   const [me, setMe] = useState(null);
-  const [meId, setMeId] = useState('');
+  const [meId, setMeId] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const openGetMe = () => setIsOpen(!isOpen);
+  const openMenu = () => setIsOpenMenu(!isOpenMenu);
   const openModal = () => setIsModalOpen(!isModalOpen);
   const closeModal = () => setIsModalClose(!isModalOpen);
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
@@ -24,22 +27,27 @@ function NavBar() {
   };
 
   const editUser = () => {
-    axios.put(url + "user/" + meId.id, {
-      id: meId.id,
-      name: byId("name"),
-      idNumber: byId("idNumber"),
-      phoneNumber: byId("phoneNumber"),
-      password: byId("password")
-    }, config)
+    axios
+      .put(
+        url + "user/" + meId.id,
+        {
+          id: meId.id,
+          name: byId("name"),
+          idNumber: byId("idNumber"),
+          phoneNumber: byId("phoneNumber"),
+          password: byId("password"),
+        },
+        config
+      )
       .then(() => {
-        toast.success("Succes!")
-        openModal()
-        logout()
+        toast.success("Succes!");
+        openModal();
+        logout();
       })
       .catch(() => {
-        toast.error("Error?")
+        toast.error("Error?");
       });
-  }
+  };
 
   useEffect(() => {
     getMe(setMe);
@@ -51,9 +59,10 @@ function NavBar() {
       <nav className="bg-white mt-3">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
-            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <div className="relative inset-y-0 left-0 flex items-center sm:hidden">
               <button
                 type="button"
+                onClick={openMenu}
                 className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
@@ -91,14 +100,64 @@ function NavBar() {
                   />
                 </svg>
               </button>
+
+              <div
+                className={`${
+                  isOpenMenu ? "inline" : "hidden  "
+                } absolute lg:w-80 w-52 bg-slate-400 top-12 
+                                    rounded-3xl shadow-lg overflow-hidden z-20`}
+              >
+                <div className="bg-slate-200 p-5 flex justify-center items-center relative">
+                  <i
+                    class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
+                    onClick={openMenu}
+                  ></i>
+                  <ul class="list-none">
+                    <li className="my-2" onClick={openMenu}>
+                      <Link
+                        to="/dashboard"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
+                        aria-current="page"
+                      >
+                        Dashboard
+                      </Link>
+                    </li>
+                    <li onClick={openMenu}>
+                      <Link
+                        to="/product"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
+                        aria-current="page"
+                      >
+                        Products
+                      </Link>
+                    </li>
+                    <li className="my-2" onClick={openMenu}>
+                      {" "}
+                      <Link
+                        to="/client"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
+                        aria-current="page"
+                      >
+                        Clients
+                      </Link>
+                    </li>
+                    <li onClick={openMenu}>
+                      {" "}
+                      <Link
+                        to="/history"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
+                        aria-current="page"
+                      >
+                        History
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <img
-                  className="h-10 w-auto"
-                  src={logo}
-                  alt="Your Company"
-                />
+                <img className="h-10 w-auto" src={logo} alt="Your Company" />
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
@@ -134,9 +193,7 @@ function NavBar() {
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <h2
-                className="relative rounded-full  p-1 text-gray-700 "
-              >
+              <h2 className="relative rounded-full  p-1 text-gray-700 ">
                 {me ? me.name : "Admin"}
               </h2>
 
@@ -161,8 +218,9 @@ function NavBar() {
                 </div>
 
                 <div
-                  className={`${isOpen ? "inline" : "hidden"
-                    } absolute lg:w-80 w-72 bg-slate-400 lg:-right-8 right-1 top-12 
+                  className={`${
+                    isOpen ? "inline" : "hidden"
+                  } absolute lg:w-80 w-72 bg-slate-400 lg:-right-8 right-1 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
                 >
                   <div className="bg-slate-200 p-8 flex justify-center items-center relative">
@@ -171,7 +229,10 @@ function NavBar() {
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                       alt="img"
                     />
-                    <i class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer" onClick={openGetMe}></i>
+                    <i
+                      class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
+                      onClick={openGetMe}
+                    ></i>
                   </div>
                   {me && (
                     <div className="bg-gradient-to-tl from-sky-500 to-sky-800 px-8 py-6">
@@ -189,7 +250,7 @@ function NavBar() {
                         <p className="opacity-50 pb-0 mb-0 mt-2">
                           Phone number
                         </p>
-                        <p className="mt-0 pt-0 text-white" >{me.phoneNumber}</p>
+                        <p className="mt-0 pt-0 text-white">{me.phoneNumber}</p>
                       </div>
                       <div className=" font-bold text-black text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">password</p>
@@ -201,7 +262,7 @@ function NavBar() {
                           className="bg-yellow-500 px-5 py-1.5 rounded-lg
                                                 shadow-lg active:scale-95 duration-200"
                           onClick={() => {
-                            setMeId(me)
+                            setMeId(me);
                             openModal();
                             openGetMe();
                           }}
@@ -229,10 +290,14 @@ function NavBar() {
           {isModalOpen && (
             <div className="fixed inset-0 flex items-center px-3 justify-center z-50">
               <div className="modal bg-white rounded-xl lg:w-1/3 sm:w-2/3  w-full overflow-hidden shadow-2xl">
-
                 <div className="">
                   <div className="bg-slate-200 py-8  flex flex-col justify-center items-center relative">
-                    <i class="fa-solid fa-xmark absolute top-5 right-5 text-2xl" onClick={() => { openModal(); }}></i>
+                    <i
+                      class="fa-solid fa-xmark absolute top-5 right-5 text-2xl"
+                      onClick={() => {
+                        openModal();
+                      }}
+                    ></i>
                     <img
                       className="rounded-full w-24 h-24"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -283,7 +348,13 @@ function NavBar() {
                           className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-black"
                           onClick={togglePasswordVisibility}
                         >
-                          <i className={showPassword ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"} />
+                          <i
+                            className={
+                              showPassword
+                                ? "fa-solid fa-eye"
+                                : "fa-solid fa-eye-slash"
+                            }
+                          />
                         </button>
                       </div>
                     </div>
@@ -299,7 +370,7 @@ function NavBar() {
                       <button
                         className="bg-red-600 px-5 py-1.5 rounded-lg shadow-lg"
                         onClick={() => {
-                          logout()
+                          logout();
                         }}
                       >
                         Log out
@@ -311,8 +382,8 @@ function NavBar() {
             </div>
           )}
         </div>
-      </nav >
-    </div >
+      </nav>
+    </div>
   );
 }
 

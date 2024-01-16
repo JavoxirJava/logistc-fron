@@ -102,45 +102,45 @@ const DashboardProductCard = ({ className }) => {
             </div>
             {data &&
                 data.map((item, i) => (
-                    <div className={`flex mb-3 border border-blue-300 w-full h-[120px] ${className}` }>
-                        <div className='card-col w-11/12 h-max pt-4 ps-2' key={i}>
+                    <div className={`flex mb-3 border border-blue-300 w-full ${className}` }>
+                        <div className='card-col w-11/12 h-max py-4 ps-2' key={i}>
                             <div className='h-3/6 card-col-row w-full flex'>
-                                <div className='w-[22%]'>
+                                <div className='w-[25%]'>
                                     <p className='opacity-70'>Number</p>
                                     <p className='font-bold'>{data ? item.productId : 0}</p>
                                 </div>
-                                <div className='w-[20%]'>
+                                <div className='w-[25%]'>
                                     <p className='opacity-70'>Status</p>
                                     <p className='font-bold'>{data ? item.status : 'no status'}</p>
                                 </div>
-                                <div className='w-[30%]'>
+                                <div className='w-[25%]'>
                                     <p className='opacity-70'>ETD</p>
                                     {/* <p className='font-bold'>{data ? item.product.createdAt.substring(0, 10) : "April 23, 2023"}</p> */}
                                 </div>
-                                <div className='w-[26%]'>
+                                <div className='w-[25%]'>
                                     <p className='opacity-70'>Product</p>
                                     <p className='font-bold'>{data ? item.name : "Iphone"}</p>
                                 </div>
                             </div>
                             <div className='h-3/6 card-col-row w-full flex'>
-                                <div className='w-[60%]'>
+                                <div className='w-[65%]'>
                                     <p className='opacity-70'>Current  Location</p>
                                     <p className='font-bold'>{data ? item.address : "No location"}</p>
                                 </div>
-                                <div className='w-[40%]'>
+                                <div className='w-[35%]'>
                                     <p className='opacity-70'>Owner</p>
                                     <p className='font-bold'>{data ? item.owner : console.log(item.owner)}</p>
                                 </div>
                             </div>
                         </div>
-                        <div className='card-col w-3/12 flex justify-center my-auto h-10 pr-2'>
-                            <button
-                                className="inline-flex justify-center w-40 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
-                                onClick={openModal}
-                            >
-                                View Detail
-                            </button>
-                        </div>
+                        {/*<div className='card-col w-3/12 flex justify-center my-auto h-10 pr-2'>*/}
+                        {/*    <button*/}
+                        {/*        className="inline-flex justify-center w-40 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"*/}
+                        {/*        onClick={openModal}*/}
+                        {/*    >*/}
+                        {/*        View Detail*/}
+                        {/*    </button>*/}
+                        {/*</div>*/}
                         <Modal isOpen={isModalOpen} onClose={closeModal} />
                     </div>
                 ))}
