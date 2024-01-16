@@ -166,7 +166,7 @@ function NavBar() {
                                     <Link
                                         to="/dashboard"
                                         className={`text-gray-500 hover:border-b-red-600 hover:border-b hover:text-slate-800
-                                        mx-5 px-3 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900`}
+                                        mx-5 px-2 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900`}
                                         // aria-current="page"
                                     >
                                         Dashboard
@@ -174,7 +174,7 @@ function NavBar() {
                                     <Link
                                         to="/product"
                                         className="text-gray-500 hover:border-b-red-600 hover:border-b hover:text-slate-800
-                                        mx-5 px-3 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900"
+                                        mx-5 px-2 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900"
                                         // aria-current="page"
                                     >
                                         Products
@@ -182,7 +182,7 @@ function NavBar() {
                                     <Link
                                         to="/client"
                                         className="text-gray-500 hover:border-b-red-600 hover:border-b hover:text-slate-800
-                                        mx-5 px-3 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900"
+                                        mx-5 px-2 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900"
                                         // aria-current="page"
                                     >
                                         Clients
@@ -190,7 +190,7 @@ function NavBar() {
                                     <Link
                                         to="/history"
                                         className="text-gray-500 hover:border-b-red-600 hover:border-b hover:text-slate-800
-                                        mx-5 px-3 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900"
+                                        mx-5 px-2 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900"
                                         // aria-current="page"
                                     >
                                         History
