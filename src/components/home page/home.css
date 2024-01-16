@@ -6,6 +6,19 @@
   border-radius: 2rem;
   background-size: cover;
   color: #00000089;
+  
+
+}
+
+.back-h {
+  transition: all 0.5s;
+  opacity: 0;
+}
+.back-h:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  opacity: 100%;
+
 }
 .back1 {
   background-image: url("https://eastline-logistics.uz/images/services/truck3.jpg");
@@ -22,6 +35,13 @@
   height: 100px;
   border-radius: 2rem;
   background-color: #02012d;
+  transition: 0.5s;
+}
+
+.shipping2:hover {
+  background-color: #fff;
+  color: #0066CC;
+  border: 1px solid #0066CC;
 }
 
 .back-img {

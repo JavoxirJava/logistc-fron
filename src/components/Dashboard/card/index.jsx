@@ -3,6 +3,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { config, url } from '../../api';
 import Dropdown from "./Dropdown";
+import '../../product/product.css'
+import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
 
 const Modal = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
@@ -31,7 +33,7 @@ const Modal = ({ isOpen, onClose }) => {
     );
 };
 
-const DashboardProductCard = ({ className, number, status, etd, product, currentLocation, owner }) => {
+const DashboardProductCard = ({ className }) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [data, setProduct] = useState(null);
@@ -93,9 +95,9 @@ const DashboardProductCard = ({ className, number, status, etd, product, current
                         type="search"
                         placeholder="🔍 Search id Numnber..."
                         onChange={searchProduct}
-                        className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+                        className="lg:w-10/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                     />
-                    <Dropdown setSearchBy={setSearchBy} />
+                    <Dropdown setSearchBy={setSearchBy}/>
                 </div>
             </div>
             {data &&
@@ -113,7 +115,7 @@ const DashboardProductCard = ({ className, number, status, etd, product, current
                                 </div>
                                 <div className='w-[30%]'>
                                     <p className='opacity-70'>ETD</p>
-                                    <p className='font-bold'>{data ? item.product : "April 23, 2023"}</p>
+                                    {/* <p className='font-bold'>{data ? item.product.createdAt.substring(0, 10) : "April 23, 2023"}</p> */}
                                 </div>
                                 <div className='w-[26%]'>
                                     <p className='opacity-70'>Product</p>
