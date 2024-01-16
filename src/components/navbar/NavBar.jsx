@@ -32,7 +32,7 @@ function NavBar() {
       .then(() => {
         toast.success("Succes!")
         openModal()
-        // logout()
+        logout()
       })
       .catch(() => {
         toast.error("Error?")
