@@ -42,7 +42,6 @@ function Login() {
           placeholder="Number"
         />
         <p>Password</p>
-
         <div className="relative">
           <input
             // onKeyDown={checkKeyPress}
