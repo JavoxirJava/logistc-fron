@@ -40,19 +40,19 @@ const DashboardProductCard = ({ className, number, status, etd, product, current
     const [searchBy, setSearchBy] = useState(null);
 
     useEffect(() => {
-        getProduct(pagination, 4);
+        getProduct(pagination, 7);
     }, []);
 
     useEffect(() => {
         if ((pagination - 1) * 4 < 0) setPagination(0);
-        else getProduct(Math.floor(pagination - 1), 4);
+        else getProduct(Math.floor(pagination - 1), 7);
     }, [pagination]);
 
     function getProduct(page, size) {
         axios.get(`${url}product?page=${page}&size=${size}`, config).then((res) => {
             setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
             setProduct(res.data.body.object);
-            console.log(data[0]);
+            console.log(data);
             console.log("keldi");
         }
         ).catch((err) => {
@@ -113,7 +113,7 @@ const DashboardProductCard = ({ className, number, status, etd, product, current
                                 </div>
                                 <div className='w-[30%]'>
                                     <p className='opacity-70'>ETD</p>
-                                    {/* <p className='font-bold'>{data ? item.product.createdAt.substring(0, 10) : "April 23, 2023"}</p> */}
+                                    <p className='font-bold'>{data ? item.product : "April 23, 2023"}</p>
                                 </div>
                                 <div className='w-[26%]'>
                                     <p className='opacity-70'>Product</p>
