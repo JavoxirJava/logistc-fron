@@ -56,15 +56,9 @@ function Product() {
             .catch((error) => console.error("Xatolik yuz berdi:", error));
     };
 
-    function setObj(id) {
+    function setObj() {
         return {
-            id: id ? id : 0,
-            idNumber: byId("idNumber"),
-            name: byId("name"),
-            measureCount: byId("measureCount"),
-            transport: byId("transport"),
-            measure: byId("measure"),
-            productStatus: byId("productStatus"),
+
             latitude: coordinates[0],
             longitude: coordinates[1],
             address: sessionStorage.getItem("address"),
@@ -82,12 +76,10 @@ function Product() {
 
     function addProduct() {
         const userId = sessionStorage.getItem("userId");
-        axios
-            .post(`${url}product?userId=${userId}`, setObj(0), config)
+        axios.post(`${url}product?userId=${userId}`, setObj(), config)
             .then(() => {
                 toast.success("successfully saved product");
-            })
-            .catch((err) => {
+            }).catch((err) => {
                 toast.error("product saved error");
                 console.log(err);
             });
@@ -95,12 +87,12 @@ function Product() {
 
     function editProduct() {
         const userId = sessionStorage.getItem("userId");
-        axios
-            .put(`${url}product?userId=${userId}`, setObj(product ? product.id : 0))
+        let data = {...product, ...setObj()};
+        console.log(data)
+        axios.put(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
-            })
-            .catch((err) => {
+            }).catch((err) => {
                 toast.error("product Edit error");
                 console.log(err);
             });
@@ -120,11 +112,16 @@ function Product() {
 
     function searchByName() {
         switch (searchBy) {
-            case "Product id number": return "productIdNumber";
-            case "Product status": return "productStatus";
-            case "User id number": return "userIdNumber";
-            case "User id": return "userId";
-            default: return "productIdNumber";
+            case "Product id number":
+                return "productIdNumber";
+            case "Product status":
+                return "productStatus";
+            case "User id number":
+                return "userIdNumber";
+            case "User id":
+                return "userId";
+            default:
+                return "productIdNumber";
         }
     }
 
@@ -188,6 +185,8 @@ function Product() {
                 </div>
 
                 <OffcanvasProduct
+                    setProduct={setProductObj}
+                    product=""
                     handleToggleOffcanvas={handleToggleOffcanvas}
                     isOffcanvasOpen={isOffcanvasOpen}
                     name="Add product"
@@ -195,6 +194,8 @@ function Product() {
                     onSave={addProduct}
                 />
                 <OffcanvasProduct
+                    setProduct={setProductObj}
+                    product={product}
                     handleToggleOffcanvas={openEdit}
                     isOffcanvasOpen={editOf}
                     name="Edit product"
