@@ -6,7 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import NavDrop from "./NavDrop";
 
-function NavBar() {
+function NavBar({dashboard, product, client, history}) {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,8 +53,6 @@ function NavBar() {
     useEffect(() => {
         getMe(setMe);
     }, []);
-
-    // const activeClass = () => setActive(!active)
 
     return (
         <div>
@@ -165,33 +163,29 @@ function NavBar() {
                                 <div className="flex space-x-4">
                                     <Link
                                         to="/dashboard"
-                                        className={`text-gray-500 hover:border-b-red-600 hover:border-b hover:text-slate-800
-                                        mx-5 px-2 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900`}
-                                        // aria-current="page"
+                                        className={`${dashboard} text-gray-500 mx-5 px-2 py-2 text-sm font-medium duration-300`}
+                                    // aria-current="page"
                                     >
                                         Dashboard
                                     </Link>
                                     <Link
                                         to="/product"
-                                        className="text-gray-500 hover:border-b-red-600 hover:border-b hover:text-slate-800
-                                        mx-5 px-2 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900"
-                                        // aria-current="page"
+                                        className={`${product} text-gray-500 mx-5 px-2 py-2 text-sm font-medium duration-300`}
+                                    // aria-current="page"
                                     >
                                         Products
                                     </Link>
                                     <Link
                                         to="/client"
-                                        className="text-gray-500 hover:border-b-red-600 hover:border-b hover:text-slate-800
-                                        mx-5 px-2 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900"
-                                        // aria-current="page"
+                                        className={`${client} text-gray-500 mx-5 px-2 py-2 text-sm font-medium duration-300`}
+                                    // aria-current="page"
                                     >
                                         Clients
                                     </Link>
                                     <Link
                                         to="/history"
-                                        className="text-gray-500 hover:border-b-red-600 hover:border-b hover:text-slate-800
-                                        mx-5 px-2 py-2 text-sm font-medium duration-300 focus:border-b-red-600 focus:border-b-2 focus:text-slate-900"
-                                        // aria-current="page"
+                                        className={`${history} text-gray-500 mx-5 px-2 py-2 text-sm font-medium duration-300`}
+                                    // aria-current="page"
                                     >
                                         History
                                     </Link>

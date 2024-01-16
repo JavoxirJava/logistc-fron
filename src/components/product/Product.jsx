@@ -131,7 +131,7 @@ function Product() {
 
     return (
         <>
-            <NavBar/>
+            <NavBar product={'border-b-red-600 border-b text-slate-900'} />
             <div className="product-main">
                 <div className="flex w-full lg:flex-row flex-col lg:h-full h-max">
                     <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
