@@ -11,10 +11,12 @@ function NavBar() {
   const [ismodalClose, setIsModalClose] = useState(true);
   const [me, setMe] = useState(null);
   const [meId, setMeId] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const openGetMe = () => setIsOpen(!isOpen);
   const openModal = () => setIsModalOpen(!isModalOpen);
   const closeModal = () => setIsModalClose(!isModalOpen);
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   const logout = () => {
     document.getElementById("logout").click();
@@ -227,7 +229,7 @@ function NavBar() {
 
                 <div className="">
                   <div className="bg-slate-200 py-8  flex flex-col justify-center items-center relative">
-                      <i class="fa-solid fa-xmark absolute top-5 right-5 text-2xl" onClick={() => {openModal();}}></i>
+                    <i class="fa-solid fa-xmark absolute top-5 right-5 text-2xl" onClick={() => { openModal(); }}></i>
                     <img
                       className="rounded-full w-24 h-24"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -270,6 +272,22 @@ function NavBar() {
                         defaultValue={me.password}
                         className="px-3 py-2 w-full border-gray-600 border-2 rounded-xl"
                       />
+                      <div className="relative">
+                        <input
+                          // onKeyDown={checkKeyPress}
+                          id="password"
+                          type={showPassword ? "text" : "password"}
+                          className="w-full border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500"
+                          placeholder="Enter password"
+                        />
+                        <button
+                          type="button"
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-black"
+                          onClick={togglePasswordVisibility}
+                        >
+                          <i className={showPassword ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"} />
+                        </button>
+                      </div>
                     </div>
                     <div className="flex justify-between items-center mt-3 font-bold text-white">
                       <button
