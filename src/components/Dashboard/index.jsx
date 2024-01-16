@@ -9,12 +9,17 @@ import NavBar from "../navbar/NavBar";
 function Dashboard() {
     const [me, setMe] = useState(null);
     const [productStatistics, setProductStatistics] = useState(null);
+    const [productStatistics2, setProductStatistics2] = useState(null);
 
     useEffect(() => {
         setConfig();
         getMe(setMe);
         axios.get(`${url}product/diagramForAdmin`, config)
             .then((res) => setProductStatistics(res.data.body))
+            .catch(err => console.log(err));
+
+        axios.get(`${url}product/admin/statistics`, config)
+            .then((res) => setProductStatistics2(res.data.body))
             .catch(err => console.log(err));
     }, []);
 
@@ -31,7 +36,7 @@ function Dashboard() {
                         {productStatistics && <Circle s={productStatistics}/>}
                     </div>
                     <div className="h-[400px] mt-10 rounded all-shadow">
-                        <LineChart/>
+                        {productStatistics2 && <LineChart productStatistics2={productStatistics2}/>}
                     </div>
                 </div>
                 <div className="lg:w-5/12 w-full lg:ml-5 lg:mt-0 mt-7">
