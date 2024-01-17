@@ -48,6 +48,7 @@ const Clients = () => {
             byIdObj("passwordC").value = "";
         }).catch((err) => {
             if (!isLoading) toast.error("user not save");
+            setIsloading(false)
             console.log(err);
         });
     }
