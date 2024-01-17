@@ -1,10 +1,6 @@
-import line from "../../assets/line.png"
-
 const Modal = ({ isOpen, onClose, historyList }) => {
     if (!isOpen) return null;
-
     const allAddressList = historyList.allAddress;
-
     return (
         <div
             className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 
@@ -13,7 +9,7 @@ const Modal = ({ isOpen, onClose, historyList }) => {
                 <div className='bg-blue-800 py-5 flex justify-around items-center relative'>
                     <h1 className='text-2xl text-sky-200'>{historyList && historyList.name}</h1>
                     <h1 className='text-2xl text-green-300'>{historyList && historyList.status}</h1>
-                    <i className="fa-solid fa-xmark absolute right-5 text-2xl text-white" onClick={onClose}></i>
+                    <i className="fa-solid fa-xmark absolute cursor-pointer right-5 text-2xl text-white" onClick={onClose}></i>
                 </div>
                 <div className='px-20 py-6 flex justify-between items-center flex-wrap'>
                     <div className="mt-2 w-1/3 text-center">

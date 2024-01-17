@@ -8,7 +8,6 @@ const HistoryInfo = ({ history, className }) => {
     const closeModal = () => setIsModalOpen(false);
     const openModal = () => setIsModalOpen(true);
 
-    // console.log(historyList);
     return (
         <>
             {history.length && history.map((item, i) => (
@@ -20,7 +19,7 @@ const HistoryInfo = ({ history, className }) => {
                     <div className="lg:w-[150px] md:w-[100px] sm:w-[80px] w-[50px]">
                         <p className="opacity-70">Number</p>
                         <p className="font-bold lg:text-[.9rem] md:text-[.7rem] sm:text-[.5rem] text-[.5rem]" >
-                            {item.idNumber ? item.idNumber : 0}
+                            {item.productIdNumber ? item.productIdNumber : 0}
                         </p>
                     </div>
                     <div className="lg:w-[300px] md:w-[170px] sm:w-[130px] w-[100px]">
@@ -38,7 +37,7 @@ const HistoryInfo = ({ history, className }) => {
                     <div className="lg:w-[150px] md:w-[120px] sm:w-[100px] w-[50px]">
                         <p className="opacity-70">ETD</p>
                         <p className="font-bold lg:text-[.9rem] md:text-[.7rem] sm:text-[.5rem] text-[.5rem]" >
-                            {item.etd ? item.etd : "April 23, 2022"}
+                            {item.createdAt ? item.createdAt.substring(0, 10) : "April 23, 2022"}
                         </p>
                     </div>
                     <div className="lg:w-[150px] md:w-[120px] sm:w-[100px] w-[50px]">
@@ -50,7 +49,7 @@ const HistoryInfo = ({ history, className }) => {
                     <div className="lg:w-[150px] md:w-[120px] sm:w-[100px] w-[50px]">
                         <p className="opacity-70">Product</p>
                         <p className="font-bold lg:text-[.9rem] md:text-[.7rem] sm:text-[.5rem] text-[.5rem]" >
-                            {item.product ? item.product : "No Product"}
+                            {item.name ? item.name : "No Product"}
                         </p>
                     </div>
                     <div className="w-[250px]">
