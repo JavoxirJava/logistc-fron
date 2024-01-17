@@ -4,7 +4,7 @@ const Offcanvas = ({isOpen, onClose, name, children}) => {
     return (
         <div
             className={`fixed inset-0 overflow-hidden transition-opacity ${isOpen ? 'ease-out duration-300 opacity-100' : 'ease-in duration-200 opacity-0 pointer-events-none'}`}>
-            <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 overflow-hidden z-50">
                 <div
                     className="absolute inset-0 bg-opacity-75 transition-opacity"
                     onClick={onClose}></div>

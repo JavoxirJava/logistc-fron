@@ -20,6 +20,7 @@ function Product() {
     const [totalPage, setTotalPage] = useState(2);
     const [pagination, setPagination] = useState(0);
     const [searchBy, setSearchBy] = useState(null);
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
         getProduct(pagination, 4);
@@ -76,7 +77,6 @@ function Product() {
     }
 
     function addProduct() {
-        const userId = sessionStorage.getItem("userId");
         let data = {...product2, ...setObj()};
         axios.post(`${url}product?userId=${userId}`, data, config)
             .then(() => {
@@ -89,7 +89,6 @@ function Product() {
     }
 
     function editProduct() {
-        const userId = sessionStorage.getItem("userId");
         let data = {...product2, ...setObj()};
         console.log(product2);
         axios.put(`${url}product?userId=${userId}`, data, config)
@@ -173,7 +172,7 @@ function Product() {
                             />
                         </div>
                     </div>
-                    <div className="xl:w-7/12 lg:w-8/12 w-full h-full col2 lg:z-10 z-0 relative">
+                    <div className="xl:w-7/12 lg:w-8/12 w-full h-full col2 z-0 relative">
                         <YMaps>
                             <Map
                                 defaultState={{center: [55.75, 37.57], zoom: 9}}
@@ -197,6 +196,7 @@ function Product() {
                     name="Add product"
                     btnName="Save"
                     onSave={addProduct}
+                    setUserId={setUserId}
                 />
                 <OffcanvasProduct
                     isAdd={false}
@@ -208,6 +208,7 @@ function Product() {
                     name="Edit product"
                     btnName="Edit"
                     onSave={editProduct}
+                    setUserId={setUserId}
                 />
             </div>
         </>

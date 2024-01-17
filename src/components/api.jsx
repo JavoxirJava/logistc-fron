@@ -23,3 +23,7 @@ export const getClientProduct = (page, size, setClientProduct, setTotalPage) => 
             }
         })
 }
+
+export function getUsers(setUser) {
+    axios.get(`${url}user`, config).then(res => setUser(res.data.body.object)).catch(err => console.log(err));
+}
