@@ -1,8 +1,11 @@
+import line from "../../assets/line.png"
+
 const Modal = ({ isOpen, onClose, historyList }) => {
     if (!isOpen) return null;
 
     const allAddressList = historyList.allAddress;
     console.log(allAddressList);
+    console.log('aaa');
 
     return (
         <div
@@ -46,8 +49,28 @@ const Modal = ({ isOpen, onClose, historyList }) => {
                 </div>
                 <div className="mt-7 ps-5">
                     <div className="w-full flex justify-start items-center">
-                        <div className="w-[25px] h-[25px] rounded-full bg-blue-700"></div>
-                        <div>text</div>
+                        <div className="h-44 flex justify-center flex-col items-center ">
+                            <div className="flex -mt-3">
+                                <div className="flex  flex-col  ml-2">
+                                    <i class="fa-solid fa-circle text-2xl text-blue-800 z-10"></i>
+                                </div>
+                                <p className="ml-2">salom</p>
+                            </div>
+                            <div className="flex -mt-3 items-end">
+                                <div className="flex justify-center flex-col items-center">
+                                    <img src={line} alt="" className="-mb-3 -z-0" />
+                                    <i class="fa-solid fa-circle text-2xl text-blue-800 z-10"></i>
+                                </div>
+                                <p className="mb-1">salom</p>
+                            </div>
+                            <div className="flex -mt-3 items-end">
+                                <div className="flex justify-center flex-col items-center">
+                                    <img src={line} alt="" className="-mb-3 -z-0" />
+                                    <i class="fa-solid fa-circle text-2xl text-blue-800 z-10"></i>
+                                </div>
+                                <p className="mb-1">salom</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
