@@ -44,7 +44,7 @@ const Modal = ({ isOpen, onClose, historyList }) => {
                 <div className="mt-7 mb-5 ps-16 pr-5">
                     {allAddressList && allAddressList.map((item) =>
                         <div className="flex flex-row">
-                            <div className="h-[120px] w-[4px] py-4 flex relative justify-center bg-slate-900">
+                            <div className="h-[100px] w-[4px] py-4 flex relative justify-center bg-slate-900">
                                 <div className=" w-[30px] h-[30px] rounded-full absolute top-4 bg-blue-700"></div>
                             </div>
                             <div className="p-4 ms-10">
