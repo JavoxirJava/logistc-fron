@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../home page/home.css";
+import language from "./long/longNav.json";
+
 import { logo } from "../../assets";
 
 function HomeNav({ home, about, services, gallery }) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [lang, setLang] = useState("");
+
+  useEffect(() => {
+    if (!localStorage.getItem("lang")) localStorage.setItem("lang", "EN");
+    let lang = localStorage.getItem("lang");
+    setLang(lang === "EN" ? language.en.nav : language.ru.nav);
+  }, []);
+
+  function editLong() {
+    localStorage.setItem("lang", document.getElementById("lang").value);
+    window.location.reload();
+  }
 
   const openMenu = () => setIsOpenMenu(!isOpenMenu);
 
@@ -57,8 +71,9 @@ function HomeNav({ home, about, services, gallery }) {
               </button>
 
               <div
-                className={`${isOpenMenu ? "inline" : "hidden  "
-                  } absolute lg:w-80 w-52 bg-slate-400 top-12 
+                className={`${
+                  isOpenMenu ? "inline" : "hidden  "
+                } absolute lg:w-80 w-52 bg-slate-400 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
               >
                 <div className="bg-slate-200 p-5 flex justify-center items-center relative">
@@ -139,6 +154,18 @@ function HomeNav({ home, about, services, gallery }) {
                   </a>
                 </div>
               </div>
+            </div>
+            <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0">
+              <select data-te-select-init className="btm2">
+                <option className="bg-gray-800" value="1">One</option>
+                <option className="bg-gray-800" value="2">Two</option>
+                <option className="bg-gray-800" value="3">Three</option>
+                <option className="bg-gray-800" value="4">Four</option>
+                <option className="bg-gray-800" value="5">Five</option>
+                <option className="bg-gray-800" value="6">Six</option>
+                <option className="bg-gray-800" value="7">Seven</option>
+                <option className="bg-gray-800" value="8">Eight</option>
+              </select>
             </div>
             <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0">
               <Link id="login" to="/login">

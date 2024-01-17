@@ -1,0 +1,25 @@
+{
+    "en": {
+      "nav": {
+        "nav1": "Hotels",
+        "nav2": "Rest",
+        "nav3": "Restaurants",
+        "nav4": "Entertainment",
+        "nav5": "History",
+        "nav6": "Nature",
+        "nav7": "Pilgrimage"
+      }
+    },
+    "ru": {
+      "nav": {
+        "nav1": "Отели",
+        "nav2": "Отдых",
+        "nav3": "Рестораны",
+        "nav4": "Развлечение",
+        "nav5": "Исторический",
+        "nav6": "Природа",
+        "nav7": "Паломничество"
+      }
+    }
+  }
+  
