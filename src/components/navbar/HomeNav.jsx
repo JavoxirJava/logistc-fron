@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../home page/home.css";
 import { logo } from "../../assets";
 
-function HomeNav() {
+function HomeNav({ home, about, services, gallery }) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const openMenu = () => setIsOpenMenu(!isOpenMenu);
@@ -57,9 +57,8 @@ function HomeNav() {
               </button>
 
               <div
-                className={`${
-                  isOpenMenu ? "inline" : "hidden  "
-                } absolute lg:w-80 w-52 bg-slate-400 top-12 
+                className={`${isOpenMenu ? "inline" : "hidden  "
+                  } absolute lg:w-80 w-52 bg-slate-400 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
               >
                 <div className="bg-slate-200 p-5 flex justify-center items-center relative">
@@ -114,26 +113,26 @@ function HomeNav() {
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   <a
-                    href="#1"
+                    href={home}
                     className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                     aria-current="page"
                   >
                     Home
                   </a>
                   <a
-                    href="#2"
+                    href={about}
                     className="text-gray-600 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >
                     About
                   </a>
                   <a
-                    href="#3"
+                    href={services}
                     className="text-gray-600 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >
                     Services
                   </a>
                   <a
-                    href="#4"
+                    href={gallery}
                     className="text-gray-600 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >
                     Gallery

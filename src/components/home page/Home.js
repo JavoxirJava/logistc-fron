@@ -7,10 +7,10 @@ import HomeNav from "../navbar/HomeNav";
 function Home() {
   return (
     <>
-      <HomeNav />
+      <HomeNav home={`#home`} about={`#about`} services={`#services`} gallery={`#gallery`} />
       <div className="w-full">
         {/* first section */}
-        <div id="1" className="w-full flex lg:flex-row flex-col h-max lg:px-20 px-5">
+        <div id="home" className="w-full flex lg:flex-row flex-col h-max lg:px-20 px-5">
           <div className="pt-10 flex">
             <div>
               <div className="w-full">
@@ -60,7 +60,7 @@ function Home() {
         {/* end section */}
 
         {/* start second section */}
-        <div id="2" className="lg:mt-5 pt-5  w-full overflow-hidden">
+        <div id="about" className="lg:mt-5 pt-5  w-full overflow-hidden">
           <img className="w-full importand3" src={banner} alt="" />
           <div className="important lg:px-20 px-5 lg:pt-20 w-full flex lg:flex-row flex-wrap-reverse">
             <div className="lg:w-6/12">
@@ -96,7 +96,7 @@ function Home() {
           {/* end second section */}
 
           {/* end third section */}
-          <div id="3" className="flex flex-col">
+          <div id="services" className="flex flex-col">
             <div className="md:text-5xl text-3xl font-semibold tracking-wider mt-10 text-center">
               <h4
                 data-aos="zoom-out"
@@ -208,7 +208,7 @@ function Home() {
         {/* end third section */}
 
         {/* start forth section */}
-        <div id="4" className="back-img md:px-20 px-5 pt-10 mt-20 overflow-hidden">
+        <div id="gallery" className="back-img md:px-20 px-5 pt-10 mt-20 overflow-hidden">
           <div
             className="flex"
             data-aos="fade-right"
