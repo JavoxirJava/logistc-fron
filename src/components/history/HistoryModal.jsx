@@ -4,8 +4,6 @@ const Modal = ({ isOpen, onClose, historyList }) => {
     if (!isOpen) return null;
 
     const allAddressList = historyList.allAddress;
-    console.log(allAddressList);
-    console.log('aaa');
 
     return (
         <div
@@ -15,7 +13,7 @@ const Modal = ({ isOpen, onClose, historyList }) => {
                 <div className='bg-blue-800 py-5 flex justify-around items-center relative'>
                     <h1 className='text-2xl text-sky-200'>{historyList && historyList.name}</h1>
                     <h1 className='text-2xl text-green-300'>{historyList && historyList.status}</h1>
-                    <i className="fa-solid fa-xmark absolute right-2 text-2xl text-white" onClick={onClose}></i>
+                    <i className="fa-solid fa-xmark absolute right-5 text-2xl text-white" onClick={onClose}></i>
                 </div>
                 <div className='px-20 py-6 flex justify-between items-center flex-wrap'>
                     <div className="mt-2 w-1/3 text-center">
@@ -47,31 +45,17 @@ const Modal = ({ isOpen, onClose, historyList }) => {
                         <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.address}</p>
                     </div>
                 </div>
-                <div className="mt-7 ps-5">
-                    <div className="w-full flex justify-start items-center">
-                        <div className="h-44 flex justify-center flex-col items-center ">
-                            <div className="flex -mt-3">
-                                <div className="flex  flex-col  ml-2">
-                                    <i class="fa-solid fa-circle text-2xl text-blue-800 z-10"></i>
-                                </div>
-                                <p className="ml-2">salom</p>
+                <div className="mt-7 mb-5 ps-16 pr-5">
+                    {allAddressList && allAddressList.map((item) =>
+                        <div className="flex flex-row">
+                            <div className="h-[120px] w-[4px] py-4 flex relative justify-center bg-slate-900">
+                                <div className=" w-[30px] h-[30px] rounded-full absolute top-4 bg-blue-700"></div>
                             </div>
-                            <div className="flex -mt-3 items-end">
-                                <div className="flex justify-center flex-col items-center">
-                                    <img src={line} alt="" className="-mb-3 -z-0" />
-                                    <i class="fa-solid fa-circle text-2xl text-blue-800 z-10"></i>
-                                </div>
-                                <p className="mb-1">salom</p>
-                            </div>
-                            <div className="flex -mt-3 items-end">
-                                <div className="flex justify-center flex-col items-center">
-                                    <img src={line} alt="" className="-mb-3 -z-0" />
-                                    <i class="fa-solid fa-circle text-2xl text-blue-800 z-10"></i>
-                                </div>
-                                <p className="mb-1">salom</p>
+                            <div className="p-4 ms-10">
+                                {item}
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </div>
