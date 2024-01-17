@@ -63,7 +63,7 @@ function Login() {
           >
             <i
               className={
-                showPassword ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"
+                showPassword ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"
               }
             />
           </button>
