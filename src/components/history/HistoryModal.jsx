@@ -25,7 +25,7 @@ const Modal = ({ isOpen, onClose, historyList }) => {
                     </div>
                     <div className="mt-2 w-1/3 text-center">
                         <p className='pb-0 mb-0 opacity-50'>Created</p>
-                        <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.createdAt}</p>
+                        <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.createdAt.substring(0, 10)} {historyList.createdAt.substring(11, 16)}</p>
                     </div>
                     <div className="mt-2 w-1/3 text-center">
                         <p className='pb-0 mb-0 opacity-50'>Measure</p>
