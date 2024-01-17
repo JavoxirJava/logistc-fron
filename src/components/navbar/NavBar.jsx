@@ -350,8 +350,8 @@ function NavBar({dashboard, product, client, history}) {
                                                     <i
                                                         className={
                                                             showPassword
-                                                                ? "fa-solid fa-eye"
-                                                                : "fa-solid fa-eye-slash"
+                                                                ? "fa-solid fa-eye-slash"
+                                                                : "fa-solid fa-eye"
                                                         }
                                                     />
                                                 </button>
