@@ -155,7 +155,7 @@ function HomeNav({ home, about, services, gallery }) {
                 </div>
               </div>
             </div>
-            <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0">
+            {/* <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0">
               <select data-te-select-init className="btm2">
                 <option className="bg-gray-800" value="1">One</option>
                 <option className="bg-gray-800" value="2">Two</option>
@@ -166,7 +166,7 @@ function HomeNav({ home, about, services, gallery }) {
                 <option className="bg-gray-800" value="7">Seven</option>
                 <option className="bg-gray-800" value="8">Eight</option>
               </select>
-            </div>
+            </div> */}
             <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0">
               <Link id="login" to="/login">
                 <button
