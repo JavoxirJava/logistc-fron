@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function ProductCard({className, product, openEdit, setProductObj}) {
     return (
