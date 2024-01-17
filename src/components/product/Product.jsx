@@ -54,8 +54,7 @@ function Product() {
                     data.response.GeoObjectCollection.featureMember[0].GeoObject
                         .metaDataProperty.GeocoderMetaData.text;
                 sessionStorage.setItem("address", address);
-            })
-            .catch((error) => console.error("Xatolik yuz berdi:", error));
+            }).catch((error) => console.error("Xatolik yuz berdi:", error));
     };
 
     function setObj() {
@@ -106,9 +105,11 @@ function Product() {
         if (text === '') getProduct(pagination, 4);
         else axios.get(`${url}product/admin/search?${searchByName()}=${text}`, config).then(res => {
             if (res.data.body) {
-                if (res.data.body.object.length > 4) setProduct(res.data.body.object.map((item, i) => {
+                // eslint-disable-next-line array-callback-return
+                if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
                     if (i < 4) return item;
                 }))
+                else setProduct(res.data.body);
             } else setProduct([]);
         }).catch(err => console.log(err));
     }

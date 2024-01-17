@@ -64,9 +64,10 @@ const DashboardProductCard = ({className}) => {
         if (text === '') getProduct(pagination, 4);
         else axios.get(`${url}product/admin/search?${searchByName()}=${text}`, config).then(res => {
             if (res.data.body) {
-                if (res.data.body.object.length > 4) setProduct(res.data.body.object.map((item, i) => {
+                if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
                     if (i < 4) return item;
                 }))
+                else setProduct(res.data.body);
             } else setProduct([]);
         }).catch(err => console.log(err));
     }
@@ -130,7 +131,7 @@ const DashboardProductCard = ({className}) => {
                             </div>
                             <div className='w-[35%]'>
                                 <p className='opacity-70'>Owner</p>
-                                <p className='font-bold'>{item ? item.owner : console.log(item.owner)}</p>
+                                <p className='font-bold'>{item ? item.owner : "No owner"}</p>
                             </div>
                         </div>
                     </div>

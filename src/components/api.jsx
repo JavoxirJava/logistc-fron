@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export const url = 'http://137.184.13.215/'
+// export const url = 'http://137.184.13.215/'
+export const url = 'http://192.168.100.69/'
 export const byIdObj = (id) => document.getElementById(id);
 export const byId = (id) => byIdObj(id) ? byIdObj(id).value : '';
 export const config = {
@@ -27,3 +28,4 @@ export const getClientProduct = (page, size, setClientProduct, setTotalPage) => 
 export function getUsers(setUser) {
     axios.get(`${url}user`, config).then(res => setUser(res.data.body.object)).catch(err => console.log(err));
 }
+
