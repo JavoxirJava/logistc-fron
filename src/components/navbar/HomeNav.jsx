@@ -121,19 +121,19 @@ function HomeNav({ home, about, services, gallery }) {
                   </a>
                   <a
                     href={about}
-                    className="text-gray-600 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    className="text-gray-600 hover:bg-gray-900 hover:text-white duration-200 rounded-md px-3 py-2 text-sm font-medium"
                   >
                     About
                   </a>
                   <a
                     href={services}
-                    className="text-gray-600 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    className="text-gray-600 hover:bg-gray-900 hover:text-white duration-200 rounded-md px-3 py-2 text-sm font-medium"
                   >
                     Services
                   </a>
                   <a
                     href={gallery}
-                    className="text-gray-600 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    className="text-gray-600 hover:bg-gray-900 hover:text-white duration-200 rounded-md px-3 py-2 text-sm font-medium"
                   >
                     Gallery
                   </a>
