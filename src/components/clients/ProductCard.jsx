@@ -15,7 +15,7 @@ function ProductCard({ className, product }) {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const {t} = useTranslation  
+  const {t} = useTranslation()
 
   const editUser = () => {
     setIsLoading(true)
@@ -105,7 +105,7 @@ function ProductCard({ className, product }) {
           }}
           className="inline-flex justify-center rounded-md active:scale-95 duration-200 border border-gray-300 shadow-lg py-2 px-5 bg-blue-700 text-sm font-medium text-white"
         >
-          Edit
+          {t("edit")}
         </button>
       </div>
       {isModalOpen && (
