@@ -10,6 +10,7 @@ import Pagination, {
 import axios from "axios";
 import {toast} from "react-toastify";
 import NavBar from "../navbar/NavBar";
+import { useTranslation } from "react-i18next";
 
 const Clients = ({changeLanguage}) => {
     const [isLoading, setIsloading] = useState(false);
@@ -20,6 +21,8 @@ const Clients = ({changeLanguage}) => {
     useEffect(() => {
         getClientProduct(pagination, 4, setProductClient, setTotalPage);
     }, []);
+
+    const {t} = useTranslation()
 
     useEffect(() => {
         if ((pagination - 1) * 4 < 0) setPagination(0);
