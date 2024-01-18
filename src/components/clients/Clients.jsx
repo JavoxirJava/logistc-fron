@@ -11,7 +11,7 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import NavBar from "../navbar/NavBar";
 
-const Clients = () => {
+const Clients = ({changeLanguage}) => {
     const [isLoading, setIsloading] = useState(false);
     const [productsClient, setProductClient] = useState(null);
     const [totalPage, setTotalPage] = useState(2);
@@ -72,7 +72,7 @@ const Clients = () => {
 
     return (
         <>
-            <NavBar client={'border-b-red-600 border-b text-slate-900'}/>
+            <NavBar client={'border-b-red-600 border-b text-slate-900'} changeLang={changeLanguage}/>
             <div className="clients-bg flex lg:flex-row flex-col">
                 <div className="lg:w-2/5 md:w-4/5 w-full lg:pl-10 md:px-0 px-2">
                     <div className="flex justify-between items-center">
@@ -80,7 +80,7 @@ const Clients = () => {
                                className="py-2 px-4 w-96 bg-slate-100 rounded-lg border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-200 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                               placeholder="🔍  Search Id Number..."
+                               placeholder= {t("productSearch")}
                         />
                         <img
                             src={filterImg}
@@ -104,48 +104,48 @@ const Clients = () => {
 
                 <div className="lg:w-2/6 ">
                     <p className="text-black text-2xl mb-5 font-bold tracking-wider text-center">
-                        New Client
+                    {t("addclient2")}
                     </p>
                     <div className="add-bg lg:px-3 px-10 py-6 w-full">
                         <label htmlFor="nameC" className="ml-3.5">
-                            User name
+                        {t("addclient3")}
                         </label>
                         <input id="nameC" className="py-2 px-4 w-full bg-white rounded-lg mb-5 border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                               placeholder="Enter name" />
+                               placeholder={t("addclient4")} />
 
                         <label htmlFor="idNumberC" className="ml-3.5">
-                            User id Number
+                        {t("addclient5")}
                         </label>
                         <input
                             id="idNumberC"
                             className="py-2 px-4 w-full bg-white rounded-lg mb-5 border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                            placeholder="Enter id number"
+                            placeholder={t("addclient6")}
                         />
 
                         <label htmlFor="phoneNumberC" className="ml-3.5">
-                            User phone number
+                        {t("addclient7")}
                         </label>
                         <input
                             id="phoneNumberC"
                             className="py-2 px-4 w-full bg-white rounded-lg mb-5 border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                            placeholder="Enter phone number"
+                            placeholder={t("addclient8")}
                         />
 
                         <label htmlFor="passwordC" className="ml-3.5">
-                            User password
+                        {t("addclient9")}
                         </label>
                         <input
                             id="passwordC"
                             className="py-2 px-4 w-full bg-white rounded-lg mb-5 border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                            placeholder="Enter password"
+                            placeholder={t("addclient10")}
                         />
 
                         <div className="flex justify-end items-center w-full mt-8">
@@ -157,7 +157,7 @@ const Clients = () => {
                                 font-bold text-lg tracking-wider active:scale-95 duration-200"
                                     onClick={addUser}
                                 >
-                                    Save
+                                    {t("add")}
                                 </button>
                             )}
                         </div>

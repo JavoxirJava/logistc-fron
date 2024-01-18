@@ -6,7 +6,7 @@ import {config, getMe, setConfig, url} from "../api";
 import axios from "axios";
 import NavBar from "../navbar/NavBar";
 
-function Dashboard() {
+function Dashboard({changeLanguage}) {
     const [me, setMe] = useState(null);
     const [productStatistics, setProductStatistics] = useState(null);
     const [productStatistics2, setProductStatistics2] = useState(null);

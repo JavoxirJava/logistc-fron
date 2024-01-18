@@ -3,11 +3,13 @@ import {banner, kamaz, kontener} from "../../assets";
 import "./home.css";
 import HomeFooter from "./HomeFooter";
 import HomeNav from "../navbar/HomeNav";
+import { useTranslation } from "react-i18next";
 
-function Home() {
+function Home({changeLang}) {
+  const { t } = useTranslation()
   return (
     <>
-      <HomeNav home={`#home`} about={`#about`} services={`#services`} gallery={`#gallery`} />
+      <HomeNav home={`#home`} about={`#about`} services={`#services`} gallery={`#gallery`} changeLang={changeLang}/>
       <div className="w-full">
         {/* first section */}
         <div id="home" className="w-full flex lg:flex-row flex-col h-max lg:px-20 px-5">
@@ -20,7 +22,7 @@ function Home() {
                   data-aos-easing="linear"
                   data-aos-duration="2000"
                 >
-                  We Will Deliver Your <br /> Packages Anywhere!
+                  {t("homeText1")} <br/> {t("homeText01")}
                 </h1>
               </div>
 
@@ -32,11 +34,10 @@ function Home() {
                   data-aos-duration="2000"
                 >
                   <span className="md:text-4xl text-3xl font-light">
-                    FIND IT | BUY IT | SHIP IT
+                    {t("homeText2")}
                   </span>{" "}
-                  <br data-aos="fade-top" data-aos-duration="1500" /> We let you
-                  shop around the world and ship
-                  <br /> to logisippo straight to your doorstep!
+                  <br data-aos="fade-top" data-aos-duration="1500" /> {t("homeText3")}
+                  <br /> {t("homeText03")}
                 </h2>
               </div>
             </div>
@@ -70,8 +71,8 @@ function Home() {
                 data-aos-easing="linear"
                 data-aos-duration="1500"
               >
-                Deliver Your <span style={{ color: "#1A648C" }}>Logistic</span>{" "}
-                <br /> Safely & Quickly
+                {t("homeText4")} <span style={{ color: "#1A648C" }}>{t("homeText5")}</span>{" "}
+                <br /> {t("homeText6")}
               </h1>
               <h4
                 className="text-lg mt-5"
@@ -79,9 +80,9 @@ function Home() {
                 data-aos-easing="linear"
                 data-aos-duration="1500"
               >
-                From start to finish, our seamless logistics service <br />{" "}
-                ensures a successful delivery experience every time. <br /> Get
-                started now and see the difference for yourself.
+                {t("homeText7")} <br />{" "}
+                {t("homeText07")}<br />
+                {t("homeText007")}
               </h4> 
             </div>
             <div
@@ -104,8 +105,8 @@ function Home() {
                 data-aos-duration="1500"
               >
                 {" "}
-                <span style={{ color: "#1A648C" }}>Shipping</span> & Logistic{" "}
-                <br /> Services
+                <span style={{ color: "#1A648C" }}>{t("homeText8")}</span> {t("homeText9")}{" "}
+                <br /> {t("homeText09")}
               </h4>
             </div>
             <div className="flex justify-center">
@@ -124,7 +125,7 @@ function Home() {
                       color: "#fff",
                     }}
                   >
-                    <p className="text-lg pt-40 ">Road transportion </p>
+                    <p className="text-lg pt-40 ">{t("homeText11")}</p>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="30"
@@ -144,7 +145,7 @@ function Home() {
                   data-aos-duration="2000"
                 >
                   <button className="shipping2 text-3xl text-white mb-3">
-                    SHARAIT ↗️
+                    {t("homeText10")}
                   </button>
                   <div
                     className="shipping back2 lg:mb-5"
@@ -160,7 +161,7 @@ function Home() {
                         color: "#fff",
                       }}
                     >
-                      <p className="text-lg pt-40">Ship transportion</p>
+                      <p className="text-lg pt-40">{t("homeText12")}</p>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         height="30"
@@ -188,7 +189,7 @@ function Home() {
                       color: "#fff",
                     }}
                   >
-                    <p className="text-lg pt-40">Air transportion</p>
+                    <p className="text-lg pt-40">{t("homeText13")}</p>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="30"
@@ -224,8 +225,8 @@ function Home() {
             <h1
               className="md:text-5xl text-2xl block font-semibold font-sans tracking-wider text-white"
               data-aos="fade-top"
-            >                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-              Effortless Delivery <br /> With Our Logistic <br /> Solutions
+            >  
+            {t("homeText14")} <br /> {t("homeText014")} <br /> {t("homeText0014")}
             </h1>
           </div>
           <img
@@ -244,8 +245,7 @@ function Home() {
             data-aos-duration="2000"
           >
             <h4 className="lg:text-lg mb-20 font-semibold font-sans tracking-wider text-white md:w-5/12">
-              Our Support Team is Always Available And Ready To Help With Any
-              Delivery Issue You Have. Ensuring A Smooth Experience
+              {t("homeText15")}
             </h4>
             
           </div>

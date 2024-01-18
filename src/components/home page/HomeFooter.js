@@ -1,8 +1,10 @@
 import React from "react";
 import { footerga, logo } from "../../assets";
 import "./home.css";
+import { useTranslation } from "react-i18next";
 
 function HomeFooter() {
+  const { t } = useTranslation()
   return (
     <div className=" w-full flex flex-col" style={{ backgroundColor: "#061927" }}>
       <div className="flex md:flex-row flex-col items-center px-20 ">
@@ -50,17 +52,17 @@ function HomeFooter() {
         <div className="flex flex-col md:mt-10 md:w-6/12">
           <div className="flex justify-start mt-10 mb-20">
             <ul className="list-none text-white text-lg ">
-              <li className="font-semibold">Quick links</li>
-              <li>Home</li>
-              <li>About</li>
-              <li>Service</li>
-              <li>Gallary</li>
+              <li className="font-semibold">{t("homeText16")}</li>
+              <li>{t("home")}</li>
+              <li>{t("about")}</li>
+              <li>{t("service")}</li>
+              <li>{t("gallary")}</li>
             </ul>
             <ul className="list-none text-white text-lg  ms-20">
-              <li className="font-semibold">Company</li>
-              <li>About us</li>
-              <li>FAQs</li>
-              <li>Contact us</li>
+              <li className="font-semibold">{t("homeText17")}</li>
+              <li>{t("homeText18")}</li>
+              <li>{t("homeText19")}</li>
+              <li>{t("homeText20")}</li>
             </ul>
           </div>
         </div>
@@ -68,8 +70,8 @@ function HomeFooter() {
       <div>
         <div className="borderF"></div>
         <div className="flex justify-between md:flex-row flex-col items-center  md:px-10 px-5 py-10 text-lg text-white">
-          <p>© 2023 GSR Logistics</p>
-          <p>Powered by: IT City Academy </p>
+          <p>{t("homeText21")}</p>
+          <p>{t("homeText22")}</p>
         </div>
       </div>
     </div>

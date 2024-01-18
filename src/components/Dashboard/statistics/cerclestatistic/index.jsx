@@ -1,7 +1,10 @@
 import React from 'react';
 import EChartsReact from 'echarts-for-react';
+import { useTranslation } from "react-i18next";
 
-function    Circle({s}) {
+function  Circle({s}) {
+
+    const {t} = useTranslation()
     const option = {
         tooltip: {
             trigger: 'item'
@@ -31,9 +34,9 @@ function    Circle({s}) {
                     show: false
                 },
                 data: [
-                    {value: s.completed, name: 'Complete '},
-                    {value: s.pending, name: 'Pending'},
-                    {value: s.cansel, name: 'Cancel'}
+                    {value: s.completed, name:  `${t("circle1")}`},
+                    {value: s.pending, name:`${t("circle2")}`},
+                    {value: s.cansel, name: `${t("circle3")}`}
                 ]
             }
         ]

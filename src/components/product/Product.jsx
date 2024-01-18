@@ -9,8 +9,9 @@ import {toast} from "react-toastify";
 import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
 import NavBar from "../navbar/NavBar";
 import Dropdown from "../Dropdown";
+import { useTranslation } from "react-i18next";
 
-function Product() {
+function Product( ) {
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     const [editOf, setEditOf] = useState(false);
@@ -21,6 +22,9 @@ function Product() {
     const [pagination, setPagination] = useState(0);
     const [searchBy, setSearchBy] = useState(null);
     const [userId, setUserId] = useState(null);
+
+    const { t } = useTranslation();
+
 
     useEffect(() => {
         getProduct(pagination, 4);
@@ -131,14 +135,14 @@ function Product() {
 
     return (
         <>
-            <NavBar product={'border-b-red-600 border-b text-slate-900'} />
+            <NavBar product={'border-b-red-600 border-b text-slate-900'}  />
             <div className="product-main">
                 <div className="flex w-full lg:flex-row flex-col lg:h-full h-max">
                     <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
                         <div className="mt-4 flex flex-wrap justify-between">
                             <input
                                 type="search"
-                                placeholder="🔍 Search id Numnber..."
+                                placeholder={t("productSearch")}
                                 onChange={searchProduct}
                                 className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                             />
@@ -149,10 +153,10 @@ function Product() {
                                 onClick={handleToggleOffcanvas}
                                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
                             >
-                                Add
+                                {t("add")}
                             </button>
                             <span className="me-5 pt-1.5 float-end">
-                                Current page: {pagination}
+                                {t("cardCurrent")}: {pagination}
                               </span>
                             {products && products.map((item, i) => (
                                 <ProductCard

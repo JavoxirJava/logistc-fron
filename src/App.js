@@ -9,18 +9,52 @@ import HomeFooter from "./components/home page/HomeFooter";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Loader from "./components/home page/Loader";
+import i18n from "i18next"
+import { initReactI18next } from "react-i18next";
+import translateEn from "./locale/translateEn"
+import translateRu from "./locale/translateRu"
+
+i18n.use(initReactI18next).init({
+    resources: {
+        en: {translation: translateEn},
+        ru: {translation: translateRu}
+    }, 
+    lng: "en",
+    fallbackLng: "en"
+})
 
 function App() {
     AOS.init();
+
+    const changeLang = (e) => {
+        i18n.changeLanguage(e.target.value)
+    }
+
+    
     return (
         <div>
+            <div className="flex  w-full">
+
+             <select
+                    data-te-select-init
+                    className="btm2"
+                    onChange={changeLang}
+                  >
+                    <option className="bg-gray-800" value="en">
+                      en
+                    </option>
+                    <option className="bg-gray-800" value="ru">
+                      ru
+                    </option>
+                  </select>
+            </div>
             <Routes>
-                <Route path='/' element={<Loader/>}/>
+                <Route path='/' element={<Loader changeLang={changeLang}/>}/>
                 <Route path='/login' element={<Login/>}/>
-                <Route path='/dashboard' element={<Dashboard/>}/>
-                <Route path='/product' element={<Product/>}/>
-                <Route path='/client' element={<Clients/>}/>
-                <Route path='/history' element={<History/>}/>
+                <Route path='/dashboard' element={<Dashboard changeLang={changeLang}/>}/>
+                <Route path='/product' element={<Product changeLang={changeLang}/>}/>
+                <Route path='/client' element={<Clients changeLang={changeLang}/>}/>
+                <Route path='/history' element={<History changeLang={changeLang}/>}/>
                 <Route path='/footer' element={<HomeFooter/>}/>
             </Routes>
         </div>

@@ -5,11 +5,15 @@ import NavBar from "../navbar/NavBar";
 import {byId, config, url} from "../api";
 import axios from "axios";
 import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
+import { useTranslation } from "react-i18next";
 
-const History = () => {
+
+const History = ({changeLanguage}) => {
     const [history, setHistory] = useState(null);
     const [totalPage, setTotalPage] = useState(2);
     const [pagination, setPagination] = useState(0);
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         getHistory(pagination, 4);
@@ -48,7 +52,7 @@ const History = () => {
 
     return (
         <>
-            <NavBar history={'border-b-red-600 border-b text-slate-900'}/>
+            <NavBar changeLang={changeLanguage} history={'border-b-red-600 border-b text-slate-900'}/>
             <div className="history-bg">
                 <div className="w-full flex justify-center items-center flex-wrap mt-5">
                     <div className="flex flex-col">
@@ -56,7 +60,7 @@ const History = () => {
                             htmlFor="startDate"
                             className="mx-5 text-slate-800 font-semibold tracking-wider"
                         >
-                            Start date
+                            {t("history1")}
                         </label>
                         <input
                             id="startDate"
@@ -65,7 +69,7 @@ const History = () => {
                             className="py-2 px-4 mx-4 bg-white rounded-md border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                            placeholder="Start date"
+                            placeholder={t("history1")}
                         />
                     </div>
 
@@ -74,7 +78,7 @@ const History = () => {
                             htmlFor="endDate"
                             className="mx-5 text-slate-800 font-semibold tracking-wider"
                         >
-                            End date
+                            {t("history2")}
                         </label>
                         <input
                             id="endDate"
@@ -83,7 +87,7 @@ const History = () => {
                             className="py-2 px-4 mx-4 bg-white rounded-md border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                            placeholder="End date"
+                            placeholder={t("history2")}
                         />
                     </div>
 
@@ -92,7 +96,7 @@ const History = () => {
                             htmlFor="searchUser"
                             className="mx-5 text-slate-800 font-semibold tracking-wider"
                         >
-                            Search User id
+                           {t("history3")}
                         </label>
                         <input
                             onChange={searchHistory}
@@ -100,7 +104,7 @@ const History = () => {
                             className="py-2 px-4 mx-4 bg-white rounded-md border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                            placeholder="🔍  Search User id..."
+                            placeholder="🔍..."
                         />
                     </div>
 
@@ -109,7 +113,7 @@ const History = () => {
                             htmlFor="searchId"
                             className="mx-5 text-slate-800 font-semibold tracking-wider"
                         >
-                            Search Id Number
+                           {t("history4")}
                         </label>
                         <input
                             onChange={searchHistory}
@@ -117,10 +121,10 @@ const History = () => {
                             className="py-2 px-4 mx-4 bg-white rounded-md border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                            placeholder="🔍  Search Id Number..."
+                            placeholder="🔍 ..."
                         />
                     </div>
-                    <p className='mt-6 ms-3'>Current page: {pagination}</p>
+                    <p className='mt-6 ms-3'>{t("cardCurrent")}: {pagination}</p>
                 </div>
 
                 {/* history table */}

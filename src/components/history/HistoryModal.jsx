@@ -1,4 +1,10 @@
+import { useTranslation } from "react-i18next";
+
+
 const Modal = ({ isOpen, onClose, historyList }) => {
+    const { t } = useTranslation();
+
+
     if (!isOpen) return null;
     const allAddressList = historyList.allAddress;
     return (
@@ -13,31 +19,31 @@ const Modal = ({ isOpen, onClose, historyList }) => {
                 </div>
                 <div className='px-20 py-6 flex justify-between items-center flex-wrap'>
                     <div className="mt-2 w-1/3 text-center">
-                        <p className='pb-0 mb-0 opacity-50'>Id Number</p>
+                        <p className='pb-0 mb-0 opacity-50'>{t("weiw1")}</p>
                         <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.productIdNumber}</p>
                     </div>
                     <div className="mt-2 w-1/3 text-center">
-                        <p className='pb-0 mb-0 opacity-50'>Ower</p>
+                        <p className='pb-0 mb-0 opacity-50'>{t("weiw2")}</p>
                         <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.owner}</p>
                     </div>
                     <div className="mt-2 w-1/3 text-center">
-                        <p className='pb-0 mb-0 opacity-50'>Created</p>
+                        <p className='pb-0 mb-0 opacity-50'>{t("weiw3")}</p>
                         <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.createdAt.substring(0, 10)} {historyList.createdAt.substring(11, 16)}</p>
                     </div>
                     <div className="mt-2 w-1/3 text-center">
-                        <p className='pb-0 mb-0 opacity-50'>Measure</p>
+                        <p className='pb-0 mb-0 opacity-50'>{t("weiw4")}</p>
                         <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.measure}</p>
                     </div>
                     <div className="mt-2 w-1/3 text-center">
-                        <p className='pb-0 mb-0 opacity-50'>Measure Count</p>
+                        <p className='pb-0 mb-0 opacity-50'>{t("weiw5")}</p>
                         <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.measureCount}</p>
                     </div>
                     <div className="mt-2 w-1/3 text-center">
-                        <p className='pb-0 mb-0 opacity-50'>Transport</p>
+                        <p className='pb-0 mb-0 opacity-50'>{t("weiw6")}</p>
                         <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.transport}</p>
                     </div>
                     <div className="mt-2 w-full text-center">
-                        <p className='pb-0 mb-0 opacity-50'>Address</p>
+                        <p className='pb-0 mb-0 opacity-50'>{t("weiw7")}</p>
                         <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.address}</p>
                     </div>
                 </div>

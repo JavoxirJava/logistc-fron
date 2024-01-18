@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ThreeCircles } from "react-loader-spinner";
 import Home from "./Home";
 
-function Loader() {
+function Loader({changeLang}) {
   let [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -14,7 +14,7 @@ function Loader() {
   return (
     <>
       {loading ? (
-        <div className=" loading flex h-screen justify-center items-center">
+        <div className=" loading w-full h-screen -mt-8 flex justify-center z-50 items-center">
           <ThreeCircles
             visible={true}
             height="200"
@@ -26,7 +26,7 @@ function Loader() {
           />
         </div>
       ) : (
-        <Home />
+        <Home changeLang={changeLang}/>
       )}
     </>
   );

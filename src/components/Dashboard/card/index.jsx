@@ -5,6 +5,7 @@ import {config, url} from '../../api';
 import Dropdown from "./Dropdown";
 import '../../product/product.css'
 import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
+import { useTranslation } from 'react-i18next';
 
 const Modal = ({isOpen, onClose}) => {
     if (!isOpen) return null;
@@ -45,6 +46,8 @@ const DashboardProductCard = ({className}) => {
     useEffect(() => {
         getProduct(pagination, 4);
     }, []);
+
+    const {t} = useTranslation()
 
     useEffect(() => {
         if ((pagination - 1) * 4 < 0) setPagination(0);
@@ -102,35 +105,35 @@ const DashboardProductCard = ({className}) => {
                     <Dropdown setSearchBy={setSearchBy}/>
                 </div>
             </div>
-            <p className='mb-3'>Current Page: 2</p>
+            <p className='mb-3'>{t("cardCurrent")}: 1</p>
             {data && data.map((item, i) => (
                 <div className={`flex mb-3 border border-blue-300 w-full bg-blue-200 ${className}`}>
                     <div className='card-col w-11/12 h-max py-4 ps-2' key={i}>
                         <div className='h-3/6 card-col-row w-full flex'>
                             <div className='w-[25%]'>
-                                <p className='opacity-70'>Number</p>
+                                <p className='opacity-70'>{t("card1")}</p>
                                 <p className='font-bold'>{item ? item.productId : 0}</p>
                             </div>
                             <div className='w-[25%]'>
-                                <p className='opacity-70'>Status</p>
+                                <p className='opacity-70'>{t("card2")}</p>
                                 <p className='font-bold'>{item ? item.status : 'no status'}</p>
                             </div>
                             <div className='w-[25%]'>
-                                <p className='opacity-70'>ETD</p>
+                                <p className='opacity-70'>{t("card3")}</p>
                                 <p className='font-bold'>{item ? item.createdAt.substring(0, 10) : "April 23, 2023"}</p>
                             </div>
                             <div className='w-[25%]'>
-                                <p className='opacity-70'>Product</p>
+                                <p className='opacity-70'>{t("card4")}</p>
                                 <p className='font-bold'>{item ? item.name : "Iphone"}</p>
                             </div>
                         </div>
                         <div className='h-3/6 card-col-row w-full flex'>
                             <div className='w-[65%]'>
-                                <p className='opacity-70'>Current Location</p>
+                                <p className='opacity-70'>{t("card5")}</p>
                                 <p className='font-bold'>{item ? item.address : "No location"}</p>
                             </div>
                             <div className='w-[35%]'>
-                                <p className='opacity-70'>Owner</p>
+                                <p className='opacity-70'>{t("card6")}</p>
                                 <p className='font-bold'>{item ? item.owner : "No owner"}</p>
                             </div>
                         </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { byId, config, getClientProduct, url } from "../api";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 function ProductCard({ className, product }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,6 +14,8 @@ function ProductCard({ className, product }) {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const {t} = useTranslation  
 
   const editUser = () => {
     setIsLoading(true)
@@ -43,25 +46,25 @@ function ProductCard({ className, product }) {
       <div className="card-col w-11/12">
         <div className="h-12 card-col-row w-full flex">
           <div className="w-[20%]">
-            <p className="opacity-70">Number</p>
+            <p className="opacity-70">{t("client1")}</p>
             <p className="font-bold text-[.9rem]">
               {product ? product.idNumber : 0}
             </p>
           </div>
           <div className="w-[30%]">
-            <p className="opacity-70">Name</p>
+            <p className="opacity-70">{t("client2")}</p>
             <p className="font-bold text-[.9rem]">
               {product ? product.name : "First Name"}
             </p>
           </div>
           <div className="w-[30%]">
-            <p className="opacity-70">Phone Number</p>
+            <p className="opacity-70">{t("client3")}</p>
             <p className="font-bold text-[.9rem]">
               {product ? product.phoneNumber : "No number"}
             </p>
           </div>
           <div className="w-[25%]">
-            <p className="opacity-70">Password</p>
+            <p className="opacity-70">{t("client4")}</p>
             <p className="font-bold text-[.9rem]">
               {product ? product.password : "No password"}
             </p>
@@ -69,25 +72,25 @@ function ProductCard({ className, product }) {
         </div>
         <div className="h-3/6 card-col-row w-full flex">
           <div className="w-[25%]">
-            <p className="opacity-70">All Product</p>
+            <p className="opacity-70">{t("client5")}</p>
             <p className="font-bold text-[.9rem] text-orange-500">
               {product ? product.allProduct : 0}
             </p>
           </div>
           <div className="w-[25%]">
-            <p className="opacity-70">Completed</p>
+            <p className="opacity-70">{t("client6")}</p>
             <p className="font-bold text-[.9rem] text-green-500">
               {product ? product.completed : 0}
             </p>
           </div>
           <div className="w-[35%]">
-            <p className="opacity-70">Pending</p>
+            <p className="opacity-70">{t("client7")}</p>
             <p className="font-bold text-[.9rem] text-purple-600">
               {product ? product.pending : 0}
             </p>
           </div>
           <div className="w-[25%]">
-            <p className="opacity-70">Cancel Porduct</p>
+            <p className="opacity-70">{t("client8")}</p>
             <p className="font-bold text-[.9rem] text-purple-600">
               {product ? product.cancel : 0}
             </p>
@@ -109,7 +112,7 @@ function ProductCard({ className, product }) {
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
           <div className="relative modal-bg top-20 mx-auto p-8  w-1/3 shadow-lg rounded-md ">
             <h2 className="text-2xl leading-6 font-semibold text-white text-center mb-4">
-              Edit client
+            {t("addclient1")}
             </h2>
             <div>
               <div className="mb-3">
@@ -117,7 +120,7 @@ function ProductCard({ className, product }) {
                   htmlFor="name"
                   className="block text-sm font-medium text-white"
                 >
-                  Name
+                   {t("addclient3")}
                 </label>
                 <input
                   // onKeyDown={checkKeyPress}
@@ -127,7 +130,7 @@ function ProductCard({ className, product }) {
                   className={`w-full ${
                     isLoading ? "cursor-not-allowed" : ""
                   } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
-                  placeholder="Enter password"
+                  placeholder={t("addclient4")}
                 />
               </div>
 
@@ -136,7 +139,7 @@ function ProductCard({ className, product }) {
                   htmlFor="name"
                   className="block text-sm font-medium text-white"
                 >
-                  Id Number
+                   {t("addclient5")}
                 </label>
                 <input
                   // onKeyDown={checkKeyPress}
@@ -146,7 +149,7 @@ function ProductCard({ className, product }) {
                   className={`w-full ${
                     isLoading ? "cursor-not-allowed" : ""
                   } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
-                  placeholder="Enter password"
+                  placeholder={t("addclient6")}
                 />
               </div>
 
@@ -155,7 +158,7 @@ function ProductCard({ className, product }) {
                   htmlFor="name"
                   className="block text-sm font-medium text-white"
                 >
-                  Phone Number
+                   {t("addclient7")}
                 </label>
                 <input
                   id="phoneNumberCl"
@@ -164,7 +167,7 @@ function ProductCard({ className, product }) {
                   className={`w-full ${
                     isLoading ? "cursor-not-allowed" : ""
                   } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
-                  placeholder="Enter password"
+                  placeholder= {t("addclient8")}
                 />
               </div>
 
@@ -173,7 +176,7 @@ function ProductCard({ className, product }) {
                   htmlFor="name"
                   className="block text-sm font-medium text-white"
                 >
-                  Password
+                   {t("addclient9")}
                 </label>
                 <div className="relative">
                   <input
@@ -184,7 +187,7 @@ function ProductCard({ className, product }) {
                     className={`w-full ${
                       isLoading ? "cursor-not-allowed" : ""
                     } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
-                    placeholder="Enter password"
+                    placeholder= {t("addclient10")}
                   />
                   <button
                     type="button"
@@ -210,10 +213,10 @@ function ProductCard({ className, product }) {
                   onClick={closeModal}
                   className="btm-close"
                 >
-                  Close
+                   {t("close")}
                 </button>
                 <button className="btmn"
-                onClick={editUser}>Edit</button>
+                onClick={editUser}>{t("edit")}</button>
               </div>
             </div>
           </div>

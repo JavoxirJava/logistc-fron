@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../home page/home.css";
-import language from "./long/longNav.json";
 
 import { logo } from "../../assets";
+import { useTranslation } from "react-i18next";
 
-function HomeNav({ home, about, services, gallery }) {
+function HomeNav({ home, about, services, gallery, changeLang }) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const [lang, setLang] = useState("");
+  const { t } = useTranslation();
 
-  useEffect(() => {
-    if (!localStorage.getItem("lang")) localStorage.setItem("lang", "EN");
-    let lang = localStorage.getItem("lang");
-    setLang(lang === "EN" ? language.en.nav : language.ru.nav);
-  }, []);
-
-  function editLong() {
-    localStorage.setItem("lang", document.getElementById("lang").value);
-    window.location.reload();
-  }
+  
 
   const openMenu = () => setIsOpenMenu(!isOpenMenu);
 
@@ -26,7 +17,7 @@ function HomeNav({ home, about, services, gallery }) {
   return (
     <div>
       <nav className="bg-white">
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8  mt-3">
+        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               <button
@@ -88,7 +79,7 @@ function HomeNav({ home, about, services, gallery }) {
                         className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                         aria-current="page"
                       >
-                        Home
+                        {t("home")}
                       </a>
                     </li>
                     <li onClick={openMenu}>
@@ -96,7 +87,7 @@ function HomeNav({ home, about, services, gallery }) {
                         href="#2"
                         className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                       >
-                        About
+                        {t("about")}
                       </a>
                     </li>
                     <li className="my-2" onClick={openMenu}>
@@ -105,7 +96,7 @@ function HomeNav({ home, about, services, gallery }) {
                         href="#3"
                         className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                       >
-                        Services
+                        {t("service")}
                       </a>
                     </li>
                     <li onClick={openMenu}>
@@ -114,8 +105,10 @@ function HomeNav({ home, about, services, gallery }) {
                         href="#4"
                         className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                       >
-                        Gallery
+                        {t("gallary")}
                       </a>
+                    </li>
+                    <li className="mt-3">
                     </li>
                   </ul>
                 </div>
@@ -132,41 +125,31 @@ function HomeNav({ home, about, services, gallery }) {
                     className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                     aria-current="page"
                   >
-                    Home
+                    {t("home")}
                   </a>
                   <a
                     href={about}
                     className="text-gray-600 hover:bg-gray-900 hover:text-white duration-200 rounded-md px-3 py-2 text-sm font-medium"
                   >
-                    About
+                    {t("about")}
                   </a>
                   <a
                     href={services}
                     className="text-gray-600 hover:bg-gray-900 hover:text-white duration-200 rounded-md px-3 py-2 text-sm font-medium"
                   >
-                    Services
+                    {t("service")}
                   </a>
                   <a
                     href={gallery}
                     className="text-gray-600 hover:bg-gray-900 hover:text-white duration-200 rounded-md px-3 py-2 text-sm font-medium"
                   >
-                    Gallery
+                    {t("gallary")}
                   </a>
+                 
                 </div>
               </div>
             </div>
-            {/* <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0">
-              <select data-te-select-init className="btm2">
-                <option className="bg-gray-800" value="1">One</option>
-                <option className="bg-gray-800" value="2">Two</option>
-                <option className="bg-gray-800" value="3">Three</option>
-                <option className="bg-gray-800" value="4">Four</option>
-                <option className="bg-gray-800" value="5">Five</option>
-                <option className="bg-gray-800" value="6">Six</option>
-                <option className="bg-gray-800" value="7">Seven</option>
-                <option className="bg-gray-800" value="8">Eight</option>
-              </select>
-            </div> */}
+            <div className="  hidden md:inline inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0"></div>
             <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0">
               <Link id="login" to="/login">
                 <button
