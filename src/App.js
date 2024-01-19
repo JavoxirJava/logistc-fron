@@ -33,8 +33,8 @@ function App() {
 
     
     return (
-        <div>
-            <Select changeLang={changeLang} />
+        <div className="relative">
+            <Select className={`absolute`} changeLang={changeLang} />
             <Routes>
                 <Route path='/' element={<Loader/>}/>
                 <Route path='/login' element={<Login/>}/>

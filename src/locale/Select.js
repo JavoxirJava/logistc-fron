@@ -1,11 +1,11 @@
 import React from "react";
 
-function Select({changeLang}) {
-    const changeLanguage = (e) => {
-        changeLang(e.target.value)
-    }
+function Select({ changeLang, className }) {
+  const changeLanguage = (e) => {
+    changeLang(e.target.value)
+  }
   return (
-    <select data-te-select-init className="btm2 relative top-3" onChange={changeLanguage}>
+    <select data-te-select-init className={`btm2 ${className} right-[2%] top-4`} onChange={changeLanguage}>
       <option className="bg-gray-800" value="en">
         en
       </option>

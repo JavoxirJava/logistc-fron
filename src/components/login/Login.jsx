@@ -37,7 +37,7 @@ function Login() {
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   return (
-    <div className="w-full h-screen -mt-8 flex justify-center items-center header-div text-white" style={{position: "fixed", overflow: "hidden"}}>
+    <div className="w-full h-screen flex justify-center items-center header-div text-white" style={{position: "fixed", overflow: "hidden"}}>
       <div className="w-[450px] h-[470px] rounded-2xl box md:py-10 md:px-12 px-5 py-10 flex flex-col">
         <p className="text-2xl mb-10">{t("login1")}</p>
         <p>{t("login2")}</p>
