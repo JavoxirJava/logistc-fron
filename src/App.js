@@ -13,6 +13,7 @@ import i18n from "i18next"
 import { initReactI18next } from "react-i18next";
 import translateEn from "./locale/translateEn"
 import translateRu from "./locale/translateRu"
+import Select from "./locale/Select";
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -26,35 +27,21 @@ i18n.use(initReactI18next).init({
 function App() {
     AOS.init();
 
-    const changeLang = (e) => {
-        i18n.changeLanguage(e.target.value)
+    const changeLang = (value) => {
+        i18n.changeLanguage(value)
     }
 
     
     return (
         <div>
-            <div className="flex mt-2  w-full">
-
-             <select
-                    data-te-select-init
-                    className="btm2"
-                    onChange={changeLang}
-                  >
-                    <option className="bg-gray-800" value="en">
-                      en
-                    </option>
-                    <option className="bg-gray-800" value="ru">
-                      ru
-                    </option>
-                  </select>
-            </div>
+            <Select changeLang={changeLang} />
             <Routes>
-                <Route path='/' element={<Loader changeLang={changeLang}/>}/>
+                <Route path='/' element={<Loader/>}/>
                 <Route path='/login' element={<Login/>}/>
-                <Route path='/dashboard' element={<Dashboard changeLang={changeLang}/>}/>
-                <Route path='/product' element={<Product changeLang={changeLang}/>}/>
-                <Route path='/client' element={<Clients changeLang={changeLang}/>}/>
-                <Route path='/history' element={<History changeLang={changeLang}/>}/>
+                <Route path='/dashboard' element={<Dashboard/>}/>
+                <Route path='/product' element={<Product/>}/>
+                <Route path='/client' element={<Clients/>}/>
+                <Route path='/history' element={<History/>}/>
                 <Route path='/footer' element={<HomeFooter/>}/>
             </Routes>
         </div>
