@@ -109,8 +109,8 @@ function ProductCard({ className, product }) {
         </button>
       </div>
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-          <div className="relative modal-bg top-20 mx-auto p-8  w-1/3 shadow-lg rounded-md ">
+        <div className="fixed inset-0 bg-gray-600  overflow-y-auto h-full w-full lg:px-0 md:px-40 sm:px-10 px-2">
+          <div className="relative modal-bg top-20 mx-auto md:p-8 p-3  lg:w-1/3 shadow-lg rounded-md ">
             <h2 className="text-2xl leading-6 font-semibold text-white text-center mb-4">
             {t("addclient1")}
             </h2>

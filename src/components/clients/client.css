@@ -52,11 +52,11 @@
   .modal-bg {
     background-image: linear-gradient(
         120deg,
-        hsl(199deg 100% 55%) 0%,
-        hsl(230deg 70% 43%) 20%,
-        hsl(220deg 73% 50%) 40%,
-        hsl(220deg 73% 50%) 60%,
-        hsl(230deg 70% 43%) 80%,
-        hsl(199deg 100% 55%) 100%
+        #1ab6ff ,
+        #213aba ,
+        #2260dd ,
+        #2260dd ,
+        #213aba ,
+        hsl(199deg 100% 55%) 
       );
   }
