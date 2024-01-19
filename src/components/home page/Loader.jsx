@@ -14,7 +14,7 @@ function Loader({changeLang}) {
   return (
     <>
       {loading ? (
-        <div className=" loading w-full h-screen flex justify-center z-50 items-center">
+        <div className=" loading w-full h-screen flex justify-center z-500 items-center">
           <ThreeCircles
             visible={true}
             height="200"
