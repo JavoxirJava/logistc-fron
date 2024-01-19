@@ -156,7 +156,7 @@ function HomeNav({ home, about, services, gallery, changeLang }) {
                   className=" flex text-lg gap-3 rounded-full bg-gray-800 p-1 text-gray-400 px-4 py-2 btm"
                   onClick={login}
                 >
-                  <p className="hidden md:block">Log In</p>
+                  <p className="hidden md:block">{t("login")}</p>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
