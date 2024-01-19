@@ -11,8 +11,8 @@ function Dashboard({changeLanguage}) {
     const [productStatistics, setProductStatistics] = useState(null);
     const [productStatistics2, setProductStatistics2] = useState(null);
 
-    useEffect(async () => {
-        await setConfig();
+    useEffect( () => {
+         setConfig();
         getMe(setMe);
         axios.get(`${url}product/diagramForAdmin`, config)
             .then((res) => setProductStatistics(res.data.body))

@@ -33,7 +33,7 @@ function App() {
     
     return (
         <div>
-            <div className="flex  w-full">
+            <div className="flex mt-2  w-full">
 
              <select
                     data-te-select-init
