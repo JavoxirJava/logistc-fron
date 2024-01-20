@@ -14,15 +14,9 @@ function Login() {
     const {t} = useTranslation();
 
     useEffect(() => {
-        byIdObj('username').addEventListener("keydown", e => {
-            if (e.key === 'Enter') login();
-        });
-        byIdObj('password').addEventListener("keydown", e => {
-            if (e.key === 'Enter') login();
-        });
-
-    }, [])
-
+        byIdObj('username').addEventListener("keydown", e => e.key === 'Enter' && login());
+        byIdObj('password').addEventListener("keydown", e => e.key === 'Enter' && login());
+    }, []);
 
     function login() {
         setIsLoading(true);
