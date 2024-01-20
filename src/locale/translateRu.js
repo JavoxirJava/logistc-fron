@@ -79,7 +79,7 @@ const translateRu = {
     dropdown2: "Статус продукта",
     dropdown3: "Идентификатор пользователя",
     dropdown4: "ID пользователя",
-    login1: 'Авторизоваться',
+    login1: 'Вход',
     login2: 'Номер телефона',
     login3: 'Число',// bu placeholderdagi malumot
     login4: 'Пароль',

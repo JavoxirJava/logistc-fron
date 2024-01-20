@@ -13,6 +13,24 @@ function HomeNav({ home, about, services, gallery, changeLang }) {
 
   const openMenu = () => setIsOpenMenu(!isOpenMenu);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   const login = () => document.getElementById("login").click();
   return (
     <div>
