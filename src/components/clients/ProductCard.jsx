@@ -44,7 +44,7 @@ function ProductCard({ className, product }) {
       className={`flex card-main border border-blue-300 w-full px-2 py-2 bg-blue-100 ${className}`}
     >
       <div className="card-col w-11/12">
-        <div className="h-12 card-col-row w-full flex">
+        <div className="h-12 card-col-row w-full flex media-product">
           <div className="w-[20%]">
             <p className="opacity-70">{t("client1")}</p>
             <p className="font-bold text-[.9rem]">
@@ -70,7 +70,7 @@ function ProductCard({ className, product }) {
             </p>
           </div>
         </div>
-        <div className="h-3/6 card-col-row w-full flex">
+        <div className="h-3/6 card-col-row w-full flex media-product">
           <div className="w-[25%]">
             <p className="opacity-70">{t("client5")}</p>
             <p className="font-bold text-[.9rem] text-orange-500">

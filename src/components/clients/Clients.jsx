@@ -130,7 +130,7 @@ const Clients = ({changeLanguage}) => {
                     <div className="flex justify-between items-center">
                         <input
                             onChange={searchProductClient}
-                            className="py-2 px-4 w-96 bg-slate-100 rounded-lg border border-slate-300
+                            className="py-2 sm:px-4 px-2 sm:w-96 bg-slate-100 rounded-lg border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-200 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
                             placeholder={t("productSearch")}
