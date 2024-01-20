@@ -11,7 +11,7 @@ const Dropdown = ({setSearchBy}) => {
 
     return (
         <div className="relative inline-block text-left float-end">
-            <i className="fa-solid fa-bars text-3xl"  onClick={toggleDropdown}></i>
+            <i className="fa-solid fa-bars md:text-3xl text-2xl"  onClick={toggleDropdown}></i>
             {isOpen && (
                 <div
                     className="origin-top-right absolute z-10 right-0 mt-2 w-56 rounded shadow-lg bg-white ring-1 ring-black ring-opacity-5">
