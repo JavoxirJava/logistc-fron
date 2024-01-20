@@ -24,12 +24,10 @@ function Login() {
         ).then((res) => {
             if (res.data) {
                 sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
-                setIsLoading(false);
-                byIdObj("dashboard").click();
-            } else {
-                setIsLoading(false);
-                toast.error("User not found");
-            }
+                if (res.data.message === "ROLE_USER") byIdObj("user-dashboard").click();
+                else byIdObj("dashboard").click();
+            } else toast.error("User not found");
+            setIsLoading(false);
         }).catch(err => {
             console.log(err)
             setIsLoading(false);
@@ -83,11 +81,12 @@ function Login() {
                     } text-white p-3 text-lg font-semibold w-full rounded-md  mt-10`}
                     onClick={login}
                 >
-                    {isLoading ? <span class="loader"></span> : t("login1")}
+                    {isLoading ? <span className="loader"></span> : t("login1")}
                 </button>
             </div>
 
             <Link to="/dashboard" id="dashboard"></Link>
+            <Link to="/user-dashboard" id="user-dashboard"></Link>
         </div>
     );
 }

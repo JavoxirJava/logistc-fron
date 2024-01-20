@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 
 
 const Modal = ({ isOpen, onClose, historyList }) => {
+    console.log(historyList)
     const { t } = useTranslation();
 
 
@@ -32,7 +33,7 @@ const Modal = ({ isOpen, onClose, historyList }) => {
                     </div>
                     <div className="mt-2 w-1/3 text-center">
                         <p className='pb-0 mb-0 opacity-50'>{t("weiw4")}</p>
-                        <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.measure}</p>
+                        <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.measureCount + " " + historyList.measure}</p>
                     </div>
                     <div className="mt-2 w-1/3 text-center">
                         <p className='pb-0 mb-0 opacity-50'>{t("weiw5")}</p>
