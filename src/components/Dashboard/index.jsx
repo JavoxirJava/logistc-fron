@@ -12,12 +12,11 @@ function Dashboard({changeLanguage}) {
     const [productStatistics2, setProductStatistics2] = useState(null);
 
     useEffect( () => {
-         setConfig();
+        setConfig();
         getMe(setMe);
         axios.get(`${url}product/diagramForAdmin`, config)
             .then((res) => setProductStatistics(res.data.body))
             .catch(err => console.log(err));
-
         axios.get(`${url}product/admin/statistics`, config)
             .then((res) => setProductStatistics2(res.data.body))
             .catch(err => console.log(err));
@@ -26,6 +25,8 @@ function Dashboard({changeLanguage}) {
     useEffect(() => {
         sessionStorage.setItem("userId", me ? me.id : 0);
     }, [me]);
+
+    setConfig();
 
     return (
         <>
