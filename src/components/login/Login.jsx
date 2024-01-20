@@ -43,7 +43,7 @@ function Login() {
         <p>{t("login2")}</p>
         <input
           id="username"
-          disabled={isLoading ? true : false}
+          disabled={isLoading}
           className={`w-full ${
             isLoading ? "cursor-not-allowed" : ""
           } border-2 mb-5 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500`}
@@ -54,7 +54,7 @@ function Login() {
           <input
             // onKeyDown={checkKeyPress}
             id="password"
-            disabled={isLoading ? true : false}
+            disabled={isLoading}
             type={showPassword ? "text" : "password"}
             className={`w-full ${
               isLoading ? "cursor-not-allowed" : ""
