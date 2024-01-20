@@ -31,3 +31,13 @@
 .relative {
     position: relative!important;
 }
+
+@media only screen and (max-width:450px) {
+    .media-product {
+        flex-direction: column;
+    }
+    .media-product-button{
+        margin: 5px;
+        width: 150px;
+    }
+}
