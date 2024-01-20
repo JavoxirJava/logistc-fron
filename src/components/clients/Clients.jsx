@@ -22,39 +22,6 @@ const Clients = ({changeLanguage}) => {
 
   const { t } = useTranslation();
 
-  useEffect(() => {
-    if ((pagination - 1) * 4 < 0) setPagination(0);
-    else
-      getClientProduct(
-        Math.floor(pagination - 1),
-        4,
-        setProductClient,
-        setTotalPage
-      );
-  }, [pagination]);
-
-  function addUser() {
-    setIsloading(true);
-    const data = {
-      name: byId("nameC"),
-      idNumber: byId("idNumberC"),
-      phoneNumber: `+998${byId("phoneNumberC")}`,
-      password: byId("passwordC"),
-    };
-    axios
-      .post(`${url}user?ROLE=ROLE_USER`, data, config)
-      .then(() => {
-        toast.success("successfully saved User");
-        setIsloading(false);
-        byIdObj("nameC").value = "";
-        byIdObj("idNumberC").value = "";
-        byIdObj("phoneNumberC").value = "";
-        byIdObj("passwordC").value = "";
-    useEffect(() => {
-        getClientProduct(pagination, 4, setProductClient, setTotalPage);
-    }, []);
-
-    const {t} = useTranslation();
 
     useEffect(() => {
         if ((pagination - 1) * 4 < 0) setPagination(0);
@@ -72,7 +39,7 @@ const Clients = ({changeLanguage}) => {
         const data = {
             name: byId("nameC"),
             idNumber: byId("idNumberC"),
-            phoneNumber: byId("phoneNumberC"),
+            phoneNumber:  `+998${byId("phoneNumberC")}`,
             password: byId("passwordC"),
         };
         axios.post(`${url}user?ROLE=ROLE_USER`, data, config)
@@ -91,7 +58,7 @@ const Clients = ({changeLanguage}) => {
                 else toast.error("User not added!");
                 setIsloading(false);
                 console.log(err);
-            });
+            })
     }
 
     function searchProductClient(e) {
@@ -130,7 +97,7 @@ const Clients = ({changeLanguage}) => {
                     <div className="flex justify-between items-center">
                         <input
                             onChange={searchProductClient}
-                            className="py-2 sm:px-4 px-2 sm:w-96 bg-slate-100 rounded-lg border border-slate-300
+                            className="py-2 px-4 w-96 bg-slate-100 rounded-lg border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-200 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
                             placeholder={t("productSearch")}
@@ -201,9 +168,7 @@ const Clients = ({changeLanguage}) => {
 
                         </div>
 
-                        {/* <p htmlFor="phoneNumberC" className="ml-3.5 text-gray-500 pb-5">
-              {t("client03")}
-            </p> */}
+                        
                         <label htmlFor="passwordC" className="ml-3.5">
                             {t("addclient9")}
                         </label>
@@ -237,7 +202,7 @@ const Clients = ({changeLanguage}) => {
             </div>
             
         </>
-    );
-};
+    )
+}
   
-export default Clients;
+export default Clients
