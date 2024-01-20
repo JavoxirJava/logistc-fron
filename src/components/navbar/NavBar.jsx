@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import NavDrop from "./NavDrop";
 import { useTranslation } from "react-i18next";
+import "./style.css"
 
 function NavBar({ dashboard, product, client, history, changeLang }) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -227,10 +228,10 @@ function NavBar({ dashboard, product, client, history, changeLang }) {
                 <div
                   className={`${
                     isOpen ? "inline" : "hidden"
-                  } absolute lg:w-80 w-72 bg-slate-400 lg:-right-8 right-1 top-12 
+                  } absolute lg:w-80 w-72 media-nav bg-slate-400 lg:-right-8 right-1 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
                 >
-                  <div className="bg-slate-200 p-8 flex justify-center items-center relative">
+                  <div className="bg-slate-200 sm:p-8 p-3 flex justify-center items-center relative">
                     <img
                       className="rounded-full w-24 h-24"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -242,7 +243,7 @@ function NavBar({ dashboard, product, client, history, changeLang }) {
                     ></i>
                   </div>
                   {me && (
-                    <div className="bg-gradient-to-tl from-sky-500 to-sky-800 px-8 py-6">
+                    <div className="bg-gradient-to-tl from-sky-500 to-sky-800 sm:px-8 px-2 py-6">
                       <div className=" font-bold text-black text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">{t("addclient3")}</p>
                         <p className="mt-0 pt-0 text-white">{me.name}</p>
