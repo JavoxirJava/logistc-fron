@@ -81,7 +81,7 @@ const DashboardProductCard = ({className}) => {
                     <Dropdown setSearchBy={setSearchBy}/>
                 </div>
             </div>
-            <p className='mb-3'>{t("cardCurrent")}: 1</p>
+            <p className='mb-3'>{t("cardCurrent")}: {pagination === 0 ? 1 : pagination}</p>
             {data && data.map((item, i) => (
                 <div className={`flex mb-3 border border-blue-300 w-full bg-blue-200 ${className}`}>
                     <div className='card-col w-11/12 h-max py-4 ps-2' key={i}>
