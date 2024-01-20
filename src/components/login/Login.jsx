@@ -24,6 +24,7 @@ function Login() {
         )}`
       )
       .then((res) => {
+      
         sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
         setIsLoading(false);
 
