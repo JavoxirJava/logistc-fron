@@ -6,26 +6,110 @@
   border-radius: 2rem;
   background-size: cover;
   color: #00000089;
-  
+}
 
+.languageSelect {
+  right: 13%;
+}
+
+@media (max-width: 2000px) {
+  .languageSelect {
+    right: 13%;
+  }
+}
+
+@media (max-width: 1900px) {
+  .languageSelect {
+    right: 10%;
+  }
+}
+
+@media (max-width: 1750px) {
+  .languageSelect {
+    right: 8%;
+  }
+}
+
+@media (max-width: 1670px) {
+  .languageSelect {
+    right: 5%;
+  }
+}
+
+@media (max-width: 1560px) {
+  .languageSelect {
+    right: 2%;
+  }
+}
+
+@media (max-width: 1465px) {
+  .languageSelect {
+    right: 22%;
+  }
+}
+
+@media (max-width: 915px) {
+  .languageSelect {
+    right: 24%;
+  }
+}
+
+@media (max-width: 860px) {
+  .languageSelect {
+    right: 27%;
+  }
+}
+
+@media (max-width: 767px) {
+  .languageSelect {
+    right: 20%;
+  }
+}
+
+@media (max-width: 610px) {
+  .languageSelect {
+    right: 25%;
+  }
+}
+
+@media (max-width: 490px) {
+  .languageSelect {
+    right: 30%;
+  }
+}
+
+@media (max-width: 400px) {
+  .languageSelect {
+    right: 35%;
+  }
+}
+
+@media (max-width: 355px) {
+  .languageSelect {
+    right: 40%;
+  }
 }
 
 .back-h {
   transition: all 0.5s;
   opacity: 0;
 }
+
 .back-h:hover {
   cursor: pointer;
   transform: scale(1.05);
   opacity: 100%;
 
 }
+
 .back1 {
   background-image: url("https://eastline-logistics.uz/images/services/truck3.jpg");
 }
+
 .back2 {
   background-image: url("https://img.freepik.com/premium-photo/international-logistics-and-freight-transportation-s_410516-18607.jpg");
 }
+
 .back3 {
   background-image: url("https://img.freepik.com/free-photo/airplane-in-the-track-front-view-generative-ai_188544-7895.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702339200&semt=ais");
 }
@@ -70,14 +154,15 @@
     061927
 */
 .oraliq {
-    background: rgb(6,25,39);
-background: linear-gradient(0deg, rgba(6,25,39,1) 4%, rgba(37,59,82,1) 100%);
+  background: rgb(6, 25, 39);
+  background: linear-gradient(0deg, rgba(6, 25, 39, 1) 4%, rgba(37, 59, 82, 1) 100%);
 
 }
 
 .hov-card {
   opacity: 0;
   transition: all 0.5s;
+
   &:hover {
     opacity: 100%;
     transform: scale(1.03);
@@ -87,6 +172,7 @@ background: linear-gradient(0deg, rgba(6,25,39,1) 4%, rgba(37,59,82,1) 100%);
 .animi {
   transition: 0.5s !important;
 }
+
 .animi:hover {
   border: 1px solid;
   background-color: #fff;
@@ -95,7 +181,7 @@ background: linear-gradient(0deg, rgba(6,25,39,1) 4%, rgba(37,59,82,1) 100%);
   transform: scale(1.1);
 }
 
-.btm{
+.btm {
 
   font-family: Roboto, sans-serif;
   font-weight: 600;
@@ -106,94 +192,101 @@ background: linear-gradient(0deg, rgba(6,25,39,1) 4%, rgba(37,59,82,1) 100%);
   border: none;
   box-shadow: rgb(0, 0, 0) 0px 0px 19px -2px;
   border-radius: 50px;
-  transition : 1000ms;
+  transition: 1000ms;
   transform: translateY(0);
   display: flex;
   flex-direction: row;
   align-items: center;
   cursor: pointer;
-  }
-  
-  .btm:hover{
-  
-    transition : 842ms;
-    transform : translateY(-3px);
-    background: linear-gradient(90deg, #0066CC 0%, #c500cc 100%);
-    color: #ffffff;
-  }
+}
 
-  .btm2{
+.btm:hover {
 
-    font-family: Roboto, sans-serif;
-    font-weight: 600;
-    font-size: 19px;
-    color: #fff;
-    background: linear-gradient(90deg, #0066CC 0%, #c500cc 100%);
-    padding: 3px 30px;
-    border: none;
-    box-shadow: rgb(0, 0, 0) 0px 0px 19px -2px;
-    border-radius: 50px;
-    transition : 1000ms;
-    margin-left: 2rem;
-    transform: translateY(0);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
-    }
-        
+  transition: 842ms;
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #0066CC 0%, #c500cc 100%);
+  color: #ffffff;
+}
 
-  .loading {
-    background-image: linear-gradient(
-      120deg,
+.btm2 {
+
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  color: #fff;
+  background: linear-gradient(90deg, #0066CC 0%, #c500cc 100%);
+  padding: 3px 30px;
+  border: none;
+  box-shadow: rgb(0, 0, 0) 0px 0px 19px -2px;
+  border-radius: 50px;
+  transition: 1000ms;
+  margin-left: 2rem;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.loading {
+  background-image: linear-gradient(120deg,
       hsl(199deg 100% 55%) 0%,
       hsl(230deg 70% 43%) 20%,
       hsl(220deg 73% 50%) 40%,
       hsl(220deg 73% 50%) 60%,
       hsl(230deg 70% 43%) 80%,
-      hsl(199deg 100% 55%) 100%
-    );
-  }
+      hsl(199deg 100% 55%) 100%);
+}
 
 
 .important {
   margin-top: -80px;
   z-index: 0;
 }
+
 .important2 {
   z-index: -1;
   margin-top: -100px;
 }
+
 @media only screen and (max-width: 1031px) {
   .important2 {
     margin-top: -50px;
   }
+
   .important {
     margin-top: 0px;
     z-index: 0;
   }
 }
+
 @media only screen and (max-width: 661px) {
   .important2 {
     margin-top: -30px;
   }
+
   .important {
     margin-top: 0px;
     z-index: 0;
   }
 }
+
 .importand3 {
   z-index: 100;
 }
+
 @media only screen and (max-width: 461px) {
   .important2 {
     margin-top: -19px;
   }
+
   .important {
     margin-top: 0px;
     z-index: 0;
   }
 }
+
 .importand3 {
   z-index: 100;
 }
