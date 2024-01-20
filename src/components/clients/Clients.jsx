@@ -40,7 +40,7 @@ const Clients = ({ changeLanguage }) => {
     const data = {
       name: byId("nameC"),
       idNumber: byId("idNumberC"),
-      phoneNumber: byId("phoneNumberC"),
+      phoneNumber: `+998${byId("phoneNumberC")}`,
       password: byId("passwordC"),
     };
     axios
