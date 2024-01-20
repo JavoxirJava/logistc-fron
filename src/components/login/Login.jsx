@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./login.css";
 import axios from "axios";
 import { byId, byIdObj, url } from "../api";
@@ -13,10 +13,19 @@ function Login() {
 
     const {t} = useTranslation();
 
+    useEffect(() => {
+        byIdObj('username').addEventListener("keydown", e => {
+            if (e.key === 'Enter') login();
+        });
+        byIdObj('password').addEventListener("keydown", e => {
+            if (e.key === 'Enter') login();
+        });
+
+    }, [])
+
 
     function login() {
         setIsLoading(true);
-
         axios.post(
             `${url}user/login?phoneNumber=${byId("username")}&password=${byId(
                 "password"
