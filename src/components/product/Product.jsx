@@ -85,6 +85,7 @@ function Product( ) {
             .then(() => {
                 toast.success("successfully saved product");
                 setProductObj2(null);
+                getProduct(pagination, 4);
             }).catch((err) => {
             toast.error("product saved error");
             console.log(err);

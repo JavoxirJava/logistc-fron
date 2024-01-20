@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./login.css";
 import axios from "axios";
 import { byId, byIdObj, url } from "../api";
@@ -8,37 +8,38 @@ import { useTranslation } from "react-i18next";
 
 
 function Login() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-  const { t } = useTranslation();
+    const {t} = useTranslation();
 
+    useEffect(() => {
+        byIdObj('username').addEventListener("keydown", e => e.key === 'Enter' && login());
+        byIdObj('password').addEventListener("keydown", e => e.key === 'Enter' && login());
+    }, []);
 
-  function login() {
-    setIsLoading(true);
+    function login() {
+        setIsLoading(true);
+        axios.post(`${url}user/login?phoneNumber=${byId("username")}&password=${byId("password")}`)
+            .then((res) => {
+            if (res.data) {
+                sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
+                if (res.data.message === "ROLE_USER") byIdObj("user-dashboard").click();
+                else byIdObj("dashboard").click();
+            } else toast.error("User not found");
+            setIsLoading(false);
+        }).catch(err => {
+            console.log(err)
+            setIsLoading(false);
+            toast.error("User not found");
+        });
+    }
 
-    axios
-      .post(
-        `${url}user/login?phoneNumber=${byId("username")}&password=${byId(
-          "password"
-        )}`
-      )
-      .then((res) => {
-        sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
-        setIsLoading(false);
-
-        byIdObj("dashboard").click();
-      })
-      .catch(() => {
-        setIsLoading(false);
-        toast.error("User not found");
-      });
-  }
-  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   return (
-    <div className="w-full h-screen flex justify-center items-center px-2 header-div text-white" style={{position: "fixed", overflow: "hidden"}}>
-      <div className="w-[450px] md:h-[470px] h-[400px] rounded-2xl box md:py-10 md:px-12 sm:px-5 px-3 py-7 flex flex-col">
+    <div className="w-full h-screen flex justify-center items-center header-div text-white" style={{position: "fixed", overflow: "hidden"}}>
+      <div className="w-[450px] h-[470px] rounded-2xl box md:py-10 md:px-12 px-5 py-10 flex flex-col">
         <p className="text-2xl mb-10">{t("login1")}</p>
         <p>{t("login2")}</p>
         <input
@@ -83,9 +84,10 @@ function Login() {
         </button>
       </div>
 
-      <Link to="/dashboard" id="dashboard"></Link>
-    </div>
-  );
+            <Link to="/dashboard" id="dashboard"></Link>
+            <Link to="/user-dashboard" id="user-dashboard"></Link>
+        </div>
+    );
 }
 
 export default Login;

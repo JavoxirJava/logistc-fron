@@ -35,7 +35,7 @@ function ProductCard({className, product, openEdit, setProductObj}) {
                     </div>
                     <div className='w-[18%] ps-1'>
                         <p className='opacity-70'>{t("card6")}</p>
-                        <p className='font-bold'>{product ? product.measure : "No location"}</p>
+                        <p className='font-bold'>{product ? product.measureCount + " " + product.measure : "No location"}</p>
                     </div>
                     <div className='w-[18%] ps-1'>
                         <p className='opacity-70'>{t("card7")}</p>
