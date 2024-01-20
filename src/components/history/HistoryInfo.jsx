@@ -62,7 +62,7 @@ const HistoryInfo = ({ history, className }) => {
                                 setHistoryList(item);
                                 openModal();
                             }}
-                            className="py-2 px-6 bg-blue-800 border border-red-500 rounded-md
+                            className="py-2 px-6 bg-blue-800 border rounded-md
                             text-white font-bold active:scale-95 duration-300 tracking-wide"
                         >
                             {t("history5")}

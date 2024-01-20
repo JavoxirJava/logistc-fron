@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./login.css";
 import axios from "axios";
-import {byId, byIdObj, url} from "../api";
-import {toast} from "react-toastify";
-import {Link} from "react-router-dom";
-import {useTranslation} from "react-i18next";
+import { byId, byIdObj, url } from "../api";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 function Login() {
