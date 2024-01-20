@@ -1,0 +1,10 @@
+@media only screen and (max-width:350px){
+    .media-nav{
+        width: 260px !important;
+    }
+}
+@media only screen and (max-width:300px){
+    .media-nav{
+        width: 230px !important;
+    }
+}
