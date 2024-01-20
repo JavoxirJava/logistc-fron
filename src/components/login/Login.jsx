@@ -26,11 +26,8 @@ function Login() {
 
     function login() {
         setIsLoading(true);
-        axios.post(
-            `${url}user/login?phoneNumber=${byId("username")}&password=${byId(
-                "password"
-            )}`
-        ).then((res) => {
+        axios.post(`${url}user/login?phoneNumber=${byId("username")}&password=${byId("password")}`)
+            .then((res) => {
             if (res.data) {
                 sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
                 if (res.data.message === "ROLE_USER") byIdObj("user-dashboard").click();
