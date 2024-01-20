@@ -52,13 +52,13 @@ const Clients = ({ changeLanguage }) => {
         byIdObj("idNumberC").value = "";
         byIdObj("phoneNumberC").value = "";
         byIdObj("passwordC").value = "";
-    getClientProduct(pagination, 4, setProductClient, setTotalPage);
-
+        getClientProduct(pagination, 4, setProductClient, setTotalPage);
       })
       .catch((err) => {
-        if (!isLoading) toast.error("user not save");
+        if (byId("phoneNumberC") == "") toast.error(t("client03"));
+        else if (byId("phoneNumberC") == "") toast.error(t("client04"));
+        else toast.error("User not added!");
         setIsloading(false);
-
         console.log(err);
       });
   }
@@ -154,32 +154,37 @@ const Clients = ({ changeLanguage }) => {
             <label htmlFor="phoneNumberC" className="ml-3.5">
               {t("addclient7")}
             </label>
-            
-            <input
-              id="phoneNumberC"
-              className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
-                        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-                        focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-              placeholder={t("addclient8")}
-            />
-            <p htmlFor="phoneNumberC" className="ml-3.5 text-gray-500 pb-5">
+            <div class="flex items-center mb-5">
+            <button class="bg-gray-500 text-white px-4 py-2 rounded" disabled>
+                +998
+              </button>
+              <input
+                id="phoneNumberC"
+                class="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
+                focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+                focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+                placeholder={t("addclient8")}
+              />
+              
+            </div>
+
+            {/* <p htmlFor="phoneNumberC" className="ml-3.5 text-gray-500 pb-5">
               {t("client03")}
-            </p>
+            </p> */}
             <label htmlFor="passwordC" className="ml-3.5">
               {t("addclient9")}
             </label>
 
-            
             <input
               id="passwordC"
-              className="py-2 px-4 w-full bg-white rounded-lg  border border-slate-300
+              className="py-2 mb-5 px-4 w-full bg-white rounded-lg  border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
               placeholder={t("addclient10")}
             />
-            <p htmlFor="passwordC" className="ml-3.5 text-gray-500 mb-5">
+            {/* <p htmlFor="passwordC" className="ml-3.5 text-gray-500 mb-5">
               {t("client04")}
-            </p>
+            </p> */}
 
             <div className="flex justify-end items-center w-full mt-8">
               {isLoading ? (

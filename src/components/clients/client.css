@@ -60,3 +60,23 @@
         hsl(199deg 100% 55%) 
       );
   }
+
+  .input-group {
+    display: flex;
+    align-content: stretch;
+  }
+  
+  .input-group > input {
+    flex: 1 0 auto;
+  }
+  
+  /**
+   * Even when I set some dimension-related styles on this
+   * element but not on the input or button, they'll still
+   * line up.
+   */
+  .input-group-addon {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 0.5em 1em;
+  }
