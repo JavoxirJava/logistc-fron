@@ -16,11 +16,11 @@ const Clients = ({changeLanguage}) => {
     const [totalPage, setTotalPage] = useState(2);
     const [pagination, setPagination] = useState(0);
 
-  useEffect(() => {
-    getClientProduct(pagination, 4, setProductClient, setTotalPage);
-  }, []);
+    useEffect(() => {
+        getClientProduct(pagination, 4, setProductClient, setTotalPage);
+    }, []);
 
-  const { t } = useTranslation();
+    const {t} = useTranslation();
 
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const Clients = ({changeLanguage}) => {
         const data = {
             name: byId("nameC"),
             idNumber: byId("idNumberC"),
-            phoneNumber:  `+998${byId("phoneNumberC")}`,
+            phoneNumber: `+998${byId("phoneNumberC")}`,
             password: byId("passwordC"),
         };
         axios.post(`${url}user?ROLE=ROLE_USER`, data, config)
@@ -62,28 +62,24 @@ const Clients = ({changeLanguage}) => {
     }
 
     function searchProductClient(e) {
-        setTimeout(() => {
-            let text = e.target.value;
-            if (text === "")
-                getClientProduct(pagination, 4, setProductClient, setTotalPage);
-            else
-                axios
-                    .get(`${url}user/search?idNumber=${text}`, config)
-                    .then((res) => {
-                        if (!res.data.body) {
-                            if (res.data.body.object.length > 4)
-                                setProductClient(
-                                    res.data.body.object.map((item, i) => {
-                                        if (i < 4) return item;
-                                    })
-                                );
-                        } else setProductClient(null);
-                    })
-                    .catch((err) => {
-                        if (err.response.status === 404) setProductClient(null);
-                        console.log(err);
-                    });
-        }, 500);
+        let text = e.target.value;
+        if (text === "")
+            getClientProduct(pagination, 4, setProductClient, setTotalPage);
+        else
+            axios.get(`${url}user/search?idNumber=${text}&lang=${sessionStorage.getItem("language")}`, config)
+                .then((res) => {
+                    if (!res.data.body) {
+                        if (res.data.body.object.length > 4)
+                            setProductClient(
+                                res.data.body.object.map((item, i) => {
+                                    if (i < 4) return item;
+                                })
+                            );
+                    } else setProductClient(null);
+                }).catch((err) => {
+                if (err.response && err.response.status === 404) setProductClient(null);
+                console.log(err);
+            });
     }
 
     return (
@@ -168,7 +164,7 @@ const Clients = ({changeLanguage}) => {
 
                         </div>
 
-                        
+
                         <label htmlFor="passwordC" className="ml-3.5">
                             {t("addclient9")}
                         </label>
@@ -200,9 +196,9 @@ const Clients = ({changeLanguage}) => {
                     </div>
                 </div>
             </div>
-            
+
         </>
     )
 }
-  
+
 export default Clients

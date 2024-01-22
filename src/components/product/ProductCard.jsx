@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import {useTranslation} from "react-i18next";
 
 
 function ProductCard({className, product, openEdit, setProductObj}) {
-    
-    const { t } = useTranslation();
 
+    const {t} = useTranslation();
 
     return (
-        <div className={`flex media-product card-main border border-blue-300 w-full lg:h-[110px] h-max bg-blue-100 ${className} overflow-hidden`}>
+        <div
+            className={`flex media-product card-main border border-blue-300 w-full lg:h-[110px] h-max bg-blue-100 ${className} overflow-hidden`}>
             <div className='card-col w-11/12 pt-2 ps-2'>
                 <div className='h-8/12 card-col-row w-full flex media-product'>
                     <div className='sm:w-[22%]'>
@@ -47,7 +47,8 @@ function ProductCard({className, product, openEdit, setProductObj}) {
                 <button onClick={() => {
                     openEdit();
                     setProductObj(product);
-                }} className="inline-flex justify-center sm:w-9/12 w-[200px] rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
+                }}
+                        className="inline-flex justify-center sm:w-9/12 w-[200px] rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
                 >{t("edit")}</button>
             </div>
         </div>

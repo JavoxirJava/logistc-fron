@@ -37,6 +37,8 @@ function Login() {
 
     const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
+    sessionStorage.setItem('language', 'en');
+
     return (
         <div className="w-full h-screen flex justify-center items-center header-div text-white"
              style={{position: "fixed", overflow: "hidden"}}>

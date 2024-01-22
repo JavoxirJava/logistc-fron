@@ -11,8 +11,8 @@ function UserDashboard({changeLanguage}) {
     const [productStatistics, setProductStatistics] = useState(null);
     const [productStatistics2, setProductStatistics2] = useState(null);
 
-    useEffect( () => {
-         setConfig();
+    useEffect(() => {
+        setConfig();
         getMe(setMe);
         axios.get(`${url}product/diagramForUser`, config)
             .then((res) => setProductStatistics(res.data.body))
@@ -29,7 +29,7 @@ function UserDashboard({changeLanguage}) {
 
     return (
         <>
-            <UserNavBar dashboard={'border-b-red-600 border-b text-slate-900'} />
+            <UserNavBar dashboard={'border-b-red-600 border-b text-slate-900'}/>
             <div className="w-full flex lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-10 py-5">
                 <div className="lg:w-7/12 w-full ">
                     <div className="h-[320px] md:w-6/12">
@@ -41,7 +41,7 @@ function UserDashboard({changeLanguage}) {
                 </div>
                 <div className="lg:w-5/12 w-full lg:ml-5 lg:mt-0 mt-7">
                     <div className="w-full all-shadow p-5 bg-gray-200">
-                        <DashboardProductCard />
+                        <DashboardProductCard/>
                     </div>
                 </div>
             </div>

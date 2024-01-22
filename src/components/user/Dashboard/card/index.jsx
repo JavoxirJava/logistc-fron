@@ -32,7 +32,7 @@ const DashboardProductCard = ({className}) => {
     }, [pagination]);
 
     function getProduct(page, size) {
-        axios.get(`${url}product/user?page=${page}&size=${size}`, config).then((res) => {
+        axios.get(`${url}product/user?page=${page}&size=${size}&lang=${sessionStorage.getItem('language')}`, config).then((res) => {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
             }
@@ -42,7 +42,7 @@ const DashboardProductCard = ({className}) => {
     function searchProduct(e) {
         let text = e.target.value;
         if (text === '') getProduct(pagination, 4);
-        else axios.get(`${url}product/user/search?${searchByName()}=${text}`, config).then(res => {
+        else axios.get(`${url}product/user/search?${searchByName()}=${text}&lang=${sessionStorage.getItem('language')}`, config).then(res => {
             if (res.data.body) {
                 if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
                     if (i < 4) return item;

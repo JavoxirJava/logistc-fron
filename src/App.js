@@ -15,6 +15,7 @@ import translateEn from "./locale/translateEn"
 import translateRu from "./locale/translateRu"
 import Select from "./locale/Select";
 import UserDashboard from "./components/user/Dashboard";
+import {useEffect} from "react";
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -29,9 +30,13 @@ function App() {
     AOS.init();
 
     const changeLang = (value) => {
-        i18n.changeLanguage(value)
+        i18n.changeLanguage(value);
     }
 
+    useEffect(() => {
+        sessionStorage.setItem('language', 'en');
+    }, []);
+    sessionStorage.setItem('language', 'en');
     
     return (
         <div className="relative">

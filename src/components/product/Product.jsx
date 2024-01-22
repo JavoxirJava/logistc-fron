@@ -71,7 +71,7 @@ function Product( ) {
     }
 
     function getProduct(page, size) {
-        axios.get(`${url}product?page=${page}&size=${size}`, config).then((res) => {
+        axios.get(`${url}product?page=${page}&size=${size}&lang=${sessionStorage.getItem('language')}`, config).then((res) => {
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
@@ -94,7 +94,6 @@ function Product( ) {
 
     function editProduct() {
         let data = {...product2, ...setObj()};
-        console.log(product2);
         axios.put(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
@@ -108,7 +107,7 @@ function Product( ) {
     function searchProduct(e) {
         let text = e.target.value;
         if (text === '') getProduct(pagination, 4);
-        else axios.get(`${url}product/admin/search?${searchByName()}=${text}`, config).then(res => {
+        else axios.get(`${url}product/admin/search?${searchByName()}=${text}&lang=${sessionStorage.getItem('language')}`, config).then(res => {
             if (res.data.body) {
                 // eslint-disable-next-line array-callback-return
                 if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {

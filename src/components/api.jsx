@@ -12,11 +12,12 @@ export const config = {
 export const setConfig = () => config.headers.Authorization = sessionStorage.getItem('jwtKey');
 
 export const getMe = (setMe) => {
-    axios.get(`${url}user/getMe`, config).then(res => setMe(res.data.body)).catch(err => console.log(err));
+    setConfig();
+    axios.get(`${url}user/getMe?lang=${sessionStorage.getItem('language')}`, config).then(res => setMe(res.data.body)).catch(err => console.log(err));
 }
 
 export const getClientProduct = (page, size, setClientProduct, setTotalPage) => {
-    axios.get(`${url}user?page=${page}&size=${size}`, config)
+    axios.get(`${url}user?page=${page}&size=${size}&lang=${sessionStorage.getItem('language')}`, config)
         .then(res => {
             if (res.data.message) {
                 setClientProduct(res.data.body.object);
@@ -26,6 +27,6 @@ export const getClientProduct = (page, size, setClientProduct, setTotalPage) => 
 }
 
 export function getUsers(setUser) {
-    axios.get(`${url}user`, config).then(res => setUser(res.data.body.object)).catch(err => console.log(err));
+    axios.get(`${url}user?lang=${sessionStorage.getItem('language')}`, config).then(res => setUser(res.data.body.object)).catch(err => console.log(err));
 }
 

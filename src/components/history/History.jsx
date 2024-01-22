@@ -26,7 +26,7 @@ const History = ({changeLanguage}) => {
 
 
     const getHistory = (page, size) => {
-        axios.get(`${url}product?page=${page}&size=${size}`, config)
+        axios.get(`${url}product?page=${page}&size=${size}&lang=${sessionStorage.getItem('language')}`, config)
             .then((res) => {
                 setHistory(res.data.body.object);
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
@@ -42,7 +42,7 @@ const History = ({changeLanguage}) => {
         const userId = byId("userId");
         const productId = byId("productId");
         axios.get(
-            `${url}product/admin/history/search/search?start=${start}&finish=${finish}&userIdNumber=${userId}&productIdNumber=${productId}`,
+            `${url}product/admin/history/search?start=${start}&finish=${finish}&userIdNumber=${userId}&productIdNumber=${productId}&lang=${sessionStorage.getItem('language')}`,
             config).then((res) => {
             setHistory(res.data.body);
         }).catch(() => {
