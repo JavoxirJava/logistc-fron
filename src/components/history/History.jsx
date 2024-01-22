@@ -30,9 +30,10 @@ const History = ({changeLanguage, lang}) => {
 
 
     const getHistory = (page, size) => {
-        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}`, config)
+        axios.get(`${url}product/history?page=${page}&size=${size}&lang=${lang}`, config)
             .then((res) => {
-                setHistory(res.data.body.object);
+                setHistory(res.data.body);
+                console.log(res.data.body);
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
             })
             .catch(() => {

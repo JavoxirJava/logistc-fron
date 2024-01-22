@@ -2,7 +2,7 @@ import React from 'react';
 import {useTranslation} from "react-i18next";
 
 
-function ProductCard({className, product, openEdit, setProductObj}) {
+function ProductCard({className, product, openEdit, setProductObj, projectId}) {
 
     const {t} = useTranslation();
 

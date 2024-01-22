@@ -30,6 +30,7 @@ function App() {
     AOS.init();
 
     const [lang, setLang] = useState("en")
+    const [projectId, setProjectId] = useState('')
 
     const changeLang = (value) => {
         i18n.changeLanguage(value);
@@ -54,7 +55,7 @@ function App() {
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/dashboard' element={<Dashboard lang={lang}/>}/>
                 <Route path='/user-dashboard' element={<UserDashboard lang={lang}/>}/>
-                <Route path='/project' element={<Product  lang={lang}/>}/>
+                <Route path='/project' element={<Product  lang={lang} projectId={projectId} setProjectId={setProjectId} />}/>
                 <Route path='/client' element={<Clients lang={lang}/>}/>
                 <Route path='/history' element={<History lang={lang}/>}/>
                 <Route path='/footer' element={<HomeFooter/>}/>

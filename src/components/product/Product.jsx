@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./product.css";
-import ProductCard from "./ProjectCard";
+import ProductCard from "./ProductCard";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 import OffcanvasProduct from "./OffcanvasProduct";
 import { config, setConfig, url } from "../api";
@@ -12,7 +12,7 @@ import Dropdown from "../Dropdown";
 import { useTranslation } from "react-i18next";
 import ProjectCard from "./ProjectCard";
 
-function Product({ lang }) {
+function Product({ lang, projectId, setProjectId }) {
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     const [editOf, setEditOf] = useState(false);
@@ -80,17 +80,20 @@ function Product({ lang }) {
     const getProject = (page, size) => {
         axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
             .then(res => {
-                console.log(res);
-                setProject(res.data.body.object)
+                setProject(res.data.object)
             })
+            .catch(() => {})
     }
+
+    console.log(projects);
 
     function getProduct(page, size) {
         // projectid dinamik bulishi kk
-        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=1`, config).then((res) => {
+        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : projects ? projects[0].id : 0}`, config).then((res) => {
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
+                console.log(res.data);
             }
         });
     }
@@ -179,6 +182,9 @@ function Product({ lang }) {
                             </span>
                             {projects && projects.map((item, i) => (
                                 <ProjectCard
+                                    setProjectId={setProjectId}
+                                    getProduct={getProduct}
+                                    pagination={pagination}
                                     key={i}
                                     className="mt-5"
                                     openEdit={openEdit}
@@ -217,12 +223,13 @@ function Product({ lang }) {
                                 {t("add")}
                             </button>
 
-                             <h1><b>Products</b></h1>
+                             <h1><b><span className="text-blue-500 text-lg">{projectId.name}</span>{' '}Products</b></h1>
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
                             </span>
                             {products && products.map((item, i) => (
                                 <ProductCard
+                                    projectId={projectId}
                                     key={i}
                                     className="mt-5"
                                     openEdit={openEdit}

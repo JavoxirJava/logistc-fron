@@ -41,7 +41,7 @@ const HistoryInfo = ({ history, className }) => {
                     <div className="lg:w-[150px] md:w-[120px] sm:w-[100px] w-[50px]">
                         <p className="opacity-70">{t("history9")}</p>
                         <p className="font-bold lg:text-[.9rem] md:text-[.7rem] sm:text-[.5rem] text-[.5rem]" >
-                            {item.createdAt ? item.createdAt.substring(0, 10) : "April 23, 2022"}
+                            {item.date ? item.date.substring(0, 10) : "April 23, 2022"}
                         </p>
                     </div>
                     <div className="lg:w-[150px] md:w-[120px] sm:w-[100px] w-[50px]">
@@ -53,7 +53,7 @@ const HistoryInfo = ({ history, className }) => {
                     <div className="lg:w-[150px] md:w-[120px] sm:w-[100px] w-[50px]">
                         <p className="opacity-70">{t("history11")}</p>
                         <p className="font-bold lg:text-[.9rem] md:text-[.7rem] sm:text-[.5rem] text-[.5rem]" >
-                            {item.name ? item.name : "No Product"}
+                            {item.productName ? item.productName : "No Product"}
                         </p>
                     </div>
                     <div className="w-[250px]">
