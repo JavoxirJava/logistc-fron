@@ -133,7 +133,7 @@ function NavBar({dashboard, product, client, history, changeLang, lang}) {
                                         </li>
                                         <li onClick={openMenu}>
                                             <Link
-                                                to="/product"
+                                                to="/project"
                                                 className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
                                                 aria-current="page"
                                             >
@@ -178,7 +178,7 @@ function NavBar({dashboard, product, client, history, changeLang, lang}) {
                                         {t("dashboard")}
                                     </Link>
                                     <Link
-                                        to="/product"
+                                        to="/project"
                                         className={`${product} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
                                         // aria-current="page"
                                     >

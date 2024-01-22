@@ -4,7 +4,7 @@ const translateEn = {
     service: "Services",
     gallary: "Galary",
     dashboard: "Dashboard",
-    produkt: "Products", 
+    produkt: "Project", 
     client: "Clients",
     histori: "History",
     homeText1: "We Will Deliver Your ",

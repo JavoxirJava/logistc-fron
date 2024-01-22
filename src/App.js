@@ -52,7 +52,7 @@ function App() {
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/dashboard' element={<Dashboard lang={lang}/>}/>
                 <Route path='/user-dashboard' element={<UserDashboard lang={lang}/>}/>
-                <Route path='/product' element={<Product  lang={lang}/>}/>
+                <Route path='/project' element={<Product  lang={lang}/>}/>
                 <Route path='/client' element={<Clients lang={lang}/>}/>
                 <Route path='/history' element={<History lang={lang}/>}/>
                 <Route path='/footer' element={<HomeFooter/>}/>
