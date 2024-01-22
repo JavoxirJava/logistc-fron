@@ -29,11 +29,11 @@ i18n.use(initReactI18next).init({
 function App() {
     AOS.init();
 
-    const [lang, setLang] = useState()
+    const [lang, setLang] = useState("en")
 
     const changeLang = (value) => {
         i18n.changeLanguage(value);
-        setLang(value ? value : "en")
+        setLang(value)
     }
 
     
@@ -43,6 +43,8 @@ function App() {
         sessionStorage.setItem('language', 'en');
     }, []);
     sessionStorage.setItem('language', 'en');
+
+    console.log(lang);
     
     return (
         <div className="relative">
