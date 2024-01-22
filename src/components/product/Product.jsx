@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./product.css";
-import ProductCard from "./ProductCard";
+import ProductCard from "./ProjectCard";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 import OffcanvasProduct from "./OffcanvasProduct";
 import { config, setConfig, url } from "../api";
@@ -10,6 +10,7 @@ import Pagination, { bootstrap5PaginationPreset } from "react-responsive-paginat
 import NavBar from "../navbar/NavBar";
 import Dropdown from "../Dropdown";
 import { useTranslation } from "react-i18next";
+import ProjectCard from "./ProjectCard";
 
 function Product({ lang }) {
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
@@ -152,7 +153,8 @@ function Product({ lang }) {
         <>
             <NavBar product={'border-b-red-600 border-b text-slate-900'} lang={lang} />
             <div className="product-main">
-                <div className="flex w-full lg:flex-row flex-col lg:h-full h-max">
+                <div className="flex w-full lg:flex-row align-center justify-center flex-col lg:h-full h-max">
+                    {/* project uchun */}
                     <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
                         <div className="mt-4 flex flex-wrap justify-between">
                             <input
@@ -170,6 +172,52 @@ function Product({ lang }) {
                             >
                                 {t("add")}
                             </button>
+                            <h1><b>Projects</b></h1>
+
+                            <span className="me-5 pt-1.5 float-end">
+                                {t("cardCurrent")}: {pagination}
+                            </span>
+                            {projects && projects.map((item, i) => (
+                                <ProjectCard
+                                    key={i}
+                                    className="mt-5"
+                                    openEdit={openEdit}
+                                    projects={item}
+                                    setProductObj={setProductObj}
+                                />
+                            ))}
+                        </div>
+                        <div className="pagination-style mt-4">
+                            <Pagination
+                                {...bootstrap5PaginationPreset}
+                                current={pagination}
+                                total={Math.floor(totalPage + 1)}
+                                onPageChange={setPagination}
+                            />
+                        </div>
+                    </div>
+                    
+                    {/* product uchun */}
+
+                    <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
+                        <div className="mt-4 flex flex-wrap justify-between">
+                            <input
+                                type="search"
+                                placeholder={t("productSearch")}
+                                onChange={searchProduct}
+                                className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+                            />
+                            <Dropdown setSearchBy={setSearchBy} />
+                        </div>
+                        <div className="mt-4 flex flex-wrap justify-between">
+                            <button
+                                onClick={handleToggleOffcanvas}
+                                className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
+                            >
+                                {t("add")}
+                            </button>
+
+                             <h1><b>Products</b></h1>
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
                             </span>
@@ -192,18 +240,7 @@ function Product({ lang }) {
                             />
                         </div>
                     </div>
-                    <div className="xl:w-7/12 lg:w-8/12 w-full h-full col2 z-0 relative">
-                        {/* <YMaps>
-                            <Map
-                                defaultState={{center: [55.75, 37.57], zoom: 9}}
-                                width="100%"
-                                height="100%"
-                                onClick={handleClick}
-                            >
-                                <Placemark geometry={coordinates}/>
-                            </Map>
-                        </YMaps> */}
-                    </div>
+                    
                 </div>
 
                 <OffcanvasProduct
