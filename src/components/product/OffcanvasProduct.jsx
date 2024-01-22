@@ -7,7 +7,7 @@ function OffcanvasProduct({
   isOffcanvasOpen,
   handleToggleOffcanvas,
   name,
-  btnName,
+  lang,
   onSave,
   product,
   setProduct,
@@ -20,7 +20,7 @@ function OffcanvasProduct({
   const { t } = useTranslation();
 
   useEffect(() => {
-    getUsers(setUsers);
+    getUsers(setUsers, lang);
   }, []);
 
   function setData() {

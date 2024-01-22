@@ -6,7 +6,7 @@ import {config, getMe, setConfig, url} from "../../api";
 import axios from "axios";
 import UserNavBar from "../navbar/NavBar";
 
-function UserDashboard({changeLanguage}) {
+function UserDashboard({changeLanguage, lang}) {
     const [me, setMe] = useState(null);
     const [productStatistics, setProductStatistics] = useState(null);
     const [productStatistics2, setProductStatistics2] = useState(null);
@@ -41,7 +41,7 @@ function UserDashboard({changeLanguage}) {
                 </div>
                 <div className="lg:w-5/12 w-full lg:ml-5 lg:mt-0 mt-7">
                     <div className="w-full all-shadow p-5 bg-gray-200">
-                        <DashboardProductCard/>
+                        <DashboardProductCard lang={lang}/>
                     </div>
                 </div>
             </div>

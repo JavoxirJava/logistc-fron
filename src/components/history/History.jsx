@@ -8,7 +8,7 @@ import Pagination, {bootstrap5PaginationPreset} from "react-responsive-paginatio
 import { useTranslation } from "react-i18next";
 
 
-const History = ({changeLanguage}) => {
+const History = ({changeLanguage, lang}) => {
     const [history, setHistory] = useState(null);
     const [totalPage, setTotalPage] = useState(2);
     const [pagination, setPagination] = useState(0);
@@ -20,13 +20,17 @@ const History = ({changeLanguage}) => {
     }, []);
 
     useEffect(() => {
+        getHistory(pagination, 4);
+    }, [lang]);
+
+    useEffect(() => {
         if ((pagination - 1) * 4 < 0) setPagination(0);
         else getHistory(Math.floor(pagination - 1), 4);
     }, [pagination]);
 
 
     const getHistory = (page, size) => {
-        axios.get(`${url}product?page=${page}&size=${size}&lang=${sessionStorage.getItem('language')}`, config)
+        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}`, config)
             .then((res) => {
                 setHistory(res.data.body.object);
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
@@ -42,7 +46,7 @@ const History = ({changeLanguage}) => {
         const userId = byId("userId");
         const productId = byId("productId");
         axios.get(
-            `${url}product/admin/history/search?start=${start}&finish=${finish}&userIdNumber=${userId}&productIdNumber=${productId}&lang=${sessionStorage.getItem('language')}`,
+            `${url}product/admin/history/search?start=${start}&finish=${finish}&userIdNumber=${userId}&productIdNumber=${productId}&lang=${lang}`,
             config).then((res) => {
             setHistory(res.data.body);
         }).catch(() => {
@@ -52,7 +56,7 @@ const History = ({changeLanguage}) => {
 
     return (
         <>
-            <NavBar changeLang={changeLanguage} history={'border-b-red-600 border-b text-slate-900'}/>
+            <NavBar changeLang={changeLanguage} history={'border-b-red-600 border-b text-slate-900'} lang={lang}/>
             <div className="history-bg">
                 <div className="w-full flex justify-center items-center flex-wrap mt-5">
                     <div className="flex flex-col">

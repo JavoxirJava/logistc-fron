@@ -21,11 +21,11 @@ function ProductCard({className, product, openEdit, setProductObj}) {
                     </div>
                     <div className='sm:w-[30%]'>
                         <p className='opacity-70'>{t("card3")}</p>
-                        <p className='font-bold'>{product ? product.createdAt.substring(0, 10) : "April 23, 2023"}</p>
+                        <p className='font-bold'>{product ? product.date.substring(0, 10) : "April 23, 2023"}</p>
                     </div>
                     <div className='sm:w-[26%]'>
                         <p className='opacity-70'>{t("card4")}</p>
-                        <p className='font-bold'>{product ? product.name : "Iphone"}</p>
+                        <p className='font-bold'>{product ? product.productName : "Iphone"}</p>
                     </div>
                 </div>
                 <div className='h-3/6 card-col-row w-full flex media-product'>

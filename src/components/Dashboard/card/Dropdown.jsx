@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
+import { useTranslation } from 'react-i18next';
 import {Link} from "react-router-dom";
 
 const Dropdown = ({setSearchBy}) => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const{ t} = useTranslation()
 
     const toggleDropdown = (e) => {
         setSearchBy(e.target.innerText);
@@ -18,19 +21,19 @@ const Dropdown = ({setSearchBy}) => {
                     <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                         <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={toggleDropdown}
                               role="menuitem">
-                            Product id number
+                            {t('dropdown1')}
                         </Link>
                         <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                               role="menuitem" onClick={toggleDropdown}>
-                            Product status
+                            {t('dropdown2')}
                         </Link>
                         <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                               role="menuitem" onClick={toggleDropdown}>
-                            User id number
+                             {t('dropdown3')}
                         </Link>
                         <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                               role="menuitem" onClick={toggleDropdown}>
-                            User id
+                            {t('dropdown4')}
                         </Link>
                     </div>
                 </div>

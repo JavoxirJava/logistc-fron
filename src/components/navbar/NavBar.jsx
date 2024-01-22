@@ -7,7 +7,7 @@ import {toast} from "react-toastify";
 import {useTranslation} from "react-i18next";
 import "./style.css"
 
-function NavBar({dashboard, product, client, history, changeLang}) {
+function NavBar({dashboard, product, client, history, changeLang, lang}) {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,6 +57,10 @@ function NavBar({dashboard, product, client, history, changeLang}) {
     useEffect(() => {
         getMe(setMe);
     }, []);
+
+    useEffect(() => {
+        getMe(setMe, lang);
+    }, [lang]);
 
     return (
         <div>

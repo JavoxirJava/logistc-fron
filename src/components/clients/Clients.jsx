@@ -10,7 +10,7 @@ import {toast} from "react-toastify";
 import NavBar from "../navbar/NavBar";
 import {useTranslation} from "react-i18next";
 
-const Clients = ({changeLanguage}) => {
+const Clients = ({changeLanguage, lang}) => {
     const [isLoading, setIsloading] = useState(false);
     const [productsClient, setProductClient] = useState(null);
     const [totalPage, setTotalPage] = useState(2);
@@ -19,6 +19,11 @@ const Clients = ({changeLanguage}) => {
     useEffect(() => {
         getClientProduct(pagination, 4, setProductClient, setTotalPage);
     }, []);
+
+    useEffect(() => {
+        getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
+        
+    }, [lang]);
 
     const {t} = useTranslation();
 
@@ -66,7 +71,7 @@ const Clients = ({changeLanguage}) => {
         if (text === "")
             getClientProduct(pagination, 4, setProductClient, setTotalPage);
         else
-            axios.get(`${url}user/search?idNumber=${text}&lang=${sessionStorage.getItem("language")}`, config)
+            axios.get(`${url}user/search?idNumber=${text}&lang=${lang}`, config)
                 .then((res) => {
                     if (!res.data.body) {
                         if (res.data.body.object.length > 4)

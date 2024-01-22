@@ -6,6 +6,7 @@ import Dropdown from "./Dropdown";
 import '../../product/product.css'
 import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
 import { useTranslation } from 'react-i18next';
+import { changeLanguage } from 'i18next';
 
 const Modal = ({isOpen, onClose}) => {
     if (!isOpen) return null;
@@ -35,7 +36,7 @@ const Modal = ({isOpen, onClose}) => {
     );
 };
 
-const DashboardProductCard = ({className}) => {
+const DashboardProductCard = ({className, lang}) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [data, setProduct] = useState(null);
@@ -47,6 +48,10 @@ const DashboardProductCard = ({className}) => {
         getProduct(pagination, 4);
     }, []);
 
+    useEffect(() => {
+        getProduct(pagination, 4);
+    }, [lang]);
+
     const {t} = useTranslation()
 
     useEffect(() => {
@@ -55,7 +60,7 @@ const DashboardProductCard = ({className}) => {
     }, [pagination]);
 
     function getProduct(page, size) {
-        axios.get(`${url}product?page=${page}&size=${size}&lang=${sessionStorage.getItem('language')}`, config).then((res) => {
+        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}`, config).then((res) => {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
             }
@@ -65,7 +70,7 @@ const DashboardProductCard = ({className}) => {
     function searchProduct(e) {
         let text = e.target.value;
         if (text === '') getProduct(pagination, 4);
-        else axios.get(`${url}product/admin/search?${searchByName()}=${text}&lang=${sessionStorage.getItem('language')}`, config).then(res => {
+        else axios.get(`${url}product/admin/search?${searchByName()}=${text}&lang=${lang}`, config).then(res => {
             if (res.data.body) {
                 if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
                     if (i < 4) return item;
@@ -92,6 +97,7 @@ const DashboardProductCard = ({className}) => {
 
     const closeModal = () => setIsModalOpen(false);
 
+    console.log();
     return (
         <div>
             <div className="mb-5 flex items-center">
@@ -120,11 +126,11 @@ const DashboardProductCard = ({className}) => {
                             </div>
                             <div className='w-[25%]'>
                                 <p className='opacity-70'>{t("card3")}</p>
-                                <p className='font-bold'>{item ? item.createdAt.substring(0, 10) : "April 23, 2023"}</p>
+                                <p className='font-bold'>{item ? item.date.substring(0, 10) : "April 23, 2023"}</p>
                             </div>
                             <div className='w-[25%]'>
                                 <p className='opacity-70'>{t("card4")}</p>
-                                <p className='font-bold'>{item ? item.name : "Iphone"}</p>
+                                <p className='font-bold'>{item ? item.productName : "Iphone"}</p>
                             </div>
                         </div>
                         <div className='h-3/6 card-col-row w-full flex'>

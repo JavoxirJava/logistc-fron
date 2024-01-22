@@ -15,7 +15,7 @@ import translateEn from "./locale/translateEn"
 import translateRu from "./locale/translateRu"
 import Select from "./locale/Select";
 import UserDashboard from "./components/user/Dashboard";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -29,10 +29,16 @@ i18n.use(initReactI18next).init({
 function App() {
     AOS.init();
 
+    const [lang, setLang] = useState()
+
     const changeLang = (value) => {
         i18n.changeLanguage(value);
+        setLang(value)
     }
 
+    
+
+  
     useEffect(() => {
         sessionStorage.setItem('language', 'en');
     }, []);
@@ -40,15 +46,15 @@ function App() {
     
     return (
         <div className="relative">
-            <Select className={`absolute`} changeLang={changeLang} />
+            <Select className={`absolute`} changeLang={changeLang} setLang={setLang} />
             <Routes>
                 <Route path='/' element={<Loader/>}/>
                 <Route path='/login' element={<Login/>}/>
-                <Route path='/dashboard' element={<Dashboard/>}/>
-                <Route path='/user-dashboard' element={<UserDashboard/>}/>
-                <Route path='/product' element={<Product/>}/>
-                <Route path='/client' element={<Clients/>}/>
-                <Route path='/history' element={<History/>}/>
+                <Route path='/dashboard' element={<Dashboard lang={lang}/>}/>
+                <Route path='/user-dashboard' element={<UserDashboard lang={lang}/>}/>
+                <Route path='/product' element={<Product  lang={lang}/>}/>
+                <Route path='/client' element={<Clients lang={lang}/>}/>
+                <Route path='/history' element={<History lang={lang}/>}/>
                 <Route path='/footer' element={<HomeFooter/>}/>
             </Routes>
         </div>

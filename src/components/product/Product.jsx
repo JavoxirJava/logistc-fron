@@ -11,7 +11,7 @@ import NavBar from "../navbar/NavBar";
 import Dropdown from "../Dropdown";
 import { useTranslation } from "react-i18next";
 
-function Product( ) {
+function Product( {lang} ) {
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     const [editOf, setEditOf] = useState(false);
@@ -28,7 +28,11 @@ function Product( ) {
 
     useEffect(() => {
         getProduct(pagination, 4);
+
     }, []);
+    useEffect(() => {
+        getProduct(pagination, 4)
+    }, [lang])
 
     useEffect(() => {
         if ((pagination - 1) * 4 < 0) setPagination(0);
@@ -71,7 +75,7 @@ function Product( ) {
     }
 
     function getProduct(page, size) {
-        axios.get(`${url}product?page=${page}&size=${size}&lang=${sessionStorage.getItem('language')}`, config).then((res) => {
+        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}`, config).then((res) => {
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
@@ -107,7 +111,7 @@ function Product( ) {
     function searchProduct(e) {
         let text = e.target.value;
         if (text === '') getProduct(pagination, 4);
-        else axios.get(`${url}product/admin/search?${searchByName()}=${text}&lang=${sessionStorage.getItem('language')}`, config).then(res => {
+        else axios.get(`${url}product/admin/search?${searchByName()}=${text}&lang=${lang}`, config).then(res => {
             if (res.data.body) {
                 // eslint-disable-next-line array-callback-return
                 if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
@@ -135,7 +139,7 @@ function Product( ) {
 
     return (
         <>
-            <NavBar product={'border-b-red-600 border-b text-slate-900'}  />
+            <NavBar product={'border-b-red-600 border-b text-slate-900'} lang={lang}  />
             <div className="product-main">
                 <div className="flex w-full lg:flex-row flex-col lg:h-full h-max">
                     <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
@@ -202,6 +206,7 @@ function Product( ) {
                     btnName="Save"
                     onSave={addProduct}
                     setUserId={setUserId}
+                    lang={lang}
                 />
                 <OffcanvasProduct
                     isAdd={false}
@@ -214,6 +219,7 @@ function Product( ) {
                     btnName="Edit"
                     onSave={editProduct}
                     setUserId={setUserId}
+                    lang={lang}
                 />
             </div>
         </>
