@@ -11,11 +11,14 @@ import NavBar from "../navbar/NavBar";
 import Dropdown from "../Dropdown";
 import { useTranslation } from "react-i18next";
 import ProjectCard from "./ProjectCard";
+import OffcanvasProject from "./OffcanvasProject";
 
 function Product({ lang }) {
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     const [editOf, setEditOf] = useState(false);
+    const [addProjectModal, setAddProjectModal] = useState(false);
+    const [editProjectModal, setEditProjectModal] = useState(false);
     const [product, setProductObj] = useState(null);
     const [product2, setProductObj2] = useState(null);
     const [products, setProduct] = useState(null);
@@ -47,10 +50,11 @@ function Product({ lang }) {
     }, [searchBy]);
 
     const openEdit = () => setEditOf(!editOf);
+    const handleToggleOffcanvas = () => setIsOffcanvasOpen(!isOffcanvasOpen);
+    const openProjectCan = () => setAddProjectModal(!addProjectModal)
+    const openEditProjectCan = () => setEditProjectModal(!editProjectModal)
 
-    const handleToggleOffcanvas = () => {
-        setIsOffcanvasOpen(!isOffcanvasOpen);
-    };
+
 
     const handleClick = (e) => {
         const coords = e.get("coords");
@@ -167,7 +171,7 @@ function Product({ lang }) {
                         </div>
                         <div className="mt-4 flex flex-wrap justify-between">
                             <button
-                                onClick={handleToggleOffcanvas}
+                                onClick={openProjectCan}
                                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
                             >
                                 {t("add")}
@@ -242,6 +246,20 @@ function Product({ lang }) {
                     </div>
                     
                 </div>
+
+                <OffcanvasProject
+                    isAdd={true}
+                    getProduct={getProduct}
+                    setProduct={setProductObj2}
+                    product=""
+                    handleToggleOffcanvas={openProjectCan}
+                    isOffcanvasOpen={addProjectModal}
+                    name="Add Project"
+                    btnName="Save"
+                    onSave={addProduct}
+                    setUserId={setUserId}
+                    lang={lang}
+                />
 
                 <OffcanvasProduct
                     isAdd={true}
