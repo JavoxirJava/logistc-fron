@@ -79,7 +79,7 @@ function Product({ lang }) {
     const getProject = (page, size) => {
         axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
             .then(res => {
-                console.log(res);
+                console.log(res.data.body);
                 setProject(res.data.body.object)
             })
     }
