@@ -1,23 +1,24 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./product.css";
 import ProductCard from "./ProductCard";
-import {Map, Placemark, YMaps} from "react-yandex-maps";
+import { Map, Placemark, YMaps } from "react-yandex-maps";
 import OffcanvasProduct from "./OffcanvasProduct";
-import {config, url} from "../api";
+import { config, setConfig, url } from "../api";
 import axios from "axios";
-import {toast} from "react-toastify";
-import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
+import { toast } from "react-toastify";
+import Pagination, { bootstrap5PaginationPreset } from "react-responsive-pagination";
 import NavBar from "../navbar/NavBar";
 import Dropdown from "../Dropdown";
 import { useTranslation } from "react-i18next";
 
-function Product( {lang} ) {
+function Product({ lang }) {
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     const [editOf, setEditOf] = useState(false);
     const [product, setProductObj] = useState(null);
     const [product2, setProductObj2] = useState(null);
     const [products, setProduct] = useState(null);
+    const [projects, setProject] = useState(null);
     const [totalPage, setTotalPage] = useState(2);
     const [pagination, setPagination] = useState(0);
     const [searchBy, setSearchBy] = useState(null);
@@ -27,8 +28,9 @@ function Product( {lang} ) {
 
 
     useEffect(() => {
+        setConfig();
+        getProject(pagination, 4);
         getProduct(pagination, 4);
-
     }, []);
     useEffect(() => {
         getProduct(pagination, 4)
@@ -74,8 +76,17 @@ function Product( {lang} ) {
         };
     }
 
+    const getProject = (page, size) => {
+        axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
+            .then(res => {
+                console.log(res);
+                setProject(res.data.body.object)
+            })
+    }
+
     function getProduct(page, size) {
-        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}`, config).then((res) => {
+        // projectid dinamik bulishi kk
+        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=1`, config).then((res) => {
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
@@ -84,28 +95,28 @@ function Product( {lang} ) {
     }
 
     function addProduct() {
-        let data = {...product2, ...setObj()};
+        let data = { ...product2, ...setObj() };
         axios.post(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully saved product");
                 setProductObj2(null);
                 getProduct(pagination, 4);
             }).catch((err) => {
-            toast.error("product saved error");
-            console.log(err);
-        });
+                toast.error("product saved error");
+                console.log(err);
+            });
     }
 
     function editProduct() {
-        let data = {...product2, ...setObj()};
+        let data = { ...product2, ...setObj() };
         axios.put(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
                 setProductObj2(null);
             }).catch((err) => {
-            toast.error("product Edit error");
-            console.log(err);
-        });
+                toast.error("product Edit error");
+                console.log(err);
+            });
     }
 
     function searchProduct(e) {
@@ -139,7 +150,7 @@ function Product( {lang} ) {
 
     return (
         <>
-            <NavBar product={'border-b-red-600 border-b text-slate-900'} lang={lang}  />
+            <NavBar product={'border-b-red-600 border-b text-slate-900'} lang={lang} />
             <div className="product-main">
                 <div className="flex w-full lg:flex-row flex-col lg:h-full h-max">
                     <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
@@ -150,7 +161,7 @@ function Product( {lang} ) {
                                 onChange={searchProduct}
                                 className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                             />
-                            <Dropdown setSearchBy={setSearchBy}/>
+                            <Dropdown setSearchBy={setSearchBy} />
                         </div>
                         <div className="mt-4 flex flex-wrap justify-between">
                             <button
@@ -161,7 +172,7 @@ function Product( {lang} ) {
                             </button>
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
-                              </span>
+                            </span>
                             {products && products.map((item, i) => (
                                 <ProductCard
                                     key={i}
