@@ -36,6 +36,13 @@ function Product({ lang, projectId, setProjectId }) {
         getProject(pagination, 4);
         getProduct(pagination, 4);
     }, []);
+
+    
+    useEffect(() => {
+        getProduct(pagination, 4)
+    }, [projects])
+
+
     useEffect(() => {
         getProduct(pagination, 4)
     }, [lang])
@@ -99,6 +106,8 @@ function Product({ lang, projectId, setProjectId }) {
             }
         });
     }
+
+    console.log(projectId.id);
 
     function addProduct() {
         let data = { ...product2, ...setObj() };

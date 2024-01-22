@@ -45,7 +45,6 @@ function App() {
     }, []);
     sessionStorage.setItem('language', 'en');
 
-    console.log(lang);
     
     return (
         <div className="relative">

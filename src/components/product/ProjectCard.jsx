@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useTranslation} from "react-i18next";
 
 
@@ -7,10 +7,14 @@ function ProjectCard({className, projects, openEdit, setProductObj, setProjectId
     console.log();
     const {t} = useTranslation();
 
+    useEffect(() => {
+        getProduct(pagination, 4)
+    }, [setProjectId])
+
     return (
         <div
-        onClick={() => {
-            setProjectId(projects)
+        onClick={async() => {
+            await setProjectId(projects)
             getProduct(pagination, 4)
         }}
             className={`flex media-product p-8 card-main border border-blue-300 w-full h-max bg-blue-100 ${className} overflow-hidden`}>
