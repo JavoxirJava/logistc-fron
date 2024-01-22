@@ -33,7 +33,7 @@ function App() {
 
     const changeLang = (value) => {
         i18n.changeLanguage(value);
-        setLang(value)
+        setLang(value ? value : "en")
     }
 
     
