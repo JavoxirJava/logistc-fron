@@ -54,8 +54,6 @@ function Product({ lang, projectId, setProjectId }) {
     const openProjectCan = () => setAddProjectModal(!addProjectModal)
     const openEditProjectCan = () => setEditProjectModal(!editProjectModal)
 
-
-
     // const handleClick = (e) => {
     //     const coords = e.get("coords");
     //     setCoordinates(coords);
@@ -123,7 +121,6 @@ function Product({ lang, projectId, setProjectId }) {
             }).catch((err) => {
                 toast.error("project saved error");
                 console.log(err);
-                console.log(data);
             });
     }
 
@@ -135,6 +132,17 @@ function Product({ lang, projectId, setProjectId }) {
                 setProductObj2(null);
             }).catch((err) => {
                 toast.error("product Edit error");
+                console.log(err);
+            });
+    }
+    function editProject() {
+        let data = { ...product2, };
+        axios.put(`${url}project?id=${projectId.id}`, data, config)
+            .then(() => {
+                toast.success("successfully Edit project");
+                setProductObj2(null);
+            }).catch((err) => {
+                toast.error("project Edit error");
                 console.log(err);
             });
     }
@@ -199,11 +207,11 @@ function Product({ lang, projectId, setProjectId }) {
                             {projects && projects.map((item, i) => (
                                 <ProjectCard
                                     setProjectId={setProjectId}
-                                    getProduct={getProduct}
+                                    getProduct={getProject}
                                     pagination={pagination}
                                     key={i}
                                     className="mt-5"
-                                    openEdit={openEdit}
+                                    openEdit={openEditProjectCan}
                                     projects={item}
                                     setProductObj={setProductObj}
                                 />
@@ -277,6 +285,19 @@ function Product({ lang, projectId, setProjectId }) {
                     name="Add Project"
                     btnName="Save"
                     onSave={addProject}
+                    setUserId={setUserId}
+                    lang={lang}
+                />
+                <OffcanvasProject
+                    isAdd={false}
+                    getProduct={getProject}
+                    setProduct={setProductObj2}
+                    product={product}
+                    handleToggleOffcanvas={openEditProjectCan}
+                    isOffcanvasOpen={editProjectModal}
+                    name="Edit project"
+                    btnName="Edit"
+                    onSave={editProject}
                     setUserId={setUserId}
                     lang={lang}
                 />
