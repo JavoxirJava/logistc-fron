@@ -92,6 +92,7 @@ const Clients = ({changeLanguage, lang}) => {
             <NavBar
                 client={"border-b-red-600 border-b text-slate-900"}
                 changeLang={changeLanguage}
+                lang={lang}
             />
             <div className="clients-bg flex lg:flex-row flex-col">
                 <div className="lg:w-2/5 md:w-4/5 w-full lg:pl-10 md:px-0 px-2">
