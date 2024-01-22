@@ -46,9 +46,11 @@ function OffcanvasProject({
     setProduct({
       name: byId(`name${isAdd}`),
       transport: byId(`transport${isAdd}`),
-      productStatus: byId(`productStatus${isAdd}`),
+      status: byId(`productStatus${isAdd}`),
+      latitude: coordinates[0],
+      longitude: coordinates[1],
+      address: sessionStorage.getItem("address")
     });
-    setUserId(byId(`userId${isAdd}`));
   }
 
   return (
@@ -80,7 +82,7 @@ function OffcanvasProject({
           id={`transport${isAdd}`}
           className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
         >
-          <option value="" selected disabled>
+          <option selected disabled>
             {t("productAdd5")}
           </option>
           <option value="CAR" selected={product && product.transport === "CAR"}>
@@ -109,7 +111,7 @@ function OffcanvasProject({
           id={`productStatus${isAdd}`}
           className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
         >
-          <option value="" selected disabled>
+          <option selected disabled>
             {t("status")}
           </option>
           <option

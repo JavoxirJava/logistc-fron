@@ -56,21 +56,21 @@ function Product({ lang, projectId, setProjectId }) {
 
 
 
-    const handleClick = (e) => {
-        const coords = e.get("coords");
-        setCoordinates(coords);
-        const apiKey = "1248def2-c2d9-4353-90a7-01b7e5703e21";
-        const geocodeUrl = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${apiKey}&geocode=${coords[1]},${coords[0]}`;
+    // const handleClick = (e) => {
+    //     const coords = e.get("coords");
+    //     setCoordinates(coords);
+    //     const apiKey = "1248def2-c2d9-4353-90a7-01b7e5703e21";
+    //     const geocodeUrl = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${apiKey}&geocode=${coords[1]},${coords[0]}`;
 
-        fetch(geocodeUrl)
-            .then((response) => response.json())
-            .then((data) => {
-                const address =
-                    data.response.GeoObjectCollection.featureMember[0].GeoObject
-                        .metaDataProperty.GeocoderMetaData.text;
-                sessionStorage.setItem("address", address);
-            }).catch((error) => console.error("Xatolik yuz berdi:", error));
-    };
+    //     fetch(geocodeUrl)
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             const address =
+    //                 data.response.GeoObjectCollection.featureMember[0].GeoObject
+    //                     .metaDataProperty.GeocoderMetaData.text;
+    //             sessionStorage.setItem("address", address);
+    //         }).catch((error) => console.error("Xatolik yuz berdi:", error));
+    // };
 
     function setObj() {
         return {
@@ -86,10 +86,8 @@ function Product({ lang, projectId, setProjectId }) {
             .then(res => {
                 setProject(res.data.object)
             })
-            .catch(() => {})
+            .catch(() => { })
     }
-
-    console.log(projects);
 
     function getProduct(page, size) {
         // projectid dinamik bulishi kk
@@ -112,6 +110,20 @@ function Product({ lang, projectId, setProjectId }) {
             }).catch((err) => {
                 toast.error("product saved error");
                 console.log(err);
+            });
+    }
+
+    function addProject() {
+        let data = { ...product2, };
+        axios.post(`${url}project`, data, config)
+            .then(() => {
+                toast.success("successfully saved project");
+                setProductObj2(null);
+                getProject(pagination, 4);
+            }).catch((err) => {
+                toast.error("project saved error");
+                console.log(err);
+                console.log(data);
             });
     }
 
@@ -206,7 +218,7 @@ function Product({ lang, projectId, setProjectId }) {
                             />
                         </div>
                     </div>
-                    
+
                     {/* product uchun */}
 
                     <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
@@ -227,7 +239,7 @@ function Product({ lang, projectId, setProjectId }) {
                                 {t("add")}
                             </button>
 
-                             <h1><b><span className="text-blue-500 text-lg">{projectId.name}</span>{' '}Products</b></h1>
+                            <h1><b><span className="text-blue-500 text-lg">{projectId.name}</span>{' '}Products</b></h1>
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
                             </span>
@@ -251,19 +263,20 @@ function Product({ lang, projectId, setProjectId }) {
                             />
                         </div>
                     </div>
-                    
+
                 </div>
 
+                {/* project */}
                 <OffcanvasProject
                     isAdd={true}
-                    getProduct={getProduct}
+                    getProduct={getProject}
                     setProduct={setProductObj2}
                     product=""
                     handleToggleOffcanvas={openProjectCan}
                     isOffcanvasOpen={addProjectModal}
                     name="Add Project"
                     btnName="Save"
-                    onSave={addProduct}
+                    onSave={addProject}
                     setUserId={setUserId}
                     lang={lang}
                 />
