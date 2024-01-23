@@ -260,7 +260,7 @@ function Product({ lang, projectId, setProjectId }) {
                                 {t("addProduct")}
                             </button>
 
-                            <h1><b><span className="text-blue-500 text-lg">{projectId.name}</span>{' '}Products</b></h1>
+                            <h1><b><span className="text-blue-500 text-lg">{projectId.name ? projectId.name : projects ? projects[0].name : 0}</span>{' '}Products</b></h1>
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
                             </span>

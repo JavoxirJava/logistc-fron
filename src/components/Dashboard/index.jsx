@@ -17,7 +17,7 @@ function Dashboard({changeLanguage, lang}) {
         axios.get(`${url}product/diagramForAdmin`, config)
             .then((res) => setProductStatistics(res.data.body))
             .catch(err => console.log(err));
-        axios.get(`${url}product/admin/statistics`, config)
+        axios.get(`${url}product/admin/statistics?lang=${lang}`, config)
             .then((res) => setProductStatistics2(res.data.body))
             .catch(err => console.log(err));
     }, []);
