@@ -34,17 +34,20 @@ function Product({ lang, projectId, setProjectId }) {
     useEffect(() => {
         setConfig();
         getProject(pagination, 4);
-        getProduct(pagination, 4);
+        // getProduct(pagination, 4);
     }, []);
 
     
     useEffect(() => {
-        getProduct(pagination, 4)
+
+        // getProduct(pagination, 4)
     }, [projects])
 
 
     useEffect(() => {
-        getProduct(pagination, 4)
+        getProject(pagination, 4);
+
+        // getProduct(pagination, 4)
     }, [lang])
 
     useEffect(() => {
@@ -90,8 +93,9 @@ function Product({ lang, projectId, setProjectId }) {
         axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
             .then(res => {
                 setProject(res.data.object)
+                console.log(res.data);
             })
-            .catch(() => { })
+            .catch((err) => { console.log(); })
     }
 
     function getProduct(page, size) {
