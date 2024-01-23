@@ -70,6 +70,7 @@ const translateEn = {
     edit: "Edit",
     editProject: "Edit Project",
     editProduct: "Edit Product",
+    addClients: "Add Clients",
     logout: "Log out",
     delete: "Delete",
     status: "Select product status",
