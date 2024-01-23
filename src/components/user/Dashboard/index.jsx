@@ -18,7 +18,7 @@ function UserDashboard({changeLanguage, lang}) {
             .then((res) => setProductStatistics(res.data.body))
             .catch(err => console.log(err));
 
-        axios.get(`${url}product/user/statistics`, config)
+        axios.get(`${url}product/user/statistics?lang=${lang}`, config)
             .then((res) => setProductStatistics2(res.data.body))
             .catch(err => console.log(err));
     }, []);

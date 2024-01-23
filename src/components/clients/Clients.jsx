@@ -44,7 +44,7 @@ const Clients = ({changeLanguage, lang}) => {
         const data = {
             name: byId("nameC"),
             idNumber: byId("idNumberC"),
-            phoneNumber: `+998${byId("phoneNumberC")}`,
+            phoneNumber: `998${byId("phoneNumberC")}`,
             password: byId("passwordC"),
         };
         axios.post(`${url}user?ROLE=ROLE_USER`, data, config)
