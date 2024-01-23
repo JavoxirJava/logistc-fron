@@ -93,7 +93,6 @@ function Product({ lang, projectId, setProjectId }) {
         axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
             .then(res => {
                 setProject(res.data.object)
-                console.log(res.data);
             })
             .catch((err) => { console.log(); })
     }
@@ -103,7 +102,7 @@ function Product({ lang, projectId, setProjectId }) {
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
-                console.log(res.data);
+                console.log(res.data.body.object);
             }
         })
         .catch((err) => {

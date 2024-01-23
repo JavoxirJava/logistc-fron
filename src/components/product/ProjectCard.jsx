@@ -1,8 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useTranslation} from "react-i18next";
+import ProductModal from './HistoryModal';
+import ProjectModal from './projectModal';
 
 
 function ProjectCard({className, projects, openEdit, setProductObj, setProjectId, getProduct, pagination}) {
+
+    
+    const [historyList, setHistoryList] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const closeModal = () => setIsModalOpen(false);
+    const openModal = () => setIsModalOpen(true);
 
     console.log();
     const {t} = useTranslation();
@@ -39,14 +48,22 @@ function ProjectCard({className, projects, openEdit, setProductObj, setProjectId
                 </div>
                 
             </div>
-            <div className='card-col w-2/12 flex justify-center my-auto h-10 media-product-button'>
+            <div className='card-col w-2/12 flex flex-col gap-3 justify-center my-auto h-10 media-product-button'>
                 <button onClick={() => {
                     openEdit();
                     setProductObj(projects);
                 }}
                         className="inline-flex justify-center sm:w-9/12 w-[200px] rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
                 >{t("edit")}</button>
+                  <button onClick={() => {
+                    setHistoryList(projects);
+                    openModal();
+                }}
+                        className="inline-flex justify-center sm:w-9/12 w-[200px] rounded-md border border-gray-300 shadow-sm py-2 bg-yellow-400 text-sm font-medium text-white"
+                >{t("history5")}</button>
             </div>
+            {historyList && <ProjectModal isOpen={isModalOpen} projectList={historyList} onClose={closeModal} />}
+
         </div>
     );
 }
