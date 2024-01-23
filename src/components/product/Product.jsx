@@ -271,13 +271,13 @@ function Product({ lang, projectId, setProjectId }) {
                                 />
                             ))}
                         </div>
-                        <div className="pagination-style mt-4">
-                            <Pagination
+                        <div className="pagination-style py-8">
+                            {/* <Pagination
                                 {...bootstrap5PaginationPreset}
                                 current={pagination2}
                                 total={Math.floor(totalPage2 + 1)}
                                 onPageChange={setPagination2}
-                            />
+                            /> */}
                         </div>
                     </div>
 
