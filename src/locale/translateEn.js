@@ -68,6 +68,8 @@ const translateEn = {
     add: "Add Project",
     addProduct: "Add Product",
     edit: "Edit",
+    editProject: "Edit Project",
+    editProduct: "Edit Product",
     logout: "Log out",
     delete: "Delete",
     status: "Select product status",

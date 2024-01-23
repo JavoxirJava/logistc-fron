@@ -291,7 +291,7 @@ function Product({ lang, projectId, setProjectId }) {
                     product=""
                     handleToggleOffcanvas={openProjectCan}
                     isOffcanvasOpen={addProjectModal}
-                    name="Add Project"
+                    name={t("add")}
                     btnName="Save"
                     onSave={addProject}
                     setUserId={setUserId}
@@ -304,7 +304,7 @@ function Product({ lang, projectId, setProjectId }) {
                     product={product}
                     handleToggleOffcanvas={openEditProjectCan}
                     isOffcanvasOpen={editProjectModal}
-                    name="Edit project"
+                    name={t('editProject')}
                     btnName="Edit"
                     onSave={editProject}
                     setUserId={setUserId}
@@ -318,7 +318,7 @@ function Product({ lang, projectId, setProjectId }) {
                     product=""
                     handleToggleOffcanvas={handleToggleOffcanvas}
                     isOffcanvasOpen={isOffcanvasOpen}
-                    name="Add product"
+                    name={t("addProduct")}
                     btnName="Save"
                     onSave={addProduct}
                     setUserId={setUserId}
@@ -331,7 +331,7 @@ function Product({ lang, projectId, setProjectId }) {
                     product={product}
                     handleToggleOffcanvas={openEdit}
                     isOffcanvasOpen={editOf}
-                    name="Edit product"
+                    name={t('editProduct')}
                     btnName="Edit"
                     onSave={editProduct}
                     setUserId={setUserId}
