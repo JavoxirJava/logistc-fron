@@ -20,15 +20,15 @@ function OffcanvasProduct({
   const { t } = useTranslation();
 
   useEffect(() => {
-    getUsers(setUsers, lang);
+    getUsers(setUsers, lang, );
   }, []);
-  // console.log(product);
+  console.log(product);
 
   function setData() {
     setProduct({
-      id: product ? product.prodctId : 0,
+      id: product ? product.productId : 0,
       idNumber: byId(`idNumber${isAdd}`),
-      name: byId(`name${isAdd}`),
+      name: byId(`productName${isAdd}`),
       measureCount: byId(`measureCount${isAdd}`),
       measure: byId(`measure${isAdd}`),
     });
@@ -61,14 +61,14 @@ function OffcanvasProduct({
             ))}
         </select>
         <label
-          htmlFor={`name${isAdd}`}
+          htmlFor={`productName${isAdd}`}
           className="block text-gray-700 text-sm font-bold my-2">
           {t("productAdd3")}
         </label>
         <input
-          id={`name${isAdd}`}
+          id={`productName${isAdd}`}
           placeholder={t("productAdd3")}
-          defaultValue={product ? product.name : ""}
+          defaultValue={product ? product.productName : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
         <label
           htmlFor={`idNumber${isAdd}`}

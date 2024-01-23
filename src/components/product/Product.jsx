@@ -28,6 +28,7 @@ function Product({ lang, projectId, setProjectId }) {
     const [searchBy, setSearchBy] = useState(null);
     const [userId, setUserId] = useState(null);
 
+
     const { t } = useTranslation();
 
 
@@ -132,16 +133,17 @@ function Product({ lang, projectId, setProjectId }) {
                 getProject(pagination, 4);
             }).catch((err) => {
                 toast.error("project saved error");
-                console.log(err);
             });
     }
+    
 
     function editProduct() {
         let data = { ...product2, };
-        axios.put(`${url}product?userId=${userId}`, data, config)
+        axios.put(`${url}product?projectId=${sessionStorage.getItem("projectIdIn")}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
                 setProductObj2(null);
+                getProduct(pagination, 4)
             }).catch((err) => {
                 toast.error("product Edit error");
                 console.log(err);
