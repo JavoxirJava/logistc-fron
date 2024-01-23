@@ -195,7 +195,7 @@ const Clients = ({changeLanguage, lang}) => {
                                 font-bold text-lg tracking-wider active:scale-95 duration-200"
                                     onClick={addUser}
                                 >
-                                    {t("add")}
+                                    {t("addClients")}
                                 </button>
                             )}
                         </div>

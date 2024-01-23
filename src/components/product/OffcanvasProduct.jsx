@@ -233,6 +233,18 @@ function OffcanvasProduct({
               {t("status6")}
             </option>
           </select>
+          <div>
+            <YMaps>
+              <Map
+                defaultState={{ center: [55.75, 37.57], zoom: 9 }}
+                width="100%"
+                height="300px"
+                onClick={handleClick}
+              >
+                <Placemark geometry={coordinates} />
+              </Map>
+            </YMaps>
+          </div>
 
           <div className="mt-10 flex justify-between">
             <button
@@ -253,18 +265,6 @@ function OffcanvasProduct({
               {t("add")}
             </button>
           </div>
-        </div>
-        <div className="xl:w-7/12 lg:w-8/12 w-full h-full col2 z-0 relative">
-          <YMaps>
-            <Map
-              defaultState={{ center: [55.75, 37.57], zoom: 9 }}
-              width="100px"
-              height="100px"
-              onClick={handleClick}
-            >
-              <Placemark geometry={coordinates} />
-            </Map>
-          </YMaps>
         </div>
       </div>
     </Offcanvas>
