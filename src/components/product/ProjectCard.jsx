@@ -28,10 +28,10 @@ function ProjectCard({className, projects, openEdit, setProductObj, setProjectId
                         <p className='opacity-70'>{t("card2")}</p>
                         <p className='font-bold'>{projects ? projects.status : 'no status'}</p>
                     </div>
-                    <div className='sm:w-[30%] lg:ms-3'>
+                    {/* <div className='sm:w-[30%] lg:ms-3'>
                         <p className='opacity-70'>{t("card3")}</p>
                         <p className='font-bold'>{projects ? projects.date.substring(0, 10) : "April 23, 2023"}</p>
-                    </div>
+                    </div> */}
                     <div className='sm:w-[64%]'>
                         <p className='opacity-70'>{t("card5")}</p>
                         <p className='font-bold'>{projects ? projects.address : "No location"}</p>
