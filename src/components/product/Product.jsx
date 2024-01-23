@@ -102,7 +102,10 @@ function Product({ lang, projectId, setProjectId }) {
                 setProduct(res.data.body.object);
                 console.log(res.data);
             }
-        });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     console.log(projectId.id);
