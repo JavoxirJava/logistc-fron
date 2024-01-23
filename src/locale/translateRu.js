@@ -66,6 +66,8 @@ const translateRu = {
     add: "Добавить проект",
     addProduct: "Добавить продукт",
     edit: "Редакт",
+    editProject: "Редактировать проект",
+    editProduct: "Редактировать продукт",
     delete: "Удалить",
     logout: "Выйти",
     status: "Выберите статус продукта",

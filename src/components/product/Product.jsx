@@ -99,7 +99,6 @@ function Product({ lang, projectId, setProjectId }) {
     }
 
     function getProduct(page, size) {
-        // projectid dinamik bulishi kk
         axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : projects ? projects[0].id : 0}`, config).then((res) => {
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
@@ -111,8 +110,6 @@ function Product({ lang, projectId, setProjectId }) {
             console.log(err);
         })
     }
-
-    console.log(projectId.id);
 
     function addProduct() {
         let data = { ...product2, ...setObj() };
@@ -298,7 +295,7 @@ function Product({ lang, projectId, setProjectId }) {
                     product=""
                     handleToggleOffcanvas={openProjectCan}
                     isOffcanvasOpen={addProjectModal}
-                    name="Add Project"
+                    name={t("add")}
                     btnName="Save"
                     onSave={addProject}
                     setUserId={setUserId}
@@ -311,7 +308,7 @@ function Product({ lang, projectId, setProjectId }) {
                     product={product}
                     handleToggleOffcanvas={openEditProjectCan}
                     isOffcanvasOpen={editProjectModal}
-                    name="Edit project"
+                    name={t('editProject')}
                     btnName="Edit"
                     onSave={editProject}
                     setUserId={setUserId}
@@ -325,7 +322,7 @@ function Product({ lang, projectId, setProjectId }) {
                     product=""
                     handleToggleOffcanvas={handleToggleOffcanvas}
                     isOffcanvasOpen={isOffcanvasOpen}
-                    name="Add product"
+                    name={t("addProduct")}
                     btnName="Save"
                     onSave={addProduct}
                     setUserId={setUserId}
@@ -338,7 +335,7 @@ function Product({ lang, projectId, setProjectId }) {
                     product={product}
                     handleToggleOffcanvas={openEdit}
                     isOffcanvasOpen={editOf}
-                    name="Edit product"
+                    name={t('editProduct')}
                     btnName="Edit"
                     onSave={editProduct}
                     setUserId={setUserId}
