@@ -89,15 +89,13 @@ function Product({ lang, projectId, setProjectId }) {
         };
     }
 
-
-    function getProject(page, size) {
-        axios
-          .get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
-          .then((res) => {
-            setProject(res.data.object);
-          })
-          .catch((err) => console.log(err));
-      }
+    const getProject = (page, size) => {
+        axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
+            .then(res => {
+                setProject(res.data.object)
+            })
+            .catch((err) => { console.log(); })
+    }
 
     function getProduct(page, size) {
         axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : projects ? projects[0].id : 0}`, config).then((res) => {
@@ -112,8 +110,9 @@ function Product({ lang, projectId, setProjectId }) {
     }
 
     function addProduct() {
-        let data = { ...product2, ...setObj() };
-        axios.post(`${url}product?userId=${userId}`, data, config)
+        let data = { ...product2, };
+        let projectIdIn = sessionStorage.getItem('projectIdIn');
+        axios.post(`${url}product?userId=${userId}&projectId=${projectIdIn}`, data, config)
             .then(() => {
                 toast.success("successfully saved product");
                 setProductObj2(null);
@@ -138,7 +137,7 @@ function Product({ lang, projectId, setProjectId }) {
     }
 
     function editProduct() {
-        let data = { ...product2, ...setObj() };
+        let data = { ...product2, };
         axios.put(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");

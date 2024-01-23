@@ -22,6 +22,7 @@ function OffcanvasProduct({
   useEffect(() => {
     getUsers(setUsers, lang);
   }, []);
+  // console.log(product);
 
   function setData() {
     setProduct({
@@ -29,10 +30,7 @@ function OffcanvasProduct({
       idNumber: byId(`idNumber${isAdd}`),
       name: byId(`name${isAdd}`),
       measureCount: byId(`measureCount${isAdd}`),
-      transport: byId(`transport${isAdd}`),
       measure: byId(`measure${isAdd}`),
-      productStatus: byId(`productStatus${isAdd}`),
-      address: sessionStorage.getItem("address"),
     });
     setUserId(byId(`userId${isAdd}`));
   }
@@ -123,7 +121,7 @@ function OffcanvasProduct({
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
           >
-            {t("add")}
+            {t("addProduct")}
           </button>
         </div>
       </div>
