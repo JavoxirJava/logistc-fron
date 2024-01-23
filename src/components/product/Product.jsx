@@ -34,20 +34,20 @@ function Product({ lang, projectId, setProjectId }) {
     useEffect(() => {
         setConfig();
         getProject(pagination, 4);
-        // getProduct(pagination, 4);
+        getProduct(pagination, 4);
     }, []);
 
     
     useEffect(() => {
 
-        // getProduct(pagination, 4)
+        getProduct(pagination, 4)
     }, [projects])
 
 
     useEffect(() => {
         getProject(pagination, 4);
 
-        // getProduct(pagination, 4)
+        getProduct(pagination, 4)
     }, [lang])
 
     useEffect(() => {
