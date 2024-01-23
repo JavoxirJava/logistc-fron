@@ -28,6 +28,7 @@ function Product({ lang, projectId, setProjectId }) {
     const [pagination, setPagination] = useState(0);
     const [pagination2, setPagination2] = useState(0);
     const [searchBy, setSearchBy] = useState(null);
+    const [searchBy2, setSearch2By] = useState(null);
     const [userId, setUserId] = useState(null);
 
 
@@ -66,6 +67,10 @@ function Product({ lang, projectId, setProjectId }) {
     useEffect(() => {
         searchByName();
     }, [searchBy]);
+
+    useEffect(() => {
+        searchByName2();
+    }, [searchBy2]);
 
     const openEdit = () => setEditOf(!editOf);
     const handleToggleOffcanvas = () => setIsOffcanvasOpen(!isOffcanvasOpen);
@@ -188,7 +193,7 @@ function Product({ lang, projectId, setProjectId }) {
     function searchProject(e) {
         let text = e.target.value;
         if (text === '') getProduct(pagination, 4);
-        else axios.get(`${url}product/admin/search?${searchByName()}=${text}&lang=${lang}`, config).then(res => {
+        else axios.get(`${url}product/admin/search?${searchByName2()}=${text}&lang=${lang}`, config).then(res => {
             if (res.data.body) {
                 // eslint-disable-next-line array-callback-return
                 if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
@@ -211,6 +216,17 @@ function Product({ lang, projectId, setProjectId }) {
                 return "userName";
             default:
                 return "productIdNumber";
+        }
+    }
+
+    function searchByName2() {
+        switch (searchBy2) {
+            case "Product status":
+                return "productStatus";
+            case "Project name":
+                return "projectName";
+            default:
+                return "projectName";
         }
     }
 
