@@ -256,7 +256,7 @@ function Product({ lang, projectId, setProjectId }) {
                                 onClick={handleToggleOffcanvas}
                                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
                             >
-                                {t("add")}
+                                {t("addProduct")}
                             </button>
 
                             <h1><b><span className="text-blue-500 text-lg">{projectId.name}</span>{' '}Products</b></h1>
