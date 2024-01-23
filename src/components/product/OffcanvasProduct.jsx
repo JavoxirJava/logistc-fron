@@ -22,7 +22,6 @@ function OffcanvasProduct({
   useEffect(() => {
     getUsers(setUsers, lang, );
   }, []);
-  console.log(product);
 
   function setData() {
     setProduct({

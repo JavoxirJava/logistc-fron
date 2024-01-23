@@ -29,7 +29,6 @@ function Login() {
                 } else toast.error("User not found");
                 setIsLoading(false);
             }).catch(err => {
-            console.log(err)
             setIsLoading(false);
             toast.error("User not found");
         });

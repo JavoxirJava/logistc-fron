@@ -85,7 +85,7 @@ const translateEn = {
     dropdown1: "Product id number",
     dropdown2: "Product status",
     dropdown3: " User id number",
-    dropdown4: " User id",
+    dropdown4: " User name",
     login1: 'Log In',
     login2: 'Phone Number',
     login3: 'Number', // bu placeholderdagi malumot

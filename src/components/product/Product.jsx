@@ -24,7 +24,9 @@ function Product({ lang, projectId, setProjectId }) {
     const [products, setProduct] = useState(null);
     const [projects, setProject] = useState(null);
     const [totalPage, setTotalPage] = useState(2);
+    const [totalPage2, setTotalPage2] = useState(2);
     const [pagination, setPagination] = useState(0);
+    const [pagination2, setPagination2] = useState(0);
     const [searchBy, setSearchBy] = useState(null);
     const [userId, setUserId] = useState(null);
 
@@ -34,7 +36,7 @@ function Product({ lang, projectId, setProjectId }) {
 
     useEffect(() => {
         setConfig();
-        getProject(pagination, 4);
+        getProject(pagination2, 4);
         getProduct(pagination, 4);
     }, []);
 
@@ -46,7 +48,7 @@ function Product({ lang, projectId, setProjectId }) {
 
 
     useEffect(() => {
-        getProject(pagination, 4);
+        getProject(pagination2, 4);
 
         getProduct(pagination, 4)
     }, [lang])
@@ -55,6 +57,11 @@ function Product({ lang, projectId, setProjectId }) {
         if ((pagination - 1) * 4 < 0) setPagination(0);
         else getProduct(Math.floor(pagination - 1), 4);
     }, [pagination]);
+
+    useEffect(() => {
+        if ((pagination2 - 1) * 4 < 0) setPagination2(0);
+        else getProject(Math.floor(pagination2 - 1), 4);
+    }, [pagination2]);
 
     useEffect(() => {
         searchByName();
@@ -93,7 +100,10 @@ function Product({ lang, projectId, setProjectId }) {
     const getProject = (page, size) => {
         axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
             .then(res => {
+                setTotalPage2(res.data.totalPage ? res.data.totalPage - 1 : 2);
                 setProject(res.data.object)
+                console.log(res.data.totalPage);
+
             })
             .catch((err) => { console.log(); })
     }
@@ -175,6 +185,20 @@ function Product({ lang, projectId, setProjectId }) {
         }).catch(err => console.log(err));
     }
 
+    function searchProject(e) {
+        let text = e.target.value;
+        if (text === '') getProduct(pagination, 4);
+        else axios.get(`${url}product/admin/search?${searchByName()}=${text}&lang=${lang}`, config).then(res => {
+            if (res.data.body) {
+                // eslint-disable-next-line array-callback-return
+                if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
+                    if (i < 4) return item;
+                }))
+                else setProduct(res.data.body);
+            } else setProduct([]);
+        }).catch(err => console.log(err));
+    }
+
     function searchByName() {
         switch (searchBy) {
             case "Product id number":
@@ -183,8 +207,8 @@ function Product({ lang, projectId, setProjectId }) {
                 return "productStatus";
             case "User id number":
                 return "userIdNumber";
-            case "User id":
-                return "userId";
+            case "User name":
+                return "userName";
             default:
                 return "productIdNumber";
         }
@@ -222,7 +246,7 @@ function Product({ lang, projectId, setProjectId }) {
                                 <ProjectCard
                                     setProjectId={setProjectId}
                                     getProduct={getProject}
-                                    pagination={pagination}
+                                    pagination={pagination2}
                                     key={i}
                                     className="mt-5"
                                     openEdit={openEditProjectCan}
@@ -234,9 +258,9 @@ function Product({ lang, projectId, setProjectId }) {
                         <div className="pagination-style mt-4">
                             <Pagination
                                 {...bootstrap5PaginationPreset}
-                                current={pagination}
-                                total={Math.floor(totalPage + 1)}
-                                onPageChange={setPagination}
+                                current={pagination2}
+                                total={Math.floor(totalPage2 + 1)}
+                                onPageChange={setPagination2}
                             />
                         </div>
                     </div>

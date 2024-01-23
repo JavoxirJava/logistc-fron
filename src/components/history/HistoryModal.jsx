@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 
 
 const Modal = ({ isOpen, onClose, historyList }) => {
-    console.log(historyList)
     const { t } = useTranslation();
 
 
