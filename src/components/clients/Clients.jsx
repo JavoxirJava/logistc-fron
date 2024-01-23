@@ -22,16 +22,13 @@ const Clients = ({changeLanguage, lang}) => {
 
     useEffect(() => {
         getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
-        
     }, [lang]);
 
     const {t} = useTranslation();
 
-
     useEffect(() => {
         if ((pagination - 1) * 4 < 0) setPagination(0);
-        else
-            getClientProduct(
+        else getClientProduct(
                 Math.floor(pagination - 1),
                 4,
                 setProductClient,
@@ -47,8 +44,7 @@ const Clients = ({changeLanguage, lang}) => {
             phoneNumber: `+998${byId("phoneNumberC")}`,
             password: byId("passwordC"),
         };
-        axios.post(`${url}user?ROLE=ROLE_USER`, data, config)
-            .then(() => {
+        axios.post(`${url}user?ROLE=ROLE_USER`, data, config).then(() => {
                 toast.success("successfully saved User");
                 setIsloading(false);
                 byIdObj("nameC").value = "";
@@ -56,14 +52,13 @@ const Clients = ({changeLanguage, lang}) => {
                 byIdObj("phoneNumberC").value = "";
                 byIdObj("passwordC").value = "";
                 getClientProduct(pagination, 4, setProductClient, setTotalPage);
-            })
-            .catch((err) => {
+            }).catch((err) => {
                 if (byId("phoneNumberC") === "") toast.error(t("client03"));
                 else if (byId("phoneNumberC") === "") toast.error(t("client04"));
                 else toast.error("User not added!");
                 setIsloading(false);
                 console.log(err);
-            })
+            });
     }
 
     function searchProductClient(e) {
