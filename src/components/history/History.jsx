@@ -32,9 +32,9 @@ const History = ({changeLanguage, lang}) => {
     const getHistory = (page, size) => {
         axios.get(`${url}product/history?page=${page}&size=${size}&lang=${lang}`, config)
             .then((res) => {
-                setHistory(res.data.body);
+                setHistory(res.data.body.object);
                 console.log(res.data.body);
-                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+                // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
             })
             .catch(() => {
                 console.log("history kelmadi");

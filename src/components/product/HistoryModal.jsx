@@ -9,7 +9,7 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
     const allAddressList = historyList.allAddress;
     return (
         <div
-            className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 
+            className="absolute top-0 left-0 w-full flex items-center justify-center bg-gray-800 
             bg-opacity-75 z-10">
             <div className="bg-slate-300 rounded shadow-md w-1/2">
                 <div className='bg-blue-800 py-5 flex justify-around items-center relative'>

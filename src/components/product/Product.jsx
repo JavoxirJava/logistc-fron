@@ -89,20 +89,21 @@ function Product({ lang, projectId, setProjectId }) {
         };
     }
 
-    const getProject = (page, size) => {
-        axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
-            .then(res => {
-                setProject(res.data.object)
-            })
-            .catch((err) => { console.log(); })
-    }
+
+    function getProject(page, size) {
+        axios
+          .get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
+          .then((res) => {
+            setProject(res.data.object);
+          })
+          .catch((err) => console.log(err));
+      }
 
     function getProduct(page, size) {
         axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : projects ? projects[0].id : 0}`, config).then((res) => {
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
-                console.log(res.data.body.object);
             }
         })
         .catch((err) => {
