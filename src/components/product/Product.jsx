@@ -95,7 +95,6 @@ function Product({ lang, projectId, setProjectId }) {
     }
 
     function getProduct(page, size) {
-        // projectid dinamik bulishi kk
         axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : projects ? projects[0].id : 0}`, config).then((res) => {
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
@@ -107,8 +106,6 @@ function Product({ lang, projectId, setProjectId }) {
             console.log(err);
         })
     }
-
-    console.log(projectId.id);
 
     function addProduct() {
         let data = { ...product2, ...setObj() };
