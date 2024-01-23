@@ -12,8 +12,6 @@ function ProjectCard({className, projects, openEdit, setProductObj, setProjectId
 
     const closeModal = () => setIsModalOpen(false);
     const openModal = () => setIsModalOpen(true);
-
-    console.log();
     const {t} = useTranslation();
 
     useEffect(() => {
@@ -25,8 +23,9 @@ function ProjectCard({className, projects, openEdit, setProductObj, setProjectId
         onClick={async() => {
             await setProjectId(projects)
             getProduct(pagination, 4)
+            sessionStorage.setItem('projectIdIn', projects.id)
         }}
-            className={`flex media-product p-8 card-main border border-blue-300 w-full h-max bg-blue-100 ${className} overflow-hidden`}>
+            className={`flex media-product px-3 py-7 card-main border border-blue-300 hover:cursor-pointer hover:shadow-md duration-200 w-full h-max bg-blue-100 ${className} overflow-hidden`}>
             <div className='card-col w-11/12 pt-2 ps-2'>
                 <div className='h-8/12 card-col-row w-full flex media-product'>
                     <div className='sm:w-[22%]'>
