@@ -8,7 +8,7 @@ function ProductCard({className, product, openEdit, setProductObj, projectId}) {
 
     return (
         <div
-            className={`flex media-product card-main border border-blue-300 w-full lg:h-[110px] h-max bg-blue-100 ${className} overflow-hidden`}>
+            className={`flex p-3 media-product card-main border border-blue-300 w-full h-max bg-blue-100 ${className} `}>
             <div className='card-col w-11/12 pt-2 ps-2'>
                 <div className='h-8/12 card-col-row w-full flex media-product'>
                     <div className='sm:w-[22%]'>
