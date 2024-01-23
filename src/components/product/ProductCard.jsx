@@ -12,8 +12,6 @@ function ProductCard({className, product, openEdit, setProductObj, projectId}) {
     const openModal = () => setIsModalOpen(true);
     const {t} = useTranslation();
 
-    console.log(product);
-
     return (
         <div
             className={`flex p-3 media-product card-main border border-blue-300 w-full h-max bg-blue-100 ${className} `}>

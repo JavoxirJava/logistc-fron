@@ -102,7 +102,6 @@ function Product({ lang, projectId, setProjectId }) {
             if (res.data.message === 'success') {
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
-                console.log(res.data.body.object);
             }
         })
         .catch((err) => {
