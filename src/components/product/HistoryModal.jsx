@@ -9,15 +9,15 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
     const allAddressList = historyList.allAddress;
     return (
         <div
-            className="absolute top-0 left-0 w-full flex items-center justify-center bg-gray-800 
-            bg-opacity-75 z-10">
-            <div className="bg-slate-300 rounded shadow-md w-1/2">
+            className="fixed top-0 left-0 w-full   h-screen flex items-center justify-center bg-gray-800 
+            bg-opacity-75 z-10 sm:px-0 px-3">
+            <div className="bg-slate-300 rounded shadow-md w-full sm:w-[50%]">
                 <div className='bg-blue-800 py-5 flex justify-around items-center relative'>
                     <h1 className='text-2xl text-sky-200'>{historyList && historyList.productName}</h1>
                     <h1 className='text-2xl text-green-300'>{historyList && historyList.status}</h1>
-                    <i className="fa-solid fa-xmark absolute cursor-pointer right-5 text-2xl text-white" onClick={onClose}></i>
+                    <i className="fa-solid fa-xmark absolute  cursor-pointer sm:right-5 right-3 text-2xl text-white" onClick={onClose}></i>
                 </div>
-                <div className='px-20 py-6 flex justify-between items-center flex-wrap'>
+                <div className='sm:px-20 px-3 sm:py-6 py-3 flex justify-between items-center flex-wrap'>
                     <div className="mt-2 w-1/3 text-center">
                         <p className='pb-0 mb-0 opacity-50'>{t("weiw1")}</p>
                         <p className='mt-0 pt-0 font-semibold'>{historyList && historyList.productIdNumber}</p>
@@ -51,7 +51,7 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
                     {allAddressList && allAddressList.map((item) =>
                         <div className="flex flex-row">
                             <div className="h-[100px] w-[4px] py-4 flex relative justify-center bg-slate-900">
-                                <div className=" w-[30px] h-[30px] rounded-full absolute top-4 bg-blue-700"></div>
+                                <div className=" w-[30px] h-[30px] rounded-full absolute top-0 bg-blue-700"></div>
                             </div>
                             <div className="p-4 ms-10">
                                 {item}
