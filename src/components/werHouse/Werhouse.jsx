@@ -103,7 +103,8 @@ function Product({ lang, projectId, setProjectId }) {
     }
 
     const getWerhouse = (page, size) => {
-        axios.get(`${url}wareHouse/all?page=${page}&size=${size}&lang=${lang}`, config)
+        axios.get(`${url}wareH
+        ouse/all?page=${page}&size=${size}&lang=${lang}`, config)
             .then(res => {
                 setTotalPage2(res.data.totalPage ? res.data.totalPage - 1 : 2);
                 setProject(res.data.object)
@@ -251,9 +252,9 @@ function Product({ lang, projectId, setProjectId }) {
                                 onClick={openProjectCan}
                                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
                             >
-                                {t("add")}
+                                {t("addWer")}
                             </button>
-                            <h1><b>Projects</b></h1>
+                            <h1><b>{t("werhouse")}</b></h1>
 
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
@@ -301,11 +302,12 @@ function Product({ lang, projectId, setProjectId }) {
                                 {t("addProduct")}
                             </button>
 
-                            <h1><b>Products</b></h1>
+                            <h1><b>{t("project")}</b></h1>
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
                             </span>
                             {products && products.map((item, i) => (
+                                
                                 <ProductCard
                                     projectId={projectId}
                                     key={i}
