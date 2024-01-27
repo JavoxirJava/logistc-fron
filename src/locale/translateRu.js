@@ -5,6 +5,7 @@ const translateRu = {
     gallary: "Галерея",
     dashboard: "Панель приборов",
     produkt: "Проект", 
+    werhouse: "Склад", 
     client: "Клиенты",
     histori: "История",
     homeText1: "Мы доставим ваш ",

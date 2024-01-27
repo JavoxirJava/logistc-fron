@@ -16,6 +16,7 @@ import translateRu from "./locale/translateRu"
 import Select from "./locale/Select";
 import UserDashboard from "./components/user/Dashboard";
 import {useEffect, useState} from "react";
+import Werhouse from "./components/werHouse/Werhouse";
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -57,6 +58,7 @@ function App() {
                 <Route path='/project' element={<Product  lang={lang} projectId={projectId} setProjectId={setProjectId} />}/>
                 <Route path='/client' element={<Clients lang={lang}/>}/>
                 <Route path='/history' element={<History lang={lang}/>}/>
+                <Route path='/warehouse' element={<Werhouse lang={lang}/>}/>
                 <Route path='/footer' element={<HomeFooter/>}/>
             </Routes>
         </div>

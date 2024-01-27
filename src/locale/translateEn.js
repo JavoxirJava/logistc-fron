@@ -5,6 +5,7 @@ const translateEn = {
     gallary: "Galary",
     dashboard: "Dashboard",
     produkt: "Project", 
+    werhouse: "Warehouse", 
     client: "Clients",
     histori: "History",
     homeText1: "We Will Deliver Your ",

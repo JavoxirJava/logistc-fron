@@ -21,7 +21,7 @@ function ProjectCard({ className, projects, openEdit, setProductObj, setProjectI
     return (
         <div
             onClick={async () => {
-                await setProjectId(projects)
+                // await setProjectId(projects)
                 getProduct(pagination, 4)
                 sessionStorage.setItem('projectIdIn', projects.id)
             }}
@@ -34,11 +34,9 @@ function ProjectCard({ className, projects, openEdit, setProductObj, setProjectI
                             <p className='font-bold'>{projects ? projects.name : 0}</p>
                         </div>
                         <div className='sm:w-20 h-max'>
-
                             <p className='opacity-70'>{t("card2")}</p>
                             <p className='font-bold'>{projects ? projects.status : 'no status'}</p>
                         </div>
-                        
                     </div>
                     {/* <div className='sm:w-[30%] lg:ms-3'>
                         <p className='opacity-70'>{t("card3")}</p>

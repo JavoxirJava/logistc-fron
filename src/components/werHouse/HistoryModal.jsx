@@ -48,7 +48,6 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
                     </div>
                 </div>
                 <div className="mt-7 mb-5 ps-16 pr-5">
-                    
                     {allAddressList && allAddressList.map((item) =>
                         <div className="flex flex-row">
                             <div className="h-[100px] w-[4px] py-4 flex relative justify-center bg-slate-900">
@@ -57,7 +56,6 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
                             <div className="p-4 ms-10">
                                 {item}
                             </div>
-
                         </div>
                     )}
                 </div>
