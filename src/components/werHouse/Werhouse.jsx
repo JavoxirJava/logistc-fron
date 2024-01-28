@@ -17,7 +17,7 @@ function Product({ lang, projectId, setProjectId }) {
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     const [editOf, setEditOf] = useState(false);
-    const [addProjectModal, setAddProjectModal] = useState(false);
+    const [addWerhouseModal, setaddWerhouseModal] = useState(false);
     const [editProjectModal, setEditProjectModal] = useState(false);
     const [product, setProductObj] = useState(null);
     const [product2, setProductObj2] = useState(null);
@@ -74,7 +74,7 @@ function Product({ lang, projectId, setProjectId }) {
 
     const openEdit = () => setEditOf(!editOf);
     const handleToggleOffcanvas = () => setIsOffcanvasOpen(!isOffcanvasOpen);
-    const openProjectCan = () => setAddProjectModal(!addProjectModal)
+    const openProjectCan = () => setaddWerhouseModal(!addWerhouseModal)
     const openEditProjectCan = () => setEditProjectModal(!editProjectModal)
 
     // const handleClick = (e) => {
@@ -103,27 +103,28 @@ function Product({ lang, projectId, setProjectId }) {
     }
 
     const getWerhouse = (page, size) => {
-        axios.get(`${url}wareH
-        ouse/all?page=${page}&size=${size}&lang=${lang}`, config)
+        axios.get(`${url}wareHouse?page=${page}&size=${size}&lang=${lang}`, config)
             .then(res => {
                 setTotalPage2(res.data.totalPage ? res.data.totalPage - 1 : 2);
-                setProject(res.data.object)
-                console.log(res.data.totalPage);
+                setProject(res.data.body.object)
 
             })
             .catch((err) => { console.log(); })
     }
 
+
     function getProduct(page, size) {
-        // axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : projects ? projects[0].id : 0}`, config).then((res) => {
-        //     if (res.data.message === 'success') {
-        //         setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
-        //         setProduct(res.data.body.object);
-        //     }
-        // })
-        // .catch((err) => {
-        //     console.log(err);
-        // })
+        axios.get(`${url}wareHouse/product?wareHouseId=${projectId ? projectId : projects ? projects[0].wareHouseId : 0}&page=${page}&size=${size}&lang=${lang}`, config).then((res) => {
+            
+                // setTotalPag
+                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+                setProduct(res.data);
+                console.log(res.data);
+            console.log(res.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     function addProduct() {
@@ -140,15 +141,15 @@ function Product({ lang, projectId, setProjectId }) {
             });
     }
 
-    function addProject() {
+    function addWerhouse() {
         let data = { ...product2, };
-        axios.post(`${url}project`, data, config)
+        axios.post(`${url}wareHouse`, data, config)
             .then(() => {
-                toast.success("successfully saved project");
+                toast.success("successfully saved warehouse");
                 setProductObj2(null);
                 getWerhouse(pagination, 4);
             }).catch((err) => {
-                toast.error("project saved error");
+                toast.error("warehouse saved error");
             });
     }
     
@@ -167,15 +168,29 @@ function Product({ lang, projectId, setProjectId }) {
     }
     function editProject() {
         let data = { ...product2, };
-        axios.put(`${url}project?id=${projectId.id}`, data, config)
+        axios.put(`${url}wareHouse/${product}`, data, config)
             .then(() => {
-                toast.success("successfully Edit project");
+                toast.success("successfully Edit warehouse");
                 setProductObj2(null);
+                getWerhouse(pagination, 4)
             }).catch((err) => {
-                toast.error("project Edit error");
+                toast.error("warehouse Edit error");
                 console.log(err);
             });
     }
+
+    function deleteWerhouse() {
+        axios.delete(`${url}wareHouse?id=${product}`, config)
+            .then(() => {
+                toast.success("successfully delete warehouse");
+                setProductObj2(null);
+                getWerhouse(pagination, 4)
+            }).catch((err) => {
+                toast.error("warehouse delete error");
+                console.log(err);
+            });
+    }
+
 
     function searchProduct(e) {
         let text = e.target.value;
@@ -266,6 +281,7 @@ function Product({ lang, projectId, setProjectId }) {
                                     pagination={pagination2}
                                     key={i}
                                     className="mt-5"
+                                    deleteWerhouse={deleteWerhouse}
                                     openEdit={openEditProjectCan}
                                     projects={item}
                                     setProductObj={setProductObj}
@@ -273,12 +289,12 @@ function Product({ lang, projectId, setProjectId }) {
                             ))}
                         </div>
                         <div className="pagination-style py-8">
-                            {/* <Pagination
+                            <Pagination
                                 {...bootstrap5PaginationPreset}
                                 current={pagination2}
                                 total={Math.floor(totalPage2 + 1)}
                                 onPageChange={setPagination2}
-                            /> */}
+                            />
                         </div>
                     </div>
 
@@ -307,7 +323,7 @@ function Product({ lang, projectId, setProjectId }) {
                                 {t("cardCurrent")}: {pagination}
                             </span>
                             {products && products.map((item, i) => (
-                                
+
                                 <ProductCard
                                     projectId={projectId}
                                     key={i}
@@ -337,10 +353,10 @@ function Product({ lang, projectId, setProjectId }) {
                     setProduct={setProductObj2}
                     product=""
                     handleToggleOffcanvas={openProjectCan}
-                    isOffcanvasOpen={addProjectModal}
+                    isOffcanvasOpen={addWerhouseModal}
                     name={t("add")}
                     btnName="Save"
-                    onSave={addProject}
+                    onSave={addWerhouse}
                     setUserId={setUserId}
                     lang={lang}
                 />

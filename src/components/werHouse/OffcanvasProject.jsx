@@ -44,12 +44,18 @@ function OffcanvasProject({
 
   function setData() {
     setProduct({
+      id: 0,
       name: byId(`name${isAdd}`),
-      transport: byId(`transport${isAdd}`),
-      status: byId(`productStatus${isAdd}`),
-      latitude: coordinates[0],
-      longitude: coordinates[1],
-      address: sessionStorage.getItem("address")
+      productDto: [
+        {
+          id: 0,
+          idNumber: "string",
+          name: "string",
+          measureCount: 0,
+          measure: "string",
+          wareHouseId: 0
+        }
+      ]
     });
   }
 
@@ -72,13 +78,13 @@ function OffcanvasProject({
           defaultValue={product ? product.name : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
-        <label
+        {/* <label
           htmlFor={`transport${isAdd}`}
           className="block text-gray-700 text-sm font-bold mb-2"
         >
           {t("productAdd2")}
-        </label>
-        <select
+        </label> */}
+        {/* <select
           id={`transport${isAdd}`}
           className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
         >
@@ -150,8 +156,8 @@ function OffcanvasProject({
           >
             {t("status6")}
           </option>
-        </select>
-        <div>
+        </select> */}
+        {/* <div>
           <YMaps>
             <Map
               defaultState={{ center: [55.75, 37.57], zoom: 9 }}
@@ -162,7 +168,7 @@ function OffcanvasProject({
               <Placemark geometry={coordinates} />
             </Map>
           </YMaps>
-        </div>
+        </div> */}
         <div className="mt-10 flex justify-between">
           <button
             onClick={handleToggleOffcanvas}
@@ -179,7 +185,7 @@ function OffcanvasProject({
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
           >
-            {t("add")}
+            {t("addWer")}
           </button>
         </div>
       </div>

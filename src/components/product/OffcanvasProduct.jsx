@@ -32,6 +32,7 @@ function OffcanvasProduct({
       name: byId(`productName${isAdd}`),
       measureCount: byId(`measureCount${isAdd}`),
       measure: byId(`measure${isAdd}`),
+      wareHouseId: byId(`wareHouseId${isAdd}`),
     });
     setUserId(byId(`userId${isAdd}`));
   }
@@ -99,6 +100,19 @@ function OffcanvasProduct({
         </label>
         <select
           id={`measure${isAdd}`}
+          className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4">
+          <option selected disabled>{t("productAdd60")}</option>
+          <option value="KG" selected={product && product.measure === "KG"}>{t("productAdd06")}</option>
+          <option value="PIECE" selected={product && product.measure === "PIECE"}>{t("productAdd060")}</option>
+          <option value="KUB" selected={product && product.measure === "KUB"}>{t("productAdd006")}</option>
+        </select>
+        <label
+          htmlFor={`wareHouseId${isAdd}`}
+          className="block text-gray-700 text-sm font-bold mb-2">
+          {t("werhouse")}
+        </label>
+        <select
+          id={`wareHouseId${isAdd}`}
           className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4">
           <option selected disabled>{t("productAdd60")}</option>
           <option value="KG" selected={product && product.measure === "KG"}>{t("productAdd06")}</option>

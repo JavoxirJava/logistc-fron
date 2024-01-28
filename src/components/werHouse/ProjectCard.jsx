@@ -4,7 +4,7 @@ import ProductModal from './HistoryModal';
 import ProjectModal from './projectModal';
 
 
-function ProjectCard({ className, projects, openEdit, setProductObj, setProjectId, getProduct, pagination }) {
+function ProjectCard({ className, deleteWerhouse, projects, openEdit, setProductObj, setProjectId, getProduct, pagination }) {
 
 
     const [historyList, setHistoryList] = useState([]);
@@ -30,39 +30,33 @@ function ProjectCard({ className, projects, openEdit, setProductObj, setProjectI
                 <div className='h-8/12 card-col-row w-full flex xl:flex-row sm:flew-row flex-col lg:gap-x-20  media-product h-max'>
                     <div className='xl:w-[22%] w-full flex lg:gap-x-5 justify-between h-max'>
                         <div className='w-50'>
-                            <p className='opacity-70'>{t("productAdd3")}</p>
-                            <p className='font-bold'>{projects ? projects.name : 0}</p>
+                            <h1 className='font-bold text-lg'>{projects ? projects.name : 0}</h1>
                         </div>
-                        <div className='sm:w-20 h-max'>
-                            <p className='opacity-70'>{t("card2")}</p>
-                            <p className='font-bold'>{projects ? projects.status : 'no status'}</p>
-                        </div>
+                        
                     </div>
                     {/* <div className='sm:w-[30%] lg:ms-3'>
                         <p className='opacity-70'>{t("card3")}</p>
                         <p className='font-bold'>{projects ? projects.date.substring(0, 10) : "April 23, 2023"}</p>
                     </div> */}
-                    <div className='sm:w-[64%]'>
-                        <p className='opacity-70'>{t("card5")}</p>
-                        <p className='font-bold'>{projects ? projects.address : "No location"}</p>
-                    </div>
+                    
                 </div>
             </div>
-            <div className='sm:w-2/12 h-max flex flex-col gap-3 justify-center my-auto media-product-button'>
+            <div className='sm:w-2/12 h-max flex  gap-3 justify-center my-auto media-product-button sm:me-10'>
                 <button onClick={() => {
                     openEdit();
-                    setProductObj(projects);
+                    setProductObj(projects.wareHouseId);
                 }}
                     className="inline-flex justify-center sm:w-9/12 px-5 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
                 >{t("edit")}</button>
-                <button onClick={() => {
-                    setHistoryList(projects);
+                 <button onClick={() => {
                     openModal();
+                    setProductObj(projects.wareHouseId);
                 }}
-                    className="inline-flex justify-center sm:w-9/12 px-5 rounded-md border border-gray-300 shadow-sm py-2 bg-yellow-400 text-sm font-medium text-white"
-                >{t("history5")}</button>
+                    className="inline-flex justify-center sm:w-9/12 px-5 rounded-md border border-gray-300 shadow-sm py-2 bg-red-700 text-sm font-medium text-white"
+                >{t("delete")}</button>
+                
             </div>
-            {historyList && <ProjectModal isOpen={isModalOpen} projectList={historyList} onClose={closeModal} />}
+            <ProjectModal isOpen={isModalOpen} deleteWerhouse={deleteWerhouse} onClose={closeModal} />
 
         </div>
     );
