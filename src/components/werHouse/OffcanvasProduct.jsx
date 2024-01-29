@@ -10,6 +10,7 @@ function OffcanvasProduct({
   lang,
   onSave,
   product,
+  werHouseId,
   setProduct,
   getProduct,
   isAdd,
@@ -24,6 +25,8 @@ function OffcanvasProduct({
     
   }, []);
 
+  console.log(werHouseId);
+
 
   function setData() {
     setProduct({
@@ -32,7 +35,7 @@ function OffcanvasProduct({
       name: byId(`productName${isAdd}`),
       measureCount: byId(`measureCount${isAdd}`),
       measure: byId(`measure${isAdd}`),
-      wareHouseId: byId(`${sessionStorage.getItem('setWerhouse')}${isAdd}`),
+      wareHouseId: `${werHouseId.wareHouseId}`,
     });
     setUserId(byId(`userId${isAdd}`));
   }

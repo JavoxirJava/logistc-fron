@@ -67,7 +67,7 @@ const DashboardProductCard = ({ className, lang }) => {
       .get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
       .then((res) => {
         // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
-        setProduct(res.data.object);
+        setProduct(res.data.body.object);
       })
       .catch((err) => console.log(err));
   }

@@ -106,8 +106,8 @@ function Product({ lang, projectId, setProjectId }) {
         axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
             .then(res => {
                 setTotalPage2(res.data.totalPage ? res.data.totalPage - 1 : 2);
-                setProject(res.data.object)
-                console.log(res.data.totalPage);
+                setProject(res.data.body.object)
+                console.log(res.data);
 
             })
             .catch((err) => { console.log(); })
@@ -170,6 +170,7 @@ function Product({ lang, projectId, setProjectId }) {
             .then(() => {
                 toast.success("successfully Edit project");
                 setProductObj2(null);
+                getProject(pagination, 4)
             }).catch((err) => {
                 toast.error("project Edit error");
                 console.log(err);
@@ -294,12 +295,7 @@ function Product({ lang, projectId, setProjectId }) {
                             <Dropdown setSearchBy={setSearchBy} />
                         </div>
                         <div className="mt-4 flex flex-wrap justify-between">
-                            <button
-                                onClick={handleToggleOffcanvas}
-                                className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
-                            >
-                                {t("addProduct")}
-                            </button>
+                            <div></div>
 
                             <h1><b><span className="text-blue-500 text-lg">{projectId.name ? projectId.name : projects ? projects[0].name : 0}</span>{' '}{t("project")}</b></h1>
                             <span className="me-5 pt-1.5 float-end">

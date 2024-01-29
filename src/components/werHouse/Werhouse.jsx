@@ -31,6 +31,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     const [searchBy2, setSearch2By] = useState(null);
     const [userId, setUserId] = useState(null);
     const [werhouseId, setWerhouseId] = useState('');
+    const [productIdList, setProductIdList] = useState([]);
 
 
     const { t } = useTranslation();
@@ -131,7 +132,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     function addProduct() {
         let data = { ...product2, };
         let werHouseIdIn = sessionStorage.getItem('werHouseIdIn');
-        axios.post(`${url}product?userId=${userId}&werHouseId=${werHouseIdIn}`, data, config)
+        axios.post(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success("successfully saved product");
                 setProductObj2(null);
@@ -157,7 +158,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
     function editProduct() {
         let data = { ...product2, };
-        axios.put(`${url}product?werHouseId=${sessionStorage.getItem("werHouseIdIn")}`, data, config)
+        axios.put(`${url}product?werHouseId=${werHouseId.wareHouseId}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
                 setProductObj2(null);
@@ -188,6 +189,17 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                 getWerhouse(pagination, 4)
             }).catch((err) => {
                 toast.error("warehouse delete error");
+                console.log(err);
+            });
+    }
+
+    function deleteProduct() {
+        axios.put(`${url}product?werHouseId=${werHouseId.wareHouseId}&productId=${product.id}`, config)
+            .then(() => {
+                toast.success("successfully delete product");
+                getProduct(pagination, 4)
+            }).catch((err) => {
+                toast.error("product delete error");
                 console.log(err);
             });
     }
@@ -250,7 +262,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     return (
         <>
             <NavBar werhouse={'border-b-red-600 border-b text-slate-900'} lang={lang} />
-            <div className="product-main">
+            <div className="wer-main">
                 <div className="flex w-full lg:flex-row align-center justify-center flex-col lg:h-full h-max">
                     {/* project uchun */}
                     <div className="lg:w-5/12 w-screen lg:px-3 md:px-10  lg:py-0 sm:py-5 px-1">
@@ -319,14 +331,15 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                                 {t("addProduct")}
                             </button>
 
-                            <h1><b>{t("project")}</b></h1>
+                            <h1><b><span className="text-blue-600 text-lg">{`${werHouseId.name} `}</span>{t("project")}</b></h1>
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
                             </span>
                             {products && products.map((item, i) => (
 
                                 <ProductCard
-                                    werHouseId={werHouseId}
+                                    setProductIdList={setProductIdList}
+                                    deleteProduct={deleteProduct}
                                     key={i}
                                     className="mt-5"
                                     openEdit={openEdit}
@@ -387,6 +400,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                     btnName="Save"
                     onSave={addProduct}
                     setUserId={setUserId}
+                    werHouseId={werHouseId}
                     wareHouse={werhouseId}
                     lang={lang}
                 />
@@ -399,6 +413,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                     isOffcanvasOpen={editOf}
                     name={t('editProduct')}
                     btnName="Edit"
+                    werHouseId={werHouseId}
                     onSave={editProduct}
                     setUserId={setUserId}
                     lang={lang}

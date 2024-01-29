@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { useTranslation } from "react-i18next";
-import ProductModal from './HistoryModal';
+import ProductModal from './productModal';
 
 
-function ProductCard({ className, product, openEdit, setProductObj, projectId }) {
+function ProductCard({ setProductIdList, className, product, openEdit, setProductObj, deleteProduct }) {
 
-    const [historyList, setHistoryList] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const closeModal = () => setIsModalOpen(false);
     const openModal = () => setIsModalOpen(true);
     const { t } = useTranslation();
 
-    console.log(product);
+    const idPush = (id) => {
+        setProductIdList.push(id)
+    }
+
 
     return (
         <div
@@ -51,13 +53,15 @@ function ProductCard({ className, product, openEdit, setProductObj, projectId })
                     className="inline-flex justify-center sm:w-9/12  px-5 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
                 >{t("edit")}</button>
                 <button onClick={() => {
-                    setHistoryList(product);
+                    setProductObj(product);
                     openModal();
                 }}
-                    className="inline-flex justify-center sm:w-9/12 px-5 rounded-md border border-gray-300 shadow-sm py-2 bg-yellow-400 text-sm font-medium text-white"
-                >{t("history5")}</button>
+                    className="inline-flex justify-center sm:w-9/12 px-5 rounded-md border border-gray-300 shadow-sm py-2 bg-red-700 text-sm font-medium text-white"
+                >{t("delete")}</button>
             </div>
-            {historyList && <ProductModal isOpen={isModalOpen} historyList={historyList} onClose={closeModal} />}
+                <input type="checkbox" className='' onClick={idPush(product.id)} />
+
+            <ProductModal isOpen={isModalOpen} deleteProduct={deleteProduct} onClose={closeModal} />
 
         </div>
     );

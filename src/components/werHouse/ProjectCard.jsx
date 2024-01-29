@@ -22,7 +22,7 @@ function ProjectCard({ className, deleteWerhouse, projects, openEdit, setProduct
         <div
             onClick={async () => {
                 // await setWerHouseId(projects)
-                await setWerHouseId(projects)
+                setWerHouseId(projects)
                 getProduct(pagination, 4)
                 sessionStorage.setItem('setWerhouse', projects.wareHouseId)
             }}
