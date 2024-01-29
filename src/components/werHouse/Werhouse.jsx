@@ -23,6 +23,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     const [product2, setProductObj2] = useState(null);
     const [products, setProduct] = useState(null);
     const [projects, setProject] = useState(null);
+    const [projectos, setProjectos] = useState(null);
     const [totalPage, setTotalPage] = useState(2);
     const [totalPage2, setTotalPage2] = useState(2);
     const [pagination, setPagination] = useState(0);
@@ -41,11 +42,10 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         setConfig();
         getWerhouse(pagination2, 4);
         getProduct(pagination, 4);
+        getProject(pagination, 4)
     }, []);
-
     
     useEffect(() => {
-
         getProduct(pagination, 4)
     }, [projects])
 
@@ -69,6 +69,8 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     useEffect(() => {
         searchByName();
     }, [searchBy]);
+
+   
 
     useEffect(() => {
         searchByName2();
@@ -114,6 +116,15 @@ function Product({ lang, werHouseId, setWerHouseId }) {
             .catch((err) => { console.log(); })
     }
 
+    const getProject = () => {
+        axios.get(`${url}project?page=0&size=100&lang=${lang}`, config)
+            .then(res => {
+                
+                setProjectos(res.data.body.object)
+            })
+            .catch((err) => { console.log(); })
+    }
+
     function getProduct(page, size) {
         axios.get(`${url}wareHouse/product?wareHouseId=${werHouseId.wareHouseId ? werHouseId.wareHouseId : projects ? projects[0].wareHouseId : 0}&page=${page}&size=${size}&lang=${lang}`, config).then((res) => {
             
@@ -122,17 +133,35 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                 setProduct(res.data.object);
                 // console.log(res.data.object);
             // }
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             console.log(err);
         })
     }
 
+    
+
     function addProduct() {
         let data = { ...product2, };
         let werHouseIdIn = sessionStorage.getItem('werHouseIdIn');
         axios.post(`${url}product?userId=${userId}`, data, config)
+            .then(() => {
+                toast.success("successfully saved product");
+                setProductObj2(null);
+                getProduct(pagination, 4);
+            }).catch((err) => {
+                toast.error("product saved error");
+                console.log(err);
+            });
+    }
+
+    
+    function addToProduct() {
+        let datacha = [
+            product
+        ]
+        axios.post(`${url}wareHouse/product?wareHouseId=${werHouseId.wareHouseId}&projectId=${document.getElementById("projectos").value}`, datacha, config)
             .then(() => {
                 toast.success("successfully saved product");
                 setProductObj2(null);
@@ -200,7 +229,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                 getProduct(pagination, 4)
             }).catch((err) => {
                 toast.error("product delete error");
-                console.log(err);
+                // console.log(err);
             });
     }
 
@@ -332,6 +361,12 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                             </button>
 
                             <h1><b><span className="text-blue-600 text-lg">{`${werHouseId.name} `}</span>{t("project")}</b></h1>
+                            <select id="projectos" className=" rounded-full p-2 border border-gray-500">
+                                <option value="">select pro</option>
+                                {projectos && projectos.map((item, i) => 
+                                    <option value={item.id}>{item.name}</option>
+                                )}
+                            </select>
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
                             </span>
@@ -344,6 +379,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                                     className="mt-5"
                                     openEdit={openEdit}
                                     product={item}
+                                    addToProduct={addToProduct}
                                     setProductObj={setProductObj}
                                     setWerhouseId={setWerhouseId}
                                 />

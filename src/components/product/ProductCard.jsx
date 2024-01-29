@@ -53,13 +53,8 @@ function ProductCard({ className, product, openEdit, setProductObj, projectId })
                     </div>
                 </div>
             </div>
-            <div className='sm:w-2/12 h-max flex flex-col gap-3 sm:justify-center '>
-                <button onClick={() => {
-                    openEdit();
-                    setProductObj(product);
-                }}
-                    className="inline-flex justify-center sm:w-9/12  px-5 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
-                >{t("edit")}</button>
+            <div className='sm:w-2/12 flex items-center gap-3 sm:justify-center '>
+               
                 <button onClick={() => {
                     setHistoryList(product);
                     openModal();

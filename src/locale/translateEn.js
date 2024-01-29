@@ -70,6 +70,7 @@ const translateEn = {
     productSearch: '🔍 Search id Numnber...',
     close: "Close",
     add: "Add Project",
+    addd: "Add",
     addWer: "Add warehouse",
     wiew: "Detail",
     addProduct: "Add Product",
