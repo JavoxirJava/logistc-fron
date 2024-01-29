@@ -83,7 +83,7 @@ function ProductCard({
           setProductObj(product.id)
           addToProduct();
         }}
-        className=" justify-center h-10 align-center px-5 rounded-md border border-green-300 shadow-sm  bg-red-700 text-sm font-medium text-white"
+        className=" justify-center h-10 align-center px-5 rounded-md border border-green-300 shadow-sm  bg-green-700 text-sm font-medium text-white"
       >
         {t("addd")}
       </button>
