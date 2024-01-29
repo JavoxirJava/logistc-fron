@@ -30,13 +30,13 @@ const History = ({changeLanguage, lang}) => {
 
 
     const getHistory = (page, size) => {
-        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}`, config)
+        axios.get(`${url}product/history?page=${page}&size=${size}&lang=${lang}`, config)
             .then((res) => {
-                setHistory(res.data.body.object);
-                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+                setHistory(res.data.object  );
+                // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
             })
-            .catch(() => {
-                console.log("history kelmadi");
+            .catch((err) => {
+                console.log(err);
             });
     };
 

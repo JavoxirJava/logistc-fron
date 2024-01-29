@@ -10,6 +10,7 @@ function OffcanvasProduct({
   lang,
   onSave,
   product,
+  werHouseId,
   setProduct,
   getProduct,
   isAdd,
@@ -24,6 +25,8 @@ function OffcanvasProduct({
     
   }, []);
 
+  console.log(werHouseId);
+
 
   function setData() {
     setProduct({
@@ -32,7 +35,7 @@ function OffcanvasProduct({
       name: byId(`productName${isAdd}`),
       measureCount: byId(`measureCount${isAdd}`),
       measure: byId(`measure${isAdd}`),
-      wareHouseId: byId(`wareHouseId${isAdd}`),
+      wareHouseId: `${werHouseId.wareHouseId}`,
     });
     setUserId(byId(`userId${isAdd}`));
   }
@@ -46,7 +49,7 @@ function OffcanvasProduct({
         <label
           htmlFor={`userId${isAdd}`}
           className="block text-gray-700 text-sm font-bold mb-2">
-          {t("productAdd2")}
+          {t("productSUser")}
         </label>
         <select
           id={`userId${isAdd}`}
@@ -106,7 +109,7 @@ function OffcanvasProduct({
           <option value="PIECE" selected={product && product.measure === "PIECE"}>{t("productAdd060")}</option>
           <option value="KUB" selected={product && product.measure === "KUB"}>{t("productAdd006")}</option>
         </select>
-        <label
+        {/* <label
           htmlFor={`wareHouseId${isAdd}`}
           className="block text-gray-700 text-sm font-bold mb-2">
           {t("werhouse")}
@@ -118,7 +121,7 @@ function OffcanvasProduct({
           <option value="KG" selected={product && product.measure === "KG"}>{t("productAdd06")}</option>
           <option value="PIECE" selected={product && product.measure === "PIECE"}>{t("productAdd060")}</option>
           <option value="KUB" selected={product && product.measure === "KUB"}>{t("productAdd006")}</option>
-        </select>
+        </select> */}
 
         <div className="mt-10 flex justify-between">
           <button

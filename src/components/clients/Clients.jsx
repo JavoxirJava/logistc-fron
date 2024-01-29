@@ -40,8 +40,9 @@ const Clients = ({changeLanguage, lang}) => {
         setIsloading(true);
         const data = {
             name: byId("nameC"),
+            
             idNumber: byId("idNumberC"),
-            phoneNumber: `+998${byId("phoneNumberC")}`,
+            phoneNumber: `998${byId("phoneNumberC")}`,
             password: byId("passwordC"),
         };
         axios.post(`${url}user?ROLE=ROLE_USER`, data, config).then(() => {
@@ -87,6 +88,7 @@ const Clients = ({changeLanguage, lang}) => {
             <NavBar
                 client={"border-b-red-600 border-b text-slate-900"}
                 changeLang={changeLanguage}
+                lang={lang}
             />
             <div className="clients-bg flex lg:flex-row flex-col">
                 <div className="lg:w-2/5 md:w-4/5 w-full lg:pl-10 md:px-0 px-2">
@@ -189,7 +191,7 @@ const Clients = ({changeLanguage, lang}) => {
                                 font-bold text-lg tracking-wider active:scale-95 duration-200"
                                     onClick={addUser}
                                 >
-                                    {t("add")}
+                                    {t("addClients")}
                                 </button>
                             )}
                         </div>

@@ -1,35 +1,45 @@
-import React from 'react';
-import {useTranslation} from "react-i18next";
+import React, { useState } from 'react';
+import { useTranslation } from "react-i18next";
+import ProductModal from './HistoryModal';
 
 
-function ProductCard({className, product, openEdit, setProductObj}) {
+function ProductCard({ className, product, openEdit, setProductObj, projectId }) {
 
-    const {t} = useTranslation();
+    const [historyList, setHistoryList] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const closeModal = () => setIsModalOpen(false);
+    const openModal = () => setIsModalOpen(true);
+    const { t } = useTranslation();
 
     return (
         <div
-            className={`flex media-product card-main border border-blue-300 w-full lg:h-[110px] h-max bg-blue-100 ${className} overflow-hidden`}>
-            <div className='card-col w-11/12 pt-2 ps-2'>
-                <div className='h-8/12 card-col-row w-full flex media-product'>
-                    <div className='sm:w-[22%]'>
-                        <p className='opacity-70'>{t("card1")}</p>
-                        <p className='font-bold'>{product ? product.productId : 0}</p>
+            className={`flex p-3 media-product card-main border border-blue-300 w-full h-max bg-blue-100 ${className} `}>
+            <div className='card-col w-11/12 pt-2 ps-2 flex md:flex-col flex-col '>
+                <div className='card-col-row w-full card-col-row flex sm:flex-row flex-col justify-between  media-product h-max'>
+                    <div className='flex sm:w-[100%] '>
+                        <div className='sm:w-[50%] w-[100%]'>
+                            <p className='opacity-70'>{t("card1")}</p>
+                            <p className='font-bold'>{product ? product.productId : 0}</p>
+                        </div>
+                        <div className='sm:w-[50%] w-[100%]'>
+                            <p className='opacity-70'>{t("card2")}</p>
+                            <p className='font-bold'>{product ? product.status : 'no status'}</p>
+                        </div>
                     </div>
-                    <div className='sm:w-[20%]'>
-                        <p className='opacity-70'>{t("card2")}</p>
-                        <p className='font-bold'>{product ? product.status : 'no status'}</p>
-                    </div>
-                    <div className='sm:w-[30%]'>
-                        <p className='opacity-70'>{t("card3")}</p>
-                        <p className='font-bold'>{product ? product.date.substring(0, 10) : "April 23, 2023"}</p>
-                    </div>
-                    <div className='sm:w-[26%]'>
-                        <p className='opacity-70'>{t("card4")}</p>
-                        <p className='font-bold'>{product ? product.productName : "Iphone"}</p>
+                    <div className='flex sm:w-[100%]'>
+                        <div className='sm:w-[50%] w-[100%]'>
+                            <p className='opacity-70'>{t("card3")}</p>
+                            <p className='font-bold'>{product ? product.date.substring(0, 10) : "April 23, 2023"}</p>
+                        </div>
+                        <div className='sm:w-[50%] w-[100%]'>
+                            <p className='opacity-70'>{t("card4")}</p>
+                            <p className='font-bold'>{product ? product.productName : "Iphone"}</p>
+                        </div>
                     </div>
                 </div>
-                <div className='h-3/6 card-col-row w-full flex media-product'>
-                    <div className='sm:w-[64%]'>
+                <div className='h-max card-col-row w-full flex sm:flex-row flex-col media-product '>
+                    <div className='sm:w-[64%] w-[110%]'>
                         <p className='opacity-70'>{t("card5")}</p>
                         <p className='font-bold'>{product ? product.address : "No location"}</p>
                     </div>
@@ -43,14 +53,17 @@ function ProductCard({className, product, openEdit, setProductObj}) {
                     </div>
                 </div>
             </div>
-            <div className='card-col w-2/12 flex justify-center my-auto h-10 media-product-button'>
+            <div className='sm:w-2/12 flex items-center gap-3 sm:justify-center '>
+               
                 <button onClick={() => {
-                    openEdit();
-                    setProductObj(product);
+                    setHistoryList(product);
+                    openModal();
                 }}
-                        className="inline-flex justify-center sm:w-9/12 w-[200px] rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
-                >{t("edit")}</button>
+                    className="inline-flex justify-center sm:w-9/12 px-5 rounded-md border border-gray-300 shadow-sm py-2 bg-yellow-400 text-sm font-medium text-white"
+                >{t("history5")}</button>
             </div>
+            {historyList && <ProductModal isOpen={isModalOpen} historyList={historyList} onClose={closeModal} />}
+
         </div>
     );
 }
