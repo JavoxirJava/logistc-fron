@@ -44,18 +44,7 @@ function OffcanvasProject({
 
   function setData() {
     setProduct({
-      id: 0,
       name: byId(`name${isAdd}`),
-      productDto: [
-        {
-          id: 0,
-          idNumber: "string",
-          name: "string",
-          measureCount: 0,
-          measure: "string",
-          wareHouseId: 0
-        }
-      ]
     });
   }
 

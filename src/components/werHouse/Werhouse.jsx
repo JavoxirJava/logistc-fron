@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 import ProjectCard from "./ProjectCard";
 import OffcanvasProject from "./OffcanvasProject";
 
-function Product({ lang, projectId, setProjectId }) {
+function Product({ lang, werHouseId, setWerHouseId }) {
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     const [editOf, setEditOf] = useState(false);
@@ -30,6 +30,7 @@ function Product({ lang, projectId, setProjectId }) {
     const [searchBy, setSearchBy] = useState(null);
     const [searchBy2, setSearch2By] = useState(null);
     const [userId, setUserId] = useState(null);
+    const [werhouseId, setWerhouseId] = useState('');
 
 
     const { t } = useTranslation();
@@ -112,15 +113,15 @@ function Product({ lang, projectId, setProjectId }) {
             .catch((err) => { console.log(); })
     }
 
-
     function getProduct(page, size) {
-        axios.get(`${url}wareHouse/product?wareHouseId=${projectId ? projectId : projects ? projects[0].wareHouseId : 0}&page=${page}&size=${size}&lang=${lang}`, config).then((res) => {
+        axios.get(`${url}wareHouse/product?wareHouseId=${werHouseId.wareHouseId ? werHouseId.wareHouseId : projects ? projects[0].wareHouseId : 0}&page=${page}&size=${size}&lang=${lang}`, config).then((res) => {
             
-                // setTotalPag
-                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
-                setProduct(res.data);
-                console.log(res.data);
-            console.log(res.data);
+            // if (res.data.message === 'success') {
+                // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+                setProduct(res.data.object);
+                // console.log(res.data.object);
+            // }
+            console.log(res);
         })
         .catch((err) => {
             console.log(err);
@@ -129,8 +130,8 @@ function Product({ lang, projectId, setProjectId }) {
 
     function addProduct() {
         let data = { ...product2, };
-        let projectIdIn = sessionStorage.getItem('projectIdIn');
-        axios.post(`${url}product?userId=${userId}&projectId=${projectIdIn}`, data, config)
+        let werHouseIdIn = sessionStorage.getItem('werHouseIdIn');
+        axios.post(`${url}product?userId=${userId}&werHouseId=${werHouseIdIn}`, data, config)
             .then(() => {
                 toast.success("successfully saved product");
                 setProductObj2(null);
@@ -156,7 +157,7 @@ function Product({ lang, projectId, setProjectId }) {
 
     function editProduct() {
         let data = { ...product2, };
-        axios.put(`${url}product?projectId=${sessionStorage.getItem("projectIdIn")}`, data, config)
+        axios.put(`${url}product?werHouseId=${sessionStorage.getItem("werHouseIdIn")}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
                 setProductObj2(null);
@@ -276,7 +277,7 @@ function Product({ lang, projectId, setProjectId }) {
                             </span>
                             {projects && projects.map((item, i) => (
                                 <ProjectCard
-                                    setProjectId={setProjectId}
+                                    setWerHouseId={setWerHouseId}
                                     getProduct={getWerhouse}
                                     pagination={pagination2}
                                     key={i}
@@ -325,12 +326,13 @@ function Product({ lang, projectId, setProjectId }) {
                             {products && products.map((item, i) => (
 
                                 <ProductCard
-                                    projectId={projectId}
+                                    werHouseId={werHouseId}
                                     key={i}
                                     className="mt-5"
                                     openEdit={openEdit}
                                     product={item}
                                     setProductObj={setProductObj}
+                                    setWerhouseId={setWerhouseId}
                                 />
                             ))}
                         </div>
@@ -385,6 +387,7 @@ function Product({ lang, projectId, setProjectId }) {
                     btnName="Save"
                     onSave={addProduct}
                     setUserId={setUserId}
+                    wareHouse={werhouseId}
                     lang={lang}
                 />
                 <OffcanvasProduct

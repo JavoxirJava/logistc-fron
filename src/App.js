@@ -32,6 +32,7 @@ function App() {
 
     const [lang, setLang] = useState("en")
     const [projectId, setProjectId] = useState('')
+    const [werHouseId, setWerHouseId] = useState('')
 
     const changeLang = (value) => {
         i18n.changeLanguage(value);
@@ -58,7 +59,7 @@ function App() {
                 <Route path='/project' element={<Product  lang={lang} projectId={projectId} setProjectId={setProjectId} />}/>
                 <Route path='/client' element={<Clients lang={lang}/>}/>
                 <Route path='/history' element={<History lang={lang}/>}/>
-                <Route path='/warehouse' element={<Werhouse lang={lang}/>}/>
+                <Route path='/warehouse' element={<Werhouse lang={lang} werHouseId={werHouseId} setWerHouseId={setWerHouseId}/>}/>
                 <Route path='/footer' element={<HomeFooter/>}/>
             </Routes>
         </div>

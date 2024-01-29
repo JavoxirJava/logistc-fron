@@ -12,6 +12,8 @@ function ProductCard({ className, product, openEdit, setProductObj, projectId })
     const openModal = () => setIsModalOpen(true);
     const { t } = useTranslation();
 
+    console.log(product);
+
     return (
         <div
             className={`flex p-3 media-product card-main border border-blue-300 w-full h-max bg-blue-100 ${className} `}>
@@ -20,37 +22,25 @@ function ProductCard({ className, product, openEdit, setProductObj, projectId })
                     <div className='flex sm:w-[100%] '>
                         <div className='sm:w-[50%] w-[100%]'>
                             <p className='opacity-70'>{t("card1")}</p>
-                            <p className='font-bold'>{product ? product.productId : 0}</p>
+                            <p className='font-bold'>{product ? product.idNumber : 0}</p>
                         </div>
-                        <div className='sm:w-[50%] w-[100%]'>
-                            <p className='opacity-70'>{t("card2")}</p>
-                            <p className='font-bold'>{product ? product.status : 'no status'}</p>
-                        </div>
+                        <div className='sm:w-[18%] ps-1'>
+                        <p className='opacity-70'>{t("card6")}</p>
+                        <p className='font-bold'>{product ? product.measureCount + " " + product.measure : "No location"}</p>
+                    </div>
                     </div>
                     <div className='flex sm:w-[100%]'>
-                        <div className='sm:w-[50%] w-[100%]'>
-                            <p className='opacity-70'>{t("card3")}</p>
-                            <p className='font-bold'>{product ? product.date.substring(0, 10) : "April 23, 2023"}</p>
-                        </div>
+                    
                         <div className='sm:w-[50%] w-[100%]'>
                             <p className='opacity-70'>{t("card4")}</p>
-                            <p className='font-bold'>{product ? product.productName : "Iphone"}</p>
+                            <p className='font-bold'>{product ? product.name : "Iphone"}</p>
                         </div>
                     </div>
                 </div>
                 <div className='h-max card-col-row w-full flex sm:flex-row flex-col media-product '>
-                    <div className='sm:w-[64%] w-[110%]'>
-                        <p className='opacity-70'>{t("card5")}</p>
-                        <p className='font-bold'>{product ? product.address : "No location"}</p>
-                    </div>
-                    <div className='sm:w-[18%] ps-1'>
-                        <p className='opacity-70'>{t("card6")}</p>
-                        <p className='font-bold'>{product ? product.measureCount + " " + product.measure : "No location"}</p>
-                    </div>
-                    <div className='sm:w-[18%] ps-1'>
-                        <p className='opacity-70'>{t("card7")}</p>
-                        <p className='font-bold'>{product ? product.owner : "No owner"}</p>
-                    </div>
+                   
+                  
+                   
                 </div>
             </div>
             <div className='sm:w-2/12 h-max flex flex-col gap-3 sm:justify-center '>
