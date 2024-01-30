@@ -108,7 +108,6 @@ function Product({ lang, projectId, setProjectId }) {
             .then(res => {
                 setTotalPage2(res.data.totalPage ? res.data.totalPage - 1 : 2);
                 setProject(res.data.body.object)
-                console.log(res.data);
 
             })
             .catch((err) => { console.log(); })

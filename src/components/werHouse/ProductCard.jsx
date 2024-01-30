@@ -17,18 +17,7 @@ function ProductCard({
   const openModal = () => setIsModalOpen(true);
   const { t } = useTranslation();
 
-  console.log(product);
 
-//   const arr = [];
-
-//   const idPush = () => {
-//     const iddd = document.getElementById("salom");
-//     if (iddd.isChecked) {
-//       console.log("true");
-//     } else {
-//       console.log("false");
-//     }
-//   };
 
   return (
     <div

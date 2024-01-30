@@ -25,7 +25,6 @@ function OffcanvasProduct({
     
   }, []);
 
-  console.log(werHouseId);
 
 
   function setData() {

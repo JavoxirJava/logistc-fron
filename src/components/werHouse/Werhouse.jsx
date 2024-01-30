@@ -154,7 +154,6 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
         setProduct(res.data.object);
         // }
-        // console.log(res);
       })
       .catch((err) => {
         loadingPP()
@@ -283,7 +282,6 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           config
         )
         .then((res) => {
-          console.log(res.data);
           // loadingPP()
           if (res.data.body) {
             // eslint-disable-next-line array-callback-return
