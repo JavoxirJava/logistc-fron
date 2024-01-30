@@ -15,15 +15,19 @@ function ProjectCard({setProduct, className, projects, openEdit, setProductObj, 
     const { t } = useTranslation();
 
     useEffect(() => {
-        getProduct(pagination, 4)
+        getWerhouse()
     }, [setProjectId])
 
+    function getWerhouse() {
+        if ((pagination - 1) * 4 < 0) getProduct(0, 4);
+        else getProduct(Math.floor(pagination - 1), 4);
+    }
     return (
         <div
             onClick={async () => {
                 setProduct(null)
                 setProjectId(projects)
-                getProduct(pagination, 4)
+                getWerhouse()
             }}
             className={`flex media-product sm:px-3 px-2 sm:py-7 py-4 card-main border border-blue-300 hover:cursor-pointer hover:shadow-md duration-200 w-full h-max bg-blue-100 ${className} overflow-hidden`}>
             <div className='card-col w-full '>

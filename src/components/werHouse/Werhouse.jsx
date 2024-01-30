@@ -145,7 +145,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
             : projects
             ? projects[0].wareHouseId
             : 0
-        }&page=${page}&size=100&lang=${lang}`,
+        }&page=${page}&size=${size}&lang=${lang}`,
         config
       )
       .then((res) => {
@@ -399,14 +399,14 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                   />
                 ))}
             </div>
-            {/* <div className="pagination-style py-8">
-              <Pagination
-                {...bootstrap5PaginationPreset}
-                current={pagination2}
-                total={Math.floor(totalPage2 + 1)}
-                onPageChange={setPagination2}
-              />
-            </div> */}
+              <div className="pagination-style py-8">
+                <Pagination
+                  {...bootstrap5PaginationPreset}
+                  current={pagination2}
+                  total={Math.floor(totalPage2 + 1)}
+                  onPageChange={setPagination2}
+                />
+              </div>
           </div>
 
           {/* product uchun */}
@@ -480,14 +480,14 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                   </h1>
                 )} */}
             </div>
-            {/* <div className="pagination-style mt-4">
+            <div className="pagination-style mt-4">
                   <Pagination
                     {...bootstrap5PaginationPreset}
                     current={pagination}
                     total={Math.floor(totalPage + 1)}
                     onPageChange={setPagination}
                   />
-                </div> */}
+                </div>
           </div>
         </div>
 

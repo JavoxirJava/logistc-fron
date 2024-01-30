@@ -104,7 +104,7 @@ function Product({ lang, projectId, setProjectId }) {
     }
 
     const getProject = (page, size) => {
-        axios.get(`${url}project?page=${page}&size=100&lang=${lang}`, config)
+        axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
             .then(res => {
                 setTotalPage2(res.data.totalPage ? res.data.totalPage - 1 : 2);
                 setProject(res.data.body.object)
@@ -258,7 +258,7 @@ function Product({ lang, projectId, setProjectId }) {
                             <h1><b>{t("produkt")}</b></h1>
 
                             <span className="me-5 pt-1.5 float-end">
-                                {t("cardCurrent")}: {pagination}
+                                {t("cardCurrent")}: {pagination2}
                             </span>
                             {projects && projects.map((item, i) => (
                                 <ProjectCard
@@ -275,12 +275,12 @@ function Product({ lang, projectId, setProjectId }) {
                             ))}
                         </div>
                         <div className="pagination-style py-8">
-                            {/* <Pagination
+                            <Pagination
                                 {...bootstrap5PaginationPreset}
                                 current={pagination2}
                                 total={Math.floor(totalPage2 + 1)}
                                 onPageChange={setPagination2}
-                            /> */}
+                            />
                         </div>
                     </div>
 
@@ -314,14 +314,14 @@ function Product({ lang, projectId, setProjectId }) {
                                 />
                             ))}
                         </div>
-                        {/* <div className="pagination-style mt-4">
+                        <div className="pagination-style mt-4">
                             <Pagination
                                 {...bootstrap5PaginationPreset}
                                 current={pagination}
                                 total={Math.floor(totalPage + 1)}
                                 onPageChange={setPagination}
                             />
-                        </div> */}
+                        </div>
                     </div>
 
                 </div>

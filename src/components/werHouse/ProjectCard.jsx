@@ -15,8 +15,13 @@ function ProjectCard({setProduct, loading, className, deleteWerhouse, projects, 
     const { t } = useTranslation();
 
     useEffect(() => {
-        getProduct(pagination, 4)
+        getWerhouse()
     }, [setWerHouseId])
+
+    function getWerhouse() {
+        if ((pagination - 1) * 4 < 0) getProduct(0, 4);
+        else getProduct(Math.floor(pagination - 1), 4);
+    }
 
     return (
         <div
@@ -24,7 +29,7 @@ function ProjectCard({setProduct, loading, className, deleteWerhouse, projects, 
                 // await setWerHouseId(projects)
                 setProduct(null)
                 setWerHouseId(projects)
-                getProduct(pagination, 4)
+                getWerhouse()
                 loading()
                 sessionStorage.setItem('setWerhouse', projects.wareHouseId)
             }}
