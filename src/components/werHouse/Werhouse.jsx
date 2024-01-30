@@ -431,7 +431,8 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
               <h1>
                 <b>
-                  <span className="text-blue-600 text-lg">{`${werHouseId.name} `}</span>
+                  <span className="text-blue-600 text-lg">{`${werHouseId.name ? werHouseId.name : projects ? projects[0].name : 0
+                  } `}</span>
                   {t("project")}
                 </b>
               </h1>
