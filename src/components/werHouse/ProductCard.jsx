@@ -8,6 +8,7 @@ function ProductCard({
   product,
   openEdit,
   setProductObj,
+  classNames,
   deleteProduct,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -78,6 +79,7 @@ function ProductCard({
           {t("delete")}
         </button>
       </div>
+      {classNames ? (
       <button
         onClick={() => {
           setProductObj(product.id)
@@ -87,6 +89,9 @@ function ProductCard({
       >
         {t("addd")}
       </button>
+      ) : (
+        ""
+      )}
 
       <ProductModal
         isOpen={isModalOpen}

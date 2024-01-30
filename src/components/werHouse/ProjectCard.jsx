@@ -4,7 +4,7 @@ import ProductModal from './HistoryModal';
 import ProjectModal from './projectModal';
 
 
-function ProjectCard({ className, deleteWerhouse, projects, openEdit, setProductObj, setWerHouseId, getProduct, pagination }) {
+function ProjectCard({loading, className, deleteWerhouse, projects, openEdit, setProductObj, setWerHouseId, getProduct, pagination }) {
 
 
     const [historyList, setHistoryList] = useState([]);
@@ -24,6 +24,7 @@ function ProjectCard({ className, deleteWerhouse, projects, openEdit, setProduct
                 // await setWerHouseId(projects)
                 setWerHouseId(projects)
                 getProduct(pagination, 4)
+                loading()
                 sessionStorage.setItem('setWerhouse', projects.wareHouseId)
             }}
             className={`flex media-product sm:px-3 px-2 sm:py-7 py-4 card-main border border-blue-300 hover:cursor-pointer hover:shadow-md duration-200 w-full h-max bg-blue-100 ${className} overflow-hidden`}>
