@@ -389,6 +389,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                     getProduct={getWerhouse}
                     pagination={pagination2}
                     key={i}
+                    setProduct={setProduct}
                     loading={loadingPP}
                     className="mt-5"
                     deleteWerhouse={deleteWerhouse}

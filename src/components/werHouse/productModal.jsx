@@ -25,7 +25,10 @@ const ProductModal = ({ isOpen, deleteProduct,  onClose }) => {
                 {t("close")}
               </button>
               <button 
-                onClick={deleteProduct}
+                onClick={() => {
+                  onClose()
+                  deleteProduct()
+                }}
                 className="btmn">
                 {t("delete")}
               </button>

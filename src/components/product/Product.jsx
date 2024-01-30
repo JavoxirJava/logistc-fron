@@ -12,7 +12,7 @@ import Dropdown from "../Dropdown";
 import { useTranslation } from "react-i18next";
 import ProjectCard from "./ProjectCard";
 import OffcanvasProject from "./OffcanvasProject";
-import { load } from "../../assets";
+import Dropdown2 from "../Dropdown2";
 
 function Product({ lang, projectId, setProjectId }) {
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
@@ -31,7 +31,6 @@ function Product({ lang, projectId, setProjectId }) {
     const [searchBy, setSearchBy] = useState(null);
     const [searchBy2, setSearch2By] = useState(null);
     const [userId, setUserId] = useState(null);
-    const [loadingP, setLoadingP] = useState(false);
 
 
     const { t } = useTranslation();
@@ -74,8 +73,7 @@ function Product({ lang, projectId, setProjectId }) {
         searchByName2();
     }, [searchBy2]);
 
-  const loadingPP = () => setLoadingP(!loadingP);
-  const openEdit = () => setEditOf(!editOf);
+    const openEdit = () => setEditOf(!editOf);
     const handleToggleOffcanvas = () => setIsOffcanvasOpen(!isOffcanvasOpen);
     const openProjectCan = () => setAddProjectModal(!addProjectModal)
     const openEditProjectCan = () => setEditProjectModal(!editProjectModal)
@@ -117,16 +115,14 @@ function Product({ lang, projectId, setProjectId }) {
     }
 
     function getProduct(page, size) {
-        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : projects ? projects[0].id : 0}`, config).then((res) => {
-            if (res.data.message === 'success') {
-                loadingPP()
-                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id :  0}`, config).then((res) => {
+            // if (res.data.message === 'success') {
+            //     setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
-            }
+            // }
         })
         .catch((err) => {
             console.log(err);
-            loadingPP()
         })
     }
 
@@ -188,19 +184,18 @@ function Product({ lang, projectId, setProjectId }) {
         else axios.get(`${url}product/admin/search?${searchByName()}=${text}&lang=${lang}`, config).then(res => {
             if (res.data.body) {
                 // eslint-disable-next-line array-callback-return
-                if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
+                if (res.data.body.length > 4) setProject(res.data.body.map((item, i) => {
                     if (i < 4) return item;
                 }))
                 else setProduct(res.data.body);
             } else setProduct([]);
-        }).catch(err => {
-            console.log(err)});
+        }).catch(err => console.log(err));
     }
 
     function searchProject(e) {
         let text = e.target.value;
         if (text === '') getProduct(pagination, 4);
-        else axios.get(`${url}product/admin/search?${searchByName2()}=${text}&lang=${lang}`, config).then(res => {
+        else axios.get(`${url}project/admin/search?${searchByName2()}=${text}&lang=${lang}`, config).then(res => {
             if (res.data.body) {
                 // eslint-disable-next-line array-callback-return
                 if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
@@ -248,10 +243,10 @@ function Product({ lang, projectId, setProjectId }) {
                             <input
                                 type="search"
                                 placeholder={t("productSearch")}
-                                onChange={searchProduct}
+                                onChange={searchProject}
                                 className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                             />
-                            <Dropdown setSearchBy={setSearchBy} />
+                            <Dropdown2 setSearchBy={setSearchBy} />
                         </div>
                         <div className="mt-4 flex flex-wrap justify-between">
                             <button
@@ -271,10 +266,10 @@ function Product({ lang, projectId, setProjectId }) {
                                     getProduct={getProject}
                                     pagination={pagination2}
                                     key={i}
-                                    loading={loadingPP}
                                     className="mt-5"
                                     openEdit={openEditProjectCan}
                                     projects={item}
+                                    setProduct={setProduct}
                                     setProductObj={setProductObj}
                                 />
                             ))}
@@ -308,12 +303,7 @@ function Product({ lang, projectId, setProjectId }) {
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
                             </span>
-                            {loadingP ? (
-                    <div className="flex justify-center w-full block pt-10">
-                        <img src={load} alt="" />
-                    </div>
-                    ) : (
-                            products && products.map((item, i) => (
+                            {products && products.map((item, i) => (
                                 <ProductCard
                                     projectId={projectId}
                                     key={i}
@@ -322,7 +312,7 @@ function Product({ lang, projectId, setProjectId }) {
                                     product={item}
                                     setProductObj={setProductObj}
                                 />
-                            )))}
+                            ))}
                         </div>
                         {/* <div className="pagination-style mt-4">
                             <Pagination

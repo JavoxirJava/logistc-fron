@@ -25,7 +25,10 @@ const ProjectModal = ({ isOpen, deleteWerhouse,  onClose }) => {
                 {t("close")}
               </button>
               <button 
-                onClick={deleteWerhouse}
+                onClick={() => {
+                  deleteWerhouse()
+                  onClose()
+                }}
                 className="btmn">
                 {t("delete")}
               </button>

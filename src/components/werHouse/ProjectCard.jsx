@@ -4,7 +4,7 @@ import ProductModal from './HistoryModal';
 import ProjectModal from './projectModal';
 
 
-function ProjectCard({loading, className, deleteWerhouse, projects, openEdit, setProductObj, setWerHouseId, getProduct, pagination }) {
+function ProjectCard({setProduct, loading, className, deleteWerhouse, projects, openEdit, setProductObj, setWerHouseId, getProduct, pagination }) {
 
 
     const [historyList, setHistoryList] = useState([]);
@@ -22,6 +22,7 @@ function ProjectCard({loading, className, deleteWerhouse, projects, openEdit, se
         <div
             onClick={async () => {
                 // await setWerHouseId(projects)
+                setProduct(null)
                 setWerHouseId(projects)
                 getProduct(pagination, 4)
                 loading()
