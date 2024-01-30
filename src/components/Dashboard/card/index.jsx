@@ -66,7 +66,7 @@ const DashboardProductCard = ({ className, lang }) => {
     axios
       .get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
       .then((res) => {
-        // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+        setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
         setProduct(res.data.body.object);
       })
       .catch((err) => console.log(err));
