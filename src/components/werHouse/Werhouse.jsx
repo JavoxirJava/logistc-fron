@@ -238,6 +238,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         let text = e.target.value;
         if (text === '') getProduct(pagination, 4);
         else axios.get(`${url}product/admin/search?${searchByName()}=${text}&lang=${lang}`, config).then(res => {
+            console.log(res.data);
             if (res.data.body) {
                 // eslint-disable-next-line array-callback-return
                 if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
@@ -251,14 +252,14 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     function searchProject(e) {
         let text = e.target.value;
         if (text === '') getProduct(pagination, 4);
-        else axios.get(`${url}product/admin/search?${searchByName2()}=${text}&lang=${lang}`, config).then(res => {
+        else axios.get(`${url}wareHouse/search?name=${text}&lang=${lang}`, config).then(res => {
             if (res.data.body) {
                 // eslint-disable-next-line array-callback-return
-                if (res.data.body.length > 4) setProduct(res.data.body.map((item, i) => {
+                if (res.data.body.length > 4) setProject(res.data.body.map((item, i) => {
                     if (i < 4) return item;
                 }))
-                else setProduct(res.data.body);
-            } else setProduct([]);
+                else setProject(res.data.body);
+            } else setProject([]);
         }).catch(err => console.log(err));
     }
 
@@ -299,10 +300,10 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                             <input
                                 type="search"
                                 placeholder={t("productSearch")}
-                                onChange={searchProduct}
+                                onChange={searchProject}
                                 className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                             />
-                            <Dropdown setSearchBy={setSearchBy} />
+                            {/* <Dropdown setSearchBy={setSearchBy} /> */}
                         </div>
                         <div className="mt-4 flex flex-wrap justify-between">
                             <button

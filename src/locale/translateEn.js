@@ -67,7 +67,7 @@ const translateEn = {
     productAdd7: 'Id Number',
     productAdd8: 'Product status',
     productAdd9: 'Select warehouse',
-    productSearch: '🔍 Search id Numnber...',
+    productSearch: '🔍 Search...',
     close: "Close",
     add: "Add Project",
     addd: "Add",
