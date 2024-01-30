@@ -14,8 +14,6 @@ const ProductModal = ({ isOpen, deleteProduct,  onClose }) => {
             <div>
               {t("delete2")}
             </div>
-           
-            
             <div className="flex justify-between mt-7">
               <button
                 type="button"
