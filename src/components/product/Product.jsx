@@ -106,7 +106,7 @@ function Product({ lang, projectId, setProjectId }) {
     const getProject = (page, size) => {
         axios.get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
             .then(res => {
-                setTotalPage2(res.data.totalPage ? res.data.totalPage - 1 : 2);
+                setTotalPage2(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProject(res.data.body.object)
 
             })
@@ -116,7 +116,7 @@ function Product({ lang, projectId, setProjectId }) {
     function getProduct(page, size) {
         axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id :  0}`, config).then((res) => {
             // if (res.data.message === 'success') {
-            //     setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
                 setProduct(res.data.body.object);
             // }
         })

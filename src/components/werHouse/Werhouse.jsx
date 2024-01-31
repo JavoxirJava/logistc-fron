@@ -137,6 +137,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   };
 
   function getProduct(page, size) {
+    loadingPP()
     axios
       .get(
         `${url}wareHouse/product?wareHouseId=${
@@ -151,8 +152,9 @@ function Product({ lang, werHouseId, setWerHouseId }) {
       .then((res) => {
         // if (res.data.message === 'success') {
             loadingPP()
-        // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+        setTotalPage(res.data.totalPage ? res.data.totalPage - 1 : 2);
         setProduct(res.data.object);
+        // console.log(res);
         // }
       })
       .catch((err) => {
@@ -282,9 +284,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           config
         )
         .then((res) => {
-          // loadingPP()
           if (res.data.body) {
-            // eslint-disable-next-line array-callback-return
             if (res.data.body.length > 4)
               setProduct(
                 res.data.body.map((item, i) => {
@@ -295,7 +295,6 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           } else setProduct([]);
         })
         .catch((err) => {
-            // loadingPP()
             console.log(err);
         });
   }
@@ -439,9 +438,10 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                 onChange={cLasslar}
                 className=" rounded-full p-2 border border-gray-500"
               >
-                <option value="select">select pro</option>
+                <option value="select" selected>{t("select")}</option>
                 {projectos &&
                   projectos.map((item, i) => (
+                    
                     <option value={item.id}>{item.name}</option>
                   ))}
               </select>
@@ -451,7 +451,8 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               {/* {product ? (
                 <> */}
                 {loadingP ? (
-                    <div className="flex justify-center w-full block pt-10">
+                    <div className="flex justify-center w-full
+                     pt-10">
                         <img src={load} alt="" />
                     </div>
                     ) : (
