@@ -100,7 +100,7 @@ const DashboardProductCard = ({className, lang}) => {
                             </div>
                             <div className='w-[25%]'>
                                 <p className='opacity-70'>{t("card4")}</p>
-                                <p className='font-bold'>{item ? item.name : "Iphone"}</p>
+                                <p className='font-bold'>{item ? item.productName : "Iphone"}</p>
                             </div>
                         </div>
                         <div className='h-3/6 card-col-row w-full flex'>
