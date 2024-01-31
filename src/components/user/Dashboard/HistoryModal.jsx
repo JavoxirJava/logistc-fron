@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 const UserModal = ({ isOpen, onClose, cardInfo }) => {
     const { t } = useTranslation();
 
+    console.log(cardInfo);
+
 
     if (!isOpen) return null;
     const allAddressList = cardInfo.allAddress;
@@ -13,7 +15,7 @@ const UserModal = ({ isOpen, onClose, cardInfo }) => {
             bg-opacity-75 z-10">
             <div className="bg-slate-300 rounded shadow-md w-1/2">
                 <div className='bg-blue-800 py-5 flex justify-around items-center relative'>
-                    <h1 className='text-2xl text-sky-200'>{cardInfo && cardInfo.name}</h1>
+                    <h1 className='text-2xl text-sky-200'>{cardInfo && cardInfo.productName}</h1>
                     <h1 className='text-2xl text-green-300'>{cardInfo && cardInfo.status}</h1>
                     <i className="fa-solid fa-xmark absolute cursor-pointer right-5 text-2xl text-white" onClick={onClose}></i>
                 </div>
