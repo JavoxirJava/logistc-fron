@@ -25,20 +25,20 @@ const UserModal = ({ isOpen, onClose, cardInfo }) => {
                     
                     <div className="mt-2 w-1/3 text-center">
                         <p className='pb-0 mb-0 opacity-50'>{t("weiw3")}</p>
-                        <p className='mt-0 pt-0 font-semibold'>{cardInfo && cardInfo.createdAt.substring(0, 10)} {cardInfo.createdAt.substring(11, 16)}</p>
+                        <p className='mt-0 pt-0 font-semibold'>{cardInfo && cardInfo.date.substring(0, 10)} {cardInfo.date.substring(11, 16)}</p>
                     </div>
                     
                 </div>
-                <div className="mt-7 mb-5 ps-16 pr-5">
+                <div className="mt-7 mb-10 ps-16 pr-5">
                     {allAddressList && allAddressList.map((item) =>
-                        <div className="flex flex-row">
-                            <div className="h-[100px] w-[4px] py-4 flex relative justify-center bg-slate-900">
-                                <div className=" w-[30px] h-[30px] rounded-full absolute top-4 bg-blue-700"></div>
-                            </div>
-                            <div className="p-4 ms-10">
-                                {item}
-                            </div>
+                        <div className="flex flex-col">
+                        <div className="p-6 pl-0">
+                          {item.slice(0, item.indexOf(","))}
                         </div>
+                        <div className="h-[4px] w-[100px] flex relative justify-center items-center bg-slate-900">
+                          <div className="w-[30px] h-[30px] rounded-full absolute left-0 bg-blue-700"></div>
+                        </div>
+                      </div>
                     )}
                 </div>
             </div>
