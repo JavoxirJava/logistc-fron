@@ -19,7 +19,7 @@ function Loader({changeLang}) {
             visible={true}
             height="200"
             width="200"
-            color="#fff"
+            color="#B91E23"
             ariaLabel="three-circles-loading"
             wrapperStyle={{}}
             wrapperClass=""

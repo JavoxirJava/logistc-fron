@@ -187,7 +187,7 @@
   font-weight: 600;
   font-size: 19px;
   color: #fff;
-  background: linear-gradient(90deg, #0066CC 0%, #c500cc 100%);
+  background-color: #B91E23;
   padding: 10px 38px;
   border: none;
   box-shadow: rgb(0, 0, 0) 0px 0px 19px -2px;
@@ -204,7 +204,7 @@
 
   transition: 842ms;
   transform: translateY(-3px);
-  background: linear-gradient(90deg, #0066CC 0%, #c500cc 100%);
+  background-color: #B91E23;
   color: #ffffff;
 }
 
@@ -230,13 +230,7 @@
 
 
 .loading {
-  background-image: linear-gradient(120deg,
-      hsl(199deg 100% 55%) 0%,
-      hsl(230deg 70% 43%) 20%,
-      hsl(220deg 73% 50%) 40%,
-      hsl(220deg 73% 50%) 60%,
-      hsl(230deg 70% 43%) 80%,
-      hsl(199deg 100% 55%) 100%);
+  background-color: #FFEDE7;
 }
 
 

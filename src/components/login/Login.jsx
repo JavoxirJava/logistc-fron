@@ -5,6 +5,7 @@ import {byId, byIdObj, url} from "../api";
 import {toast} from "react-toastify";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import { bir, ikki, logo } from "../../assets";
 
 
 function Login() {
@@ -39,10 +40,15 @@ function Login() {
     sessionStorage.setItem('language', 'en');
 
     return (
-        <div className="w-full h-screen flex justify-center items-center header-div text-white"
+        <div className="w-full h-screen flex flex-col gap-10 justify-center items-center header-div text-white relative"
              style={{position: "fixed", overflow: "hidden"}}>
-            <div className="w-[450px] h-[470px] rounded-2xl box md:py-10 md:px-12 px-5 py-10 flex flex-col">
-                <p className="text-2xl mb-10">{t("login1")}</p>
+                <img className="w-[350px] px-10" src={logo} alt="" />
+                <div className="relative w-[750px] flex gap-20 flex-row justify-center">
+                    <img className="absolute left-32 md:left-0 w-[13rem] " src={bir} alt="dj" />
+                    <img className="absolute top-20 right-10 md:right-0 w-[24rem] " src={ikki} alt="jfj" />
+                </div>
+            <div className="md:w-[400px] h-[360px] rounded-2xl box z-10 md:py-10 md:px-12 px-5 py-10 flex flex-col">
+               
                 <p>{t("login2")}</p>
                 <input
                     id="username"

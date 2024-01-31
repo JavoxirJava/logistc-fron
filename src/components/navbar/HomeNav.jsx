@@ -149,7 +149,7 @@ function HomeNav({home, about, services, gallery, changeLang}) {
                             </div>
                         </div>
                         <div
-                            className="  hidden md:inline inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0"></div>
+                            className=" md:inline inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0"></div>
                         <div
                             className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ms-20 sm:pr-0">
                             <Link id="login" to="/login">

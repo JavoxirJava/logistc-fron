@@ -109,16 +109,16 @@ function ProductCard({ className, product }) {
         </button>
       </div>
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600  overflow-y-auto h-full w-full lg:px-0 md:px-40 sm:px-10 px-2">
-          <div className="relative modal-bg top-20 mx-auto md:p-8 p-3  lg:w-1/3 shadow-lg rounded-md ">
-            <h2 className="text-2xl leading-6 font-semibold text-white text-center mb-4">
+        <div className="fixed inset-0 bg-gray-300 bg-transparent overflow-y-auto h-full w-full lg:px-0 md:px-40 sm:px-10 px-2">
+          <div className="relative bg-slate-200 top-20 mx-auto md:p-8 p-3  lg:w-1/3 shadow-lg rounded-md ">
+            <h2 className="text-2xl leading-6 font-semibold text-black text-center mb-4">
             {t("addclient1")}
             </h2>
             <div>
               <div className="mb-3">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-white"
+                  className="block text-sm font-medium text-black"
                 >
                    {t("addclient3")}
                 </label>
@@ -137,7 +137,7 @@ function ProductCard({ className, product }) {
               <div className="mb-3">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-white"
+                  className="block text-sm font-medium text-black"
                 >
                    {t("addclient5")}
                 </label>
@@ -156,7 +156,7 @@ function ProductCard({ className, product }) {
               <div className="mb-3">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-white"
+                  className="block text-sm font-medium text-black"
                 >
                    {t("addclient7")}
                 </label>
@@ -174,7 +174,7 @@ function ProductCard({ className, product }) {
               <div className="mb-3">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-white"
+                  className="block text-sm font-medium text-black"
                 >
                    {t("addclient9")}
                 </label>

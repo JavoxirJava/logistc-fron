@@ -262,18 +262,18 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                     ></i>
                   </div>
                   {me && (
-                    <div className="bg-gradient-to-tl from-sky-500 to-sky-800 sm:px-8 px-2 py-6">
+                    <div className="bg-slate-200 sm:px-8 px-2 py-6">
                       <div className=" font-bold text-black text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">
                           {t("addclient3")}
                         </p>
-                        <p className="mt-0 pt-0 text-white">{me.name}</p>
+                        <p className="mt-0 pt-0 text-black">{me.name}</p>
                       </div>
                       <div className=" font-bold text-black text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">
                           {t("addclient5")}
                         </p>
-                        <p className="mt-0 pt-0 text-white">
+                        <p className="mt-0 pt-0 text-black">
                           {me.idNumber ? me.idNumber : "none"}
                         </p>
                       </div>
@@ -281,14 +281,14 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                         <p className="opacity-50 pb-0 mb-0 mt-2">
                           {t("addclient7")}
                         </p>
-                        <p className="mt-0 pt-0 text-white">{me.phoneNumber}</p>
+                        <p className="mt-0 pt-0 text-black">{me.phoneNumber}</p>
                       </div>
                       <div className=" font-bold text-black text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">
                           {t("addclient9")}
                         </p>
 
-                        <p className="mt-0 pt-0 text-white">{me.password}</p>
+                        <p className="mt-0 pt-0 text-black">{me.password}</p>
                       </div>
                       <div className="flex justify-between items-center mt-3 font-bold text-white">
                         <button
@@ -337,7 +337,7 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                       alt="img"
                     />
                   </div>
-                  <div className="bg-gradient-to-tl w-full from-sky-500 to-sky-800 md:px-8 px-3 md:py-6 py-2">
+                  <div className="bg-slate-200 w-full md:px-8 px-3 md:py-6 py-2">
                     <div className=" font-bold text-black text-[1.1rem]">
                       <p className="opacity-50 pb-0 mb-0 mt-2">
                         {t("addclient3")}
