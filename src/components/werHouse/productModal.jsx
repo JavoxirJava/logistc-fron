@@ -37,4 +37,4 @@ const ProductModal = ({addToProduct, isOpen,  onClose }) => {
     );
 };
 
-export default ProductModal;
+export default ProductModal;  
