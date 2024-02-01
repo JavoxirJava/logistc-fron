@@ -2,7 +2,7 @@ const translateEn = {
     home: "Home",
     about: "About",
     service: "Services",
-    gallary: "Galary",
+    gallary: "Gallery",
     dashboard: "Dashboard",
     project: "Product", 
     addproject: "Add to project", 
