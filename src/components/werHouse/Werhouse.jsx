@@ -499,7 +499,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           product=""
           handleToggleOffcanvas={openProjectCan}
           isOffcanvasOpen={addWerhouseModal}
-          name={t("add")}
+          name={t("addWer")}
           btnName="Save"
           onSave={addWerhouse}
           setUserId={setUserId}
@@ -512,7 +512,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           product={product}
           handleToggleOffcanvas={openEditProjectCan}
           isOffcanvasOpen={editProjectModal}
-          name={t("editProject")}
+          name={t("editWer")}
           btnName="Edit"
           onSave={editProject}
           setUserId={setUserId}

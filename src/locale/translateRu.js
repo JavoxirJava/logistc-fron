@@ -73,6 +73,7 @@ const translateRu = {
     select: "Выберите проект",
     addd: "Добавить",
     addWer: "Добавить cклад",
+    editWer: "Редакт cклад",
     addProduct: "Добавить продукт",
     edit: "Редакт",
     editProject: "Редактировать проект",

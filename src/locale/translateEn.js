@@ -75,6 +75,7 @@ const translateEn = {
     select: "Select project",
     addd: "Add",
     addWer: "Add warehouse",
+    editWer: "Edit warehouse",
     wiew: "Detail",
     addProduct: "Add Product",
     edit: "Edit",

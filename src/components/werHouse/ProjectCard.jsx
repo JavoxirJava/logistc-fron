@@ -27,10 +27,10 @@ function ProjectCard({setProduct, loading, className, deleteWerhouse, projects, 
         <div
             onClick={async () => {
                 // await setWerHouseId(projects)
-                setProduct(null)
-                setWerHouseId(projects)
+                await setWerHouseId(projects)
+                await setProduct(null)
                 getWerhouse()
-                sessionStorage.setItem('setWerhouse', projects.wareHouseId)
+                // sessionStorage.setItem('setWerhouse', projects.wareHouseId)
             }}
             className={`flex media-product sm:px-3 px-2 sm:py-7 py-4 card-main border border-blue-300 hover:cursor-pointer hover:shadow-md duration-200 w-full h-max bg-blue-100 ${className} overflow-hidden`}>
             <div className='card-col w-full '>
