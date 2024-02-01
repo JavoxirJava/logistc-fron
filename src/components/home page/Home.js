@@ -9,7 +9,7 @@ function Home({changeLang}) {
   const { t } = useTranslation()
   return (
     <>
-      <HomeNav home={`#home`} about={`#about`} services={`#services`} gallery={`#gallery`} changeLang={changeLang}/>
+      <HomeNav hom={`#home`} abou={`#about`} services={`#services`} gallery={`#gallery`} changeLang={changeLang}/>
       <div className="w-full">
         {/* first section */}
         <div id="home" className="w-full flex lg:flex-row flex-col h-max lg:px-20 px-5">

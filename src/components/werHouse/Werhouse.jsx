@@ -353,7 +353,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         lang={lang}
       />
       <div className="wer-main">
-        <div className="flex w-full lg:flex-row align-center justify-center flex-col lg:h-full h-max">
+        <div className="flex w-full lg:flex-row align-center justify-center flex-col lg:h-full h-max pt-20">
           {/* project uchun */}
           <div className="lg:w-5/12 w-screen lg:px-3 md:px-10  lg:py-0 sm:py-5 px-1">
             <div className="mt-4 flex flex-wrap justify-between">

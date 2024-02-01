@@ -61,9 +61,9 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
   }, [lang]);
 
   return (
-    <div>
+    <div className="">
       <Link to="/" id="logout"></Link>
-      <nav className="bg-white">
+      <nav className="bg-white fixed w-full z-20">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="relative inset-y-0 left-0 flex items-center sm:hidden">

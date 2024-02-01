@@ -31,8 +31,8 @@ function Dashboard({changeLanguage, lang}) {
     return (
         <>
             <NavBar dashboard={'border-b-red-600 border-b text-slate-900'} lang={lang} />
-            <div className="w-full flex lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-10 py-5">
-                <div className="lg:w-7/12 w-full ">
+            <div className="w-full flex lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-10 py-5 ">
+                <div className="lg:w-7/12 w-full mt-10">
                     <div className="h-[320px] md:w-6/12">
                         {productStatistics && <Circle s={productStatistics}/>}
                     </div>
@@ -41,7 +41,7 @@ function Dashboard({changeLanguage, lang}) {
                     </div>
                 </div>
                 <div className="lg:w-5/12 w-full lg:ml-5 lg:mt-0 mt-7">
-                    <div className="w-full all-shadow p-5 bg-gray-200">
+                    <div className="w-full all-shadow p-5 bg-gray-200 mt-10">
                         <DashboardProductCard lang={lang}/>
                     </div>
                 </div>

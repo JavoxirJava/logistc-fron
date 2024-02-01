@@ -1,3 +1,4 @@
+
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import "../home page/home.css";
@@ -5,9 +6,13 @@ import "../home page/home.css";
 import {logo} from "../../assets";
 import {useTranslation} from "react-i18next";
 
-function HomeNav({home, about, services, gallery, changeLang}) {
+function HomeNav({hom,abou,services,gallery, changeLang}) {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const {t} = useTranslation();
+    const [home, setHome] = useState(false)
+    const [about, setAbout] = useState(false)
+    const [servise, setServise] = useState(false)
+    const [gallary, setGallary] = useState(false)
 
 
     const openMenu = () => setIsOpenMenu(!isOpenMenu);
@@ -15,7 +20,7 @@ function HomeNav({home, about, services, gallery, changeLang}) {
     const login = () => document.getElementById("login").click();
     return (
         <div>
-            <nav className="bg-white">
+            <nav className="bg-white z-10 fixed w-full">
                 <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
                     <div className="relative flex h-16 items-center justify-between">
                         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -74,7 +79,7 @@ function HomeNav({home, about, services, gallery, changeLang}) {
                                     <ul class="list-none">
                                         <li className="my-2" onClick={openMenu}>
                                             <a
-                                                href="#1"
+                                                href={hom}
                                                 className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                                                 aria-current="page"
                                             >
@@ -83,7 +88,7 @@ function HomeNav({home, about, services, gallery, changeLang}) {
                                         </li>
                                         <li onClick={openMenu}>
                                             <a
-                                                href="#2"
+                                                href={abou}
                                                 className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                                             >
                                                 {t("about")}
@@ -92,7 +97,7 @@ function HomeNav({home, about, services, gallery, changeLang}) {
                                         <li className="my-2" onClick={openMenu}>
                                             {" "}
                                             <a
-                                                href="#3"
+                                                href={services}
                                                 className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                                             >
                                                 {t("service")}
@@ -101,7 +106,7 @@ function HomeNav({home, about, services, gallery, changeLang}) {
                                         <li onClick={openMenu}>
                                             {" "}
                                             <a
-                                                href="#4"
+                                                href={gallery}
                                                 className="text-gray-600 hover:text-black hover:underline hover:underline-offset-4 rounded-md px-3 py-2 text-md font-medium"
                                             >
                                                 {t("gallary")}
@@ -120,27 +125,51 @@ function HomeNav({home, about, services, gallery, changeLang}) {
                             <div className="hidden sm:ml-6 sm:block">
                                 <div className="flex space-x-4">
                                     <a
-                                        href={home}
-                                        className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                                        href={hom}
+                                        onClick={() => {
+                                            setHome(true)
+                                            setGallary(false)
+                                            setServise(false)
+                                            setAbout(false);
+                                        }}
+                                        className={`${home ? "border-b border-b-red-600 text-red-600" : "text-gray-600"} hover:border-b hover:border-b-red-600 hover:text-red-600 duration-200 rounded-md px-3 py-2 text-sm font-medium`}
                                         aria-current="page"
                                     >
                                         {t("home")}
                                     </a>
                                     <a
-                                        href={about}
-                                        className="text-gray-600 hover:bg-gray-900 hover:text-white duration-200 rounded-md px-3 py-2 text-sm font-medium"
+                                        href={abou}
+                                        onClick={() => {
+                                            setHome(false)
+                                            setGallary(false)
+                                            setServise(false)
+                                            setAbout(true);
+                                        }}
+                                        className={`${about ? "border-b border-b-red-600 text-red-600" : "text-gray-600"} hover:border-b hover:border-b-red-600 hover:text-red-600 duration-200 rounded-md px-3 py-2 text-sm font-medium`}
                                     >
                                         {t("about")}
                                     </a>
                                     <a
                                         href={services}
-                                        className="text-gray-600 hover:bg-gray-900 hover:text-white duration-200 rounded-md px-3 py-2 text-sm font-medium"
+                                        onClick={() => {
+                                            setHome(false)
+                                            setGallary(false)
+                                            setServise(true)
+                                            setAbout(false);
+                                        }}
+                                        className={`${servise ? "border-b border-b-red-600 text-red-600" : "text-gray-600"} hover:border-b hover:border-b-red-600 hover:text-red-600 duration-200 rounded-md px-3 py-2 text-sm font-medium`}
                                     >
                                         {t("service")}
                                     </a>
                                     <a
                                         href={gallery}
-                                        className="text-gray-600 hover:bg-gray-900 hover:text-white duration-200 rounded-md px-3 py-2 text-sm font-medium"
+                                        onClick={() => {
+                                            setHome(false)
+                                            setGallary(true)
+                                            setServise(false)
+                                            setAbout(false);
+                                        }}
+                                        className={`${gallary ? "border-b border-b-red-600 text-red-600" : "text-gray-600"} hover:border-b hover:border-b-red-600 hover:text-red-600 duration-200 rounded-md px-3 py-2 text-sm font-medium`}
                                     >
                                         {t("gallary")}
                                     </a>
