@@ -27,14 +27,21 @@ function ProductCard({ className, product, openEdit, setProductObj, projectId })
                             <p className='font-bold'>{product ? product.status : 'no status'}</p>
                         </div>
                     </div>
+                    <div className='flex sm:w-[100%] '>
+                        <div className='sm:w-[50%] w-[100%]'>
+                            <p className='opacity-70'>{t("productAdd76")}</p>
+                            <p className='font-bold'>{product ? product.price : 0}</p>
+                        </div>
+                       
+                    </div>
                     <div className='flex sm:w-[100%]'>
                         <div className='sm:w-[50%] w-[100%]'>
                             <p className='opacity-70'>{t("card3")}</p>
-                            <p className='font-bold'>{product ? product.date.substring(0, 10) : "April 23, 2023"}</p>
+                            <p className='font-bold'>{product ? product.date.substring(0, 10) : ""}</p>
                         </div>
                         <div className='sm:w-[50%] w-[100%]'>
                             <p className='opacity-70'>{t("card4")}</p>
-                            <p className='font-bold'>{product ? product.productName : "Iphone"}</p>
+                            <p className='font-bold'>{product ? product.productName : ""}</p>
                         </div>
                     </div>
                 </div>

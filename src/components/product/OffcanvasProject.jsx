@@ -49,6 +49,7 @@ function OffcanvasProject({
       status: byId(`productStatus${isAdd}`),
       latitude: coordinates[0],
       longitude: coordinates[1],
+      comment: byId(`comment${isAdd}`),
       address: sessionStorage.getItem("address")
     });
   }
@@ -72,6 +73,18 @@ function OffcanvasProject({
           defaultValue={product ? product.name : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
+        <label
+          htmlFor={`comment${isAdd}`}
+          className="block text-gray-700 text-sm font-bold my-2"
+        >
+          {t("productAdd34")}
+        </label>
+        <textarea
+          id={`comment${isAdd}`}
+          placeholder={t("productAdd34")}
+          defaultValue={product ? product.comment : ""}
+          className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        ></textarea>
         <label
           htmlFor={`transport${isAdd}`}
           className="block text-gray-700 text-sm font-bold mb-2"

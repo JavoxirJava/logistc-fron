@@ -23,6 +23,10 @@ const ProjectModal = ({ isOpen, onClose, projectList }) => {
                         <p className='mt-0 pt-0 font-semibold'>{projectList && projectList.transport}</p>
                     </div>
                     <div className="mt-2 w-full text-center">
+                        <p className='pb-0 mb-0 opacity-50'>{t("productAdd34")}</p>
+                        <p className='mt-0 pt-0 font-semibold'>{projectList && projectList.comment}</p>
+                    </div>
+                    <div className="mt-2 w-full text-center">
                         <p className='pb-0 mb-0 opacity-50'>{t("weiw7")}</p>
                         <p className='mt-0 pt-0 font-semibold'>{projectList && projectList.address}</p>
                     </div>

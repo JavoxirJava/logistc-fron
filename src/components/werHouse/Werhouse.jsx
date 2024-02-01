@@ -137,7 +137,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   };
 
   function getProduct(page, size) {
-    loadingPP()
+    // loadingPP()
     axios
       .get(
         `${url}wareHouse/product?wareHouseId=${
@@ -151,14 +151,14 @@ function Product({ lang, werHouseId, setWerHouseId }) {
       )
       .then((res) => {
         // if (res.data.message === 'success') {
-            loadingPP()
+            // loadingPP()
         setTotalPage(res.data.totalPage ? res.data.totalPage - 1 : 2);
         setProduct(res.data.object);
         // console.log(res);
         // }
       })
       .catch((err) => {
-        loadingPP()
+        // loadingPP()
         console.log(err);
       });
   }

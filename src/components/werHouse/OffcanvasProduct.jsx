@@ -34,6 +34,7 @@ function OffcanvasProduct({
       name: byId(`productName${isAdd}`),
       measureCount: byId(`measureCount${isAdd}`),
       measure: byId(`measure${isAdd}`),
+      price: byId(`price${isAdd}`),
       wareHouseId: `${werHouseId.wareHouseId}`,
     });
     setUserId(byId(`userId${isAdd}`));
@@ -83,6 +84,16 @@ function OffcanvasProduct({
           id={`idNumber${isAdd}`}
           placeholder={t("productAdd7")}
           defaultValue={product ? product.idNumber : ""}
+          className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          <label
+          htmlFor={`price${isAdd}`}
+          className="block text-gray-700 text-sm font-bold my-2">
+          {t("productAdd76")}
+        </label>
+        <input
+          id={`price${isAdd}`}
+          placeholder={t("productAdd76")}
+          defaultValue={product ? product.price : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
         <label
           htmlFor={`measureCount${isAdd}`}
