@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 
-const ProductModal = ({ isOpen, deleteProduct,  onClose }) => {
+const ProductModal = ({addToProduct, isOpen,  onClose }) => {
 
     const { t } = useTranslation();
 
@@ -25,10 +25,10 @@ const ProductModal = ({ isOpen, deleteProduct,  onClose }) => {
               <button 
                 onClick={() => {
                   onClose()
-                  deleteProduct()
+                  addToProduct()
                 }}
                 className="btmn">
-                {t("delete")}
+                {t("addd")}
               </button>
             </div>
           </div>

@@ -23,6 +23,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   const [addWerhouseModal, setaddWerhouseModal] = useState(false);
   const [editProjectModal, setEditProjectModal] = useState(false);
   const [product, setProductObj] = useState(null);
+  const [productTo, setProductTo] = useState("");
   const [product2, setProductObj2] = useState(null);
   const [products, setProduct] = useState(null);
   const [projects, setProject] = useState(null);
@@ -165,7 +166,6 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
   function addProduct() {
     let data = { ...product2 };
-    let werHouseIdIn = sessionStorage.getItem("werHouseIdIn");
     axios
       .post(`${url}product?userId=${userId}`, data, config)
       .then(() => {
@@ -180,7 +180,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   }
 
   function addToProduct() {
-    let datacha = [product];
+    let datacha = [productTo];
     axios
       .post(
         `${url}wareHouse/product?wareHouseId=${
@@ -468,6 +468,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                             product={item}
                             addToProduct={addToProduct}
                             setProductObj={setProductObj}
+                            setProductTo={setProductTo}
                             setWerhouseId={setWerhouseId}
                         />
                         ))

@@ -8,6 +8,7 @@ function ProductCard({
   product,
   openEdit,
   setProductObj,
+  setProductTo,
   classNames,
   deleteProduct,
 }) {
@@ -74,9 +75,9 @@ function ProductCard({
       </div>
       {classNames ? (
       <button
-        onClick={() => {
-          setProductObj(product.id)
-          addToProduct();
+        onClick={async () => {
+          await setProductTo(product.id)
+          openModal();
         }}
         className=" justify-center h-10 align-center px-5 rounded-md border border-green-300 shadow-sm  bg-green-700 text-sm font-medium text-white"
       >
@@ -90,6 +91,7 @@ function ProductCard({
         isOpen={isModalOpen}
         deleteProduct={deleteProduct}
         onClose={closeModal}
+        addToProduct={addToProduct}
       />
     </div>
   );
