@@ -48,6 +48,7 @@ const translateRu = {
     card5: 'Текущее местоположение',
     card6: 'Мера',
     card7: 'Владелец',
+    card8: 'Итоговая цена',
     productAdd1:"Добавить продукт",
     productAdd2:'Транспорт',
     productSUser: "Выберите пользователя",

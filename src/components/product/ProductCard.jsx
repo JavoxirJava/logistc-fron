@@ -14,7 +14,7 @@ function ProductCard({ className, product, openEdit, setProductObj, projectId })
 
     return (
         <div
-            className={`flex p-3 media-product card-main border border-blue-300 w-full h-max bg-blue-100 ${className} `}>
+            className={`flex p-3 media-product card-main border border-blue-300 w-full h-max rounded-lg bg-blue-100 ${className} `}>
             <div className='card-col w-11/12 pt-2 ps-2 flex md:flex-col flex-col '>
                 <div className='card-col-row w-full card-col-row flex sm:flex-row flex-col justify-between  media-product h-max'>
                     <div className='flex sm:w-[100%] '>
@@ -30,7 +30,7 @@ function ProductCard({ className, product, openEdit, setProductObj, projectId })
                     <div className='flex sm:w-[100%] '>
                         <div className='sm:w-[50%] w-[100%]'>
                             <p className='opacity-70'>{t("productAdd76")}</p>
-                            <p className='font-bold'>{product ? product.price : 0}</p>
+                            <p className='font-bold'>{product ? `${product.price} uzs` : 0}</p>
                         </div>
                        
                     </div>

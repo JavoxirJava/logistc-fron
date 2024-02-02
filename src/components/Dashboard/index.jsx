@@ -40,8 +40,8 @@ function Dashboard({changeLanguage, lang}) {
                         {productStatistics2 && <LineChart productStatistics2={productStatistics2}/>}
                     </div>
                 </div>
-                <div className="lg:w-5/12 w-full lg:ml-5 lg:mt-0 mt-7">
-                    <div className="w-full all-shadow p-5 bg-gray-200 mt-10">
+                <div className="lg:w-5/12 w-full rounded-lg lg:ml-5 lg:mt-0 mt-7">
+                    <div className="w-full all-shadow p-5 rounded-lg bg-gray-200 mt-10">
                         <DashboardProductCard lang={lang}/>
                     </div>
                 </div>

@@ -22,7 +22,7 @@ function ProductCard({
 
   return (
     <div
-      className={`flex p-3 media-product items-center card-main border border-blue-300 w-full h-max bg-blue-100 ${className} `}
+      className={`flex p-3 media-product rounded-lg items-center card-main border border-blue-300 w-full h-max bg-blue-100 ${className} `}
     >
       <div className="card-col w-11/12 pt-2 ps-2 flex md:flex-col flex-col ">
         <div className="card-col-row w-full card-col-row flex sm:flex-row flex-col justify-between  media-product h-max">
@@ -47,7 +47,7 @@ function ProductCard({
             </div>
             <div className="sm:w-[50%] w-[100%]">
               <p className="opacity-70">{t("productAdd76")}</p>
-              <p className="font-bold">{product ? product.price : ""}</p>
+              <p className="font-bold">{product ? `${product.price} uzs` : ""}</p>
             </div>
           </div>
         </div>

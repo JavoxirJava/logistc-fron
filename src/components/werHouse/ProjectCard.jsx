@@ -32,7 +32,7 @@ function ProjectCard({setProduct, loading, className, deleteWerhouse, projects, 
                 getWerhouse()
                 // sessionStorage.setItem('setWerhouse', projects.wareHouseId)
             }}
-            className={`flex media-product sm:px-3 px-2 sm:py-7 py-4 card-main border border-blue-300 hover:cursor-pointer hover:shadow-md duration-200 w-full h-max bg-blue-100 ${className} overflow-hidden`}>
+            className={`flex media-product rounded-lg sm:px-3 px-2 sm:py-7 py-4 card-main border border-blue-300 hover:cursor-pointer hover:shadow-md duration-200 w-full h-max bg-blue-100 ${className} overflow-hidden`}>
             <div className='card-col w-full '>
                 <div className='h-8/12 card-col-row w-full flex xl:flex-row sm:flew-row flex-col lg:gap-x-20  media-product h-max'>
                     <div className='xl:w-[22%] w-full flex lg:gap-x-5 justify-between h-max'>

@@ -41,7 +41,7 @@ function ProductCard({ className, product }) {
 
   return (
     <div
-      className={`flex card-main border border-blue-300 w-full px-2 py-2 bg-blue-100 ${className}`}
+      className={`flex rounded-lg card-main border border-blue-300 w-full px-2 py-2 bg-blue-100 ${className}`}
     >
       <div className="card-col w-11/12">
         <div className="h-12 card-col-row w-full flex media-product">

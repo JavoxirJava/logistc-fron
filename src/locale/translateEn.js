@@ -50,6 +50,7 @@ const translateEn = {
     card5: 'Current Location',
     card6: 'Measure',
     card7: 'Owner',
+    card8: 'Total price',
     productAdd1:"Add product",
     productSUser: "Select user",
     productAdd2: 'Transport',

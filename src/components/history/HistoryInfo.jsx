@@ -17,7 +17,7 @@ const HistoryInfo = ({ history, className }) => {
             {history.length && history.map((item, i) => (
                 <div
                     key={i}
-                    className={`w-full ${className} history-info-bg border rounded-md border-slate-400 lg:px-6 px-2 mt-2
+                    className={`w-full ${className} history-info-bg rounded-lg border border-slate-400 lg:px-6 px-2 mt-2
                     lg:py-4 py-2 text-center flex justify-center sm:items-center`}
                 >
                     <div className="w-full flex sm:flex-row flex-col">
