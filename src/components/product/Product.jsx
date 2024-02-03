@@ -233,6 +233,7 @@ function Product({ lang, projectId, setProjectId }) {
 
     return (
         <div className="w-full overflow-x-hidden">
+            
             <NavBar product={'border-b-red-600 border-b text-slate-900'} lang={lang} />
             <div className="product-main w-96 overflow-hidden">
                 <div className="flex w-full lg:flex-row align-center justify-center flex-col lg:h-full h-max pt-20">
