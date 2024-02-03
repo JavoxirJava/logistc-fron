@@ -50,7 +50,7 @@ function ProjectCard({setProduct, className, projects, openEdit, setProductObj, 
                     </div>
                     <div className='sm:w-[64%]'>
                         <p className='opacity-70'>{t("card5")}</p>
-                        <p className='font-bold'>{projects ? projects.address : "No location"}</p>
+                        <p className='font-bold'>{projects ? projects.address.slice(0, projects.address.indexOf(",")) : "No location"}</p>
                     </div>
                     <div className='sm:w-[80%]'>
                         <p className='opacity-70'>{t("card8")}</p>

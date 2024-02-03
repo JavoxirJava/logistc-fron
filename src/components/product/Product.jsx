@@ -232,9 +232,9 @@ function Product({ lang, projectId, setProjectId }) {
     }
 
     return (
-        <>
+        <div className="w-full overflow-x-hidden">
             <NavBar product={'border-b-red-600 border-b text-slate-900'} lang={lang} />
-            <div className="product-main">
+            <div className="product-main w-96 overflow-hidden">
                 <div className="flex w-full lg:flex-row align-center justify-center flex-col lg:h-full h-max pt-20">
                     {/* project uchun */}
                     <div className="lg:w-5/12 w-screen lg:px-3 md:px-10  lg:py-0 sm:py-5 px-1">
@@ -285,7 +285,7 @@ function Product({ lang, projectId, setProjectId }) {
 
                     {/* product uchun */}
 
-                    <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
+                    <div className="lg:w-5/12 overflow-x-hidden w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
                         <div className="mt-4 flex flex-wrap justify-between">
                             <input
                                 type="search"
@@ -380,7 +380,7 @@ function Product({ lang, projectId, setProjectId }) {
                     lang={lang}
                 />
             </div>
-        </>
+        </div>
     );
 }
 
