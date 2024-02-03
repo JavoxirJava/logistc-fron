@@ -64,7 +64,7 @@ const translateRu = {
     productAdd06: "Кг",
     productAdd060: "Кусок",
     productAdd006: "Куб",
-    productAdd7: 'Идентификационный номер',
+    productAdd7: 'Код ТН',
     productAdd76: 'Цена',
     productAdd8: 'Статус продукта',
     productAdd9: 'Выберите cклад',
@@ -100,7 +100,7 @@ const translateRu = {
     login3: 'Число',// bu placeholderdagi malumot
     login4: 'Пароль',
     login5: 'Введите пароль',
-    weiw1: 'Идентификационный номер',
+    weiw1: 'Код ТН',
     weiw2: 'Оуэр',
     weiw3: 'Созданный',
     weiw4: 'Мера',

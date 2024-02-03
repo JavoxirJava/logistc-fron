@@ -151,7 +151,7 @@ const DashboardProductCard = ({ className, lang }) => {
                 <div className="sm:w-[64%]">
                   <p className="opacity-70">{t("card5")}</p>
                   <p className="font-bold">
-                    {item ? item.address : "No location"}
+                    {item ? item.address.slice(0, item.address.indexOf(",")) : "No location"}
                   </p>
                 </div>
               </div>

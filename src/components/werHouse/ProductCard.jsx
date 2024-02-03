@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ProductModal from "./productModal";
+import ProductDModal from "./productModl";
 
 function ProductCard({
   addToProduct,
@@ -13,12 +14,13 @@ function ProductCard({
   deleteProduct,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalDelete, setIsDeleteOpen] = useState(false);
 
   const closeModal = () => setIsModalOpen(false);
   const openModal = () => setIsModalOpen(true);
+  const closeDelete = () => setIsDeleteOpen(false);
+  const openDelete = () => setIsDeleteOpen(true);
   const { t } = useTranslation();
-
-
 
   return (
     <div
@@ -47,7 +49,9 @@ function ProductCard({
             </div>
             <div className="sm:w-[50%] w-[100%]">
               <p className="opacity-70">{t("productAdd76")}</p>
-              <p className="font-bold">{product ? `${product.price} uzs` : ""}</p>
+              <p className="font-bold">
+                {product ? `${product.price} uzs` : ""}
+              </p>
             </div>
           </div>
         </div>
@@ -66,7 +70,7 @@ function ProductCard({
         <button
           onClick={() => {
             setProductObj(product);
-            openModal();
+            openDelete();
           }}
           className="inline-flex justify-center sm:w-9/12 px-5 rounded-md border border-gray-300 shadow-sm py-2 bg-red-700 text-sm font-medium text-white"
         >
@@ -74,15 +78,15 @@ function ProductCard({
         </button>
       </div>
       {classNames ? (
-      <button
-        onClick={async () => {
-          await setProductTo(product.id)
-          openModal();
-        }}
-        className=" justify-center h-10 align-center px-5 rounded-md border border-green-300 shadow-sm  bg-green-700 text-sm font-medium text-white"
-      >
-        {t("addd")}
-      </button>
+        <button
+          onClick={async () => {
+            await setProductTo(product.id);
+            openModal();
+          }}
+          className=" justify-center h-10 align-center px-5 rounded-md border border-green-300 shadow-sm  bg-green-700 text-sm font-medium text-white"
+        >
+          {t("addd")}
+        </button>
       ) : (
         ""
       )}
@@ -92,6 +96,13 @@ function ProductCard({
         deleteProduct={deleteProduct}
         onClose={closeModal}
         addToProduct={addToProduct}
+      />
+
+      <ProductDModal
+        isOpen={isModalDelete}
+        deleteProduct={deleteProduct}
+        onClose={closeDelete}
+        deleteProduc={deleteProduct}
       />
     </div>
   );

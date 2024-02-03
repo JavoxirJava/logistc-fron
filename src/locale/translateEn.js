@@ -66,7 +66,7 @@ const translateEn = {
     productAdd06: "Kg",
     productAdd060: "Piece",
     productAdd006: "Kub",
-    productAdd7: 'Id Number',
+    productAdd7: 'TN code',
     productAdd76: 'Price',
     productAdd8: 'Product status',
     productAdd9: 'Select warehouse',
@@ -103,7 +103,7 @@ const translateEn = {
     login3: 'Number', // bu placeholderdagi malumot
     login4: 'Password',
     login5: 'Enter password',
-    weiw1: 'Id Number',
+    weiw1: 'TN code',
     weiw2: 'Ower',
     weiw3: 'Created',
     weiw4: 'Measure',

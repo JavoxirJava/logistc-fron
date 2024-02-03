@@ -18,6 +18,8 @@ function OffcanvasProject({
 }) {
   const [users, setUsers] = useState(null);
   const [coordinates, setCoordinates] = useState([55.75, 37.57]);
+  const [adres, setAdress] = useState([55.75, 37.57]);
+
 
   const { t } = useTranslation();
 
@@ -37,6 +39,7 @@ function OffcanvasProject({
         const address =
           data.response.GeoObjectCollection.featureMember[0].GeoObject
             .metaDataProperty.GeocoderMetaData.text;
+            setAdress(address)
         sessionStorage.setItem("address", address);
       })
       .catch((error) => console.error("Xatolik yuz berdi:", error));
@@ -49,8 +52,7 @@ function OffcanvasProject({
       status: byId(`productStatus${isAdd}`),
       latitude: coordinates[0],
       longitude: coordinates[1],
-      comment: byId(`comment${isAdd}`),
-      address: sessionStorage.getItem("address")
+      address: adres
     });
   }
 
@@ -73,18 +75,7 @@ function OffcanvasProject({
           defaultValue={product ? product.name : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
-        <label
-          htmlFor={`comment${isAdd}`}
-          className="block text-gray-700 text-sm font-bold my-2"
-        >
-          {t("productAdd34")}
-        </label>
-        <textarea
-          id={`comment${isAdd}`}
-          placeholder={t("productAdd34")}
-          defaultValue={product ? product.comment : ""}
-          className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        ></textarea>
+        
         <label
           htmlFor={`transport${isAdd}`}
           className="block text-gray-700 text-sm font-bold mb-2"

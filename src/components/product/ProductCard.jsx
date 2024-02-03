@@ -48,7 +48,7 @@ function ProductCard({ className, product, openEdit, setProductObj, projectId })
                 <div className='h-max card-col-row w-full flex sm:flex-row flex-col media-product '>
                     <div className='sm:w-[64%] w-[110%]'>
                         <p className='opacity-70'>{t("card5")}</p>
-                        <p className='font-bold'>{product ? product.address : "No location"}</p>
+                        <p className='font-bold'>{product ? product.address.slice(0, product.address.indexOf(",")) : "No location"}</p>
                     </div>
                     <div className='sm:w-[18%] ps-1'>
                         <p className='opacity-70'>{t("card6")}</p>

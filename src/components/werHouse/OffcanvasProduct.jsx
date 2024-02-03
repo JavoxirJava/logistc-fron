@@ -26,11 +26,11 @@ function OffcanvasProduct({
 
   function setData() {
     setProduct({
-      id: product ? product.productId : 0,
       idNumber: byId(`idNumber${isAdd}`),
       name: byId(`productName${isAdd}`),
       measureCount: byId(`measureCount${isAdd}`),
       measure: byId(`measure${isAdd}`),
+      comment: byId(`comment${isAdd}`),
       price: byId(`price${isAdd}`),
       wareHouseId: `${werHouseId.wareHouseId}`,
     });
@@ -105,12 +105,11 @@ function OffcanvasProduct({
           {t("productAdd76")}
         </label>
         <div className="flex items-center mb-5">
-          
           <input
-           type="number"
-           id={`price${isAdd}`}
-           placeholder={t("productAdd76")}
-           defaultValue={product ? product.price : ""}
+            type="number"
+            id={`price${isAdd}`}
+            placeholder={t("productAdd76")}
+            defaultValue={product ? product.price : ""}
             style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
             className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
                 focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
@@ -124,7 +123,20 @@ function OffcanvasProduct({
             UZS
           </button>
         </div>
-        
+        <label
+          htmlFor={`comment${isAdd}`}
+          className="block text-gray-700 text-sm font-bold my-2"
+        >
+          {t("productAdd34")}
+        </label>
+        <textarea
+          id={`comment${isAdd}`}
+          placeholder={t("productAdd34")}
+          defaultValue={product ? product.comment : ""}
+          className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
+          focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+          focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+        ></textarea>
         <label
           htmlFor={`measureCount${isAdd}`}
           className="block text-gray-700 text-sm font-bold my-2"

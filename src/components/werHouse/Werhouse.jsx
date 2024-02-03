@@ -217,7 +217,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   function editProduct() {
     let data = { ...product2 };
     axios
-      .put(`${url}product?werHouseId=${werHouseId.wareHouseId}`, data, config)
+      .put(`${url}product?id=${product.id}`, data, config)
       .then(() => {
         toast.success("successfully Edit product");
         setProductObj2(null);
@@ -259,8 +259,8 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
   function deleteProduct() {
     axios
-      .put(
-        `${url}product?werHouseId=${werHouseId.wareHouseId}&productId=${product.id}`,
+      .delete(
+        `${url}wareHouse/product?wareHouseId=${werHouseId.wareHouseId}&productId= ${product.id}`,
         config
       )
       .then(() => {
