@@ -54,7 +54,7 @@ function OffcanvasProject({
       name={name}
       onClose={handleToggleOffcanvas}
     >
-      <div onChange={setData}>
+      <div className="" onChange={setData}>
         <label
           htmlFor={`name${isAdd}`}
           className="block text-gray-700 text-sm font-bold my-2"
@@ -174,7 +174,7 @@ function OffcanvasProject({
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
           >
-            {t("addWer")}
+            {name}
           </button>
         </div>
       </div>

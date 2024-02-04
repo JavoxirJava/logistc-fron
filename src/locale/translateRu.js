@@ -77,6 +77,7 @@ const translateRu = {
     editWer: "Редакт cклад",
     addProduct: "Добавить продукт",
     edit: "Редакт",
+    save: "Сохранять",
     editProject: "Редактировать проект",
     editProduct: "Редактировать продукт",
     addClients: "Добавить клиентов",

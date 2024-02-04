@@ -65,31 +65,31 @@
 
 @media (max-width: 767px) {
   .languageSelect {
-    right: 20%;
+    right: 30%;
   }
 }
 
 @media (max-width: 610px) {
   .languageSelect {
-    right: 25%;
+    right: 35%;
   }
 }
 
 @media (max-width: 490px) {
   .languageSelect {
-    right: 30%;
+    right: 35%;
   }
 }
 
 @media (max-width: 400px) {
   .languageSelect {
-    right: 35%;
+    right: 45%;
   }
 }
 
 @media (max-width: 355px) {
   .languageSelect {
-    right: 40%;
+    right: 55%;
   }
 }
 

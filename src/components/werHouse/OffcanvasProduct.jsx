@@ -210,7 +210,7 @@ function OffcanvasProduct({
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
           >
-            {t("addProduct")}
+            {name}
           </button>
         </div>
       </div>

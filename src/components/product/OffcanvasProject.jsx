@@ -58,6 +58,7 @@ function OffcanvasProject({
 
   return (
     <Offcanvas
+      className="pt-20"
       isOpen={isOffcanvasOpen}
       name={name}
       onClose={handleToggleOffcanvas}
@@ -183,7 +184,7 @@ function OffcanvasProject({
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
           >
-            {t("add")}
+            {name}
           </button>
         </div>
       </div>

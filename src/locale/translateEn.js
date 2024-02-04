@@ -73,6 +73,7 @@ const translateEn = {
     productSearch: '🔍 Search...',
     close: "Close",
     add: "Add Project",
+    save: "Save",
     select: "Select project",
     addd: "Add",
     addWer: "Add warehouse",
