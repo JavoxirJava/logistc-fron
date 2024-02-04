@@ -57,7 +57,7 @@ const translateEn = {
     productAdd3: 'Name',
     productAdd34: 'Comment',
     productAdd4: 'MeasureCount' ,
-    productAdd5: 'Select product status',
+    productAdd5: 'Select transport',
     productAdd05: "Car",
     productAdd050: "Airplane",
     productAdd005: "Train",

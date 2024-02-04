@@ -55,7 +55,7 @@ const translateRu = {
     productAdd3: 'Имя',
     productAdd34: 'Комментарий',
     productAdd4: 'МераКаунт',
-    productAdd5: 'Выберите статус продукта',
+    productAdd5: 'Выберите транспорт',
     productAdd05: "Машина",
     productAdd050: "Самолет",
     productAdd005: "Тренироваться",

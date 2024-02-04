@@ -10,7 +10,7 @@ function Home({changeLang}) {
   return (
     <>
       <HomeNav hom={`#home`} abou={`#about`} services={`#services`} gallery={`#gallery`} changeLang={changeLang}/>
-      <div className="w-full">
+      <div className="w-full pt-20">
         {/* first section */}
         <div id="home" className="w-full flex lg:flex-row flex-col h-max lg:px-20 px-5">
           <div className="pt-10 flex">
