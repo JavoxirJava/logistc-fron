@@ -32,7 +32,7 @@ const HistoryInfo = ({ history, className }) => {
                 <div className="lg:w-[280px] ">
                   <p className="opacity-70">{t("history7")}</p>
                   <p className="font-bold lg:text-[.9rem] md:text-[.7rem] sm:text-[.5rem] text-[.5rem]">
-                    {item.address ? item.address : "No location"}
+                    {item.address ? item.address.slice(0, item.address.indexOf(",")) : "No location"}
                   </p>
                 </div>
                 <div className="lg:w-[150px] ">
