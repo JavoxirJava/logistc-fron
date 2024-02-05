@@ -45,8 +45,13 @@ const History = ({changeLanguage, lang}) => {
         const finish = byId("endDate");
         const userId = byId("userId");
         const productId = byId("productId");
+        let filter = "";
+        if (start !== "") filter += `&start=${start}`;
+        if (finish !== "") filter += `&finish=${finish}`;
+        if (userId !== "") filter += `&userIdNumber=${userId}`;
+        if (productId !== "") filter += `&productIdNumber=${productId}`;
         axios.get(
-            `${url}product/admin/history/search?start=${start}&finish=${finish}&userIdNumber=${userId}&productIdNumber=${productId}&lang=${lang}`,
+            `${url}product/admin/history/search?${filter}&lang=${lang}`,
             config).then((res) => {
             setHistory(res.data.body);
         }).catch(() => {
