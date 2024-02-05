@@ -74,7 +74,7 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
             {allAddressList &&
               allAddressList.map((item) => (
                 <div className="flex flex-col">
-                  <div className="p-6 pl-0">
+                  <div className="pb-6 pl-0">
                     {item.slice(0, item.indexOf(","))}
                   </div>
                   <div className="h-[4px] w-[100px] flex relative justify-center items-center bg-slate-900">

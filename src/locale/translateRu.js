@@ -95,7 +95,7 @@ const translateRu = {
     status5: "Завершенный",
     status6: "Взолнованный",
     searchBy: "Искать по",
-    dropdown1: "Идентификатор продукта",
+    dropdown1: "Код ТН продукта",
     dropdown2: "Статус продукта",
     dropdown3: "Идентификатор пользователя",
     dropdown4: "Имя пользователя",

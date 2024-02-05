@@ -231,7 +231,7 @@ function Product({lang, projectId, setProjectId}) {
             case "Project name":
                 return "projectName";
             default:
-                return "projectName";
+                return "productStatus";
         }
     }
 
@@ -250,7 +250,7 @@ function Product({lang, projectId, setProjectId}) {
                                 onChange={searchProject}
                                 className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                             />
-                            <Dropdown2 setSearchBy={setSearchBy}/>
+                            <Dropdown2 setSearchBy={setSearch2By}/>
                         </div>
                         <div className="mt-4 flex flex-wrap justify-between">
                             <button

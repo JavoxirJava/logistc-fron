@@ -98,7 +98,7 @@ const translateEn = {
     status5: "Completed",
     status6: "Moved",
     searchBy: "Search by",
-    dropdown1: "Product id number",
+    dropdown1: "Product TN code",
     dropdown2: "Product status",
     dropdown3: " User id number",
     dropdown4: " User name",
