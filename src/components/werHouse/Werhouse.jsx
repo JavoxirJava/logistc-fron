@@ -350,7 +350,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   }
 
   return (
-    <>
+    <div className=" background w-full h-screen">
       <NavBar
         werhouse={"border-b-red-600 border-b text-slate-900"}
         lang={lang}
@@ -553,7 +553,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           lang={lang}
         />
       </div>
-    </>
+    </div>
   );
 }
 

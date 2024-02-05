@@ -59,9 +59,9 @@ function UserNavBar({ dashboard, product, client, history, changeLang }) {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <Link to="/" id="logout"></Link>
-      <nav className="bg-white">
+      <nav className="bg-white fixed w-full z-20 ">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="relative inset-y-0 left-0 flex items-center sm:hidden">
@@ -120,7 +120,7 @@ function UserNavBar({ dashboard, product, client, history, changeLang }) {
                   <ul class="list-none">
                     <li className="my-2" onClick={openMenu}>
                       <Link
-                        to="/dashboard"
+                        to="/user-dashboard"
                         className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
                         aria-current="page"
                       >
@@ -139,7 +139,7 @@ function UserNavBar({ dashboard, product, client, history, changeLang }) {
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   <Link
-                    to="/dashboard"
+                    to="/user-dashboard"
                     className={`${dashboard} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
                     // aria-current="page"
                   >

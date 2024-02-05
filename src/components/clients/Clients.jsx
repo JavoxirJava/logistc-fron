@@ -131,10 +131,10 @@ const Clients = ({ changeLanguage, lang }) => {
         </div>
 
         <div className="lg:w-2/6 rounded-md">
-          <p className="text-black text-2xl mb-5 font-bold tracking-wider text-center">
+          <p className="text-white text-2xl mb-5 font-bold tracking-wider text-center">
             {t("addclient2")}
           </p>
-          <div className="add-bg lg:px-3 px-10 py-6 w-full">
+          <div className="add-bg rounded-lg lg:px-3 px-10 py-6 w-full">
             <label htmlFor="nameC" className="ml-3.5">
               {t("addclient3")}
             </label>

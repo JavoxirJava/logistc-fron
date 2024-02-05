@@ -45,7 +45,7 @@ function  Circle({s}) {
 
     return (
         <div>
-            <div className="backCircle mb-5 p-5">
+            <div className="backCircle rounded-lg p-5 ">
                 <div className='flex justify-around md:w-78 md:ml-0 text-2xl'>
                     <p>{s.completed}</p>
                     <p>{s.pending}</p>
