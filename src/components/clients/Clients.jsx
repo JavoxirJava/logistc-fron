@@ -44,7 +44,6 @@ const Clients = ({ changeLanguage, lang }) => {
     setIsloading(true);
     const data = {
       name: byId("nameC"),
-
       idNumber: byId("idNumberC"),
       phoneNumber: `998${byId("phoneNumberC")}`,
       password: byId("passwordC"),
