@@ -1,6 +1,7 @@
 import React from 'react';
 import EChartsReact from 'echarts-for-react';
 import { useTranslation } from "react-i18next";
+import "../../index.css"
 
 function  Circle({s}) {
 
@@ -44,7 +45,7 @@ function  Circle({s}) {
 
     return (
         <div>
-            <div className="bg-white p-5">
+            <div className="backCircle mb-5 p-5">
                 <div className='flex justify-around md:w-78 md:ml-0 text-2xl'>
                     <p>{s.completed}</p>
                     <p>{s.pending}</p>

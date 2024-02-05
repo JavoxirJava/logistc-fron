@@ -1,5 +1,4 @@
 .clients-bg {
-    background-image: url('./bg-client.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 90% 85%;
@@ -70,3 +69,14 @@
     border: 1px solid #ccc;
     padding: 0.5em 1em;
   }
+
+  .background {
+    background-image: url("../../assets/back.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.backCircle {
+    background-color: rgba(255, 255, 255, 0.483);
+   
+}

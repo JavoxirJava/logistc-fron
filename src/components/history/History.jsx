@@ -55,7 +55,7 @@ const History = ({changeLanguage, lang}) => {
     };
 
     return (
-        <>
+        <div className=" background w-full">
             <NavBar changeLang={changeLanguage} history={'border-b-red-600 border-b text-slate-900'} lang={lang}/>
             <div className="history-bg">
                 <div className="w-full flex justify-center items-center flex-wrap mt-5">
@@ -144,7 +144,7 @@ const History = ({changeLanguage, lang}) => {
                     />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
