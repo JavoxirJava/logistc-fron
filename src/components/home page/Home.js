@@ -81,8 +81,8 @@ function Home({changeLang}) {
                 data-aos-duration="1500"
               >
                 {t("homeText7")} <br />{" "}
-                {t("homeText07")}<br />
-                {t("homeText007")}
+                {/* {t("homeText07")}<br /> */}
+                {/* {t("homeText007")} */}
               </h4> 
             </div>
             <div

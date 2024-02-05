@@ -24,7 +24,7 @@ const translateEn = {
     homeText8: "Shipping ",
     homeText9: "& Logistic ",
     homeText09: "Services",
-    homeText10: "SHARAIT ↗️",
+    homeText10: "SHARE ↗️",
     homeText11: "Road transportion",
     homeText12: "Ship transportion",
     homeText13: "Air transportion",
