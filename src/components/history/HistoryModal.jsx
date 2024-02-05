@@ -11,7 +11,7 @@ const Modal = ({ isOpen, onClose, historyList }) => {
              flex items-center justify-center bg-gray-800 
             bg-opacity-75 z-10"
     >
-      <div className="bg-slate-300 rounded shadow-md w-full md:w-1/2">
+      <div className="bg-slate-300 rounded-lg overflow-hidden shadow-md w-full md:w-1/2">
         <div className="bg-blue-800 py-5 flex justify-around items-center relative">
           <h1 className="text-2xl text-sky-200">
             {historyList && historyList.name}
