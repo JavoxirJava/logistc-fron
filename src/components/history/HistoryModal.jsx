@@ -24,7 +24,7 @@ const Modal = ({ isOpen, onClose, historyList }) => {
             onClick={onClose}
           ></i>
         </div>
-        <div className="px-20 py-6 flex flex-col md:flex-row justify-between items-center flex-wrap">
+        <div className="md:px-20 py-6 flex flex-col md:flex-row justify-between items-center flex-wrap">
           <div className="mt-2 w-1/3 text-center">
             <p className="pb-0 mb-0 opacity-50">{t("weiw1")}</p>
             <p className="mt-0 pt-0 font-semibold">
@@ -44,14 +44,14 @@ const Modal = ({ isOpen, onClose, historyList }) => {
               {historyList.date.substring(11, 16)}
             </p>
           </div>
-          <div className="mt-2 w-1/3 text-center">
+          <div className="md:mt-2 w-1/3 text-center">
             <p className="pb-0 mb-0 opacity-50">{t("weiw4")}</p>
             <p className="mt-0 pt-0 font-semibold">
               {historyList &&
                 historyList.measureCount + " " + historyList.measure}
             </p>
           </div>
-          <div className="mt-2 w-1/3 text-center">
+          <div className="md:mt-2 w-1/3 text-center">
             <p className="pb-0 mb-0 opacity-50">{t("weiw5")}</p>
             <p className="mt-0 pt-0 font-semibold">
               {historyList && historyList.measureCount}
@@ -70,7 +70,7 @@ const Modal = ({ isOpen, onClose, historyList }) => {
             </p>
           </div>
         </div>
-        <div className="mt-7 mb-5 ps-16 pr-5">
+        <div className="md:mt-7 mb-5 ps-16 pr-5">
           <div className="overflow-x-auto flex flex-row scroll-x h-[120px] ">
             {allAddressList &&
               allAddressList.map((item) => (
