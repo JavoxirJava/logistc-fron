@@ -24,9 +24,9 @@ export const getClientProduct = (page, size, setClientProduct, setTotalPage, lan
                 setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2)
             }
         })
-        .catch((err) => {})
-        }
-
+        .catch((err) => {
+        })
+}
 
 
 export function getUsers(setUser, lang) {

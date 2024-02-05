@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./product.css";
 import ProductCard from "./ProductCard";
-import { Map, Placemark, YMaps } from "react-yandex-maps";
 import OffcanvasProduct from "./OffcanvasProduct";
-import { config, setConfig, url } from "../api";
+import {config, setConfig, url} from "../api";
 import axios from "axios";
-import { toast } from "react-toastify";
-import Pagination, { bootstrap5PaginationPreset } from "react-responsive-pagination";
+import {toast} from "react-toastify";
+import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
 import NavBar from "../navbar/NavBar";
 import Dropdown from "../Dropdown";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import ProjectCard from "./ProjectCard";
 import OffcanvasProject from "./OffcanvasProject";
 import Dropdown2 from "../Dropdown2";
+import Empty from "../Empty";
 
-function Product({ lang, projectId, setProjectId }) {
+function Product({lang, projectId, setProjectId}) {
     const [coordinates, setCoordinates] = useState([55.75, 37.57]);
     const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
     const [editOf, setEditOf] = useState(false);
@@ -33,7 +33,7 @@ function Product({ lang, projectId, setProjectId }) {
     const [userId, setUserId] = useState(null);
 
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
 
     useEffect(() => {
@@ -42,7 +42,7 @@ function Product({ lang, projectId, setProjectId }) {
         getProduct(pagination, 4);
     }, []);
 
-    
+
     useEffect(() => {
 
         getProduct(pagination, 4)
@@ -63,6 +63,7 @@ function Product({ lang, projectId, setProjectId }) {
     useEffect(() => {
         if ((pagination2 - 1) * 4 < 0) setPagination2(0);
         else getProject(Math.floor(pagination2 - 1), 4);
+        console.log(pagination2)
     }, [pagination2]);
 
     useEffect(() => {
@@ -110,23 +111,25 @@ function Product({ lang, projectId, setProjectId }) {
                 setProject(res.data.body.object)
 
             })
-            .catch((err) => { console.log(); })
+            .catch((err) => {
+                console.log();
+            })
     }
 
     function getProduct(page, size) {
-        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id :  0}`, config).then((res) => {
+        axios.get(`${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : 0}`, config).then((res) => {
             // if (res.data.message === 'success') {
-                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
-                setProduct(res.data.body.object);
+            setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+            setProduct(res.data.body.object);
             // }
         })
-        .catch((err) => {
-            console.log(err);
-        })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     function addProduct() {
-        let data = { ...product2, };
+        let data = {...product2,};
         let projectIdIn = sessionStorage.getItem('projectIdIn');
         axios.post(`${url}product?userId=${userId}&projectId=${projectIdIn}`, data, config)
             .then(() => {
@@ -134,47 +137,48 @@ function Product({ lang, projectId, setProjectId }) {
                 setProductObj2(null);
                 getProduct(pagination, 4);
             }).catch((err) => {
-                toast.error("product saved error");
-                console.log(err);
-            });
+            toast.error("product saved error");
+            console.log(err);
+        });
     }
 
     function addProject() {
-        let data = { ...product2, };
+        let data = {...product2,};
         axios.post(`${url}project`, data, config)
             .then(() => {
                 toast.success("successfully saved project");
                 setProductObj2(null);
                 getProject(pagination, 4);
             }).catch((err) => {
-                toast.error("project saved error");
-            });
+            toast.error("project saved error");
+        });
     }
-    
+
 
     function editProduct() {
-        let data = { ...product2, };
+        let data = {...product2,};
         axios.put(`${url}product?projectId=${sessionStorage.getItem("projectIdIn")}`, data, config)
             .then(() => {
                 toast.success("successfully Edit product");
                 setProductObj2(null);
                 getProduct(pagination, 4)
             }).catch((err) => {
-                toast.error("product Edit error");
-                console.log(err);
-            });
+            toast.error("product Edit error");
+            console.log(err);
+        });
     }
+
     function editProject() {
-        let data = { ...product2, };
+        let data = {...product2,};
         axios.put(`${url}project?id=${projectId.id}`, data, config)
             .then(() => {
                 toast.success("successfully Edit project");
                 setProductObj2(null);
                 getProject(pagination, 4)
             }).catch((err) => {
-                toast.error("project Edit error");
-                console.log(err);
-            });
+            toast.error("project Edit error");
+            console.log(err);
+        });
     }
 
     function searchProduct(e) {
@@ -233,8 +237,8 @@ function Product({ lang, projectId, setProjectId }) {
 
     return (
         <div className="w-full overflow-x-hidden">
-            
-            <NavBar product={'border-b-red-600 border-b text-slate-900'} lang={lang} />
+
+            <NavBar product={'border-b-red-600 border-b text-slate-900'} lang={lang}/>
             <div className="product-main w-96 overflow-hidden">
                 <div className="flex w-full lg:flex-row align-center justify-center flex-col lg:h-full h-max pt-20">
                     {/* project uchun */}
@@ -246,7 +250,7 @@ function Product({ lang, projectId, setProjectId }) {
                                 onChange={searchProject}
                                 className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                             />
-                            <Dropdown2 setSearchBy={setSearchBy} />
+                            <Dropdown2 setSearchBy={setSearchBy}/>
                         </div>
                         <div className="mt-4 flex flex-wrap justify-between">
                             <button
@@ -260,7 +264,7 @@ function Product({ lang, projectId, setProjectId }) {
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination2}
                             </span>
-                            {projects && projects.map((item, i) => (
+                            {projects ? projects.map((item, i) => (
                                 <ProjectCard
                                     setProjectId={setProjectId}
                                     getProduct={getProject}
@@ -272,7 +276,8 @@ function Product({ lang, projectId, setProjectId }) {
                                     setProduct={setProduct}
                                     setProductObj={setProductObj}
                                 />
-                            ))}
+                            )) : <Empty/>
+                            }
                         </div>
                         <div className="pagination-style py-8">
                             <Pagination
@@ -294,16 +299,18 @@ function Product({ lang, projectId, setProjectId }) {
                                 onChange={searchProduct}
                                 className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                             />
-                            <Dropdown setSearchBy={setSearchBy} />
+                            <Dropdown setSearchBy={setSearchBy}/>
                         </div>
                         <div className="mt-4 flex flex-wrap justify-between">
                             <div></div>
 
-                            <h1><b><span className="text-blue-500 text-lg">{projectId.name ? projectId.name : projects ? projects[0].name : 0}</span>{' '}{t("project")}</b></h1>
+                            <h1><b><span
+                                className="text-blue-500 text-lg">{projectId.name ? projectId.name : projects ? projects[0].name : 0}</span>{' '}{t("project")}
+                            </b></h1>
                             <span className="me-5 pt-1.5 float-end">
                                 {t("cardCurrent")}: {pagination}
                             </span>
-                            {products && products.map((item, i) => (
+                            {products ? products.map((item, i) => (
                                 <ProductCard
                                     projectId={projectId}
                                     key={i}
@@ -312,16 +319,17 @@ function Product({ lang, projectId, setProjectId }) {
                                     product={item}
                                     setProductObj={setProductObj}
                                 />
-                            ))}
+                            )) : <Empty/>}
                         </div>
-                        <div className="pagination-style mt-4">
+                        {products && <div className="pagination-style mt-4">
                             <Pagination
                                 {...bootstrap5PaginationPreset}
                                 current={pagination}
                                 total={Math.floor(totalPage + 1)}
                                 onPageChange={setPagination}
                             />
-                        </div>
+                        </div>}
+
                     </div>
 
                 </div>
