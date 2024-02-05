@@ -37,7 +37,7 @@ const translateRu = {
     homeText20: "Связаться с нами",
     homeText21: "© 2023 ГСР Логистика",
     homeText22: "При поддержке: IT City Academy",
-    circle1: "Полный",
+    circle1: "Законченный",
     circle2: "В ожидании", 
     circle3: "Отмена",
     cardCurrent: "Текущая страница",

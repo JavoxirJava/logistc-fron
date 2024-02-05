@@ -4,6 +4,7 @@ import LineChart from "./statistics/linestatistic";
 import {useEffect, useState} from "react";
 import {config, getMe, setConfig, url} from "../api";
 import axios from "axios";
+import "./index.css"
 import NavBar from "../navbar/NavBar";
 
 function Dashboard({changeLanguage, lang}) {
@@ -31,12 +32,12 @@ function Dashboard({changeLanguage, lang}) {
     return (
         <>
             <NavBar dashboard={'border-b-red-600 border-b text-slate-900'} lang={lang} />
-            <div className="w-full flex lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-10 py-5 ">
+            <div className="w-full flex background lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-10 py-5 ">
                 <div className="lg:w-7/12 w-full mt-10">
                     <div className="h-[320px] md:w-6/12">
                         {productStatistics && <Circle s={productStatistics}/>}
                     </div>
-                    <div className="h-[400px] mt-10 rounded all-shadow">
+                    <div className="h-[400px] mt-10 rounded all-shadow ">
                         {productStatistics2 && <LineChart productStatistics2={productStatistics2}/>}
                     </div>
                 </div>

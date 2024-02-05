@@ -97,7 +97,7 @@ const Clients = ({ changeLanguage, lang }) => {
         changeLang={changeLanguage}
         lang={lang}
       />
-      <div className="clients-bg flex lg:flex-row flex-col pt-20">
+      <div className="clients-bg background b flex lg:flex-row flex-col pt-20">
         <div className="lg:w-2/5 md:w-4/5 w-full lg:pl-10 md:px-0 px-2 ">
           <div className="flex justify-between items-center">
             <input
