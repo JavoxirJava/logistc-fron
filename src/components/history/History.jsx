@@ -33,7 +33,7 @@ const History = ({changeLanguage, lang}) => {
         axios.get(`${url}product/history?page=${page}&size=${size}&lang=${lang}`, config)
             .then((res) => {
                 setHistory(res.data.object  );
-                // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+                setTotalPage(res.data.totalPage ? res.data.totalPage - 1 : 2);
             })
             .catch((err) => {
                 console.log(err);

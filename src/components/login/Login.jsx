@@ -27,11 +27,11 @@ function Login() {
                     sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
                     if (res.data.message === "ROLE_USER") byIdObj("user-dashboard").click();
                     else byIdObj("dashboard").click();
-                } else toast.error("User not found");
+                } else toast.error(t("notFound"));
                 setIsLoading(false);
             }).catch(err => {
             setIsLoading(false);
-            toast.error("User not found");
+            toast.error(t("notFound"));
         });
     }
 

@@ -29,11 +29,11 @@ function ProductCard({ className, product }) {
         .then(() => {
             setIsLoading(false)
             closeModal()
-            toast.success("Cleint succesfully edit!")
+            toast.success(t('success'))
         })
         .catch(() => {
             setIsLoading(false)
-            toast.error("Something went wrong while editing client?")
+            toast.error(t("error"))
         })
   }
 
@@ -172,13 +172,13 @@ function ProductCard({ className, product }) {
               </div>
 
               <div className="mb-3">
+                <div className="relative">
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium text-black"
                 >
                    {t("addclient9")}
                 </label>
-                <div className="relative">
                   <input
                     id="passwordCl"
                   defaultValue={userId.password}

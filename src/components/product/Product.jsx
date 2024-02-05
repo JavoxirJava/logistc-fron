@@ -133,11 +133,11 @@ function Product({lang, projectId, setProjectId}) {
         let projectIdIn = sessionStorage.getItem('projectIdIn');
         axios.post(`${url}product?userId=${userId}&projectId=${projectIdIn}`, data, config)
             .then(() => {
-                toast.success("successfully saved product");
+                toast.success(t("success"));
                 setProductObj2(null);
                 getProduct(pagination, 4);
             }).catch((err) => {
-            toast.error("product saved error");
+            toast.error(t("error"));
             console.log(err);
         });
     }
@@ -146,11 +146,11 @@ function Product({lang, projectId, setProjectId}) {
         let data = {...product2,};
         axios.post(`${url}project`, data, config)
             .then(() => {
-                toast.success("successfully saved project");
+                toast.success(t("success"));
                 setProductObj2(null);
                 getProject(pagination, 4);
             }).catch((err) => {
-            toast.error("project saved error");
+            toast.error(t("error"));
         });
     }
 
@@ -159,11 +159,11 @@ function Product({lang, projectId, setProjectId}) {
         let data = {...product2,};
         axios.put(`${url}product?projectId=${sessionStorage.getItem("projectIdIn")}`, data, config)
             .then(() => {
-                toast.success("successfully Edit product");
+                toast.success(t("success"));
                 setProductObj2(null);
                 getProduct(pagination, 4)
             }).catch((err) => {
-            toast.error("product Edit error");
+            toast.error(t("error"));
             console.log(err);
         });
     }
@@ -172,11 +172,11 @@ function Product({lang, projectId, setProjectId}) {
         let data = {...product2,};
         axios.put(`${url}project?id=${projectId.id}`, data, config)
             .then(() => {
-                toast.success("successfully Edit project");
+                toast.success(t("success"));
                 setProductObj2(null);
                 getProject(pagination, 4)
             }).catch((err) => {
-            toast.error("project Edit error");
+            toast.error(t("error"));
             console.log(err);
         });
     }

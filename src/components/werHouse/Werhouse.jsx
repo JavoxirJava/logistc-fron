@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import ProjectCard from "./ProjectCard";
 import OffcanvasProject from "./OffcanvasProject";
 import { load } from "../../assets";
+import Empty from "../Empty";
 
 function Product({ lang, werHouseId, setWerHouseId }) {
   const [coordinates, setCoordinates] = useState([55.75, 37.57]);
@@ -78,8 +79,10 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   }, [searchBy2]);
 
   const cLasslar = () => {
-    document.getElementById("projectos").value !== "select" ? setClassName(true) : setClassName(false)
-  }
+    document.getElementById("projectos").value !== "select"
+      ? setClassName(true)
+      : setClassName(false);
+  };
 
   const openEdit = () => setEditOf(!editOf);
   const loadingPP = () => setLoadingP(!loadingP);
@@ -152,7 +155,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
       )
       .then((res) => {
         // if (res.data.message === 'success') {
-            // loadingPP()
+        // loadingPP()
         setTotalPage(res.data.totalPage ? res.data.totalPage - 1 : 2);
         setProduct(res.data.object);
         // console.log(res);
@@ -169,12 +172,12 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     axios
       .post(`${url}product?userId=${userId}`, data, config)
       .then(() => {
-        toast.success("successfully saved product");
+        toast.success(t("success"));
         setProductObj2(null);
         getProduct(pagination, 4);
       })
       .catch((err) => {
-        toast.error("product saved error");
+        toast.error(t("error"));
         console.log(err);
       });
   }
@@ -190,12 +193,12 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         config
       )
       .then(() => {
-        toast.success("successfully saved product");
+        toast.success(t("success"));
         setProductObj2(null);
         getProduct(pagination, 4);
       })
       .catch((err) => {
-        toast.error("product saved error");
+        toast.error(t("error"));
         console.log(err);
       });
   }
@@ -205,12 +208,12 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     axios
       .post(`${url}wareHouse`, data, config)
       .then(() => {
-        toast.success("successfully saved warehouse");
+        toast.success(t("success"));
         setProductObj2(null);
         getWerhouse(pagination2, 4);
       })
       .catch((err) => {
-        toast.error("warehouse saved error");
+        toast.error(t("error"));
       });
   }
 
@@ -219,12 +222,12 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     axios
       .put(`${url}product?id=${product.id}`, data, config)
       .then(() => {
-        toast.success("successfully Edit product");
+        toast.success(t("success"));
         setProductObj2(null);
         getProduct(pagination, 4);
       })
       .catch((err) => {
-        toast.error("product Edit error");
+        toast.error(t("error"));
         console.log(err);
       });
   }
@@ -233,12 +236,12 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     axios
       .put(`${url}wareHouse/${product}`, data, config)
       .then(() => {
-        toast.success("successfully Edit warehouse");
+        toast.success(t("success"));
         setProductObj2(null);
         getWerhouse(pagination2, 4);
       })
       .catch((err) => {
-        toast.error("warehouse Edit error");
+        toast.error(t("error"));
         console.log(err);
       });
   }
@@ -247,12 +250,12 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     axios
       .delete(`${url}wareHouse?id=${product}`, config)
       .then(() => {
-        toast.success("successfully delete warehouse");
+        toast.success(t("success"));
         setProductObj2(null);
         getWerhouse(pagination2, 4);
       })
       .catch((err) => {
-        toast.error("warehouse delete error");
+        toast.error(t("error"));
         console.log(err);
       });
   }
@@ -264,11 +267,11 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         config
       )
       .then(() => {
-        toast.success("successfully delete product");
+        toast.success(t("success"));
         getProduct(pagination, 4);
       })
       .catch((err) => {
-        toast.error("product delete error");
+        toast.error(t("error"));
         // console.log(err);
       });
   }
@@ -295,7 +298,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           } else setProduct([]);
         })
         .catch((err) => {
-            console.log(err);
+          console.log(err);
         });
   }
 
@@ -379,7 +382,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               <span className="me-5 pt-1.5 float-end">
                 {t("cardCurrent")}: {pagination2}
               </span>
-              {projects &&
+              {projects ? (
                 projects.map((item, i) => (
                   <ProjectCard
                     setWerHouseId={setWerHouseId}
@@ -394,16 +397,19 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                     projects={item}
                     setProductObj={setProductObj}
                   />
-                ))}
+                ))
+              ) : (
+                <Empty />
+              )}
             </div>
-              <div className="pagination-style py-8">
-                <Pagination
-                  {...bootstrap5PaginationPreset}
-                  current={pagination2}
-                  total={Math.floor(totalPage2 + 1)}
-                  onPageChange={setPagination2}
-                />
-              </div>
+            <div className="pagination-style py-8">
+              <Pagination
+                {...bootstrap5PaginationPreset}
+                current={pagination2}
+                total={Math.floor(totalPage2 + 1)}
+                onPageChange={setPagination2}
+              />
+            </div>
           </div>
 
           {/* product uchun */}
@@ -428,7 +434,12 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
               <h1>
                 <b>
-                  <span className="text-blue-600 text-lg">{`${werHouseId.name ? werHouseId.name : projects ? projects[0].name : 0
+                  <span className="text-blue-600 text-lg">{`${
+                    werHouseId.name
+                      ? werHouseId.name
+                      : projects
+                      ? projects[0].name
+                      : 0
                   } `}</span>
                   {t("project")}
                 </b>
@@ -438,57 +449,49 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                 onChange={cLasslar}
                 className=" rounded-full p-2 border border-gray-500"
               >
-                <option value="select" selected>{t("select")}</option>
+                <option value="select" selected>
+                  {t("select")}
+                </option>
                 {projectos &&
                   projectos.map((item, i) => (
-                    
                     <option value={item.id}>{item.name}</option>
                   ))}
               </select>
               <span className="me-5 pt-1.5 float-end">
                 {t("cardCurrent")}: {pagination}
               </span>
-              {/* {product ? (
-                <> */}
-                {loadingP ? (
-                    <div className="flex justify-center w-full
-                     pt-10">
-                        <img src={load} alt="" />
-                    </div>
-                    ) : (
-                        products &&
-                        products.map((item, i) => (
-                        <ProductCard
-                            setProductIdList={setProductIdList}
-                            deleteProduct={deleteProduct}
-                            key={i}
-                            classNames={className}
-                            className="mt-5"
-                            openEdit={openEdit}
-                            product={item}
-                            addToProduct={addToProduct}
-                            setProductObj={setProductObj}
-                            setProductTo={setProductTo}
-                            setWerhouseId={setWerhouseId}
-                        />
-                        ))
-                    )}
-      
-              {/* </> */}
-              {/* ) : ( */}
-              {/* <h1 className="text-center p-3 text-xl">
-                  There is not produkt
-                  </h1>
-                )} */}
+             
+              {products ? (
+                products.map((item, i) => (
+                  <ProductCard
+                    setProductIdList={setProductIdList}
+                    deleteProduct={deleteProduct}
+                    key={i}
+                    classNames={className}
+                    className="mt-5"
+                    openEdit={openEdit}
+                    product={item}
+                    addToProduct={addToProduct}
+                    setProductObj={setProductObj}
+                    setProductTo={setProductTo}
+                    setWerhouseId={setWerhouseId}
+
+                  />
+                ))
+              ) : (
+                <Empty />
+              )}
+
+            
             </div>
             <div className="pagination-style mt-4">
-                  <Pagination
-                    {...bootstrap5PaginationPreset}
-                    current={pagination}
-                    total={Math.floor(totalPage + 1)}
-                    onPageChange={setPagination}
-                  />
-                </div>
+              <Pagination
+                {...bootstrap5PaginationPreset}
+                current={pagination}
+                total={Math.floor(totalPage + 1)}
+                onPageChange={setPagination}
+              />
+            </div>
           </div>
         </div>
 

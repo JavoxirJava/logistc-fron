@@ -43,12 +43,12 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
         config
       )
       .then(() => {
-        toast.success("Succes!");
+        toast.success(t("success"));
         openModal();
         logout();
       })
       .catch(() => {
-        toast.error("Error?");
+        toast.error(t("error"));
       });
   };
 

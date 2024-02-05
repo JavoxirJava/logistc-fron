@@ -34,7 +34,7 @@ function UserNavBar({ dashboard, product, client, history, changeLang }) {
   const editUser = () => {
     axios
       .put(
-        url + "user/" + meId.id,
+        url + "user/client",
         {
           id: meId.id,
           name: byId("name"),
@@ -45,12 +45,12 @@ function UserNavBar({ dashboard, product, client, history, changeLang }) {
         config
       )
       .then(() => {
-        toast.success("Succes!");
+        toast.success(t("success"));
         openModal();
         logout();
       })
       .catch(() => {
-        toast.error("Error?");
+        toast.error(t("error"));
       });
   };
 
