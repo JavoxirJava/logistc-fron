@@ -18,7 +18,7 @@ const Managers = ({ changeLanguage, lang }) => {
   const [productsClient, setProductClient] = useState(null);
   const [totalPage, setTotalPage] = useState(2);
   const [pagination, setPagination] = useState(0);
-  const role = sessionStorage.getItem("role")
+  const role = sessionStorage.getItem("role");
 
   useEffect(() => {
     getManagerProduct(pagination, 4, setProductClient, setTotalPage);
@@ -86,7 +86,7 @@ const Managers = ({ changeLanguage, lang }) => {
           console.log(res.data.body);
 
           if (res.data.body) {
-              setProductClient(res.data.body);
+            setProductClient(res.data.body);
           } else setProductClient(null);
         })
         .catch((err) => {
@@ -107,18 +107,14 @@ const Managers = ({ changeLanguage, lang }) => {
         <div className="lg:w-2/5 md:w-4/5 w-full lg:pl-10 md:px-0 px-2 ">
           <div className="flex justify-between items-center">
             <input
-            type="search"
+              type="search"
               onChange={searchProductClient}
               className="py-2 px-4 w-96 bg-slate-100 rounded-lg border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-200 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
               placeholder={t("productSearch")}
             />
-            <img
-              src={filterImg}
-              className="w-10 ml-3 cursor-pointer"
-              alt="filter"
-            />
+            
           </div>
           {productsClient ? (
             productsClient.map((item, i) => (
@@ -185,20 +181,20 @@ const Managers = ({ changeLanguage, lang }) => {
                 placeholder={t("addclient8")}
               />
             </div>
-              <div>
-                <label htmlFor="passwordC" className="ml-3.5">
-                  {t("addclient9")}
-                </label>
+            <div>
+              <label htmlFor="passwordC" className="ml-3.5">
+                {t("addclient9")}
+              </label>
 
-                <input
-                  id="passwordC"
-                  className="py-2 mb-5 px-4 w-full bg-white rounded-lg  border border-slate-300
+              <input
+                id="passwordC"
+                className="py-2 mb-5 px-4 w-full bg-white rounded-lg  border border-slate-300
               focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
               focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                  placeholder={t("addclient10")}
-                />
-              </div>
-              
+                placeholder={t("addclient10")}
+              />
+            </div>
+
             {/* <p htmlFor="passwordC" className="ml-3.5 text-gray-500 mb-5">
               {t("client04")}
             </p> */}
@@ -208,7 +204,9 @@ const Managers = ({ changeLanguage, lang }) => {
                 <LoadingClient />
               ) : (
                 <button
-                  className={`px-6 py-2 ${(role === "ROLE_ADMIN") ? "" : "hidden"} bg-green-500 shadow-lg rounded-lg text-white
+                  className={`px-6 py-2 ${
+                    role === "ROLE_ADMIN" ? "" : "hidden"
+                  } bg-green-500 shadow-lg rounded-lg text-white
                                 font-bold text-lg tracking-wider active:scale-95 duration-200`}
                   onClick={addUser}
                 >

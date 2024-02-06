@@ -3,7 +3,14 @@ import "./client.css";
 import filterImg from "./search-filter.png";
 import ProductCard from "./ProductCard";
 import LoadingClient from "./loading";
-import { byId, byIdObj, config, getClientProduct, url } from "../api";
+import {
+  byId,
+  byIdObj,
+  config,
+  getClientProduct,
+  getManagerProduct,
+  url,
+} from "../api";
 import Pagination, {
   bootstrap5PaginationPreset,
 } from "react-responsive-pagination";
@@ -14,10 +21,19 @@ import { useTranslation } from "react-i18next";
 import Empty from "../Empty";
 
 const Clients = ({ changeLanguage, lang }) => {
+  const { t } = useTranslation();
   const [isLoading, setIsloading] = useState(false);
   const [productsClient, setProductClient] = useState(null);
   const [totalPage, setTotalPage] = useState(2);
+  const [totalManager, setTotalManager] = useState(2);
   const [pagination, setPagination] = useState(0);
+  const [paginationM, setPaginationM] = useState(0);
+  const [pagen, setPage] = useState(false);
+
+  const getUse = setPage(false);
+  const getManag = setPage(true);
+
+  const role = sessionStorage.getItem("role");
 
   useEffect(() => {
     getClientProduct(pagination, 4, setProductClient, setTotalPage);
@@ -27,7 +43,9 @@ const Clients = ({ changeLanguage, lang }) => {
     getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
   }, [lang]);
 
-  const { t } = useTranslation();
+  useEffect(() => {
+    getManagerProduct(paginationM, 4, setProductClient, setTotalManager, lang);
+  }, [lang]);
 
   useEffect(() => {
     if ((pagination - 1) * 4 < 0) setPagination(0);
@@ -36,9 +54,22 @@ const Clients = ({ changeLanguage, lang }) => {
         Math.floor(pagination - 1),
         4,
         setProductClient,
-        setTotalPage
+        setTotalPage,
+        lang
       );
   }, [pagination]);
+
+  useEffect(() => {
+    if ((paginationM - 1) * 4 < 0) setPaginationM(0);
+    else
+      getManagerProduct(
+        Math.floor(paginationM - 1),
+        4,
+        setProductClient,
+        setTotalManager,
+        lang
+      );
+  }, [paginationM]);
 
   function addUser() {
     setIsloading(true);
@@ -49,7 +80,7 @@ const Clients = ({ changeLanguage, lang }) => {
       password: byId("passwordC"),
     };
     axios
-      .post(`${url}user?ROLE=ROLE_USER`, data, config)
+      .post(`${url}user?ROLE=${byId("user")}`, data, config)
       .then(() => {
         toast.success(t("success"));
         setIsloading(false);
@@ -85,7 +116,7 @@ const Clients = ({ changeLanguage, lang }) => {
           console.log(res.data.body);
 
           if (res.data.body) {
-              setProductClient(res.data.body);
+            setProductClient(res.data.body);
           } else setProductClient(null);
         })
         .catch((err) => {
@@ -94,7 +125,6 @@ const Clients = ({ changeLanguage, lang }) => {
           console.log(err);
         });
   }
-
 
   return (
     <>
@@ -105,7 +135,7 @@ const Clients = ({ changeLanguage, lang }) => {
       />
       <div className="clients-bg background b flex lg:flex-row flex-col pt-20">
         <div className="lg:w-2/5 md:w-4/5 w-full lg:pl-10 md:px-0 px-2 ">
-          <div className="flex justify-between items-center">
+          <div className="flex gap-4 justify-between items-center">
             <input
               type="search"
               onChange={searchProductClient}
@@ -114,11 +144,42 @@ const Clients = ({ changeLanguage, lang }) => {
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
               placeholder={t("productSearch")}
             />
-            <img
-              src={filterImg}
-              className="w-10 ml-3 cursor-pointer"
-              alt="filter"
-            />
+            <button
+              className={`px-6 py-2 ${
+                role === "ROLE_ADMIN" ? "" : "hidden"
+              } bg-green-500 shadow-lg rounded-lg text-white
+                                font-bold text-lg tracking-wider active:scale-95 duration-200`}
+              onClick={() => {
+                getClientProduct(
+                  Math.floor(pagination),
+                  4,
+                  setProductClient,
+                  setTotalPage,
+                  lang
+                );
+                getUse();
+              }}
+            >
+              {t("client10")}
+            </button>
+            <button
+              className={`px-6 py-2 ${
+                role === "ROLE_ADMIN" ? "" : "hidden"
+              } bg-green-500 shadow-lg rounded-lg text-white
+                                font-bold text-lg tracking-wider active:scale-95 duration-200`}
+              onClick={() => {
+                getManagerProduct(
+                  Math.floor(paginationM),
+                  4,
+                  setProductClient,
+                  setTotalManager,
+                  lang
+                );
+                getManagerProduct();
+              }}
+            >
+              {t("client11")}
+            </button>
           </div>
           {productsClient ? (
             productsClient.map((item, i) => (
@@ -128,12 +189,21 @@ const Clients = ({ changeLanguage, lang }) => {
             <Empty />
           )}
           <div className="pagination-style relative mt-4">
-            <Pagination
-              {...bootstrap5PaginationPreset}
-              current={pagination}
-              total={Math.floor(totalPage + 1)}
-              onPageChange={setPagination}
-            />
+            {pagen ? (
+              <Pagination
+                {...bootstrap5PaginationPreset}
+                current={paginationM}
+                total={Math.floor(totalManager + 1)}
+                onPageChange={setPaginationM}
+              />
+            ) : (
+              <Pagination
+                {...bootstrap5PaginationPreset}
+                current={pagination}
+                total={Math.floor(totalPage + 1)}
+                onPageChange={setPagination}
+              />
+            )}
           </div>
         </div>
 
@@ -185,6 +255,7 @@ const Clients = ({ changeLanguage, lang }) => {
                 placeholder={t("addclient8")}
               />
             </div>
+            <div className="flex flex-col md:flex-row md:gap-5">
               <div>
                 <label htmlFor="passwordC" className="ml-3.5">
                   {t("addclient9")}
@@ -198,7 +269,26 @@ const Clients = ({ changeLanguage, lang }) => {
                   placeholder={t("addclient10")}
                 />
               </div>
-            
+              <div>
+                <label htmlFor="passwordC" className="ml-3.5">
+                  {t("client9")}
+                </label>
+
+                <select
+                  id="user"
+                  className="py-2 mb-5 px-4 w-full bg-white rounded-lg  border border-slate-300
+                  focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+                focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+                >
+                  <option selected disabled>
+                    {t("client9")}
+                  </option>
+                  <option value="ROLE_USER">{t("client10")}</option>
+                  <option value="ROLE_MANAGER">{t("client11")}</option>
+                </select>
+              </div>
+            </div>
+
             {/* <p htmlFor="passwordC" className="ml-3.5 text-gray-500 mb-5">
               {t("client04")}
             </p> */}
