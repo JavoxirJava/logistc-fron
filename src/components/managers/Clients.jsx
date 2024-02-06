@@ -18,6 +18,7 @@ const Managers = ({ changeLanguage, lang }) => {
   const [productsClient, setProductClient] = useState(null);
   const [totalPage, setTotalPage] = useState(2);
   const [pagination, setPagination] = useState(0);
+  const role = sessionStorage.getItem("role")
 
   useEffect(() => {
     getManagerProduct(pagination, 4, setProductClient, setTotalPage);
@@ -207,8 +208,8 @@ const Managers = ({ changeLanguage, lang }) => {
                 <LoadingClient />
               ) : (
                 <button
-                  className="px-6 py-2 bg-green-500 shadow-lg rounded-lg text-white
-                                font-bold text-lg tracking-wider active:scale-95 duration-200"
+                  className={`px-6 py-2 ${(role === "ROLE_ADMIN") ? "" : "hidden"} bg-green-500 shadow-lg rounded-lg text-white
+                                font-bold text-lg tracking-wider active:scale-95 duration-200`}
                   onClick={addUser}
                 >
                   {t("addd")}

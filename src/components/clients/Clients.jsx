@@ -49,7 +49,7 @@ const Clients = ({ changeLanguage, lang }) => {
       password: byId("passwordC"),
     };
     axios
-      .post(`${url}user?ROLE=${byId("user")}`, data, config)
+      .post(`${url}user?ROLE=ROLE_USER`, data, config)
       .then(() => {
         toast.success(t("success"));
         setIsloading(false);
@@ -185,7 +185,6 @@ const Clients = ({ changeLanguage, lang }) => {
                 placeholder={t("addclient8")}
               />
             </div>
-            <div className="flex flex-col md:flex-row md:gap-5">
               <div>
                 <label htmlFor="passwordC" className="ml-3.5">
                   {t("addclient9")}
@@ -199,23 +198,7 @@ const Clients = ({ changeLanguage, lang }) => {
                   placeholder={t("addclient10")}
                 />
               </div>
-              <div>
-                <label htmlFor="passwordC" className="ml-3.5">
-                  {t("client9")}
-                </label>
-
-                <select
-                  id="user"
-                  className="py-2 mb-5 px-4 w-full bg-white rounded-lg  border border-slate-300
-                  focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-                focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                >
-                  <option selected disabled>{t("client9")}</option>
-                  <option value="ROLE_USER">{t("client10")}</option>
-                  <option value="ROLE_MANAGER">{t("client11")}</option>
-                </select>
-              </div>
-            </div>
+            
             {/* <p htmlFor="passwordC" className="ml-3.5 text-gray-500 mb-5">
               {t("client04")}
             </p> */}
