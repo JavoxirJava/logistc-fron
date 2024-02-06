@@ -9,6 +9,8 @@ const translateRu = {
     project: "Продукт", 
     werhouse: "Склад", 
     client: "Клиенты",
+    users: "Пользователи",
+
     histori: "История",
     homeText1: "Мы доставим ваши посылки",
     homeText01: "В любое место!",

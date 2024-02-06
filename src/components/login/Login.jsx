@@ -26,7 +26,8 @@ function Login() {
                 if (res.data) {
                     sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
                     if (res.data.message === "ROLE_USER") byIdObj("user-dashboard").click();
-                    else byIdObj("dashboard").click();
+                    else if (res.data.message === "ROLE_ADMIN") byIdObj("dashboard").click();
+                    else  toast.error(t("notFound"));
                 } else toast.error(t("notFound"));
                 setIsLoading(false);
             }).catch(err => {

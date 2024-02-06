@@ -6,10 +6,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import "./style.css";
+import DropdownA from "./NavDrop";
 
 function NavBar({ dashboard, product, client, history, werhouse, lang }) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenm, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ismodalClose, setIsModalClose] = useState(true);
   const [me, setMe] = useState(null);
@@ -17,7 +18,7 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
   const [showPassword, setShowPassword] = useState(false);
   // const [active, setActive] = useState(false);
 
-  const openGetMe = () => setIsOpen(!isOpen);
+  const openGetMe = () => setIsOpen(!isOpenm);
   const openMenu = () => setIsOpenMenu(!isOpenMenu);
   const openModal = () => setIsModalOpen(!isModalOpen);
   const closeModal = () => setIsModalClose(!isModalOpen);
@@ -59,6 +60,9 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
   useEffect(() => {
     getMe(setMe, lang);
   }, [lang]);
+
+  const onUser = () => document.getElementById("user").click()
+  const onManager = () => document.getElementById("manager").click()
 
   return (
     <div className="">
@@ -138,7 +142,7 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                         {t("produkt")}
                       </Link>
                     </li>
-                    <li onClick={openMenu}>
+                    <li onClick={openMenu} className="mt-2">
                       <Link
                         to="/warehouse"
                         className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
@@ -155,6 +159,16 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                         aria-current="page"
                       >
                         {t("client")}
+                      </Link>
+                    </li>
+                    <li className="my-2" onClick={openMenu}>
+                      {" "}
+                      <Link
+                        to="/managers"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
+                        aria-current="page"
+                      >
+                        {t("client11")}
                       </Link>
                     </li>
                     <li onClick={openMenu}>
@@ -202,13 +216,14 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                   >
                     {t("werhouse")}
                   </Link>
-                  <Link
+                  {/* <Link
                     to="/client"
                     className={`${client} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
                     // aria-current="page"
                   >
                     {t("client")}
-                  </Link>
+                  </Link> */}
+                 <DropdownA/>
                   <Link
                     to="/history"
                     className={`${history} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
@@ -246,7 +261,7 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
 
                 <div
                   className={`${
-                    isOpen ? "inline" : "hidden"
+                    isOpenm ? "inline" : "hidden"
                   } absolute lg:w-80 w-72 media-nav bg-slate-400 lg:-right-8 right-1 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
                 >

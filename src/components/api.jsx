@@ -28,6 +28,18 @@ export const getClientProduct = (page, size, setClientProduct, setTotalPage, lan
         })
 }
 
+export const getManagerProduct = (page, size, setClientProduct, setTotalPage, lang) => {
+    axios.get(`${url}user/manager?page=${page}&size=${size}&lang=${lang}`, config)
+        .then(res => {
+            if (res.data.message) {
+                setClientProduct(res.data.body.object);
+                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2)
+            }
+        })
+        .catch((err) => {
+        })
+}
+
 
 export function getUsers(setUser, lang) {
     axios.get(`${url}user?lang=${lang}`, config).then(res => setUser(res.data.body.object)).catch(err => console.log(err));

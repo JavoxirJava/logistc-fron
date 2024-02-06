@@ -17,6 +17,7 @@ import Select from "./locale/Select";
 import UserDashboard from "./components/user/Dashboard";
 import { useEffect, useState } from "react";
 import Werhouse from "./components/werHouse/Werhouse";
+import Managers from "./components/managers/Clients";
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -32,7 +33,6 @@ function App() {
     // localStorage dan tanlangan tilni olish
     return localStorage.getItem("selectedLanguage") || "en";
   });
-
 
   const [lang, setLang] = useState("en");
   const [projectId, setProjectId] = useState("");
@@ -50,15 +50,7 @@ function App() {
     setLang(selectedLanguage);
   }, [selectedLanguage]);
 
-
-
-
-
   AOS.init();
-
-
-  
-
 
   return (
     <div className="relative">
@@ -84,6 +76,7 @@ function App() {
           }
         />
         <Route path="/client" element={<Clients lang={lang} />} />
+        <Route path="/managers" element={<Managers lang={lang} />} />
         <Route path="/history" element={<History lang={lang} />} />
         <Route
           path="/warehouse"

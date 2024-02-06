@@ -1,132 +1,60 @@
-// import { Fragment } from 'react'
-// import { Menu, Transition } from '@headlessui/react'
-// import { ChevronDownIcon } from '@heroicons/react'
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(' ')
-// }
+const DropdownA = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
+  const [selectedOption, setSelectedOption] = useState(t("users"));
 
-// export default function NavDrop() {
-//   return (
-//     <Menu as="div" className="relative inline-block text-left">
-//       <div>
-//         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-//           Options
-//           <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
-//         </Menu.Button>
-//       </div>
 
-//       <Transition
-//         as={Fragment}
-//         enter="transition ease-out duration-100"
-//         enterFrom="transform opacity-0 scale-95"
-//         enterTo="transform opacity-100 scale-100"
-//         leave="transition ease-in duration-75"
-//         leaveFrom="transform opacity-100 scale-100"
-//         leaveTo="transform opacity-0 scale-95"
-//       >
-//         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-//           <div className="py-1">
-//             <Menu.Item>
-//               {({ active }) => (
-//                 <a
-//                   href="#"
-//                   className={classNames(
-//                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-//                     'block px-4 py-2 text-sm'
-//                   )}
-//                 >
-//                   Edit
-//                 </a>
-//               )}
-//             </Menu.Item>
-//             <Menu.Item>
-//               {({ active }) => (
-//                 <a
-//                   href="#"
-//                   className={classNames(
-//                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-//                     'block px-4 py-2 text-sm'
-//                   )}
-//                 >
-//                   Duplicate
-//                 </a>
-//               )}
-//             </Menu.Item>
-//           </div>
-//           <div className="py-1">
-//             <Menu.Item>
-//               {({ active }) => (
-//                 <a
-//                   href="#"
-//                   className={classNames(
-//                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-//                     'block px-4 py-2 text-sm'
-//                   )}
-//                 >
-//                   Archive
-//                 </a>
-//               )}
-//             </Menu.Item>
-//             <Menu.Item>
-//               {({ active }) => (
-//                 <a
-//                   href="#"
-//                   className={classNames(
-//                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-//                     'block px-4 py-2 text-sm'
-//                   )}
-//                 >
-//                   Move
-//                 </a>
-//               )}
-//             </Menu.Item>
-//           </div>
-//           <div className="py-1">
-//             <Menu.Item>
-//               {({ active }) => (
-//                 <a
-//                   href="#"
-//                   className={classNames(
-//                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-//                     'block px-4 py-2 text-sm'
-//                   )}
-//                 >
-//                   Share
-//                 </a>
-//               )}
-//             </Menu.Item>
-//             <Menu.Item>
-//               {({ active }) => (
-//                 <a
-//                   href="#"
-//                   className={classNames(
-//                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-//                     'block px-4 py-2 text-sm'
-//                   )}
-//                 >
-//                   Add to favorites
-//                 </a>
-//               )}
-//             </Menu.Item>
-//           </div>
-//           <div className="py-1">
-//             <Menu.Item>
-//               {({ active }) => (
-//                 <a
-//                   href="#"
-//                   className={classNames(
-//                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-//                     'block px-4 py-2 text-sm'
-//                   )}
-//                 >
-//                   Delete
-//                 </a>
-//               )}
-//             </Menu.Item>
-//           </div>
-//         </Menu.Items>
-//       </Transition>
-//     </Menu>
-//   )
-// }
+
+  const options = [
+    { name: t("client"), link: "/client" },
+    { name: t("client11"), link: "/managers" }
+  ];
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex gap-5 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+      >
+        {selectedOption}
+        <svg
+          className="w-5 h-5inset-y-0 right-0 m-auto"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fillRule="evenodd"
+            d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </button>
+      {isOpen && (
+        <div className="absolute mt-1 w-full rounded-md bg-white shadow-lg">
+          {options.map((option) => (
+            <Link to={option.link}>
+              <button
+                key={option}
+                onClick={() => handleOptionSelect(option.name)}
+                className="block w-full px-4 py-2 text-left text-gray-800 hover:bg-blue-500 hover:text-white"
+              >
+                {option.name}
+              </button>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default DropdownA;
