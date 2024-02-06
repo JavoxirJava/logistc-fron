@@ -9,13 +9,14 @@ import {toast} from "react-toastify";
 import NavBar from "../navbar/NavBar";
 import {useTranslation} from "react-i18next";
 import Empty from "../Empty";
+import ManagerCard from "./managerCard";
 
 const Clients = ({changeLanguage, lang}) => {
     const {t} = useTranslation();
     const [isLoading, setIsloading] = useState(false);
     const [productsClient, setProductClient] = useState(null);
-    const [totalPage, setTotalPage] = useState(2);
-    const [totalManager, setTotalManager] = useState(2);
+    const [totalPage, setTotalPage] = useState(0);
+    const [totalManager, setTotalManager] = useState(0);
     const [pagination, setPagination] = useState(0);
     const [paginationM, setPaginationM] = useState(0);
     const [pagen, setPage] = useState(false);
@@ -78,7 +79,7 @@ const Clients = ({changeLanguage, lang}) => {
                 byIdObj("idNumberC").value = "";
                 byIdObj("phoneNumberC").value = "";
                 byIdObj("passwordC").value = "";
-                getClientProduct(pagination, 4, setProductClient, setTotalPage);
+                pagen ? getManagerProduct(paginationM, 4, setProductClient, setTotalManager, lang) :  getClientProduct(pagination, 4, setProductClient, setTotalPage, lang)
             })
             .catch((err) => {
                 toast.error(t("error"));
@@ -90,7 +91,7 @@ const Clients = ({changeLanguage, lang}) => {
     function searchProductClient(e) {
         let text = e.target.value;
         if (text === "")
-            getClientProduct(pagination, 4, setProductClient, setTotalPage);
+        pagen ? getManagerProduct(paginationM, 4, setProductClient, setTotalManager, lang) :  getClientProduct(pagination, 4, setProductClient, setTotalPage, lang)
         else
             axios
                 .get(`${url}user/search?idNumber=${text}&lang=${lang}`, config)
@@ -173,7 +174,7 @@ const Clients = ({changeLanguage, lang}) => {
                     </div>
                     {productsClient ? (
                         productsClient.map((item, i) => (
-                            <ProductCard key={i} className="mt-5" product={item}/>
+                            pagen ? <ManagerCard key={i} className="mt-5" product={item}/> : <ProductCard key={i} className="mt-5" product={item}/>
                         ))
                     ) : (
                         <Empty/>

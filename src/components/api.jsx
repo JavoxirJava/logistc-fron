@@ -21,7 +21,7 @@ export const getClientProduct = (page, size, setClientProduct, setTotalPage, lan
         .then(res => {
             if (res.data.message) {
                 setClientProduct(res.data.body.object);
-                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2)
+                setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 0)
             }
         })
         .catch((err) => {
@@ -33,7 +33,7 @@ export const getManagerProduct = (page, size, setClientProduct, setTotalManager,
         .then(res => {
             if (res.data.message) {
                 setClientProduct(res.data.body.object);
-                setTotalManager(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2)
+                setTotalManager(res.data.body.totalPage ? res.data.body.totalPage - 1 : 0)
             }
         })
         .catch((err) => {
