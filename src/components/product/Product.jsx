@@ -228,7 +228,6 @@ function Product({ lang, projectId, setProjectId }) {
 
   function searchProject(e) {
     let text = e.target.value;
-    console.log(text);
     if (text === "") getProject(pagination, 4);
     else
       axios
@@ -237,16 +236,18 @@ function Product({ lang, projectId, setProjectId }) {
           config
         )
         .then((res) => {
-          if (res.data.body) {
+          if (!res.data.body) {
             // eslint-disable-next-line array-callback-return
+           setProject([]);
+          } else {
             if (res.data.body.length > 4)
-              setProject(
-                res.data.body.map((item, i) => {
-                  if (i < 4) return item;
-                })
-              );
-            else setProject(res.data.body);
-          } else setProject([]);
+            setProject(
+              res.data.body.map((item, i) => {
+                if (i < 4) return item;
+              })
+            );
+          else setProject(res.data.body);
+          }
         })
         .catch((err) => console.log(err));
   }

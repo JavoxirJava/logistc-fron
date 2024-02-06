@@ -36,7 +36,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   const [searchBy, setSearchBy] = useState(null);
   const [searchBy2, setSearch2By] = useState(null);
   const [userId, setUserId] = useState(null);
-  const [werhouseId, setWerhouseId] = useState("");
+  const [werhouseId, setWerhouseId] = useState(0);
   const [productIdList, setProductIdList] = useState([]);
   const [className, setClassName] = useState(false);
   const [loadingP, setLoadingP] = useState(false);
@@ -145,7 +145,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     axios
       .get(
         `${url}wareHouse/product?wareHouseId=${
-          werHouseId.wareHouseId
+          werHouseId
             ? werHouseId.wareHouseId
             : projects
             ? projects[0].wareHouseId
@@ -309,8 +309,10 @@ function Product({ lang, werHouseId, setWerHouseId }) {
       axios
         .get(`${url}wareHouse/search?name=${text}&lang=${lang}`, config)
         .then((res) => {
-          if (res.data.body) {
+          if (!res.data.body) {
             // eslint-disable-next-line array-callback-return
+            setProject([]);
+          } else {
             if (res.data.body.length > 4)
               setProject(
                 res.data.body.map((item, i) => {
@@ -318,7 +320,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                 })
               );
             else setProject(res.data.body);
-          } else setProject([]);
+          }
         })
         .catch((err) => console.log(err));
   }
@@ -435,11 +437,11 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               <h1>
                 <b>
                   <span className="text-blue-600 text-lg">{`${
-                    werHouseId.name
+                    werHouseId
                       ? werHouseId.name
                       : projects
                       ? projects[0].name
-                      : 0
+                      : ""
                   } `}</span>
                   {t("project")}
                 </b>
