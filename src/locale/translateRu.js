@@ -99,8 +99,10 @@ const translateRu = {
     searchBy: "Искать по",
     dropdown1: "Код ТН продукта",
     dropdown2: "Статус продукта",
-    dropdown3: "Идентификатор пользователя",
+    dropdown3: "Имя продукта",
     dropdown4: "Имя пользователя",
+    dropdown5: "Статус проекта",
+    dropdown6: "Имя проекта",
     login1: 'Вход',
     login2: 'Номер телефона',
     login3: 'Число',// bu placeholderdagi malumot

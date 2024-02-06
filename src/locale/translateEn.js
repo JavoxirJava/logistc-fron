@@ -101,8 +101,10 @@ const translateEn = {
     searchBy: "Search by",
     dropdown1: "Product TN code",
     dropdown2: "Product status",
-    dropdown3: " User id number",
+    dropdown3: "Product name",
     dropdown4: " User name",
+    dropdown5: "Project status",
+    dropdown6: "Project name",
     login1: 'Log In',
     login2: 'Phone Number',
     login3: 'Number', // bu placeholderdagi malumot

@@ -76,7 +76,6 @@ function App() {
                     }
                 />
                 <Route path="/client" element={<Clients lang={lang}/>}/>
-                <Route path="/managers" element={<Managers lang={lang}/>}/>
                 <Route path="/history" element={<History lang={lang}/>}/>
                 <Route
                     path="/warehouse"

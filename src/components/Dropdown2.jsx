@@ -30,12 +30,12 @@ const Dropdown2 = ({setSearchBy}) => {
                         
                         <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                               role="menuitem" onClick={toggleDropdown}>
-                             {t("dropdown2")}
+                             {t("dropdown5")}
                         </Link>
                        
                         <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                               role="menuitem" onClick={toggleDropdown}>
-                            {t("dropdown4")}
+                            {t("dropdown6")}
                         </Link>
                     </div>
                 </div>

@@ -253,16 +253,16 @@ function Product({ lang, projectId, setProjectId }) {
 
   function searchByName() {
     switch (searchBy) {
-      case "Product id number":
-        return "name";
+      case "Product TN code":
+        return "productIdNumber";
       case "Product status":
-        return "status";
-      case "User id number":
-        return "userIdNumber";
+        return "productStatus";
+      case "Product name":
+        return "productName";
       case "User name":
         return "userName";
       default:
-        return "name";
+        return "productIdNumber";
     }
   }
 
@@ -356,7 +356,7 @@ function Product({ lang, projectId, setProjectId }) {
               <h1>
                 <b>
                   <span className="text-blue-600 text-lg">{`${
-                    projectId.name
+                    projectId
                       ? projectId.name
                       : projects
                       ? projects[0].name
