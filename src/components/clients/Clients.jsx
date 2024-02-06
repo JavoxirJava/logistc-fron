@@ -74,13 +74,18 @@ const Clients = ({ changeLanguage, lang }) => {
       axios
         .get(`${url}user/search?idNumber=${text}&lang=${lang}`, config)
         .then((res) => {
-          if (!res.data.body) {
-            if (res.data.body.object.length > 4)
-              setProductClient(
-                res.data.body.object.map((item, i) => {
-                  if (i < 4) return item;
-                })
-              );
+          // if (!res.data.body) {
+          //   if (res.data.body.object.length > 4)
+          //     setProductClient(
+          //       res.data.body.object.map((item, i) => {
+          //         if (i < 4) return item;
+          //       })
+          //     );
+          // } else setProductClient(null);
+          console.log(res.data.body);
+
+          if (res.data.body) {
+              setProductClient(res.data.body);
           } else setProductClient(null);
         })
         .catch((err) => {
@@ -89,6 +94,7 @@ const Clients = ({ changeLanguage, lang }) => {
           console.log(err);
         });
   }
+
 
   return (
     <>

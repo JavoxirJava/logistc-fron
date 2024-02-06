@@ -304,7 +304,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
   function searchProject(e) {
     let text = e.target.value;
-    if (text === "") getProduct(pagination, 4);
+    if (text === "") getWerhouse(pagination, 4);
     else
       axios
         .get(`${url}wareHouse/search?name=${text}&lang=${lang}`, config)
