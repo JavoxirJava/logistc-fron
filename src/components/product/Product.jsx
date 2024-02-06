@@ -197,6 +197,7 @@ function Product({lang, projectId, setProjectId}) {
 
     function searchProject(e) {
         let text = e.target.value;
+        console.log(text);
         if (text === '') getProject(pagination, 4);
         else axios.get(`${url}project/admin/search?${searchByName2()}=${text}&lang=${lang}`, config).then(res => {
             if (res.data.body) {
@@ -212,15 +213,15 @@ function Product({lang, projectId, setProjectId}) {
     function searchByName() {
         switch (searchBy) {
             case "Product id number":
-                return "productIdNumber";
+                return "name";
             case "Product status":
-                return "productStatus";
+                return "status";
             case "User id number":
                 return "userIdNumber";
             case "User name":
                 return "userName";
             default:
-                return "productIdNumber";
+                return "name";
         }
     }
 
