@@ -36,16 +36,14 @@ const Clients = ({ changeLanguage, lang }) => {
   const role = sessionStorage.getItem("role");
 
   useEffect(() => {
-    getClientProduct(pagination, 4, setProductClient, setTotalPage);
+    pagen ? getManagerProduct(paginationM, 4, setProductClient, setTotalManager, lang) : getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
   }, []);
 
   useEffect(() => {
-    getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
+    pagen ? getManagerProduct(paginationM, 4, setProductClient, setTotalManager, lang) : getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
   }, [lang]);
 
-  useEffect(() => {
-    getManagerProduct(paginationM, 4, setProductClient, setTotalManager, lang);
-  }, [lang]);
+  
 
   useEffect(() => {
     if ((pagination - 1) * 4 < 0) setPagination(0);
