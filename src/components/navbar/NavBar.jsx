@@ -154,11 +154,11 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                     <li className="my-2" onClick={openMenu}>
                       {" "}
                       <Link
-                        to="/client"
+                        to="/users"
                         className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
                         aria-current="page"
                       >
-                        {t("client")}
+                        {t("users")}
                       </Link>
                     </li>
                     {/* <li className="my-2" onClick={openMenu}>
@@ -217,11 +217,11 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                     {t("werhouse")}
                   </Link>
                   <Link
-                    to="/client"
+                    to="/users"
                     className={`${client} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
                     // aria-current="page"
                   >
-                    {t("client")}
+                    {t("users")}
                   </Link>
                  {/* <DropdownA/> */}
                   <Link

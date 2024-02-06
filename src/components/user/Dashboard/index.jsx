@@ -15,7 +15,7 @@ function UserDashboard({changeLanguage, lang}) {
     useEffect(() => {
         setConfig();
         getMe(setMe);
-        axios.get(`${url}product/diagramForUser`, config)
+        axios.get(`${url}product/diagramForUser?lang=${lang}`, config)
             .then((res) => setProductStatistics(res.data.body))
             .catch(err => console.log(err));
 

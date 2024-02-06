@@ -204,9 +204,9 @@ const Clients = ({ changeLanguage, lang }) => {
           {productsClient ? (
             productsClient.map((item, i) =>
               pagen ? (
-                <ManagerCard key={i} className="mt-5" product={item} />
+                productsClient && <ManagerCard key={i} className="mt-5" product={item} />
               ) : (
-                <ProductCard key={i} className="mt-5" product={item} />
+                productsClient && <ProductCard key={i} className="mt-5" product={item} />
               )
             )
           ) : (
@@ -293,7 +293,9 @@ const Clients = ({ changeLanguage, lang }) => {
                   placeholder={t("addclient10")}
                 />
               </div>
-              <div>
+              <div  className={` ${
+                role === "ROLE_ADMIN" ? "" : "hidden"
+              }`}>
                 <label htmlFor="passwordC" className="ml-3.5">
                   {t("client9")}
                 </label>
