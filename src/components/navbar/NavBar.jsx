@@ -298,12 +298,13 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                         </p>
                         <p className="mt-0 pt-0 text-black">{me.phoneNumber}</p>
                       </div>
-                      <div className=" font-bold text-black text-[1.1rem]">
+                      <div className=" font-bold text-black password text-[1.1rem]">
                         <p className="opacity-50 pb-0 mb-0 mt-2">
                           {t("addclient9")}
                         </p>
 
-                        <p className="mt-0 pt-0 text-black">{me.password}</p>
+                        <p className="mt-0 pt-0 nuqta text-black">......</p>
+                        <p className="mt-0 pt-0 parol text-black">{me.password}</p>
                       </div>
                       <div className="flex justify-between items-center mt-3 font-bold text-white">
                         <button
