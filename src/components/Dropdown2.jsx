@@ -3,15 +3,26 @@ import {Link} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 
-const Dropdown2 = ({setSearchBy}) => {
+const Dropdown2 = ({pagination, getProduct, setSearchBy, inputDrop, selectDrop }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const { t } = useTranslation();
 
     const toggleDropdown = (e) => {
+        getProduct(pagination, 4);
         setSearchBy(e.target.innerText);
         setIsOpen(!isOpen);
-    };
+        inputDrop();
+      };
+    
+      const toggleDropdown2 = (e) => {
+        getProduct(pagination, 4);
+        setSearchBy(e.target.innerText);
+        setIsOpen(!isOpen);
+        selectDrop();
+      };
+    
 
-    const { t } = useTranslation();
+    
 
 
     return (
@@ -30,13 +41,13 @@ const Dropdown2 = ({setSearchBy}) => {
                         
                         <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                               role="menuitem" onClick={toggleDropdown}>
+                            {t("dropdown6")}
+                        </Link>
+                        <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                              role="menuitem" onClick={toggleDropdown2}>
                              {t("dropdown5")}
                         </Link>
                        
-                        <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                              role="menuitem" onClick={toggleDropdown}>
-                            {t("dropdown6")}
-                        </Link>
                     </div>
                 </div>
             )}

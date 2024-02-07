@@ -20,8 +20,8 @@ function LineChart({productStatistics2}) {
   };
 
   return (
-    <div>
-      <div className="backCircle">
+    <div className='pt-10'>
+      <div className="backCircle ">
         <div style={{ height: '400px', width: '100%', display: "flex", flexDirection: "column", }}>
           <EChartsReact option={option}
             style={{ height: '100%', width: '100%', display: "flex", justifyContent: "center", alignItems:"center"}}

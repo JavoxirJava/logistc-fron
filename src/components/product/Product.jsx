@@ -33,7 +33,14 @@ function Product({ lang, projectId, setProjectId }) {
   const [searchBy, setSearchBy] = useState(null);
   const [searchBy2, setSearch2By] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [drops, setDrops] = useState(false);
+  const [dropsP, setDropsP] = useState(false);
 
+  const inputDrop = () => setDrops(false);
+  const selectDrop = () => setDrops(true);
+
+  const inputDropP = () => setDropsP(false);
+  const selectDropP = () => setDropsP(true);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -161,7 +168,7 @@ function Product({ lang, projectId, setProjectId }) {
       .then(() => {
         toast.success(t("success"));
         setProductObj2(null);
-        getProject(pagination, 4);
+        getProject(pagination2, 4);
       })
       .catch((err) => {
         toast.error(t("error"));
@@ -205,6 +212,7 @@ function Product({ lang, projectId, setProjectId }) {
   function searchProduct(e) {
     let text = e.target.value;
     if (text === "") getProduct(pagination, 4);
+    else if (text === "all") getProduct(pagination, 4);
     else
       axios
         .get(
@@ -228,7 +236,8 @@ function Product({ lang, projectId, setProjectId }) {
 
   function searchProject(e) {
     let text = e.target.value;
-    if (text === "") getProject(pagination, 4);
+    if (text === "") getProject(pagination2, 4);
+    else if (text === "all") getProject(pagination2, 4);
     else
       axios
         .get(
@@ -289,13 +298,42 @@ function Product({ lang, projectId, setProjectId }) {
           {/* project uchun */}
           <div className="lg:w-5/12 w-screen lg:px-3 md:px-10  lg:py-0 sm:py-5 px-1">
             <div className="mt-4 flex flex-wrap justify-between">
-              <input
-                type="search"
-                placeholder={t("productSearch")}
-                onChange={searchProject}
-                className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
-              />
-              <Dropdown2 setSearchBy={setSearch2By} />
+            {drops ? (
+            <select
+              onChange={searchProject}
+              defaultValue=""
+              id="statuslar"
+              className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
+                       focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+                     focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+            >
+              <option selected disabled>
+                {t("productAdd60")}
+              </option>
+              <option value="all">{t("all")}</option>
+              <option value="PENDING">{t("status1")}</option>
+              <option value="GOING">{t("status2")}</option>
+              <option value="CANCEL">{t("status3")}</option>
+              <option value="ARRIVED">{t("status4")}</option>
+              <option value="COMPLETED">{t("status5")}</option>
+              <option value="MOVED ">{t("status6")}</option>
+            </select>
+          ) : (
+            <input
+              type="search"
+              placeholder={t("productSearch")}
+              defaultValue=""
+              onChange={searchProject}
+              className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+            />
+          )}
+               <Dropdown2
+            pagination={pagination2}
+            getProduct={getProject}
+            selectDrop={selectDrop}
+            inputDrop={inputDrop}
+            setSearchBy={setSearch2By}
+          />
             </div>
             <div className="mt-4 flex flex-wrap justify-between">
               <button
@@ -343,13 +381,42 @@ function Product({ lang, projectId, setProjectId }) {
 
           <div className="lg:w-5/12 overflow-x-hidden w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
             <div className="mt-4 flex flex-wrap justify-between">
-              <input
-                type="search"
-                placeholder={t("productSearch")}
-                onChange={searchProduct}
-                className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
-              />
-              <Dropdown setSearchBy={setSearchBy} />
+            {dropsP ? (
+            <select
+              onChange={searchProduct}
+              defaultValue=""
+              id="statuslar"
+              className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
+                       focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+                     focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+            >
+              <option selected disabled>
+                {t("productAdd60")}
+              </option>
+              <option value="all">{t("all")}</option>
+              <option value="PENDING">{t("status1")}</option>
+              <option value="GOING">{t("status2")}</option>
+              <option value="CANCEL">{t("status3")}</option>
+              <option value="ARRIVED">{t("status4")}</option>
+              <option value="COMPLETED">{t("status5")}</option>
+              <option value="MOVED ">{t("status6")}</option>
+            </select>
+          ) : (
+            <input
+              type="search"
+              placeholder={t("productSearch")}
+              defaultValue=""
+              onChange={searchProduct}
+              className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+            />
+          )}
+              <Dropdown
+            pagination={pagination}
+            getProduct={getProduct}
+            selectDrop={selectDropP}
+            inputDrop={inputDropP}
+            setSearchBy={setSearchBy}
+          />
             </div>
             <div className="mt-4 flex flex-wrap justify-between">
               <div></div>

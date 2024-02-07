@@ -46,6 +46,10 @@ const DashboardProductCard = ({ className, lang }) => {
   const [totalPage, setTotalPage] = useState(1);
   const [pagination, setPagination] = useState(0);
   const [searchBy, setSearchBy] = useState(null);
+  const [drops, setDrops] = useState(false);
+
+  const inputDrop = () => setDrops(false);
+  const selectDrop = () => setDrops(true);
 
   useEffect(() => {
     getProduct(pagination, 4);
@@ -75,10 +79,11 @@ const DashboardProductCard = ({ className, lang }) => {
   function searchProduct(e) {
     let text = e.target.value;
     if (text === "") getProduct(pagination, 4);
+    else if (text === "all") getProduct(pagination, 4);
     else
       axios
         .get(
-          `${url}product/admin/search?${searchByName()}=${text}&lang=${lang}`,
+          `${url}project/admin/search?${searchByName()}=${text}&lang=${lang}`,
           config
         )
         .then((res) => {
@@ -97,16 +102,12 @@ const DashboardProductCard = ({ className, lang }) => {
 
   function searchByName() {
     switch (searchBy) {
-      case "Product id number":
-        return "productIdNumber";
-      case "Product status":
-        return "productStatus";
-      case "User id number":
-        return "userIdNumber";
-      case "User id":
-        return "userId";
+      case "Project name":
+        return "name";
+      case "Project status":
+        return "status";
       default:
-        return "productIdNumber";
+        return "name";
     }
   }
 
@@ -117,13 +118,42 @@ const DashboardProductCard = ({ className, lang }) => {
     <div className="radius">
       <div className="mb-5 flex items-center">
         <div className="flex justify-between items-center w-full md:px-3 ">
-          <input
-            type="search"
-            placeholder={t("productSearch")}
-            onChange={searchProduct}
-            className="lg:w-10/12 ps-2 h-10 focus:outline-0 border sm:mt-0 md:mt-2"
+        {drops ? (
+            <select
+              onChange={searchProduct}
+              defaultValue=""
+              id="statuslar"
+              className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
+                       focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+                     focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+            >
+              <option selected disabled>
+                {t("productAdd60")}
+              </option>
+              <option value="all">{t("all")}</option>
+              <option value="PENDING">{t("status1")}</option>
+              <option value="GOING">{t("status2")}</option>
+              <option value="CANCEL">{t("status3")}</option>
+              <option value="ARRIVED">{t("status4")}</option>
+              <option value="COMPLETED">{t("status5")}</option>
+              <option value="MOVED ">{t("status6")}</option>
+            </select>
+          ) : (
+            <input
+              type="search"
+              placeholder="🔍..."
+              defaultValue=""
+              onChange={searchProduct}
+              className="lg:w-10/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+            />
+          )}
+         <Dropdown
+         pagination={pagination}
+         getProduct={getProduct}
+            selectDrop={selectDrop}
+            inputDrop={inputDrop}
+            setSearchBy={setSearchBy}
           />
-          <Dropdown setSearchBy={setSearchBy} />
         </div>
       </div>
       <p className="mb-3">{t("cardCurrent")}: 1</p>
