@@ -3,6 +3,7 @@ import { byId, config, getClientProduct, url } from "../api";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import "./client.css"
 
 function ProductCard({ className, product }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -63,9 +64,12 @@ function ProductCard({ className, product }) {
               {product ? product.phoneNumber : "No number"}
             </p>
           </div>
-          <div className="w-[25%]">
+          <div className="w-[25%] password">
             <p className="opacity-70">{t("client4")}</p>
-            <p className="font-bold text-[.9rem]">
+            <p className="font-bold nuqta text-[.9rem]">
+              {product ? "......" : "No password"}
+            </p>
+            <p className="font-bold parol text-[.9rem]">
               {product ? product.password : "No password"}
             </p>
           </div>

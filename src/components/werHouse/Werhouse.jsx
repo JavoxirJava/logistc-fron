@@ -40,8 +40,11 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   const [productIdList, setProductIdList] = useState([]);
   const [className, setClassName] = useState(false);
   const [loadingP, setLoadingP] = useState(false);
+  const [drops, setDrops] = useState(false);
 
-  const { t } = useTranslation();
+  const inputDrop = () => setDrops(false);
+  const selectDrop = () => setDrops(true);
+ const { t } = useTranslation();
 
   useEffect(() => {
     setConfig();
@@ -280,10 +283,11 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     // loadingPP()
     let text = e.target.value;
     if (text === "") getProduct(pagination, 4);
+    else if (text === "all") getProduct(pagination, 4);
     else
       axios
         .get(
-          `${url}wareHouse/product/search?wareHouseId=${werHouseId.wareHouseId}&productName=${text}`,
+          `${url}wareHouse/product/search?wareHouseId=${werHouseId.wareHouseId}&${searchByName()}=${text}`,
           config
         )
         .then((res) => {
@@ -327,12 +331,12 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
   function searchByName() {
     switch (searchBy) {
-      case "Product id number":
+      case "Product TN code":
         return "productIdNumber";
       case "Product status":
         return "productStatus";
-      case "User id number":
-        return "userIdNumber";
+      case "Product name":
+        return "productName";
       case "User name":
         return "userName";
       default:
@@ -418,13 +422,42 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
           <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
             <div className="mt-4 flex flex-wrap justify-between">
-              <input
-                type="search"
-                placeholder={t("productSearch")}
-                onChange={searchProduct}
-                className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
-              />
-              <Dropdown setSearchBy={setSearchBy} />
+            {drops ? (
+            <select
+              onChange={searchProduct}
+              defaultValue=""
+              id="statuslar"
+              className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
+                       focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+                     focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+            >
+              <option selected disabled>
+                {t("productAdd60")}
+              </option>
+              <option value="all">{t("all")}</option>
+              <option value="PENDING">{t("status1")}</option>
+              <option value="GOING">{t("status2")}</option>
+              <option value="CANCEL">{t("status3")}</option>
+              <option value="ARRIVED">{t("status4")}</option>
+              <option value="COMPLETED">{t("status5")}</option>
+              <option value="MOVED ">{t("status6")}</option>
+            </select>
+          ) : (
+            <input
+              type="search"
+              placeholder={t("productSearch")}
+              defaultValue=""
+              onChange={searchProduct}
+              className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+            />
+          )}
+          <Dropdown
+            pagination={pagination}
+            getProduct={getProduct}
+            selectDrop={selectDrop}
+            inputDrop={inputDrop}
+            setSearchBy={setSearchBy}
+          />
             </div>
             <div className="mt-4 flex flex-wrap justify-between">
               <button

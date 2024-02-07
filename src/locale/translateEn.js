@@ -85,6 +85,7 @@ const translateEn = {
     wiew: "Detail",
     addProduct: "Add Product",
     edit: "Edit",
+    all: "All",
     editProject: "Edit Project",
     editProduct: "Edit Product",
     addClients: "Add User",

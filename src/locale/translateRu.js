@@ -82,6 +82,7 @@ const translateRu = {
     error: "Что-то ошибка.",
     notFound: "Пользователь не найден",
     edit: "Редакт",
+    all: "Все",
     save: "Сохранять",
     editProject: "Редактировать проект",
     editProduct: "Редактировать продукт",

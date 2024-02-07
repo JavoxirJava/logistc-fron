@@ -63,9 +63,12 @@ function ManagerCard({ className, product }) {
               {product ? product.phoneNumber : "No number"}
             </p>
           </div>
-          <div className="w-[25%]">
-            <p className="opacity-70">{t("client4")}</p>
-            <p className="font-bold text-[.9rem]">
+          <div className="w-[25%] password">
+            <p className="opacity-70 ">{t("client4")}</p>
+            <p className="font-bold nuqta text-[.9rem]">
+              {product ? "....." : "No password"}
+            </p>
+            <p className="font-bold parol text-[.9rem]">
               {product ? product.password : "No password"}
             </p>
           </div>
