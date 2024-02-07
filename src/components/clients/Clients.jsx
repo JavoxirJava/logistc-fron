@@ -155,15 +155,17 @@ const Clients = ({ changeLanguage, lang }) => {
       />
       <div className="clients-bg background b flex lg:flex-row flex-col pt-20">
         <div className="lg:w-2/5 md:w-4/5 w-full lg:pl-10 md:px-0 px-2 ">
-          <div className="flex gap-4 justify-between items-center">
+          <div className="flex gap-4 flex-col md:flex-row  justify-between items-center">
             <input
               type="search"
               onChange={searchProductClient}
-              className="py-2 px-4 w-96 bg-slate-100 rounded-lg border border-slate-300
+              className="py-2 px-4 w-100 bg-slate-100 rounded-lg border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-200 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
               placeholder={t("productSearch")}
             />
+            <div className="flex gap-5">
+
             <button
               className={`px-6 py-2 ${
                 role === "ROLE_ADMIN" ? "" : "hidden"
@@ -186,7 +188,7 @@ const Clients = ({ changeLanguage, lang }) => {
               className={`px-6 py-2 ${
                 role === "ROLE_ADMIN" ? "" : "hidden"
               } bg-green-500 shadow-lg rounded-lg text-white
-                                font-bold text-lg tracking-wider active:scale-95 duration-200`}
+              font-bold text-lg tracking-wider active:scale-95 duration-200`}
               onClick={() => {
                 getManagerProduct(
                   Math.floor(paginationM),
@@ -194,12 +196,13 @@ const Clients = ({ changeLanguage, lang }) => {
                   setProductClient,
                   setTotalManager,
                   lang
-                );
-                getManag();
-              }}
-            >
+                  );
+                  getManag();
+                }}
+                >
               {t("client11")}
             </button>
+              </div>
           </div>
           {productsClient ? (
             productsClient.map((item, i) =>

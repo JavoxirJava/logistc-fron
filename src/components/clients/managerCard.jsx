@@ -41,36 +41,40 @@ function ManagerCard({ className, product }) {
 
   return (
     <div
-      className={`flex rounded-lg card-main border border-blue-300 w-full px-2 py-2 bg-blue-100 ${className}`}
+      className={`flex flex-col md:flex-row rounded-lg card-main border border-blue-300 w-full px-2 py-2 bg-blue-100 ${className}`}
     >
-      <div className="card-col w-11/12">
-        <div className="h-12 card-col-row w-full flex media-product">
-          <div className="w-[20%]">
-            <p className="opacity-70">{t("client1")}</p>
-            <p className="font-bold text-[.9rem]">
-              {product ? product.idNumber : 0}
-            </p>
+      <div className="card-col w-full">
+        <div className=" card-col-row w-full flex media-product">
+          <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-10">
+            <div className="w-[20%]">
+              <p className="opacity-70">{t("client1")}</p>
+              <p className="font-bold text-[.9rem]">
+                {product ? product.idNumber : 0}
+              </p>
+            </div>
+            <div className="w-[30%]">
+              <p className="opacity-70">{t("client2")}</p>
+              <p className="font-bold text-[.9rem]">
+                {product ? product.name : "First Name"}
+              </p>
+            </div>
           </div>
-          <div className="w-[30%]">
-            <p className="opacity-70">{t("client2")}</p>
-            <p className="font-bold text-[.9rem]">
-              {product ? product.name : "First Name"}
-            </p>
-          </div>
-          <div className="w-[30%]">
-            <p className="opacity-70">{t("client3")}</p>
-            <p className="font-bold text-[.9rem]">
-              {product ? product.phoneNumber : "No number"}
-            </p>
-          </div>
-          <div className="w-[25%] password">
-            <p className="opacity-70 ">{t("client4")}</p>
-            <p className="font-bold nuqta text-[.9rem]">
-              {product ? "....." : "No password"}
-            </p>
-            <p className="font-bold parol text-[.9rem]">
-              {product ? product.password : "No password"}
-            </p>
+          <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-14">
+            <div className="w-[30%]">
+              <p className="opacity-70">{t("client3")}</p>
+              <p className="font-bold text-[.9rem]">
+                {product ? product.phoneNumber : "No number"}
+              </p>
+            </div>
+            <div className="w-[25%] password">
+              <p className="opacity-70">{t("client4")}</p>
+              <p className="font-bold nuqta text-[.9rem]">
+                {product ? "......" : "No password"}
+              </p>
+              <p className="font-bold parol text-[.9rem]">
+                {product ? product.password : "No password"}
+              </p>
+            </div>
           </div>
         </div>
         
