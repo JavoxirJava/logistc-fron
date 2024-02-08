@@ -43,7 +43,7 @@ function ProjectCard({setProduct, loading, className, deleteWerhouse, projects, 
                     </div>
                     {/* <div className='sm:w-[30%] lg:ms-3'>
                         <p className='opacity-70'>{t("card3")}</p>
-                        <p className='font-bold'>{projects ? projects.date.substring(0, 10) : "April 23, 2023"}</p>
+                        <p className='font-bold'>{projects ? projects.date.slice(0, projects.date.indexOf(" ")) : "April 23, 2023"}</p>
                     </div> */}
                     
                 </div>

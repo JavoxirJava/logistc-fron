@@ -37,7 +37,7 @@ function ProductCard({ className, product, openEdit, setProductObj, projectId })
                     <div className='flex sm:w-[100%]'>
                         <div className='sm:w-[50%] w-[100%]'>
                             <p className='opacity-70'>{t("card3")}</p>
-                            <p className='font-bold'>{product ? product.date.substring(0, 10) : ""}</p>
+                            <p className='font-bold'>{product ? product.date.slice(0, product.date.indexOf(" ")) : ""}</p>
                         </div>
                         <div className='sm:w-[50%] w-[100%]'>
                             <p className='opacity-70'>{t("card4")}</p>

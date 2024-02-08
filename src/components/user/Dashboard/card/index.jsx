@@ -147,7 +147,7 @@ const DashboardProductCard = ({ className, lang }) => {
                 <div className="w-[25%]">
                   <p className="opacity-70">{t("card3")}</p>
                   <p className="font-bold">
-                    {item ? item.date.substring(0, 10) : "April 23, 2023"}
+                    {item ? item.date.slice(0, item.date.indexOf(" ")) : "April 23, 2023"}
                   </p>
                 </div>
                 <div className="w-[25%]">

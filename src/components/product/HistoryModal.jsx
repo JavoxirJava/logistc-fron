@@ -39,8 +39,7 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
           <div className="mt-2 w-1/3 text-center">
             <p className="pb-0 mb-0 opacity-50">{t("weiw3")}</p>
             <p className="mt-0 pt-0 font-semibold">
-              {historyList && historyList.date.substring(0, 10)}{" "}
-              {historyList.date.substring(11, 16)}
+              {historyList && historyList.date.slice(0, historyList.date.indexOf(" "))}{" "}
             </p>
           </div>
           <div className="mt-2 w-1/3 text-center">

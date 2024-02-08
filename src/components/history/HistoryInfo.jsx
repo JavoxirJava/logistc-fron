@@ -47,7 +47,7 @@ const HistoryInfo = ({ history, className }) => {
                 <div className="lg:w-[130px] ">
                   <p className="opacity-70">{t("history9")}</p>
                   <p className="font-bold lg:text-[.9rem] md:text-[.7rem] sm:text-[.5rem] text-[.5rem]">
-                    {item.date ? item.date.substring(0, 10) : "April 23, 2022"}
+                    {item.date ? item.date.slice(0, item.date.indexOf(" ")) : "April 23, 2022"}
                   </p>
                 </div>
                 <div className="lg:w-[130px] ">

@@ -46,7 +46,7 @@ function ProjectCard({setProduct, className, projects, openEdit, setProductObj, 
                     </div>
                     <div className='sm:w-[30%] lg:ms-3'>
                         <p className='opacity-70'>{t("card3")}</p>
-                        <p className='font-bold'>{projects ? projects.date.substring(0, 10) : "no date"}</p>
+                        <p className='font-bold'>{projects ? projects.date.slice(0, projects.date.indexOf(" ")) : "no date"}</p>
                     </div>
                     <div className='sm:w-[64%]'>
                         <p className='opacity-70'>{t("card5")}</p>
