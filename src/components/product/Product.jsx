@@ -172,6 +172,7 @@ function Product({ lang, projectId, setProjectId }) {
       })
       .catch((err) => {
         toast.error(t("error"));
+        console.log(err);
       });
   }
 
@@ -247,15 +248,15 @@ function Product({ lang, projectId, setProjectId }) {
         .then((res) => {
           if (!res.data.body) {
             // eslint-disable-next-line array-callback-return
-           setProject([]);
+            setProject([]);
           } else {
             if (res.data.body.length > 4)
-            setProject(
-              res.data.body.map((item, i) => {
-                if (i < 4) return item;
-              })
-            );
-          else setProject(res.data.body);
+              setProject(
+                res.data.body.map((item, i) => {
+                  if (i < 4) return item;
+                })
+              );
+            else setProject(res.data.body);
           }
         })
         .catch((err) => console.log(err));
@@ -298,42 +299,42 @@ function Product({ lang, projectId, setProjectId }) {
           {/* project uchun */}
           <div className="lg:w-5/12 w-screen lg:px-3 md:px-10  lg:py-0 sm:py-5 px-1">
             <div className="mt-4 flex flex-wrap justify-between">
-            {drops ? (
-            <select
-              onChange={searchProject}
-              defaultValue=""
-              id="statuslar"
-              className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
+              {drops ? (
+                <select
+                  onChange={searchProject}
+                  defaultValue=""
+                  id="statuslar"
+                  className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
                        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                      focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-            >
-              <option selected disabled>
-                {t("productAdd60")}
-              </option>
-              <option value="all">{t("all")}</option>
-              <option value="PENDING">{t("status1")}</option>
-              <option value="GOING">{t("status2")}</option>
-              <option value="CANCEL">{t("status3")}</option>
-              <option value="ARRIVED">{t("status4")}</option>
-              <option value="COMPLETED">{t("status5")}</option>
-              <option value="MOVED ">{t("status6")}</option>
-            </select>
-          ) : (
-            <input
-              type="search"
-              placeholder={t("productSearch")}
-              defaultValue=""
-              onChange={searchProject}
-              className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
-            />
-          )}
-               <Dropdown2
-            pagination={pagination2}
-            getProduct={getProject}
-            selectDrop={selectDrop}
-            inputDrop={inputDrop}
-            setSearchBy={setSearch2By}
-          />
+                >
+                  <option selected disabled>
+                    {t("productAdd60")}
+                  </option>
+                  <option value="all">{t("all")}</option>
+                  <option value="PENDING">{t("status1")}</option>
+                  <option value="GOING">{t("status2")}</option>
+                  <option value="CANCEL">{t("status3")}</option>
+                  <option value="ARRIVED">{t("status4")}</option>
+                  <option value="COMPLETED">{t("status5")}</option>
+                  <option value="MOVED ">{t("status6")}</option>
+                </select>
+              ) : (
+                <input
+                  type="search"
+                  placeholder={t("productSearch")}
+                  defaultValue=""
+                  onChange={searchProject}
+                  className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+                />
+              )}
+              <Dropdown2
+                pagination={pagination2}
+                getProduct={getProject}
+                selectDrop={selectDrop}
+                inputDrop={inputDrop}
+                setSearchBy={setSearch2By}
+              />
             </div>
             <div className="mt-4 flex flex-wrap justify-between">
               <button
@@ -381,42 +382,42 @@ function Product({ lang, projectId, setProjectId }) {
 
           <div className="lg:w-5/12 overflow-x-hidden w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
             <div className="mt-4 flex flex-wrap justify-between">
-            {dropsP ? (
-            <select
-              onChange={searchProduct}
-              defaultValue=""
-              id="statuslar"
-              className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
+              {dropsP ? (
+                <select
+                  onChange={searchProduct}
+                  defaultValue=""
+                  id="statuslar"
+                  className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
                        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                      focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-            >
-              <option selected disabled>
-                {t("productAdd60")}
-              </option>
-              <option value="all">{t("all")}</option>
-              <option value="PENDING">{t("status1")}</option>
-              <option value="GOING">{t("status2")}</option>
-              <option value="CANCEL">{t("status3")}</option>
-              <option value="ARRIVED">{t("status4")}</option>
-              <option value="COMPLETED">{t("status5")}</option>
-              <option value="MOVED ">{t("status6")}</option>
-            </select>
-          ) : (
-            <input
-              type="search"
-              placeholder={t("productSearch")}
-              defaultValue=""
-              onChange={searchProduct}
-              className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
-            />
-          )}
+                >
+                  <option selected disabled>
+                    {t("productAdd60")}
+                  </option>
+                  <option value="all">{t("all")}</option>
+                  <option value="PENDING">{t("status1")}</option>
+                  <option value="GOING">{t("status2")}</option>
+                  <option value="CANCEL">{t("status3")}</option>
+                  <option value="ARRIVED">{t("status4")}</option>
+                  <option value="COMPLETED">{t("status5")}</option>
+                  <option value="MOVED ">{t("status6")}</option>
+                </select>
+              ) : (
+                <input
+                  type="search"
+                  placeholder={t("productSearch")}
+                  defaultValue=""
+                  onChange={searchProduct}
+                  className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+                />
+              )}
               <Dropdown
-            pagination={pagination}
-            getProduct={getProduct}
-            selectDrop={selectDropP}
-            inputDrop={inputDropP}
-            setSearchBy={setSearchBy}
-          />
+                pagination={pagination}
+                getProduct={getProduct}
+                selectDrop={selectDropP}
+                inputDrop={inputDropP}
+                setSearchBy={setSearchBy}
+              />
             </div>
             <div className="mt-4 flex flex-wrap justify-between">
               <div></div>
@@ -424,11 +425,7 @@ function Product({ lang, projectId, setProjectId }) {
               <h1>
                 <b>
                   <span className="text-blue-600 text-lg">{`${
-                    projectId
-                      ? projectId.name
-                      : projects
-                      ? projects[0].name
-                      : 0
+                    projectId ? projectId.name : ""
                   } `}</span>
                   {t("project")}
                 </b>
