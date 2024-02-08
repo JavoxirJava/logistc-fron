@@ -163,7 +163,7 @@ const DashboardProductCard = ({ className, lang }) => {
             className={`flex p-7 mb-3 border rounded-lg border-blue-300 w-full bg-blue-200 ${className}`}
           >
             {/* <div className="card-col w-11/12 pt-2 ps-2"> */}
-              <div className="h-8/12 card-col-row w-full flex media-product">
+              <div className="h-8/12 card-col-row w-full flex flex-col sm:flex-row gap-5  media-product">
                 <div className="sm:w-[22%]">
                   <p className="opacity-70">{t("productAdd3")}</p>
                   <p className="font-bold">{item ? item.name : 0}</p>

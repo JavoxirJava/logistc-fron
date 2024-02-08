@@ -44,7 +44,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
   const inputDrop = () => setDrops(false);
   const selectDrop = () => setDrops(true);
- const { t } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setConfig();
@@ -287,7 +287,9 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     else
       axios
         .get(
-          `${url}wareHouse/product/search?wareHouseId=${werHouseId.wareHouseId}&${searchByName()}=${text}`,
+          `${url}wareHouse/product/search?wareHouseId=${
+            werHouseId.wareHouseId
+          }&${searchByName()}=${text}`,
           config
         )
         .then((res) => {
@@ -356,7 +358,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   }
 
   return (
-    <div className=" background w-full h-screen">
+    <div className="w-full h-screen background overflow-x-hidden">
       <NavBar
         werhouse={"border-b-red-600 border-b text-slate-900"}
         lang={lang}
@@ -420,44 +422,44 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
           {/* product uchun */}
 
-          <div className="lg:w-5/12 w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
+          <div className="lg:w-5/12 w-full  lg:px-3 md:px-10 px-3 lg:py-0 py-5">
             <div className="mt-4 flex flex-wrap justify-between">
-            {drops ? (
-            <select
-              onChange={searchProduct}
-              defaultValue=""
-              id="statuslar"
-              className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
+              {drops ? (
+                <select
+                  onChange={searchProduct}
+                  defaultValue=""
+                  id="statuslar"
+                  className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
                        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                      focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-            >
-              <option selected disabled>
-                {t("productAdd60")}
-              </option>
-              <option value="all">{t("all")}</option>
-              <option value="PENDING">{t("status1")}</option>
-              <option value="GOING">{t("status2")}</option>
-              <option value="CANCEL">{t("status3")}</option>
-              <option value="ARRIVED">{t("status4")}</option>
-              <option value="COMPLETED">{t("status5")}</option>
-              <option value="MOVED ">{t("status6")}</option>
-            </select>
-          ) : (
-            <input
-              type="search"
-              placeholder={t("productSearch")}
-              defaultValue=""
-              onChange={searchProduct}
-              className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
-            />
-          )}
-          <Dropdown
-            pagination={pagination}
-            getProduct={getProduct}
-            selectDrop={selectDrop}
-            inputDrop={inputDrop}
-            setSearchBy={setSearchBy}
-          />
+                >
+                  <option selected disabled>
+                    {t("productAdd60")}
+                  </option>
+                  <option value="all">{t("all")}</option>
+                  <option value="PENDING">{t("status1")}</option>
+                  <option value="GOING">{t("status2")}</option>
+                  <option value="CANCEL">{t("status3")}</option>
+                  <option value="ARRIVED">{t("status4")}</option>
+                  <option value="COMPLETED">{t("status5")}</option>
+                  <option value="MOVED ">{t("status6")}</option>
+                </select>
+              ) : (
+                <input
+                  type="search"
+                  placeholder={t("productSearch")}
+                  defaultValue=""
+                  onChange={searchProduct}
+                  className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+                />
+              )}
+              <Dropdown
+                pagination={pagination}
+                getProduct={getProduct}
+                selectDrop={selectDrop}
+                inputDrop={inputDrop}
+                setSearchBy={setSearchBy}
+              />
             </div>
             <div className="mt-4 flex flex-wrap justify-between">
               <button
@@ -495,7 +497,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               <span className="me-5 pt-1.5 float-end">
                 {t("cardCurrent")}: {pagination}
               </span>
-             
+
               {products ? (
                 products.map((item, i) => (
                   <ProductCard
@@ -510,14 +512,11 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                     setProductObj={setProductObj}
                     setProductTo={setProductTo}
                     setWerhouseId={setWerhouseId}
-
                   />
                 ))
               ) : (
                 <Empty />
               )}
-
-            
             </div>
             <div className="pagination-style mt-4">
               <Pagination

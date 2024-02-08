@@ -19,6 +19,9 @@
 
 .background {
     background-image: url("../../assets/back.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 .backCircle {
     background-color: rgba(255, 255, 255, 0.683);

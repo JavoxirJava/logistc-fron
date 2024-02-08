@@ -21,8 +21,9 @@ const HistoryInfo = ({ history, className }) => {
             className={`w-full ${className} history-info-bg rounded-lg border border-slate-400 lg:px-6 px-2 mt-2
                     lg:py-4 py-2 text-center flex justify-center sm:items-center`}
           >
+            <div className="flex flex-col items-center gap-5 xl:flex-row w-full">
             <div className="w-full flex sm:flex-row flex-col">
-              <div className="sm:w-6/12 w-full flex">
+              <div className="sm:w-6/12 w-full flex justify-between">
                 <div className="lg:w-[150px] ">
                   <p className="opacity-70">{t("history6")}</p>
                   <p className="font-bold lg:text-[.9rem] md:text-[.7rem] sm:text-[.5rem] text-[.5rem]">
@@ -75,6 +76,8 @@ const HistoryInfo = ({ history, className }) => {
                 {t("history5")}
               </button>
             </div>
+            </div>
+
           </div>
         ))
       ) : (
