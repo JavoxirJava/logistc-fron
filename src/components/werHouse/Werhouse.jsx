@@ -376,8 +376,8 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               />
               {/* <Dropdown setSearchBy={setSearchBy} /> */}
             </div>
-            <div className="mt-4 flex flex-wrap justify-between">
-              <button
+            <div className="flex justify-between my-5">
+            <button
                 onClick={openProjectCan}
                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
               >
@@ -391,7 +391,43 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                 {t("cardCurrent")}: {pagination2}
               </span>
 
-              {projects ? (
+            </div>
+            <div className="mt-4 flex flex-wrap justify-between">
+              
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">
+                      №
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Status
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      ETD
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Current Location
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Total Price
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Edits
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Details
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      View Mores
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                {projects ? (
                 projects.map((item, i) => (
                   <ProjectCard
                     setWerHouseId={setWerHouseId}
@@ -410,6 +446,8 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               ) : (
                 <Empty />
               )}
+                </tbody>
+              </table>
             </div>
             <div className="pagination-style py-8">
               <Pagination
