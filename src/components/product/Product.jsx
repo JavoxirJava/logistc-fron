@@ -125,8 +125,7 @@ function Product({ lang, projectId, setProjectId }) {
   function getProduct(page, size) {
     axios
       .get(
-        `${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${
-          projectId.id ? projectId.id : 0
+        `${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : 0
         }`,
         config
       )
@@ -294,10 +293,10 @@ function Product({ lang, projectId, setProjectId }) {
         product={"border-b-red-600 border-b text-slate-900"}
         lang={lang}
       />
-      <div className="product-main w-96 overflow-hidden">
-        <div className="flex w-full lg:flex-row align-center justify-center flex-col lg:h-full h-max pt-20">
+      <div className="product-main">
+        <div className="flex lg:flex-row align-center justify-center flex-col lg:h-full h-max pt-20">
           {/* project uchun */}
-          <div className="lg:w-5/12 w-screen lg:px-3 md:px-10  lg:py-0 sm:py-5 px-1">
+          <div className=" lg:px-3 md:px-10 lg:py-0 sm:py-5 px-1 w-screen lg:w-10/12">
             <div className="mt-4 flex flex-wrap justify-between">
               {drops ? (
                 <select
@@ -336,7 +335,8 @@ function Product({ lang, projectId, setProjectId }) {
                 setSearchBy={setSearch2By}
               />
             </div>
-            <div className="mt-4 flex flex-wrap justify-between">
+            <div className="flex justify-between my-5">
+
               <button
                 onClick={openProjectCan}
                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
@@ -350,24 +350,62 @@ function Product({ lang, projectId, setProjectId }) {
               <span className="me-5 pt-1.5 float-end">
                 {t("cardCurrent")}: {pagination2}
               </span>
-              {projects ? (
-                projects.map((item, i) => (
-                  <ProjectCard
-                    setProjectId={setProjectId}
-                    getProduct={getProject}
-                    pagination={pagination2}
-                    key={i}
-                    className="mt-5"
-                    openEdit={openEditProjectCan}
-                    projects={item}
-                    setProduct={setProduct}
-                    setProductObj={setProductObj}
-                  />
-                ))
-              ) : (
-                <Empty />
-              )}
             </div>
+            <div class="relative overflow-x-auto  sm:rounded-lg">
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">
+                      №
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Status
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      ETD
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Current Location
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Total Price
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Edits
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Details
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      View Mores
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {projects ? (
+                    projects.map((item, i) => (
+                      <ProjectCard
+                        setProjectId={setProjectId}
+                        getProduct={getProject}
+                        pagination={pagination2}
+                        key={i}
+                        className="mt-5"
+                        openEdit={openEditProjectCan}
+                        projects={item}
+                        setProduct={setProduct}
+                        setProductObj={setProductObj}
+                      />
+                    ))
+                  ) : (
+                    <Empty />
+                  )}
+                </tbody>
+              </table>
+            </div>
+
             <div className="pagination-style py-8">
               <Pagination
                 {...bootstrap5PaginationPreset}
@@ -378,87 +416,88 @@ function Product({ lang, projectId, setProjectId }) {
             </div>
           </div>
 
+
           {/* product uchun */}
 
-          <div className="lg:w-5/12 overflow-x-hidden w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
-            <div className="mt-4 flex flex-wrap justify-between">
-              {dropsP ? (
-                <select
-                  onChange={searchProduct}
-                  defaultValue=""
-                  id="statuslar"
-                  className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
-                       focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-                     focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                >
-                  <option selected disabled>
-                    {t("productAdd60")}
-                  </option>
-                  <option value="all">{t("all")}</option>
-                  <option value="PENDING">{t("status1")}</option>
-                  <option value="GOING">{t("status2")}</option>
-                  <option value="CANCEL">{t("status3")}</option>
-                  <option value="ARRIVED">{t("status4")}</option>
-                  <option value="COMPLETED">{t("status5")}</option>
-                  <option value="MOVED ">{t("status6")}</option>
-                </select>
-              ) : (
-                <input
-                  type="search"
-                  placeholder={t("productSearch")}
-                  defaultValue=""
-                  onChange={searchProduct}
-                  className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
-                />
-              )}
-              <Dropdown
-                pagination={pagination}
-                getProduct={getProduct}
-                selectDrop={selectDropP}
-                inputDrop={inputDropP}
-                setSearchBy={setSearchBy}
-              />
-            </div>
-            <div className="mt-4 flex flex-wrap justify-between">
-              <div></div>
-
-              <h1>
-                <b>
-                  <span className="text-blue-600 text-lg">{`${
-                    projectId ? projectId.name : ""
-                  } `}</span>
-                  {t("project")}
-                </b>
-              </h1>
-              <span className="me-5 pt-1.5 float-end">
-                {t("cardCurrent")}: {pagination}
-              </span>
-              {products ? (
-                products.map((item, i) => (
-                  <ProductCard
-                    projectId={projectId}
-                    key={i}
-                    className="mt-5"
-                    openEdit={openEdit}
-                    product={item}
-                    setProductObj={setProductObj}
+          {/* <div className="hidden lg:w-5/12 overflow-x-hidden w-full lg:px-3 md:px-10 px-3 lg:py-0 py-5">
+              <div className="mt-4 flex flex-wrap justify-between">
+                {dropsP ? (
+                  <select
+                    onChange={searchProduct}
+                    defaultValue=""
+                    id="statuslar"
+                    className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
+                        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+                      focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+                  >
+                    <option selected disabled>
+                      {t("productAdd60")}
+                    </option>
+                    <option value="all">{t("all")}</option>
+                    <option value="PENDING">{t("status1")}</option>
+                    <option value="GOING">{t("status2")}</option>
+                    <option value="CANCEL">{t("status3")}</option>
+                    <option value="ARRIVED">{t("status4")}</option>
+                    <option value="COMPLETED">{t("status5")}</option>
+                    <option value="MOVED ">{t("status6")}</option>
+                  </select>
+                ) : (
+                  <input
+                    type="search"
+                    placeholder={t("productSearch")}
+                    defaultValue=""
+                    onChange={searchProduct}
+                    className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                   />
-                ))
-              ) : (
-                <Empty />
-              )}
-            </div>
-            {products && (
-              <div className="pagination-style mt-4">
-                <Pagination
-                  {...bootstrap5PaginationPreset}
-                  current={pagination}
-                  total={Math.floor(totalPage + 1)}
-                  onPageChange={setPagination}
+                )}
+                <Dropdown
+                  pagination={pagination}
+                  getProduct={getProduct}
+                  selectDrop={selectDropP}
+                  inputDrop={inputDropP}
+                  setSearchBy={setSearchBy}
                 />
               </div>
-            )}
-          </div>
+              <div className="mt-4 flex flex-wrap justify-between">
+                <div></div>
+
+                <h1>
+                  <b>
+                    <span className="text-blue-600 text-lg">{`${
+                      projectId ? projectId.name : ""
+                    } `}</span>
+                    {t("project")}
+                  </b>
+                </h1>
+                <span className="me-5 pt-1.5 float-end">
+                  {t("cardCurrent")}: {pagination}
+                </span>
+                {products ? (
+                  products.map((item, i) => (
+                    <ProductCard
+                      projectId={projectId}
+                      key={i}
+                      className="mt-5"
+                      openEdit={openEdit}
+                      product={item}
+                      setProductObj={setProductObj}
+                    />
+                  ))
+                ) : (
+                  <Empty />
+                )}
+              </div>
+              {products && (
+                <div className="pagination-style mt-4">
+                  <Pagination
+                    {...bootstrap5PaginationPreset}
+                    current={pagination}
+                    total={Math.floor(totalPage + 1)}
+                    onPageChange={setPagination}
+                  />
+                </div>
+              )}
+            </div> */}
         </div>
 
         {/* project */}

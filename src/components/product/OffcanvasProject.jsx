@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Offcanvas from "../Offcanvas";
-import { byId, getUsers } from "../api";
+import { byId, config, getUsers, url } from "../api";
 import { useTranslation } from "react-i18next";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
+import axios from "axios";
 
 function OffcanvasProject({
   isOffcanvasOpen,
@@ -17,8 +18,8 @@ function OffcanvasProject({
   setUserId,
 }) {
   const [users, setUsers] = useState(null);
-  const [coordinates, setCoordinates] = useState([55.75, 37.57]);
-  const [adres, setAdress] = useState([55.75, 37.57]);
+  // const [coordinates, setCoordinates] = useState([55.75, 37.57]);
+  // const [adres, setAdress] = useState([55.75, 37.57]);
 
 
   const { t } = useTranslation();
@@ -27,32 +28,41 @@ function OffcanvasProject({
     getUsers(setUsers, lang);
   }, []);
 
-  const handleClick = (e) => {
-    const coords = e.get("coords");
-    setCoordinates(coords);
-    const apiKey = "1248def2-c2d9-4353-90a7-01b7e5703e21";
-    const geocodeUrl = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${apiKey}&geocode=${coords[1]},${coords[0]}`;
+  // const handleClick = (e) => {
+  //   const coords = e.get("coords");
+  //   setCoordinates(coords);
+  //   const apiKey = "1248def2-c2d9-4353-90a7-01b7e5703e21";
+  //   const geocodeUrl = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${apiKey}&geocode=${coords[1]},${coords[0]}`;
 
-    fetch(geocodeUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        const address =
-          data.response.GeoObjectCollection.featureMember[0].GeoObject
-            .metaDataProperty.GeocoderMetaData.text;
-            setAdress(address)
-        sessionStorage.setItem("address", address);
-      })
-      .catch((error) => console.error("Xatolik yuz berdi:", error));
-  };
+  //   fetch(geocodeUrl)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       const address =
+  //         data.response.GeoObjectCollection.featureMember[0].GeoObject
+  //           .metaDataProperty.GeocoderMetaData.text;
+  //           setAdress(address)
+  //       sessionStorage.setItem("address", address);
+  //     })
+  //     .catch((error) => console.error("Xatolik yuz berdi:", error));
+  // };
 
   function setData() {
+    // const img = new FormData();
+    // img.append('file', document.getElementById(`file${isAdd}`).files[0]);
+    // if (img.get('file') !== 'undefined')
+    //   await axios.post(url + "attachment/image", img, config)
+    //     .then(res => setProduct({fileId}) = res.data.body)
+    //     .catch(() => console.log("img ketmadi"))
     setProduct({
       name: byId(`name${isAdd}`),
       transport: byId(`transport${isAdd}`),
       status: byId(`productStatus${isAdd}`),
-      latitude: coordinates[0],
-      longitude: coordinates[1],
-      address: adres
+      fileId: 0,
+      projectId: byId(`project${isAdd}`),
+      comment: byId(`comment${isAdd}`)
+      // latitude: coordinates[0],
+      // longitude: coordinates[1],
+      // address: adres
     });
   }
 
@@ -91,20 +101,23 @@ function OffcanvasProject({
           <option selected disabled>
             {t("productAdd5")}
           </option>
-          <option value="CAR" selected={product && product.transport === "CAR"}>
-            {t("productAdd05")}
+          <option
+            value="АВТО"
+          //  selected={product && product.transport === "CAR"}
+          >
+            {/* {t("productAdd05")} */}АВТО
           </option>
           <option
-            value="AIRPLANE"
-            selected={product && product.transport === "AIRPLANE"}
+            value="АВИА"
+          // selected={product && product.transport === "AIRPLANE"}
           >
-            {t("productAdd050")}
+            {/* {t("productAdd050")} */}АВИА
           </option>
           <option
-            value="TRAIN"
-            selected={product && product.transport === "TRAIN"}
+            value="ЖД"
+          // selected={product && product.transport === "TRAIN"}
           >
-            {t("productAdd005")}
+            {/* {t("productAdd005")} */}ЖД
           </option>
         </select>
         <label
@@ -121,57 +134,88 @@ function OffcanvasProject({
             {t("status")}
           </option>
           <option
-            value="PENDING"
-            selected={product && product.status === "PENDING"}
+            value="1"
+          // selected={product && product.status === "PENDING"}
           >
-            {t("status1")}
+            {/* {t("status1")} */}Падгатовка
           </option>
           <option
-            value="GOING"
-            selected={product && product.status === "GOING"}
+            value="2"
+          // selected={product && product.status === "GOING"}
           >
-            {t("status2")}
+            {/* {t("status2")} */}Загрузка
           </option>
           <option
-            value="CANCEL"
-            selected={product && product.status === "CANCEL"}
+            value="3"
+          // selected={product && product.status === "CANCEL"}
           >
-            {t("status3")}
+            {/* {t("status3")} */}Отправка
           </option>
           <option
-            value="ARRIVED"
-            selected={product && product.status === "ARRIVED"}
+            value="4"
+          // selected={product && product.status === "ARRIVED"}
           >
-            {t("status4")}
+            {/* {t("status4")} */}В пути в Китай
           </option>
           <option
-            value="COMPLETED"
-            selected={product && product.status === "COMPLETED"}
+            value="5"
+          // selected={product && product.status === "COMPLETED"}
           >
-            {t("status5")}
+            {/* {t("status5")} */}В гроница в Китай
           </option>
           <option
-            value="MOVED"
-            selected={product && product.status === "MOVED"}
+            value="6"
+          // selected={product && product.status === "MOVED"}
           >
-            {/* {t("status6")} */}
-            To the border of Uzbekistan
+            {/* {t("status6")} */}В пути в транзитном зоне
           </option>
           <option
-            value="MOVED"
-            selected={product && product.status === "MOVED"}
+            value="7"
+          // selected={product && product.status === "MOVED"}
           >
-            {/* {t("status6")} */}
-            Customs clearance in progress
+            {/* {t("status6")} */}В граница узб
           </option>
           <option
-            value="MOVED"
-            selected={product && product.status === "MOVED"}
+            value="8"
+          // selected={product && product.status === "MOVED"}
           >
-            {/* {t("status6")} */}
-            Ready
+            {/* {t("status6")} */}В процесс разтаможка
           </option>
         </select>
+        <label
+          htmlFor={`project${isAdd}`}
+          className="block text-gray-700 text-sm font-bold my-2"
+        >
+          {/* {t("productAdd3")} */}Project ID
+        </label>
+        <input
+          id={`project${isAdd}`}
+          placeholder={`Project ID`}
+          // defaultValue={product ? product.name : ""}
+          className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        <label
+          htmlFor={`comment${isAdd}`}
+          className="block text-gray-700 text-sm font-bold my-2"
+        >
+          {/* {t("productAdd3")} */}Comment
+        </label>
+        <textarea
+          id={`comment${isAdd}`}
+          placeholder="Comment"
+          className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        ></textarea>
+        <label
+          htmlFor={`file${isAdd}`}
+          className="block text-gray-700 text-sm font-bold my-2"
+        >
+          File upload
+        </label>
+        <input
+          id={`file${isAdd}`}
+          type="file"
+          className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 bg-slate-50 leading-tight focus:outline-none focus:shadow-outline"
+        />
         {/* <div>
           <YMaps>
             <Map
