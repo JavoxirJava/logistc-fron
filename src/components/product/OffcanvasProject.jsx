@@ -64,6 +64,7 @@ function OffcanvasProject({
       onClose={handleToggleOffcanvas}
     >
       <div onChange={setData}>
+        {/* Name input  */}
         <label
           htmlFor={`name${isAdd}`}
           className="block text-gray-700 text-sm font-bold my-2"
@@ -76,7 +77,7 @@ function OffcanvasProject({
           defaultValue={product ? product.name : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
-        
+        {/* Transport input  */}
         <label
           htmlFor={`transport${isAdd}`}
           className="block text-gray-700 text-sm font-bold mb-2"
@@ -153,10 +154,25 @@ function OffcanvasProject({
             value="MOVED"
             selected={product && product.status === "MOVED"}
           >
-            {t("status6")}
+            {/* {t("status6")} */}
+            To the border of Uzbekistan
+          </option>
+          <option
+            value="MOVED"
+            selected={product && product.status === "MOVED"}
+          >
+            {/* {t("status6")} */}
+            Customs clearance in progress
+          </option>
+          <option
+            value="MOVED"
+            selected={product && product.status === "MOVED"}
+          >
+            {/* {t("status6")} */}
+            Ready
           </option>
         </select>
-        <div>
+        {/* <div>
           <YMaps>
             <Map
               defaultState={{ center: [55.75, 37.57], zoom: 9 }}
@@ -167,7 +183,7 @@ function OffcanvasProject({
               <Placemark geometry={coordinates} />
             </Map>
           </YMaps>
-        </div>
+        </div> */}
         <div className="mt-10 flex justify-between">
           <button
             onClick={handleToggleOffcanvas}
