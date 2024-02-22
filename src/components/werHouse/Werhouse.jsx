@@ -390,7 +390,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               <span className="me-5 pt-1.5 float-end">
                 {t("cardCurrent")}: {pagination2}
               </span>
-              
+
               {projects ? (
                 projects.map((item, i) => (
                   <ProjectCard
