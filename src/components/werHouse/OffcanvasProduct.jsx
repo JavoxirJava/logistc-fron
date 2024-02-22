@@ -17,6 +17,9 @@ function OffcanvasProduct({
   setUserId,
 }) {
   const [users, setUsers] = useState(null);
+  const [kubSum, setKubSum] = useState(0);
+  const [totalKgSum, setTotalKgSum] = useState(0);
+  const [totalKubSum, setTotalKubSum] = useState(0);
 
   const { t } = useTranslation();
 
@@ -26,7 +29,7 @@ function OffcanvasProduct({
 
   function setData() {
     setProduct({
-      idNumber: byId(`idNumber${isAdd}`),
+      idNumber: byId(`idNumberX${isAdd}`),
       name: byId(`productName${isAdd}`),
       measureCount: byId(`measureCount${isAdd}`),
       measure: byId(`measure${isAdd}`),
@@ -35,6 +38,20 @@ function OffcanvasProduct({
       wareHouseId: `${werHouseId.wareHouseId}`,
     });
     setUserId(byId(`userId${isAdd}`));
+  }
+
+  const cubeHandlerVolume = () => {
+    let dataX = document.getElementById(`idNumberX${isAdd}`).value,
+      dataY = document.getElementById(`idNumberY${isAdd}`).value,
+      dataZ = document.getElementById(`idNumberZ${isAdd}`).value
+    setKubSum(dataX * dataY * dataZ)
+  }
+
+  const totalKgHandlar = () => {
+    let dataNumber = document.getElementById(`numberOfSeats${isAdd}`).value,
+      dataWeight = document.getElementById(`productWeight${isAdd}`).value
+    setTotalKgSum(dataNumber * dataWeight)
+    setTotalKubSum(dataNumber * kubSum)
   }
 
   return (
@@ -46,7 +63,7 @@ function OffcanvasProduct({
       <div onChange={setData}>
         <label
           htmlFor={`userId${isAdd}`}
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold"
         >
           {t("productSUser")}
         </label>
@@ -72,7 +89,7 @@ function OffcanvasProduct({
         </select>
         <label
           htmlFor={`productName${isAdd}`}
-          className="block text-gray-700 text-sm font-bold my-2"
+          className="block text-gray-700 text-sm font-bold mt-3"
         >
           {t("productAdd3")}
         </label>
@@ -84,48 +101,150 @@ function OffcanvasProduct({
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
         />
+        <div className="w-full flex justify-between items-center my-2">
+          <div className="w-1/3 px-1">
+            <label
+              htmlFor={`idNumberX${isAdd}`}
+              className="block text-gray-700 text-sm font-bold mt-3"
+            >
+              {t("productAdd7")}
+            </label>
+            <input
+              type="number"
+              onChange={cubeHandlerVolume}
+              id={`idNumberX${isAdd}`}
+              placeholder={t("productAdd7")}
+              defaultValue={product ? product.idNumber : ""}
+              className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
+          focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+          focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+            />
+          </div>
+          <div className="w-1/3 px-1">
+            <label
+              htmlFor={`idNumberY${isAdd}`}
+              className="block text-gray-700 text-sm font-bold mt-3"
+            >
+              {t("productAdd7y")}
+            </label>
+            <input
+              type="number"
+              onChange={cubeHandlerVolume}
+              id={`idNumberY${isAdd}`}
+              placeholder={t("productAdd7y")}
+              defaultValue={product ? product.idNumber : ""}
+              className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
+          focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+          focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+            />
+          </div>
+          <div className="w-1/3 px-1">
+            <label
+              htmlFor={`idNumberZ${isAdd}`}
+              className="block text-gray-700 text-sm font-bold mt-3"
+            >
+              {t("productAdd7z")}
+            </label>
+            <input
+              type="number"
+              onChange={cubeHandlerVolume}
+              id={`idNumberZ${isAdd}`}
+              placeholder={t("productAdd7z")}
+              defaultValue={product ? product.idNumber : ""}
+              className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
+          focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+          focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+            />
+          </div>
+        </div>
+        <div className="w-full flex justify-between items-center my-2">
+          <div className="w-1/2 px-1">
+            <label
+              htmlFor={`productWeight${isAdd}`}
+              className="block text-gray-700 text-sm font-bold mt-3"
+            >
+              {t("productAddKg")}
+            </label>
+            <input
+              onChange={totalKgHandlar}
+              id={`productWeight${isAdd}`}
+              placeholder={t("productAddKg")}
+              defaultValue={product ? product.idNumber + t('productAddKg') : ""}
+              className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
+          focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+          focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+            />
+          </div>
+          <div className="w-1/2 px-1">
+            <label
+              htmlFor={`productKub${isAdd}`}
+              className="block text-gray-700 text-sm font-bold mt-3"
+            >
+              {t("productAddKub")}
+            </label>
+            <input
+              id={`productKub${isAdd}`}
+              placeholder={0 + " " + t("productAddKub")}
+              disabled
+              value={`${kubSum} (sm)`}
+              // defaultValue={product ? product.idNumber + " " + t('productAddKub') : 0 + " " + t('(sm)')}
+              className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
+          focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+          focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+            />
+          </div>
+        </div>
         <label
-          htmlFor={`idNumber${isAdd}`}
-          className="block text-gray-700 text-sm font-bold my-2"
+          htmlFor={`numberOfSeats${isAdd}`}
+          className="block text-gray-700 text-sm font-bold mt-3"
         >
-          {t("productAdd7")}
+          {t("productAdd76")}
         </label>
         <input
-          id={`idNumber${isAdd}`}
-          placeholder={t("productAdd7")}
-          defaultValue={product ? product.idNumber : ""}
+          type="number"
+          onChange={totalKgHandlar}
+          id={`numberOfSeats${isAdd}`}
+          placeholder={t("productAdd76")}
+          defaultValue={product ? product.price : ""}
           className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
+                focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+                focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+        />
+        <label
+          htmlFor={`productKgDisabled${isAdd}`}
+          className="block text-gray-700 text-sm font-bold mt-3"
+        >
+          {t("productAdd06")}
+        </label>
+        <input
+          id={`productKgDisabled${isAdd}`}
+          placeholder={t("productAdd06")}
+          disabled
+          value={`${totalKgSum} Kg`}
+          // defaultValue={product ? product.idNumber + " " + t('productAdd06') : 0 + " " + "Kg"}
+          className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
         />
         <label
-          htmlFor={`price${isAdd}`}
-          className="block text-gray-700 text-sm font-bold my-2"
+          htmlFor={`productKubDisabled${isAdd}`}
+          className="block text-gray-700 text-sm font-bold mt-3"
         >
-          {t("productAdd76")}
+          {t("productAdd06Kub")}
         </label>
-        <div className="flex items-center mb-5">
-          <input
-            type="number"
-            id={`price${isAdd}`}
-            placeholder={t("productAdd76")}
-            defaultValue={product ? product.price : ""}
-            style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
-            className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
-                focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-                focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-          />
-          <button
-            className="bg-gray-500 text-white px-4 py-2 rounded"
-            disabled
-            style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
-          >
-            UZS
-          </button>
-        </div>
+        <input
+          id={`productKubDisabled${isAdd}`}
+          placeholder={t("productAdd006")}
+          disabled
+          value={`${totalKubSum} ${t('productAdd006')}`}
+          // defaultValue={product ? product.idNumber + " " + t('productAdd006') : 0 + " " + t('productAdd006')}
+          className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
+          focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+          focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+        />
         <label
           htmlFor={`comment${isAdd}`}
-          className="block text-gray-700 text-sm font-bold my-2"
+          className="block text-gray-700 text-sm font-bold mt-3"
         >
           {t("productAdd34")}
         </label>
@@ -138,6 +257,18 @@ function OffcanvasProduct({
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
         ></textarea>
         <label
+          htmlFor={`productFile${isAdd}`}
+          className="block text-gray-700 text-sm font-bold mt-3"
+        >
+          {t("productAdd34foto")}
+        </label>
+        <input
+          id={`productFile${isAdd}`}
+          className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
+        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+        focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+          type="file" />
+        {/* <label
           htmlFor={`measureCount${isAdd}`}
           className="block text-gray-700 text-sm font-bold my-2"
         >
@@ -179,7 +310,7 @@ function OffcanvasProduct({
           <option value="KUB" selected={product && product.measure === "KUB"}>
             {t("productAdd006")}
           </option>
-        </select>
+        </select> */}
         {/* <label
           htmlFor={`wareHouseId${isAdd}`}
           className="block text-gray-700 text-sm font-bold mb-2">
