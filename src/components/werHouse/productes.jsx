@@ -366,7 +366,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
       <div className="wer-main">
         <div className="flex w-full lg:flex-row align-center justify-center flex-col lg:h-full h-max pt-20">
           {/* project uchun */}
-          <div className="lg:w-10/12 w-screen lg:px-3 md:px-10 lg:py-0 sm:py-5 px-1">
+          <div className="lg:w-5/12 w-screen lg:px-3 md:px-10  lg:py-0 sm:py-5 px-1">
             <div className="mt-4 flex flex-wrap justify-between">
               <input
                 type="search"
@@ -390,7 +390,6 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               <span className="me-5 pt-1.5 float-end">
                 {t("cardCurrent")}: {pagination2}
               </span>
-              
               {projects ? (
                 projects.map((item, i) => (
                   <ProjectCard
@@ -423,7 +422,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
 
           {/* product uchun */}
 
-          {/* <div className="lg:w-5/12 w-full  lg:px-3 md:px-10 px-3 lg:py-0 py-5">
+          <div className="lg:w-5/12 w-full  lg:px-3 md:px-10 px-3 lg:py-0 py-5">
             <div className="mt-4 flex flex-wrap justify-between">
               {drops ? (
                 <select
@@ -527,7 +526,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                 onPageChange={setPagination}
               />
             </div>
-          </div> */}
+          </div>
         </div>
 
         {/* project */}
