@@ -17,7 +17,7 @@ import Dropdown2 from "../Dropdown2";
 import Empty from "../Empty";
 
 function Product({ lang, projectId, setProjectId }) {
-  const [coordinates, setCoordinates] = useState([55.75, 37.57]);
+  // const [coordinates, setCoordinates] = useState([55.75, 37.57]);
   const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
   const [editOf, setEditOf] = useState(false);
   const [addProjectModal, setAddProjectModal] = useState(false);
@@ -99,18 +99,18 @@ function Product({ lang, projectId, setProjectId }) {
   //         }).catch((error) => console.error("Xatolik yuz berdi:", error));
   // };
 
-  function setObj() {
-    return {
-      id: product ? product.productId : 0,
-      latitude: coordinates[0],
-      longitude: coordinates[1],
-      address: sessionStorage.getItem("address"),
-    };
-  }
+  // function setObj() {
+  //   return {
+  //     id: product ? product.productId : 0,
+  //     latitude: coordinates[0],
+  //     longitude: coordinates[1],
+  //     address: sessionStorage.getItem("address"),
+  //   };
+  // }
 
   const getProject = (page, size) => {
     axios
-      .get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
+      .get(`${url}project/all?page=${page}&size=${size}&lang=${lang}`, config)
       .then((res) => {
         setTotalPage2(
           res.data.body.totalPage ? res.data.body.totalPage - 1 : 2
@@ -365,22 +365,16 @@ function Product({ lang, projectId, setProjectId }) {
                       Status
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      ETD
+                      Transport
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Current Location
+                      Date
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    {/* <th scope="col" class="px-6 py-3">
                       Total Price
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Edits
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Details
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      View Mores
+                    </th> */}
+                    <th colSpan={3} scope="col" class="px-6 py-3 text-center">
+                      Action
                     </th>
                   </tr>
                 </thead>
@@ -505,7 +499,7 @@ function Product({ lang, projectId, setProjectId }) {
           isAdd={true}
           getProduct={getProject}
           setProduct={setProductObj2}
-          product=""
+          product={null}
           handleToggleOffcanvas={openProjectCan}
           isOffcanvasOpen={addProjectModal}
           name={t("add")}

@@ -102,19 +102,19 @@ function OffcanvasProject({
             {t("productAdd5")}
           </option>
           <option
-            value="АВТО"
+            value="1"
           //  selected={product && product.transport === "CAR"}
           >
             {/* {t("productAdd05")} */}АВТО
           </option>
           <option
-            value="АВИА"
+            value="2"
           // selected={product && product.transport === "AIRPLANE"}
           >
             {/* {t("productAdd050")} */}АВИА
           </option>
           <option
-            value="ЖД"
+            value="3"
           // selected={product && product.transport === "TRAIN"}
           >
             {/* {t("productAdd005")} */}ЖД
