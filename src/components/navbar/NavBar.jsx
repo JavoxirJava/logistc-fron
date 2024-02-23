@@ -229,6 +229,7 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                     className={`${history} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
                     // aria-current="page"
                   >
+                    
                     {t("histori")}
                   </Link>
                   <Link
