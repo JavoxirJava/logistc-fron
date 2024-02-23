@@ -207,7 +207,7 @@ function OffcanvasProject({
         ></textarea>
         <label
           htmlFor={`file${isAdd}`}
-          className="block text-gray-700 text-sm font-bold my-2"
+          className="block text-gray-700 text-sm font-bold my-2 "
         >
           File upload
         </label>
