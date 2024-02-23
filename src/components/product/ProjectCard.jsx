@@ -4,7 +4,7 @@ import ProductModal from './HistoryModal';
 import ProjectModal from './projectModal';
 
 
-function ProjectCard({ setProduct, className, projects, openEdit, setProductObj, setProjectId, getProduct, pagination }) {
+function ProjectCard({ setProduct, i, className, projects, openEdit, setProductObj, setProjectId, getProduct, pagination }) {
 
     const [historyList, setHistoryList] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,17 +16,19 @@ function ProjectCard({ setProduct, className, projects, openEdit, setProductObj,
     useEffect(() => {
         getWerhouse()
     }, [setProjectId])
+    
 
     function getWerhouse() {
         if ((pagination - 1) * 4 < 0) getProduct(0, 4);
         else getProduct(Math.floor(pagination - 1), 4);
     }
-    
+    console.log(i);
+
     return (
         <>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={i}>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {projects.id}
+                    {i + 1}
                 </th>
                 <td class="px-6 py-4">
                     {projects.name}
