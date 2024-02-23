@@ -42,8 +42,15 @@ const ViewMore = ({ lang }) => {
     return (
         <div className="w-full h-screen background overflow-x-hidden">
             <NavBar lang={lang} />
-            <div className="product-main flex justify-center items-start overflow-hidden w-full pt-20">
-                <div className="lg:px-0 md:px-10 lg:py-0 sm:py-5 px-3 mt-20 w-screen lg:w-[90%] overflow-x-auto">
+            <div className='mt-32 flex justify-center w-full'>
+                <input
+                    type="search"
+                    placeholder='🔍  Search...'
+                    className="lg:w-8/12 px-4 h-10 focus:outline-0 border"
+                />
+            </div>
+            <div className="product-main flex justify-center items-start overflow-hidden w-full">
+                <div className="lg:px-0 md:px-10 lg:py-0 sm:py-5 px-3 mt-8 w-screen lg:w-[90%] overflow-x-auto">
                     <table className="w-full rounded-2xl overflow-hidden text-gray-500">
                         <thead className="text-[1.1rem] text-slate-50 uppercase bg-slate-500">
                             <tr>
