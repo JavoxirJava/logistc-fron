@@ -9,6 +9,7 @@ const translateEn = {
     produkt: "Project",
     werhouse: "Warehouse",
     client: "Clients",
+    cassier: "Cassier",
     users: "Users",
     histori: "History",
     homeText1: "We Will Deliver Your ",

@@ -11,6 +11,7 @@ const translateRu = {
     client: "Клиенты",
     users: "Пользователи",
     wiew: "Деталь",
+    cassier: "Касса",
 
     histori: "История",
     homeText1: "Мы доставим ваши посылки",
