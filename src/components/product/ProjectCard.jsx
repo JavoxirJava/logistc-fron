@@ -63,7 +63,9 @@ function ProjectCard({ setProduct, i, className, projects, openEdit, setProductO
                         href="#" class="font-medium text-yellow-300 hover:underline">Detail</a>
                 </td>
                 <td class="px-6 py-4">
-                    <Link to='/view more' class="font-medium text-blue-600 hover:underline">View More</Link>
+                    <Link onClick={() => {
+                        sessionStorage.setItem('projectIdViewMore', projects.id)
+                    }} to='/view more' class="font-medium text-blue-600 hover:underline">View More</Link>
                 </td>
             </tr>
 
