@@ -110,7 +110,7 @@ function Product({ lang, projectId, setProjectId }) {
 
   const getProject = (page, size) => {
     axios
-      .get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
+      .get(`${url}project/all?page=${page}&size=${size}&lang=${lang}`, config)
       .then((res) => {
         setTotalPage2(
           res.data.body.totalPage ? res.data.body.totalPage - 1 : 2
@@ -365,22 +365,16 @@ function Product({ lang, projectId, setProjectId }) {
                       Status
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      ETD
+                      Transport
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Current Location
+                      Date
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    {/* <th scope="col" class="px-6 py-3">
                       Total Price
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Edits
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Details
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      View Mores
+                    </th> */}
+                    <th colSpan={3} scope="col" class="px-6 py-3 text-center">
+                      Action
                     </th>
                   </tr>
                 </thead>
