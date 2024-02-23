@@ -69,7 +69,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/dashboard" element={<Dashboard lang={lang} />} />
                 <Route path="/user-dashboard" element={<UserDashboard lang={lang} />} />
-                <Route path="/Cassier" element={<Cassir/>}/>
+                <Route path="/cassier" element={<Cassir/>}/>
                 <Route
                     path="/project"
                     element={
