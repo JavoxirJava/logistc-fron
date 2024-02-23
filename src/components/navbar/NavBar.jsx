@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import "./style.css";
 import DropdownA from "./NavDrop";
 
-function NavBar({ dashboard, product, client, history, werhouse, lang }) {
+function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenm, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -174,6 +174,16 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                     <li onClick={openMenu}>
                       {" "}
                       <Link
+                        to="/cassier"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
+                        aria-current="page"
+                      >
+                        {t("cassier")}
+                      </Link>
+                    </li>
+                    <li onClick={openMenu}>
+                      {" "}
+                      <Link
                         to="/history"
                         className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
                         aria-current="page"
@@ -181,6 +191,7 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                         {t("histori")}
                       </Link>
                     </li>
+                    
                   </ul>
                 </div>
               </div>
@@ -224,6 +235,14 @@ function NavBar({ dashboard, product, client, history, werhouse, lang }) {
                     {t("users")}
                   </Link>
                  {/* <DropdownA/> */}
+                  <Link
+                    to="/cassier"
+                    className={`${cassier} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
+                    // aria-current="page"
+                  >
+                    
+                    {t("cassier")}
+                  </Link>
                   <Link
                     to="/history"
                     className={`${history} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}

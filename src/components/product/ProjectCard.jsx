@@ -23,7 +23,6 @@ function ProjectCard({ setProduct, i, className, projects, openEdit, setProductO
         if ((pagination - 1) * 4 < 0) getProduct(0, 4);
         else getProduct(Math.floor(pagination - 1), 4);
     }
-    console.log(i);
 
     return (
         <>
@@ -50,9 +49,9 @@ function ProjectCard({ setProduct, i, className, projects, openEdit, setProductO
                     <a
                         onClick={() => {
                             openEdit();
-                            setProductObj(projects);
+                            setProjectId(projects);
                         }}
-                        href="#" class="font-medium text-[#16A34A] hover:underline">Edit</a>
+                        href="#" class="font-medium text-[#16A34A] hover:underline">{t("edit")}</a>
                 </td>
                 <td class="px-6 py-4">
                     <a
@@ -60,12 +59,12 @@ function ProjectCard({ setProduct, i, className, projects, openEdit, setProductO
                             setHistoryList(projects);
                             openModal();
                         }}
-                        href="#" class="font-medium text-yellow-300 hover:underline">Detail</a>
+                        href="#" class="font-medium text-yellow-300 hover:underline">{t("wiew")}</a>
                 </td>
                 <td class="px-6 py-4">
                     <Link onClick={() => {
                         sessionStorage.setItem('projectIdViewMore', projects.id)
-                    }} to='/view more' class="font-medium text-blue-600 hover:underline">View More</Link>
+                    }} to='/view more' class="font-medium text-blue-600 hover:underline">{t("more")}</Link>
                 </td>
             </tr>
 
@@ -118,12 +117,12 @@ function ProjectCard({ setProduct, i, className, projects, openEdit, setProductO
                         className="inline-flex justify-center sm:w-9/12 px-5 rounded-md border border-gray-300 shadow-sm py-2 bg-yellow-400 text-sm font-medium text-white"
                     >{t("history5")}</button>
                 </div>
-                {historyList && <ProjectModal isOpen={isModalOpen} projectList={historyList} onClose={closeModal} />}
-
+                
             </div> */}
+            {historyList && <ProjectModal isOpen={isModalOpen} projectList={historyList} onClose={closeModal} />}
         </>
 
-    );
+    )
 }
 
 export default ProjectCard;

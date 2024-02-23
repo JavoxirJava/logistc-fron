@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Offcanvas from "../Offcanvas";
-import { byId, config, getUsers, url } from "../api";
+import { byId, byIdObj, config, getUsers, url } from "../api";
 import { useTranslation } from "react-i18next";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 import axios from "axios";
@@ -16,11 +16,11 @@ function OffcanvasProject({
   getProduct,
   isAdd,
   setUserId,
+  projectId,
 }) {
   const [users, setUsers] = useState(null);
   // const [coordinates, setCoordinates] = useState([55.75, 37.57]);
   // const [adres, setAdress] = useState([55.75, 37.57]);
-
 
   const { t } = useTranslation();
 
@@ -59,12 +59,13 @@ function OffcanvasProject({
       status: byId(`productStatus${isAdd}`),
       fileId: 0,
       projectId: byId(`project${isAdd}`),
-      comment: byId(`comment${isAdd}`)
+      comment: byId(`comment${isAdd}`),
       // latitude: coordinates[0],
       // longitude: coordinates[1],
       // address: adres
     });
   }
+
 
   return (
     <Offcanvas
@@ -84,7 +85,7 @@ function OffcanvasProject({
         <input
           id={`name${isAdd}`}
           placeholder={t("productAdd3")}
-          defaultValue={product ? product.name : ""}
+          defaultValue={projectId ? projectId.name : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
         {/* Transport input  */}
@@ -103,19 +104,19 @@ function OffcanvasProject({
           </option>
           <option
             value="1"
-          //  selected={product && product.transport === "CAR"}
+            //  selected={product && product.transport === "CAR"}
           >
             {/* {t("productAdd05")} */}АВТО
           </option>
           <option
             value="2"
-          // selected={product && product.transport === "AIRPLANE"}
+            // selected={product && product.transport === "AIRPLANE"}
           >
             {/* {t("productAdd050")} */}АВИА
           </option>
           <option
             value="3"
-          // selected={product && product.transport === "TRAIN"}
+            // selected={product && product.transport === "TRAIN"}
           >
             {/* {t("productAdd005")} */}ЖД
           </option>
@@ -135,49 +136,49 @@ function OffcanvasProject({
           </option>
           <option
             value="1"
-          // selected={product && product.status === "PENDING"}
+            // selected={product && product.status === "PENDING"}
           >
             {/* {t("status1")} */}Падгатовка
           </option>
           <option
             value="2"
-          // selected={product && product.status === "GOING"}
+            // selected={product && product.status === "GOING"}
           >
             {/* {t("status2")} */}Загрузка
           </option>
           <option
             value="3"
-          // selected={product && product.status === "CANCEL"}
+            // selected={product && product.status === "CANCEL"}
           >
             {/* {t("status3")} */}Отправка
           </option>
           <option
             value="4"
-          // selected={product && product.status === "ARRIVED"}
+            // selected={product && product.status === "ARRIVED"}
           >
             {/* {t("status4")} */}В пути в Китай
           </option>
           <option
             value="5"
-          // selected={product && product.status === "COMPLETED"}
+            // selected={product && product.status === "COMPLETED"}
           >
             {/* {t("status5")} */}В гроница в Китай
           </option>
           <option
             value="6"
-          // selected={product && product.status === "MOVED"}
+            // selected={product && product.status === "MOVED"}
           >
             {/* {t("status6")} */}В пути в транзитном зоне
           </option>
           <option
             value="7"
-          // selected={product && product.status === "MOVED"}
+            // selected={product && product.status === "MOVED"}
           >
             {/* {t("status6")} */}В граница узб
           </option>
           <option
             value="8"
-          // selected={product && product.status === "MOVED"}
+            // selected={product && product.status === "MOVED"}
           >
             {/* {t("status6")} */}В процесс разтаможка
           </option>
@@ -191,7 +192,7 @@ function OffcanvasProject({
         <input
           id={`project${isAdd}`}
           placeholder={`Project ID`}
-          // defaultValue={product ? product.name : ""}
+          defaultValue={projectId ? projectId.projectId : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
         <label
@@ -202,6 +203,7 @@ function OffcanvasProject({
         </label>
         <textarea
           id={`comment${isAdd}`}
+          defaultValue={projectId ? projectId.comment : ""}
           placeholder="Comment"
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         ></textarea>
@@ -241,6 +243,7 @@ function OffcanvasProject({
               await onSave();
               await getProduct(0, 4);
               handleToggleOffcanvas();
+              
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
           >
