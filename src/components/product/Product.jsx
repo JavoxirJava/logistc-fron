@@ -125,7 +125,8 @@ function Product({ lang, projectId, setProjectId }) {
   function getProduct(page, size) {
     axios
       .get(
-        `${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : 0
+        `${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${
+          projectId.id ? projectId.id : 0
         }`,
         config
       )
@@ -297,13 +298,13 @@ function Product({ lang, projectId, setProjectId }) {
         <div className="flex lg:flex-row align-center justify-center flex-col lg:h-full h-max pt-20">
           {/* project uchun */}
           <div className=" lg:px-3 md:px-10 lg:py-0 sm:py-5 px-1 w-screen lg:w-10/12">
-            <div className="mt-4 flex flex-wrap justify-between">
+            <div className="mt-4 flex flex-wrap justify-end gap-3 lg:gap-20">
               {drops ? (
                 <select
                   onChange={searchProject}
                   defaultValue=""
                   id="statuslar"
-                  className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
+                  className="py-2 px-2 lg:w-4/12 bg-white rounded-lg  border border-slate-300
                        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                      focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
                 >
@@ -324,7 +325,7 @@ function Product({ lang, projectId, setProjectId }) {
                   placeholder={t("productSearch")}
                   defaultValue=""
                   onChange={searchProject}
-                  className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+                  className="lg:w-4/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                 />
               )}
               <Dropdown2
@@ -335,21 +336,23 @@ function Product({ lang, projectId, setProjectId }) {
                 setSearchBy={setSearch2By}
               />
             </div>
-            <div className="flex justify-between my-5">
-
+            <div className="flex flex-col sm:flex-row justify-between my-5">
               <button
                 onClick={openProjectCan}
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
+                className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border md:w-2/12 rounded"
               >
                 {t("add")}
               </button>
-              <h1>
-                <b>{t("produkt")}</b>
-              </h1>
+              <div className="flex w-full justify-around sm:justify-between items-center">
+                <span className="hidden sm:block"></span>
+                <h1>
+                  <b>{t("produkt")}</b>
+                </h1>
 
-              <span className="me-5 pt-1.5 float-end">
-                {t("cardCurrent")}: {pagination2}
-              </span>
+                <span className="me-5 pt-1.5 float-end">
+                  {t("cardCurrent")}: {pagination2}
+                </span>
+              </div>
             </div>
             <div class="relative overflow-x-auto  sm:rounded-lg">
               <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -368,14 +371,13 @@ function Product({ lang, projectId, setProjectId }) {
                       {t("transport")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                    {t("date")}
-
+                      {t("date")}
                     </th>
                     {/* <th scope="col" class="px-6 py-3">
                       Total Price
                     </th> */}
                     <th colSpan={3} scope="col" class="px-6 py-3 text-center">
-                    {t("action")}
+                      {t("action")}
                     </th>
                   </tr>
                 </thead>
@@ -395,7 +397,7 @@ function Product({ lang, projectId, setProjectId }) {
                       />
                     ))
                   ) : (
-                    <Empty/>
+                    <Empty />
                   )}
                 </tbody>
               </table>
@@ -410,7 +412,6 @@ function Product({ lang, projectId, setProjectId }) {
               />
             </div>
           </div>
-
 
           {/* product uchun */}
 
