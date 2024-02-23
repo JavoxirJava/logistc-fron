@@ -17,7 +17,7 @@ import Dropdown2 from "../Dropdown2";
 import Empty from "../Empty";
 
 function Product({ lang, projectId, setProjectId }) {
-  const [coordinates, setCoordinates] = useState([55.75, 37.57]);
+  // const [coordinates, setCoordinates] = useState([55.75, 37.57]);
   const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
   const [editOf, setEditOf] = useState(false);
   const [addProjectModal, setAddProjectModal] = useState(false);
@@ -99,14 +99,14 @@ function Product({ lang, projectId, setProjectId }) {
   //         }).catch((error) => console.error("Xatolik yuz berdi:", error));
   // };
 
-  function setObj() {
-    return {
-      id: product ? product.productId : 0,
-      latitude: coordinates[0],
-      longitude: coordinates[1],
-      address: sessionStorage.getItem("address"),
-    };
-  }
+  // function setObj() {
+  //   return {
+  //     id: product ? product.productId : 0,
+  //     latitude: coordinates[0],
+  //     longitude: coordinates[1],
+  //     address: sessionStorage.getItem("address"),
+  //   };
+  // }
 
   const getProject = (page, size) => {
     axios
@@ -499,7 +499,7 @@ function Product({ lang, projectId, setProjectId }) {
           isAdd={true}
           getProduct={getProject}
           setProduct={setProductObj2}
-          product=""
+          product={null}
           handleToggleOffcanvas={openProjectCan}
           isOffcanvasOpen={addProjectModal}
           name={t("add")}
