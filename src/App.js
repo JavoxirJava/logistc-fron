@@ -18,6 +18,7 @@ import UserDashboard from "./components/user/Dashboard";
 import {useEffect, useState} from "react";
 import Werhouse from "./components/werHouse/Werhouse";
 import Managers from "./components/managers/Clients";
+import ViewMore from "./components/product/ViewMore";
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -77,6 +78,7 @@ function App() {
                 />
                 <Route path="/users" element={<Clients lang={lang}/>}/>
                 <Route path="/history" element={<History lang={lang}/>}/>
+                <Route path="/view more" element={<ViewMore lang={lang}/>}/>
                 <Route
                     path="/warehouse"
                     element={
