@@ -45,3 +45,4 @@ export function getUsers(setUser, lang) {
     axios.get(`${url}user?lang=${lang}`, config).then(res => setUser(res.data.body.object)).catch(err => console.log(err));
 }
 
+export const getFile = `${url}attachment/getFile/`
