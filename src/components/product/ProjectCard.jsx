@@ -16,6 +16,7 @@ function ProjectCard({ setProduct, i, className, projects, openEdit, setProductO
     useEffect(() => {
         getWerhouse()
     }, [setProjectId])
+    
 
     function getWerhouse() {
         if ((pagination - 1) * 4 < 0) getProduct(0, 4);
