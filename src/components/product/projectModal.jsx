@@ -19,13 +19,13 @@ const ProjectModal = ({ isOpen, onClose, projectList }) => {
                 </div>
                 <div className='sm:px-20 px-3 py-6 flex justify-between items-center flex-wrap'> 
                     <div className="mt-2 w-full text-center">
-                        <p className='pb-0 mb-0 opacity-50'>{t("weiw6")}</p>
+                        <p className='pb-0 mb-0 text-black'>{t("weiw6")}</p>
                         <p className='mt-0 pt-0 font-semibold'>{projectList && projectList.transport}</p>
                     </div>
                     
                     <div className="mt-2 w-full text-center">
-                        <p className='pb-0 mb-0 opacity-50'>{t("weiw7")}</p>
-                        <p className='mt-0 pt-0 font-semibold'>{projectList && projectList.address}</p>
+                        <p className='pb-0 mb-0 text-black'>{t("weiw7")}</p>
+                        <p className='mt-0 pt-0 font-semibold'>{projectList && projectList.status}</p>
                     </div>
                 </div>
                 <div className="mt-7 mb-5 ps-16 pr-5">

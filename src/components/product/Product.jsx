@@ -359,22 +359,23 @@ function Product({ lang, projectId, setProjectId }) {
                       №
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Name
+                      {t("client2")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Status
+                      {t("card2")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Transport
+                      {t("transport")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Date
+                    {t("date")}
+
                     </th>
                     {/* <th scope="col" class="px-6 py-3">
                       Total Price
                     </th> */}
                     <th colSpan={3} scope="col" class="px-6 py-3 text-center">
-                      Action
+                    {t("action")}
                     </th>
                   </tr>
                 </thead>
@@ -519,6 +520,7 @@ function Product({ lang, projectId, setProjectId }) {
           btnName={t("editProject")}
           onSave={editProject}
           setUserId={setUserId}
+          projectId={projectId}
           lang={lang}
         />
 
