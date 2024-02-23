@@ -385,7 +385,7 @@ function Product({ lang, projectId, setProjectId }) {
                         setProjectId={setProjectId}
                         getProduct={getProject}
                         pagination={pagination2}
-                        key={i}
+                        i={i}
                         className="mt-5"
                         openEdit={openEditProjectCan}
                         projects={item}
