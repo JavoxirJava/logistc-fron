@@ -394,7 +394,7 @@ function Product({ lang, projectId, setProjectId }) {
                       />
                     ))
                   ) : (
-                    <Empty />
+                    <Empty/>
                   )}
                 </tbody>
               </table>
