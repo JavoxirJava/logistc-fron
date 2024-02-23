@@ -40,12 +40,21 @@ const ViewMore = ({ lang }) => {
         loading: 'animate-pulse hover:cursor-wait my-3 w-full h-7 bg-sky-200 rounded'
     }
 
+    const searchHandler = e => {
+        let data = e.target.value
+        !!data ? axios.get(`${url}product/admin/search?userName=${data}&lang=${lang}`, config)
+            .then(res => setProjectIdInfo(res.data.body))
+            .catch(() => console.log('error'))
+            : getProjectInfo();
+    }
+
     return (
         <div className="w-full h-screen background overflow-x-hidden">
             <NavBar lang={lang} />
             <div className='mt-32 flex justify-center w-full'>
                 <input
                     type="search"
+                    onChange={searchHandler}
                     placeholder='🔍  Search...'
                     className="lg:w-8/12 px-4 h-10 focus:outline-0 border rounded-md"
                 />
