@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from "react-i18next";
 import ProductModal from './HistoryModal';
 import ProjectModal from './projectModal';
+import { Link } from 'react-router-dom';
 
 
 function ProjectCard({ setProduct, i, className, projects, openEdit, setProductObj, setProjectId, getProduct, pagination }) {
@@ -16,7 +17,7 @@ function ProjectCard({ setProduct, i, className, projects, openEdit, setProductO
     useEffect(() => {
         getWerhouse()
     }, [setProjectId])
-    
+
 
     function getWerhouse() {
         if ((pagination - 1) * 4 < 0) getProduct(0, 4);
@@ -62,7 +63,7 @@ function ProjectCard({ setProduct, i, className, projects, openEdit, setProductO
                         href="#" class="font-medium text-yellow-300 hover:underline">Detail</a>
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 hover:underline">View More</a>
+                    <Link to='/view more' class="font-medium text-blue-600 hover:underline">View More</Link>
                 </td>
             </tr>
 
