@@ -174,16 +174,6 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                     <li onClick={openMenu}>
                       {" "}
                       <Link
-                        to="/history"
-                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
-                        aria-current="page"
-                      >
-                        {t("histori")}
-                      </Link>
-                    </li>
-                    <li onClick={openMenu}>
-                      {" "}
-                      <Link
                         to="/cassier"
                         className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
                         aria-current="page"
@@ -191,6 +181,17 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                         {t("cassier")}
                       </Link>
                     </li>
+                    <li onClick={openMenu}>
+                      {" "}
+                      <Link
+                        to="/history"
+                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
+                        aria-current="page"
+                      >
+                        {t("histori")}
+                      </Link>
+                    </li>
+                    
                   </ul>
                 </div>
               </div>
