@@ -99,6 +99,8 @@ const translateRu = {
     editProduct: "Редактировать продукт",
     addClients: "Добавить пользователь",
     delete: "Удалить",
+    file: "Файл",
+    download: "Скачать",
     delete2: "Вы уверены, что?",
     logout: "Выйти",
     status: "Выберите статус продукта",

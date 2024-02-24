@@ -108,6 +108,8 @@ const translateEn = {
     addClients: "Add User",
     logout: "Log out",
     delete: "Delete",
+    file: "File",
+    download: "Download",
     delete2: "Are you sure about that?",
     status: "Select product status",
     status1: "Preparation",
