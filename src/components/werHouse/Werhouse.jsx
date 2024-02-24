@@ -125,6 +125,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         setTotalPage2(
           res.data.body.totalPage ? res.data.body.totalPage - 1 : 2
         );
+        // bundan objectni olib tashlash kk xozirgi xolatda backend page qaaytarmayabdi
         setProject(res.data.body.object);
       })
       .catch((err) => {
