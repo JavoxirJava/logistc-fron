@@ -4,12 +4,17 @@ import axios from 'axios';
 import { config, getFile, url } from '../api';
 import ReactPaginate from 'react-paginate';
 import img from '../empty.png';
+import { useTranslation } from "react-i18next";
+
 
 const ViewMore = ({ lang }) => {
     const [projectIdInfo, setProjectIdInfo] = useState(null)
     const [page, setPage] = useState(0)
     const [currentPage, setCurrentPage] = useState(0)
     let projectId = sessionStorage.getItem('projectIdViewMore');
+
+  const { t } = useTranslation();
+
 
     useEffect(() => {
         getProjectInfo();
@@ -65,14 +70,14 @@ const ViewMore = ({ lang }) => {
                         <thead className="text-[1.1rem] text-slate-50 uppercase bg-slate-500">
                             <tr>
                                 <th className="px-6 py-3">№</th>
-                                <th className="px-6 py-3">Photo</th>
-                                <th className="px-6 py-3">Owner</th>
-                                <th className="px-6 py-3">Product Name</th>
-                                <th className="px-6 py-3">Comment</th>
-                                <th className="px-6 py-3">Date</th>
-                                <th className="px-6 py-3">product Count</th>
-                                <th className="px-6 py-3">total Weight</th>
-                                <th className="px-6 py-3">total Kub</th>
+                                <th className="px-6 py-3">{t("photo")}</th>
+                                <th className="px-6 py-3">{t("owner")}</th>
+                                <th className="px-6 py-3">{t("productName")}</th>
+                                <th className="px-6 py-3">{t("productAdd34")}</th>
+                                <th className="px-6 py-3">{t("date")}</th>
+                                <th className="px-6 py-3">{t("productCount")}</th>
+                                <th className="px-6 py-3">{t("totalWeight")}</th>
+                                <th className="px-6 py-3">{t("totalKub")}</th>
                             </tr>
                         </thead>
                         <tbody className='text-[1rem] text-gray-700 bg-white text-center'>
