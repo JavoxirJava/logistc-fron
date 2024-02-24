@@ -122,7 +122,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           res.data.body.totalPage ? res.data.body.totalPage - 1 : 2
         );
         // bundan objectni olib tashlash kk xozirgi xolatda backend page qaaytarmayabdi
-        setProject(res.data.body);
+        setProject(res.data.body.object);
       })
       .catch((err) => {
         console.log();

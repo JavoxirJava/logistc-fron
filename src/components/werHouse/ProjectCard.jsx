@@ -48,9 +48,9 @@ function ProjectCard({
           {i + 1}
         </th>
         <td class="px-6 py-4">{projects.name}</td>
-        <td class="px-6 py-4">{projects.name}</td>
-        <td class="px-6 py-4">{projects.name}</td>
-        <td class="px-6 py-4">{projects.name}</td>
+        <td class="px-6 py-4">{projects.totalKub}</td>
+        <td class="px-6 py-4">{projects.productCount}</td>
+        <td class="px-6 py-4">{projects.totalWeight}</td>
 
         {/* <td class="px-6 py-4">
                     $2999
