@@ -4,7 +4,7 @@ import axios from 'axios';
 import { config, url } from '../api';
 import { toast } from 'react-toastify';
 
-const Modal = ({getCassier}) => {
+const Modal = ({ getCassier }) => {
     const [showModal, setShowModal] = useState(false);
 
     const addCasser = () => {
@@ -22,15 +22,15 @@ const Modal = ({getCassier}) => {
             totalPrice: 0
         }
         axios.post(`${url}cashier/one`, addData, config)
-        .then(() => {
-            setShowModal(false);
-            getCassier();
-            toast.success('Successfully saved cassier✅')
-        })
-        .catch(err => {
-            console.log("Caser add qilishda error: ", err);
-            console.log(addData);
-        })
+            .then(() => {
+                setShowModal(false);
+                getCassier();
+                toast.success('Successfully saved cassier✅')
+            })
+            .catch(err => {
+                console.log("Caser add qilishda error: ", err);
+                console.log(addData);
+            })
     }
     return (
         <div>
@@ -57,7 +57,7 @@ const Modal = ({getCassier}) => {
                                     <h3 className="text-2xl font-semibold">
                                         Add
                                     </h3>
-                                    <button className='p-1 ml-auto border-0 text-2xl'
+                                    <button className='p-1 ml-auto border-0 text-2xl hover:scale-150 duration-500'
                                         onClick={() => setShowModal(false)}
                                     >
                                         ×
@@ -83,17 +83,22 @@ const Modal = ({getCassier}) => {
                                     </select>
                                 </form>
                                 <form className="mx-auto flex justify-evenly gap-2 my-5 flex-wrap">
-                                    <input type="text" className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
-                                    <input type="text" className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
-                                    <input type="text" className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
-                                    <input type="text" className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                    <input type="text" placeholder='Enter' className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                    <input type="text" placeholder='Enter' className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                    <input type="text" placeholder='Enter' className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                    <input type="text" placeholder='Enter' className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </form>
                                 <form className='mx-auto flex justify-evenly gap-2 my-5 flex-wrap'>
-                                    <input type="text" className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
-                                    <input type="text" className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                    <input type="text" placeholder='Enter' className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                    <input type="text" placeholder='Enter' className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </form>
-
+                                <div className='flex justify-end'>
+                                    <button className='p-2 m-2 bg-[#16A34A] w-[10rem] rounded-md text-white hover:scale-105 duration-500 '>
+                                        Save
+                                    </button>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                     <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
