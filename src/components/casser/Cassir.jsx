@@ -36,8 +36,8 @@ const Cassir = ({ changeLanguage, lang }) => {
                         />
                     </div>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
-                        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <table className="w-full text-sm text-left text-gray-500 ">
+                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                                 <tr>
                                     <th className="px-6 py-3">
                                         #
@@ -62,11 +62,11 @@ const Cassir = ({ changeLanguage, lang }) => {
                             <tbody>
                                 {cassier ?
                                     cassier.map((item, i) => (
-                                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                        <tr className="bg-white ">
                                             <th className="px-6 py-3">
                                                 {i + 1}
                                             </th>
-                                            <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                                 {item.name}
                                             </td>
                                             <td className="px-6 py-4">
@@ -79,11 +79,11 @@ const Cassir = ({ changeLanguage, lang }) => {
                                                 {item.totalKub}
                                             </td>
                                             <td className="px-6 py-4">
-                                                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                                <a href="#" className="font-medium text-blue-600  hover:underline">Edit</a>
                                             </td>
                                         </tr>
                                     )) : (
-                                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                        <tr className="odd:bg-white  even:bg-gray-50 border-b ">
                                             <td colSpan='6' className="text-center py-3">
                                                 dfguyasergfiwa
                                             </td>

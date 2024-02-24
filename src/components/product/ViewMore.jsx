@@ -47,10 +47,15 @@ const ViewMore = ({ lang }) => {
 
     const searchHandler = e => {
         let data = e.target.value
-        !!data ? axios.get(`${url}product/admin/search?userName=${data}&lang=${lang}`, config)
-            .then(res => setProjectIdInfo(res.data.body))
-            .catch(() => console.log('error'))
-            : getProjectInfo();
+        console.log(!!data);
+        if (!!data) {
+            axios.get(`${url}product/admin/search?userName=${data}&lang=${lang}`, config)
+                .then(res => res.data.success === false ? setProjectIdInfo([{ comment: 'Not found 😊' }]) : setProjectIdInfo(res.data.body))
+                .catch(() => setProjectIdInfo(null))
+        } else {
+            getProjectInfo();
+            setProjectIdInfo(null)
+        }
     }
 
     return (
