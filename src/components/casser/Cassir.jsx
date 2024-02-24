@@ -8,18 +8,44 @@ import { config, url } from "../api";
 
 const Cassir = ({ changeLanguage, lang }) => {
     const [cassier, setCasseir] = useState(null)
+    const [projectId, setProjectId] = useState(null)
+    const [userId, setUserId] = useState(null)
+    const [productId, setProductId] = useState(null)
     const { t } = useTranslation();
 
     useEffect(() => {
         getCassier();
+        getProject();
     }, [lang])
 
+    // get caser
     const getCassier = () => {
         axios.get(`${url}cashier/all?lang=${lang}`, config)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 // setCasseir(res.data)
             })
+    }
+
+    // get project
+    const getProject = () => {
+        axios.get(`${url}project/list?lang=${lang}`, config)
+            .then(res => setProjectId(res.data.body))
+            .catch(() => console.log('error'))
+    }
+
+    // get user
+    const getUser = id => {
+        axios.get(`${url}user/project?projectId=${id}&lang=${lang}`, config)
+            .then(res => setUserId(res.data.body))
+            .catch(() => console.log('error user id'))
+    }
+
+    // get product id
+    const getProduct = id => {
+        axios.get(`${url}product/list?userId=${id}&lang=${lang}`, config)
+            .then(res => setProductId(res.data.body))
+            .catch(() => console.log('error user id'))
     }
 
     return (
@@ -28,7 +54,14 @@ const Cassir = ({ changeLanguage, lang }) => {
             <div className="background h-screen pt-20  ">
                 <div className="md:w-[80vw] w-full mx-auto mt-[1.5rem] ">
                     <div className="flex flex-wrap justify-between">
-                        <Modal getCassier={getCassier} />
+                        <Modal
+                            projectId={projectId}
+                            userId={userId}
+                            productId={productId}
+                            getCassier={getCassier}
+                            getUser={getUser}
+                            getProduct={getProduct}
+                        />
                         <input
                             type="search"
                             placeholder="🔍Search"
