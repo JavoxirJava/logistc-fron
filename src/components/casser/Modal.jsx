@@ -92,6 +92,7 @@ const Modal = ({getCassier}) => {
                                     <input type="text" className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                     <input type="text" className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </form>
+
                             </div>
                         </div>
                     </div>
