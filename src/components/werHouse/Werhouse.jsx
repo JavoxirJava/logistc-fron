@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./werHouse.css";
-import ProductCard from "./ProductCard";
-import { Map, Placemark, YMaps } from "react-yandex-maps";
 import OffcanvasProduct from "./OffcanvasProduct";
 import { config, setConfig, url } from "../api";
 import axios from "axios";
@@ -10,11 +8,9 @@ import Pagination, {
   bootstrap5PaginationPreset,
 } from "react-responsive-pagination";
 import NavBar from "../navbar/NavBar";
-import Dropdown from "../Dropdown";
 import { useTranslation } from "react-i18next";
 import ProjectCard from "./ProjectCard";
 import OffcanvasProject from "./OffcanvasProject";
-import { load } from "../../assets";
 import Empty from "../Empty";
 
 function Product({ lang, werHouseId, setWerHouseId }) {
