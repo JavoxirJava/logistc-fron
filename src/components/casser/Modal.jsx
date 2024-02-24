@@ -65,22 +65,22 @@ const Modal = ({ getCassier }) => {
                                     </button>
                                 </div>
                                 <form className=" mx-auto flex justify-evenly gap-5 mt-5 flex-wrap">
-                                    <select id="projectId" className=" p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="projectId" className=" p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                         <option selected disabled>Select Project</option>
                                         <option value="US">United States</option>
                                     </select>
-                                    <select id="userId" className="  p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="userId" className="  p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                         <option selected disabled>Select User</option>
                                         <option value="US">United States</option>
                                     </select>
-                                    <select id="productId" className="  p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="productId" className="  p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                         <option selected disabled>Select Product</option>
                                         <option value="US">United States</option>
                                     </select>
-                                    <select id="measure" className=" p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <select id="measure" className=" p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                         <option selected disabled>Kub And Kg</option>
-                                        <option value="Kub">Kub</option>
-                                        <option value="Kg">Kg</option>
+                                        <option value="Куб">Kub</option>
+                                        <option value="Кг">Kg</option>
                                     </select>
                                 </form>
                                 <form className="mx-auto flex justify-evenly gap-2 my-5 flex-wrap">
