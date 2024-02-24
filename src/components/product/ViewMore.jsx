@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import NavBar from '../navbar/NavBar'
 import axios from 'axios';
-import { config, url } from '../api';
+import { config, getFile, url } from '../api';
 import ReactPaginate from 'react-paginate';
+import img from '../empty.png';
 
 const ViewMore = ({ lang }) => {
     const [projectIdInfo, setProjectIdInfo] = useState(null)
@@ -39,14 +40,23 @@ const ViewMore = ({ lang }) => {
         loading: 'animate-pulse hover:cursor-wait my-3 w-full h-7 bg-sky-200 rounded'
     }
 
+    const searchHandler = e => {
+        let data = e.target.value
+        !!data ? axios.get(`${url}product/admin/search?userName=${data}&lang=${lang}`, config)
+            .then(res => setProjectIdInfo(res.data.body))
+            .catch(() => console.log('error'))
+            : getProjectInfo();
+    }
+
     return (
         <div className="w-full h-screen background overflow-x-hidden">
             <NavBar lang={lang} />
             <div className='mt-32 flex justify-center w-full'>
                 <input
                     type="search"
+                    onChange={searchHandler}
                     placeholder='🔍  Search...'
-                    className="lg:w-8/12 px-4 h-10 focus:outline-0 border"
+                    className="lg:w-8/12 px-4 h-10 focus:outline-0 border rounded-md"
                 />
             </div>
             <div className="product-main flex justify-center items-start overflow-hidden w-full">
@@ -69,15 +79,21 @@ const ViewMore = ({ lang }) => {
                             {projectIdInfo ?
                                 projectIdInfo.map((item, i) => (
                                     <tr className='border-b transition duration-300 ease-in-out hover:bg-gray-300'>
-                                        <th className='px-6 py-3'>{(currentPage * 10) + (i + 1)}</th>
-                                        <th className='px-6 py-3'>Photo</th>
-                                        <td className='px-6 py-3'>{item.owner}</td>
-                                        <td className='px-6 py-3'>{item.productName}</td>
-                                        <td className='px-6 py-3'>{item.comment}</td>
-                                        <td className='px-6 py-3'>{item.date}</td>
-                                        <td className='px-6 py-3'>{item.productCount}</td>
-                                        <td className='px-6 py-3'>{item.totalWeight}</td>
-                                        <td className='px-6 py-3'>{item.totalKub}</td>
+                                        <th className='px-6 py-5'>{(currentPage * 10) + (i + 1)}</th>
+                                        <th className='px-6 py-5 flex justify-center items-center'>
+                                            <img
+                                                src={item.attachmentId ? getFile + item.attachmentId : img}
+                                                className='w-10 h-10 object-cover rounded-full scale-150'
+                                                alt="img"
+                                            />
+                                        </th>
+                                        <td className='px-6 py-5'>{item.owner}</td>
+                                        <td className='px-6 py-5'>{item.productName}</td>
+                                        <td className='px-6 py-5'>{item.comment}</td>
+                                        <td className='px-6 py-5'>{item.date}</td>
+                                        <td className='px-6 py-5'>{item.productCount}</td>
+                                        <td className='px-6 py-5'>{item.totalWeight}</td>
+                                        <td className='px-6 py-5'>{item.totalKub}</td>
                                     </tr>
                                 )) : (
                                     <tr>

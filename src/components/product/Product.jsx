@@ -110,7 +110,7 @@ function Product({ lang, projectId, setProjectId }) {
 
   const getProject = (page, size) => {
     axios
-      .get(`${url}project/all?page=${page}&size=${size}&lang=${lang}`, config)
+      .get(`${url}project/page?page=${page}&size=${size}&lang=${lang}`, config)
       .then((res) => {
         setTotalPage2(
           res.data.body.totalPage ? res.data.body.totalPage - 1 : 2
