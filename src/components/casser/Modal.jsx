@@ -8,6 +8,9 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
     const [showModal, setShowModal] = useState(false);
     const [productKub, setProductKub] = useState(null)
     const [productKg, setProductKg] = useState(null)
+    const [kubAndKgVAlue, setKubANdKgVAlue] = useState(0)
+    const [dataVAlue, setDataVAlue] = useState(0)
+    const [meassureVal, setMeassureVal] = useState(null)
 
     const addCasser = () => {
         let addData = {
@@ -15,8 +18,8 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
             userId: byIdObj('userId').value,
             productId: byIdObj('productId').value,
             measure: byIdObj('measure').value,
-            priceOfKub: 0,
-            totalKub: 0,
+            priceOfKub: dataVAlue,
+            totalKub: kubAndKgVAlue,
             priceForRoad: 0,
             customsClearancePrice: 0,
             cct: 0,
@@ -40,6 +43,15 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
         setProductKub(productId.map(i => i.id === item ? i.totalKub : null))
         setProductKg(productId.map(i => i.id === item ? i.totalWeight : null))
     }
+
+    const selectKubAndKg = () => {
+        if (meassureVal == 'Куб') setKubANdKgVAlue(productKub * dataVAlue)
+        if (meassureVal == 'Кг') setKubANdKgVAlue(productKg * dataVAlue)
+    }
+
+    useEffect(() => {
+        selectKubAndKg()
+    }, [dataVAlue])
 
     return (
         <div>
@@ -69,7 +81,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                         id="projectId"
                                         onChange={e => getUser(e.target.value)}
                                         className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
-                                        <option  selected disabled>Select Project</option>
+                                        <option selected disabled>Select Project</option>
                                         {projectId && projectId.map((item) => (
                                             <option value={item.id} key={item.id}>{item.name}</option>
                                         ))}
@@ -94,7 +106,10 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                             <option value={item.id} key={item.id}>{item.name}</option>
                                         ))}
                                     </select>
-                                    <select id="measure" className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
+                                    <select
+                                        id="measure"
+                                        onChange={e => setMeassureVal(e.target.value)}
+                                        className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                         <option selected disabled>Kub And Kg</option>
                                         <option value="Куб">Kub</option>
                                         <option value="Кг">Kg</option>
@@ -102,8 +117,9 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                 </form>
                                 <form className="mx-auto flex justify-evenly flex-wrap">
                                     <div className='flex flex-col w-[49%] mt-4'>
-                                        <label htmlFor='priceOfKub'>Price Of Kub</label>
+                                        <label htmlFor='priceOfKub'>Price of Kub or Kg</label>
                                         <input
+                                            onChange={e => setDataVAlue(e.target.value)}
                                             id='priceOfKub'
                                             type="number"
                                             placeholder='Enter price'
@@ -114,6 +130,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                         <input
                                             id='totalKub'
                                             disabled
+                                            value={kubAndKgVAlue}
                                             placeholder='Result price'
                                             className="bg-gray-200 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                     </div>
