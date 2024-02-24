@@ -48,6 +48,9 @@ function ProjectCard({
           {i + 1}
         </th>
         <td class="px-6 py-4">{projects.name}</td>
+        <td class="px-6 py-4">{projects.name}</td>
+        <td class="px-6 py-4">{projects.name}</td>
+        <td class="px-6 py-4">{projects.name}</td>
 
         {/* <td class="px-6 py-4">
                     $2999
@@ -65,17 +68,18 @@ function ProjectCard({
           </a>
         </td>
         <td class="px-6 py-4">
-          <ax
+          <a
             onClick={() => {
               openModal();
               setProductObj(projects.wareHouseId);
             }}
             href="#"
-            class="font-medium text-yellow-300 hover:underline"
+            class="font-medium text-[#c0332e] hover:underline"
           >
-            {t("wiew")}
-          </ax>
+            {t("delete")}
+          </a>
         </td>
+        
         <td class="px-6 py-4">
           <Link
             onClick={() => {
@@ -87,7 +91,21 @@ function ProjectCard({
             {t("more")}
           </Link>
         </td>
+        <td class="px-6 py-4">
+          <a
+            onClick={() => {
+              // openModal();
+              setProductObj(projects.wareHouseId);
+            }}
+            href="#"
+            class="font-medium text-[#c0be2e] hover:underline"
+          >
+            {t("download")}
+          </a>
+        </td>
       </tr>
+
+      <ProjectModal isOpen={isModalOpen} deleteWerhouse={deleteWerhouse} onClose={closeModal} />
     </>
     //    {/* <div className='card-col w-full '>
     //         <div className='h-8/12 card-col-row w-full flex xl:flex-row sm:flew-row flex-col lg:gap-x-20  media-product h-max'>

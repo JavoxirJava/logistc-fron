@@ -122,7 +122,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           res.data.body.totalPage ? res.data.body.totalPage - 1 : 2
         );
         // bundan objectni olib tashlash kk xozirgi xolatda backend page qaaytarmayabdi
-        setProject(res.data.body.object);
+        setProject(res.data.body);
       })
       .catch((err) => {
         console.log();
@@ -374,9 +374,9 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               {/* <Dropdown setSearchBy={setSearchBy} /> */}
             </div>
             <div className="flex justify-between my-5">
-            <button
+              <button
                 onClick={openProjectCan}
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
+                className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8  rounded"
               >
                 {t("addWer")}
               </button>
@@ -384,13 +384,17 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                 <b>{t("werhouse")}</b>
               </h1>
 
-              <span className="me-5 pt-1.5 float-end">
+              {/* <span className="me-5 pt-1.5 float-end">
                 {t("cardCurrent")}: {pagination2}
-              </span>
-
+              </span> */}
+              <button
+                onClick={openProjectCan}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-8  rounded"
+              >
+                {t("download")}
+              </button>
             </div>
             <div className="mt-4 flex flex-wrap justify-between">
-              
               <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
@@ -398,36 +402,51 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                       №
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Name
+                      {t("client2")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Action
+                    {t("totalKub")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      View More
+                    {t("productCount")}
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                    {t("totalWeight")}
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                    {t("edit")}
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                    {t("delete")}
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                    {t("more")}
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                    {t("file")}
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                {projects ? (
-                projects.map((item, i) => (
-                  <ProjectCard
-                    setWerHouseId={setWerHouseId}
-                    getProduct={getWerhouse}
-                    pagination={pagination2}
-                    i={i}
-                    setProduct={setProduct}
-                    loading={loadingPP}
-                    className="mt-5"
-                    deleteWerhouse={deleteWerhouse}
-                    openEdit={openEditProjectCan}
-                    projects={item}
-                    setProductObj={setProductObj}
-                  />
-                ))
-              ) : (
-                <Empty />
-              )}
+                  {projects ? (
+                    projects.map((item, i) => (
+                      <ProjectCard
+                        setWerHouseId={setWerHouseId}
+                        getProduct={getWerhouse}
+                        pagination={pagination2}
+                        i={i}
+                        setProduct={setProduct}
+                        loading={loadingPP}
+                        className="mt-5"
+                        deleteWerhouse={deleteWerhouse}
+                        openEdit={openEditProjectCan}
+                        projects={item}
+                        setProductObj={setProductObj}
+                      />
+                    ))
+                  ) : (
+                    <Empty />
+                  )}
                 </tbody>
               </table>
             </div>
