@@ -401,25 +401,10 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                       Name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Status
+                      Action
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      ETD
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Current Location
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Total Price
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Edits
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      Details
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                      View Mores
+                      View More
                     </th>
                   </tr>
                 </thead>
@@ -430,7 +415,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                     setWerHouseId={setWerHouseId}
                     getProduct={getWerhouse}
                     pagination={pagination2}
-                    key={i}
+                    i={i}
                     setProduct={setProduct}
                     loading={loadingPP}
                     className="mt-5"

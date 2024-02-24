@@ -12,7 +12,12 @@ const translateRu = {
     users: "Пользователи",
     wiew: "Деталь",
     cassier: "Касса",
-
+    photo: "Фото",
+    owner: "Владелец",
+    productName: "Наименование товара",
+    productCount: "Количество продуктов",
+    totalWeight: "Общий вес",
+    totalKub: "Всего куб",
     histori: "История",
     homeText1: "Мы доставим ваши посылки",
     homeText01: "В любое место!",
