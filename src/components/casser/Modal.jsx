@@ -26,6 +26,7 @@ const Modal = ({ getCassier }) => {
                 setShowModal(false);
                 getCassier();
                 toast.success('Successfully saved cassier✅')
+
             })
             .catch(err => {
                 console.log("Caser add qilishda error: ", err);
@@ -93,7 +94,8 @@ const Modal = ({ getCassier }) => {
                                     <input type="text" placeholder='Enter' className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </form>
                                 <div className='flex justify-end'>
-                                    <button className='p-2 m-2 bg-[#16A34A] w-[10rem] rounded-md text-white hover:scale-105 duration-500 '>
+                                    <button
+                                        className='p-2 m-2 bg-[#16A34A] w-[10rem] rounded-md text-white hover:scale-105 duration-500 '>
                                         Save
                                     </button>
                                 </div>
