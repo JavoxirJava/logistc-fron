@@ -1,20 +1,19 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import NavBar from '../navbar/NavBar'
 import axios from 'axios';
-import { config, getFile, url } from '../api';
+import {config, getFile, url} from '../api';
 import ReactPaginate from 'react-paginate';
 import img from '../empty.png';
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 
 
-const ViewMore = ({ lang }) => {
+const ViewMore = ({lang}) => {
     const [projectIdInfo, setProjectIdInfo] = useState(null)
     const [page, setPage] = useState(0)
     const [currentPage, setCurrentPage] = useState(0)
     let projectId = sessionStorage.getItem('projectIdViewMore');
 
-  const { t } = useTranslation();
-
+    const {t} = useTranslation();
 
     useEffect(() => {
         getProjectInfo();
@@ -50,7 +49,7 @@ const ViewMore = ({ lang }) => {
         console.log(!!data);
         if (!!data) {
             axios.get(`${url}product/admin/search?userName=${data}&lang=${lang}`, config)
-                .then(res => res.data.success === false ? setProjectIdInfo([{ comment: 'Not found 😊' }]) : setProjectIdInfo(res.data.body))
+                .then(res => res.data.success === false ? setProjectIdInfo([{comment: 'Not found 😊'}]) : setProjectIdInfo(res.data.body))
                 .catch(() => setProjectIdInfo(null))
         } else {
             getProjectInfo();
@@ -60,7 +59,7 @@ const ViewMore = ({ lang }) => {
 
     return (
         <div className="w-full h-screen background overflow-x-hidden">
-            <NavBar lang={lang} />
+            <NavBar lang={lang}/>
             <div className='mt-32 flex justify-center w-full'>
                 <input
                     type="search"
@@ -73,64 +72,64 @@ const ViewMore = ({ lang }) => {
                 <div className="lg:px-0 md:px-10 lg:py-0 sm:py-5 px-3 mt-8 w-screen lg:w-[90%] overflow-x-auto">
                     <table className="w-full rounded-2xl overflow-hidden text-gray-500">
                         <thead className="text-[1.1rem] text-slate-50 uppercase bg-slate-500">
-                            <tr>
-                                <th className="px-6 py-3">№</th>
-                                <th className="px-6 py-3">{t("photo")}</th>
-                                <th className="px-6 py-3">{t("owner")}</th>
-                                <th className="px-6 py-3">{t("productName")}</th>
-                                <th className="px-6 py-3">{t("productAdd34")}</th>
-                                <th className="px-6 py-3">{t("date")}</th>
-                                <th className="px-6 py-3">{t("productCount")}</th>
-                                <th className="px-6 py-3">{t("totalWeight")}</th>
-                                <th className="px-6 py-3">{t("totalKub")}</th>
-                            </tr>
+                        <tr>
+                            <th className="px-6 py-3">№</th>
+                            <th className="px-6 py-3">{t("photo")}</th>
+                            <th className="px-6 py-3">{t("owner")}</th>
+                            <th className="px-6 py-3">{t("productName")}</th>
+                            <th className="px-6 py-3">{t("productAdd34")}</th>
+                            <th className="px-6 py-3">{t("date")}</th>
+                            <th className="px-6 py-3">{t("productCount")}</th>
+                            <th className="px-6 py-3">{t("totalWeight")}</th>
+                            <th className="px-6 py-3">{t("totalKub")}</th>
+                        </tr>
                         </thead>
                         <tbody className='text-[1rem] text-gray-700 bg-white text-center'>
-                            {projectIdInfo ?
-                                projectIdInfo.map((item, i) => (
-                                    <tr className='border-b transition duration-300 ease-in-out hover:bg-gray-300'>
-                                        <th className='px-6 py-5'>{(currentPage * 10) + (i + 1)}</th>
-                                        <th className='px-6 py-5 flex justify-center items-center'>
-                                            <img
-                                                src={item.attachmentId ? getFile + item.attachmentId : img}
-                                                className='w-10 h-10 object-cover rounded-full scale-150'
-                                                alt="img"
-                                            />
-                                        </th>
-                                        <td className='px-6 py-5'>{item.owner}</td>
-                                        <td className='px-6 py-5'>{item.productName}</td>
-                                        <td className='px-6 py-5'>{item.comment}</td>
-                                        <td className='px-6 py-5'>{item.date}</td>
-                                        <td className='px-6 py-5'>{item.productCount}</td>
-                                        <td className='px-6 py-5'>{item.totalWeight}</td>
-                                        <td className='px-6 py-5'>{item.totalKub}</td>
-                                    </tr>
-                                )) : (
-                                    <tr>
-                                        <td colSpan='9' className='px-4'>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                        </td>
-                                    </tr>
-                                )}
+                        {projectIdInfo ?
+                            projectIdInfo.map((item, i) => (
+                                <tr className='border-b transition duration-300 ease-in-out hover:bg-gray-300'>
+                                    <th className='px-6 py-5'>{(currentPage * 10) + (i + 1)}</th>
+                                    <th className='px-6 py-5 flex justify-center items-center'>
+                                        <img
+                                            src={item.attachmentId ? getFile + item.attachmentId : img}
+                                            className='w-10 h-10 object-cover rounded-full scale-150'
+                                            alt="img"
+                                        />
+                                    </th>
+                                    <td className='px-6 py-5'>{item.owner}</td>
+                                    <td className='px-6 py-5'>{item.productName}</td>
+                                    <td className='px-6 py-5'>{item.comment}</td>
+                                    <td className='px-6 py-5'>{item.date}</td>
+                                    <td className='px-6 py-5'>{item.productCount}</td>
+                                    <td className='px-6 py-5'>{item.totalWeight}</td>
+                                    <td className='px-6 py-5'>{item.totalKub}</td>
+                                </tr>
+                            )) : (
+                                <tr>
+                                    <td colSpan='9' className='px-4'>
+                                        <div className={styles.loading}></div>
+                                        <div className={styles.loading}></div>
+                                        <div className={styles.loading}></div>
+                                        <div className={styles.loading}></div>
+                                        <div className={styles.loading}></div>
+                                        <div className={styles.loading}></div>
+                                        <div className={styles.loading}></div>
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                     <div className='mt-7 ms-1 mb-20 lg:mb-10'>
                         <ReactPaginate className="navigation"
-                            breakLabel="..."
-                            nextLabel=">"
-                            onPageChange={handelPageClick}
-                            pageRangeDisplayed={5}
-                            pageCount={page}
-                            previousLabel="<"
-                            renderOnZeroPageCount={null}
-                            nextClassName='nextBtn'
-                            previousClassName='prevBtn'
+                                       breakLabel="..."
+                                       nextLabel=">"
+                                       onPageChange={handelPageClick}
+                                       pageRangeDisplayed={5}
+                                       pageCount={page}
+                                       previousLabel="<"
+                                       renderOnZeroPageCount={null}
+                                       nextClassName='nextBtn'
+                                       previousClassName='prevBtn'
                         />
                     </div>
                 </div>
