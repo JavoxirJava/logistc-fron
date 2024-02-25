@@ -52,7 +52,7 @@ function ProjectCard({
         <td className="px-6 py-4">{projects.name}</td>
         <td className="px-6 py-4">{projects.status}</td>
         <td className="px-6 py-4">{projects.transport}</td>
-        <td className="px-6 py-4">{projects.date}</td>
+        <td className="px-6 py-4">{projects.date.slice(0, projects.date.indexOf(" "))}</td>
         {/* <td className="px-6 py-4">
                     $2999
                 </td> */}

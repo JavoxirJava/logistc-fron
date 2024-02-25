@@ -16,6 +16,8 @@ const translateEn = {
     owner: "Owner",
     start: "Start date",
     end: "End date",
+    kg: "Kg",
+    kub: "Kub",
     selectWer: "Select warehouse",
     productName: "Product Name",
     productCount: "Product Count",

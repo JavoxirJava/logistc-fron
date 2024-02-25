@@ -26,9 +26,9 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
         </div>
         <div className="sm:px-20 px-3 sm:py-6 py-3 flex justify-between items-center flex-wrap">
           <div className="mt-2 w-1/3 text-center">
-            <p className="pb-0 mb-0 opacity-50">{t("weiw1")}</p>
+            <p className="pb-0 mb-0 opacity-50">{t("comment")}</p>
             <p className="mt-0 pt-0 font-semibold">
-              {historyList && historyList.productIdNumber}
+              {historyList && historyList.comment}
             </p>
           </div>
           <div className="mt-2 w-1/3 text-center">
@@ -44,28 +44,28 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
             </p>
           </div>
           <div className="mt-2 w-1/3 text-center">
-            <p className="pb-0 mb-0 opacity-50">{t("weiw4")}</p>
+            <p className="pb-0 mb-0 opacity-50">{t("kg")}</p>
             <p className="mt-0 pt-0 font-semibold">
               {historyList &&
-                historyList.measureCount + " " + historyList.measure}
+                historyList.kg}
             </p>
           </div>
           <div className="mt-2 w-1/3 text-center">
-            <p className="pb-0 mb-0 opacity-50">{t("weiw5")}</p>
+            <p className="pb-0 mb-0 opacity-50">{t("kub")}</p>
             <p className="mt-0 pt-0 font-semibold">
-              {historyList && historyList.measureCount}
+              {historyList && historyList.kub}
             </p>
           </div>
           <div className="mt-2 w-1/3 text-center">
-            <p className="pb-0 mb-0 opacity-50">{t("weiw6")}</p>
+            <p className="pb-0 mb-0 opacity-50">{t("productCount")}</p>
             <p className="mt-0 pt-0 font-semibold">
-              {historyList && historyList.transport}
+              {historyList && historyList.productCount}
             </p>
           </div>
           <div className="mt-2 w-full text-center">
-            <p className="pb-0 mb-0 opacity-50">{t("weiw7")}</p>
+            <p className="pb-0 mb-0 opacity-50">{t("totalKub")}</p>
             <p className="mt-0 pt-0 font-semibold">
-              {historyList && historyList.address}
+              {historyList && historyList.totalKub}
             </p>
           </div>
         </div>

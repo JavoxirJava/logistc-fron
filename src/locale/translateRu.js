@@ -105,6 +105,8 @@ const translateRu = {
     addClients: "Добавить пользователь",
     delete: "Удалить",
     file: "Файл",
+    kg: "Кг",
+    kub: "Куб",
     download: "Скачать",
     delete2: "Вы уверены, что?",
     logout: "Выйти",

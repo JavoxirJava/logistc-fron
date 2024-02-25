@@ -61,7 +61,7 @@ function OffcanvasProduct({
             name={name}
             onClose={handleToggleOffcanvas}
         >
-            <div>
+            <div onChange={setData}>
                 <label
                     htmlFor={`userId${isAdd}`}
                     className="block text-gray-700 text-sm font-bold"
@@ -268,63 +268,7 @@ function OffcanvasProduct({
         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
                     type="file"/>
-                {/* <label
-          htmlFor={`measureCount${isAdd}`}
-          className="block text-gray-700 text-sm font-bold my-2"
-        >
-          {t("productAdd4")}
-        </label>
-        <input
-          type="number"
-          id={`measureCount${isAdd}`}
-          placeholder={t("productAdd4")}
-          defaultValue={product ? product.measureCount : ""}
-          className="py-2 mb-5 px-4 w-full bg-white rounded-lg border border-slate-300
-          focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-          focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-        />
-        <label
-          htmlFor={`measure${isAdd}`}
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          {t("productAdd6")}
-        </label>
-        <select
-          id={`measure${isAdd}`}
-          className="block py-2 px-4 w-full bg-white rounded-lg border border-slate-300
-          focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-          focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-        >
-          <option selected disabled>
-            {t("productAdd60")}
-          </option>
-          <option value="KG" selected={product && product.measure === "KG"}>
-            {t("productAdd06")}
-          </option>
-          <option
-            value="PIECE"
-            selected={product && product.measure === "PIECE"}
-          >
-            {t("productAdd060")}
-          </option>
-          <option value="KUB" selected={product && product.measure === "KUB"}>
-            {t("productAdd006")}
-          </option>
-        </select> */}
-                {/* <label
-          htmlFor={`wareHouseId${isAdd}`}
-          className="block text-gray-700 text-sm font-bold mb-2">
-          {t("werhouse")}
-        </label>
-        <select
-          id={`wareHouseId${isAdd}`}
-          className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4">
-          <option selected disabled>{t("productAdd60")}</option>
-          <option value="KG" selected={product && product.measure === "KG"}>{t("productAdd06")}</option>
-          <option value="PIECE" selected={product && product.measure === "PIECE"}>{t("productAdd060")}</option>
-          <option value="KUB" selected={product && product.measure === "KUB"}>{t("productAdd006")}</option>
-        </select> */}
-
+              
                 <div className="mt-10 flex justify-between">
                     <button
                         onClick={handleToggleOffcanvas}

@@ -197,7 +197,7 @@ const ViewMoreW = ({lang}) => {
                     <div className="flex">
                         <button
                             onClick={openPro}
-                            className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8  rounded"
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-8  rounded"
                         >
                             {t("addproject")}
                         </button>
