@@ -19,14 +19,6 @@ function OffcanvasProduct({
         getUsers(setUsers, lang);
     }, []);
 
-    // function sendPhoto() {
-    //     const data = new FormData();
-    //     data.append('file', byIdObj(`productFile${isAdd}`).files[0]);
-    //     axios.post(`${url}attachment/image`, data, config)
-    //         .then(res => setImgId(res.data.body.id))
-    //         .catch(err => console.log(err));
-    // }
-
     async function setData() {
         const data = new FormData();
         data.append('file', byIdObj(`productFile${isAdd}`).files[0]);
