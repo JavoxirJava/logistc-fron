@@ -15,6 +15,7 @@ import ProjectCard from "./ProjectCard";
 import OffcanvasProject from "./OffcanvasProject";
 import Dropdown2 from "../Dropdown2";
 import Empty from "../Empty";
+import DownloadModal from "./downloadModal";
 
 function Product({ lang, projectId, setProjectId }) {
   // const [coordinates, setCoordinates] = useState([55.75, 37.57]);
@@ -35,6 +36,10 @@ function Product({ lang, projectId, setProjectId }) {
   const [userId, setUserId] = useState(null);
   const [drops, setDrops] = useState(false);
   const [dropsP, setDropsP] = useState(false);
+  const [isModalDown, setIsModalDown] = useState(false);
+
+  const closeDown = () => setIsModalDown(false);
+  const openDown = () => setIsModalDown(true);
 
   const inputDrop = () => setDrops(false);
   const selectDrop = () => setDrops(true);
@@ -346,9 +351,12 @@ function Product({ lang, projectId, setProjectId }) {
             <div className="flex flex-col sm:flex-row justify-between my-5">
               <button
                 onClick={openProjectCan}
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border md:w-2/12 rounded"
+                className="bg-green-600 duration-200 hover:bg-green-700 text-white font-bold py-1.5 px-8 border md:w-2/12 rounded"
               >
                 {t("add")}
+              </button>
+              <button onClick={openDown} disabled={!projects} className="ms-3 duration-200 bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border md:w-2/12 rounded">
+                {t('download')}
               </button>
               <div className="flex w-full justify-around sm:justify-between items-center">
                 <span className="hidden sm:block"></span>
@@ -386,9 +394,9 @@ function Product({ lang, projectId, setProjectId }) {
                     <th colSpan={3} scope="col" class="px-6 py-3 text-center">
                       {t("action")}
                     </th>
-                    <th scope="col" class="px-6 py-3 text-center">
+                    {/* <th scope="col" class="px-6 py-3 text-center">
                       {t("download")}
-                    </th>
+                    </th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -422,6 +430,8 @@ function Product({ lang, projectId, setProjectId }) {
               />
             </div>
           </div>
+
+          <DownloadModal isOpen={isModalDown} projects={projects} closeDown={closeDown} />
 
           {/* product uchun */}
 

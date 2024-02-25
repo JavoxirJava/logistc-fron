@@ -18,10 +18,6 @@ function ProjectCard({
 }) {
   const [historyList, setHistoryList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalDown, setIsModalDown] = useState(false);
-
-  const closeDown = () => setIsModalDown(false);
-  const openDown = () => setIsModalDown(true);
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
@@ -44,72 +40,69 @@ function ProjectCard({
   return (
     <>
       <tr
-        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
         key={i}
       >
         <th
           scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
           {i + 1}
         </th>
-        <td class="px-6 py-4">{projects.name}</td>
-        <td class="px-6 py-4">{projects.status}</td>
-        <td class="px-6 py-4">{projects.transport}</td>
-        <td class="px-6 py-4">{projects.date}</td>
-        {/* <td class="px-6 py-4">
+        <td className="px-6 py-4">{projects.name}</td>
+        <td className="px-6 py-4">{projects.status}</td>
+        <td className="px-6 py-4">{projects.transport}</td>
+        <td className="px-6 py-4">{projects.date}</td>
+        {/* <td className="px-6 py-4">
                     $2999
                 </td> */}
-        <td class="px-6 py-4">
+        <td className="px-6 py-4">
           <a
             onClick={() => {
               openEdit();
               setProjectId(projects);
             }}
             href="#"
-            class="font-medium text-[#16A34A] hover:underline"
+            className="font-medium text-[#16A34A] hover:underline"
           >
             {t("edit")}
           </a>
         </td>
-        <td class="px-6 py-4">
+        <td className="px-6 py-4">
           <a
             onClick={() => {
               setHistoryList(projects);
               openModal();
             }}
             href="#"
-            class="font-medium text-yellow-300 hover:underline"
+            className="font-medium text-yellow-300 hover:underline"
           >
             {t("wiew")}
           </a>
         </td>
-        <td class="px-6 py-4">
+        <td className="px-6 py-4">
           <Link
             onClick={() => {
               sessionStorage.setItem("projectIdViewMore", projects.id);
             }}
             to="/view more"
-            class="font-medium text-blue-600 hover:underline"
+            className="font-medium text-blue-600 hover:underline"
           >
             {t("more")}
           </Link>
         </td>
-        <td class="px-6 py-4">
+        {/* <td className="px-6 py-4">
           <Link
             onClick={() => {
               openDown();
             }}
-            class="font-medium text-blue-600 hover:underline"
+            className="font-medium text-blue-600 hover:underline"
           >
             {t("Download")}
           </Link>
-        </td>
+        </td> */}
       </tr>
-
-      <DownloadModal isOpen={isModalDown} closeDown={closeDown} />
-
-
+      
       {/* <div
                 onClick={async () => {
                     setProduct(null)

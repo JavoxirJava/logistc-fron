@@ -24,9 +24,9 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                 a.href = url;
                 // .${fileExtension} bu kammaentdagilar kerka bulib qolsa quyiladi
                 // const fileExtension = prompt("Fayl kengaytmasini kiriting (pdf, doc, docx, xlsx, ...)");
-                const filename = prompt("Name the file you want to download");
-                const fullFilename = `${filename}`;
-                a.download = fullFilename;
+                // const filename = prompt("Name the file you want to download");
+                // const fullFilename = `${filename}`;
+                a.download = 'logistic.xlsx';
                 document.body.appendChild(a);
                 a.click()
                 closeDown()
