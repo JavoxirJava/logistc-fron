@@ -24,9 +24,9 @@ const Cassir = ({ changeLanguage, lang }) => {
     // get caser
     const getCassier = () => {
         axios.get(`${url}cashier/all?lang=${lang}`, config)
-            .then(() => {
-                // console.log(res.data);
-                // setCasseir(res.data);
+            .then((res) => {
+                console.log(res.data.body);
+                setCasseir(res.data.body);
                 // setPage(res.data.body.totalPage)
             })
     }
@@ -88,6 +88,8 @@ const Cassir = ({ changeLanguage, lang }) => {
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                                 <tr>
                                     <th className="px-6 py-3">#</th>
+                                    <th className="px-6 py-3">User Name</th>
+                                    <th className="px-6 py-3">Project name</th>
                                     <th className="px-6 py-3">Product name</th>
                                     <th className="px-6 py-3">Color</th>
                                     <th className="px-6 py-3">Category</th>
@@ -100,8 +102,9 @@ const Cassir = ({ changeLanguage, lang }) => {
                                     cassier.map((item, i) =>
                                         <tr key={i} className="bg-white ">
                                             <td className="px-6 py-3">{(currentPage * 10) + (i + 1)}</td>
-                                            <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">{item.name}</td>
-                                            <td className="px-6 py-4">{item.status}</td>
+                                            <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">{item.userName}</td>
+                                            <td className="px-6 py-4">{item.projectName}</td>
+                                            <td className="px-6 py-4">{item.productName}</td>
                                             <td className="px-6 py-4">{item.tranport}</td>
                                             <td className="px-6 py-4">{item.totalKub}</td>
                                             <td className="px-6 py-4">{item.totalWeight}</td>

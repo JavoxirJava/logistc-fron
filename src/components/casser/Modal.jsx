@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Modal.css'
-import { byIdObj } from '../api';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { config, url } from '../api';
 
 const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }) => {
     const [showModal, setShowModal] = useState(false);
@@ -18,6 +20,9 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
     const [costChina, setCostChina] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
     const [meassureVal, setMeassureVal] = useState(null)
+    const [projectFilterName, setProjectFilterName] = useState('None')
+    const [userFilterName, setUserFilterName] = useState('None')
+    const [productFilterName, setProductFilterName] = useState('None')
 
     useEffect(() => {
         let data = Number(kubAndKgVAlue) + Number(priceForRoad) + Number(customsClearancePrice) + Number(cct) + Number(costChina)
@@ -38,18 +43,17 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
             costChina: costChina,
             totalPrice: totalPrice
         }
-        console.log(addData);
-        // axios.post(`${url}cashier/one`, addData, config)
-        //     .then(() => {
-        //         setShowModal(false);
-        //         getCassier();
-        //         toast.success('Successfully saved data✅')
-
-        //     })
-        //     .catch(err => {
-        //         console.log("Error adding information: ", err);
-        //         console.log(addData);
-        //     })
+        axios.post(`${url}cashier/one`, addData, config)
+            .then(() => {
+                setNextModal(false);
+                getCassier();
+                toast.success('Successfully saved data✅')
+                console.log(addData);
+            })
+            .catch(err => {
+                console.log("Error adding information: ", err);
+                console.log(addData);
+            })
     }
 
     const idFunc = (item) => {
@@ -57,13 +61,18 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
         setProductKg(productId.find(i => i.id === item))
     }
 
+    const projectNameFunc = pjN => setProjectFilterName(projectId && projectId.find(n => n.id === pjN))
+    const productNameFunc = pdN => setProductFilterName(productId && productId.find(n => n.id === pdN))
+    const userNameFunc = uN => setUserFilterName(userId && userId.find(n => n.id == uN))
+
+
     useEffect(() => {
         selectKubAndKg()
     }, [dataVAlue])
 
     const selectKubAndKg = () => {
-        if (meassureVal == 'Куб') setKubANdKgVAlue(Number(productKub.totalKub) * dataVAlue)
-        if (meassureVal == 'Кг') setKubANdKgVAlue(Number(productKg.totalWeight) * dataVAlue)
+        if (meassureVal == 'КУБ') setKubANdKgVAlue(Number(productKub.totalKub) * dataVAlue)
+        if (meassureVal == 'КГ') setKubANdKgVAlue(Number(productKg.totalWeight) * dataVAlue)
     }
 
     return (
@@ -93,6 +102,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                     onChange={e => {
                                         getUser(e.target.value)
                                         setProjectIdVal(e.target.value)
+                                        projectNameFunc(e.target.value)
                                     }}
                                     className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                     <option selected disabled>Select Project</option>
@@ -105,6 +115,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                     onChange={e => {
                                         getProduct(e.target.value)
                                         setUserIdVal(e.target.value)
+                                        userNameFunc(e.target.value)
                                     }}
                                     disabled={!userId}
                                     className="  p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
@@ -119,6 +130,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                     onChange={e => {
                                         idFunc(e.target.value)
                                         setProductIdVal(e.target.value)
+                                        productNameFunc(e.target.value)
                                     }}
                                     className="p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                     <option selected disabled>Select Product</option>
@@ -131,8 +143,8 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                     onChange={e => setMeassureVal(e.target.value)}
                                     className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                     <option selected disabled>Kub And Kg</option>
-                                    <option value="Куб">Kub</option>
-                                    <option value="Кг">Kg</option>
+                                    <option value="КУБ">Kub</option>
+                                    <option value="КГ">Kg</option>
                                 </select>
                             </form>
                             <form className="mx-auto flex justify-evenly flex-wrap">
@@ -233,27 +245,27 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                             </div>
                             {/* next modal body */}
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Project:</p>
-                                <p className='font-bold'>{ }</p>
+                                <p>Project Name:</p>
+                                <p className='font-bold'>{projectFilterName && projectFilterName.name}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>User:</p>
-                                <p className='font-bold'>{ }</p>
+                                <p>User Name:</p>
+                                <p className='font-bold'>{userFilterName && userFilterName.user}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Product:</p>
-                                <p className='font-bold'>{ }</p>
+                                <p>Product Name:</p>
+                                <p className='font-bold'>{productFilterName && productFilterName.name}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Kub and Kg:</p>
+                                <p>Measure:</p>
                                 <p className='font-bold'>{meassureVal && meassureVal}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Price of Kub or Kg:</p>
+                                <p>Price of {meassureVal}:</p>
                                 <p className='font-bold'>{dataVAlue && dataVAlue} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Result price of Kub or Kg:</p>
+                                <p>Result price of {meassureVal}:</p>
                                 <p className='font-bold'>{kubAndKgVAlue && kubAndKgVAlue} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
