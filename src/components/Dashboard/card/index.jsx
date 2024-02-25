@@ -168,6 +168,12 @@ const DashboardProductCard = ({ className, lang }) => {
                     {item ? item.status : "no status"}
                   </p>
                 </div>
+                <div className="sm:w-[20%]">
+                  <p className="opacity-70">{t("date")}</p>
+                  <p className="font-bold">
+                    {item ? item.date : "no date"}
+                  </p>
+                </div>
                 {/* <div className='sm:w-[30%] lg:ms-3'>
                         <p className='opacity-70'>{t("card3")}</p>
                         <p className='font-bold'>{item ? item.date.substring(0, 10) : "April 23, 2023"}</p>
