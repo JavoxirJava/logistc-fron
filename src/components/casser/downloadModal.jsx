@@ -47,13 +47,14 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                             htmlFor={`start`}
                             className="block text-gray-700 text-sm font-bold my-2"
                         >
-                            {t("start")}
+                            {t("start")} <span className="text-red-400"><sup>*required</sup></span>
                         </label>
                         <input
                             id={`start`}
-                            placeholder={t("start")}
+                            placeholder="Start date"
                             type="date"
                             className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            required
                         />
                     </div>
                     <div>
@@ -61,12 +62,13 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                             htmlFor={`end`}
                             className="block text-gray-700 text-sm font-bold my-2"
                         >
-                            {t("end")}
+                            {t("end")} <span className="text-red-400"><sup>*required</sup></span>
                         </label>
                         <input
                             id={`end`}
                             placeholder={t("end")}
                             type="date"
+                            required
                             className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>

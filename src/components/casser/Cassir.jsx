@@ -33,7 +33,6 @@ const Cassir = ({ changeLanguage, lang }) => {
     const getCassier = () => {
         axios.get(`${url}cashier/all?lang=${lang}`, config)
             .then((res) => {
-                console.log(res.data.success);
                 setCasseir(res.data.body.object);
                 setPage(res.data.body.totalPage)
             }).catch((err) => console.log('error', err))
