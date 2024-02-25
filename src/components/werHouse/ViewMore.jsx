@@ -112,7 +112,8 @@ const ViewMoreW = ({lang}) => {
     }
 
     function addtoProduct() {
-        let data = {...product2};
+        let data = [...productIds];
+
         let datas = {
             productIds: data,
             projectId: document.getElementById("projects").value,
@@ -357,19 +358,21 @@ const ViewMoreW = ({lang}) => {
                 <div className="relative top-20 mx-auto p-5 border md:w-96 w-[200px] shadow-lg rounded-md bg-white">
                     <div>
                         <div>
+                          <label htmlFor="projects">{t("select")}</label>
                             <select
                                 id={`projects`}
-                                className="block w-4/12 p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
+                                className="block w-full  p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
                             >
                                 <option selected disabled>
-                                    {t("status")}
+                                    {t("select")}
                                 </option>
+                                
                                 {project &&
-                                    project.map((item, i) => {
-                                        <option value={item.id}>
+                                    project.map((item, i) => 
+                                        <option key={i} value={item.id}>
                                             {item.name}
-                                        </option>;
-                                    })}
+                                        </option>
+                                    )}
                             </select>
                         </div>
                         <div className="flex justify-between mt-7">

@@ -44,7 +44,7 @@ function OffcanvasProduct({
                     count: byId(`numberOfSeats${isAdd}`),
                     totalWeight: totalKgSum,
                     totalKub: totalKubSum,
-                    attachmentId: res.data.body
+                    attachmentId: (res.data.body ? res.data.body : 0)
                 })
             }).catch(err => console.log(err));
         setUserId(byId(`userId${isAdd}`));
@@ -62,7 +62,7 @@ function OffcanvasProduct({
             dataWeight = document.getElementById(`productWeight${isAdd}`).value
         setTotalKgSum(dataNumber * dataWeight)
         setTotalKubSum(dataNumber * kubSum)
-    }
+    }       
 
     return (
         <Offcanvas

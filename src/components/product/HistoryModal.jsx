@@ -4,7 +4,8 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
   const { t } = useTranslation();
 
   if (!isOpen) return null;
-  const allAddressList = historyList.allAddress;
+  
+  const allAddressList = historyList.status;
   return (
     <div
       className="fixed top-0 left-0 w-full   h-screen flex items-center justify-center bg-gray-800 
@@ -74,7 +75,8 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
               allAddressList.map((item) => (
                 <div className="flex flex-col">
                   <div className="pb-6 pl-0">
-                    {item.slice(0, item.indexOf(","))}
+                    {item}
+                    {/* {item.slice(0, item.indexOf(","))} */}
                   </div>
                   <div className="h-[4px] w-[100px] flex relative justify-center items-center bg-slate-900">
                     <div className="w-[30px] h-[30px] rounded-full absolute left-0 bg-blue-700"></div>
