@@ -36,10 +36,10 @@ function OffcanvasProduct({
       y: byId(`idNumberY${isAdd}`),
       z: byId(`idNumberZ${isAdd}`),
       kg: byId(`productWeight${isAdd}`),
-      kub: byId(`productKub${isAdd}`),
+      kub: kubSum,
       count: byId(`numberOfSeats${isAdd}`),
-      totalWeight: byId(`productKgDisabled${isAdd}`),
-      totalKub: byId(`productKubDisabled${isAdd}`),
+      totalWeight: totalKgSum,
+      totalKub: totalKubSum,
       attachmentId: 0,
     });
     setUserId(byId(`userId${isAdd}`));
