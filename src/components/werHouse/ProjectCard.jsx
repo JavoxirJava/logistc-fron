@@ -20,6 +20,11 @@ function ProjectCard({
 }) {
   const [historyList, setHistoryList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalDown, setIsModalDown] = useState(false);
+  const [wereHouseId, setWerHouseIdIn] = useState(null)
+
+  const closeDown = () => setIsModalDown(false);
+  const openDown = () => setIsModalDown(true);
 
   const closeModal = () => setIsModalOpen(false);
   const openModal = () => setIsModalOpen(true);
@@ -79,7 +84,7 @@ function ProjectCard({
             {t("delete")}
           </a>
         </td>
-        
+
         <td class="px-6 py-4">
           <Link
             onClick={() => {
@@ -91,9 +96,21 @@ function ProjectCard({
             {t("more")}
           </Link>
         </td>
-        
+        <td class="px-6 py-4">
+          <Link
+            onClick={() => {
+              openDown();
+              setWerHouseIdIn(projects.wareHouseId)
+            }}
+            class="font-medium text-blue-600 hover:underline"
+          >
+            {t("Download")}
+          </Link>
+        </td>
+
       </tr>
 
+      <DownloadModal wereHouseId={wereHouseId} isOpen={isModalDown} closeDown={closeDown} />
       <ProjectModal isOpen={isModalOpen} deleteWerhouse={deleteWerhouse} onClose={closeModal} />
     </>
     //    {/* <div className='card-col w-full '>
