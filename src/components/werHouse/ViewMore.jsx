@@ -99,8 +99,7 @@ const ViewMoreW = ({lang}) => {
 
     function addProduct() {
         let data = {...product2};
-        axios
-            .post(`${url}product?userId=${userId}`, data, config)
+        axios.post(`${url}product?userId=${userId}`, data, config)
             .then(() => {
                 toast.success(t("success"));
                 getProjectInfo();
