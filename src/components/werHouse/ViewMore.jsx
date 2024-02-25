@@ -224,9 +224,7 @@ const ViewMoreW = ({lang}) => {
                                             }}
                                             href="#"
                                             className="font-medium text-[#16A34A] hover:underline"
-                                        >
-                                            {t("edit")}
-                                        </a>
+                                        >{t("edit")}</a>
                                     </td>
                                     <td className="px-6 py-4">
                                         <a
@@ -236,12 +234,10 @@ const ViewMoreW = ({lang}) => {
                                             }}
                                             href="#"
                                             className="font-medium text-[#c0332e] hover:underline"
-                                        >
-                                            {t("delete")}
-                                        </a>
+                                        >{t("delete")}</a>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <input type="checkbox" className="w-5 h-5"/>
+                                        <input onChange={(e) => addProductIds(e.target.checked, item.productId)} type="checkbox" className="w-5 h-5"/>
                                     </td>
                                 </tr>
                             ))
