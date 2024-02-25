@@ -32,8 +32,8 @@ const Cassir = ({ changeLanguage, lang }) => {
     // get caser
     const getCassier = () => {
         axios.get(`${url}cashier/all?lang=${lang}`, config).then((res) => {
-            setCasseir(res.data.body);
-            // setPage(res.data.body.totalPage)
+            setCasseir(res.data.body.object);
+            setPage(res.data.body.totalPage)
         });
     };
 
