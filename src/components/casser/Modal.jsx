@@ -43,11 +43,11 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
         //     .then(() => {
         //         setShowModal(false);
         //         getCassier();
-        //         toast.success('Successfully saved cassier✅')
+        //         toast.success('Successfully saved data✅')
 
         //     })
         //     .catch(err => {
-        //         console.log("Caser add qilishda error: ", err);
+        //         console.log("Error adding information: ", err);
         //         console.log(addData);
         //     })
     }
@@ -73,19 +73,15 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                     setShowModal(true)
                 }}
                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
-            >Add
-            </button>
+            >Add</button>
             {showModal && (
                 <div
-                    className="zoom-modal justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-                >
+                    className="zoom-modal justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                     <div className="relative md:w-[100%] w-[80vw] my-6 mx-auto max-w-3xl">
-                        {/*content*/}
                         <div
                             className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-6">
-                            {/*header*/}
                             <div className="flex items-center justify-between border-b pb-2 rounded-t">
-                                <h3 className="text-2xl font-semibold">Add</h3>
+                                <h3 className="text-2xl font-semibold">Add data</h3>
                                 <button
                                     className='p-1 ml-auto border-0 text-4xl hover:scale-110 duration-200'
                                     onClick={() => setShowModal(false)}>×
@@ -230,7 +226,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                     <div className="relative md:w-[100%] w-[80vw] my-6 mx-auto max-w-3xl">
                         <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-6">
                             <div className="flex items-center justify-between border-b pb-2 rounded-t">
-                                <h3 className="text-2xl font-semibold">Add</h3>
+                                <h3 className="text-2xl font-semibold">Confirm the information entered?</h3>
                                 <button
                                     className='p-1 ml-auto border-0 text-4xl hover:scale-110 duration-200'
                                     onClick={() => setNextModal(false)}>×</button>
@@ -250,7 +246,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
                                 <p>Kub and Kg:</p>
-                                <p className='font-bold'>{ }</p>
+                                <p className='font-bold'>{meassureVal && meassureVal}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
                                 <p>Price of Kub or Kg:</p>
