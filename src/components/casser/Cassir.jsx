@@ -32,8 +32,8 @@ const Cassir = ({ changeLanguage, lang }) => {
     // get caser
     const getCassier = () => {
         axios.get(`${url}cashier/all?lang=${lang}`, config).then((res) => {
-            setCasseir(res.data.body);
-            // setPage(res.data.body.totalPage)
+            setCasseir(res.data.body.object);
+            setPage(res.data.body.totalPage)
         });
     };
 
@@ -162,7 +162,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="mt-7 ms-1 mb-20 lg:mb-10">
+                    <div className="mt-5 mb-20 lg:mb-10">
                         <ReactPaginate
                             className="navigation"
                             breakLabel="..."

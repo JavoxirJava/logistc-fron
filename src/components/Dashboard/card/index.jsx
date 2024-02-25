@@ -68,7 +68,7 @@ const DashboardProductCard = ({ className, lang }) => {
 
   function getProduct(page, size) {
     axios
-      .get(`${url}project?page=${page}&size=${size}&lang=${lang}`, config)
+      .get(`${url}project/page?page=${page}&size=${size}&lang=${lang}`, config)
       .then((res) => {
         setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
         setProduct(res.data.body.object);
@@ -83,7 +83,7 @@ const DashboardProductCard = ({ className, lang }) => {
     else
       axios
         .get(
-          `${url}project/admin/search?${searchByName()}=${text}&lang=${lang}`,
+          `${url}project/admin/search?name=${text}&lang=${lang}`,
           config
         )
         .then((res) => {
@@ -147,13 +147,7 @@ const DashboardProductCard = ({ className, lang }) => {
               className="lg:w-10/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
             />
           )}
-         <Dropdown
-         pagination={pagination}
-         getProduct={getProduct}
-            selectDrop={selectDrop}
-            inputDrop={inputDrop}
-            setSearchBy={setSearchBy}
-          />
+
         </div>
       </div>
       <p className="mb-3">{t("cardCurrent")}: 1</p>
@@ -178,12 +172,7 @@ const DashboardProductCard = ({ className, lang }) => {
                         <p className='opacity-70'>{t("card3")}</p>
                         <p className='font-bold'>{item ? item.date.substring(0, 10) : "April 23, 2023"}</p>
                     </div> */}
-                <div className="sm:w-[64%]">
-                  <p className="opacity-70">{t("card5")}</p>
-                  <p className="font-bold">
-                    {item ? item.address.slice(0, item.address.indexOf(",")) : "No location"}
-                  </p>
-                </div>
+                
               </div>
             {/* </div> */}
             {/*<div className='card-col w-3/12 flex justify-center my-auto h-10 pr-2'>*/}

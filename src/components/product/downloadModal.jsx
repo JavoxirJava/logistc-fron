@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-const DownloadModal = ({ isOpen, deleteWerhouse, projects, onClose }) => {
+const DownloadModal = ({ isOpen, deleteWerhouse, projects, closeDown }) => {
   const { t } = useTranslation();
 
   if (!isOpen) return null;
@@ -57,16 +57,16 @@ const DownloadModal = ({ isOpen, deleteWerhouse, projects, onClose }) => {
           })}
         </select>
           <div className="flex justify-between mt-7">
-            <button type="button" onClick={onClose} className="btm-close">
+            <button type="button" onClick={closeDown} className="btm-close">
               {t("close")}
             </button>
             <button
               onClick={() => {
-                onClose();
+                closeDown();
               }}
               className="btmn "
             >
-              {t("delete")}
+              {t("download")}
             </button>
           </div>
         </div>

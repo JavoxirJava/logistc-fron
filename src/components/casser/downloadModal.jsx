@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { config, url } from "../api";
+import { useState } from "react";
+import LoadingBtn from "../loading/Loading";
 
 const DownloadModal = ({ isOpen, closeDown }) => {
     const { t } = useTranslation();
+    const [isLoading, setIsLoading] = useState(false)
 
     if (!isOpen) return null;
 
     const downloadWereHouse = () => {
+        setIsLoading(true)
         let addData = {
             start: document.getElementById('start').value ? document.getElementById('start').value : null,
             end: document.getElementById('end').value ? document.getElementById('end').value : null,
@@ -26,8 +30,12 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                 document.body.appendChild(a);
                 a.click()
                 closeDown()
+                setIsLoading(false);
             })
-            .catch(() => closeDown())
+            .catch(() => {
+                closeDown()
+                setIsLoading(false);
+            })
     }
 
     return (
@@ -70,9 +78,10 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                             onClick={() => {
                                 downloadWereHouse();
                             }}
-                            className="btmn "
+                            className={`btmn ${isLoading ? 'cursor-not-allowed opacity-60' : ''}`}
+                            disabled={isLoading}
                         >
-                            Download
+                            {isLoading ? <LoadingBtn /> : t("download")}
                         </button>
                     </div>
                 </div>

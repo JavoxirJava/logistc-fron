@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { config, url } from '../api';
 import { useTranslation } from "react-i18next";
+import LoadingBtn from '../loading/Loading';
 
 const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }) => {
     const [showModal, setShowModal] = useState(false);
@@ -24,6 +25,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
     const [projectFilterName, setProjectFilterName] = useState('None')
     const [userFilterName, setUserFilterName] = useState('None')
     const [productFilterName, setProductFilterName] = useState('None')
+    const [isLoading, setIsLoading] = useState(false)
     const { t } = useTranslation();
 
     useEffect(() => {
@@ -32,6 +34,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
     }, [kubAndKgVAlue, priceForRoad, customsClearancePrice, cct, costChina])
 
     const addCasser = () => {
+        setIsLoading(true)
         let addData = {
             projectId: Number(projectIdVal),
             userId: Number(userIdVal),
@@ -51,10 +54,12 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                 getCassier();
                 toast.success('Successfully saved data✅')
                 console.log(addData);
+                setIsLoading(false)
             })
             .catch(err => {
                 console.log("Error adding information: ", err);
                 console.log(addData);
+                setIsLoading(false)
             })
     }
 
@@ -218,7 +223,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                 <button
                                     onClick={() => setShowModal(false)}
                                     className='py-2 px-8 mr-3 bg-red-500 rounded-md text-white active:scale-95 hover:shadow-lg hover:shadow-red-200 duration-300'>
-                                    Close
+                                    {t('close')}
                                 </button>
                                 <button
                                     onClick={() => {
@@ -295,12 +300,13 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                 <button
                                     onClick={() => setNextModal(false)}
                                     className='py-2 px-8 mr-3 bg-red-500 rounded-md text-white active:scale-95 hover:shadow-lg hover:shadow-red-200 duration-300'>
-                                    Close
+                                    {t('close')}
                                 </button>
                                 <button
                                     onClick={addCasser}
-                                    className='py-2 px-8 bg-[#16A34A] rounded-md text-white active:scale-95 hover:shadow-lg hover:shadow-green-200 duration-300'>
-                                    Save
+                                    disabled={isLoading}
+                                    className={`${isLoading ? 'cursor-not-allowed opacity-60' : ''} py-2 px-8 bg-[#16A34A] rounded-md text-white active:scale-95 hover:shadow-lg hover:shadow-green-200 duration-300`}>
+                                    {isLoading ? <LoadingBtn /> : t('save')}
                                 </button>
                             </div>
                         </div>
