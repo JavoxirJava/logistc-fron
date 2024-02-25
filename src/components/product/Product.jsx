@@ -391,7 +391,7 @@ function Product({ lang, projectId, setProjectId }) {
                     {/* <th scope="col" class="px-6 py-3">
                       Total Price
                     </th> */}
-                    <th colSpan={3} scope="col" class="px-6 py-3 text-center">
+                    <th colSpan='4' scope="col" class="px-6 py-3 text-center">
                       {t("action")}
                     </th>
                     {/* <th scope="col" class="px-6 py-3 text-center">

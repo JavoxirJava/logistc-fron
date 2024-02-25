@@ -1,11 +1,11 @@
 import './style.css';
 
-const LoadingBtn = () => {
+const LoadingBtn = ({className}) => {
     return (
-        <div className="dots-btn">
-            <div></div>
-            <div></div>
-            <div></div>
+        <div className={`dots-btn`}>
+            <div className={`${className ? 'bg-red-500' : 'bg-white'}`}></div>
+            <div className={`${className ? 'bg-red-500' : 'bg-white'}`}></div>
+            <div className={`${className ? 'bg-red-500' : 'bg-white'}`}></div>
         </div>
     )
 }

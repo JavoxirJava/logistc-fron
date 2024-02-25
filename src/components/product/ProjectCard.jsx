@@ -4,6 +4,9 @@ import ProductModal from "./HistoryModal";
 import ProjectModal from "./projectModal";
 import { Link } from "react-router-dom";
 import DownloadModal from "./downloadModal";
+import axios from "axios";
+import { url, config } from "../api";
+import LoadingBtn from "../loading/Loading";
 
 function ProjectCard({
   setProduct,
@@ -18,6 +21,7 @@ function ProjectCard({
 }) {
   const [historyList, setHistoryList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
@@ -35,6 +39,23 @@ function ProjectCard({
   function getWerhouse() {
     if ((pagination - 1) * 4 < 0) getProduct(0, 4);
     else getProduct(Math.floor(pagination - 1), 4);
+  }
+
+  const downloadWereHouse = () => {
+    setIsLoading(true)
+    let addData = {}
+    // axios.post(`${url}`, addData, { ...config, responseType: 'blob' })
+    //   .then((res) => {
+    //     const blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    //     const url = window.URL.createObjectURL(blob);
+    //     const a = document.createElement('a');
+    //     a.href = url;
+    //     a.download = 'logistic.xlsx';
+    //     document.body.appendChild(a);
+    //     a.click()
+    //     setIsLoading(false);
+    //   })
+    //   .catch(() => setIsLoading(false))
   }
 
   return (
@@ -91,18 +112,16 @@ function ProjectCard({
             {t("more")}
           </Link>
         </td>
-        {/* <td className="px-6 py-4">
+        <td className="px-6 py-4">
           <Link
-            onClick={() => {
-              openDown();
-            }}
+            onClick={downloadWereHouse}
             className="font-medium text-blue-600 hover:underline"
           >
-            {t("Download")}
+            {isLoading ? <LoadingBtn className={`bg-red-500`} /> : `${t("Download")} ${t('file')}`}
           </Link>
-        </td> */}
+        </td>
       </tr>
-      
+
       {/* <div
                 onClick={async () => {
                     setProduct(null)
