@@ -193,11 +193,11 @@ function OffcanvasProject({
                     htmlFor={`project${isAdd}`}
                     className="block text-gray-700 text-sm font-bold my-2"
                 >
-                    {/* {t("productAdd3")} */}Project ID
+                    {t("projectId")}
                 </label>
                 <input
                     id={`project${isAdd}`}
-                    placeholder={`Project ID`}
+                    placeholder={`projectId`}
                     defaultValue={projectId ? projectId.projectId : ""}
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
@@ -210,7 +210,7 @@ function OffcanvasProject({
                 <textarea
                     id={`comment${isAdd}`}
                     defaultValue={projectId ? projectId.comment : ""}
-                    placeholder="Comment"
+                    placeholder={t("comment")}
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 ></textarea>
                 <label

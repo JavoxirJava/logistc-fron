@@ -112,7 +112,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                         projectNameFunc(e.target.value)
                                     }}
                                     className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
-                                    <option selected disabled>Select Project</option>
+                                    <option selected disabled>{t("select")}</option>
                                     {projectId && projectId.map((item) => (
                                         <option value={item.id} key={item.id}>{item.name}</option>
                                     ))}
@@ -126,7 +126,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                     }}
                                     disabled={!userId}
                                     className="  p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
-                                    <option selected disabled>Select User</option>
+                                    <option selected disabled>{t("productSUser")}</option>
                                     {userId && userId.map((item) => (
                                         <option value={item.id} key={item.id}>{item.user}</option>
                                     ))}
@@ -140,7 +140,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                         productNameFunc(e.target.value)
                                     }}
                                     className="p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
-                                    <option selected disabled>Select Product</option>
+                                    <option selected disabled>{t("selectP")}</option>
                                     {productId && productId.map(item => (
                                         <option value={item.id} key={item.id}>{item.name}</option>
                                     ))}
@@ -149,46 +149,46 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                     id="measure"
                                     onChange={e => setMeassureVal(e.target.value)}
                                     className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
-                                    <option selected disabled>Kub And Kg</option>
-                                    <option value="kub">Kub</option>
-                                    <option value="kg">Kg</option>
+                                    <option selected disabled>{t("kubkg")}</option>
+                                    <option value="kub">{t("kub")}</option>
+                                    <option value="kg">{t("kg")}</option>
                                 </select>
                             </form>
                             <form className="mx-auto flex justify-evenly flex-wrap">
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='priceOfKub'>Price of Kub or Kg</label>
+                                    <label htmlFor='priceOfKub'>{t("pricekubkg")}</label>
                                     <input
                                         onChange={e => setDataVAlue(e.target.value)}
                                         id='priceOfKub'
                                         type="number"
-                                        placeholder='Enter price'
+                                        placeholder={t("enterPrice")}
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='totalKub'>Result Price</label>
+                                    <label htmlFor='totalKub'>{t("priceresult")}</label>
                                     <input
                                         id='totalKub'
                                         disabled
                                         value={kubAndKgVAlue}
-                                        placeholder='Result price'
+                                        placeholder={t("priceresult")}
                                         className="bg-gray-200 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='priceForRoad'>Price For Road</label>
+                                    <label htmlFor='priceForRoad'>{t("priceForRoad")}</label>
                                     <input
                                         id='priceForRoad'
                                         onChange={e => setPriceForRoad(e.target.value)}
                                         type='number'
-                                        placeholder='Enter Price'
+                                        placeholder={t("enterPrice")}
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='customsClearancePrice'>Customs Price</label>
+                                    <label htmlFor='customsClearancePrice'>{t("customPrice")}</label>
                                     <input
                                         id='customsClearancePrice'
                                         onChange={e => setCustomsClearancePrice(e.target.value)}
                                         type='number'
-                                        placeholder='Enter Price'
+                                        placeholder={t("enterPrice")}
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
