@@ -393,6 +393,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               >
                 {t("download")}
               </button> */}
+              <span></span>
             </div>
             <div className="mt-4 flex flex-wrap justify-between">
               <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

@@ -1,79 +1,116 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import ProductModal from './HistoryModal';
-import ProjectModal from './projectModal';
-import { Link } from 'react-router-dom';
+import ProductModal from "./HistoryModal";
+import ProjectModal from "./projectModal";
+import { Link } from "react-router-dom";
+import DownloadModal from "./downloadModal";
 
+function ProjectCard({
+  setProduct,
+  i,
+  className,
+  projects,
+  openEdit,
+  setProductObj,
+  setProjectId,
+  getProduct,
+  pagination,
+}) {
+  const [historyList, setHistoryList] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalDown, setIsModalDown] = useState(false);
 
-function ProjectCard({ setProduct, i, className, projects, openEdit, setProductObj, setProjectId, getProduct, pagination }) {
+  const closeDown = () => setIsModalDown(false);
+  const openDown = () => setIsModalDown(true);
 
-    const [historyList, setHistoryList] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-          setIsModalOpen(false)
-        }
-      });
-    const closeModal = () => setIsModalOpen(false);
-    const openModal = () => setIsModalOpen(true);
-    const { t } = useTranslation();
-
-    useEffect(() => {
-        getWerhouse()
-    }, [setProjectId])
-
-
-    function getWerhouse() {
-        if ((pagination - 1) * 4 < 0) getProduct(0, 4);
-        else getProduct(Math.floor(pagination - 1), 4);
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      setIsModalOpen(false);
     }
+  });
+  const closeModal = () => setIsModalOpen(false);
+  const openModal = () => setIsModalOpen(true);
+  const { t } = useTranslation();
 
-    return (
-        <>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={i}>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {i + 1}
-                </th>
-                <td class="px-6 py-4">
-                    {projects.name}
-                </td>
-                <td class="px-6 py-4">
-                    {projects.status}
-                </td>
-                <td class="px-6 py-4">
-                    {projects.transport}
-                </td>
-                <td class="px-6 py-4">
-                    {projects.date}
-                </td>
-                {/* <td class="px-6 py-4">
+  useEffect(() => {
+    getWerhouse();
+  }, [setProjectId]);
+
+  function getWerhouse() {
+    if ((pagination - 1) * 4 < 0) getProduct(0, 4);
+    else getProduct(Math.floor(pagination - 1), 4);
+  }
+
+  return (
+    <>
+      <tr
+        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+        key={i}
+      >
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {i + 1}
+        </th>
+        <td class="px-6 py-4">{projects.name}</td>
+        <td class="px-6 py-4">{projects.status}</td>
+        <td class="px-6 py-4">{projects.transport}</td>
+        <td class="px-6 py-4">{projects.date}</td>
+        {/* <td class="px-6 py-4">
                     $2999
                 </td> */}
-                <td class="px-6 py-4">
-                    <a
-                        onClick={() => {
-                            openEdit();
-                            setProjectId(projects);
-                        }}
-                        href="#" class="font-medium text-[#16A34A] hover:underline">{t("edit")}</a>
-                </td>
-                <td class="px-6 py-4">
-                    <a
-                        onClick={() => {
-                            setHistoryList(projects);
-                            openModal();
-                        }}
-                        href="#" class="font-medium text-yellow-300 hover:underline">{t("wiew")}</a>
-                </td>
-                <td class="px-6 py-4">
-                    <Link onClick={() => {
-                        sessionStorage.setItem('projectIdViewMore', projects.id)
-                    }} to='/view more' class="font-medium text-blue-600 hover:underline">{t("more")}</Link>
-                </td>
-            </tr>
+        <td class="px-6 py-4">
+          <a
+            onClick={() => {
+              openEdit();
+              setProjectId(projects);
+            }}
+            href="#"
+            class="font-medium text-[#16A34A] hover:underline"
+          >
+            {t("edit")}
+          </a>
+        </td>
+        <td class="px-6 py-4">
+          <a
+            onClick={() => {
+              setHistoryList(projects);
+              openModal();
+            }}
+            href="#"
+            class="font-medium text-yellow-300 hover:underline"
+          >
+            {t("wiew")}
+          </a>
+        </td>
+        <td class="px-6 py-4">
+          <Link
+            onClick={() => {
+              sessionStorage.setItem("projectIdViewMore", projects.id);
+            }}
+            to="/view more"
+            class="font-medium text-blue-600 hover:underline"
+          >
+            {t("more")}
+          </Link>
+        </td>
+        <td class="px-6 py-4">
+          <Link
+            onClick={() => {
+              openDown();
+            }}
+            class="font-medium text-blue-600 hover:underline"
+          >
+            {t("Download")}
+          </Link>
+        </td>
+      </tr>
 
-            {/* <div
+      <DownloadModal isOpen={isModalDown} closeDown={closeDown} />
+
+
+      {/* <div
                 onClick={async () => {
                     setProduct(null)
                     setProjectId(projects)
@@ -124,10 +161,15 @@ function ProjectCard({ setProduct, i, className, projects, openEdit, setProductO
                 </div>
                 
             </div> */}
-            {historyList && <ProjectModal isOpen={isModalOpen} projectList={historyList} onClose={closeModal} />}
-        </>
-
-    )
+      {historyList && (
+        <ProjectModal
+          isOpen={isModalOpen}
+          projectList={historyList}
+          onClose={closeModal}
+        />
+      )}
+    </>
+  );
 }
 
 export default ProjectCard;
