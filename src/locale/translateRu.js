@@ -17,7 +17,7 @@ const translateRu = {
     start: "Дата начала",
     end: "Дата окончания",
     selectWer: "Выбрать склад",
-    
+    comment: "Комментарий",
     productName: "Наименование товара",
     productCount: "Количество продуктов",
     totalWeight: "Общий вес",

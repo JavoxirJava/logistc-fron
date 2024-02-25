@@ -205,7 +205,7 @@ function OffcanvasProject({
                     htmlFor={`comment${isAdd}`}
                     className="block text-gray-700 text-sm font-bold my-2"
                 >
-                    {/* {t("productAdd3")} */}Comment
+                    {t("comment")}
                 </label>
                 <textarea
                     id={`comment${isAdd}`}
@@ -217,7 +217,7 @@ function OffcanvasProject({
                     htmlFor={`file${isAdd}`}
                     className="block text-gray-700 text-sm font-bold my-2 "
                 >
-                    File upload
+                    {t("file")}
                 </label>
                 <input
                     id={`file${isAdd}`}
