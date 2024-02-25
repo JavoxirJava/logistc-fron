@@ -10,6 +10,11 @@ function ProjectCard({ setProduct, i, className, projects, openEdit, setProductO
     const [historyList, setHistoryList] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          setIsModalOpen(false)
+        }
+      });
     const closeModal = () => setIsModalOpen(false);
     const openModal = () => setIsModalOpen(true);
     const { t } = useTranslation();
