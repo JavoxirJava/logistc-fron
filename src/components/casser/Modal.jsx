@@ -3,6 +3,7 @@ import './Modal.css'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { config, url } from '../api';
+import { useTranslation } from "react-i18next";
 
 const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }) => {
     const [showModal, setShowModal] = useState(false);
@@ -23,6 +24,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
     const [projectFilterName, setProjectFilterName] = useState('None')
     const [userFilterName, setUserFilterName] = useState('None')
     const [productFilterName, setProductFilterName] = useState('None')
+    const { t } = useTranslation();
 
     useEffect(() => {
         let data = Number(kubAndKgVAlue) + Number(priceForRoad) + Number(customsClearancePrice) + Number(cct) + Number(costChina)
@@ -81,8 +83,8 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                 onClick={() => {
                     setShowModal(true)
                 }}
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
-            >Add</button>
+                className="duration-300 bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
+            >{t('addd')}</button>
             {showModal && (
                 <div
                     className="zoom-modal justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
