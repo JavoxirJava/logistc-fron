@@ -38,7 +38,7 @@ const DashboardProductCard = ({ className, lang }) => {
 
   function getProduct(page, size) {
     axios
-      .get(`${url}product/user?page=${page}&size=${size}&lang=${lang}`, config)
+      .get(`${url}product/user/products?page=${page}&size=${size}&lang=${lang}`, config)
       .then((res) => {
         setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
         setProduct(res.data.body.object);
@@ -53,7 +53,7 @@ const DashboardProductCard = ({ className, lang }) => {
     else
       axios
         .get(
-          `${url}product/user/search?${searchByName()}=${text}&lang=${lang}`,
+          `${url}product/user/search?productName=${text}&lang=${lang}`,
           config
         )
         .then((res) => {
@@ -115,13 +115,7 @@ const DashboardProductCard = ({ className, lang }) => {
               className="lg:w-10/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
             />
           )}
-          <Dropdown
-            pagination={pagination}
-            getProduct={getProduct}
-            selectDrop={selectDrop}
-            inputDrop={inputDrop}
-            setSearchBy={setSearchBy}
-          />
+         
         </div>
       </div>
       <p className="mb-3">
@@ -141,7 +135,7 @@ const DashboardProductCard = ({ className, lang }) => {
                 <div className="w-[25%]">
                   <p className="opacity-70">{t("card2")}</p>
                   <p className="font-bold">
-                    {item ? item.status : "no status"}
+                    {item ? item.currentStatus : "no status"}
                   </p>
                 </div>
                 <div className="w-[25%]">
@@ -157,16 +151,16 @@ const DashboardProductCard = ({ className, lang }) => {
                   </p>
                 </div>
               </div>
-              <div className="h-3/6 card-col-row w-full flex">
+              {/* <div className="h-3/6 card-col-row w-full flex">
                 <div className="w-[65%]">
                   <p className="opacity-70">{t("card5")}</p>
                   <p className="font-bold">
-                    {item
+                    {/* {item
                       ? item.address.slice(0, item.address.indexOf(","))
                       : "No location"}
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="card-col w-3/12 flex justify-center my-auto h-10 pr-2">
               <button

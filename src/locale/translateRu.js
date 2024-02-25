@@ -167,7 +167,14 @@ const translateRu = {
     addclient8: "Введите номер телефона",
     addclient9: "Пароль",
     addclient10: "Введите пароль",
-
+    userName: "Имя пользователя",
+    projectName: "Название проекта",
+    productName: "Наименование товара",
+    
+    price: "Цена",
+    measure: "Измерять",
+    totalPrice: "Итоговая цена",
+    cct: "Ccт",
 
 }
 

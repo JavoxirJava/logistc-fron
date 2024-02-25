@@ -175,6 +175,15 @@ const translateEn = {
     addclient8: "Enter phone number",
     addclient9: "Password",
     addclient10: "Enter password",
+    userName: "User Name",
+    projectName: "Project name",
+    productName: "Product name",
+    date: "Date",
+    price: "Price",
+    measure: "Measure",
+    totalPrice: "Total price",
+    cct: "Cct",
+
 }
 
 export default translateEn

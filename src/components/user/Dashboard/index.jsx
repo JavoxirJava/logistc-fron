@@ -32,7 +32,7 @@ function UserDashboard({changeLanguage, lang}) {
         <>
             <UserNavBar dashboard={'border-b-red-600 border-b text-slate-900'}/>
             <div className="w-full background flex lg:flex-row flex-col md:px-10 sd:px-5 px-2 md:py-24">
-                <div className="lg:w-7/12 w-full ">
+                <div className="lg:w-7/12 w-full pt-20 md:pt-0">
                     <div className="h-[320px] md:w-6/12">
                         {productStatistics && <Circle s={productStatistics}/>}
                     </div>
@@ -40,7 +40,7 @@ function UserDashboard({changeLanguage, lang}) {
                         {productStatistics2 && <LineChart productStatistics2={productStatistics2}/>}
                     </div>
                 </div>
-                <div className="lg:w-5/12 w-full lg:ml-5 lg:mt-0 mt-7">
+                <div className="lg:w-5/12 w-full lg:ml-5 pt-20 md:pt-0 lg:mt-0 mt-7">
                     <div className="w-full all-shadow p-5 bg-gray-200">
                         <DashboardProductCard lang={lang}/>
                     </div>

@@ -48,7 +48,6 @@ function  Circle({s}) {
                 <div className='flex justify-around md:w-78 md:ml-0 text-2xl'>
                     <p>{s.completed}</p>
                     <p>{s.pending}</p>
-                    <p>{s.cansel}</p>
                 </div>
                 <div style={{
                     height: '300px',
