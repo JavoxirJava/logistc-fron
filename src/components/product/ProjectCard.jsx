@@ -18,10 +18,6 @@ function ProjectCard({
 }) {
   const [historyList, setHistoryList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalDown, setIsModalDown] = useState(false);
-
-  const closeDown = () => setIsModalDown(false);
-  const openDown = () => setIsModalDown(true);
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
@@ -95,7 +91,7 @@ function ProjectCard({
             {t("more")}
           </Link>
         </td>
-        <td class="px-6 py-4">
+        {/* <td class="px-6 py-4">
           <Link
             onClick={() => {
               openDown();
@@ -104,12 +100,9 @@ function ProjectCard({
           >
             {t("Download")}
           </Link>
-        </td>
+        </td> */}
       </tr>
-
-      <DownloadModal isOpen={isModalDown} closeDown={closeDown} />
-
-
+      
       {/* <div
                 onClick={async () => {
                     setProduct(null)
