@@ -210,12 +210,12 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-full mt-4'>
-                                    <label htmlFor='totalPrice'>Total Price</label>
+                                    <label htmlFor='totalPrice'>{t("totalPrice")}</label>
                                     <input
                                         id='totalPrice'
                                         value={totalPrice}
                                         disabled
-                                        placeholder='Total Price'
+                                        placeholder={t("totalPrice")}
                                         className="bg-gray-200 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                             </form>
