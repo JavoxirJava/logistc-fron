@@ -192,21 +192,21 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='cct'>Cct</label>
+                                    <label htmlFor='cct'>{t("cct")}</label>
                                     <input
                                         id='cct'
                                         onChange={e => setCct(e.target.value)}
                                         type='number'
-                                        placeholder='Enter cct'
+                                        placeholder={`${t("enter")} ${t("cct")}`}
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='costChina'>Cost China</label>
+                                    <label htmlFor='costChina'>{t("costChina")}</label>
                                     <input
                                         id='costChina'
                                         onChange={e => setCostChina(e.target.value)}
                                         type='number'
-                                        placeholder='Enter Cost China'
+                                        placeholder={`${t("enter")} ${t("costChina")}`}
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-full mt-4'>
@@ -231,7 +231,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                         setShowModal(false)
                                     }}
                                     className='py-2 px-8 bg-[#16A34A] rounded-md text-white active:scale-95 hover:shadow-lg hover:shadow-green-200 duration-300'>
-                                    Next
+                                    {t("next")}
                                 </button>
                             </div>
                         </div>
