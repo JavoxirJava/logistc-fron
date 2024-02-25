@@ -26,6 +26,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
       setIsModalOpen(false);
     }
   });
+  
   const openGetMe = () => setIsOpen(!isOpenm);
   const openMenu = () => setIsOpenMenu(!isOpenMenu);
   const openModal = () => setIsModalOpen(!isModalOpen);
