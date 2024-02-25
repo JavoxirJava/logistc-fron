@@ -33,7 +33,6 @@ i18n.use(initReactI18next).init({
 
 function App() {
     const [selectedLanguage, setSelectedLanguage] = useState(() => {
-
         // localStorage dan tanlangan tilni olish
         return localStorage.getItem("selectedLanguage") || "en";
     });

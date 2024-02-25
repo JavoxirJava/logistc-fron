@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import './Modal.css'
-import axios from 'axios';
-import { byIdObj, config, url } from '../api';
-import { toast } from 'react-toastify';
+import {byIdObj} from '../api';
 
-const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }) => {
+const Modal = ({getCassier, getUser, getProduct, projectId, userId, productId}) => {
     const [showModal, setShowModal] = useState(false);
     const [productKub, setProductKub] = useState(null)
     const [productKg, setProductKg] = useState(null)
@@ -60,16 +58,19 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
     }, [dataVAlue])
 
     const selectKubAndKg = () => {
-        if (meassureVal == 'Куб') setKubANdKgVAlue(productKub * dataVAlue)
-        if (meassureVal == 'Кг') setKubANdKgVAlue(productKg * dataVAlue)
+        if (meassureVal === 'Куб') setKubANdKgVAlue(productKub * dataVAlue)
+        if (meassureVal === 'Кг') setKubANdKgVAlue(productKg * dataVAlue)
     }
 
     return (
         <div>
             <button
-                onClick={() => { setShowModal(true) }}
+                onClick={() => {
+                    setShowModal(true)
+                }}
                 className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
-            >Add</button>
+            >Add
+            </button>
             {showModal ? (
                 <div>
                     <div
@@ -77,15 +78,15 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                     >
                         <div className="relative md:w-[100%] w-[80vw] my-6 mx-auto max-w-3xl">
                             {/*content*/}
-                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-6">
+                            <div
+                                className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-6">
                                 {/*header*/}
                                 <div className="flex items-center justify-between border-b pb-2 rounded-t">
-                                    <h3 className="text-2xl font-semibold">
-                                        Add
-                                    </h3>
+                                    <h3 className="text-2xl font-semibold">Add</h3>
                                     <button
                                         className='p-1 ml-auto border-0 text-4xl hover:scale-110 duration-200'
-                                        onClick={() => setShowModal(false)}>×</button>
+                                        onClick={() => setShowModal(false)}>×
+                                    </button>
                                 </div>
                                 <form className="flex md:justify-evenly mt-5 flex-wrap">
                                     <select
@@ -100,7 +101,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                     <select
                                         id="userId"
                                         onChange={e => getProduct(e.target.value)}
-                                        disabled={userId ? false : true}
+                                        disabled={!userId}
                                         className="  p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                         <option selected disabled>Select User</option>
                                         {userId && userId.map((item) => (
@@ -109,7 +110,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                     </select>
                                     <select
                                         id="productId"
-                                        disabled={productId ? false : true}
+                                        disabled={!productId}
                                         onChange={e => idFunc(e.target.value)}
                                         className="p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                         <option selected disabled>Select Product</option>
@@ -134,7 +135,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                             id='priceOfKub'
                                             type="number"
                                             placeholder='Enter price'
-                                            className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                            className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 "/>
                                     </div>
                                     <div className='flex flex-col w-[49%] mt-4'>
                                         <label htmlFor='totalKub'>Result Price</label>
@@ -143,7 +144,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                             disabled
                                             value={kubAndKgVAlue}
                                             placeholder='Result price'
-                                            className="bg-gray-200 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                            className="bg-gray-200 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 "/>
                                     </div>
                                     <div className='flex flex-col w-[49%] mt-4'>
                                         <label htmlFor='priceForRoad'>Price For Road</label>
@@ -152,16 +153,16 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                             onChange={e => setPriceForRoad(e.target.value)}
                                             type='number'
                                             placeholder='Enter Price'
-                                            className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                            className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 "/>
                                     </div>
                                     <div className='flex flex-col w-[49%] mt-4'>
-                                        <label htmlFor='customsClearancePrice'>Customs  Price</label>
+                                        <label htmlFor='customsClearancePrice'>Customs Price</label>
                                         <input
                                             id='customsClearancePrice'
                                             onChange={e => setCustomsClearancePrice(e.target.value)}
                                             type='number'
                                             placeholder='Enter Price'
-                                            className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                            className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 "/>
                                     </div>
                                     <div className='flex flex-col w-[49%] mt-4'>
                                         <label htmlFor='cct'>Cct</label>
@@ -170,7 +171,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                             onChange={e => setCct(e.target.value)}
                                             type='number'
                                             placeholder='Enter cct'
-                                            className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                            className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 "/>
                                     </div>
                                     <div className='flex flex-col w-[49%] mt-4'>
                                         <label htmlFor='costChina'>Cost China</label>
@@ -179,7 +180,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                             onChange={e => setCostChina(e.target.value)}
                                             type='number'
                                             placeholder='Enter Cost China'
-                                            className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                            className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 "/>
                                     </div>
                                     <div className='flex flex-col w-full mt-4'>
                                         <label htmlFor='totalPrice'>Total Price</label>
@@ -188,7 +189,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                             value={totalPrice}
                                             disabled
                                             placeholder='Total Price'
-                                            className="bg-gray-200 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                            className="bg-gray-200 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 "/>
                                     </div>
                                 </form>
                                 <div className='flex md:justify-end justify-center  mt-4'>
