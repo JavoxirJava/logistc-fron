@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import ProductModal from "./HistoryModal";
 import ProjectModal from "./projectModal";
 import { Link } from "react-router-dom";
+import DownloadModal from "./downloadModal";
 
 function ProjectCard({
   setProduct,
@@ -24,7 +25,6 @@ function ProjectCard({
   const openModal = () => setIsModalOpen(true);
   const { t } = useTranslation();
 
-  console.log(projects);
 
   useEffect(() => {
     getWerhouse();
@@ -83,9 +83,9 @@ function ProjectCard({
         <td class="px-6 py-4">
           <Link
             onClick={() => {
-              sessionStorage.setItem("projectIdViewMore", projects.id);
+              sessionStorage.setItem("warehouseIdViewMore", projects);
             }}
-            to="/view more"
+            to="/view_more"
             class="font-medium text-blue-600 hover:underline"
           >
             {t("more")}

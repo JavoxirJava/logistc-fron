@@ -20,6 +20,7 @@ import Werhouse from "./components/werHouse/Werhouse";
 import Managers from "./components/managers/Clients";
 import ViewMore from "./components/product/ViewMore";
 import Cassir from "./components/casser/Cassir";
+import ViewMoreW from "./components/werHouse/ViewMore";
 
 
 i18n.use(initReactI18next).init({
@@ -83,6 +84,7 @@ function App() {
                 <Route path="/users" element={<Clients lang={lang} />} />
                 <Route path="/history" element={<History lang={lang} />} />
                 <Route path="/view more" element={<ViewMore lang={lang} />} />
+                <Route path="/view_more" element={<ViewMoreW lang={lang} />} />
                 <Route
                     path="/warehouse"
                     element={

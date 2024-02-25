@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import ProjectCard from "./ProjectCard";
 import OffcanvasProject from "./OffcanvasProject";
 import Empty from "../Empty";
+import DownloadModal from "./downloadModal";
 
 function Product({ lang, werHouseId, setWerHouseId }) {
   const [coordinates, setCoordinates] = useState([55.75, 37.57]);
@@ -37,9 +38,14 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   const [className, setClassName] = useState(false);
   const [loadingP, setLoadingP] = useState(false);
   const [drops, setDrops] = useState(false);
+  const [isModalDown, setIsModalDown] = useState(false);
+
 
   const inputDrop = () => setDrops(false);
   const selectDrop = () => setDrops(true);
+  
+  const closeDown = () => setIsModalDown(false);
+  const openDown = () => setIsModalDown(true);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -388,7 +394,8 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                 {t("cardCurrent")}: {pagination2}
               </span> */}
               <button
-                onClick={openProjectCan}
+                onClick={openDown}
+
                 className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-8  rounded"
               >
                 {t("download")}
@@ -460,113 +467,6 @@ function Product({ lang, werHouseId, setWerHouseId }) {
             </div>
           </div>
 
-          {/* product uchun */}
-
-          {/* <div className="lg:w-5/12 w-full  lg:px-3 md:px-10 px-3 lg:py-0 py-5">
-            <div className="mt-4 flex flex-wrap justify-between">
-              {drops ? (
-                <select
-                  onChange={searchProduct}
-                  defaultValue=""
-                  id="statuslar"
-                  className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
-                       focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-                     focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                >
-                  <option selected disabled>
-                    {t("productAdd60")}
-                  </option>
-                  <option value="all">{t("all")}</option>
-                  <option value="PENDING">{t("status1")}</option>
-                  <option value="GOING">{t("status2")}</option>
-                  <option value="CANCEL">{t("status3")}</option>
-                  <option value="ARRIVED">{t("status4")}</option>
-                  <option value="COMPLETED">{t("status5")}</option>
-                  <option value="MOVED ">{t("status6")}</option>
-                </select>
-              ) : (
-                <input
-                  type="search"
-                  placeholder={t("productSearch")}
-                  defaultValue=""
-                  onChange={searchProduct}
-                  className="lg:w-9/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
-                />
-              )}
-              <Dropdown
-                pagination={pagination}
-                getProduct={getProduct}
-                selectDrop={selectDrop}
-                inputDrop={inputDrop}
-                setSearchBy={setSearchBy}
-              />
-            </div>
-            <div className="mt-4 flex flex-wrap justify-between">
-              <button
-                onClick={handleToggleOffcanvas}
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded"
-              >
-                {t("addProduct")}
-              </button>
-
-              <h1>
-                <b>
-                  <span className="text-blue-600 text-lg">{`${
-                    werHouseId
-                      ? werHouseId.name
-                      : projects
-                      ? projects[0].name
-                      : ""
-                  } `}</span>
-                  {t("project")}
-                </b>
-              </h1>
-              <select
-                id="projectos"
-                onChange={cLasslar}
-                className=" rounded-full p-2 border border-gray-500"
-              >
-                <option value="select" selected>
-                  {t("select")}
-                </option>
-                {projectos &&
-                  projectos.map((item, i) => (
-                    <option value={item.id}>{item.name}</option>
-                  ))}
-              </select>
-              <span className="me-5 pt-1.5 float-end">
-                {t("cardCurrent")}: {pagination}
-              </span>
-
-              {products ? (
-                products.map((item, i) => (
-                  <ProductCard
-                    setProductIdList={setProductIdList}
-                    deleteProduct={deleteProduct}
-                    key={i}
-                    classNames={className}
-                    className="mt-5"
-                    openEdit={openEdit}
-                    product={item}
-                    addToProduct={addToProduct}
-                    setProductObj={setProductObj}
-                    setProductTo={setProductTo}
-                    setWerhouseId={setWerhouseId}
-                  />
-                ))
-              ) : (
-                <Empty />
-              )}
-            </div>
-            <div className="pagination-style mt-4">
-              <Pagination
-                {...bootstrap5PaginationPreset}
-                current={pagination}
-                total={Math.floor(totalPage + 1)}
-                onPageChange={setPagination}
-              />
-            </div>
-          </div> */}
         </div>
 
         {/* project */}
@@ -596,37 +496,10 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           setUserId={setUserId}
           lang={lang}
         />
-
-        <OffcanvasProduct
-          isAdd={true}
-          getProduct={getProduct}
-          setProduct={setProductObj2}
-          product=""
-          handleToggleOffcanvas={handleToggleOffcanvas}
-          isOffcanvasOpen={isOffcanvasOpen}
-          name={t("addProduct")}
-          btnName={t("addProduct")}
-          onSave={addProduct}
-          setUserId={setUserId}
-          werHouseId={werHouseId}
-          wareHouse={werhouseId}
-          lang={lang}
-        />
-        <OffcanvasProduct
-          isAdd={false}
-          getProduct={getProduct}
-          setProduct={setProductObj2}
-          product={product}
-          handleToggleOffcanvas={openEdit}
-          isOffcanvasOpen={editOf}
-          name={t("editProduct")}
-          btnName={t("editProduct")}
-          werHouseId={werHouseId}
-          onSave={editProduct}
-          setUserId={setUserId}
-          lang={lang}
-        />
       </div>
+
+      <DownloadModal isOpen={isModalDown} onClose={closeDown} />
+
     </div>
   );
 }
