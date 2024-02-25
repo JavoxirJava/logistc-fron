@@ -83,7 +83,6 @@ function Product({ lang, projectId, setProjectId }) {
       setEditOf(false)
       setIsOffcanvasOpen(false)
       setAddProjectModal(false)
-      setEditProjectModal(false)
     }
   });
   const openEdit = () => setEditOf(!editOf);
