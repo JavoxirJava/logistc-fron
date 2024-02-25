@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { config, url } from "../api";
+import { useState } from "react";
+import LoadingBtn from "../loading/Loading";
 
 const DownloadModalP = ({ isOpen, wereHouseId, closeDown }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const { t } = useTranslation();
 
   if (!isOpen) return null;
 
   const downloadWereHouse = () => {
+    setIsLoading(true)
     let addData = {
       start: document.getElementById('start').value ? document.getElementById('start').value : null,
       end: document.getElementById('end').value ? document.getElementById('end').value : null,
@@ -21,14 +25,18 @@ const DownloadModalP = ({ isOpen, wereHouseId, closeDown }) => {
         a.href = url;
         // .${fileExtension} bu kammaentdagilar kerka bulib qolsa quyiladi
         // const fileExtension = prompt("Fayl kengaytmasini kiriting (pdf, doc, docx, xlsx, ...)");
-        const filename = prompt("Name the file you want to download");
-        const fullFilename = `${filename}`;
-        a.download = fullFilename;
+        // const filename = prompt("Name the file you want to download");
+        // const fullFilename = `${filename}`;
+        a.download = 'logistic.xlsx';
         document.body.appendChild(a);
         a.click()
         closeDown()
+        setIsLoading(false);
       })
-      .catch(() => closeDown())
+      .catch(() => {
+        closeDown();
+        setIsLoading(false);
+      })
   }
 
   return (
@@ -91,9 +99,10 @@ const DownloadModalP = ({ isOpen, wereHouseId, closeDown }) => {
               onClick={() => {
                 downloadWereHouse();
               }}
-              className="btmn "
+              disabled={isLoading}
+              className={`btmn ${isLoading ? 'cursor-not-allowed opacity-70' : ''}`}
             >
-              Download
+              {isLoading ? <LoadingBtn /> : t('download')}
             </button>
           </div>
         </div>
