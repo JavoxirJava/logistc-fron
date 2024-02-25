@@ -185,6 +185,7 @@ const ViewMoreW = ({ lang }) => {
                 <th className="px-6 py-3">{t("totalKub")}</th>
                 <th className="px-6 py-3">{t("edit")}</th>
                 <th className="px-6 py-3">{t("delete")}</th>
+                <th className="px-6 py-3">{t("selectCh")}</th>
               </tr>
             </thead>
             <tbody className="text-[1rem] text-gray-700 bg-white text-center">
@@ -204,7 +205,7 @@ const ViewMoreW = ({ lang }) => {
                     <td className="px-6 py-5">{item.owner}</td>
                     <td className="px-6 py-5">{item.productName}</td>
                     <td className="px-6 py-5">{item.comment}</td>
-                    <td className="px-6 py-5">{item.date}</td>
+                    <td className="px-6 py-5 overflow-x-auto">{item.date.slice(0, item.date.indexOf(" "))}</td>
                     <td className="px-6 py-5">{item.productCount}</td>
                     <td className="px-6 py-5">{item.totalWeight}</td>
                     <td className="px-6 py-5">{item.totalKub}</td>
@@ -232,11 +233,14 @@ const ViewMoreW = ({ lang }) => {
                         {t("delete")}
                       </a>
                     </td>
+                    <td class="px-6 py-4">
+                    <input type="checkbox" class="w-5 h-5" />
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan="11" className="px-4">
+                  <td colSpan="12" className="px-4">
                     <div className={styles.loading}></div>
                     <div className={styles.loading}></div>
                     <div className={styles.loading}></div>
