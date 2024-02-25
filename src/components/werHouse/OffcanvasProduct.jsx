@@ -12,6 +12,7 @@ function OffcanvasProduct({
     const [kubSum, setKubSum] = useState(0);
     const [totalKgSum, setTotalKgSum] = useState(0);
     const [totalKubSum, setTotalKubSum] = useState(0);
+    const [imgId, setImgId] = useState(0);
 
     const {t} = useTranslation();
 
@@ -19,29 +20,34 @@ function OffcanvasProduct({
         getUsers(setUsers, lang);
     }, []);
 
-    function sendPhoto() {
+    // function sendPhoto() {
+    //     const data = new FormData();
+    //     data.append('file', byIdObj(`productFile${isAdd}`).files[0]);
+    //     axios.post(`${url}attachment/image`, data, config)
+    //         .then(res => setImgId(res.data.body.id))
+    //         .catch(err => console.log(err));
+    // }
+
+    async function setData() {
         const data = new FormData();
         data.append('file', byIdObj(`productFile${isAdd}`).files[0]);
-        axios.post(`${url}attachment/image`, data, config)
-            .then(res => setProduct({...product, attachmentId: res.data.body.id}))
-            .catch(err => console.log(err));
-        return data;
-    }
-
-    function setData() {
-        setProduct({
-            name: byId(`productName${isAdd}`),
-            comment: byId(`comment${isAdd}`),
-            wareHouseId: werHouseId,
-            x: byId(`idNumberX${isAdd}`),
-            y: byId(`idNumberY${isAdd}`),
-            z: byId(`idNumberZ${isAdd}`),
-            kg: byId(`productWeight${isAdd}`),
-            kub: kubSum,
-            count: byId(`numberOfSeats${isAdd}`),
-            totalWeight: totalKgSum,
-            totalKub: totalKubSum,
-        });
+        await axios.post(`${url}attachment/image`, data, config)
+            .then(res => {
+                setProduct({
+                    name: byId(`productName${isAdd}`),
+                    comment: byId(`comment${isAdd}`),
+                    wareHouseId: werHouseId,
+                    x: byId(`idNumberX${isAdd}`),
+                    y: byId(`idNumberY${isAdd}`),
+                    z: byId(`idNumberZ${isAdd}`),
+                    kg: byId(`productWeight${isAdd}`),
+                    kub: kubSum,
+                    count: byId(`numberOfSeats${isAdd}`),
+                    totalWeight: totalKgSum,
+                    totalKub: totalKubSum,
+                    attachmentId: res.data.body
+                })
+            }).catch(err => console.log(err));
         setUserId(byId(`userId${isAdd}`));
     }
 
@@ -65,7 +71,7 @@ function OffcanvasProduct({
             name={name}
             onClose={handleToggleOffcanvas}
         >
-            <div onChange={setData}>
+            <div>
                 <label
                     htmlFor={`userId${isAdd}`}
                     className="block text-gray-700 text-sm font-bold"
@@ -267,7 +273,7 @@ function OffcanvasProduct({
                     {t("productAdd34foto")}
                 </label>
                 <input
-                    id={`productFile${isAdd}`} onChange={sendPhoto}
+                    id={`productFile${isAdd}`}
                     className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
