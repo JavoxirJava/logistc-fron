@@ -31,7 +31,7 @@ function OffcanvasProduct({
     setProduct({
       name: byId(`productName${isAdd}`),
       comment: byId(`comment${isAdd}`),
-      wareHouseId: `1`,
+      wareHouseId: werHouseId,
       x: byId(`idNumberX${isAdd}`),
       y: byId(`idNumberY${isAdd}`),
       z: byId(`idNumberZ${isAdd}`),

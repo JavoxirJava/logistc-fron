@@ -83,7 +83,7 @@ function ProjectCard({
         <td class="px-6 py-4">
           <Link
             onClick={() => {
-              sessionStorage.setItem("warehouseIdViewMore", projects);
+              sessionStorage.setItem("warehouseIdViewMore", projects.wareHouseId);
             }}
             to="/view_more"
             class="font-medium text-blue-600 hover:underline"
@@ -91,18 +91,7 @@ function ProjectCard({
             {t("more")}
           </Link>
         </td>
-        <td class="px-6 py-4">
-          <a
-            onClick={() => {
-              // openModal();
-              setProductObj(projects.wareHouseId);
-            }}
-            href="#"
-            class="font-medium text-[#c0be2e] hover:underline"
-          >
-            {t("download")}
-          </a>
-        </td>
+        
       </tr>
 
       <ProjectModal isOpen={isModalOpen} deleteWerhouse={deleteWerhouse} onClose={closeModal} />

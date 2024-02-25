@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-const DownloadModalP = ({ isOpen, deleteWerhouse, projects, onClose }) => {
+const DownloadModal = ({ isOpen, deleteWerhouse, projects, onClose }) => {
   const { t } = useTranslation();
 
   if (!isOpen) return null;
@@ -53,7 +53,7 @@ const DownloadModalP = ({ isOpen, deleteWerhouse, projects, onClose }) => {
             <option value={item.warehouseId}>
             {item.name}
           </option>
-
+          
           })}
         </select>
           <div className="flex justify-between mt-7">
@@ -75,4 +75,4 @@ const DownloadModalP = ({ isOpen, deleteWerhouse, projects, onClose }) => {
   );
 };
 
-export default DownloadModalP;
+export default DownloadModal;
