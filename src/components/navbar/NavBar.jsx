@@ -37,6 +37,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
   const logout = () => {
     document.getElementById("logout").click();
     sessionStorage.clear();
+    localStorage.clear();
   };
 
   const editUser = () => {

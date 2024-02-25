@@ -31,10 +31,12 @@ const Cassir = ({ changeLanguage, lang }) => {
 
     // get caser
     const getCassier = () => {
-        axios.get(`${url}cashier/all?lang=${lang}`, config).then((res) => {
-            setCasseir(res.data.body.object);
-            setPage(res.data.body.totalPage)
-        });
+        axios.get(`${url}cashier/all?lang=${lang}`, config)
+            .then((res) => {
+                console.log(res.data.success);
+                setCasseir(res.data.body.object);
+                setPage(res.data.body.totalPage)
+            }).catch((err) => console.log('error', err))
     };
 
     // get project
