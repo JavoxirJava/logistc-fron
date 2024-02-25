@@ -78,6 +78,13 @@ function Product({ lang, projectId, setProjectId }) {
     searchByName2();
   }, [searchBy2]);
 
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      setEditOf(false)
+      setIsOffcanvasOpen(false)
+      setAddProjectModal(false)
+    }
+  });
   const openEdit = () => setEditOf(!editOf);
   const handleToggleOffcanvas = () => setIsOffcanvasOpen(!isOffcanvasOpen);
   const openProjectCan = () => setAddProjectModal(!addProjectModal);

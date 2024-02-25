@@ -18,6 +18,15 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
   const [showPassword, setShowPassword] = useState(false);
   // const [active, setActive] = useState(false);
 
+
+  
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      setIsOpen(false);
+      setIsModalOpen(false);
+    }
+  });
+  
   const openGetMe = () => setIsOpen(!isOpenm);
   const openMenu = () => setIsOpenMenu(!isOpenMenu);
   const openModal = () => setIsModalOpen(!isModalOpen);
@@ -113,9 +122,8 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
               </button>
 
               <div
-                className={`${
-                  isOpenMenu ? "inline" : "hidden  "
-                } absolute lg:w-80 w-52 bg-slate-400 top-12 
+                className={`${isOpenMenu ? "inline" : "hidden  "
+                  } absolute lg:w-80 w-52 bg-slate-400 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
               >
                 <div className="bg-slate-200 p-5 flex justify-center items-center relative">
@@ -191,7 +199,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                         {t("histori")}
                       </Link>
                     </li>
-                    
+
                   </ul>
                 </div>
               </div>
@@ -209,44 +217,44 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                   <Link
                     to="/dashboard"
                     className={`${dashboard} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
                     {t("dashboard")}
                   </Link>
                   <Link
                     to="/project"
                     className={`${product} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
                     {t("produkt")}
                   </Link>
                   <Link
                     to="/warehouse"
                     className={`${werhouse} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
                     {t("werhouse")}
                   </Link>
                   <Link
                     to="/users"
                     className={`${client} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
                     {t("users")}
                   </Link>
-                 {/* <DropdownA/> */}
+                  {/* <DropdownA/> */}
                   <Link
                     to="/cassier"
                     className={`${cassier} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
-                    
+
                     {t("cassier")}
                   </Link>
                   <Link
                     to="/history"
                     className={`${history} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
                     {t("histori")}
                   </Link>
@@ -279,9 +287,8 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                 </div>
 
                 <div
-                  className={`${
-                    isOpenm ? "inline" : "hidden"
-                  } absolute lg:w-80 w-72 media-nav bg-slate-400 lg:-right-8 right-1 top-12 
+                  className={`${isOpenm ? "inline" : "hidden"
+                    } absolute lg:w-80 w-72 media-nav bg-slate-400 lg:-right-8 right-1 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
                 >
                   <div className="bg-slate-200 sm:p-8 p-3 flex justify-center items-center relative">
