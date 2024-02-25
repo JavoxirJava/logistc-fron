@@ -91,6 +91,7 @@ const translateEn = {
     close: "Close",
     add: "Add Project",
     save: "Save",
+    selectCh: "Select",
     select: "Select project",
     success: "Successfully completed!",
     error: "Something is error.",

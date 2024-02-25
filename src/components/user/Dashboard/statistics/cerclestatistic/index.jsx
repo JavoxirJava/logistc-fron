@@ -36,7 +36,6 @@ function  Circle({s}) {
                 data: [
                     {value: s.completed, name:  `${t("circle1")}`},
                     {value: s.pending, name:`${t("circle2")}`},
-                    {value: s.cansel, name: `${t("circle3")}`}
                 ]
             }
         ]
@@ -45,7 +44,7 @@ function  Circle({s}) {
     return (
         <div>
             <div className="backCircle p-5">
-                <div className='flex justify-around md:w-78 md:ml-0 text-2xl'>
+                <div className='flex justify-center gap-20 md:w-78 md:ml-0 text-2xl'>
                     <p>{s.completed}</p>
                     <p>{s.pending}</p>
                 </div>
