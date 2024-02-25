@@ -162,7 +162,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="mt-7 ms-1 mb-20 lg:mb-10">
+                    <div className="mt-5 mb-20 lg:mb-10">
                         <ReactPaginate
                             className="navigation"
                             breakLabel="..."
