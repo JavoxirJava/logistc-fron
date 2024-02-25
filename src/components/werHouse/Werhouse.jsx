@@ -429,9 +429,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                     <th scope="col" class="px-6 py-3">
                     {t("more")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
-                    {t("file")}
-                    </th>
+                   
                   </tr>
                 </thead>
                 <tbody>
@@ -498,7 +496,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         />
       </div>
 
-      <DownloadModal isOpen={isModalDown} onClose={closeDown} />
+      <DownloadModal isOpen={isModalDown} projects={projects} onClose={closeDown} />
 
     </div>
   );

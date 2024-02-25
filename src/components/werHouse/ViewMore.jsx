@@ -21,6 +21,8 @@ const ViewMoreW = ({ lang }) => {
   const [currentPage, setCurrentPage] = useState(0);
   let projectId = sessionStorage.getItem("warehouseIdViewMore");
 
+  console.log();
+
   const handleToggleOffcanvas = () => setIsOffcanvasOpen(!isOffcanvasOpen);
   const openEdit = () => setEditOf(!editOf);
   const openDelete = () => setIsDeleteOpen(true);
@@ -39,7 +41,7 @@ const ViewMoreW = ({ lang }) => {
   const getProjectInfo = () => {
     axios
       .get(
-        `${url}wareHouse/product?wareHouseId=${projectId.wareHouseId}&lang=${lang}&page=0&size=5`,
+        `${url}wareHouse/product?wareHouseId=${projectId}&lang=${lang}&page=0&size=5`,
         config
       )
       .then((res) => {
@@ -54,7 +56,7 @@ const ViewMoreW = ({ lang }) => {
     setCurrentPage(pageNumber);
     axios
       .get(
-        `${url}wareHouse/product?wareHouseId=${projectId.wareHouseId}&lang=${lang}&page=${pageNumber}&size=5`,
+        `${url}wareHouse/product?wareHouseId=${projectId}&lang=${lang}&page=${pageNumber}&size=5`,
         config
       )
       .then((res) => setProjectIdInfo(res.data.body.object))
@@ -105,7 +107,7 @@ const ViewMoreW = ({ lang }) => {
   function editProduct() {
     let data = { ...product2 };
     axios
-      .put(`${url}product?id=${product.id}`, data, config)
+      .put(`${url}product?id=${product.productId}`, data, config)
       .then(() => {
         toast.success(t("success"));
         getProjectInfo();
@@ -120,7 +122,7 @@ const ViewMoreW = ({ lang }) => {
   function deleteProduct() {
     axios
       .delete(
-        `${url}wareHouse/product?wareHouseId=${projectId.wareHouseId}&productId= ${product.id}`,
+        `${url}product/ware-house?wareHouseId=${projectId}&productId=${product.productId}`,
         config
       )
       .then(() => {
@@ -134,7 +136,7 @@ const ViewMoreW = ({ lang }) => {
   }
 
   return (
-    <div className="w-full h-screen background overflow-x-hidden">
+    <div className="w-full h-screen background overflow-x-hidden ">
       <NavBar lang={lang} />
       <div className="mt-32 flex justify-center w-full">
         <input
@@ -144,21 +146,28 @@ const ViewMoreW = ({ lang }) => {
           className="lg:w-8/12 px-4 h-10 focus:outline-0 border rounded-md"
         />
       </div>
-      <div className="flex w-10/12 justify-between my-5">
-        <button
+      <div className="flex w-full justify-center">
+        <div className="flex w-10/12 justify-between my-5">
+          <button
             onClick={handleToggleOffcanvas}
             className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8  rounded"
-        >
-          {t("productAdd1")}
-        </button>
-        <h1>
-          <b>{t("werhouse")}</b>
-        </h1>
+          >
+            {t("productAdd1")}
+          </button>
+          <h1>
+            <b>{t("werhouse")}</b>
+          </h1>
 
-        {/* <span className="me-5 pt-1.5 float-end">
+          {/* <span className="me-5 pt-1.5 float-end">
                 {t("cardCurrent")}: {pagination2}
               </span> */}
-        <span></span>
+          <button
+            onClick={handleToggleOffcanvas}
+            className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8  rounded"
+          >
+            {t("addproject")}
+          </button>
+        </div>
       </div>
       <div className="product-main flex justify-center items-start overflow-hidden w-full">
         <div className="lg:px-0 md:px-10 lg:py-0 sm:py-5 px-3 mt-8 w-screen lg:w-[90%] overflow-x-auto">
@@ -203,7 +212,7 @@ const ViewMoreW = ({ lang }) => {
                       <a
                         onClick={() => {
                           openEdit();
-                          setProductObj(product);
+                          setProductObj(item);
                         }}
                         href="#"
                         class="font-medium text-[#16A34A] hover:underline"
@@ -214,7 +223,7 @@ const ViewMoreW = ({ lang }) => {
                     <td class="px-6 py-4">
                       <a
                         onClick={() => {
-                          setProductObj(product);
+                          setProductObj(item);
                           openDelete();
                         }}
                         href="#"

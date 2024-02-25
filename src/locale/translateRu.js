@@ -14,6 +14,10 @@ const translateRu = {
     cassier: "Касса",
     photo: "Фото",
     owner: "Владелец",
+    start: "Дата начала",
+    end: "Дата окончания",
+    selectWer: "Выбрать склад",
+    
     productName: "Наименование товара",
     productCount: "Количество продуктов",
     totalWeight: "Общий вес",
