@@ -386,7 +386,7 @@ function Product({ lang, projectId, setProjectId }) {
                     <th colSpan={3} scope="col" class="px-6 py-3 text-center">
                       {t("action")}
                     </th>
-                    <th colSpan={3} scope="col" class="px-6 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                       {t("download")}
                     </th>
                   </tr>
