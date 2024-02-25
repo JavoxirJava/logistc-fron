@@ -15,7 +15,12 @@ function ProductCard({ className, product }) {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
+  
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      setIsModalOpen(false)
+    }
+  });
   const { t } = useTranslation();
 
   const editUser = () => {
