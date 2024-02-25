@@ -66,8 +66,7 @@ const Cassir = ({ changeLanguage, lang }) => {
     const handelPageClick = (event) => {
         const pageNumber = event.selected;
         setCurrentPage(pageNumber);
-        axios
-            .get(`${url}cashier/all?page=${pageNumber}&size=10&lang=${lang}`, config)
+        axios.get(`${url}cashier/all?page=${pageNumber}&size=10&lang=${lang}`, config)
             .then((res) => setCasseir(res.data.body.object))
             .catch((err) => console.log("error page: ", err));
     };
@@ -76,6 +75,11 @@ const Cassir = ({ changeLanguage, lang }) => {
         loading:
             "animate-pulse hover:cursor-wait my-3 w-full h-7 bg-sky-200 rounded",
     };
+
+    const searchHandler = e => {
+        let data = e.target.value;
+
+    }
 
     return (
         <div>
@@ -99,11 +103,18 @@ const Cassir = ({ changeLanguage, lang }) => {
                             <button onClick={openDown} className="ms-3 duration-200 bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded">{t('download')}</button>
                         </div>
                         <DownloadModal isOpen={isModalDown} closeDown={closeDown} />
-                        <input
-                            type="search"
-                            placeholder={t("productSearch")}
-                            className="outline-none pl-5 md:w-[40%] w-[80%] border-slate-100 border-2 rounded-md"
-                        />
+                        <div className="md:w-[40%] w-[80%]">
+                            <input
+                                type="date"
+                                placeholder={t("productSearch")}
+                                className="outline-none px-5 py-1.5 mr-2 w-[49%] border-slate-100 border-2 rounded-md"
+                            />
+                            <input
+                                type="date"
+                                placeholder={t("productSearch")}
+                                className="outline-none px-5 py-1.5 w-[49%] border-slate-100 border-2 rounded-md"
+                            />
+                        </div>
                     </div>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
                         <table className="w-full text-sm text-left text-gray-500 ">
