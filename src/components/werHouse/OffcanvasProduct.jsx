@@ -12,7 +12,6 @@ function OffcanvasProduct({
     const [kubSum, setKubSum] = useState(0);
     const [totalKgSum, setTotalKgSum] = useState(0);
     const [totalKubSum, setTotalKubSum] = useState(0);
-
     const {t} = useTranslation();
 
     useEffect(() => {
