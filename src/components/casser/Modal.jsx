@@ -31,17 +31,17 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
 
     const addCasser = () => {
         let addData = {
-            projectId: projectIdVal,
-            userId: userIdVal,
-            productId: productIdVal,
+            projectId: Number(projectIdVal),
+            userId: Number(userIdVal),
+            productId: Number(productIdVal),
             measure: meassureVal,
-            priceOfKub: dataVAlue,
-            totalKub: kubAndKgVAlue,
-            priceForRoad: priceForRoad,
-            customsClearancePrice: customsClearancePrice,
-            cct: cct,
-            costChina: costChina,
-            totalPrice: totalPrice
+            priceOfKub: Number(dataVAlue),
+            totalKub: Number(kubAndKgVAlue),
+            priceForRoad: Number(priceForRoad),
+            customsClearancePrice: Number(customsClearancePrice),
+            cct: Number(cct),
+            costChina: Number(costChina),
+            totalPrice: Number(totalPrice)
         }
         axios.post(`${url}cashier/one`, addData, config)
             .then(() => {
@@ -71,8 +71,8 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
     }, [dataVAlue])
 
     const selectKubAndKg = () => {
-        if (meassureVal == 'КУБ') setKubANdKgVAlue(Number(productKub.totalKub) * dataVAlue)
-        if (meassureVal == 'КГ') setKubANdKgVAlue(Number(productKg.totalWeight) * dataVAlue)
+        if (meassureVal == 'kub') setKubANdKgVAlue(Number(productKub.totalKub) * dataVAlue)
+        if (meassureVal == 'kg') setKubANdKgVAlue(Number(productKg.totalWeight) * dataVAlue)
     }
 
     return (
@@ -143,8 +143,8 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                     onChange={e => setMeassureVal(e.target.value)}
                                     className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                     <option selected disabled>Kub And Kg</option>
-                                    <option value="КУБ">Kub</option>
-                                    <option value="КГ">Kg</option>
+                                    <option value="kub">Kub</option>
+                                    <option value="kg">Kg</option>
                                 </select>
                             </form>
                             <form className="mx-auto flex justify-evenly flex-wrap">

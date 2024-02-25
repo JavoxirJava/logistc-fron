@@ -38,14 +38,10 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   const [className, setClassName] = useState(false);
   const [loadingP, setLoadingP] = useState(false);
   const [drops, setDrops] = useState(false);
-  const [isModalDown, setIsModalDown] = useState(false);
-
 
   const inputDrop = () => setDrops(false);
   const selectDrop = () => setDrops(true);
-  
-  const closeDown = () => setIsModalDown(false);
-  const openDown = () => setIsModalDown(true);
+
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -150,10 +146,9 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     // loadingPP()
     axios
       .get(
-        `${url}wareHouse/product?wareHouseId=${
-          werHouseId
-            ? werHouseId.wareHouseId
-            : projects
+        `${url}wareHouse/product?wareHouseId=${werHouseId
+          ? werHouseId.wareHouseId
+          : projects
             ? projects[0].wareHouseId
             : 0
         }&page=${page}&size=${size}&lang=${lang}`,
@@ -192,8 +187,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     let datacha = [productTo];
     axios
       .post(
-        `${url}wareHouse/product?wareHouseId=${
-          werHouseId.wareHouseId
+        `${url}wareHouse/product?wareHouseId=${werHouseId.wareHouseId
         }&projectId=${document.getElementById("projectos").value}`,
         datacha,
         config
@@ -290,8 +284,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     else
       axios
         .get(
-          `${url}wareHouse/product/search?wareHouseId=${
-            werHouseId.wareHouseId
+          `${url}wareHouse/product/search?wareHouseId=${werHouseId.wareHouseId
           }&${searchByName()}=${text}`,
           config
         )
@@ -393,13 +386,13 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               {/* <span className="me-5 pt-1.5 float-end">
                 {t("cardCurrent")}: {pagination2}
               </span> */}
-              <button
+              {/* <button
                 onClick={openDown}
 
                 className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-8  rounded"
               >
                 {t("download")}
-              </button>
+              </button> */}
             </div>
             <div className="mt-4 flex flex-wrap justify-between">
               <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -412,24 +405,27 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                       {t("client2")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                    {t("totalKub")}
+                      {t("totalKub")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                    {t("productCount")}
+                      {t("productCount")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                    {t("totalWeight")}
+                      {t("totalWeight")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                    {t("edit")}
+                      {t("edit")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                    {t("delete")}
+                      {t("delete")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                    {t("more")}
+                      {t("more")}
                     </th>
-                   
+                    <th scope="col" class="px-6 py-3">
+                      Download
+                    </th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -495,9 +491,6 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           lang={lang}
         />
       </div>
-
-      <DownloadModal isOpen={isModalDown} projects={projects} onClose={closeDown} />
-
     </div>
   );
 }
