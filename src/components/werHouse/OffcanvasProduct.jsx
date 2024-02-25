@@ -29,13 +29,18 @@ function OffcanvasProduct({
 
   function setData() {
     setProduct({
-      idNumber: byId(`idNumberX${isAdd}`),
       name: byId(`productName${isAdd}`),
-      measureCount: byId(`measureCount${isAdd}`),
-      measure: byId(`measure${isAdd}`),
       comment: byId(`comment${isAdd}`),
-      price: byId(`price${isAdd}`),
-      wareHouseId: `${werHouseId.wareHouseId}`,
+      wareHouseId: `1`,
+      x: byId(`idNumberX${isAdd}`),
+      y: byId(`idNumberY${isAdd}`),
+      z: byId(`idNumberZ${isAdd}`),
+      kg: byId(`productWeight${isAdd}`),
+      kub: kubSum,
+      count: byId(`numberOfSeats${isAdd}`),
+      totalWeight: totalKgSum,
+      totalKub: totalKubSum,
+      attachmentId: 0,
     });
     setUserId(byId(`userId${isAdd}`));
   }
