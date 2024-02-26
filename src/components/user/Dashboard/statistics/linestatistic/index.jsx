@@ -3,6 +3,7 @@ import "../../index.css"
 import EChartsReact from 'echarts-for-react';
 
 function LineChart({productStatistics2}) {
+  console.log(productStatistics2);
   const option = {
     xAxis: {
       type: 'category',

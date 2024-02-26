@@ -1,9 +1,10 @@
 // DashboardProductCard.js
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { config, url } from "../../../api";
+import { config, getFile, url } from "../../../api";
 import Dropdown from "./Dropdown";
 import "../../../product/product.css";
+import img from "../../../empty.png";
 import Pagination, {
   bootstrap5PaginationPreset,
 } from "react-responsive-pagination";
@@ -181,9 +182,9 @@ const DashboardProductCard = ({ className, lang }) => {
               <th scope="col" class="px-6 py-3">
                 {t("totalKub")}
               </th>
-              <th scope="col" class="px-6 py-3">
+              {/* <th scope="col" class="px-6 py-3">
                 {t("wiew")}
-              </th>
+              </th> */}
               {/* <th scope="col" class="px-6 py-3">
                       Total Price
                     </th> */}
@@ -208,7 +209,15 @@ const DashboardProductCard = ({ className, lang }) => {
                       ? i + 1
                       : (pagination - 1) * 4 + (i + 1)}
                   </th>
-                  <td className="px-6 py-4">{item ? item.attachmentId : ""}</td>
+                  <th className="px-6 py-5 flex justify-center items-center">
+                      <img
+                        src={
+                          item.attachmentId ? getFile + item.attachmentId : img
+                        }
+                        className="w-10 h-10 object-cover rounded-full scale-150"
+                        alt="img"
+                      />
+                    </th>
                   <td className="px-6 py-4">{item ? item.owner : ""}</td>
                   <td className="px-6 py-4">{item ? item.productName : ""}</td>
                   <td className="px-6 py-4">{item ? item.comment : ""}</td>
@@ -216,11 +225,11 @@ const DashboardProductCard = ({ className, lang }) => {
                   <td className="px-6 py-4">{item ? item.productCount : ""}</td>
                   <td className="px-6 py-4">{item ? item.totalWeight : ""}</td>
                   <td className="px-6 py-4">{item ? item.totalKub : ""} </td>
-                  <td className="px-6 py-4">
+                  {/* <td className="px-6 py-4">
                       <a href="#" className="text-yellow-500 font-bold">
                       {t("wiew")}
                       </a>
-                  </td>
+                  </td> */}
 
                 </tr>
               ))}
