@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./history.css";
 import HistoryInfo from "./HistoryInfo";
 import NavBar from "../navbar/NavBar";
-import {byId, config, url} from "../api";
+import { byId, config, url } from "../api";
 import axios from "axios";
-import Pagination, {bootstrap5PaginationPreset} from "react-responsive-pagination";
+import Pagination, { bootstrap5PaginationPreset } from "react-responsive-pagination";
 import { useTranslation } from "react-i18next";
 
 
-const History = ({changeLanguage, lang}) => {
+const History = ({ changeLanguage, lang }) => {
     const [history, setHistory] = useState(null);
     const [totalPage, setTotalPage] = useState(2);
     const [pagination, setPagination] = useState(0);
@@ -32,7 +32,7 @@ const History = ({changeLanguage, lang}) => {
     const getHistory = (page, size) => {
         axios.get(`${url}product/history?page=${page}&size=${size}&lang=${lang}`, config)
             .then((res) => {
-                setHistory(res.data.object  );
+                setHistory(res.data.object);
                 setTotalPage(res.data.totalPage ? res.data.totalPage - 1 : 2);
             })
             .catch((err) => {
@@ -53,15 +53,15 @@ const History = ({changeLanguage, lang}) => {
         axios.get(
             `${url}product/admin/history/search?${filter}&lang=${lang}`,
             config).then((res) => {
-            setHistory(res.data.body);
-        }).catch(() => {
-            getHistory();
-        });
+                setHistory(res.data.body);
+            }).catch(() => {
+                getHistory();
+            });
     };
 
     return (
         <div className=" background w-full">
-            <NavBar changeLang={changeLanguage} history={'border-b-red-600 border-b text-slate-900'} lang={lang}/>
+            <NavBar changeLang={changeLanguage} history={'border-b-red-600 border-b text-slate-900'} lang={lang} />
             <div className="history-bg  pt-20">
                 <div className="w-full flex justify-center items-center flex-wrap mt-5">
                     <div className="flex flex-col">
@@ -105,7 +105,7 @@ const History = ({changeLanguage, lang}) => {
                             htmlFor="searchUser"
                             className="mx-5 text-slate-800 font-semibold tracking-wider"
                         >
-                           {t("history3")}
+                            {t("history3")}
                         </label>
                         <input
                             onChange={searchHistory}
@@ -122,7 +122,7 @@ const History = ({changeLanguage, lang}) => {
                             htmlFor="searchId"
                             className="mx-5 text-slate-800 font-semibold tracking-wider"
                         >
-                           {t("history4")}
+                            {t("history4")}
                         </label>
                         <input
                             onChange={searchHistory}
@@ -133,12 +133,12 @@ const History = ({changeLanguage, lang}) => {
                             placeholder="🔍 ..."
                         />
                     </div>
-                    <p className='md:ml-0 ml-8 mt-6 ms-3'>{t("cardCurrent")}: {pagination}</p>
                 </div>
+                <p className='md:ml-0 ml-8 mt-6 ms-3'>{t("cardCurrent")}: {pagination}</p>
 
                 {/* history table */}
                 <div className="w-full mb-5 md:px-5 px-2">
-                    {history && <HistoryInfo className="mt-6" history={history}/>}
+                    {history && <HistoryInfo className="mt-6" history={history} />}
                 </div>
                 <div className="pagination-style mt-4">
                     <Pagination
