@@ -50,7 +50,7 @@ function ProjectCard({
           scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          {i + 1}
+         {(pagination - 1) * 4 < 0 ? i + 1 : (pagination - 1) * 4 + (i + 1)}
         </th>
         <td class="px-6 py-4">{projects.name}</td>
         <td class="px-6 py-4">{projects.totalKub}</td>

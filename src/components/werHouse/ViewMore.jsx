@@ -48,11 +48,11 @@ const ViewMoreW = ({lang}) => {
     }, [lang]);
 
     const getProjectInfo = () => {
-        axios.get(`${url}wareHouse/product?wareHouseId=${projectId}&lang=${lang}&page=0&size=5`, config)
+        axios.get(`${url}product/ware-house?wareHouseId=${projectId}&lang=${lang}&page=0&size=5`, config)
             .then((res) => {
                 setProjectIdInfo(res.data.body.object);
                 setPage(res.data.body.totalPage);
-            }).catch((err) => console.log("wareHouse/product yulida error!", err));
+            }).catch((err) => console.log("product/ware-house yulida error!", err));
     };
     const getProject = () => {
         axios
