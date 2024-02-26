@@ -246,7 +246,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                 </div>
             )}
 
-{nextModal && (
+            {nextModal && (
                 <div
                     className="zoom-modal justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                     <div className="relative md:w-[100%] w-[80vw] my-6 mx-auto max-w-3xl">
