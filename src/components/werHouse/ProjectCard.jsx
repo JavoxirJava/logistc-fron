@@ -95,7 +95,7 @@ function ProjectCard({
             }}
             class="font-medium text-blue-600 hover:underline"
           >
-            {t("Download")}
+            {t("download")}
           </Link>
         </td>
       </tr>
