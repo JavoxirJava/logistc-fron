@@ -23,6 +23,7 @@ const ViewMore = ({ lang }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    
     getProjectInfo();
   }, [projectId]);
 
