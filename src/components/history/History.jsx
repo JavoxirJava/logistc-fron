@@ -133,7 +133,7 @@ const History = ({changeLanguage, lang}) => {
                             placeholder="🔍 ..."
                         />
                     </div>
-                    <p className='mt-6 ms-3'>{t("cardCurrent")}: {pagination}</p>
+                    <p className='md:ml-0 ml-8 mt-6 ms-3'>{t("cardCurrent")}: {pagination}</p>
                 </div>
 
                 {/* history table */}
