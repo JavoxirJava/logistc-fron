@@ -104,7 +104,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                         <div
                             className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-6">
                             <div className="flex items-center justify-between border-b pb-2 rounded-t">
-                                <h3 className="text-2xl font-semibold">Add data</h3>
+                                <h3 className="text-2xl font-semibold">{t('cassierData')}</h3>
                                 <button
                                     className='p-1 ml-auto border-0 text-4xl hover:scale-110 duration-200'
                                     onClick={() => setShowModal(false)}>×
@@ -163,13 +163,13 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                             </form>
                             <form className="mx-auto flex justify-evenly flex-wrap">
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='priceOfKub'>{t("pricekubkg")}</label>
+                                    <label className='text-[0.885rem]' htmlFor='priceOfKub'>{t("pricekubkg")}</label>
                                     <input
                                         onChange={e => setDataVAlue(e.target.value)}
                                         id='priceOfKub'
                                         type="number"
                                         placeholder={t("enterPrice")}
-                                        className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                        className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500  focus:border-blue-500 p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
                                     <label htmlFor='totalKub'>{t("priceresult")}</label>
@@ -252,57 +252,56 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                     <div className="relative md:w-[100%] w-[80vw] my-6 mx-auto max-w-3xl">
                         <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-6">
                             <div className="flex items-center justify-between border-b pb-2 rounded-t">
-                                <h3 className="text-2xl font-semibold">Confirm the information entered?</h3>
+                                <h3 className="text-2xl font-semibold">{t("cassierDatanextModal")}</h3>
                                 <button
                                     className='p-1 ml-auto border-0 text-4xl hover:scale-110 duration-200'
                                     onClick={() => setNextModal(false)}>×</button>
                             </div>
                             {/* next modal body */}
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Project Name:</p>
+                                <p>{t('projectName')}:</p>
                                 <p className='font-bold'>{projectFilterName && projectFilterName.name}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>User Name:</p>
+                                <p>{t("userName")}:</p>
                                 <p className='font-bold'>{userFilterName && userFilterName.user}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Product Name:</p>
+                                <p>{t('productName')}:</p>
                                 <p className='font-bold'>{productFilterName && productFilterName.name}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Measure:</p>
+                                <p>{t("measure")}:</p>
                                 <p className='font-bold'>{meassureVal && meassureVal}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Price of {meassureVal}:</p>
+                                <p>{t("PriceOF")} {meassureVal}:</p>
                                 <p className='font-bold'>{dataVAlue && dataVAlue} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Result price of {meassureVal}:</p>
+                                <p>{t("Результат цена")} {meassureVal}:</p>
                                 <p className='font-bold'>{kubAndKgVAlue && kubAndKgVAlue} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Price For Road:</p>
+                                <p>{t("priceForRoad")}:</p>
                                 <p className='font-bold'>{priceForRoad && priceForRoad} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Customs Price:</p>
+                                <p>{t('customPrice')}:</p>
                                 <p className='font-bold'>{customsClearancePrice && customsClearancePrice} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Cct:</p>
+                                <p>{t("cct")}:</p>
                                 <p className='font-bold'>{cct && cct} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Cost China:</p>
+                                <p>{t("costChina")}:</p>
                                 <p className='font-bold'>{costChina && costChina} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Total price result:</p>
+                                <p>{t('totalpriceand')}:</p>
                                 <p className='font-bold'>{totalPrice && totalPrice} $</p>
                             </div>
-
                             <div className='flex md:justify-end justify-center  mt-4'>
                                 <button
                                     onClick={() => setNextModal(false)}
