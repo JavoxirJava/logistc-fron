@@ -53,12 +53,12 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                 setNextModal(false);
                 getCassier();
                 toast.success('Successfully saved data✅')
-                console.log(addData);
+                setTotalPrice(0)
+                setKubANdKgVAlue(0)
                 setIsLoading(false)
             })
             .catch(err => {
                 console.log("Error adding information: ", err);
-                console.log(addData);
                 setIsLoading(false)
             })
     }
