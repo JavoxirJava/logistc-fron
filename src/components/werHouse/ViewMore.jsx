@@ -37,6 +37,7 @@ const ViewMoreW = ({ lang }) => {
 
     useEffect(() => {
         getProject();
+        getProjectInfo();
     }, []);
 
     useEffect(() => {
@@ -48,7 +49,7 @@ const ViewMoreW = ({ lang }) => {
     }, [lang]);
 
     const getProjectInfo = () => {
-        axios.get(`${url}product/ware-house?wareHouseId=${projectId}&lang=${lang}&page=0&size=5`, config)
+        axios.get(`${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=0&size=5`, config)
             .then((res) => {
                 setProjectIdInfo(res.data.body.object);
                 setPage(res.data.body.totalPage);
@@ -66,7 +67,7 @@ const ViewMoreW = ({ lang }) => {
     const handelPageClick = (event) => {
         const pageNumber = event.selected;
         setCurrentPage(pageNumber);
-        axios.get(`${url}wareHouse/product?wareHouseId=${projectId}&lang=${lang}&page=${pageNumber}&size=5`, config)
+        axios.get(`${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=${pageNumber}&size=5`, config)
             .then((res) => setProjectIdInfo(res.data.body.object))
             .catch((err) => console.log("error page: ", err));
     };
