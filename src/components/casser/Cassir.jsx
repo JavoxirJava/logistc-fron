@@ -77,20 +77,55 @@ const Cassir = ({ changeLanguage, lang }) => {
     };
 
     const searchHandler = () => {
-        // cashier/search?start=2024-02-01&finish=2024-02-26&lang=en
-        // cashier/search?lang=en&projectId=3
         byIdObj('projectIdFilter').value = t("select")
         let addData = {
             startCashier: byIdObj('startCashier').value ? byIdObj('startCashier').value : null,
             endCashier: byIdObj('endCashier').value ? byIdObj('endCashier').value : null
         }
-        // axios.get(`${url}cashier/search?start=${addData.startCashier}&finish=${addData.endCashier}&lang=${lang}`, config)
-        //     .then(res => {
-        //         setCasseir(res.data.body)
-        //     })
-        //     .catch(err => {
-        //         console.log('Error', err)
-        //     })
+        if (addData.startCashier === null && addData.endCashier === null) {
+            axios.get(`${url}cashier/search?lang=${lang}`, config)
+                .then(res => {
+                    if (res.data.success === true) setCasseir(res.data.body)
+                    else if (res.data.success === false) {
+                        toast.error(res.data.message)
+                        setCasseir([{ productName: res.data.message }])
+                    }
+                })
+                .catch(() => console.log('Error'))
+        }
+        if (addData.startCashier !== null && addData.endCashier !== null) {
+            axios.get(`${url}cashier/search?start=${addData.startCashier}&finish=${addData.endCashier}&lang=${lang}`, config)
+                .then(res => {
+                    if (res.data.success === true) setCasseir(res.data.body)
+                    else if (res.data.success === false) {
+                        toast.error(res.data.message)
+                        setCasseir([{ productName: res.data.message }])
+                    }
+                })
+                .catch(() => console.log('Error'))
+        }
+        if (addData.startCashier === null) {
+            axios.get(`${url}cashier/search?finish=${addData.endCashier}&lang=${lang}`, config)
+                .then(res => {
+                    if (res.data.success === true) setCasseir(res.data.body)
+                    else if (res.data.success === false) {
+                        toast.error(res.data.message)
+                        setCasseir([{ productName: res.data.message }])
+                    }
+                })
+                .catch(() => console.log('Error'))
+        }
+        if (addData.endCashier === null) {
+            axios.get(`${url}cashier/search?start=${addData.startCashier}&lang=${lang}`, config)
+                .then(res => {
+                    if (res.data.success === true) setCasseir(res.data.body)
+                    else if (res.data.success === false) {
+                        toast.error(res.data.message)
+                        setCasseir([{ productName: res.data.message }])
+                    }
+                })
+                .catch(() => console.log('Error'))
+        }
     }
 
     const selectFilterHandler = id => {
@@ -263,7 +298,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                             <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
                                 <p>{t("userName")}:</p>
                                 <p className="font-bold">
-                                    {productobj && productobj.userName}
+                                    {productobj && productobj.username}
                                 </p>
                             </div>
                             <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
