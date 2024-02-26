@@ -104,7 +104,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                         <div
                             className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-6">
                             <div className="flex items-center justify-between border-b pb-2 rounded-t">
-                                <h3 className="text-2xl font-semibold">Add data</h3>
+                                <h3 className="text-2xl font-semibold">{t('cassierData')}</h3>
                                 <button
                                     className='p-1 ml-auto border-0 text-4xl hover:scale-110 duration-200'
                                     onClick={() => setShowModal(false)}>×
