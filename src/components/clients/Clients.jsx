@@ -33,6 +33,9 @@ const Clients = ({ changeLanguage, lang }) => {
   const [paginationM, setPaginationM] = useState(0);
   const [paginationC, setPaginationC] = useState(0);
   const [pagen, setPage] = useState(0);
+  const [userBtn, setUserBtn] = useState(false)
+  const [cashierBtn, setCashierBtn] = useState(false)
+  const [managerBtn, setManagerBtn] = useState(false)
 
   const getUse = () => setPage(0);
   const getManag = () => setPage(1);
@@ -126,22 +129,22 @@ const Clients = ({ changeLanguage, lang }) => {
         byIdObj("phoneNumberC").value = "";
         byIdObj("passwordC").value = "";
         pagen == 1
-        ? getManagerProduct(
+          ? getManagerProduct(
             paginationM,
             4,
             setProductClient,
             setTotalManager,
             lang
           )
-        : pagen == 2
-        ? getCasherProduct(
-            paginationC,
-            4,
-            setProductClient,
-            setTotalCasher,
-            lang
-          )
-        : getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
+          : pagen == 2
+            ? getCasherProduct(
+              paginationC,
+              4,
+              setProductClient,
+              setTotalCasher,
+              lang
+            )
+            : getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
       })
       .catch((err) => {
         toast.error(t("error"));
@@ -155,21 +158,21 @@ const Clients = ({ changeLanguage, lang }) => {
     if (text === "")
       pagen == 1
         ? getManagerProduct(
-            paginationM,
-            4,
-            setProductClient,
-            setTotalManager,
-            lang
-          )
+          paginationM,
+          4,
+          setProductClient,
+          setTotalManager,
+          lang
+        )
         : pagen == 2
-        ? getCasherProduct(
+          ? getCasherProduct(
             paginationC,
             4,
             setProductClient,
             setTotalCasher,
             lang
           )
-        : getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
+          : getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
     else
       axios
         .get(`${url}user/search?idNumber=${text}&lang=${lang}`, config)
@@ -185,6 +188,12 @@ const Clients = ({ changeLanguage, lang }) => {
             setProductClient(null);
           console.log(err);
         });
+  }
+
+  const activeBtnClass = text => {
+    text === 'activeUser' ? setUserBtn(true) : setUserBtn(false)
+    text === 'activeCasher' ? setCashierBtn(true) : setCashierBtn(false)
+    text === 'activeManager' ? setManagerBtn(true) : setManagerBtn(false)
   }
 
   return (
@@ -207,10 +216,9 @@ const Clients = ({ changeLanguage, lang }) => {
             />
             <div className="flex gap-5">
               <button
-                className={`px-6 py-2 ${
-                  role === "ROLE_ADMIN" ? "" : "hidden"
-                } bg-green-500 shadow-lg rounded-lg text-white
-                                font-bold text-lg tracking-wider active:scale-95 duration-200`}
+                className={`px-6 py-2 ${role === "ROLE_ADMIN" ? "" : "hidden"} 
+                ${userBtn ? 'bg-green-700 border border-white shadow-white' : 'bg-green-500'}
+                shadow-md rounded-lg text-white font-bold text-lg tracking-wider active:scale-95 duration-200`}
                 onClick={() => {
                   getClientProduct(
                     Math.floor(pagination),
@@ -220,15 +228,15 @@ const Clients = ({ changeLanguage, lang }) => {
                     lang
                   );
                   getUse();
+                  activeBtnClass('activeUser');
                 }}
               >
                 {t("client10")}
               </button>
               <button
-                className={`px-6 py-2 ${
-                  role === "ROLE_ADMIN" ? "" : "hidden"
-                } bg-green-500 shadow-lg rounded-lg text-white
-                                font-bold text-lg tracking-wider active:scale-95 duration-200`}
+                className={`px-6 py-2 ${role === "ROLE_ADMIN" ? "" : "hidden"} 
+                ${cashierBtn ? 'bg-green-700 border border-white shadow-white' : 'bg-green-500'} 
+                shadow-md rounded-lg text-white font-bold text-lg tracking-wider active:scale-95 duration-200`}
                 onClick={() => {
                   getCasherProduct(
                     Math.floor(paginationC),
@@ -238,15 +246,15 @@ const Clients = ({ changeLanguage, lang }) => {
                     lang
                   );
                   getCash();
+                  activeBtnClass('activeCasher');
                 }}
               >
                 {t("cassier")}
               </button>
               <button
-                className={`px-6 py-2 ${
-                  role === "ROLE_ADMIN" ? "" : "hidden"
-                } bg-green-500 shadow-lg rounded-lg text-white
-              font-bold text-lg tracking-wider active:scale-95 duration-200`}
+                className={`px-6 py-2 ${role === "ROLE_ADMIN" ? "" : "hidden"} 
+                ${managerBtn ? 'bg-green-700 border border-white shadow-white' : 'bg-green-500'}
+                shadow-md rounded-lg text-white font-bold text-lg tracking-wider active:scale-95 duration-200`}
                 onClick={() => {
                   getManagerProduct(
                     Math.floor(paginationM),
@@ -256,6 +264,7 @@ const Clients = ({ changeLanguage, lang }) => {
                     lang
                   );
                   getManag();
+                  activeBtnClass('activeManager');
                 }}
               >
                 {t("client11")}
