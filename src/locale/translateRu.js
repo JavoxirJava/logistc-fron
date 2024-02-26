@@ -208,6 +208,8 @@ const translateRu = {
   7: "В граница узб",
   8: "В процесс разтаможка",
   admin: "Админ",
+  en: "ЕНГ",
+  ru: "РУС",
 };
 
 export default translateRu;
