@@ -211,6 +211,7 @@ const translateRu = {
   admin: "Админ",
   en: "ЕНГ",
   ru: "РУС",
+  projectStatus: "Статус проекта",
 };
 
 export default translateRu;

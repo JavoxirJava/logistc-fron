@@ -215,6 +215,8 @@ const translateEn = {
   admin: "Admin",
   en: "ENG",
   ru: "RUS",
+  projectStatus: "Project Status",
+
 
 }
 

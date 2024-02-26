@@ -128,14 +128,14 @@ function OffcanvasProject({
                     htmlFor={`productStatus${isAdd}`}
                     className="block text-gray-700 text-sm font-bold mb-2"
                 >
-                    {t("productAdd8")}
+                    {t("projectStatus")}
                 </label>
                 <select
                     id={`productStatus${isAdd}`}
                     className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
                 >
                     <option selected disabled>
-                        {t("status")}
+                        {t("projectStatus")}
                     </option>
                     <option
                         value="1"
