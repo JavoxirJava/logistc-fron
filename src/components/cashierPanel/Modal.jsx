@@ -246,7 +246,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                 </div>
             )}
 
-            {nextModal && (
+{nextModal && (
                 <div
                     className="zoom-modal justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                     <div className="relative md:w-[100%] w-[80vw] my-6 mx-auto max-w-3xl">
@@ -279,7 +279,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                 <p className='font-bold'>{dataVAlue && dataVAlue} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>{t("Результат цена")} {meassureVal}:</p>
+                                <p>{t("resultPriceOf")} {meassureVal}:</p>
                                 <p className='font-bold'>{kubAndKgVAlue && kubAndKgVAlue} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
