@@ -3,9 +3,10 @@ import { useTranslation } from "react-i18next";
 import Modal from "./Modal";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { config, url } from "../api";
+import { byIdObj, config, url } from "../api";
 import ReactPaginate from "react-paginate";
 import DownloadModal from "./downloadModal";
+import { toast } from "react-toastify";
 
 const Cassir = ({ changeLanguage, lang }) => {
     const [cassier, setCasseir] = useState(null);
@@ -75,9 +76,38 @@ const Cassir = ({ changeLanguage, lang }) => {
             "animate-pulse hover:cursor-wait my-3 w-full h-7 bg-sky-200 rounded",
     };
 
-    const searchHandler = e => {
-        let data = e.target.value;
+    const searchHandler = () => {
+        // cashier/search?start=2024-02-01&finish=2024-02-26&lang=en
+        // cashier/search?lang=en&projectId=3
+        byIdObj('projectIdFilter').value = t("select")
+        let addData = {
+            startCashier: byIdObj('startCashier').value ? byIdObj('startCashier').value : null,
+            endCashier: byIdObj('endCashier').value ? byIdObj('endCashier').value : null
+        }
+        // axios.get(`${url}cashier/search?start=${addData.startCashier}&finish=${addData.endCashier}&lang=${lang}`, config)
+        //     .then(res => {
+        //         setCasseir(res.data.body)
+        //     })
+        //     .catch(err => {
+        //         console.log('Error', err)
+        //     })
+    }
 
+    const selectFilterHandler = id => {
+        byIdObj('startCashier').value = ''
+        byIdObj('endCashier').value = ''
+        axios.get(`${url}cashier/search?lang=${lang}&projectId=${id}`, config)
+            .then(res => {
+                if (res.data.success === true) {
+                    setCasseir(res.data.body)
+                } else if (res.data.success === false) {
+                    setCasseir([{ productName: res.data.message }])
+                    toast.error(res.data.message)
+                }
+            }).catch(err => {
+                console.log('Error', err)
+                setCasseir([{ productName: 'Cashier not found 😊', }])
+            })
     }
 
     return (
@@ -102,17 +132,39 @@ const Cassir = ({ changeLanguage, lang }) => {
                             <button onClick={openDown} className="ms-3 duration-200 bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded">{t('download')}</button>
                         </div>
                         <DownloadModal isOpen={isModalDown} closeDown={closeDown} />
-                        <div className="md:w-[40%] w-[80%]">
-                            <input
-                                type="date"
-                                placeholder={t("productSearch")}
-                                className="outline-none px-5 py-1.5 mr-2 w-[49%] border-slate-100 border-2 rounded-md"
-                            />
-                            <input
-                                type="date"
-                                placeholder={t("productSearch")}
-                                className="outline-none px-5 py-1.5 w-[49%] border-slate-100 border-2 rounded-md"
-                            />
+                        <div className="flex justify-end">
+                            <div className="flex flex-col mr-2">
+                                <label htmlFor="projectIdFilter">{t("select")}</label>
+                                <select
+                                    id="projectIdFilter"
+                                    onChange={e => selectFilterHandler(e.target.value)}
+                                    className="px-5 py-2.5 duration-300 text-sm text-gray-900 outline-0 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
+                                    <option selected disabled>{t("select")}</option>
+                                    {projectId && projectId.map((item) => (
+                                        <option value={item.id} key={item.id}>{item.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="flex flex-col mr-2">
+                                <label htmlFor="startCashier">{t('start')}</label>
+                                <input
+                                    id="startCashier"
+                                    onChange={searchHandler}
+                                    type="date"
+                                    placeholder={t("productSearch")}
+                                    className="outline-none px-5 py-1.5 border-slate-100 border-2 rounded-md"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="endCashier">{t('end')}</label>
+                                <input
+                                    id="endCashier"
+                                    onChange={searchHandler}
+                                    type="date"
+                                    placeholder={t("productSearch")}
+                                    className="outline-none px-5 py-1.5 border-slate-100 border-2 rounded-md"
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
@@ -133,28 +185,25 @@ const Cassir = ({ changeLanguage, lang }) => {
                                     cassier.map((item, i) => (
                                         <tr key={i} className="bg-white ">
                                             <td className="px-6 py-3">
-                                                {currentPage * 10 + (i + 1)}
+                                                {(currentPage * 10) + (i + 1)}
                                             </td>
                                             <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                                {item.userName}
+                                                {item.username}
                                             </td>
                                             <td className="px-6 py-4">{item.projectName}</td>
                                             <td className="px-6 py-4">{item.productName}</td>
                                             <td className="px-6 py-4">{item.createdAt}</td>
                                             <td className="px-6 py-4">{item.totalPrice}</td>
-                                            <td className="px-6 py-4">
-                                                <td class="px-6 py-4">
-                                                    <a
-                                                        onClick={() => {
-                                                            openModal();
-                                                            setProductObj(item);
-                                                        }}
-                                                        href="#"
-                                                        class="font-medium text-[#2e46c0] hover:underline"
-                                                    >
-                                                        {t("wiew")}
-                                                    </a>
-                                                </td>
+                                            <td class="px-6 py-4">
+                                                <a
+                                                    onClick={() => {
+                                                        openModal();
+                                                        setProductObj(item);
+                                                    }}
+                                                    href="#"
+                                                    class="font-medium text-[#2e46c0] hover:underline">
+                                                    {t("wiew")}
+                                                </a>
                                             </td>
                                         </tr>
                                     ))
