@@ -194,7 +194,7 @@ function OffcanvasProject({
                 </label>
                 <input
                     id={`project${isAdd}`}
-                    placeholder={`projectId`}
+                    placeholder={t("projectId")}
                     defaultValue={projectId ? projectId.projectId : ""}
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
