@@ -178,6 +178,8 @@ const translateRu = {
   client9: "Выберите роль",
   client10: "Клиент",
   client11: "Менеджер",
+  cassierData:'Добавить данные',
+  cassierDatanextModal:'Подтвердить введенную информацию?',
   addclient1: "Редактировать пользователь",
   addclient2: "Новый пользователь",
   addclient3: "Имя пользователя",
