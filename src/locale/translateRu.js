@@ -194,6 +194,8 @@ const translateRu = {
   measure: "Измерять",
   totalPrice: "Итоговая цена",
   cct: "Ccт",
+  notFoundFile: "Файл не найден",
+  notFoundCashier: 'Кассир не найден 😊'
 
 };
 
