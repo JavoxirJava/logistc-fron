@@ -7,6 +7,7 @@ import DownloadModal from "./downloadModal";
 import axios from "axios";
 import { url, config } from "../api";
 import LoadingBtn from "../loading/Loading";
+import { toast } from "react-toastify";
 
 function ProjectCard({
   setProduct,
@@ -20,6 +21,7 @@ function ProjectCard({
   pagination,
 }) {
   const [historyList, setHistoryList] = useState([]);
+  const [projectList, setProjectList] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false)
 
@@ -41,21 +43,26 @@ function ProjectCard({
     else getProduct(Math.floor(pagination - 1), 4);
   }
 
-  const downloadWereHouse = () => {
+  const downloadWereHouse = (id) => {
     setIsLoading(true)
-    let addData = {}
-    // axios.post(`${url}`, addData, { ...config, responseType: 'blob' })
-    //   .then((res) => {
-    //     const blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    //     const url = window.URL.createObjectURL(blob);
-    //     const a = document.createElement('a');
-    //     a.href = url;
-    //     a.download = 'logistic.xlsx';
-    //     document.body.appendChild(a);
-    //     a.click()
-    //     setIsLoading(false);
-    //   })
-    //   .catch(() => setIsLoading(false))
+    if (id === null) {
+      toast.error(t('notFoundFile'))
+      setIsLoading(false)
+    } else {
+      axios.get(`${url}attachment/getFile/${id}`, { ...config, responseType: 'blob' })
+        .then((res) => {
+          const contentType = res.headers['content-type'];
+          const blob = new Blob([res.data], { type: contentType });
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'logistic';
+          document.body.appendChild(a);
+          a.click()
+          setIsLoading(false);
+        })
+        .catch(() => setIsLoading(false))
+    }
   }
 
   return (
@@ -114,15 +121,18 @@ function ProjectCard({
         </td>
         <td className="px-6 py-4">
           <Link
-            onClick={downloadWereHouse}
+            onClick={() => {
+              downloadWereHouse(projects.fileId);
+              // setProjectList()
+            }}
             className="font-medium text-blue-600 hover:underline"
           >
-            {isLoading ? <LoadingBtn className={`bg-red-500`} /> : `${t("Download")} ${t('file')}`}
+            {isLoading ? <LoadingBtn className={`bg-red-500`} /> : `${t("download")} ${t('file')}`}
           </Link>
         </td>
       </tr>
 
-    
+
       {historyList && (
         <ProjectModal
           isOpen={isModalOpen}

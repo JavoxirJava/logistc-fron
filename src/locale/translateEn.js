@@ -108,7 +108,7 @@ const translateEn = {
     select: "Select project",
     success: "Successfully completed!",
     error: "Something is error.",
-    notFound: "User not found",
+    notFoundFile: "User not found",
     addd: "Add",
     addWer: "Add warehouse",
     editWer: "Edit warehouse",
@@ -197,6 +197,8 @@ const translateEn = {
     measure: "Measure",
     totalPrice: "Total price",
     cct: "Cct",
+    notFoundFile: "File not found",
+    notFoundCashier: "Cashier not found 😊",
 
 }
 
