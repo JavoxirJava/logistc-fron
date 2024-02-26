@@ -49,14 +49,20 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
             totalPrice: Number(totalPrice)
         }
         axios.post(`${url}cashier/one`, addData, config)
-            .then((res) => {
-                console.log(res.data);
+            .then(res => {
+                if (res.data.success === true) toast.success(res.data.message)
+                if (res.data.success === false) toast.warning(res.data.message)
                 setNextModal(false);
                 getCassier();
-                toast.success('Successfully saved data✅')
-                setIsLoading(false)
                 setTotalPrice(0)
                 setKubANdKgVAlue(0)
+                setProductKg(0)
+                setProductKub(0)
+                setPriceForRoad(0)
+                setCustomsClearancePrice(0)
+                setCct(0)
+                setCostChina(0)
+                setIsLoading(false)
             })
             .catch(err => {
                 console.log("Error adding information: ", err);

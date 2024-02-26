@@ -17,6 +17,7 @@ function ProjectCard({
   setWerHouseId,
   getProduct,
   pagination,
+  setNewWereHouseName
 }) {
   const [historyList, setHistoryList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,6 +58,7 @@ function ProjectCard({
             onClick={() => {
               openEdit();
               setProductObj(projects.wareHouseId);
+              setNewWereHouseName(projects)
             }}
             href="#"
             class="font-medium text-[#16A34A] hover:underline"

@@ -88,7 +88,7 @@ const CassirDashboard = ({ changeLanguage, lang }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.error(res.data.message)
+                        toast.warning(res.data.message)
                         setCasseir([{ productName: res.data.message }])
                     }
                 })
@@ -99,7 +99,7 @@ const CassirDashboard = ({ changeLanguage, lang }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.error(res.data.message)
+                        toast.warning(res.data.message)
                         setCasseir([{ productName: res.data.message }])
                     }
                 })
@@ -110,7 +110,7 @@ const CassirDashboard = ({ changeLanguage, lang }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.error(res.data.message)
+                        toast.warning(res.data.message)
                         setCasseir([{ productName: res.data.message }])
                     }
                 })
@@ -121,7 +121,7 @@ const CassirDashboard = ({ changeLanguage, lang }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.error(res.data.message)
+                        toast.warning(res.data.message)
                         setCasseir([{ productName: res.data.message }])
                     }
                 })

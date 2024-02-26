@@ -33,6 +33,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   const [searchBy, setSearchBy] = useState(null);
   const [searchBy2, setSearch2By] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [newWereHouseName, setNewWereHouseName] = useState(null);
   const [werhouseId, setWerhouseId] = useState(0);
   const [productIdList, setProductIdList] = useState([]);
   const [className, setClassName] = useState(false);
@@ -442,6 +443,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                         openEdit={openEditProjectCan}
                         projects={item}
                         setProductObj={setProductObj}
+                        setNewWereHouseName={setNewWereHouseName}
                       />
                     ))
                   ) : (
@@ -478,6 +480,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           getProduct={getWerhouse}
           setProduct={setProductObj2}
           product=""
+          newWereHouseName=''
           handleToggleOffcanvas={openProjectCan}
           isOffcanvasOpen={addWerhouseModal}
           name={t("addWer")}
@@ -491,6 +494,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
           getProduct={getWerhouse}
           setProduct={setProductObj2}
           product={product}
+          newWereHouseName={newWereHouseName}
           handleToggleOffcanvas={openEditProjectCan}
           isOffcanvasOpen={editProjectModal}
           name={t("editWer")}

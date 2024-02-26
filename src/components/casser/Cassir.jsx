@@ -87,7 +87,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.error(res.data.message)
+                        toast.warning(res.data.message)
                         setCasseir([{ productName: res.data.message }])
                     }
                 })
@@ -98,7 +98,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.error(res.data.message)
+                        toast.warning(res.data.message)
                         setCasseir([{ productName: res.data.message }])
                     }
                 })
@@ -109,7 +109,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.error(res.data.message)
+                        toast.warning(res.data.message)
                         setCasseir([{ productName: res.data.message }])
                     }
                 })
@@ -120,7 +120,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.error(res.data.message)
+                        toast.warning(res.data.message)
                         setCasseir([{ productName: res.data.message }])
                     }
                 })
@@ -245,13 +245,6 @@ const Cassir = ({ changeLanguage, lang }) => {
                                 ) : (
                                     <tr className="odd:bg-white even:bg-gray-50 border-b ">
                                         <td colSpan="7" className="px-4">
-                                            {/* <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div> */}
                                             <h1 className="text-center text-xl text-black">{t("notfound")}</h1>
                                         </td>
                                     </tr>

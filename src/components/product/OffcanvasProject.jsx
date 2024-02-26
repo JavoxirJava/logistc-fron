@@ -57,10 +57,7 @@ function OffcanvasProject({
                     status: byId(`productStatus${isAdd}`),
                     fileId: res.data.body,
                     projectId: byId(`project${isAdd}`),
-                    comment: byId(`comment${isAdd}`),
-                    // latitude: coordinates[0],
-                    // longitude: coordinates[1],
-                    // address: adres
+                    comment: byId(`comment${isAdd}`)
                 });
             }).catch(() => console.log("img ketmadi"))
         else setProduct({
@@ -72,7 +69,6 @@ function OffcanvasProject({
             comment: byId(`comment${isAdd}`)
         });
     }
-
 
     return (
         <Offcanvas
