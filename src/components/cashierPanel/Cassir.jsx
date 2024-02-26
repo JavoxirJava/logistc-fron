@@ -1,4 +1,4 @@
-import NavBar from "../navbar/NavBar";
+import CashierNavBar from "../user/navbar/NavBarCashier";
 import { useTranslation } from "react-i18next";
 import Modal from "./Modal";
 import { useEffect, useState } from "react";
@@ -7,9 +7,8 @@ import { byIdObj, config, url } from "../api";
 import ReactPaginate from "react-paginate";
 import DownloadModal from "./downloadModal";
 import { toast } from "react-toastify";
-import CashierNavBar from "../user/navbar/NavBarCashier";
 
-const CassirDashboard = ({ changeLanguage, lang }) => {
+const Cassir = ({ lang }) => {
     const [cassier, setCasseir] = useState(null);
     const [projectId, setProjectId] = useState(null);
     const [nextModal, setNextModal] = useState(false);
@@ -240,15 +239,9 @@ const CassirDashboard = ({ changeLanguage, lang }) => {
                                         </tr>
                                     ))
                                 ) : (
-                                    <tr className="odd:bg-white even:bg-gray-50 border-b">
+                                    <tr className="odd:bg-white even:bg-gray-50 border-b ">
                                         <td colSpan="7" className="px-4">
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
-                                            <div className={styles.loading}></div>
+                                            <h1 className="text-center text-xl text-black">{t("notfound")}</h1>
                                         </td>
                                     </tr>
                                 )}
@@ -344,4 +337,4 @@ const CassirDashboard = ({ changeLanguage, lang }) => {
     );
 };
 
-export default CassirDashboard;
+export default Cassir;
