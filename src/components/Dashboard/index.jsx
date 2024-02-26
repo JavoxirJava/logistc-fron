@@ -26,6 +26,19 @@ function Dashboard({ changeLanguage, lang }) {
   }, []);
 
   useEffect(() => {
+    setConfig();
+    getMe(setMe);
+    axios
+      .get(`${url}product/diagramForAdmin?lang=${lang}`, config)
+      .then((res) => setProductStatistics(res.data.body))
+      .catch((err) => console.log(err));
+    axios
+      .get(`${url}product/admin/statistics?lang=${lang}`, config)
+      .then((res) => setProductStatistics2(res.data.body))
+      .catch((err) => console.log(err));
+  }, [lang]);
+
+  useEffect(() => {
     sessionStorage.setItem("userId", me ? me.id : 0);
   }, [me]);
 
