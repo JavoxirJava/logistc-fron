@@ -99,6 +99,7 @@ const translateEn = {
   save: "Save",
   selectCh: "Select",
   pricekubkg: "Price of Kub or Kg",
+  PriceOF:'Price of',
   priceresult: "Result price",
   kubkg: "Kub And Kg",
   selectP: "Select product",
