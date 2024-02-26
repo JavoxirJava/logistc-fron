@@ -169,7 +169,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                         id='priceOfKub'
                                         type="number"
                                         placeholder={t("enterPrice")}
-                                        className="bg-gray-50 duration-300 borderborder-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
+                                        className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500  focus:border-blue-500 p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
                                     <label htmlFor='totalKub'>{t("priceresult")}</label>

@@ -12,7 +12,7 @@ const ProductModal = ({addToProduct, isOpen,  onClose }) => {
           
           <div>
             <div>
-              {t("delete2")}
+              <h1 className="text-bold">{t("delete2")}</h1>
             </div>
             <div className="flex justify-between mt-7">
               <button

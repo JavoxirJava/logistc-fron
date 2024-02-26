@@ -9,7 +9,7 @@ const translateEn = {
     produkt: "Project",
     werhouse: "Warehouse",
     client: "Clients",
-    cassier: "Cassier",
+    cassier: "Cashier",
     users: "Users",
     histori: "History",
     photo: "Photo",
@@ -213,6 +213,8 @@ const translateEn = {
     7: "To the Uzbek border",
     8: "In the process of customs clearance",
   admin: "Admin",
+  en: "ENG",
+  ru: "RUS",
 
 }
 
