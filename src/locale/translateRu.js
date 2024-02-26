@@ -199,6 +199,8 @@ const translateRu = {
   measure: "Измерять",
   totalPrice: "Итоговая цена",
   cct: "Ccт",
+  costChines:'Cost China',
+  totalpriceand:'Общий ценовой результат',
   notFoundFile: "Файл не найден",
   notFoundCashier: "Кассир не найден 😊",
   avia: "Авиа",

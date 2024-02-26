@@ -26,7 +26,7 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                 // const fileExtension = prompt("Fayl kengaytmasini kiriting (pdf, doc, docx, xlsx, ...)");
                 // const filename = prompt("Name the file you want to download");
                 // const fullFilename = `${filename}`;
-                a.download = 'logistic';
+                a.download = 'logistic.xlsx';
                 document.body.appendChild(a);
                 a.click()
                 closeDown()
@@ -72,7 +72,7 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                             className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
-                    <div className="flex justify-between mt-7">
+                    <div className="flex justify-between ">
                         <button type="button" onClick={closeDown} className="btm-close">
                             {t("close")}
                         </button>
