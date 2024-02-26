@@ -67,7 +67,7 @@ function ProjectCard({
 
   return (
     <>
-      <tr
+      {projects ? <tr
         className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
         key={i}
       >
@@ -77,10 +77,10 @@ function ProjectCard({
         >
           {(pagination - 1) * 4 < 0 ? i + 1 : (pagination - 1) * 4 + (i + 1)}
         </th>
-        <td className="px-6 py-4">{projects.name}</td>
-        <td className="px-6 py-4">{projects.status}</td>
-        <td className="px-6 py-4">{projects.transport}</td>
-        <td className="px-6 py-4">{projects.date.slice(0, projects.date.indexOf(" "))}</td>
+        <td className="px-6 py-4">{projects ? projects.name : ''}</td>
+        <td className="px-6 py-4">{projects ? projects.status : ''}</td>
+        <td className="px-6 py-4">{projects ? projects.transport : ''}</td>
+        <td className="px-6 py-4">{projects ? projects.date.slice(0, projects.date.indexOf(" ")) : ''}</td>
         {/* <td className="px-6 py-4">
                     $2999
                 </td> */}
@@ -111,7 +111,7 @@ function ProjectCard({
         <td className="px-6 py-4">
           <Link
             onClick={() => {
-              sessionStorage.setItem("projectIdViewMore", projects.id);
+              sessionStorage.setItem("projectIdViewMore", projects ? projects.id : 0);
             }}
             to="/view more"
             className="font-medium text-blue-600 hover:underline"
@@ -122,7 +122,7 @@ function ProjectCard({
         <td className="px-6 py-4">
           <Link
             onClick={() => {
-              downloadWereHouse(projects.fileId);
+              downloadWereHouse(projects ? projects.fileId : 0);
               // setProjectList()
             }}
             className="font-medium text-blue-600 hover:underline"
@@ -130,7 +130,8 @@ function ProjectCard({
             {isLoading ? <LoadingBtn className={`bg-red-500`} /> : `${t("download")} ${t('file')}`}
           </Link>
         </td>
-      </tr>
+      </tr> : ""}
+      
 
 
       {historyList && (
