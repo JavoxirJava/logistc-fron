@@ -97,6 +97,7 @@ const translateRu = {
   pricekubkg: "Цена Куб или кг",
   priceresult: "Результат цена",
   PriceOF:'Цена',
+  resultPriceOf:'Результат цена',
   customPrice: "Индивидуальная цена",
   costChina: "Стоимость Китая",
   next: "Далее",
