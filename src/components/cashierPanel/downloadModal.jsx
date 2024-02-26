@@ -18,7 +18,8 @@ const DownloadModal = ({ isOpen, closeDown }) => {
         }
         axios.post(`${url}cashier/download-file`, addData, { ...config, responseType: 'blob' })
             .then((res) => {
-                const blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+                const contentType = res.headers['content-type'];
+                const blob = new Blob([res.data], { type: contentType });
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
@@ -26,7 +27,7 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                 // const fileExtension = prompt("Fayl kengaytmasini kiriting (pdf, doc, docx, xlsx, ...)");
                 // const filename = prompt("Name the file you want to download");
                 // const fullFilename = `${filename}`;
-                a.download = 'logistic.xlsx';
+                a.download = 'logistic';
                 document.body.appendChild(a);
                 a.click()
                 closeDown()

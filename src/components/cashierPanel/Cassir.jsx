@@ -7,6 +7,7 @@ import { byIdObj, config, url } from "../api";
 import ReactPaginate from "react-paginate";
 import DownloadModal from "./downloadModal";
 import { toast } from "react-toastify";
+import CashierNavBar from "../user/navbar/NavBarCashier";
 
 const CassirDashboard = ({ changeLanguage, lang }) => {
     const [cassier, setCasseir] = useState(null);
@@ -112,11 +113,7 @@ const CassirDashboard = ({ changeLanguage, lang }) => {
 
     return (
         <div className="min-h-screen">
-            {/* <NavBar
-                changeLang={changeLanguage}
-                cassier={"border-b-red-600 border-b text-slate-900"}
-                lang={lang}
-            /> */}
+            <CashierNavBar dashboard={'border-b-red-600 border-b text-slate-900'}/>
             <div className="background min-h-screen pt-20 px-10 md:px-0">
                 <div className="md:w-[80vw] w-full mx-auto mt-[1.5rem]">
                     <div className="flex flex-wrap justify-between items-end xl:flex-nowrap">
