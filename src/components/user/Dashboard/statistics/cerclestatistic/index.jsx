@@ -1,32 +1,36 @@
 import React from 'react';
 import EChartsReact from 'echarts-for-react';
 import { useTranslation } from "react-i18next";
+import "../../index.css"
 
-function  Circle({s}) {
+function Circle({ s }) {
+    console.log(s);
 
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     const option = {
         tooltip: {
             trigger: 'item'
         },
         legend: {
-            top: '5%',
+            bottom:'79%',
             left: 'center'
         },
         series: [
             {
                 name: 'Access From',
                 type: 'pie',
+                position:"absolute",
+                top:'10%',
                 radius: ['40%', '70%'],
                 avoidLabelOverlap: false,
                 label: {
                     show: false,
                     position: 'center'
-                },  
+                },
                 emphasis: {
                     label: {
                         show: true,
-                        fontSize: 40,
+                        fontSize: 20,
                         fontWeight: 'bold'
                     }
                 },
@@ -34,22 +38,24 @@ function  Circle({s}) {
                     show: false
                 },
                 data: [
-                    {value: s.completed, name:  `${t("circle1")}`},
-                    {value: s.pending, name:`${t("circle2")}`},
+                    { value: s.Падгатовка, name: `${t("Падгатовка")}` },
+                    { value: s["В граница узб"], name: `${t("В граница узб")}` },
+                    { value: s["В гроница в Китай"], name: `${t("В гроница в Китай")}` },
+                    { value: s[" В пути в Китай"], name: `${t("В пути в Китай")}` },
+                    { value: s["В пути в транзитном зоне"], name: `${t("В пути в транзитном зоне")}` },
+                    { value: s.Гатова, name: `${t("Гатова")}` },
+                    { value: s.Загрузка, name: `${t("Загрузка")}` },
+                    { value: s.Отправка, name: `${t("Отправка")}` },
                 ]
             }
         ]
-    };
-
+    }
     return (
         <div>
-            <div className="backCircle p-5">
-                <div className='flex justify-center gap-20 md:w-78 md:ml-0 text-2xl'>
-                    <p>{s.completed}</p>
-                    <p>{s.pending}</p>
-                </div>
+            <div className="backCircle rounded-lg p-5 ">
+               
                 <div style={{
-                    height: '300px',
+                    height: '360px',
                     width: '100%',
                     display: "flex",
                     flexDirection: "column",
@@ -57,7 +63,7 @@ function  Circle({s}) {
                 }}>
                     <EChartsReact
                         option={option}
-                        style={{height: '100%', width: '100%'}}
+                        style={{ height: '100%', width: '100%',  }}
                     />
                 </div>
             </div>

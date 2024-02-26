@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../index.css"
 import EChartsReact from 'echarts-for-react';
 
 function LineChart({productStatistics2}) {
@@ -20,8 +21,8 @@ function LineChart({productStatistics2}) {
   };
 
   return (
-    <div className='pt-10'>
-      <div className="backCircle ">
+    <div className=''>
+      <div className="backCircle rounded-lg">
         <div style={{ height: '400px', width: '100%', display: "flex", flexDirection: "column", }}>
           <EChartsReact option={option}
             style={{ height: '100%', width: '100%', display: "flex", justifyContent: "center", alignItems:"center"}}
