@@ -137,8 +137,7 @@ function Product({ lang, projectId, setProjectId }) {
   function getProduct(page, size) {
     axios
       .get(
-        `${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${
-          projectId.id ? projectId.id : 0
+        `${url}product?page=${page}&size=${size}&lang=${lang}&projectId=${projectId.id ? projectId.id : 0
         }`,
         config
       )
@@ -310,7 +309,7 @@ function Product({ lang, projectId, setProjectId }) {
         <div className="flex lg:flex-row align-center justify-center flex-col lg:h-full h-max pt-20">
           {/* project uchun */}
           <div className=" lg:px-3 md:px-10 lg:py-0 sm:py-5 px-1 w-screen lg:w-10/12">
-            <div className="mt-4 flex flex-wrap justify-end gap-3 lg:gap-20">
+            <div className="mt-4 flex flex-wrap  gap-3 lg:gap-20">
               {drops ? (
                 <select
                   onChange={searchProject}
@@ -337,32 +336,25 @@ function Product({ lang, projectId, setProjectId }) {
                   placeholder={t("productSearch")}
                   defaultValue=""
                   onChange={searchProject}
-                  className="lg:w-4/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+                  className="lg:w-4/12 w-full ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                 />
               )}
-              <Dropdown2
-                pagination={pagination2}
-                getProduct={getProject}
-                selectDrop={selectDrop}
-                inputDrop={inputDrop}
-                setSearchBy={setSearch2By}
-              />
             </div>
-            <div className="flex flex-col sm:flex-row justify-between my-5">
-              <button
-                onClick={openProjectCan}
-                className="bg-green-600 duration-200 hover:bg-green-700 text-white font-bold py-1.5 px-8 border md:w-2/12 rounded"
-              >
-                {t("add")}
-              </button>
-              <button onClick={openDown} disabled={!projects} className="ms-3 duration-200 bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border md:w-2/12 rounded">
-                {t('download')}
-              </button>
+            <div className="flex md:flex-row flex-col md:justify-between my-5">
+                <button
+                  onClick={openProjectCan}
+                  className="bg-green-600 duration-200 hover:bg-green-700 text-white font-bold  md:text-lg text-sm py-1.5 px-8 border md:w-2/12 w-[40%] rounded"
+                >
+                  {t("add")}
+                </button>
+                <button onClick={openDown} disabled={!projects} className="md:ms-3 ms-0 duration-200 md:text-lg text-sm bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border md:w-2/12 w-[40%] rounded">
+                  {t('download')}
+                </button>
               <div className="flex w-full justify-around sm:justify-between items-center">
                 <span className="hidden sm:block"></span>
-                <h1>
+                {/* <h1>
                   <b>{t("produkt")}</b>
-                </h1>
+                </h1> */}
 
                 <span className="me-5 pt-1.5 float-end">
                   {t("cardCurrent")}: {pagination2}
