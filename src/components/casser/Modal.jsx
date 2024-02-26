@@ -252,22 +252,22 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                     <div className="relative md:w-[100%] w-[80vw] my-6 mx-auto max-w-3xl">
                         <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-6">
                             <div className="flex items-center justify-between border-b pb-2 rounded-t">
-                                <h3 className="text-2xl font-semibold">Confirm the information entered?</h3>
+                                <h3 className="text-2xl font-semibold">{t("cassierDatanextModal")}</h3>
                                 <button
                                     className='p-1 ml-auto border-0 text-4xl hover:scale-110 duration-200'
                                     onClick={() => setNextModal(false)}>×</button>
                             </div>
                             {/* next modal body */}
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Project Name:</p>
+                                <p>{t('projectName')}:</p>
                                 <p className='font-bold'>{projectFilterName && projectFilterName.name}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>User Name:</p>
+                                <p>{t("userName")}:</p>
                                 <p className='font-bold'>{userFilterName && userFilterName.user}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Product Name:</p>
+                                <p>{t('productName')}:</p>
                                 <p className='font-bold'>{productFilterName && productFilterName.name}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>

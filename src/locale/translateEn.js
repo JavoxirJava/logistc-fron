@@ -67,6 +67,7 @@ const translateEn = {
   card7: 'Owner',
   card8: 'Total price',
   cassierData:'Add data',
+  cassierDatanextModal:'Confirm the information entered?',
   productAdd1: "Add product",
   productSUser: "Select user",
   productAdd2: 'Transport',
