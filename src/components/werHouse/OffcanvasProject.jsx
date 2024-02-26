@@ -60,11 +60,11 @@ function OffcanvasProject({
           htmlFor={`name${isAdd}`}
           className="block text-gray-700 text-sm font-bold my-2"
         >
-          {t("productAdd3")}
+          {t("warehouseName")}
         </label>
         <input
           id={`name${isAdd}`}
-          placeholder={t("productAdd3")}
+          placeholder={t("warehouseName")}
           defaultValue={newWereHouseName ? newWereHouseName.name : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />

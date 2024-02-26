@@ -51,7 +51,8 @@ function Dashboard({ changeLanguage, lang }) {
           </div>
         </div>
         <div className="lg:px-10 px-2 pb-20">
-          <div className="w-full all-shadow p-5 rounded-lg backCircle mt-10">
+          <div className="w-full all-s
+          hadow p-5 rounded-lg backCircle mt-10">
             <DashboardProductCard lang={lang} />
           </div>
         </div>
