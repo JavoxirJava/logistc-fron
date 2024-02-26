@@ -280,14 +280,7 @@ const ViewMoreW = ({ lang }) => {
                             ) : (
                                 <tr>
                                     <td colSpan="12" className="px-4">
-                                        {/* <div className={styles.loading}></div>
-                                        <div className={styles.loading}></div>
-                                        <div className={styles.loading}></div>
-                                        <div className={styles.loading}></div>
-                                        <div className={styles.loading}></div>
-                                        <div className={styles.loading}></div>
-                                        <div className={styles.loading}></div> */}
-                                        <h1 className="text-xl text-black">Not Found</h1>
+                                        <h1 className="text-xl text-black">{t("notfound")}</h1>
                                     </td>
                                 </tr>
                             )}

@@ -252,7 +252,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                                             <div className={styles.loading}></div>
                                             <div className={styles.loading}></div>
                                             <div className={styles.loading}></div> */}
-                                            <h1 className="text-center text-xl text-black">Not Found</h1>
+                                            <h1 className="text-center text-xl text-black">{t("notfound")}</h1>
                                         </td>
                                     </tr>
                                 )}

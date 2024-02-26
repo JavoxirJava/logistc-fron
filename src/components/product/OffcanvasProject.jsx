@@ -87,7 +87,7 @@ function OffcanvasProject({
                     htmlFor={`name${isAdd}`}
                     className="block text-gray-700 text-sm font-bold my-2"
                 >
-                    {t("productAdd3")}
+                    {t("productAdd3")}  
                 </label>
                 <input
                     id={`name${isAdd}`}
