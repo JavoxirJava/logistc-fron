@@ -11,8 +11,10 @@ const ProjectModal = ({ isOpen, deleteWerhouse,  onClose }) => {
         <div className="relative top-20 mx-auto p-5 border sm:w-96 w-full shadow-lg rounded-md bg-white">
           
           <div>
-            <div>
+            <div><h1 className="font-bold text-lg text-center">
+
               {t("delete2")}
+            </h1>
             </div>
            
             

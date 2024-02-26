@@ -10,7 +10,7 @@ const ProductDModal = ({deleteProduct, isOpen, onClose}) => {
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
             <div className="relative top-20 mx-auto p-5 border md:w-96 w-[200px] shadow-lg rounded-md bg-white">
                 <div>
-                    <div>{t("delete2")}</div>
+                    <div><h1 className="text-bold">{t("delete2")}</h1></div>
                     <div className="flex justify-between mt-7">
                         <button
                             type="button"
