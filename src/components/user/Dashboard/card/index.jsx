@@ -143,7 +143,7 @@ const DashboardProductCard = ({ className, lang }) => {
               placeholder="🔍..."
               defaultValue=""
               onChange={searchProduct}
-              className="lg:w-10/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+              className="lg:w-4/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
             />
           )}
         </div>

@@ -79,7 +79,6 @@ const DashboardProductCard = ({ className, lang }) => {
   function searchProduct(e) {
     let text = e.target.value;
     if (text === "") getProduct(pagination, 4);
-    else if (text === "all") getProduct(pagination, 4);
     else
       axios
         .get(`${url}project/admin/search?name=${text}&lang=${lang}`, config)
@@ -141,7 +140,7 @@ const DashboardProductCard = ({ className, lang }) => {
               placeholder="🔍..."
               defaultValue=""
               onChange={searchProduct}
-              className="lg:w-7/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+              className="lg:w-4/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
             />
           )}
         </div>
