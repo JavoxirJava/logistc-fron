@@ -133,6 +133,7 @@ const translateRu = {
   status4: "Приехал",
   status5: "Завершенный",
   status6: "Взолнованный",
+  notfound:'Не найдено',
   searchBy: "Искать по",
   dropdown1: "Код ТН продукта",
   dropdown2: "Статус продукта",
