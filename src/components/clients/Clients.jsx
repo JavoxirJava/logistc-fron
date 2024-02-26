@@ -6,6 +6,7 @@ import {
   byId,
   byIdObj,
   config,
+  getCasherProduct,
   getClientProduct,
   getManagerProduct,
   url,
@@ -19,31 +20,53 @@ import NavBar from "../navbar/NavBar";
 import { useTranslation } from "react-i18next";
 import Empty from "../Empty";
 import ManagerCard from "./managerCard";
+import CasherCard from "./casherCard";
 
 const Clients = ({ changeLanguage, lang }) => {
   const { t } = useTranslation();
   const [isLoading, setIsloading] = useState(false);
   const [productsClient, setProductClient] = useState(null);
-  const [totalPage, setTotalPage] = useState(0);
-  const [totalManager, setTotalManager] = useState(0);
+  const [totalPage, setTotalPage] = useState(null);
+  const [totalManager, setTotalManager] = useState(null);
+  const [totalCasher, setTotalCasher] = useState(null);
   const [pagination, setPagination] = useState(0);
   const [paginationM, setPaginationM] = useState(0);
-  const [pagen, setPage] = useState(false);
+  const [paginationC, setPaginationC] = useState(0);
+  const [pagen, setPage] = useState(0);
 
-  const getUse = () => setPage(false);
-  const getManag = () => setPage(true);
+  const getUse = () => setPage(0);
+  const getManag = () => setPage(1);
+  const getCash = () => setPage(2);
 
   const role = sessionStorage.getItem("role");
 
   useEffect(() => {
-    pagen ? getManagerProduct(paginationM, 4, setProductClient, setTotalManager, lang) : getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
+    if (pagen == 1)
+      getManagerProduct(
+        paginationM,
+        4,
+        setProductClient,
+        setTotalManager,
+        lang
+      );
+    else if (pagen == 2)
+      getCasherProduct(paginationC, 4, setProductClient, setTotalCasher, lang);
+    else getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
   }, []);
 
   useEffect(() => {
-    pagen ? getManagerProduct(paginationM, 4, setProductClient, setTotalManager, lang) : getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
+    if (pagen == 1)
+      getManagerProduct(
+        paginationM,
+        4,
+        setProductClient,
+        setTotalManager,
+        lang
+      );
+    else if (pagen == 2)
+      getCasherProduct(paginationC, 4, setProductClient, setTotalCasher, lang);
+    else getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
   }, [lang]);
-
-  
 
   useEffect(() => {
     if ((pagination - 1) * 4 < 0) setPagination(0);
@@ -69,6 +92,18 @@ const Clients = ({ changeLanguage, lang }) => {
       );
   }, [paginationM]);
 
+  useEffect(() => {
+    if ((paginationC - 1) * 4 < 0) setPaginationC(0);
+    else
+      getCasherProduct(
+        Math.floor(paginationC - 1),
+        4,
+        setProductClient,
+        setTotalCasher,
+        lang
+      );
+  }, [paginationC]);
+
   function addUser() {
     setIsloading(true);
     const data = {
@@ -78,7 +113,11 @@ const Clients = ({ changeLanguage, lang }) => {
       password: byId("passwordC"),
     };
     axios
-      .post(`${url}user?ROLE=${byId("user") ? byId("user") : "ROLE_USER"}`, data, config)
+      .post(
+        `${url}user?ROLE=${byId("user") ? byId("user") : "ROLE_USER"}`,
+        data,
+        config
+      )
       .then(() => {
         toast.success(t("success"));
         setIsloading(false);
@@ -86,21 +125,23 @@ const Clients = ({ changeLanguage, lang }) => {
         byIdObj("idNumberC").value = "";
         byIdObj("phoneNumberC").value = "";
         byIdObj("passwordC").value = "";
-        pagen
-          ? getManagerProduct(
-              paginationM,
-              4,
-              setProductClient,
-              setTotalManager,
-              lang
-            )
-          : getClientProduct(
-              pagination,
-              4,
-              setProductClient,
-              setTotalPage,
-              lang
-            );
+        pagen == 1
+        ? getManagerProduct(
+            paginationM,
+            4,
+            setProductClient,
+            setTotalManager,
+            lang
+          )
+        : pagen == 2
+        ? getCasherProduct(
+            paginationC,
+            4,
+            setProductClient,
+            setTotalCasher,
+            lang
+          )
+        : getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
       })
       .catch((err) => {
         toast.error(t("error"));
@@ -112,7 +153,7 @@ const Clients = ({ changeLanguage, lang }) => {
   function searchProductClient(e) {
     let text = e.target.value;
     if (text === "")
-      pagen
+      pagen == 1
         ? getManagerProduct(
             paginationM,
             4,
@@ -120,12 +161,19 @@ const Clients = ({ changeLanguage, lang }) => {
             setTotalManager,
             lang
           )
+        : pagen == 2
+        ? getCasherProduct(
+            paginationC,
+            4,
+            setProductClient,
+            setTotalCasher,
+            lang
+          )
         : getClientProduct(pagination, 4, setProductClient, setTotalPage, lang);
     else
       axios
         .get(`${url}user/search?idNumber=${text}&lang=${lang}`, config)
         .then((res) => {
-         
           console.log(res.data.body);
 
           if (res.data.body) {
@@ -158,80 +206,89 @@ const Clients = ({ changeLanguage, lang }) => {
               placeholder={t("productSearch")}
             />
             <div className="flex gap-5">
-            <button
-              className={`px-6 py-2 ${
-                role === "ROLE_ADMIN" ? "" : "hidden"
-              } bg-green-500 shadow-lg rounded-lg text-white
+              <button
+                className={`px-6 py-2 ${
+                  role === "ROLE_ADMIN" ? "" : "hidden"
+                } bg-green-500 shadow-lg rounded-lg text-white
                                 font-bold text-lg tracking-wider active:scale-95 duration-200`}
-              onClick={() => {
-                getClientProduct(
-                  Math.floor(pagination),
-                  4,
-                  setProductClient,
-                  setTotalPage,
-                  lang
-                );
-                getUse();
-              }}
-            >
-              {t("client10")}
-            </button>
-            <button
-              className={`px-6 py-2 ${
-                role === "ROLE_ADMIN" ? "" : "hidden"
-              } bg-green-500 shadow-lg rounded-lg text-white
+                onClick={() => {
+                  getClientProduct(
+                    Math.floor(pagination),
+                    4,
+                    setProductClient,
+                    setTotalPage,
+                    lang
+                  );
+                  getUse();
+                }}
+              >
+                {t("client10")}
+              </button>
+              <button
+                className={`px-6 py-2 ${
+                  role === "ROLE_ADMIN" ? "" : "hidden"
+                } bg-green-500 shadow-lg rounded-lg text-white
                                 font-bold text-lg tracking-wider active:scale-95 duration-200`}
-              onClick={() => {
-                getClientProduct(
-                  Math.floor(pagination),
-                  4,
-                  setProductClient,
-                  setTotalPage,
-                  lang
-                );
-                getUse();
-              }}
-            >
-              {t("cassier")}
-            </button>
-            <button
-              className={`px-6 py-2 ${
-                role === "ROLE_ADMIN" ? "" : "hidden"
-              } bg-green-500 shadow-lg rounded-lg text-white
+                onClick={() => {
+                  getCasherProduct(
+                    Math.floor(paginationC),
+                    4,
+                    setProductClient,
+                    setTotalCasher,
+                    lang
+                  );
+                  getCash();
+                }}
+              >
+                {t("cassier")}
+              </button>
+              <button
+                className={`px-6 py-2 ${
+                  role === "ROLE_ADMIN" ? "" : "hidden"
+                } bg-green-500 shadow-lg rounded-lg text-white
               font-bold text-lg tracking-wider active:scale-95 duration-200`}
-              onClick={() => {
-                getManagerProduct(
-                  Math.floor(paginationM),
-                  4,
-                  setProductClient,
-                  setTotalManager,
-                  lang
+                onClick={() => {
+                  getManagerProduct(
+                    Math.floor(paginationM),
+                    4,
+                    setProductClient,
+                    setTotalManager,
+                    lang
                   );
                   getManag();
                 }}
-                >
-              {t("client11")}
-            </button>
-              </div>
+              >
+                {t("client11")}
+              </button>
+            </div>
           </div>
           {productsClient ? (
             productsClient.map((item, i) =>
-              pagen ? (
-                productsClient && <ManagerCard key={i} className="mt-5" product={item} />
+              pagen == 1 ? (
+                <ManagerCard key={i} className="mt-5" product={item} />
+              ) : pagen == 2 ? (
+                <CasherCard key={i} className="mt-5" product={item} />
               ) : (
-                productsClient && <ProductCard key={i} className="mt-5" product={item} />
+                <ProductCard key={i} className="mt-5" product={item} />
               )
             )
           ) : (
             <Empty />
           )}
           <div className="pagination-style relative mt-4">
-            {pagen ? (
+            {pagen == 1 ? (
               <Pagination
                 {...bootstrap5PaginationPreset}
                 current={paginationM}
                 total={Math.floor(totalManager + 1)}
                 onPageChange={setPaginationM}
+              />
+            ) : pagen == 2 ? (
+              <Pagination
+                {...bootstrap5PaginationPreset}
+                current={paginationC}
+                total={Math.floor(totalCasher + 1)}
+                onPageChange={setPaginationC}
               />
             ) : (
               <Pagination
@@ -306,9 +363,7 @@ const Clients = ({ changeLanguage, lang }) => {
                   placeholder={t("addclient10")}
                 />
               </div>
-              <div  className={` ${
-                role === "ROLE_ADMIN" ? "" : "hidden"
-              }`}>
+              <div className={` ${role === "ROLE_ADMIN" ? "" : "hidden"}`}>
                 <label htmlFor="passwordC" className="ml-3.5">
                   {t("client9")}
                 </label>

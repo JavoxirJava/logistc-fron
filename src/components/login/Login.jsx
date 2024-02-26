@@ -60,7 +60,7 @@ function Login() {
                     disabled={isLoading}
                     className={`w-full ${
                         isLoading ? "cursor-not-allowed" : ""
-                    } border-2 mb-5 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500`}
+                    } border-2 mb-5 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-[#F4541F] duration-500`}
                     placeholder={t("login3")}
                 />
                 <p>{t("login4")}</p>
@@ -72,7 +72,7 @@ function Login() {
                         type={showPassword ? "text" : "password"}
                         className={`w-full ${
                             isLoading ? "cursor-not-allowed" : ""
-                        } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 duration-500`}
+                        } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-[#F4541F] duration-500`}
                         placeholder={t("login5")}
                     />
                     <button
