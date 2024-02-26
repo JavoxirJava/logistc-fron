@@ -213,6 +213,7 @@ const translateRu = {
   en: "ЕНГ",
   ru: "РУС",
   projectStatus: "Статус проекта",
+  gotov: "Готова",
 };
 
 export default translateRu;
