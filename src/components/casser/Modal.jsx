@@ -291,11 +291,11 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                 <p className='font-bold'>{customsClearancePrice && customsClearancePrice} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>{t("cct")}}:</p>
+                                <p>{t("cct")}:</p>
                                 <p className='font-bold'>{cct && cct} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Cost China:</p>
+                                <p>{t("costChina")}:</p>
                                 <p className='font-bold'>{costChina && costChina} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
