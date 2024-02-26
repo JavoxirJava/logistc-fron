@@ -26,10 +26,11 @@ function Login() {
                 if (res.data) {
                     sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
                     sessionStorage.setItem("role", res.data.message)
-                    console.log(res.data.message);
+                    // console.log(res.data.message);
                     if (res.data.message === "ROLE_USER") byIdObj("user-dashboard").click();
                     else if (res.data.message === "ROLE_ADMIN") byIdObj("dashboard").click();
                     else if (res.data.message === "ROLE_MANAGER") byIdObj("dashboard").click();
+                    else if (res.data.message === "ROLE_CASHIER") byIdObj("cashier-dashboard").click();
                     else  toast.error(t("notFound"));
                 } else toast.error(t("notFound"));
                 setIsLoading(false);
@@ -98,6 +99,7 @@ function Login() {
 
             <Link to="/dashboard" id="dashboard"></Link>
             <Link to="/user-dashboard" id="user-dashboard"></Link>
+            <Link to="/cashier-dashboard" id="cashier-dashboard"></Link>
         </div>
     );
 }
