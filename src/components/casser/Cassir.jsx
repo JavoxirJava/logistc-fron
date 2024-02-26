@@ -106,7 +106,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                 }
             }).catch(err => {
                 console.log('Error', err)
-                setCasseir([{ productName: 'Cashier not found 😊', }])
+                setCasseir([{ productName: t('notFoundCashier'), }])
             })
     }
 
