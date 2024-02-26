@@ -16,17 +16,14 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
   const [me, setMe] = useState(null);
   const [meId, setMeId] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  // const [active, setActive] = useState(false);
 
-
-  
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
       setIsOpen(false);
       setIsModalOpen(false);
     }
   });
-  
+
   const openGetMe = () => setIsOpen(!isOpenm);
   const openMenu = () => setIsOpenMenu(!isOpenMenu);
   const openModal = () => setIsModalOpen(!isModalOpen);
@@ -40,27 +37,29 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
     localStorage.clear();
   };
 
-  const editUser = () => {
-    axios
-      .put(
-        url + "user/" + meId.id,
-        {
-          id: meId.id,
-          name: byId("name"),
-          idNumber: byId("idNumber"),
-          phoneNumber: byId("phoneNumber"),
-          password: byId("password"),
-        },
-        config
-      )
-      .then(() => {
+  const editUser = async () => {
+    await axios.put(url + "user/" + meId.id,
+      {
+        id: meId.id,
+        name: byId("name"),
+        idNumber: byId("idNumber"),
+        phoneNumber: byId("phoneNumber"),
+        password: byId("password"),
+      },
+      config).then(() => {
         toast.success(t("success"));
-        openModal();
-        logout();
-      })
-      .catch(() => {
+      }).catch(() => {
         toast.error(t("error"));
       });
+    await axios.post(`${url}user/login?phoneNumber=${byId("phoneNumber")}&password=${byId("password")}`)
+      .then(res => {
+        sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
+        sessionStorage.setItem("role", res.data.message)
+        openModal();
+        getMe(setMe, lang);
+      }).catch(err => {
+        console.log('error', err);
+      })
   };
 
   useEffect(() => {
@@ -170,16 +169,6 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                         {t("users")}
                       </Link>
                     </li>
-                    {/* <li className="my-2" onClick={openMenu}>
-                      {" "}
-                      <Link
-                        to="/managers"
-                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
-                        aria-current="page"
-                      >
-                        {t("client11")}
-                      </Link>
-                    </li> */}
                     <li onClick={openMenu}>
                       {" "}
                       <Link
@@ -444,20 +433,20 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                     </div>
                     <div className="flex justify-between items-center mt-3 font-bold text-white">
                       <button
+                        className="bg-red-600 px-5 py-1.5 rounded-lg shadow-lg"
+                        onClick={() => {
+                          openModal();
+                        }}
+                      >
+                        {t("close")}
+                      </button>
+                      <button
                         className="bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg"
                         onClick={() => {
                           editUser();
                         }}
                       >
                         {t("edit")}
-                      </button>
-                      <button
-                        className="bg-red-600 px-5 py-1.5 rounded-lg shadow-lg"
-                        onClick={() => {
-                          logout();
-                        }}
-                      >
-                        {t("logout")}
                       </button>
                     </div>
                   </div>
