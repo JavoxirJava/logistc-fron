@@ -36,7 +36,12 @@ function  Circle({s}) {
                 },
                 data: [
                     {value: s.completed, name:  `${t("circle1")}`},
-                    {value: s.pending, name:`${t("circle2")}`}
+                    {value: s.pending, name:`${t("circle2")}`},
+                    {value: s.pending, name:`${t("delete")}`},
+                    {value: s.pending, name:`${t("addd")}`},
+                    {value: s.pending, name:`${t("wiew")}`},
+                    {value: s.pending, name:`${t("edit")}`},
+                    
                 ]
             }
         ]
@@ -47,6 +52,9 @@ function  Circle({s}) {
             <div className="backCircle rounded-lg p-5 ">
                 <div className='flex justify-center gap-20 md:w-78 md:ml-0 text-2xl'>
                     <p>{s.completed}</p>
+                    <p>{s.pending}</p>
+                    <p>{s.pending}</p>
+                    <p>{s.pending}</p>
                     <p>{s.pending}</p>
                 </div>
                 <div style={{
