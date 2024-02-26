@@ -21,6 +21,7 @@ const translateEn = {
     kub: "Kub",
     selectWer: "Select warehouse",
     productName: "Product Name",
+    warehouseName: "Warehouse Name",
     productCount: "Product Count",
     totalWeight: "Total weight",
     totalKub: "Total kub",
