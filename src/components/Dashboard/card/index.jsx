@@ -82,10 +82,7 @@ const DashboardProductCard = ({ className, lang }) => {
     else if (text === "all") getProduct(pagination, 4);
     else
       axios
-        .get(
-          `${url}project/admin/search?name=${text}&lang=${lang}`,
-          config
-        )
+        .get(`${url}project/admin/search?name=${text}&lang=${lang}`, config)
         .then((res) => {
           if (res.data.body) {
             if (res.data.body.length > 4)
@@ -118,7 +115,7 @@ const DashboardProductCard = ({ className, lang }) => {
     <div className="radius">
       <div className="mb-5 flex items-center">
         <div className="flex justify-between items-center w-full md:px-3 ">
-        {drops ? (
+          {drops ? (
             <select
               onChange={searchProduct}
               defaultValue=""
@@ -147,51 +144,117 @@ const DashboardProductCard = ({ className, lang }) => {
               className="lg:w-10/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
             />
           )}
-
         </div>
       </div>
       <p className="mb-3">{t("cardCurrent")}: 1</p>
-      {data &&
-        data.map((item, i) => (
-          <div
-            className={`flex p-7 mb-3 border rounded-lg border-blue-300 w-full bg-blue-200 ${className}`}
-          >
-            {/* <div className="card-col w-11/12 pt-2 ps-2"> */}
-              <div className="h-8/12 card-col-row w-full flex flex-col sm:flex-row gap-5  media-product">
-                <div className="sm:w-[22%]">
-                  <p className="opacity-70">{t("productAdd3")}</p>
-                  <p className="font-bold">{item ? item.name : 0}</p>
-                </div>
-                <div className="sm:w-[20%]">
-                  <p className="opacity-70">{t("card2")}</p>
-                  <p className="font-bold">
-                    {item ? item.status : "no status"}
-                  </p>
-                </div>
-                <div className="sm:w-[20%]">
-                  <p className="opacity-70">{t("date")}</p>
-                  <p className="font-bold">
-                    {item ? item.date : "no date"}
-                  </p>
-                </div>
-                {/* <div className='sm:w-[30%] lg:ms-3'>
-                        <p className='opacity-70'>{t("card3")}</p>
-                        <p className='font-bold'>{item ? item.date.substring(0, 10) : "April 23, 2023"}</p>
-                    </div> */}
-                
-              </div>
-            {/* </div> */}
-            {/*<div className='card-col w-3/12 flex justify-center my-auto h-10 pr-2'>*/}
-            {/*    <button*/}
-            {/*        className="inline-flex justify-center w-40 rounded-md border border-gray-300 shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"*/}
-            {/*        onClick={openModal}*/}
-            {/*    >*/}
-            {/*        View Detail*/}
-            {/*    </button>*/}
-            {/*</div>*/}
-            <Modal isOpen={isModalOpen} onClose={closeModal} />
-          </div>
-        ))}
+      <div class="relative overflow-x-auto  sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="px-6 py-3">
+                №
+              </th>
+              <th scope="col" class="px-6 py-3">
+                {t("client2")}
+              </th>
+              <th scope="col" class="px-6 py-3">
+                {t("card2")}
+              </th>
+              <th scope="col" class="px-6 py-3">
+                {t("transport")}
+              </th>
+              <th scope="col" class="px-6 py-3">
+                {t("date")}
+              </th>
+              {/* <th scope="col" class="px-6 py-3">
+                      Total Price
+                    </th> */}
+             
+              {/* <th scope="col" class="px-6 py-3 text-center">
+                      {t("download")}
+                    </th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {data &&
+              data.map((item, i) => (
+                <tr
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  key={i}
+                >
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    {(pagination - 1) * 4 < 0
+                      ? i + 1
+                      : (pagination - 1) * 4 + (i + 1)}
+                  </th>
+                  <td className="px-6 py-4">{item.name}</td>
+                  <td className="px-6 py-4">{item.status}</td>
+                  <td className="px-6 py-4">{item.transport}</td>
+                  <td className="px-6 py-4">
+                    {item.date.slice(0, item.date.indexOf(" "))}
+                  </td>
+                  {/* <td className="px-6 py-4">
+                    $2999
+                </td> */}
+                  {/* <td className="px-6 py-4">
+                    <a
+                      onClick={() => {
+                        openEdit();
+                        setProjectId(item);
+                      }}
+                      href="#"
+                      className="font-medium text-[#16A34A] hover:underline"
+                    >
+                      {t("edit")}
+                    </a>
+                  </td> */}
+                  {/* <td className="px-6 py-4">
+                    <a
+                      onClick={() => {
+                        setHistoryList(item);
+                        openModal();
+                      }}
+                      href="#"
+                      className="font-medium text-yellow-300 hover:underline"
+                    >
+                      {t("wiew")}
+                    </a>
+                  </td> */}
+                  {/* <td className="px-6 py-4">
+                    <Link
+                      onClick={() => {
+                        sessionStorage.setItem(
+                          "projectIdViewMore",
+                          item.id
+                        );
+                      }}
+                      to="/view more"
+                      className="font-medium text-blue-600 hover:underline"
+                    >
+                      {t("more")}
+                    </Link>
+                  </td> */}
+                  {/* <td className="px-6 py-4">
+                    <Link
+                      onClick={downloadWereHouse}
+                      className="font-medium text-blue-600 hover:underline"
+                    >
+                      {isLoading ? (
+                        <LoadingBtn className={`bg-red-500`} />
+                      ) : (
+                        `${t("Download")} ${t("file")}`
+                      )}
+                    </Link>
+                  </td> */}
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+
       <div className="pagination-style mt-4">
         <Pagination
           {...bootstrap5PaginationPreset}

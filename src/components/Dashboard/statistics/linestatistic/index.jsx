@@ -21,7 +21,7 @@ function LineChart({productStatistics2}) {
   };
 
   return (
-    <div className=' pt-5 '>
+    <div className=' '>
       <div className="backCircle rounded-lg">
         <div style={{ height: '400px', width: '100%', display: "flex", flexDirection: "column", }}>
           <EChartsReact option={option}

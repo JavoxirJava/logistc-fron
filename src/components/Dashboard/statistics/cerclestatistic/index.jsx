@@ -50,7 +50,7 @@ function  Circle({s}) {
                     <p>{s.pending}</p>
                 </div>
                 <div style={{
-                    height: '300px',
+                    height: '330px',
                     width: '100%',
                     display: "flex",
                     flexDirection: "column",
