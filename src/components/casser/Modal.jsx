@@ -271,7 +271,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                 <p className='font-bold'>{productFilterName && productFilterName.name}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>Measure:</p>
+                                <p>{t("measure")}:</p>
                                 <p className='font-bold'>{meassureVal && meassureVal}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
