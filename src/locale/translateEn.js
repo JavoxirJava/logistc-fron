@@ -105,6 +105,7 @@ const translateEn = {
   kubkg: "Kub And Kg",
   selectP: "Select product",
   costChina: "Стоимость Китая",
+  totalpriceand:'Total price result',
   enter: "Enter",
   next: "Next",
   priceForRoad: "Price For Road",
