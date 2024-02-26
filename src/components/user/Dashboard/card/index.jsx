@@ -156,21 +156,38 @@ const DashboardProductCard = ({ className, lang }) => {
                 №
               </th>
               <th scope="col" class="px-6 py-3">
-                {t("client2")}
+                {t("photo")}
               </th>
               <th scope="col" class="px-6 py-3">
-                {t("card2")}
+                {t("owner")}
               </th>
               <th scope="col" class="px-6 py-3">
-                {t("transport")}
+                
+                {t("productName")}
+              </th>
+              <th scope="col" class="px-6 py-3">
+                {t("comment")}
               </th>
               <th scope="col" class="px-6 py-3">
                 {t("date")}
               </th>
+              <th scope="col" class="px-6 py-3">
+                {t("productCount")}
+              </th>
+              <th scope="col" class="px-6 py-3">
+                {/* Total Weight */}
+                {t("totalWeight")}
+              </th>
+              <th scope="col" class="px-6 py-3">
+                {t("totalKub")}
+              </th>
+              <th scope="col" class="px-6 py-3">
+                {t("wiew")}
+              </th>
               {/* <th scope="col" class="px-6 py-3">
                       Total Price
                     </th> */}
-             
+
               {/* <th scope="col" class="px-6 py-3 text-center">
                       {t("download")}
                     </th> */}
@@ -191,13 +208,20 @@ const DashboardProductCard = ({ className, lang }) => {
                       ? i + 1
                       : (pagination - 1) * 4 + (i + 1)}
                   </th>
-                  <td className="px-6 py-4">{item ? item.name : ""}</td>
-                  <td className="px-6 py-4">{item ? item.status : ""}</td>
-                  <td className="px-6 py-4">{item ? item.transport : ""}</td>
+                  <td className="px-6 py-4">{item ? item.attachmentId : ""}</td>
+                  <td className="px-6 py-4">{item ? item.owner : ""}</td>
+                  <td className="px-6 py-4">{item ? item.productName : ""}</td>
+                  <td className="px-6 py-4">{item ? item.comment : ""}</td>
+                  <td className="px-6 py-4">{item ? item.date : ""}</td>
+                  <td className="px-6 py-4">{item ? item.productCount : ""}</td>
+                  <td className="px-6 py-4">{item ? item.totalWeight : ""}</td>
+                  <td className="px-6 py-4">{item ? item.totalKub : ""} </td>
                   <td className="px-6 py-4">
-                    {item ? item.date.slice(0, item.date.indexOf(" ") ) : ""}
+                      <a href="#" className="text-yellow-500 font-bold">
+                      {t("wiew")}
+                      </a>
                   </td>
-                  
+
                 </tr>
               ))}
           </tbody>
