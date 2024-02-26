@@ -49,12 +49,19 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
             totalPrice: Number(totalPrice)
         }
         axios.post(`${url}cashier/one`, addData, config)
-            .then(() => {
+            .then(res => {
+                if(res.data.success === true) toast.success(res.data.message)
+                if(res.data.success === false) toast.warning(res.data.message)
                 setNextModal(false);
                 getCassier();
-                toast.success('Successfully saved data✅')
                 setTotalPrice(0)
                 setKubANdKgVAlue(0)
+                setProductKg(0)
+                setProductKub(0)
+                setPriceForRoad(0)
+                setCustomsClearancePrice(0)
+                setCct(0)
+                setCostChina(0)
                 setIsLoading(false)
             })
             .catch(err => {
@@ -156,7 +163,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                             </form>
                             <form className="mx-auto flex justify-evenly flex-wrap">
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='priceOfKub'>{t("pricekubkg")}</label>
+                                    <label className='text-[0.885rem]' htmlFor='priceOfKub'>{t("pricekubkg")}</label>
                                     <input
                                         onChange={e => setDataVAlue(e.target.value)}
                                         id='priceOfKub'

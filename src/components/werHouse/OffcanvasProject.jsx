@@ -11,6 +11,7 @@ function OffcanvasProject({
   lang,
   onSave,
   product,
+  newWereHouseName,
   setProduct,
   getProduct,
   isAdd,
@@ -64,7 +65,7 @@ function OffcanvasProject({
         <input
           id={`name${isAdd}`}
           placeholder={t("productAdd3")}
-          defaultValue={product ? product.name : ""}
+          defaultValue={newWereHouseName ? newWereHouseName.name : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
         {/* <label
