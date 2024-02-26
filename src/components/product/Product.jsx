@@ -340,26 +340,26 @@ function Product({ lang, projectId, setProjectId }) {
                 />
               )}
             </div>
-            <div className="flex md:flex-row flex-col md:justify-between my-5">
-                <button
-                  onClick={openProjectCan}
-                  className="bg-green-600 duration-200 hover:bg-green-700 text-white font-bold  md:text-lg text-sm py-1.5 px-8 border md:w-2/12 w-[40%] rounded"
-                >
-                  {t("add")}
-                </button>
-                <button onClick={openDown} disabled={!projects} className="md:ms-3 ms-0 duration-200 md:text-lg text-sm bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border md:w-2/12 w-[40%] rounded">
-                  {t('download')}
-                </button>
-              <div className="flex w-full justify-around sm:justify-between items-center">
-                <span className="hidden sm:block"></span>
-                {/* <h1>
+            <div className="flex flex-row md:justify-start md:gap-0 gap-5 justify-center my-5">
+              <button
+                onClick={openProjectCan}
+                className="bg-green-600 duration-200 hover:bg-green-700 text-white font-bold  md:text-lg text-sm py-1.5 px-8 border md:w-2/12 w-[40%] rounded"
+              >
+                {t("add")}
+              </button>
+              <button onClick={openDown} disabled={!projects} className="md:ms-3 ms-0 duration-200 md:text-lg text-sm bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border md:w-2/12 w-[40%] rounded">
+                {t('download')}
+              </button>
+            </div>
+            <div className="flex w-full justify-around sm:justify-between items-center">
+              <span className="hidden sm:block"></span>
+              {/* <h1>
                   <b>{t("produkt")}</b>
                 </h1> */}
 
-                <span className="me-5 pt-1.5 float-end">
-                  {t("cardCurrent")}: {pagination2}
-                </span>
-              </div>
+              <span className="me-5 pt-1.5 float-end">
+                {t("cardCurrent")}: {pagination2}
+              </span>
             </div>
             <div class="relative overflow-x-auto  sm:rounded-lg">
               <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
