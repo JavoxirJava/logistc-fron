@@ -302,7 +302,6 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                 <p>{t('totalpriceand')}:</p>
                                 <p className='font-bold'>{totalPrice && totalPrice} $</p>
                             </div>
-
                             <div className='flex md:justify-end justify-center  mt-4'>
                                 <button
                                     onClick={() => setNextModal(false)}
