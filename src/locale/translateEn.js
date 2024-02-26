@@ -210,6 +210,8 @@ const translateEn = {
     6: "On the way in the transit zone",
     7: "To the Uzbek border",
     8: "In the process of customs clearance",
+  admin: "Admin",
+
 }
 
 export default translateEn
