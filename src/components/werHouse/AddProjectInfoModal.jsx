@@ -1,7 +1,6 @@
 import React from 'react';
 
 function AddProjectInfoModal({showProjectInfoModal, products, addToProduct}) {
-    console.log(products)
     return (
         <>
             <div
@@ -29,7 +28,7 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct}) {
                         </div>
                         {/*body*/}
                         <div className="relative p-6 flex-auto">
-                            <table className="table w-96 text-center add-product-table">
+                            {products && <table className="table w-96 text-center add-product-table">
                                 <tbody>
                                 <tr>
                                     <th>Product count</th>
@@ -44,7 +43,8 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct}) {
                                     <td>{products.map(p => p.totalKub).reduce((a, b) => a + b)}</td>
                                 </tr>
                                 </tbody>
-                            </table>
+                            </table>}
+
                             {/*<p><span className="pe-4">Product count:</span>*/}
                             {/*    {products.length}</p>*/}
                             {/*<p>*/}

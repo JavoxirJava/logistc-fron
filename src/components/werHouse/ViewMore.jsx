@@ -123,6 +123,7 @@ const ViewMoreW = ({lang}) => {
             toast.success(t("success"));
             getProjectInfo();
             setProductObj2(null);
+            showProjectInfoModal()
         }).catch((err) => {
             toast.error(t("error"));
             console.log(err);
