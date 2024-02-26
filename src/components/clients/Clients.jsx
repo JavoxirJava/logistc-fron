@@ -78,7 +78,7 @@ const Clients = ({ changeLanguage, lang }) => {
       password: byId("passwordC"),
     };
     axios
-      .post(`${url}user?ROLE=${byId("user")}`, data, config)
+      .post(`${url}user?ROLE=${byId("user") ? byId("user") : "ROLE_USER"}`, data, config)
       .then(() => {
         toast.success(t("success"));
         setIsloading(false);
@@ -314,6 +314,7 @@ const Clients = ({ changeLanguage, lang }) => {
                   </option>
                   <option value="ROLE_USER">{t("client10")}</option>
                   <option value="ROLE_MANAGER">{t("client11")}</option>
+                  <option value="ROLE_CASHIER">{t("cassier")}</option>
                 </select>
               </div>
             </div>

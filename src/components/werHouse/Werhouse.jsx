@@ -422,7 +422,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                       {t("more")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                      Download
+                    {t("download")}
                     </th>
 
                   </tr>

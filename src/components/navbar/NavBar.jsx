@@ -64,7 +64,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
   };
 
   useEffect(() => {
-    getMe(setMe);
+    getMe(setMe, lang);
   }, []);
 
   useEffect(() => {
@@ -264,7 +264,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <h2 className="relative rounded-full  p-1 text-gray-700 ">
-                {me ? me.name : "Admin"}
+                {me ? me.name : ""}
               </h2>
 
               <div className="relative ml-3">
