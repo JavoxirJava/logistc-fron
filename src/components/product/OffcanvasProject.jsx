@@ -50,6 +50,7 @@ function OffcanvasProject({
         img.append('file', document.getElementById(`file${isAdd}`).files[0]);
         if (img.get('file') !== 'undefined') axios.post(url + "attachment/image", img, config)
             .then(res => {
+        console.log(res.data.body);
                 setProduct({
                     name: byId(`name${isAdd}`),
                     transport: byId(`transport${isAdd}`),
@@ -66,7 +67,7 @@ function OffcanvasProject({
             name: byId(`name${isAdd}`),
             transport: byId(`transport${isAdd}`),
             status: byId(`productStatus${isAdd}`),
-            fileId: 0,
+            fileId: null,
             projectId: byId(`project${isAdd}`),
             comment: byId(`comment${isAdd}`)
         });

@@ -81,9 +81,7 @@ function ProjectCard({
         <td className="px-6 py-4">{projects ? projects.status : ''}</td>
         <td className="px-6 py-4">{projects ? projects.transport : ''}</td>
         <td className="px-6 py-4">{projects ? projects.date.slice(0, projects.date.indexOf(" ")) : ''}</td>
-        {/* <td className="px-6 py-4">
-                    $2999
-                </td> */}
+        
         <td className="px-6 py-4">
           <a
             onClick={() => {
@@ -111,7 +109,7 @@ function ProjectCard({
         <td className="px-6 py-4">
           <Link
             onClick={() => {
-              sessionStorage.setItem("projectIdViewMore", projects ? projects.id : 0);
+              sessionStorage.setItem("projectIdViewMore", projects.id);
             }}
             to="/view more"
             className="font-medium text-blue-600 hover:underline"
@@ -122,7 +120,7 @@ function ProjectCard({
         <td className="px-6 py-4">
           <Link
             onClick={() => {
-              downloadWereHouse(projects ? projects.fileId : 0);
+              downloadWereHouse(projects.fileId);
               // setProjectList()
             }}
             className="font-medium text-blue-600 hover:underline"
