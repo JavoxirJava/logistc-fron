@@ -95,18 +95,6 @@ function ProjectCard({
           </a>
         </td>
         <td className="px-6 py-4">
-          <a
-            onClick={() => {
-              setHistoryList(projects);
-              openModal();
-            }}
-            href="#"
-            className="font-medium text-yellow-300 hover:underline"
-          >
-            {t("wiew")}
-          </a>
-        </td>
-        <td className="px-6 py-4">
           <Link
             onClick={() => {
               sessionStorage.setItem("projectIdViewMore", projects.id);

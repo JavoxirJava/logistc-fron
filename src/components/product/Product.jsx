@@ -335,7 +335,7 @@ function Product({ lang, projectId, setProjectId }) {
                   placeholder={t("productSearch")}
                   defaultValue=""
                   onChange={searchProject}
-                  className="lg:w-4/12 w-full ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+                  className="lg:w-4/12 w-5/12 ml-2 md:ml-0 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
                 />
               )}
             </div>
