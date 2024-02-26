@@ -344,7 +344,7 @@ function Product({ lang, projectId, setProjectId }) {
                 onClick={openProjectCan}
                 className="bg-green-600 duration-200 hover:bg-green-700 text-white font-bold  md:text-lg text-sm py-1.5 px-8 border md:w-2/12 w-[40%] rounded"
               >
-                {t("add")}
+                {t("addd")}
               </button>
               <button onClick={openDown} disabled={!projects} className="md:ms-3 ms-0 duration-200 md:text-lg text-sm bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border md:w-2/12 w-[40%] rounded">
                 {t('download')}
