@@ -21,6 +21,7 @@ const translateRu = {
   productPhoto: "Фото продукта",
   projectId: "ID проекта",
   productName: "Наименование товара",
+  warehouseName: "Название склада",
   productCount: "Количество продуктов",
   totalWeight: "Общий вес",
   totalKub: "Всего куб",
