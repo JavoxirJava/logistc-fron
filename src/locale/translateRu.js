@@ -11,7 +11,7 @@ const translateRu = {
   client: "Клиенты",
   users: "Пользователи",
   wiew: "Деталь",
-  cassier: "Касса",
+  cassier: "Кассир",
   photo: "Фото",
   owner: "Владелец",
   start: "Дата начала",
@@ -189,7 +189,6 @@ const translateRu = {
   userName: "Имя пользователя",
   projectName: "Название проекта",
   productName: "Наименование товара",
-
   price: "Цена",
   measure: "Измерять",
   totalPrice: "Итоговая цена",
@@ -207,6 +206,7 @@ const translateRu = {
   6: "В пути в транзитном зоне",
   7: "В граница узб",
   8: "В процесс разтаможка",
+  admin: "Админ",
 };
 
 export default translateRu;
