@@ -182,7 +182,10 @@ const ViewMoreW = ({lang}) => {
                             {t("productAdd1")}
                         </button>
                         <button
-                            onClick={openPro}
+                            onClick={() => {
+                                if (products.length > 0) openPro()
+                                else toast.warning('Please add at least one product')
+                            }}
                             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-8  rounded"
                         >
                             {t("addproject")}
