@@ -68,7 +68,7 @@ const translateEn = {
     productAdd1: "Add product",
     productSUser: "Select user",
     productAdd2: 'Transport',
-    productAdd3: 'Name',
+    productAdd3: 'Project Name',
     productAdd34: 'Comment',
     productAdd34foto: 'Product photo',
     productAdd4: 'MeasureCount',

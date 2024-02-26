@@ -69,7 +69,7 @@ const translateRu = {
   productAdd1: "Добавить продукт",
   productAdd2: "Транспорт",
   productSUser: "Выберите пользователя",
-  productAdd3: "Имя",
+  productAdd3: "Имя проекта",
   productAdd34: "Комментарий",
   productAdd4: "Количество измерений",
   productAdd5: "Выберите транспорт",
