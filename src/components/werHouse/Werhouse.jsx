@@ -148,9 +148,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
       .get(
         `${url}wareHouse/product?wareHouseId=${werHouseId
           ? werHouseId.wareHouseId
-          : projects
-            ? projects[0].wareHouseId
-            : 0
+          : 0
         }&page=${page}&size=${size}&lang=${lang}`,
         config
       )
@@ -447,7 +445,17 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                       />
                     ))
                   ) : (
-                    <Empty />
+                   <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                     <Empty />
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                   </tr>
                   )}
                 </tbody>
               </table>
