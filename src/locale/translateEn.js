@@ -216,6 +216,7 @@ const translateEn = {
   en: "ENG",
   ru: "RUS",
   projectStatus: "Project Status",
+  gotov: "Ready",
 
 
 }

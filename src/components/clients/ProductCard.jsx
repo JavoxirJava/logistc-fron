@@ -91,25 +91,20 @@ function ProductCard({ className, product }) {
             </p>
           </div>
           <div className="w-[25%]">
-            <p className="opacity-70">{t("client6")}</p>
+            <p className="opacity-70">{t("1")}</p>
             <p className="font-bold text-[.9rem] text-green-500">
-              {product ? product.completed : 0}
+              {product ? product.Падгатовка : 0}
             </p>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-10">
         <div className="w-[35%]">
-            <p className="opacity-70">{t("client7")}</p>
+            <p className="opacity-70">{t("gotov")}</p>
             <p className="font-bold text-[.9rem] text-purple-600">
-              {product ? product.pending : 0}
+              {product ? product.Гатова : 0}
             </p>
           </div>
-          <div className="w-[25%]">
-            <p className="opacity-70">{t("client8")}</p>
-            <p className="font-bold text-[.9rem] text-purple-600">
-              {product ? product.cancel : 0}
-            </p>
-          </div>
+         
         </div>
           
           
