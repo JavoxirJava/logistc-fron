@@ -4,7 +4,6 @@ import "./home.css";
 import HomeFooter from "./HomeFooter";
 import HomeNav from "../navbar/HomeNav";
 import { useTranslation } from "react-i18next";
-
 function Home({changeLang}) {
   const { t } = useTranslation()
   return (
