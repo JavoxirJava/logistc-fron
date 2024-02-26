@@ -260,7 +260,7 @@ const CassirDashboard = ({ changeLanguage, lang }) => {
                             <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
                                 <p>{t("userName")}:</p>
                                 <p className="font-bold">
-                                    {productobj && productobj.userName}
+                                    {productobj && productobj.username}
                                 </p>
                             </div>
                             <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
