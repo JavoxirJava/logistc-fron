@@ -40,6 +40,18 @@ export const getManagerProduct = (page, size, setClientProduct, setTotalManager,
         })
 }
 
+export const getCasherProduct = (page, size, setClientProduct, setTotalCasher, lang) => {
+    axios.get(`${url}user/cashier?page=${page}&size=${size}&lang=${lang}`, config)
+        .then(res => {
+            if (res.data.message) {
+                setClientProduct(res.data.body.object);
+                setTotalCasher(res.data.body.totalPage ? res.data.body.totalPage - 1 : 0)
+            }
+        })
+        .catch((err) => {
+        })
+}
+
 
 export function getUsers(setUser, lang) {
     axios.get(`${url}user?lang=${lang}`, config).then(res => setUser(res.data.body.object)).catch(err => console.log(err));
