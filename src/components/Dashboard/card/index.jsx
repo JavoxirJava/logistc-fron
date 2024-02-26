@@ -190,65 +190,13 @@ const DashboardProductCard = ({ className, lang }) => {
                       ? i + 1
                       : (pagination - 1) * 4 + (i + 1)}
                   </th>
-                  <td className="px-6 py-4">{item.name}</td>
-                  <td className="px-6 py-4">{item.status}</td>
-                  <td className="px-6 py-4">{item.transport}</td>
+                  <td className="px-6 py-4">{item ? item.name : ""}</td>
+                  <td className="px-6 py-4">{item ? item.status : ""}</td>
+                  <td className="px-6 py-4">{item ? item.transport : ""}</td>
                   <td className="px-6 py-4">
-                    {item.date.slice(0, item.date.indexOf(" "))}
+                    {item ? item.date.slice(0, item.date.indexOf(" ") ) : ""}
                   </td>
-                  {/* <td className="px-6 py-4">
-                    $2999
-                </td> */}
-                  {/* <td className="px-6 py-4">
-                    <a
-                      onClick={() => {
-                        openEdit();
-                        setProjectId(item);
-                      }}
-                      href="#"
-                      className="font-medium text-[#16A34A] hover:underline"
-                    >
-                      {t("edit")}
-                    </a>
-                  </td> */}
-                  {/* <td className="px-6 py-4">
-                    <a
-                      onClick={() => {
-                        setHistoryList(item);
-                        openModal();
-                      }}
-                      href="#"
-                      className="font-medium text-yellow-300 hover:underline"
-                    >
-                      {t("wiew")}
-                    </a>
-                  </td> */}
-                  {/* <td className="px-6 py-4">
-                    <Link
-                      onClick={() => {
-                        sessionStorage.setItem(
-                          "projectIdViewMore",
-                          item.id
-                        );
-                      }}
-                      to="/view more"
-                      className="font-medium text-blue-600 hover:underline"
-                    >
-                      {t("more")}
-                    </Link>
-                  </td> */}
-                  {/* <td className="px-6 py-4">
-                    <Link
-                      onClick={downloadWereHouse}
-                      className="font-medium text-blue-600 hover:underline"
-                    >
-                      {isLoading ? (
-                        <LoadingBtn className={`bg-red-500`} />
-                      ) : (
-                        `${t("Download")} ${t("file")}`
-                      )}
-                    </Link>
-                  </td> */}
+                  
                 </tr>
               ))}
           </tbody>

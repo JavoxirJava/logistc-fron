@@ -249,11 +249,10 @@ function Product({ lang, projectId, setProjectId }) {
   function searchProject(e) {
     let text = e.target.value;
     if (text === "") getProject(pagination2, 4);
-    else if (text === "all") getProject(pagination2, 4);
     else
       axios
         .get(
-          `${url}project/admin/search?${searchByName2()}=${text}&lang=${lang}`,
+          `${url}project/admin/search?name=${text}&lang=${lang}`,
           config
         )
         .then((res) => {
