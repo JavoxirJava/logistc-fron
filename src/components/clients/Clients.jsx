@@ -220,6 +220,7 @@ const Clients = ({ changeLanguage, lang }) => {
                 ${userBtn ? 'bg-green-700 border border-white shadow-white' : 'bg-green-500'}
                 shadow-md rounded-lg text-white font-bold text-lg tracking-wider active:scale-95 duration-200`}
                 onClick={() => {
+                  setProductClient(null)
                   getClientProduct(
                     Math.floor(pagination),
                     4,
@@ -238,6 +239,7 @@ const Clients = ({ changeLanguage, lang }) => {
                 ${cashierBtn ? 'bg-green-700 border border-white shadow-white' : 'bg-green-500'} 
                 shadow-md rounded-lg text-white font-bold text-lg tracking-wider active:scale-95 duration-200`}
                 onClick={() => {
+                  setProductClient(null)
                   getCasherProduct(
                     Math.floor(paginationC),
                     4,
@@ -256,6 +258,7 @@ const Clients = ({ changeLanguage, lang }) => {
                 ${managerBtn ? 'bg-green-700 border border-white shadow-white' : 'bg-green-500'}
                 shadow-md rounded-lg text-white font-bold text-lg tracking-wider active:scale-95 duration-200`}
                 onClick={() => {
+                  setProductClient(null)
                   getManagerProduct(
                     Math.floor(paginationM),
                     4,
