@@ -26,7 +26,7 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                 // const fileExtension = prompt("Fayl kengaytmasini kiriting (pdf, doc, docx, xlsx, ...)");
                 // const filename = prompt("Name the file you want to download");
                 // const fullFilename = `${filename}`;
-                a.download = 'logistic.xlsx';
+                a.download = 'logistic';
                 document.body.appendChild(a);
                 a.click()
                 closeDown()
