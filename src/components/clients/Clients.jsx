@@ -125,14 +125,7 @@ const Clients = ({ changeLanguage, lang }) => {
       axios
         .get(`${url}user/search?idNumber=${text}&lang=${lang}`, config)
         .then((res) => {
-          // if (!res.data.body) {
-          //   if (res.data.body.object.length > 4)
-          //     setProductClient(
-          //       res.data.body.object.map((item, i) => {
-          //         if (i < 4) return item;
-          //       })
-          //     );
-          // } else setProductClient(null);
+         
           console.log(res.data.body);
 
           if (res.data.body) {
@@ -165,7 +158,6 @@ const Clients = ({ changeLanguage, lang }) => {
               placeholder={t("productSearch")}
             />
             <div className="flex gap-5">
-
             <button
               className={`px-6 py-2 ${
                 role === "ROLE_ADMIN" ? "" : "hidden"
@@ -183,6 +175,24 @@ const Clients = ({ changeLanguage, lang }) => {
               }}
             >
               {t("client10")}
+            </button>
+            <button
+              className={`px-6 py-2 ${
+                role === "ROLE_ADMIN" ? "" : "hidden"
+              } bg-green-500 shadow-lg rounded-lg text-white
+                                font-bold text-lg tracking-wider active:scale-95 duration-200`}
+              onClick={() => {
+                getClientProduct(
+                  Math.floor(pagination),
+                  4,
+                  setProductClient,
+                  setTotalPage,
+                  lang
+                );
+                getUse();
+              }}
+            >
+              {t("cassier")}
             </button>
             <button
               className={`px-6 py-2 ${
