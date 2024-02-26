@@ -21,6 +21,7 @@ import Managers from "./components/managers/Clients";
 import ViewMore from "./components/product/ViewMore";
 import Cassir from "./components/casser/Cassir";
 import ViewMoreW from "./components/werHouse/ViewMore";
+import CassirDashboard from './components/cashierPanel/Cassir'
 
 
 i18n.use(initReactI18next).init({
@@ -70,6 +71,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard lang={lang} />} />
                 <Route path="/user-dashboard" element={<UserDashboard lang={lang} />} />
                 <Route path="/cassier" element={<Cassir lang={lang}/>}/>
+                <Route path="/cashier-dashboard" element={<CassirDashboard lang={lang}/>}/>
                 <Route
                     path="/project"
                     element={
