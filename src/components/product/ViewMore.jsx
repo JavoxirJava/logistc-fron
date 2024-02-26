@@ -23,7 +23,7 @@ const ViewMore = ({ lang }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    
+
     getProjectInfo();
   }, [projectId]);
 
@@ -93,7 +93,7 @@ const ViewMore = ({ lang }) => {
       <div className="product-main flex justify-center items-start overflow-hidden w-full">
         <div className="lg:px-0 md:px-10 lg:py-0 sm:py-5 px-3 mt-8 w-screen lg:w-[90%] overflow-x-auto">
           <table className="w-full rounded-2xl overflow-hidden text-gray-500">
-            <thead className="text-[1.1rem] text-slate-50 uppercase bg-slate-500">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50">
               <tr>
                 <th className="px-6 py-3">№</th>
                 <th className="px-6 py-3">{t("photo")}</th>
@@ -110,7 +110,7 @@ const ViewMore = ({ lang }) => {
             <tbody className="text-[1rem] text-gray-700 bg-white text-center">
               {projectIdInfo ? (
                 projectIdInfo.map((item, i) => (
-                  <tr className="border-b transition duration-300 ease-in-out hover:bg-gray-300">
+                  <tr className="border-b transition duration-300 ease-in-out ">
                     <th className="px-6 py-5">{currentPage * 10 + (i + 1)}</th>
                     <th className="px-6 py-5 flex justify-center items-center">
                       <img
@@ -129,29 +129,23 @@ const ViewMore = ({ lang }) => {
                     <td className="px-6 py-5">{item.totalWeight}</td>
                     <td className="px-6 py-5">{item.totalKub}</td>
                     <td className="px-6 py-4">
-                                        <a
-                                            onClick={() => {
-                                                openModal();
-                                                setHistoryList(item);
-                                            }}
-                                            href="#"
-                                            className="font-medium text-[#16A34A] hover:underline"
-                                        >
-                                            {t("wiew")}
-                                        </a>
-                                    </td>
+                      <a
+                        onClick={() => {
+                          openModal();
+                          setHistoryList(item);
+                        }}
+                        href="#"
+                        className="font-medium text-[#16A34A] hover:underline"
+                      >
+                        {t("wiew")}
+                      </a>
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr>
                   <td colSpan="10" className="px-4">
-                    <div className={styles.loading}></div>
-                    <div className={styles.loading}></div>
-                    <div className={styles.loading}></div>
-                    <div className={styles.loading}></div>
-                    <div className={styles.loading}></div>
-                    <div className={styles.loading}></div>
-                    <div className={styles.loading}></div>
+                    <h1 className="text-xl text-black">{t("notfound")}</h1>
                   </td>
                 </tr>
               )}
