@@ -91,11 +91,11 @@ function OffcanvasProduct({
                     htmlFor={`productName${isAdd}`}
                     className="block text-gray-700 text-sm font-bold mt-3"
                 >
-                    {t("productAdd3")}
+                    {t("productName")}
                 </label>
                 <input
                     id={`productName${isAdd}`}
-                    placeholder={t("productAdd3")}
+                    placeholder={t("productName")}
                     defaultValue={product ? product.productName : ""}
                     className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
