@@ -82,12 +82,12 @@ const ViewMore = ({ lang }) => {
   return (
     <div className="w-full h-screen background overflow-x-hidden">
       <NavBar lang={lang} />
-      <div className="mt-32 flex justify-center w-full">
+      <div className="mt-32 flex justify-start md:ml-[4.7em] ml-5 w-full">
         <input
           type="search"
           onChange={searchHandler}
           placeholder={t("productSearch")}
-          className="lg:w-8/12 px-4 h-10 focus:outline-0 border rounded-md"
+          className="lg:w-3/12 px-4 h-10 focus:outline-0 border rounded-md"
         />
       </div>
       <div className="product-main flex justify-center items-start overflow-hidden w-full">
