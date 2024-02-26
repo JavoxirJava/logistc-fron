@@ -111,15 +111,15 @@ const Cassir = ({ changeLanguage, lang }) => {
     }
 
     return (
-        <div>
+        <div className="min-h-screen">
             <NavBar
                 changeLang={changeLanguage}
                 cassier={"border-b-red-600 border-b text-slate-900"}
                 lang={lang}
             />
-            <div className="background h-screen pt-20">
+            <div className="background min-h-screen pt-20 px-10 md:px-0">
                 <div className="md:w-[80vw] w-full mx-auto mt-[1.5rem]">
-                    <div className="flex flex-wrap justify-between">
+                    <div className="flex flex-wrap justify-between items-end xl:flex-nowrap">
                         <div className="flex justify-start items-center">
                             <Modal
                                 projectId={projectId}
@@ -132,8 +132,8 @@ const Cassir = ({ changeLanguage, lang }) => {
                             <button onClick={openDown} className="ms-3 duration-200 bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8 border rounded">{t('download')}</button>
                         </div>
                         <DownloadModal isOpen={isModalDown} closeDown={closeDown} />
-                        <div className="flex justify-end">
-                            <div className="flex flex-col mr-2">
+                        <div className="flex justify-start flex-wrap sm:flex-nowrap xl:justify-end w-full mt-7 xl:mt-0">
+                            <div className="flex flex-col w-full xl:w-48 mt-3 sm:mt-0 sm:mr-2">
                                 <label htmlFor="projectIdFilter">{t("select")}</label>
                                 <select
                                     id="projectIdFilter"
@@ -145,7 +145,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                                     ))}
                                 </select>
                             </div>
-                            <div className="flex flex-col mr-2">
+                            <div className="flex flex-col w-full xl:w-48 mt-3 sm:mt-0 sm:mr-2">
                                 <label htmlFor="startCashier">{t('start')}</label>
                                 <input
                                     id="startCashier"
@@ -155,7 +155,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                                     className="outline-none px-5 py-1.5 border-slate-100 border-2 rounded-md"
                                 />
                             </div>
-                            <div className="flex flex-col">
+                            <div className="flex flex-col w-full xl:w-48 mt-3 sm:mt-0">
                                 <label htmlFor="endCashier">{t('end')}</label>
                                 <input
                                     id="endCashier"
@@ -223,7 +223,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="mt-5 mb-20 lg:mb-10">
+                    <div className="mt-5 pb-10 lg:mb-10">
                         <ReactPaginate
                             className="navigation"
                             breakLabel="..."
