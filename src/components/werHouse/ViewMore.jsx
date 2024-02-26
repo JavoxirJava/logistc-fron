@@ -164,7 +164,8 @@ const ViewMoreW = ({ lang }) => {
             });
     }
 
-    function addProductIds(checked, id) {
+    function addProductIds(checked, id, item) {
+        console.log(item);
         if (checked) setProductIds([...productIds, id]);
         else setProductIds(productIds.filter((productId) => productId !== id));
     }
@@ -270,7 +271,7 @@ const ViewMoreW = ({ lang }) => {
                                         <td className="px-6 py-4">
                                             <input
                                                 onChange={(e) =>
-                                                    addProductIds(e.target.checked, item.productId)
+                                                    addProductIds(e.target.checked, item.productId, item)
                                                 }
                                                 type="checkbox"
                                                 className="w-5 h-5"
