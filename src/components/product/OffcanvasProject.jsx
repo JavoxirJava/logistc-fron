@@ -112,19 +112,19 @@ function OffcanvasProject({
                         value="1"
                         //  selected={product && product.transport === "CAR"}
                     >
-                        {/* {t("productAdd05")} */}АВТО
+                        {t("auto")}
                     </option>
                     <option
                         value="2"
                         // selected={product && product.transport === "AIRPLANE"}
                     >
-                        {/* {t("productAdd050")} */}АВИА
+                        {t("avia")}
                     </option>
                     <option
                         value="3"
                         // selected={product && product.transport === "TRAIN"}
                     >
-                        {/* {t("productAdd005")} */}ЖД
+                        {t("JD")}
                     </option>
                 </select>
                 <label
@@ -144,49 +144,49 @@ function OffcanvasProject({
                         value="1"
                         // selected={product && product.status === "PENDING"}
                     >
-                        {/* {t("status1")} */}Падгатовка
+                        {t("1")}
                     </option>
                     <option
                         value="2"
                         // selected={product && product.status === "GOING"}
                     >
-                        {/* {t("status2")} */}Загрузка
+                        {t("2")}
                     </option>
                     <option
                         value="3"
                         // selected={product && product.status === "CANCEL"}
                     >
-                        {/* {t("status3")} */}Отправка
+                        {t("3")}
                     </option>
                     <option
                         value="4"
                         // selected={product && product.status === "ARRIVED"}
                     >
-                        {/* {t("status4")} */}В пути в Китай
+                        {t("4")}
                     </option>
                     <option
                         value="5"
                         // selected={product && product.status === "COMPLETED"}
                     >
-                        {/* {t("status5")} */}В гроница в Китай
+                        {t("5")}
                     </option>
                     <option
                         value="6"
                         // selected={product && product.status === "MOVED"}
                     >
-                        {/* {t("status6")} */}В пути в транзитном зоне
+                        {t("6")}
                     </option>
                     <option
                         value="7"
                         // selected={product && product.status === "MOVED"}
                     >
-                        {/* {t("status6")} */}В граница узб
+                        {t("7")}
                     </option>
                     <option
                         value="8"
                         // selected={product && product.status === "MOVED"}
                     >
-                        {/* {t("status6")} */}В процесс разтаможка
+                        {t("8")}
                     </option>
                 </select>
                 <label

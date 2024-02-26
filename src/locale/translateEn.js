@@ -199,7 +199,17 @@ const translateEn = {
     cct: "Cct",
     notFoundFile: "File not found",
     notFoundCashier: "Cashier not found 😊",
-
+    avia: "Avia",
+    auto: "Auto",
+    jd: "JD",
+    1: "Preporation",
+    2: "Loading",
+    3: "Sending",
+    4: "On the way to China",
+    5: "To the border in China",
+    6: "On the way in the transit zone",
+    7: "To the Uzbek border",
+    8: "In the process of customs clearance",
 }
 
 export default translateEn
