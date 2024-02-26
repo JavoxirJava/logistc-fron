@@ -12,5 +12,10 @@
 }
 .backCircle {
     background-color: rgba(255, 255, 255, 0.483);
-   
+}
+
+.add-product-table, .add-product-table th, .add-product-table td {
+    border: 1px solid rgba(193, 192, 192, 0.48);
+    border-collapse: collapse;
+    padding: 1rem;
 }

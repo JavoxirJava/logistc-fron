@@ -15,7 +15,7 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct}) {
                         <div
                             className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                             <h3 className="text-3xl font-semibold">
-                                Modal Title
+                                All Products
                             </h3>
                             <button
                                 className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -29,13 +29,32 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct}) {
                         </div>
                         {/*body*/}
                         <div className="relative p-6 flex-auto">
-                            {products.map((product, i) => (
-                                <div>
-                                    <hr/>
-                                    <p key={i}>{product.owner}</p>
-                                    <p key={i}>{product.productName}</p>
-                                </div>
-                            ))}
+                            <table className="table w-96 text-center add-product-table">
+                                <tbody>
+                                <tr>
+                                    <th>Product count</th>
+                                    <th>Kg</th>
+                                    <th>Kub</th>
+                                </tr>
+                                </tbody>
+                                <tbody>
+                                <tr>
+                                    <td>{products.length}</td>
+                                    <td>{products.map(p => p.totalWeight).reduce((a, b) => a + b)}</td>
+                                    <td>{products.map(p => p.totalKub).reduce((a, b) => a + b)}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            {/*<p><span className="pe-4">Product count:</span>*/}
+                            {/*    {products.length}</p>*/}
+                            {/*<p>*/}
+                            {/*<span className="pe-4">Kub:</span>*/}
+                            {/*    {products.map(p => p.totalKub).reduce((a, b) => a + b)}*/}
+                            {/*</p>*/}
+                            {/*<p>*/}
+                            {/*    <span className="pe-4">Kg:</span>*/}
+                            {/*    {products.map(p => p.totalWeight).reduce((a, b) => a + b)}*/}
+                            {/*</p>*/}
                         </div>
                         {/*footer*/}
                         <div
