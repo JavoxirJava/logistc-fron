@@ -163,7 +163,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                             </form>
                             <form className="mx-auto flex justify-evenly flex-wrap">
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='priceOfKub'>{t("pricekubkg")}</label>
+                                    <label className='text-[0.885rem]' htmlFor='priceOfKub'>{t("pricekubkg")}</label>
                                     <input
                                         onChange={e => setDataVAlue(e.target.value)}
                                         id='priceOfKub'
