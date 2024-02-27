@@ -75,17 +75,10 @@ const DashboardProductCard = ({ lang }) => {
   function searchProduct(e) {
     let text = e.target.value;
     if (text === "") getProduct();
-    else axios.get(`${url}project/admin/search?name=${text}&lang=${lang}`, config)
+    else axios.get(`${url}product/admin/search?lang=${lang}&projectName=${text}`, config)
       .then((res) => {
-        if (res.data.body) {
-          if (res.data.body.length > 4)
-            setProduct(
-              res.data.body.map((item, i) => {
-                if (i < 4) return item;
-              })
-            );
-          else setProduct(res.data.body);
-        } else setProduct([]);
+        if (res.data.success === true) setProduct(res.data.body);
+        else if (res.data.success === false) setProduct(null);
       })
       .catch((err) => console.log(err));
   }
@@ -105,9 +98,8 @@ const DashboardProductCard = ({ lang }) => {
           <input
             type="search"
             placeholder="🔍..."
-            defaultValue=""
             onChange={searchProduct}
-            className="lg:w-4/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+            className="lg:w-4/12 px-3 h-10 focus:outline-0 border sm:mt-0 mt-2"
           />
         </div>
       </div>
@@ -154,7 +146,7 @@ const DashboardProductCard = ({ lang }) => {
                 </tr>
               ))) : (
               <tr className="bg-white border-b">
-                <td colSpan='7' className="px-6 py-4 text-center text-lg">{t('card4')} {t('notfound')}</td>
+                <td colSpan='10' className="px-6 py-4 text-center text-lg">{t('card4')} {t('notfound')}</td>
               </tr>
             )}
           </tbody>
