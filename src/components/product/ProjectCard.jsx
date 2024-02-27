@@ -69,14 +69,14 @@ function ProjectCard({
   const editPorjectStatus = () => {
     let status = document.getElementById('productStatusEdit').value,
       id = projectList.id
-    axios.put(`${url}project/status?projectId=${id}`, '', config)
-      .then((res) => {
-        console.log(res);
-        console.log('ishladi');
-        toast.success('save')
-      }).catch((err) => {
-        console.log(err);
-        toast.warning('error')
+    axios.put(`${url}project/status?status=${status}&projectId=${id}`, '', config)
+      .then(() => {
+        setIsModalOpenStatus(false)
+        toast.success(t('projectStatusEd'))
+        document.getElementById('productStatusEdit').value= ''
+      }).catch(() => {
+        document.getElementById('productStatusEdit').value= ''
+        toast.warning(t('projectStatusEdErr'))
       })
   }
 

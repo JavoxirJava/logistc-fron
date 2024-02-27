@@ -61,6 +61,8 @@ const translateEn = {
   cardCurrent: "Current Page",
   card1: 'Number',
   card2: 'Status',
+  projectStatusEd: 'Project status edited successfully',
+  projectStatusEdErr: 'Error editing project status',
   card3: 'ETD',
   card4: 'Product',
   card5: 'Current Location',
@@ -228,7 +230,7 @@ const translateEn = {
   gotov: "Ready",
   products: "products",
   statuss: "Status",
-  projectStatusEdit: "Change project status",
+  projectStatusEditd: "Change project status",
 
 }
 
