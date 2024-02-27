@@ -368,7 +368,7 @@ const ViewMoreW = ({lang}) => {
                                 }}
                                 className="btmn"
                             >
-                                {t("add")}
+                                {t("addd")}
                             </button>
                         </div>
                     </div>
