@@ -5,8 +5,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { logo } from "../../../assets";
+import LoadingBtn from "../../loading/Loading";
 
-function CashierNavBar({ dashboard }) {
+function CashierNavBar({ dashboard, lang }) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,6 +15,7 @@ function CashierNavBar({ dashboard }) {
   const [me, setMe] = useState(null);
   const [meId, setMeId] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const openGetMe = () => setIsOpen(!isOpen);
   const openMenu = () => setIsOpenMenu(!isOpenMenu);
@@ -22,13 +24,23 @@ function CashierNavBar({ dashboard }) {
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   const { t } = useTranslation();
 
+  useEffect(() => {
+    getMe(setMe, lang);
+  }, []);
+
+  useEffect(() => {
+    getMe(setMe, lang);
+  }, [lang]);
+
   const logout = () => {
     document.getElementById("logout").click();
     sessionStorage.clear();
+    localStorage.clear();
   };
 
-  const editUser = () => {
-    axios.put(url + "user/client",
+  const editUser = async () => {
+    setLoading(true)
+    await axios.put(url + "user/" + meId.id,
       {
         id: meId.id,
         name: byId("name"),
@@ -38,17 +50,21 @@ function CashierNavBar({ dashboard }) {
       },
       config).then(() => {
         toast.success(t("success"));
-        openModal();
-        logout();
-      })
-      .catch(() => {
+        setLoading(false)
+      }).catch(() => {
         toast.error(t("error"));
+        setLoading(false)
       });
+    await axios.post(`${url}user/login?phoneNumber=${byId("phoneNumber")}&password=${byId("password")}`)
+      .then(res => {
+        sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
+        sessionStorage.setItem("role", res.data.message)
+        openModal();
+        getMe(setMe, lang);
+      }).catch(err => {
+        console.log('error', err);
+      })
   };
-
-  useEffect(() => {
-    getMe(setMe);
-  }, []);
 
   return (
     <div className="">
@@ -133,7 +149,7 @@ function CashierNavBar({ dashboard }) {
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <h2 className="relative rounded-full  p-1 text-gray-700 ">
-                {me ? me.name : "User"}
+                {me ? me.name : ""}
               </h2>
 
               <div className="relative ml-3">
@@ -229,9 +245,11 @@ function CashierNavBar({ dashboard }) {
                       alt="img"
                     />
                   </div>
-                  <div className="bg-slate-200 md:px-8 px-3 md:py-6 py-2">
+                  <div className="bg-slate-200 w-full md:px-8 px-3 md:py-6 py-2">
                     <div className=" font-bold text-black text-[1.1rem]">
-                      <p className="opacity-50 pb-0 mb-0 mt-2">{t("addclient3")}</p>
+                      <p className="opacity-50 pb-0 mb-0 mt-2">
+                        {t("addclient3")}
+                      </p>
                       <input
                         type="text"
                         defaultValue={me.name}
@@ -240,7 +258,9 @@ function CashierNavBar({ dashboard }) {
                       />
                     </div>
                     <div className=" font-bold text-black text-[1.1rem]">
-                      <p className="opacity-50 pb-0 mb-0 mt-2">{t("addclient5")}</p>
+                      <p className="opacity-50 pb-0 mb-0 mt-2">
+                        {t("addclient5")}
+                      </p>
                       <input
                         type="text"
                         defaultValue={me.idNumber}
@@ -249,7 +269,9 @@ function CashierNavBar({ dashboard }) {
                       />
                     </div>
                     <div className=" font-bold text-black text-[1.1rem]">
-                      <p className="opacity-50 pb-0 mb-0 mt-2">{t("addclient7")}</p>
+                      <p className="opacity-50 pb-0 mb-0 mt-2">
+                        {t("addclient7")}
+                      </p>
                       <input
                         type="text"
                         id="phoneNumber"
@@ -258,9 +280,12 @@ function CashierNavBar({ dashboard }) {
                       />
                     </div>
                     <div className=" font-bold text-black text-[1.1rem]">
-                      <p className="opacity-50 pb-0 mb-0 mt-2">{t("addclient9")}</p>
+                      <p className="opacity-50 pb-0 mb-0 mt-2">
+                        {t("addclient9")}
+                      </p>
                       <div className="relative">
                         <input
+                          // onKeyDown={checkKeyPress}
                           defaultValue={me.password}
                           id="password"
                           type={showPassword ? "text" : "password"}
@@ -272,25 +297,34 @@ function CashierNavBar({ dashboard }) {
                           className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-black"
                           onClick={togglePasswordVisibility}
                         >
-                          <i className={showPassword
-                            ? "fa-solid fa-eye-slash"
-                            : "fa-solid fa-eye"
-                          } />
+                          <i
+                            className={
+                              showPassword
+                                ? "fa-solid fa-eye-slash"
+                                : "fa-solid fa-eye"
+                            }
+                          />
                         </button>
                       </div>
                     </div>
                     <div className="flex justify-between items-center mt-3 font-bold text-white">
                       <button
-                        className="bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg"
+                        className="bg-red-600 px-5 py-1.5 rounded-lg shadow-lg"
+                        onClick={() => {
+                          openModal();
+                        }}
+                      >
+                        {t("close")}
+                      </button>
+                      <button
+                        className={`${loading ? 'cursor-not-allowed opacity-70' : ''} 
+                        bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg`}
                         onClick={() => {
                           editUser();
                         }}
-                      >{t("edit")}</button>
-                      <button
-                        className="bg-red-600 px-5 py-1.5 rounded-lg shadow-lg"
-                        onClick={() => {
-                          logout();
-                        }}>{t("logout")}</button>
+                        disabled={loading}>
+                        {loading ? <div className="py-1.5"><LoadingBtn /></div> : t("edit")}
+                      </button>
                     </div>
                   </div>
                 </div>
