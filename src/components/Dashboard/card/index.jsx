@@ -1,7 +1,7 @@
 // DashboardProductCard.js
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { config, url } from "../../api";
+import { config, getFile, url } from "../../api";
 import Dropdown from "./Dropdown";
 import "../../product/product.css";
 import Pagination, {
@@ -9,6 +9,7 @@ import Pagination, {
 } from "react-responsive-pagination";
 import { useTranslation } from "react-i18next";
 import { changeLanguage } from "i18next";
+import ReactPaginate from "react-paginate";
 
 const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -41,31 +42,31 @@ const Modal = ({ isOpen, onClose }) => {
 };
 
 const DashboardProductCard = ({ lang }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [data, setProduct] = useState(null);
-  const [wiewData, setWiewData] = useState(null);
-  const [totalPage, setTotalPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [pagination, setPagination] = useState(0);
 
   useEffect(() => {
-    getProduct(pagination, 4);
+    getProduct();
   }, []);
 
   useEffect(() => {
-    getProduct(pagination, 4);
+    getProduct();
   }, [lang]);
 
   const { t } = useTranslation();
 
-  useEffect(() => {
-    if ((pagination - 1) * 4 < 0) setPagination(0);
-    else getProduct(Math.floor(pagination - 1), 4);
-  }, [pagination]);
+  // useEffect(() => {
+  //   if ((pagination - 1) * 4 < 0) setPagination(0);
+  //   else getProduct(Math.floor(pagination - 1), 4);
+  // }, [pagination]);
 
-  function getProduct(page, size) {
-    axios.get(`${url}project/page?page=${page}&size=${size}&lang=${lang}`, config)
+  function getProduct() {
+    axios.get(`${url}product?lang=${lang}`, config)
       .then((res) => {
-        setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+        // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
+        setTotalPage(res.data.body.totalPage);
         setProduct(res.data.body.object);
       })
       .catch((err) => console.log(err));
@@ -73,7 +74,7 @@ const DashboardProductCard = ({ lang }) => {
 
   function searchProduct(e) {
     let text = e.target.value;
-    if (text === "") getProduct(pagination, 4);
+    if (text === "") getProduct();
     else axios.get(`${url}project/admin/search?name=${text}&lang=${lang}`, config)
       .then((res) => {
         if (res.data.body) {
@@ -89,7 +90,13 @@ const DashboardProductCard = ({ lang }) => {
       .catch((err) => console.log(err));
   }
 
-  console.log(wiewData);
+  const handelPageClick = (event) => {
+    const pageNumber = event.selected;
+    setCurrentPage(pageNumber);
+    axios.get(`${url}product?page=${pageNumber}&size=5&lang=${lang}`, config)
+      .then((res) => setProduct(res.data.body.object))
+      .catch((err) => console.log("error page: ", err));
+  };
 
   return (
     <div className="radius">
@@ -108,14 +115,17 @@ const DashboardProductCard = ({ lang }) => {
       <div class="relative overflow-x-auto  sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
+            <tr className="bg-slate-200">
               <th scope="col" class="px-6 py-3">#</th>
+              <th scope="col" class="px-6 py-3">{t('photo')}</th>
               <th scope="col" class="px-6 py-3">{t('card4')} {t("client2")}</th>
-              <th scope="col" class="px-6 py-3">{t("card2")}</th>
-              <th scope="col" class="px-6 py-3">{t("transport")}</th>
+              <th scope="col" class="px-6 py-3">{t("totalKub")}</th>
+              <th scope="col" class="px-6 py-3">{t("totalWeight")}</th>
               <th scope="col" class="px-6 py-3">{t("date")}</th>
-              <th scope="col" class="px-6 py-3">{t("totalPrice")}</th>
-              <th scope="col" class="px-6 py-3">{t("wiew")}</th>
+              <th scope="col" class="px-6 py-3">{t("comment")}</th>
+              <th scope="col" class="px-6 py-3">{t("productAdd7x")}</th>
+              <th scope="col" class="px-6 py-3">{t("productAdd7y")}</th>
+              <th scope="col" class="px-6 py-3">{t("productAdd7z")}</th>
             </tr>
           </thead>
           <tbody>
@@ -123,26 +133,24 @@ const DashboardProductCard = ({ lang }) => {
               data.map((item, i) => (
                 <tr
                   className="bg-white border-b"
-                  key={i}
-                >
+                  key={i}>
                   <th
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    {(pagination - 1) * 4 < 0
-                      ? i + 1
-                      : (pagination - 1) * 4 + (i + 1)}
-                  </th>
+                  >{(currentPage * 5) + (i + 1)}</th>
+                  <td className="px-6 py-4">
+                    <img src={item.attachmentId ? getFile + item.attachmentId : ''} alt="img" className="w-10 h-10 rounded-full scale-125" />
+                  </td>
                   <td className="px-6 py-4">{item ? item.name : ""}</td>
-                  <td className="px-6 py-4">{item ? item.status : ""}</td>
-                  <td className="px-6 py-4">{item ? item.transport : ""}</td>
+                  <td className="px-6 py-4">{item ? item.totalKub : ""} {item ? <span>{t('sm')} <sup>3</sup></span> : ''}</td>
+                  <td className="px-6 py-4">{item ? item.totalWeight : ""}</td>
                   <td className="px-6 py-4">
                     {item ? item.date.slice(0, item.date.indexOf(" ")) : ""}
                   </td>
-                  <td className="px-6 py-4">{item ? item.transport : ""}</td>
-                  <td className="px-6 py-4">
-                    <button onClick={() => setWiewData(item)} className="text-blue-700 hover:underline">{t('wiew')}</button>
-                  </td>
+                  <td className="px-6 py-4">{item ? item.comment : ""}</td>
+                  <td className="px-6 py-4">{item.x}</td>
+                  <td className="px-6 py-4">{item.y}</td>
+                  <td className="px-6 py-4">{item.z}</td>
                 </tr>
               ))) : (
               <tr className="bg-white border-b">
@@ -152,13 +160,18 @@ const DashboardProductCard = ({ lang }) => {
           </tbody>
         </table>
       </div>
-
-      <div className="pagination-style mt-4">
-        <Pagination
-          {...bootstrap5PaginationPreset}
-          current={pagination}
-          total={Math.floor(totalPage + 1)}
-          onPageChange={setPagination}
+      <div className="mt-4">
+        <ReactPaginate
+          className="navigation"
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handelPageClick}
+          pageRangeDisplayed={5}
+          pageCount={totalPage}
+          previousLabel="<"
+          renderOnZeroPageCount={null}
+          nextClassName="nextBtn"
+          previousClassName="prevBtn"
         />
       </div>
     </div>
