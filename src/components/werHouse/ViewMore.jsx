@@ -61,7 +61,7 @@ const ViewMoreW = ({lang}) => {
     };
     const getProject = () => {
         axios
-            .get(`${url}project/list?lang=${lang}`, config)
+            .get(`${url}project/all?lang=${lang}`, config)
             .then((res) => {
                 setProject(res.data.body);
             })
@@ -75,6 +75,7 @@ const ViewMoreW = ({lang}) => {
             .then((res) => setProjectIdInfo(res.data.body.object))
             .catch((err) => console.log("error page: ", err));
     };
+    console.log(project);
 
     const styles = {
         loading:
