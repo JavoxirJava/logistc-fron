@@ -140,8 +140,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                     toast.error(res.data.message)
                 }
             }).catch(err => {
-                console.log('Error', err)
-                setCasseir([{ productName: t('notFoundCashier'), }])
+                
             })
     }
 

@@ -75,7 +75,7 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
               allAddressList.map((item) => (
                 <div className="flex flex-col textga1">
                   <div className="pb-6 pl-0 w-[100px] overflow-x-auto scrollbar textga2">
-                    <p className="w-[250px]">{item}</p>
+                    <p className="w-[250px]" title={item} >{item}</p>
                   </div>
                   <div className="h-[4px] w-[120px] flex relative justify-center items-center bg-slate-900">
                     <div className="w-[30px] h-[30px] rounded-full absolute left-0 bg-blue-700"></div>

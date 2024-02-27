@@ -52,6 +52,11 @@ const ViewMoreW = ({lang}) => {
         getProjectInfo();
     }, [lang]);
 
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+
     const getProjectInfo = () => {
         console.log('kelopdis', products)
         axios.get(`${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=0&size=5`, config)
@@ -180,7 +185,10 @@ const ViewMoreW = ({lang}) => {
                 <div className="flex md:w-[89%] w-full md:flex-row flex-col justify-between mt-5">
                     <div className="flex md:justify-start justify-center gap-5">
                         <button
-                            onClick={handleToggleOffcanvas}
+                            onClick={() => {
+                                handleToggleOffcanvas()
+                                topFunction()
+                            }}
                             className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8  rounded"
                         >
                             {t("productAdd1")}
