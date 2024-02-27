@@ -199,6 +199,8 @@ const translateRu = {
   productAdd7y: 'Й',
   productAdd7z: 'З',
   price: "Цена",
+  projectStatusEd: "Статус проекта успешно изменен",
+  projectStatusEdErr: "Ошибка редактирования статуса проекта",
   sm: "см",
   measure: "Измерять",
   totalPrice: "Итоговая цена",
