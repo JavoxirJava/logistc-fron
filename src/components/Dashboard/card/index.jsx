@@ -135,7 +135,7 @@ const DashboardProductCard = ({ lang }) => {
                   </td>
                   <td className="px-6 py-4">{item ? item.name : ""}</td>
                   <td className="px-6 py-4">{item ? item.totalKub : ""} {item ? <span>{t('sm')} <sup>3</sup></span> : ''}</td>
-                  <td className="px-6 py-4">{item ? item.totalWeight : ""}</td>
+                  <td className="px-6 py-4">{item ? item.totalWeight : ""} {item ? <span>{t('kg')}</span> : ''}</td>
                   <td className="px-6 py-4">
                     {item ? item.date.slice(0, item.date.indexOf(" ")) : ""}
                   </td>
