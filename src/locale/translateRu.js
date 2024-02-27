@@ -196,7 +196,7 @@ const translateRu = {
   projectName: "Название проекта",
   productName: "Наименование товара",
   productAdd7x: 'Х',
-  productAdd7y: 'У',
+  productAdd7y: 'Й',
   productAdd7z: 'З',
   price: "Цена",
   sm: "см",
