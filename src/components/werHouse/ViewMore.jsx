@@ -185,7 +185,8 @@ const ViewMoreW = ({lang}) => {
                         <button
                             onClick={() => {
                                 if (products.length > 0) openPro()
-                                else toast.warning('Please add at least one product')
+                                // else toast.warning('Please add at least one product')
+                                else toast.warning(t("listWarning"))
                             }}
                             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-8  rounded"
                         >

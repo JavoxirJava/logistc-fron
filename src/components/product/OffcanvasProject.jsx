@@ -74,7 +74,7 @@ function OffcanvasProject({
                 {/* Name input  */}
                 <label
                     htmlFor={`name${isAdd}`}
-                    className="block text-gray-700 text-sm font-bold my-2"
+                    className="block text-gray-700 text-sm font-bold "
                 >
                     {t("productAdd3")}  
                 </label>
@@ -201,7 +201,7 @@ function OffcanvasProject({
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 ></textarea>
                 
-                <div className="mt-10 flex justify-between">
+                <div className=" flex justify-between">
                     <button
                         onClick={() =>{ 
                             handleToggleOffcanvas()

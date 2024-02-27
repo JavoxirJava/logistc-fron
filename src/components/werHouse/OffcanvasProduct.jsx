@@ -120,7 +120,7 @@ function OffcanvasProduct({
                     htmlFor={`productFile${isAdd}`}
                     className="block text-gray-700 text-sm font-bold mt-3"
                 >
-                    {t("productAdd34foto")}
+                    {t("productPhoto")}
                 </label>
                 <input
                     id={`productFile${isAdd}`}
@@ -147,13 +147,13 @@ function OffcanvasProduct({
                             htmlFor={`idNumberX${isAdd}`}
                             className="block text-gray-700 text-sm font-bold mt-3"
                         >
-                            {t("productAdd7")}
+                            {t("productAdd7x")}
                         </label>
                         <input
                             type="number"
                             onChange={cubeHandlerVolume}
                             id={`idNumberX${isAdd}`}
-                            placeholder={t("productAdd7")}
+                            placeholder={t("productAdd7x")}
                             className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
@@ -235,13 +235,13 @@ function OffcanvasProduct({
                     htmlFor={`numberOfSeats${isAdd}`}
                     className="block text-gray-700 text-sm font-bold mt-3"
                 >
-                    {t("productAdd76")}
+                    {t("numberOfSeats")}
                 </label>
                 <input
                     type="number"
                     onChange={totalKgHandlar}
                     id={`numberOfSeats${isAdd}`}
-                    placeholder={t("productAdd76")}
+                    placeholder={t("numberOfSeats")}
                     className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
                 focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                 focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
@@ -266,7 +266,7 @@ function OffcanvasProduct({
                     htmlFor={`productKubDisabled${isAdd}`}
                     className="block text-gray-700 text-sm font-bold mt-3"
                 >
-                    {t("productAdd06Kub")}
+                    {t("totalKub")}
                 </label>
                 <input
                     id={`productKubDisabled${isAdd}`}

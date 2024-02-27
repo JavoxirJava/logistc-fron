@@ -61,6 +61,7 @@ const translateEn = {
   cardCurrent: "Current Page",
   card1: 'Number',
   card2: 'Status',
+  productPhoto: "Product photo",
   projectStatusEd: 'Project status edited successfully',
   projectStatusEdErr: 'Error editing project status',
   card3: 'ETD',
@@ -95,6 +96,7 @@ const translateEn = {
   productAdd7z: 'Z',
   productAddKg: 'Weight',
   productAddKub: 'Cube',
+  numberOfSeats: "Number of seats",
   productAdd76: 'Number of seats',
   productAdd8: 'Product status',
   productAdd9: 'Select warehouse',
@@ -204,7 +206,6 @@ const translateEn = {
   addclient10: "Enter password",
   userName: "User Name",
   projectName: "Project name",
-  productName: "Product name",
   date: "Date",
   price: "Price",
   measure: "Measure",
@@ -232,7 +233,7 @@ const translateEn = {
   statuss: "Status",
   noStatus: "No status",
   projectStatusEditd: "Change project status",
-
+  listWarning : "Please add at least one product"
 }
 
 export default translateEn
