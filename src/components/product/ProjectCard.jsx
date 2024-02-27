@@ -128,17 +128,6 @@ function ProjectCard({
             {t("more")}
           </Link>
         </td>
-        {/* <td className="px-6 py-4">
-          <Link
-            onClick={() => {
-              setIsModalOpenStatus(true)
-              setProjectList(projects)
-            }}
-            className="font-medium text-green-600 hover:underline"
-          >
-            {t("statuss")} {t("edit")}
-          </Link>
-        </td> */}
         <td className="px-6 py-4">
           <Link
             onClick={() => {
@@ -196,6 +185,11 @@ function ProjectCard({
             value="8"
           >
             {t("8")}
+          </option>
+          <option
+            value="9"
+          >
+            {t("9")}
           </option>
         </select>
         {/* <button onClick={editPorjectStatus} className="bg-green-600 px-5 py-2 rounded-md text-white font-medium ms-2">{t('save')}</button> */}
