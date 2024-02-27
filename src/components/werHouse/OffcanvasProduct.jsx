@@ -54,9 +54,6 @@ function OffcanvasProduct({
         setTotalKgSum(dataNumber * dataWeight)
         setTotalKubSum(dataNumber * kubSum)
     }    
-    
-    console.log(product);
-
     const inputDelete = () => {
         document.getElementById(`productName${isAdd}`).value = product ? product.productName :''
         document.getElementById(`comment${isAdd}`).value = product ? product.comment :''

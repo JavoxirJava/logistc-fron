@@ -85,6 +85,7 @@ function ProjectCard({
         <td className="px-6 py-4">
           <a
             onClick={() => {
+              setProduct(projects)
               openEdit();
               setProjectId(projects);
             }}
