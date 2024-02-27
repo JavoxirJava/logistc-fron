@@ -53,19 +53,23 @@ const ViewMoreW = ({lang}) => {
     }, [lang]);
 
     const getProjectInfo = () => {
+        console.log('kelopdis', products)
         axios.get(`${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=0&size=5`, config)
             .then((res) => {
-                setProjectIdInfo(res.data.body.object);
-                setPage(res.data.body.totalPage);
+                if (res.data.message === "List empty") setProjectIdInfo(null);
+                else {
+                    setProjectIdInfo(res.data.body.object);
+                    setPage(res.data.body.totalPage);
+                }
             }).catch((err) => console.log("product/ware-house yulida error!", err));
     };
+
     const getProject = () => {
         axios
             .get(`${url}project/all?lang=${lang}`, config)
             .then((res) => {
                 setProject(res.data.body);
-            })
-            .catch((err) => console.log("wareHouse/product yulida error!", err));
+            }).catch((err) => console.log("wareHouse/product yulida error!", err));
     };
 
     const handelPageClick = (event) => {
@@ -85,13 +89,13 @@ const ViewMoreW = ({lang}) => {
         let data = e.target.value;
         if (data) {
             axios.get(
-                    `${url}wareHouse/product/search?userName=${data}&lang=${lang}`,
-                    config
-                ).then((res) =>
-                    res.data.success === false
-                        ? setProjectIdInfo([{comment: "Not found 😊"}])
-                        : setProjectIdInfo(res.data.body)
-                ).catch(() => setProjectIdInfo(null));
+                `${url}wareHouse/product/search?userName=${data}&lang=${lang}`,
+                config
+            ).then((res) =>
+                res.data.success === false
+                    ? setProjectIdInfo([{comment: "Not found 😊"}])
+                    : setProjectIdInfo(res.data.body)
+            ).catch(() => setProjectIdInfo(null));
         } else {
             getProjectInfo();
             setProjectIdInfo(null);
@@ -106,9 +110,9 @@ const ViewMoreW = ({lang}) => {
                 getProjectInfo();
                 setProductObj2(null);
             }).catch((err) => {
-                toast.error(t("error"));
-                console.log(err);
-            });
+            toast.error(t("error"));
+            console.log(err);
+        });
     }
 
     function addtoProduct() {
@@ -134,7 +138,7 @@ const ViewMoreW = ({lang}) => {
         let data = {...product2};
         axios.put(`${url}product?id=${product.productId}`, data, config)
             .then(() => {
-                toast.success(t("success"));    
+                toast.success(t("success"));
                 getProjectInfo();
                 setProductObj2(null);
             }).catch((err) => {
@@ -193,8 +197,8 @@ const ViewMoreW = ({lang}) => {
                         </button>
                     </div>
                     <h1 className="md:ml-0 ml-5">
-                        <b className="text-blue-500">{projectName}</b> {'  '} 
-                         <b>{t("products")}</b>
+                        <b className="text-blue-500">{projectName}</b> {'  '}
+                        <b>{t("products")}</b>
                     </h1>
                     <span></span>
                 </div>
@@ -354,7 +358,8 @@ const ViewMoreW = ({lang}) => {
                                 <option selected disabled>{t("select")}</option>
 
                                 {project &&
-                                    project.map((item, i) => <option key={i} value={item.projectId}>{item.name}</option>)}
+                                    project.map((item, i) => <option key={i}
+                                                                     value={item.projectId}>{item.name}</option>)}
                             </select>
                         </div>
                         <div className="flex justify-between mt-7">
@@ -378,7 +383,8 @@ const ViewMoreW = ({lang}) => {
             {/*    Modal */}
 
             {showModal ? (
-                <AddProjectInfoModal showProjectInfoModal={showProjectInfoModal} products={products} addToProduct={addtoProduct}/>
+                <AddProjectInfoModal showProjectInfoModal={showProjectInfoModal} products={products}
+                                     addToProduct={addtoProduct}/>
             ) : ''}
         </div>
     );
