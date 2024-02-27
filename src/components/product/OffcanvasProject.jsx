@@ -18,33 +18,10 @@ function OffcanvasProject({
                               projectId,
                           }) {
     const [users, setUsers] = useState(null);
-    // const [coordinates, setCoordinates] = useState([55.75, 37.57]);
-    // const [adres, setAdress] = useState([55.75, 37.57]);
-
     const {t} = useTranslation();
-
     useEffect(() => {
         getUsers(setUsers, lang);
     }, []);
-
-    // const handleClick = (e) => {
-    //   const coords = e.get("coords");
-    //   setCoordinates(coords);
-    //   const apiKey = "1248def2-c2d9-4353-90a7-01b7e5703e21";
-    //   const geocodeUrl = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${apiKey}&geocode=${coords[1]},${coords[0]}`;
-
-    //   fetch(geocodeUrl)
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       const address =
-    //         data.response.GeoObjectCollection.featureMember[0].GeoObject
-    //           .metaDataProperty.GeocoderMetaData.text;
-    //           setAdress(address)
-    //       sessionStorage.setItem("address", address);
-    //     })
-    //     .catch((error) => console.error("Xatolik yuz berdi:", error));
-    // };
-
     function setData() {
         const img = new FormData();
         img.append('file', document.getElementById(`file${isAdd}`).files[0]);
@@ -107,19 +84,16 @@ function OffcanvasProject({
                     </option>
                     <option
                         value="1"
-                        //  selected={product && product.transport === "CAR"}
                     >
                         {t("auto")}
                     </option>
                     <option
                         value="2"
-                        // selected={product && product.transport === "AIRPLANE"}
                     >
                         {t("avia")}
                     </option>
                     <option
                         value="3"
-                        // selected={product && product.transport === "TRAIN"}
                     >
                         {t("JD")}
                     </option>
@@ -139,49 +113,41 @@ function OffcanvasProject({
                     </option>
                     <option
                         value="1"
-                        // selected={product && product.status === "PENDING"}
                     >
                         {t("1")}
                     </option>
                     <option
                         value="2"
-                        // selected={product && product.status === "GOING"}
                     >
                         {t("2")}
                     </option>
                     <option
                         value="3"
-                        // selected={product && product.status === "CANCEL"}
                     >
                         {t("3")}
                     </option>
                     <option
                         value="4"
-                        // selected={product && product.status === "ARRIVED"}
                     >
                         {t("4")}
                     </option>
                     <option
                         value="5"
-                        // selected={product && product.status === "COMPLETED"}
                     >
                         {t("5")}
                     </option>
                     <option
                         value="6"
-                        // selected={product && product.status === "MOVED"}
                     >
                         {t("6")}
                     </option>
                     <option
                         value="7"
-                        // selected={product && product.status === "MOVED"}
                     >
                         {t("7")}
                     </option>
                     <option
                         value="8"
-                        // selected={product && product.status === "MOVED"}
                     >
                         {t("8")}
                     </option>
@@ -221,18 +187,6 @@ function OffcanvasProject({
                     type="file"
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 bg-slate-50 leading-tight focus:outline-none focus:shadow-outline"
                 />
-                {/* <div>
-          <YMaps>
-            <Map
-              defaultState={{ center: [55.75, 37.57], zoom: 9 }}
-              width="100%"
-              height="300px"
-              onClick={handleClick}
-            >
-              <Placemark geometry={coordinates} />
-            </Map>
-          </YMaps>
-        </div> */}
                 <div className="mt-10 flex justify-between">
                     <button
                         onClick={handleToggleOffcanvas}
