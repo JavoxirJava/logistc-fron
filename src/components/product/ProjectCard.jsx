@@ -26,6 +26,8 @@ function ProjectCard({
   const [isModalOpenStatus, setIsModalOpenStatus] = useState(false);
   const [isLoading, setIsLoading] = useState(false)
 
+  const openSelectHandler = () => setIsModalOpenStatus(!isModalOpenStatus)
+
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
       setIsModalOpen(false);
@@ -73,9 +75,10 @@ function ProjectCard({
       .then(() => {
         setIsModalOpenStatus(false)
         toast.success(t('projectStatusEd'))
-        document.getElementById('productStatusEdit').value= ''
+        getProduct(pagination, 4)
+        document.getElementById('productStatusEdit').value = ''
       }).catch(() => {
-        document.getElementById('productStatusEdit').value= ''
+        document.getElementById('productStatusEdit').value = ''
         toast.warning(t('projectStatusEdErr'))
       })
   }
@@ -93,7 +96,10 @@ function ProjectCard({
           {(pagination - 1) * 4 < 0 ? i + 1 : (pagination - 1) * 4 + (i + 1)}
         </th>
         <td className="px-6 py-4">{projects ? projects.name : ''}</td>
-        <td className="px-6 py-4">{projects ? projects.status : ''}</td>
+        <td className="px-6 py-4 hover:cursor-pointer hover:underline hover:text-blue-500" onClick={() => {
+          openSelectHandler()
+          setProjectList(projects)
+        }}>{projects ? projects.status : ''}</td>
         <td className="px-6 py-4">{projects ? projects.transport : ''}</td>
         <td className="px-6 py-4">{projects ? projects.date.slice(0, projects.date.indexOf(" ")) : ''}</td>
 
@@ -122,7 +128,7 @@ function ProjectCard({
             {t("more")}
           </Link>
         </td>
-        <td className="px-6 py-4">
+        {/* <td className="px-6 py-4">
           <Link
             onClick={() => {
               setIsModalOpenStatus(true)
@@ -132,7 +138,7 @@ function ProjectCard({
           >
             {t("statuss")} {t("edit")}
           </Link>
-        </td>
+        </td> */}
         <td className="px-6 py-4">
           <Link
             onClick={() => {
@@ -146,68 +152,54 @@ function ProjectCard({
         </td>
       </tr> : ""}
 
-      {isModalOpenStatus && (
-        <div className="fixed flex justify-center items-start inset-0 w-full">
-          <div className="zoom-modal w-6/12 bg-white mt-36 px-8 py-4 rounded-lg">
-            <div className="mb-4 text-lg font-bold text-black border-b pb-1">
-              {t('projectStatusEdit')}
-            </div>
-            <label
-              htmlFor={`productStatusEdit`}
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              {t("projectStatus")}
-            </label>
-            <select
-              id={`productStatusEdit`}
-              className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
-            >
-              <option selected disabled value='0'>
-                {t("projectStatus")}
-              </option>
-              <option value="1">
-                {t("1")}
-              </option>
-              <option value="2">
-                {t("2")}
-              </option>
-              <option
-                value="3"
-              >
-                {t("3")}
-              </option>
-              <option
-                value="4"
-              >
-                {t("4")}
-              </option>
-              <option
-                value="5"
-              >
-                {t("5")}
-              </option>
-              <option
-                value="6"
-              >
-                {t("6")}
-              </option>
-              <option
-                value="7"
-              >
-                {t("7")}
-              </option>
-              <option
-                value="8"
-              >
-                {t("8")}
-              </option>
-            </select>
-            <div className="flex justify-end items-center mt-10">
-              <button onClick={() => setIsModalOpenStatus(false)} className="bg-red-600 px-5 py-2 rounded-md text-white font-medium ms-2">{t('close')}</button>
-              <button onClick={editPorjectStatus} className="bg-green-600 px-5 py-2 rounded-md text-white font-medium ms-2">{t('save')}</button>
-            </div>
-          </div>
-        </div>
+      {isModalOpenStatus && (<>
+        <select
+          onChange={editPorjectStatus}
+          id={`productStatusEdit`}
+          className="fixed left-18 -mt-6 w-80 p-2 py-2.5 text-black bg-slate-300 border rounded-md shadow-sm focus:outline-0"
+        >
+          <option selected disabled value='0'>
+            {t("projectStatus")}
+          </option>
+          <option value="1">
+            {t("1")}
+          </option>
+          <option value="2">
+            {t("2")}
+          </option>
+          <option
+            value="3"
+          >
+            {t("3")}
+          </option>
+          <option
+            value="4"
+          >
+            {t("4")}
+          </option>
+          <option
+            value="5"
+          >
+            {t("5")}
+          </option>
+          <option
+            value="6"
+          >
+            {t("6")}
+          </option>
+          <option
+            value="7"
+          >
+            {t("7")}
+          </option>
+          <option
+            value="8"
+          >
+            {t("8")}
+          </option>
+        </select>
+        {/* <button onClick={editPorjectStatus} className="bg-green-600 px-5 py-2 rounded-md text-white font-medium ms-2">{t('save')}</button> */}
+      </>
       )}
 
       {historyList && (
