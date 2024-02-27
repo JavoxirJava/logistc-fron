@@ -12,30 +12,30 @@
 }
 
 .languageSelect {
-  right: 13%;
+  right: 16%;
 }
 
 @media (max-width: 2000px) {
   .languageSelect {
-    right: 13%;
+    right: 15%;
   }
 }
 
 @media (max-width: 1900px) {
   .languageSelect {
-    right: 10%;
+    right: 6%;
   }
 }
 
 @media (max-width: 1750px) {
   .languageSelect {
-    right: 8%;
+    right: 5%;
   }
 }
 
 @media (max-width: 1670px) {
   .languageSelect {
-    right: 5%;
+    right: 2%;
   }
 }
 

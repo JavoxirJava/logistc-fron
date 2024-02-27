@@ -79,7 +79,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
       <nav className="bg-white fixed w-full z-20 ">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
-            <div className="relative inset-y-0 left-0 flex items-center xl:hidden">
+            <div className="relative inset-y-0 left-0 flex items-center lg:hidden">
               <button
                 type="button"
                 onClick={openMenu}
@@ -131,7 +131,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                     class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
                     onClick={openMenu}
                   ></i>
-                  <ul class="list-none">
+                  <ul class="list-none me-3">
                     <li className="my-2" onClick={openMenu}>
                       <Link
                         to="/dashboard"
@@ -179,16 +179,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                         {t("cassier")}
                       </Link>
                     </li>
-                    <li onClick={openMenu}>
-                      {" "}
-                      <Link
-                        to="/history"
-                        className="text-gray-500 text-md hover:text-black hover:underline hover:underline-offset-4 rounded-md font-medium"
-                        aria-current="page"
-                      >
-                        {t("histori")}
-                      </Link>
-                    </li>
+                    
 
                   </ul>
                 </div>
@@ -197,12 +188,12 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
                 <img
-                  className="h-10 w-auto hidden xl:inline"
+                  className="h-10 w-auto hidden lg:inline"
                   src={logo}
                   alt="Your Company"
                 />
               </div>
-              <div className="hidden sm:ml-6 xl:block">
+              <div className="hidden sm:ml-6 lg:block">
                 <div className="flex space-x-4">
                   <Link
                     to="/dashboard"
@@ -241,13 +232,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
 
                     {t("cassier")}
                   </Link>
-                  {/* <Link
-                    to="/history"
-                    className={`${history} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                  // aria-current="page"
-                  >
-                    {t("histori")}
-                  </Link> */}
+                 
                 </div>
               </div>
             </div>

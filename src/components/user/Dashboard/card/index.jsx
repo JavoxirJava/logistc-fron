@@ -25,7 +25,7 @@ const Modal = ({ isOpen, onClose }) => {
             onClick={onClose}
           ></i>
         </div>
-        <div className="bg-sky-200  px-20    py-6 flex justify-between">
+        <div className="bg-sky-200 px-20 py-6 flex justify-between">
           <div className=" ">
             <p className="pb-0 mb-0 mt-2">Name</p>
             <p className="mt-0 pt-0">John Doe</p>
@@ -99,6 +99,8 @@ const DashboardProductCard = ({ className, lang }) => {
         .catch((err) => console.log(err));
   }
 
+  console.log(data);
+
   function searchByName() {
     switch (searchBy) {
       case "Project name":
@@ -150,8 +152,8 @@ const DashboardProductCard = ({ className, lang }) => {
       </div>
       <p className="mb-3">{t("cardCurrent")}: 1</p>
       <div class="relative overflow-x-auto  sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
               <th scope="col" class="px-6 py-3">
                 №
@@ -182,6 +184,9 @@ const DashboardProductCard = ({ className, lang }) => {
               <th scope="col" class="px-6 py-3">
                 {t("totalKub")}
               </th>
+              <th scope="col" class="px-6 py-3">
+                {t("statuss")}
+              </th>
               {/* <th scope="col" class="px-6 py-3">
                 {t("wiew")}
               </th> */}
@@ -198,12 +203,12 @@ const DashboardProductCard = ({ className, lang }) => {
             {data &&
               data.map((item, i) => (
                 <tr
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  className="bg-white border-b"
                   key={i}
                 >
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                   >
                     {(pagination - 1) * 4 < 0
                       ? i + 1
@@ -225,6 +230,7 @@ const DashboardProductCard = ({ className, lang }) => {
                   <td className="px-6 py-4">{item ? item.productCount : ""}</td>
                   <td className="px-6 py-4">{item ? item.totalWeight : ""}</td>
                   <td className="px-6 py-4">{item ? item.totalKub : ""} </td>
+                  <td className="px-6 py-4">{item.currentStatus ? item.currentStatus : t("noStatus")} </td>
                   {/* <td className="px-6 py-4">
                       <a href="#" className="text-yellow-500 font-bold">
                       {t("wiew")}

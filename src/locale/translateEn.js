@@ -230,6 +230,7 @@ const translateEn = {
   gotov: "Ready",
   products: "products",
   statuss: "Status",
+  noStatus: "No status",
   projectStatusEditd: "Change project status",
 
 }
