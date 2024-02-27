@@ -13,8 +13,12 @@ function LineChart({ productStatistics2 }) {
     },
     tooltip: {
       trigger: 'axis',
-      axisPointer: {
-        type: 'cross'
+      formatter: function (params) {
+        let tooltip = params[0].axisValueLabel + '<br/>';
+        params.forEach(param => {
+          tooltip += param.data.status + ': ' + param.data.result + "<br/>";
+        });
+        return tooltip;
       }
     },
     legend: {
@@ -28,11 +32,14 @@ function LineChart({ productStatistics2 }) {
     const seriesData = Object.keys(productStatistics2[0])
       .filter(key => key !== 'month' && key !== 'year' && key !== 'monthNumber')
       .map(key => ({
-        name: key,
+        name: productStatistics2[0][key].status,
         type: 'bar',
-        data: productStatistics2.map(product => product[key])
+        data: productStatistics2.map(product => ({
+          value: product[key].result,
+          status: product[key].status,
+          result: product[key].result
+        }))
       }));
-
     option.series = seriesData;
   }
 
