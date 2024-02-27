@@ -39,7 +39,7 @@ function LineChart({ productStatistics2 }) {
   return (
     <div className=''>
       <div className="backCircle rounded-lg">
-        <div style={{ height: '400px', width: '100%', display: "flex", flexDirection: "column", }}>
+        <div style={{ height: '400px', padding: '1rem', paddingBottom: '0', width: '100%', display: "flex", flexDirection: "column", }}>
           <EChartsReact option={option}
             style={{ height: '100%', width: '100%', display: "flex", justifyContent: "center", alignItems: "center" }}
           />
