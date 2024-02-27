@@ -146,7 +146,7 @@ const DashboardProductCard = ({ lang }) => {
                 </tr>
               ))) : (
               <tr className="bg-white border-b">
-                <td colSpan='6' className="px-6 py-4 text-center text-lg">{t('card4')} {t('notfound')}</td>
+                <td colSpan='7' className="px-6 py-4 text-center text-lg">{t('card4')} {t('notfound')}</td>
               </tr>
             )}
           </tbody>
