@@ -10,9 +10,7 @@ const Offcanvas = ({ isOpen, onClose, name, children, isAdd, newWereHouseName, }
                         <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-auto  col1 z-50">
                             <div className="md:px-6 px-3 pt-[10%] flex justify-between ">
                                 <h2 className="text-lg font-medium text-gray-900 inline-block">{name}</h2>
-                                <span
-                                    onClick={onClose}
-                                    className='text-2xl cursor-pointer hover:scale-105 duration-200 '>×</span>
+                                
                             </div>
                             <div className="mt-6 relative flex-1 md:px-6 sm:px-4 px-2">
                                 {children}

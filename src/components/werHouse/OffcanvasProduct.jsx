@@ -18,6 +18,11 @@ function OffcanvasProduct({
         getUsers(setUsers, lang);
     }, []);
 
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+
     async function setData() {
         const data = new FormData();
         data.append('file', document.getElementById(`productFile${isAdd}`).files[0]);
@@ -298,6 +303,7 @@ function OffcanvasProduct({
                         onClick={() => {
                             handleToggleOffcanvas()
                             inputDelete()
+                            topFunction()
                         }}
                         className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-gray-500 text-sm font-medium text-white"
                     >
@@ -310,6 +316,7 @@ function OffcanvasProduct({
                             await getProduct(0, 4);
                             handleToggleOffcanvas();
                             inputDelete2()
+                            topFunction()
                         }}
                         className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
                     >{name}</button>
