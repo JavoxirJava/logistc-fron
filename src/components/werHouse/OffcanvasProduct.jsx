@@ -236,14 +236,14 @@ function OffcanvasProduct({
                     htmlFor={`productKgDisabled${isAdd}`}
                     className="block text-gray-700 text-sm font-bold mt-3"
                 >
-                    {t("productAdd06")}
+                    {t("totalWeight")}
                 </label>
                 <input
                     id={`productKgDisabled${isAdd}`}
-                    placeholder={t("productAdd06")}
+                    placeholder={t("totalWeight")}
                     disabled
                     value={`${totalKgSum} Kg`}
-                    // defaultValue={product ? product.idNumber + " " + t('productAdd06') : 0 + " " + "Kg"}
+                    // defaultValue={product ? product.idNumber + " " + t('totalWeight') : 0 + " " + "Kg"}
                     className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"

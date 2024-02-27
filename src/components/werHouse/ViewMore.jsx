@@ -135,7 +135,7 @@ const ViewMoreW = ({lang}) => {
         let data = {...product2};
         axios.put(`${url}product?id=${product.productId}`, data, config)
             .then(() => {
-                toast.success(t("success"));
+                toast.success(t("success"));    
                 getProjectInfo();
                 setProductObj2(null);
             }).catch((err) => {
@@ -239,8 +239,8 @@ const ViewMoreW = ({lang}) => {
                                         {item.date.slice(0, item.date.indexOf(" "))}
                                     </td>
                                     <td className="px-6 py-5">{item.productCount}</td>
-                                    <td className="px-6 py-5">{item.totalWeight}</td>
-                                    <td className="px-6 py-5">{item.totalKub}</td>
+                                    <td className="px-6 py-5">{item.totalWeight} {t("kg")}</td>
+                                    <td className="px-6 py-5">{item.totalKub} {t("sm")}<sup>3</sup></td>
                                     <td className="px-6 py-4">
                                         <a
                                             onClick={() => {

@@ -50,11 +50,11 @@ function OffcanvasProject({
     console.log(product);
 
     const inputDelete = () => {
-        document.getElementById(`name${isAdd}`).value = product ? product.name :''
-        document.getElementById(`transport${isAdd}`).value = product ? product.transport :0
-        document.getElementById(`productStatus${isAdd}`).value = product ? product.status :0
-        document.getElementById(`project${isAdd}`).value = product ? product.projectId :''
-        document.getElementById(`comment${isAdd}`).value = product ? product.comment :''
+        document.getElementById(`name${isAdd}`).value = product ? product.name : ''
+        document.getElementById(`transport${isAdd}`).value = product ? product.transport : 0
+        document.getElementById(`productStatus${isAdd}`).value = product ? product.status : 0
+        document.getElementById(`project${isAdd}`).value = product ? product.projectId : ''
+        document.getElementById(`comment${isAdd}`).value = product ? product.comment : ''
     }
 
     const inputDelete2 = () => {
