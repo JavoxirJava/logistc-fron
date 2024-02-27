@@ -85,6 +85,17 @@ function OffcanvasProject({
                     placeholder={t("productAdd3")}
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
+                <label
+                    htmlFor={`file${isAdd}`}
+                    className="block text-gray-700 text-sm font-bold my-2 "
+                >
+                    {t("file")}
+                </label>
+                <input
+                    id={`file${isAdd}`}
+                    type="file"
+                    className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 bg-slate-50 leading-tight focus:outline-none focus:shadow-outline"
+                />
                 {/* Transport input  */}
                 <label
                     htmlFor={`transport${isAdd}`}
@@ -191,17 +202,7 @@ function OffcanvasProject({
                     placeholder={t("comment")}
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 ></textarea>
-                <label
-                    htmlFor={`file${isAdd}`}
-                    className="block text-gray-700 text-sm font-bold my-2 "
-                >
-                    {t("file")}
-                </label>
-                <input
-                    id={`file${isAdd}`}
-                    type="file"
-                    className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 bg-slate-50 leading-tight focus:outline-none focus:shadow-outline"
-                />
+                
                 <div className="mt-10 flex justify-between">
                     <button
                         onClick={() =>{ 

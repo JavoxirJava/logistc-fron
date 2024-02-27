@@ -20,7 +20,7 @@ function OffcanvasProduct({
 
     async function setData() {
         const data = new FormData();
-        data.append('file', byIdObj(`productFile${isAdd}`).files[0]);
+        data.append('file', document.getElementById(`productFile${isAdd}`).files[0]);
         await axios.post(`${url}attachment/image`, data, config)
             .then(res => {
                 setProduct({
@@ -63,6 +63,7 @@ function OffcanvasProduct({
         document.getElementById(`productWeight${isAdd}`).value = product ? product.totalWeight :''
         document.getElementById(`numberOfSeats${isAdd}`).value = product ? product.productCount :''
         document.getElementById(`userId${isAdd}`).value = 0
+        document.getElementById(`productFile${isAdd}`).value = null
         setKubSum(product ? product.kub : 0)
         setTotalKgSum(product ? product.totalWeight : 0)
         setTotalKubSum(product ? product.totalKub : 0)
@@ -76,6 +77,7 @@ function OffcanvasProduct({
         document.getElementById(`idNumberZ${isAdd}`).value =''
         document.getElementById(`productWeight${isAdd}`).value =''
         document.getElementById(`numberOfSeats${isAdd}`).value =''
+        document.getElementById(`productFile${isAdd}`).value = null
         document.getElementById(`userId${isAdd}`).value = 0
         setKubSum( 0)
         setTotalKgSum(0)
@@ -114,6 +116,18 @@ function OffcanvasProduct({
                             </option>
                         ))}
                 </select>
+                <label
+                    htmlFor={`productFile${isAdd}`}
+                    className="block text-gray-700 text-sm font-bold mt-3"
+                >
+                    {t("productAdd34foto")}
+                </label>
+                <input
+                    id={`productFile${isAdd}`}
+                    className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
+        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+        focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+                    type="file"/>
                 <label
                     htmlFor={`productName${isAdd}`}
                     className="block text-gray-700 text-sm font-bold mt-3"
@@ -277,18 +291,7 @@ function OffcanvasProduct({
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
                 ></textarea>
-                <label
-                    htmlFor={`productFile${isAdd}`}
-                    className="block text-gray-700 text-sm font-bold mt-3"
-                >
-                    {t("productAdd34foto")}
-                </label>
-                <input
-                    id={`productFile${isAdd}`}
-                    className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
-        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-        focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-                    type="file"/>
+                
               
                 <div className="mt-10 flex justify-between">
                     <button
