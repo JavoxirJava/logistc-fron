@@ -51,7 +51,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
         axios.post(`${url}cashier/one`, addData, config)
             .then(res => {
                 if(res.data.success === true) toast.success(res.data.message)
-                if(res.data.success === false) toast.warning(res.data.message)
+                if(res.data.success === false) toast.warning(t("listWarning"))
                 setNextModal(false);
                 getCassier();
                 setTotalPrice(0)

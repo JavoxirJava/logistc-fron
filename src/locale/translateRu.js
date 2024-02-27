@@ -229,6 +229,8 @@ const translateRu = {
   noStatus: "Нет состояния",
   statuss: "Статус",
   projectStatusEdit: "Изменить статус проекта",
+  numberOfSeats: "Cколько",
+  listWarning : "Пожалуйста, добавьте хотя бы один товар"
 };
 
 export default translateRu;
