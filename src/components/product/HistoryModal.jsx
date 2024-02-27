@@ -70,16 +70,14 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
           </div>
         </div>
         <div className="mt-7 mb-5 ps-16 pr-5">
-          <div className="overflow-x-auto flex flex-row scroll-x h-[120px] ">
+          <div className="overflow-x-auto flex flex-row scroll-x h-[120px] textga">
             {allAddressList &&
               allAddressList.map((item) => (
-                <div className="flex flex-col">
-                  <div className="pb-6 pl-0 w-[100px] h-9 overflow-x-auto">
-                    <p>{item}</p>
-                    
-                    {/* {item.slice(0, item.indexOf(","))} */}
+                <div className="flex flex-col textga1">
+                  <div className="pb-6 pl-0 w-[100px] overflow-x-auto scrollbar textga2">
+                    <p className="w-[250px]">{item}</p>
                   </div>
-                  <div className="h-[4px] w-[100px] flex relative justify-center items-center bg-slate-900">
+                  <div className="h-[4px] w-[120px] flex relative justify-center items-center bg-slate-900">
                     <div className="w-[30px] h-[30px] rounded-full absolute left-0 bg-blue-700"></div>
                   </div>
                 </div>
