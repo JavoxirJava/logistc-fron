@@ -35,7 +35,7 @@ function OffcanvasProduct({
                     count: byId(`numberOfSeats${isAdd}`),
                     totalWeight: totalKgSum,
                     totalKub: totalKubSum,
-                    attachmentId: (res.data.body ? res.data.body : 0)
+                    attachmentId: (res.data.body ? res.data.body : null)
                 })
             }).catch(err => console.log(err));
         setUserId(byId(`userId${isAdd}`));
@@ -53,7 +53,23 @@ function OffcanvasProduct({
             dataWeight = document.getElementById(`productWeight${isAdd}`).value
         setTotalKgSum(dataNumber * dataWeight)
         setTotalKubSum(dataNumber * kubSum)
-    }       
+    }    
+    
+    console.log(product);
+
+    const inputDelete = () => {
+        document.getElementById(`productName${isAdd}`).value = product ? product.productName :''
+        document.getElementById(`comment${isAdd}`).value = product ? product.comment :''
+        document.getElementById(`idNumberX${isAdd}`).value = product ? product.x :''
+        document.getElementById(`idNumberY${isAdd}`).value = product ? product.y :''
+        document.getElementById(`idNumberZ${isAdd}`).value = product ? product.z :''
+        document.getElementById(`productWeight${isAdd}`).value = product ? product.totalWeight :''
+        document.getElementById(`numberOfSeats${isAdd}`).value = product ? product.productCount :''
+        document.getElementById(`userId${isAdd}`).value = 0
+        setKubSum(product ? product.kub : 0)
+        setTotalKgSum(product ? product.totalWeight : 0)
+        setTotalKubSum(product ? product.totalKub : 0)
+    }
 
     return (
         <Offcanvas
@@ -74,7 +90,7 @@ function OffcanvasProduct({
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
                 >
-                    <option selected disabled>
+                    <option selected disabled value='0'>
                         {t("productSUser")}
                     </option>
                     {users &&
@@ -96,7 +112,6 @@ function OffcanvasProduct({
                 <input
                     id={`productName${isAdd}`}
                     placeholder={t("productName")}
-                    defaultValue={product ? product.productName : ""}
                     className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
@@ -114,7 +129,6 @@ function OffcanvasProduct({
                             onChange={cubeHandlerVolume}
                             id={`idNumberX${isAdd}`}
                             placeholder={t("productAdd7")}
-                            defaultValue={product ? product.idNumber : ""}
                             className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
@@ -132,7 +146,6 @@ function OffcanvasProduct({
                             onChange={cubeHandlerVolume}
                             id={`idNumberY${isAdd}`}
                             placeholder={t("productAdd7y")}
-                            defaultValue={product ? product.idNumber : ""}
                             className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
@@ -150,7 +163,6 @@ function OffcanvasProduct({
                             onChange={cubeHandlerVolume}
                             id={`idNumberZ${isAdd}`}
                             placeholder={t("productAdd7z")}
-                            defaultValue={product ? product.idNumber : ""}
                             className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
@@ -170,7 +182,6 @@ function OffcanvasProduct({
                             type="number"
                             id={`productWeight${isAdd}`}
                             placeholder={t("productAddKg")}
-                            defaultValue={product ? product.idNumber + t('productAddKg') : ""}
                             className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
@@ -206,7 +217,6 @@ function OffcanvasProduct({
                     onChange={totalKgHandlar}
                     id={`numberOfSeats${isAdd}`}
                     placeholder={t("productAdd76")}
-                    defaultValue={product ? product.price : ""}
                     className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
                 focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                 focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
@@ -252,7 +262,6 @@ function OffcanvasProduct({
                 <textarea
                     id={`comment${isAdd}`}
                     placeholder={t("productAdd34")}
-                    defaultValue={product ? product.comment : ""}
                     className="py-2 px-4 w-full bg-white rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
           focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
@@ -272,7 +281,10 @@ function OffcanvasProduct({
               
                 <div className="mt-10 flex justify-between">
                     <button
-                        onClick={handleToggleOffcanvas}
+                        onClick={() => {
+                            handleToggleOffcanvas()
+                            inputDelete()
+                        }}
                         className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-gray-500 text-sm font-medium text-white"
                     >
                         {t("close")}
