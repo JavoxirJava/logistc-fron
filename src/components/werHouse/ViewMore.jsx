@@ -26,6 +26,7 @@ const ViewMoreW = ({lang}) => {
     const [showModal, setShowModal] = useState(false);
 
     let projectId = sessionStorage.getItem("warehouseIdViewMore");
+    let projectName = sessionStorage.getItem("warehouseNameViewMore");
 
 
     const handleToggleOffcanvas = () => setIsOffcanvasOpen(!isOffcanvasOpen);
@@ -192,8 +193,10 @@ const ViewMoreW = ({lang}) => {
                         </button>
                     </div>
                     <h1 className="md:ml-0 ml-5">
-                        <b>{t("werhouse")}</b>
+                        <b className="text-blue-500">{projectName}</b> {'  '} 
+                         <b>{t("products")}</b>
                     </h1>
+                    <span></span>
                 </div>
             </div>
             <div className="product-main flex justify-center items-start overflow-hidden w-full">

@@ -50,9 +50,9 @@ function ProjectCard({
          {(pagination - 1) * 4 < 0 ? i + 1 : (pagination - 1) * 4 + (i + 1)}
         </th>
         <td class="px-6 py-4">{projects.name}</td>
-        <td class="px-6 py-4">{projects.totalKub}</td>
-        <td class="px-6 py-4">{projects.productCount}</td>
-        <td class="px-6 py-4">{projects.totalWeight}</td>
+        <td class="px-6 py-4">{projects.totalKub ? projects.totalKub : 0}</td>
+        <td class="px-6 py-4">{projects.productCount ?projects.productCount : 0}</td>
+        <td class="px-6 py-4">{projects.totalWeight ? projects.totalWeight : 0}</td>
         <td class="px-6 py-4">
           <a
             onClick={() => {
@@ -82,6 +82,7 @@ function ProjectCard({
           <Link
             onClick={() => {
               sessionStorage.setItem("warehouseIdViewMore", projects.wareHouseId);
+              sessionStorage.setItem("warehouseNameViewMore", projects.name);
             }}
             to="/view_more"
             class="font-medium text-blue-600 hover:underline"
