@@ -205,7 +205,7 @@ const Clients = ({ changeLanguage, lang }) => {
       />
       <div className="clients-bg background b flex lg:flex-row flex-col pt-20">
         <div className="lg:w-2/5 md:w-4/5 w-full lg:pl-10 md:px-0 px-2 ">
-          <div className="flex gap-4 flex-col md:flex-row  justify-between items-center">
+          <div className="flex gap-4 flex-col md:flex-row   justify-between items-center">
             <input
               type="search"
               onChange={searchProductClient}
@@ -214,7 +214,7 @@ const Clients = ({ changeLanguage, lang }) => {
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
               placeholder={t("productSearch")}
             />
-            <div className="flex gap-5">
+            <div className="flex md:flex-row flex-col gap-5">
               <button
                 className={`px-6 py-2 ${role === "ROLE_ADMIN" ? "" : "hidden"} 
                 ${userBtn ? 'bg-green-700 border border-white shadow-white' : 'bg-green-500'}
@@ -235,7 +235,7 @@ const Clients = ({ changeLanguage, lang }) => {
                 {t("client10")}
               </button>
               <button
-                className={`px-6 py-2 ${role === "ROLE_ADMIN" ? "" : "hidden"} 
+                className={`px-6 py-2  ${role === "ROLE_ADMIN" ? "" : "hidden"} 
                 ${cashierBtn ? 'bg-green-700 border border-white shadow-white' : 'bg-green-500'} 
                 shadow-md rounded-lg text-white font-bold text-lg tracking-wider active:scale-95 duration-200`}
                 onClick={() => {
