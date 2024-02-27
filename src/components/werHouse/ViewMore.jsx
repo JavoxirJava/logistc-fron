@@ -83,7 +83,7 @@ const ViewMoreW = ({lang}) => {
 
     const searchHandler = (e) => {
         let data = e.target.value;
-        if (!!data) {
+        if (data) {
             axios.get(
                     `${url}wareHouse/product/search?userName=${data}&lang=${lang}`,
                     config
