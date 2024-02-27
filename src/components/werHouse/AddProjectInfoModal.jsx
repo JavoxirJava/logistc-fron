@@ -40,8 +40,7 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct}) {
                                 </tbody>
                                 <tbody>
                                 <tr>
-                                    <td>{products.length}</td>
-                                    
+                                    <td>{products.length}</td>                                  
                                     <td>{products.map(p => p.totalWeight).reduce((a, b) => a + b)}</td>
                                     <td>{products.map(p => p.totalKub).reduce((a, b) => a + b)}</td>
                                 </tr>

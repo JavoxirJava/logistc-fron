@@ -17,7 +17,7 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
             {historyList && historyList.productName}
           </h1>
           <h1 className="text-2xl text-green-300">
-            {historyList && historyList.status}
+            {historyList && historyList.currentStatus}
           </h1>
           <i
             className="fa-solid fa-xmark absolute  cursor-pointer sm:right-5 right-3 text-2xl text-white"
@@ -74,8 +74,9 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
             {allAddressList &&
               allAddressList.map((item) => (
                 <div className="flex flex-col">
-                  <div className="pb-6 pl-0">
-                    {item}
+                  <div className="pb-6 pl-0 w-[100px] h-9 overflow-x-auto">
+                    <p>{item}</p>
+                    
                     {/* {item.slice(0, item.indexOf(","))} */}
                   </div>
                   <div className="h-[4px] w-[100px] flex relative justify-center items-center bg-slate-900">
