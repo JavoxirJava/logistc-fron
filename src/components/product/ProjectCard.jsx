@@ -98,6 +98,7 @@ function ProjectCard({
           <Link
             onClick={() => {
               sessionStorage.setItem("projectIdViewMore", projects.id);
+              sessionStorage.setItem("projectNameViewMore", projects.name);
             }}
             to="/view more"
             className="font-medium text-blue-600 hover:underline"

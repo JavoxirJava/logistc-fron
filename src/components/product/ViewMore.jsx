@@ -19,11 +19,11 @@ const ViewMore = ({ lang }) => {
   const openModal = () => setIsModalOpen(true);
 
   let projectId = sessionStorage.getItem("projectIdViewMore");
+  let projectName = sessionStorage.getItem("projectNameViewMore");
 
   const { t } = useTranslation();
 
   useEffect(() => {
-
     getProjectInfo();
   }, [projectId]);
 
@@ -67,7 +67,10 @@ const ViewMore = ({ lang }) => {
     console.log(!!data);
     if (!!data) {
       axios
-        .get(`${url}project/product/search?productName=${data}&lang=${lang}&projectId=${projectId}`, config)
+        .get(
+          `${url}project/product/search?productName=${data}&lang=${lang}&projectId=${projectId}`,
+          config
+        )
         .then((res) =>
           res.data.success === false
             ? setProjectIdInfo([{ comment: "Not found 😊" }])
@@ -90,7 +93,10 @@ const ViewMore = ({ lang }) => {
           placeholder={t("productSearch")}
           className="lg:w-3/12 px-4 h-10 focus:outline-0 border rounded-md"
         />
-        <h1 className="font-normal text-2xl md:text-xl">Project</h1>
+        <h1 className="font-normal text-2xl md:text-xl">
+          <b className="text-blue-500">{projectName}</b> {"  "}
+          <b>{t("products")}</b>
+        </h1>
       </div>
       <div className="product-main flex justify-center items-start overflow-hidden w-full">
         <div className="lg:px-0 md:px-10 lg:py-0 sm:py-5 px-3 mt-8 w-screen lg:w-[90%] overflow-x-auto">
