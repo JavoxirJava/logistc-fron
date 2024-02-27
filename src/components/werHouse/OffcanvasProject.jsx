@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Offcanvas from "../Offcanvas";
 import { byId, getUsers } from "../api";
 import { useTranslation } from "react-i18next";
-import { Map, Placemark, YMaps } from "react-yandex-maps";
 
 function OffcanvasProject({
   isOffcanvasOpen,
