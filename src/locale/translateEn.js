@@ -227,8 +227,8 @@ const translateEn = {
   projectStatus: "Project Status",
   gotov: "Ready",
   products: "products",
-  statuss: "Status"
-
+  statuss: "Status",
+  projectStatusEdit: "Change project status",
 
 }
 

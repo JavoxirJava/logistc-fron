@@ -147,7 +147,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
     // loadingPP()
     axios
       .get(
-        `${url}wareHouse/product?wareHouseId=${werHouseId
+        `${url}product/ware-house?wareHouseId=${werHouseId
           ? werHouseId.wareHouseId
           : 0
         }&page=${page}&size=${size}&lang=${lang}`,
