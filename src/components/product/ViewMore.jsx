@@ -71,7 +71,7 @@ const ViewMore = ({ lang }) => {
         )
         .then((res) =>
           res.data.success === false
-            ? setProjectIdInfo([{ comment: "Not found 😊" }])
+            ? setProjectIdInfo(null)
             : setProjectIdInfo(res.data.body)
         )
         .catch(() => setProjectIdInfo(null));
@@ -150,7 +150,7 @@ const ViewMore = ({ lang }) => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="10" className="px-4">
+                  <td colSpan="10" className="px-4 py-3">
                     <h1 className="text-xl text-black">{t("notfound")}</h1>
                   </td>
                 </tr>

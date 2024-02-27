@@ -177,6 +177,11 @@ function OffcanvasProject({
                     >
                         {t("8")}
                     </option>
+                    <option
+                        value="9"
+                    >
+                        {t("9")}
+                    </option>
                 </select>
                 <label
                     htmlFor={`project${isAdd}`}
