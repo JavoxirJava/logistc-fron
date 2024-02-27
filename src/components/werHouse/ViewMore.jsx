@@ -75,7 +75,6 @@ const ViewMoreW = ({lang}) => {
             .then((res) => setProjectIdInfo(res.data.body.object))
             .catch((err) => console.log("error page: ", err));
     };
-    console.log(project);
 
     const styles = {
         loading:
