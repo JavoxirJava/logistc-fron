@@ -83,7 +83,7 @@ function App() {
                     }
                 />
                 <Route path="/users" element={<Clients lang={lang} />} />
-                <Route path="/history" element={<History lang={lang} />} />
+                {/* <Route path="/history" element={<History lang={lang} />} /> */}
                 <Route path="/view more" element={<ViewMore lang={lang} />} />
                 <Route path="/view_more" element={<ViewMoreW lang={lang} />} />
                 <Route

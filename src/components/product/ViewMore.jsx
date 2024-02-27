@@ -63,10 +63,11 @@ const ViewMore = ({ lang }) => {
 
   const searchHandler = (e) => {
     let data = e.target.value;
+    console.log(e.target.value);
     console.log(!!data);
     if (!!data) {
       axios
-        .get(`${url}product/admin/search?userName=${data}&lang=${lang}`, config)
+        .get(`${url}project/product/search?productName=${data}&lang=${lang}&projectId=${projectId}`, config)
         .then((res) =>
           res.data.success === false
             ? setProjectIdInfo([{ comment: "Not found 😊" }])
