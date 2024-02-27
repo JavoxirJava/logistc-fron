@@ -3,7 +3,6 @@ import "../../index.css"
 import EChartsReact from 'echarts-for-react';
 
 function LineChart({productStatistics2}) {
-  console.log(productStatistics2);
   const option = {
     xAxis: {
       type: 'category',
@@ -12,14 +11,37 @@ function LineChart({productStatistics2}) {
     yAxis: {
       type: 'value'
     },
-    series: [
-      {
-        data: productStatistics2.map(product => product.pending),
-        type: 'line',
-        areaStyle: {}
+    tooltip: {
+      trigger: 'axis',
+      formatter: function (params) {
+        let tooltip = params[0].axisValueLabel + '<br/>';
+        params.forEach(param => {
+          tooltip += param.data.status + ': ' + param.data.result + "<br/>";
+        });
+        return tooltip;
       }
-    ]
+    },
+    legend: {
+      data: Object.keys(productStatistics2[0])
+        .filter(key => key !== 'month' && key !== 'year' && key !== 'monthNumber')
+    },
+    series: []
   };
+
+  if (productStatistics2.length > 0) {
+    const seriesData = Object.keys(productStatistics2[0])
+      .filter(key => key !== 'month' && key !== 'year' && key !== 'monthNumber')
+      .map(key => ({
+        name: productStatistics2[0][key].status,
+        type: 'bar',
+        data: productStatistics2.map(product => ({
+          value: product[key].result,
+          status: product[key].status,
+          result: product[key].result
+        }))
+      }));
+    option.series = seriesData;
+  }
 
   return (
     <div className=''>
