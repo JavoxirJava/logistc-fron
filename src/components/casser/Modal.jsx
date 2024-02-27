@@ -75,7 +75,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
         setProductKg(productId.find(i => i.id === item))
     }
 
-    const projectNameFunc = pjN => setProjectFilterName(projectId && projectId.find(n => n.id === pjN))
+    const projectNameFunc = pjN => setProjectFilterName(projectId && projectId.find(n => n.projectId === pjN))
     const productNameFunc = pdN => setProductFilterName(productId && productId.find(n => n.id === pdN))
     const userNameFunc = uN => setUserFilterName(userId && userId.find(n => n.id == uN))
 
@@ -121,7 +121,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                     className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                     <option selected disabled>{t("select")}</option>
                                     {projectId && projectId.map((item) => (
-                                        <option value={item.id} key={item.id}>{item.name}</option>
+                                        <option value={item.projectId} key={item.id}>{item.name}</option>
                                     ))}
                                 </select>
                                 <select

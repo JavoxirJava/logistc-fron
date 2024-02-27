@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { bir, ikki, logo } from "../../assets";
 
 
-function Login() {
+function Login({setCashierUrl}) {
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -24,6 +24,7 @@ function Login() {
         axios.post(`${url}user/login?phoneNumber=${byId("username")}&password=${byId("password")}`)
             .then((res) => {
                 if (res.data) {
+                    setCashierUrl(res.data.message)
                     sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
                     sessionStorage.setItem("role", res.data.message)
                     if (res.data.message === "ROLE_USER") byIdObj("user-dashboard").click();

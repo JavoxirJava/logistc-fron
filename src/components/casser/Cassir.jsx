@@ -7,8 +7,9 @@ import { byIdObj, config, url } from "../api";
 import ReactPaginate from "react-paginate";
 import DownloadModal from "./downloadModal";
 import { toast } from "react-toastify";
+import CashierNavBar from "../user/navbar/NavBarCashier";
 
-const Cassir = ({ changeLanguage, lang }) => {
+const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
     const [cassier, setCasseir] = useState(null);
     const [projectId, setProjectId] = useState(null);
     const [nextModal, setNextModal] = useState(false);
@@ -23,7 +24,18 @@ const Cassir = ({ changeLanguage, lang }) => {
     useEffect(() => {
         getCassier();
         getProject();
+        cashierNotFound()
     }, [lang]);
+
+    useEffect(() => {
+        cashierNotFound();
+    }, [])
+
+    const cashierNotFound = () => {
+        const role = sessionStorage.getItem('role')
+        if (cashierUrl === 'ROLE_CASHIER') return cashierUrl
+        if (cashierUrl === '') cashierUrl = role
+    }
 
     const openModal = () => setNextModal(true)
     const closeModal = () => setNextModal(false)
@@ -88,7 +100,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
                         toast.warning(res.data.message)
-                        setCasseir([{ productName: res.data.message }])
+                        setCasseir(null)
                     }
                 })
                 .catch(() => console.log('Error'))
@@ -99,7 +111,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
                         toast.warning(res.data.message)
-                        setCasseir([{ productName: res.data.message }])
+                        setCasseir(null)
                     }
                 })
                 .catch(() => console.log('Error'))
@@ -110,7 +122,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
                         toast.warning(res.data.message)
-                        setCasseir([{ productName: res.data.message }])
+                        setCasseir(null)
                     }
                 })
                 .catch(() => console.log('Error'))
@@ -121,7 +133,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
                         toast.warning(res.data.message)
-                        setCasseir([{ productName: res.data.message }])
+                        setCasseir(null)
                     }
                 })
                 .catch(() => console.log('Error'))
@@ -136,21 +148,24 @@ const Cassir = ({ changeLanguage, lang }) => {
                 if (res.data.success === true) {
                     setCasseir(res.data.body)
                 } else if (res.data.success === false) {
-                    setCasseir([{ productName: res.data.message }])
-                    toast.error(res.data.message)
+                    setCasseir(null)
+                    toast.warning(res.data.message)
                 }
             }).catch(err => {
-                
+
             })
     }
 
     return (
         <div className="min-h-screen">
-            <NavBar
-                changeLang={changeLanguage}
-                cassier={"border-b-red-600 border-b text-slate-900"}
-                lang={lang}
-            />
+            {cashierUrl === 'ROLE_CASHIER'
+                ? <CashierNavBar dashboard={'border-b-red-600 border-b text-slate-900'} />
+                : <NavBar
+                    changeLang={changeLanguage}
+                    cassier={"border-b-red-600 border-b text-slate-900"}
+                    lang={lang}
+                />
+            }
             <div className="background min-h-screen pt-20 px-10 md:px-0">
                 <div className="md:w-[80vw] w-full mx-auto mt-[1.5rem]">
                     <div className="flex flex-wrap justify-between items-end xl:flex-nowrap">
@@ -175,7 +190,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                                     className="px-5 py-2.5 duration-300 text-sm text-gray-900 outline-0 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                     <option selected disabled>{t("select")}</option>
                                     {projectId && projectId.map((item) => (
-                                        <option value={item.id} key={item.id}>{item.name}</option>
+                                        <option value={item.projectId} key={item.projectId}>{item.name}</option>
                                     ))}
                                 </select>
                             </div>
@@ -243,7 +258,7 @@ const Cassir = ({ changeLanguage, lang }) => {
                                     ))
                                 ) : (
                                     <tr className="odd:bg-white even:bg-gray-50 border-b ">
-                                        <td colSpan="7" className="px-4">
+                                        <td colSpan="7" className="px-4 py-4">
                                             <h1 className="text-center text-xl text-black">{t("notfound")}</h1>
                                         </td>
                                     </tr>

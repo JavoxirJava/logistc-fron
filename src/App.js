@@ -38,10 +38,12 @@ function App() {
         // localStorage dan tanlangan tilni olish
         return localStorage.getItem("selectedLanguage") || "en";
     });
+    const role = sessionStorage.getItem('role') ? sessionStorage.getItem('role') : ''
 
     const [lang, setLang] = useState("en");
     const [projectId, setProjectId] = useState("");
     const [werHouseId, setWerHouseId] = useState("");
+    const [cashierUrl, setCashierUrl] = useState(`${role}`);
 
     const changeLanguage = (e) => {
         const newLanguage = e.target.value;
@@ -67,11 +69,19 @@ function App() {
             />
             <Routes>
                 <Route path="/" element={<Loader />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<Login setCashierUrl={setCashierUrl} />} />
                 <Route path="/dashboard" element={<Dashboard lang={lang} />} />
                 <Route path="/user-dashboard" element={<UserDashboard lang={lang} />} />
-                <Route path="/cassier" element={<Cassir lang={lang}/>}/>
-                <Route path="/cashier-dashboard" element={<CassirDashboard lang={lang}/>}/>
+                <Route
+                    path={`/${cashierUrl === 'ROLE_CASHIER' ? 'cashier-dashboard' : 'cassier'}`}
+                    element={
+                        <Cassir
+                            lang={lang}
+                            cashierUrl={cashierUrl}
+                        />
+                    }
+                />
+                {/* <Route path="/cashier-dashboard" element={<CassirDashboard lang={lang}/>}/> */}
                 <Route
                     path="/project"
                     element={
