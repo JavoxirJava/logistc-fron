@@ -226,7 +226,8 @@ const translateEn = {
   ru: "RUS",
   projectStatus: "Project Status",
   gotov: "Ready",
-  products: "products"
+  products: "products",
+  statuss: "Status"
 
 
 }

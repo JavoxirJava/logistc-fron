@@ -223,8 +223,8 @@ const translateRu = {
   ru: "РУС",
   projectStatus: "Статус проекта",
   gotov: "Готова",
-  products: "продукты"
-  
+  products: "продукты",
+  statuss: "Статус"
 };
 
 export default translateRu;
