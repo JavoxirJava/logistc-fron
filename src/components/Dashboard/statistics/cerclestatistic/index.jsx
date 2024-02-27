@@ -4,8 +4,6 @@ import { useTranslation } from "react-i18next";
 import "../../index.css"
 
 function Circle({ s }) {
-    console.log(s);
-
     const { t } = useTranslation()
     const option = {
         tooltip: {

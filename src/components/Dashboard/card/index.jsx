@@ -40,16 +40,12 @@ const Modal = ({ isOpen, onClose }) => {
   );
 };
 
-const DashboardProductCard = ({ className, lang }) => {
+const DashboardProductCard = ({ lang }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [data, setProduct] = useState(null);
+  const [wiewData, setWiewData] = useState(null);
   const [totalPage, setTotalPage] = useState(1);
   const [pagination, setPagination] = useState(0);
-  const [searchBy, setSearchBy] = useState(null);
-  const [drops, setDrops] = useState(false);
-
-  const inputDrop = () => setDrops(false);
-  const selectDrop = () => setDrops(true);
 
   useEffect(() => {
     getProduct(pagination, 4);
@@ -67,8 +63,7 @@ const DashboardProductCard = ({ className, lang }) => {
   }, [pagination]);
 
   function getProduct(page, size) {
-    axios
-      .get(`${url}project/page?page=${page}&size=${size}&lang=${lang}`, config)
+    axios.get(`${url}project/page?page=${page}&size=${size}&lang=${lang}`, config)
       .then((res) => {
         setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
         setProduct(res.data.body.object);
@@ -79,111 +74,60 @@ const DashboardProductCard = ({ className, lang }) => {
   function searchProduct(e) {
     let text = e.target.value;
     if (text === "") getProduct(pagination, 4);
-    else
-      axios
-        .get(`${url}project/admin/search?name=${text}&lang=${lang}`, config)
-        .then((res) => {
-          if (res.data.body) {
-            if (res.data.body.length > 4)
-              setProduct(
-                res.data.body.map((item, i) => {
-                  if (i < 4) return item;
-                })
-              );
-            else setProduct(res.data.body);
-          } else setProduct([]);
-        })
-        .catch((err) => console.log(err));
+    else axios.get(`${url}project/admin/search?name=${text}&lang=${lang}`, config)
+      .then((res) => {
+        if (res.data.body) {
+          if (res.data.body.length > 4)
+            setProduct(
+              res.data.body.map((item, i) => {
+                if (i < 4) return item;
+              })
+            );
+          else setProduct(res.data.body);
+        } else setProduct([]);
+      })
+      .catch((err) => console.log(err));
   }
 
-  function searchByName() {
-    switch (searchBy) {
-      case "Project name":
-        return "name";
-      case "Project status":
-        return "status";
-      default:
-        return "name";
-    }
-  }
+  console.log(wiewData);
 
-  const closeModal = () => setIsModalOpen(false);
-
-  console.log();
   return (
     <div className="radius">
       <div className="mb-5 flex items-center">
         <div className="flex justify-between items-center w-full md:px-3 ">
-          {drops ? (
-            <select
-              onChange={searchProduct}
-              defaultValue=""
-              id="statuslar"
-              className="py-2 px-2 w-96 bg-white rounded-lg  border border-slate-300
-                       focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-                     focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-            >
-              <option selected disabled>
-                {t("productAdd60")}
-              </option>
-              <option value="all">{t("all")}</option>
-              <option value="PENDING">{t("status1")}</option>
-              <option value="GOING">{t("status2")}</option>
-              <option value="CANCEL">{t("status3")}</option>
-              <option value="ARRIVED">{t("status4")}</option>
-              <option value="COMPLETED">{t("status5")}</option>
-              <option value="MOVED ">{t("status6")}</option>
-            </select>
-          ) : (
-            <input
-              type="search"
-              placeholder="🔍..."
-              defaultValue=""
-              onChange={searchProduct}
-              className="lg:w-4/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
-            />
-          )}
+          <input
+            type="search"
+            placeholder="🔍..."
+            defaultValue=""
+            onChange={searchProduct}
+            className="lg:w-4/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+          />
         </div>
       </div>
       <p className="mb-3">{t("cardCurrent")}: 1</p>
       <div class="relative overflow-x-auto  sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
-              <th scope="col" class="px-6 py-3">
-                №
-              </th>
-              <th scope="col" class="px-6 py-3">
-                {t("client2")}
-              </th>
-              <th scope="col" class="px-6 py-3">
-                {t("card2")}
-              </th>
-              <th scope="col" class="px-6 py-3">
-                {t("transport")}
-              </th>
-              <th scope="col" class="px-6 py-3">
-                {t("date")}
-              </th>
-              {/* <th scope="col" class="px-6 py-3">
-                      Total Price
-                    </th> */}
-             
-              {/* <th scope="col" class="px-6 py-3 text-center">
-                      {t("download")}
-                    </th> */}
+              <th scope="col" class="px-6 py-3">#</th>
+              <th scope="col" class="px-6 py-3">{t('card4')} {t("client2")}</th>
+              <th scope="col" class="px-6 py-3">{t("card2")}</th>
+              <th scope="col" class="px-6 py-3">{t("transport")}</th>
+              <th scope="col" class="px-6 py-3">{t("date")}</th>
+              <th scope="col" class="px-6 py-3">{t("totalPrice")}</th>
+              <th scope="col" class="px-6 py-3">{t("wiew")}</th>
             </tr>
           </thead>
           <tbody>
-            {data &&
+            {data ? (
               data.map((item, i) => (
                 <tr
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  className="bg-white border-b"
                   key={i}
                 >
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                   >
                     {(pagination - 1) * 4 < 0
                       ? i + 1
@@ -193,11 +137,18 @@ const DashboardProductCard = ({ className, lang }) => {
                   <td className="px-6 py-4">{item ? item.status : ""}</td>
                   <td className="px-6 py-4">{item ? item.transport : ""}</td>
                   <td className="px-6 py-4">
-                    {item ? item.date.slice(0, item.date.indexOf(" ") ) : ""}
+                    {item ? item.date.slice(0, item.date.indexOf(" ")) : ""}
                   </td>
-                  
+                  <td className="px-6 py-4">{item ? item.transport : ""}</td>
+                  <td className="px-6 py-4">
+                    <button onClick={() => setWiewData(item)} className="text-blue-700 hover:underline">{t('wiew')}</button>
+                  </td>
                 </tr>
-              ))}
+              ))) : (
+              <tr className="bg-white border-b">
+                <td colSpan='6' className="px-6 py-4 text-center text-lg">{t('card4')} {t('notfound')}</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
