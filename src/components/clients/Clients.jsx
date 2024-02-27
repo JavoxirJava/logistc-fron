@@ -117,7 +117,7 @@ const Clients = ({ changeLanguage, lang }) => {
     };
     axios
       .post(
-        `${url}user?ROLE=${byId("user") ? byId("user") : "ROLE_USER"}`,
+        `${url}user?ROLE=${byId("user") != 0 ? byId("user") : "ROLE_USER"}`,
         data,
         config
       )
@@ -386,7 +386,7 @@ const Clients = ({ changeLanguage, lang }) => {
                   focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
                 focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
                 >
-                  <option selected disabled>
+                  <option selected disabled value='0'>
                     {t("client9")}
                   </option>
                   <option value="ROLE_USER">{t("client10")}</option>
