@@ -54,6 +54,8 @@ function OffcanvasProject({
       isOpen={isOffcanvasOpen}
       name={name}
       onClose={handleToggleOffcanvas}
+      isAdd={isAdd}
+      newWereHouseName={newWereHouseName}
     >
       <div className="" onChange={setData}>
         <label
@@ -71,7 +73,10 @@ function OffcanvasProject({
         
         <div className="mt-10 flex justify-between">
           <button
-            onClick={handleToggleOffcanvas}
+            onClick={() => {
+              handleToggleOffcanvas()
+              document.getElementById(`name${isAdd}`).value = newWereHouseName ? newWereHouseName.name : ""
+            }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-gray-500 text-sm font-medium text-white"
           >
             {t("close")}
@@ -82,6 +87,7 @@ function OffcanvasProject({
               await onSave();
               await getProduct(0, 4);
               handleToggleOffcanvas();
+              document.getElementById(`name${isAdd}`).value = ""
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
           >

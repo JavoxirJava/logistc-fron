@@ -167,6 +167,7 @@ function OffcanvasProduct({
                         </label>
                         <input
                             onChange={totalKgHandlar}
+                            type="number"
                             id={`productWeight${isAdd}`}
                             placeholder={t("productAddKg")}
                             defaultValue={product ? product.idNumber + t('productAddKg') : ""}

@@ -219,7 +219,7 @@ const ViewMoreW = ({lang}) => {
                         {projectIdInfo ? (
                             projectIdInfo.map((item, i) => (
                                 <tr key={i} className="border-b transition duration-300 ease-in-out hover:bg-gray-300">
-                                    <th className="px-6 py-5">{currentPage * 10 + (i + 1)}</th>
+                                    <th className="px-6 py-5">{(currentPage * 5) + (i + 1)}</th>
                                     <th className="px-6 py-5 flex justify-center items-center">
                                         <img
                                             src={
