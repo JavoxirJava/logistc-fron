@@ -68,6 +68,20 @@ function OffcanvasProduct({
         setTotalKubSum(product ? product.totalKub : 0)
     }
 
+    const inputDelete2 = () => {
+        document.getElementById(`productName${isAdd}`).value =''
+        document.getElementById(`comment${isAdd}`).value =''
+        document.getElementById(`idNumberX${isAdd}`).value =''
+        document.getElementById(`idNumberY${isAdd}`).value =''
+        document.getElementById(`idNumberZ${isAdd}`).value =''
+        document.getElementById(`productWeight${isAdd}`).value =''
+        document.getElementById(`numberOfSeats${isAdd}`).value =''
+        document.getElementById(`userId${isAdd}`).value = 0
+        setKubSum( 0)
+        setTotalKgSum(0)
+        setTotalKubSum(0)
+    }
+
     return (
         <Offcanvas
             isOpen={isOffcanvasOpen}
@@ -292,6 +306,7 @@ function OffcanvasProduct({
                             await onSave();
                             await getProduct(0, 4);
                             handleToggleOffcanvas();
+                            inputDelete2()
                         }}
                         className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
                     >{name}</button>

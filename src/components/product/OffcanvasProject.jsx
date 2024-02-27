@@ -50,11 +50,19 @@ function OffcanvasProject({
     console.log(product);
 
     const inputDelete = () => {
-        document.getElementById(`name${isAdd}`).value = product ? product.productName :''
-        document.getElementById(`transport${isAdd}`).value = product ? product.comment :''
-        document.getElementById(`productStatus${isAdd}`).value = product ? product.x :''
-        document.getElementById(`project${isAdd}`).value = product ? product.y :''
-        document.getElementById(`comment${isAdd}`).value = product ? product.z :''
+        document.getElementById(`name${isAdd}`).value = product ? product.name :''
+        document.getElementById(`transport${isAdd}`).value = product ? product.transport :0
+        document.getElementById(`productStatus${isAdd}`).value = product ? product.status :0
+        document.getElementById(`project${isAdd}`).value = product ? product.projectId :''
+        document.getElementById(`comment${isAdd}`).value = product ? product.comment :''
+    }
+
+    const inputDelete2 = () => {
+        document.getElementById(`name${isAdd}`).value = ''
+        document.getElementById(`transport${isAdd}`).value = 0
+        document.getElementById(`productStatus${isAdd}`).value = 0
+        document.getElementById(`project${isAdd}`).value = ''
+        document.getElementById(`comment${isAdd}`).value = ''
     }
 
     return (
@@ -75,7 +83,6 @@ function OffcanvasProject({
                 <input
                     id={`name${isAdd}`}
                     placeholder={t("productAdd3")}
-                    defaultValue={projectId ? projectId.name : ""}
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
                 {/* Transport input  */}
@@ -89,7 +96,7 @@ function OffcanvasProject({
                     id={`transport${isAdd}`}
                     className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
                 >
-                    <option selected disabled>
+                    <option selected disabled value='0'>
                         {t("productAdd5")}
                     </option>
                     <option
@@ -118,7 +125,7 @@ function OffcanvasProject({
                     id={`productStatus${isAdd}`}
                     className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
                 >
-                    <option selected disabled>
+                    <option selected disabled value='0'>
                         {t("projectStatus")}
                     </option>
                     <option
@@ -171,7 +178,6 @@ function OffcanvasProject({
                 <input
                     id={`project${isAdd}`}
                     placeholder={t("projectId")}
-                    defaultValue={projectId ? projectId.projectId : ""}
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
                 <label
@@ -182,7 +188,6 @@ function OffcanvasProject({
                 </label>
                 <textarea
                     id={`comment${isAdd}`}
-                    defaultValue={projectId ? projectId.comment : ""}
                     placeholder={t("comment")}
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 ></textarea>
@@ -199,7 +204,10 @@ function OffcanvasProject({
                 />
                 <div className="mt-10 flex justify-between">
                     <button
-                        onClick={handleToggleOffcanvas}
+                        onClick={() =>{ 
+                            handleToggleOffcanvas()
+                            inputDelete()
+                        }}
                         className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-gray-500 text-sm font-medium text-white"
                     >
                         {t("close")}
@@ -210,7 +218,7 @@ function OffcanvasProject({
                             await onSave();
                             await getProduct(0, 4);
                             handleToggleOffcanvas();
-
+                            inputDelete2()
                         }}
                         className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
                     >
