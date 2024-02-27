@@ -14,10 +14,9 @@ function LineChart({ productStatistics2 }) {
     tooltip: {
       trigger: 'axis',
       formatter: function (params) {
-        let tooltip = params[0].axisValueLabel + '<br/>'; // Tooltip uchun sarlavha
+        let tooltip = params[0].axisValueLabel + '<br/>';
         params.forEach(param => {
-          tooltip += param.data.status + ': ' + param.data.result + "<br/>"; // Statusni qo'shish
-          // tooltip += param.data.result; // Resultni qo'shish
+          tooltip += param.data.status + ': ' + param.data.result + "<br/>";
         });
         return tooltip;
       }
@@ -33,16 +32,14 @@ function LineChart({ productStatistics2 }) {
     const seriesData = Object.keys(productStatistics2[0])
       .filter(key => key !== 'month' && key !== 'year' && key !== 'monthNumber')
       .map(key => ({
-        name: key,
+        name: productStatistics2[0][key].status,
         type: 'bar',
-        // stack: 'total',
         data: productStatistics2.map(product => ({
           value: product[key].result,
           status: product[key].status,
           result: product[key].result
         }))
       }));
-
     option.series = seriesData;
   }
 
