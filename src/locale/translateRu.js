@@ -230,6 +230,7 @@ const translateRu = {
   statuss: "Статус",
   projectStatusEdit: "Изменить статус проекта",
   numberOfSeats: "Cколько",
+  allProducts: "Все продукты",
   listWarning : "Пожалуйста, добавьте хотя бы один товар"
 };
 

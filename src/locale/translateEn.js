@@ -233,7 +233,9 @@ const translateEn = {
   statuss: "Status",
   noStatus: "No status",
   projectStatusEditd: "Change project status",
-  listWarning : "Please add at least one product"
+  listWarning : "Please add at least one product",
+  allProducts: "All products",
+  
 }
 
 export default translateEn

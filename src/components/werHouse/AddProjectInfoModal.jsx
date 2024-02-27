@@ -1,6 +1,8 @@
+import {useTranslation} from "react-i18next";
 import React from 'react';
 
 function AddProjectInfoModal({showProjectInfoModal, products, addToProduct}) {
+    const {t} = useTranslation();
     return (
         <>
             <div
@@ -14,7 +16,7 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct}) {
                         <div
                             className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                             <h3 className="text-3xl font-semibold">
-                                All Products
+                                {t("allProducts")}
                             </h3>
                             <button
                                 className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -31,9 +33,9 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct}) {
                             {products.length > 0 && <table className="table w-96 text-center add-product-table">
                                 <tbody>
                                 <tr>
-                                    <th>Product count</th>
-                                    <th>Kg</th>
-                                    <th>Kub</th>
+                                    <th>{t("productCount")}</th>
+                                    <th>{t("kg")}</th>
+                                    <th>{t("kub")}</th>
                                 </tr>
                                 </tbody>
                                 <tbody>
@@ -53,14 +55,14 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct}) {
                                 type="button"
                                 onClick={showProjectInfoModal}
                             >
-                                Close
+                                {t("close")}
                             </button>
                             <button
                                 className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                 type="button"
                                 onClick={addToProduct}
                             >
-                                Save Changes
+                                {t("save")}
                             </button>
                         </div>
                     </div>
