@@ -53,7 +53,10 @@ function OffcanvasProject({
     <Offcanvas
       isOpen={isOffcanvasOpen}
       name={name}
-      onClose={handleToggleOffcanvas}
+      onClose={() => {
+        handleToggleOffcanvas()
+        // document.getElementById("name").value=''
+      }}
       isAdd={isAdd}
       newWereHouseName={newWereHouseName}
     >

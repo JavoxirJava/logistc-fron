@@ -47,6 +47,16 @@ function OffcanvasProject({
         });
     }
 
+    console.log(product);
+
+    const inputDelete = () => {
+        document.getElementById(`name${isAdd}`).value = product ? product.productName :''
+        document.getElementById(`transport${isAdd}`).value = product ? product.comment :''
+        document.getElementById(`productStatus${isAdd}`).value = product ? product.x :''
+        document.getElementById(`project${isAdd}`).value = product ? product.y :''
+        document.getElementById(`comment${isAdd}`).value = product ? product.z :''
+    }
+
     return (
         <Offcanvas
             className="pt-20"
