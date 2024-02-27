@@ -63,8 +63,6 @@ const ViewMore = ({ lang }) => {
 
   const searchHandler = (e) => {
     let data = e.target.value;
-    console.log(e.target.value);
-    console.log(!!data);
     if (!!data) {
       axios
         .get(

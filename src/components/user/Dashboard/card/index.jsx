@@ -73,7 +73,6 @@ const DashboardProductCard = ({ className, lang }) => {
       .then((res) => {
         setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
         setProduct(res.data.body.object);
-        console.log(res.data.body.object);
       })
       .catch((err) => console.log(err));
   }
@@ -99,7 +98,6 @@ const DashboardProductCard = ({ className, lang }) => {
         .catch((err) => console.log(err));
   }
 
-  console.log(data);
 
   function searchByName() {
     switch (searchBy) {

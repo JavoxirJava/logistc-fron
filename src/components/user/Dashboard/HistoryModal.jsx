@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 const UserModal = ({ isOpen, onClose, cardInfo }) => {
   const { t } = useTranslation();
 
-  console.log(cardInfo);
-
   if (!isOpen) return null;
   const allAddressList = cardInfo.allAddress;
   return (

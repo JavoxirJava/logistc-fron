@@ -27,7 +27,6 @@ function OffcanvasProject({
         img.append('file', document.getElementById(`file${isAdd}`).files[0]);
         if (img.get('file') !== 'undefined') axios.post(url + "attachment/image", img, config)
             .then(res => {
-        console.log(res.data.body);
                 setProduct({
                     name: byId(`name${isAdd}`),
                     transport: byId(`transport${isAdd}`),
@@ -47,7 +46,6 @@ function OffcanvasProject({
         });
     }
 
-    console.log(product);
 
     const inputDelete = () => {
         document.getElementById(`name${isAdd}`).value = product ? product.name : ''

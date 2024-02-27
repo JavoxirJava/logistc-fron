@@ -158,7 +158,6 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         // loadingPP()
         setTotalPage(res.data.totalPage ? res.data.totalPage - 1 : 2);
         setProduct(res.data.object);
-        // console.log(res);
         // }
       })
       .catch((err) => {

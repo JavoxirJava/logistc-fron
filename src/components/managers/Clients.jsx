@@ -83,7 +83,6 @@ const Managers = ({ changeLanguage, lang }) => {
           //       })
           //     );
           // } else setProductClient(null);
-          console.log(res.data.body);
 
           if (res.data.body) {
             setProductClient(res.data.body);
