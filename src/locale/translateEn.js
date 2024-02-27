@@ -116,7 +116,7 @@ const translateEn = {
   select: "Select project",
   success: "Successfully completed!",
   error: "Something is error.",
-  notFoundFile: "User not found",
+  notFoundFile: "File not found",
   addd: "Add",
   addWer: "Add warehouse",
   editWer: "Edit warehouse",

@@ -31,12 +31,12 @@ function Login() {
                     else if (res.data.message === "ROLE_ADMIN") byIdObj("dashboard").click();
                     else if (res.data.message === "ROLE_MANAGER") byIdObj("dashboard").click();
                     else if (res.data.message === "ROLE_CASHIER") byIdObj("cashier-dashboard").click();
-                    else toast.error(t("notFound"));
-                } else toast.error(t("notFound"));
+                    else toast.error(t("notfound"));
+                } else toast.error(t("notfound"));
                 setIsLoading(false);
             }).catch(err => {
                 setIsLoading(false);
-                toast.error(t("notFound"));
+                toast.error(t("notfound"));
             });
     }
 
