@@ -19,7 +19,7 @@ const Offcanvas = ({ isOpen, onClose, name, children, isAdd, newWereHouseName })
                                 <h2 className="text-lg font-medium text-gray-900 inline-block">{name}</h2>
                                 <button type="button" onClick={() => {
                                     onClose();
-                                    document.getElementById(`name${isAdd}`).value = newWereHouseName ? newWereHouseName.name : ""
+                                    // document.getElementById(`name${isAdd}`).value = newWereHouseName ? newWereHouseName.name : ""
                                 }}
                                     className="float-end bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100">
                                     <span className="sr-only">Close menu</span>
