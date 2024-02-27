@@ -354,7 +354,7 @@ const ViewMoreW = ({lang}) => {
                                 <option selected disabled>{t("select")}</option>
 
                                 {project &&
-                                    project.map((item, i) => <option key={i} value={item.id}>{item.name}</option>)}
+                                    project.map((item, i) => <option key={i} value={item.projectId}>{item.name}</option>)}
                             </select>
                         </div>
                         <div className="flex justify-between mt-7">
