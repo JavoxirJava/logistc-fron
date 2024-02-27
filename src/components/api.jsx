@@ -13,7 +13,7 @@ export const setConfig = () => config.headers.Authorization = sessionStorage.get
 
 export const getMe = (setMe, lang) => {
     setConfig();
-    axios.get(`${url}user/getMe?lang=${lang}`, config).then(res => setMe(res.data.body)).catch(err => console.log(err));
+    axios.get(`${url}user/getMe?lang=${lang}`, config).then(res => setMe(res.data.body)).catch(err => {});
 }
 
 export const getClientProduct = (page, size, setClientProduct, setTotalPage, lang) => {
@@ -54,7 +54,7 @@ export const getCasherProduct = (page, size, setClientProduct, setTotalCasher, l
 
 
 export function getUsers(setUser, lang) {
-    axios.get(`${url}user?lang=${lang}`, config).then(res => setUser(res.data.body.object)).catch(err => console.log(err));
+    axios.get(`${url}user?lang=${lang}`, config).then(res => setUser(res.data.body.object)).catch(err => {});
 }
 
 export const getFile = `${url}attachment/getFile/`

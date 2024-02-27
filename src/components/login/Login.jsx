@@ -26,7 +26,6 @@ function Login() {
                 if (res.data) {
                     sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
                     sessionStorage.setItem("role", res.data.message)
-                    // console.log(res.data.message);
                     if (res.data.message === "ROLE_USER") byIdObj("user-dashboard").click();
                     else if (res.data.message === "ROLE_ADMIN") byIdObj("dashboard").click();
                     else if (res.data.message === "ROLE_MANAGER") byIdObj("dashboard").click();

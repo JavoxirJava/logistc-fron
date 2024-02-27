@@ -177,7 +177,6 @@ const Clients = ({ changeLanguage, lang }) => {
       axios
         .get(`${url}user/search?idNumber=${text}&lang=${lang}`, config)
         .then((res) => {
-          console.log(res.data.body);
 
           if (res.data.body) {
             setProductClient(res.data.body);

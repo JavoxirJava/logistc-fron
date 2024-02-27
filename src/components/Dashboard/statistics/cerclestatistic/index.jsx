@@ -5,7 +5,6 @@ import "../../index.css"
 
 function Circle({ s }) {
     const { t } = useTranslation()
-    console.log(s); 
     const option = {
         tooltip: {
             trigger: 'item'

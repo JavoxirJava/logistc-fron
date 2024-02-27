@@ -36,7 +36,7 @@ const Cassir = ({ lang }) => {
             .then((res) => {
                 setCasseir(res.data.body.object);
                 setPage(res.data.body.totalPage)
-            }).catch((err) => console.log('error', err))
+            }).catch((err) => {})
     };
 
     // get project
@@ -44,7 +44,7 @@ const Cassir = ({ lang }) => {
         axios
             .get(`${url}project/list?lang=${lang}`, config)
             .then((res) => setProjectId(res.data.body))
-            .catch(() => console.log("error"));
+            .catch(() => {});
     };
 
     // get user
