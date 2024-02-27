@@ -99,7 +99,7 @@ const ViewMoreW = ({lang}) => {
         }
     };
 
-    function addProduct() {
+    function addProducts() {
         let data = {...product2};
         axios.post(`${url}product?userId=${userId}`, data, config)
             .then(() => {
@@ -311,7 +311,7 @@ const ViewMoreW = ({lang}) => {
                 isOffcanvasOpen={isOffcanvasOpen}
                 name={t("addProduct")}
                 btnName={t("addProduct")}
-                onSave={addProduct}
+                onSave={addProducts}
                 setUserId={setUserId}
                 werHouseId={projectId}
                 wareHouse={projectId}
