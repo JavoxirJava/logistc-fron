@@ -36,6 +36,8 @@ const ViewMoreW = ({lang}) => {
     const openPro = () => setProOpen(true);
     const closePro = () => setProOpen(false);
     const showProjectInfoModal = () => setShowModal(!showModal);
+    const tozalovchi = () => setProducts([]);
+
 
     const {t} = useTranslation();
 
@@ -133,9 +135,11 @@ const ViewMoreW = ({lang}) => {
             getProjectInfo();
             setProductObj2(null);
             showProjectInfoModal()
+            tozalovchi()
         }).catch((err) => {
             toast.error(t("error"));
             console.log(err);
+            tozalovchi()
         });
     }
 
@@ -371,7 +375,10 @@ const ViewMoreW = ({lang}) => {
                             </select>
                         </div>
                         <div className="flex justify-between mt-7">
-                            <button type="button" onClick={closePro} className="btm-close">
+                            <button type="button" onClick={() => {
+                                closePro()
+                                tozalovchi()
+                            }} className="btm-close">
                                 {t("close")}
                             </button>
                             <button
@@ -392,7 +399,7 @@ const ViewMoreW = ({lang}) => {
 
             {showModal ? (
                 <AddProjectInfoModal showProjectInfoModal={showProjectInfoModal} products={products}
-                                     addToProduct={addtoProduct}/>
+                                     addToProduct={addtoProduct} tozalovchi={tozalovchi}/>
             ) : ''}
         </div>
     );
