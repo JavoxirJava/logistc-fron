@@ -21,7 +21,6 @@ function OffcanvasProduct({
 
   useEffect(() => {
     getUsers(setUsers, lang, );
-    
   }, []);
 
 
@@ -36,12 +35,16 @@ function OffcanvasProduct({
     });
     setUserId(byId(`userId${isAdd}`));
   }
+  const inputDelete = () => {
+
+  }
 
   return (
     <Offcanvas
       isOpen={isOffcanvasOpen}
       name={name}
-      onClose={handleToggleOffcanvas}>
+      onClose={handleToggleOffcanvas}
+      inputDelete={inputDelete}>
       <div onChange={setData}>
         <label
           htmlFor={`userId${isAdd}`}

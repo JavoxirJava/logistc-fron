@@ -33,6 +33,8 @@ function ProjectCard({
       setIsModalOpen(false);
     }
   });
+
+  // console.log(projects.status);
   const closeModal = () => setIsModalOpen(false);
   const openModal = () => setIsModalOpen(true);
   const { t } = useTranslation();
@@ -76,12 +78,14 @@ function ProjectCard({
         setIsModalOpenStatus(false)
         toast.success(t('projectStatusEd'))
         getProduct(pagination, 4)
-        document.getElementById('productStatusEdit').value = ''
+        document.getElementById('productStatusEdit').value = 0
       }).catch(() => {
-        document.getElementById('productStatusEdit').value = ''
+        document.getElementById('productStatusEdit').value = 0
         toast.warning(t('projectStatusEdErr'))
       })
   }
+
+
 
   return (
     <>
@@ -96,10 +100,63 @@ function ProjectCard({
           {(pagination - 1) * 4 < 0 ? i + 1 : (pagination - 1) * 4 + (i + 1)}
         </th>
         <td className="px-6 py-4">{projects ? projects.name : ''}</td>
-        <td className="px-6 py-4 hover:cursor-pointer hover:underline hover:text-blue-500" onClick={() => {
-          openSelectHandler()
-          setProjectList(projects)
-        }}>{projects ? projects.status : ''}</td>
+        <td
+          className="px-6 py-4 hover:cursor-pointer hover:underline hover:text-blue-500"
+          onClick={() => {
+            // openSelectHandler()
+            setProjectList(projects)
+          }}>
+          <select
+            onChange={editPorjectStatus}
+            id={`productStatusEdit`}
+            className="text-black w-40 p-1 cursor-pointer border rounded-md focus:outline-0"
+          >
+            <option selected disabled value='0'>
+              {projects.status}
+            </option>
+            <option value="1">
+              {t("1")}
+            </option>
+            <option value="2">
+              {t("2")}
+            </option>
+            <option
+              value="3"
+            >
+              {t("3")}
+            </option>
+            <option
+              value="4"
+            >
+              {t("4")}
+            </option>
+            <option
+              value="5"
+            >
+              {t("5")}
+            </option>
+            <option
+              value="6"
+            >
+              {t("6")}
+            </option>
+            <option
+              value="7"
+            >
+              {t("7")}
+            </option>
+            <option
+              value="8"
+            >
+              {t("8")}
+            </option>
+            <option
+              value="9"
+            >
+              {t("9")}
+            </option>
+          </select>
+        </td>
         <td className="px-6 py-4">{projects ? projects.transport : ''}</td>
         <td className="px-6 py-4">{projects ? projects.date.slice(0, projects.date.indexOf(" ")) : ''}</td>
 
@@ -141,60 +198,7 @@ function ProjectCard({
         </td>
       </tr> : ""}
 
-      {isModalOpenStatus && (<>
-        <select
-          onChange={editPorjectStatus}
-          id={`productStatusEdit`}
-          className="fixed left-18 -mt-6 w-80 p-2 py-2.5 text-black bg-slate-300 border rounded-md shadow-sm focus:outline-0"
-        >
-          <option selected disabled value='0'>
-            {t("projectStatus")}
-          </option>
-          <option value="1">
-            {t("1")}
-          </option>
-          <option value="2">
-            {t("2")}
-          </option>
-          <option
-            value="3"
-          >
-            {t("3")}
-          </option>
-          <option
-            value="4"
-          >
-            {t("4")}
-          </option>
-          <option
-            value="5"
-          >
-            {t("5")}
-          </option>
-          <option
-            value="6"
-          >
-            {t("6")}
-          </option>
-          <option
-            value="7"
-          >
-            {t("7")}
-          </option>
-          <option
-            value="8"
-          >
-            {t("8")}
-          </option>
-          <option
-            value="9"
-          >
-            {t("9")}
-          </option>
-        </select>
-        {/* <button onClick={editPorjectStatus} className="bg-green-600 px-5 py-2 rounded-md text-white font-medium ms-2">{t('save')}</button> */}
-      </>
-      )}
+     
 
       {historyList && (
         <ProjectModal
