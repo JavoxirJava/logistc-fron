@@ -103,7 +103,7 @@ const DashboardProductCard = ({ lang }) => {
           />
         </div>
       </div>
-      <p className="mb-3">{t("cardCurrent")}: 1</p>
+      <p className="mb-3">{t("cardCurrent")}: {currentPage + 1}</p>
       <div class="relative overflow-x-auto  sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50">

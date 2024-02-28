@@ -40,15 +40,13 @@ function CashierNavBar({ dashboard, lang }) {
 
   const editUser = async () => {
     setLoading(true)
-    await axios.put(url + "user/" + meId.id,
-      {
-        id: meId.id,
-        name: byId("name"),
-        idNumber: byId("idNumber"),
-        phoneNumber: byId("phoneNumber"),
-        password: byId("password"),
-      },
-      config).then(() => {
+    let editdata = {
+      name: byId("name"),
+      phoneNumber: byId("phoneNumber"),
+      password: byId("password"),
+    }
+    await axios.put(`${url}user/admin?name=${editdata.name}&phoneNumber=${editdata.phoneNumber}&password=${editdata.password}`,
+      '', config).then(() => {
         toast.success(t("success"));
         setLoading(false)
       }).catch(() => {
