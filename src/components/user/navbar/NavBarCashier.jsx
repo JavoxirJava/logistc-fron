@@ -40,7 +40,7 @@ function CashierNavBar({ dashboard, lang }) {
 
   const editUser = async () => {
     setLoading(true)
-    await axios.put(url + "user/" + meId.id,
+    await axios.put(url + "user/admin" + meId.id,
       {
         id: meId.id,
         name: byId("name"),
