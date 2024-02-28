@@ -11,6 +11,7 @@ function Dashboard({ changeLanguage, lang }) {
   const [me, setMe] = useState(null);
   const [productStatistics, setProductStatistics] = useState(null);
   const [productStatistics2, setProductStatistics2] = useState(null);
+  // document.title = "GSR Logistics | Dashboard"
 
   useEffect(() => {
     setConfig();
