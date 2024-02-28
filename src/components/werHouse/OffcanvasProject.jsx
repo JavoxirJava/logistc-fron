@@ -48,8 +48,18 @@ function OffcanvasProject({
     });
   }
 
+  const inputDelete = () => {
+    document.getElementById(`name${isAdd}`).value = newWereHouseName ? newWereHouseName.name :''
+}
+
+const inputDelete2 = () => {
+    document.getElementById(`name${isAdd}`).value =''
+}
+
+
   return (
     <Offcanvas
+      inputDelete={inputDelete}
       isOpen={isOffcanvasOpen}
       name={name}
       onClose={() => {
@@ -72,12 +82,12 @@ function OffcanvasProject({
           defaultValue={newWereHouseName ? newWereHouseName.name : ""}
           className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
-        
+
         <div className="mt-10 flex justify-between">
           <button
             onClick={() => {
               handleToggleOffcanvas()
-              document.getElementById(`name${isAdd}`).value = newWereHouseName ? newWereHouseName.name : ""
+              inputDelete()
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-gray-500 text-sm font-medium text-white"
           >
@@ -89,7 +99,7 @@ function OffcanvasProject({
               await onSave();
               await getProduct(0, 4);
               handleToggleOffcanvas();
-              document.getElementById(`name${isAdd}`).value = ""
+              inputDelete2()
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
           >

@@ -91,6 +91,7 @@ function OffcanvasProduct({
 
     return (
         <Offcanvas
+        inputDelete={inputDelete}
             isOpen={isOffcanvasOpen}
             name={name}
             onClose={handleToggleOffcanvas}

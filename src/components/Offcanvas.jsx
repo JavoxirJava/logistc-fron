@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const Offcanvas = ({ isOpen, onClose, name, children, isAdd, newWereHouseName, }) => {
+const Offcanvas = ({ isOpen, onClose, name, children, isAdd, newWereHouseName, inputDelete }) => {
+    useEffect(() => {
+        inputDelete()
+    }, [])
+
+    useEffect(() => {
+        inputDelete()
+    }, [isOpen])
     return (
         <div
             className={` fixed inset-0 overflow-hidden transition-opacity ${isOpen ? 'ease-out duration-300 opacity-100' : 'ease-in duration-200 opacity-0 pointer-events-none'}`}>
