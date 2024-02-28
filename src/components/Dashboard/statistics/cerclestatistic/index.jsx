@@ -7,8 +7,7 @@ function Circle({ s }) {
     const [circleData, setCircleData] = useState(s['data-1'][0]['data-0'])
     const { t } = useTranslation()
 
-
-
+    console.log(s['data-1'][0]['data-0']);
     const option = {
         tooltip: {
             trigger: 'item'
@@ -19,7 +18,7 @@ function Circle({ s }) {
         },
         series: [
             {
-                name: 'Access From',
+                name: `salom salom`,
                 type: 'pie',
                 position:"absolute",
                 top:'10%',
@@ -40,11 +39,13 @@ function Circle({ s }) {
                     show: false
                 },
                 data: [
-                    circleData.map((item, i) => 
-                    `${{ value: item.projectName, name: item.status}}`,
-                    )
+                    { value: 0, name: `${t("1")}` },
+                    { value: 1, name: `${t("2")}` },
+                    { value: 1, name: `${t("3")}` },
+                    { value: 1, name: `${t("4")}` },
+                    { value: 1, name: `${t("5")}` },
+                    { value: 1, name: `${t("6")}` },
                 ]
-                
             }
         ]
     }
@@ -65,7 +66,6 @@ function Circle({ s }) {
                     />
                 </div>
             </div>
-            
         </div>
     );
 }
