@@ -54,12 +54,12 @@ function Dashboard({ changeLanguage, lang }) {
         <div className="w-full flex md:px-10 sd:px-5 px-2 md:py-10 py-5 ">
           <div className=" w-full flex-col lg:flex-row flex gap-5 mt-10">
             <div className="h-[400px] md:w-6/12">
-              {/* {productStatistics && <Circle s={productStatistics} />} */}
+              {productStatistics && <Circle s={productStatistics} />}
             </div>
             <div className="h-[400px] rounded all-shadow w-full">
-              {/* {productStatistics2 && (
+              {productStatistics2 && (
                 <LineChart productStatistics2={productStatistics2} />
-              )} */}
+              )}
             </div>
           </div>
         </div>

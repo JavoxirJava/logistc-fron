@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import EChartsReact from 'echarts-for-react';
 import { useTranslation } from "react-i18next";
 import "../../index.css"
 
 function Circle({ s }) {
+    const [circleData, setCircleData] = useState(s['data-1'][0]['data-0'])
     const { t } = useTranslation()
 
-    console.log(s)
+
 
     const option = {
         tooltip: {
@@ -39,15 +40,11 @@ function Circle({ s }) {
                     show: false
                 },
                 data: [
-                    { value: 1, name: `${t("1")}` },
-                    { value: 2, name: `${t("2")}` },
-                    { value: 3, name: `${t("3")}` },
-                    { value: 4, name: `${t("4")}` },
-                    { value: 5, name: `${t("5")}` },
-                    { value: 6, name: `${t("6")}` },
-                    { value: 7, name: `${t("7")}` },
-                    { value: 8, name: `${t("8")}` },
+                    circleData.map((item, i) => 
+                    `${{ value: item.projectName, name: item.status}}`,
+                    )
                 ]
+                
             }
         ]
     }
@@ -68,6 +65,7 @@ function Circle({ s }) {
                     />
                 </div>
             </div>
+            
         </div>
     );
 }
