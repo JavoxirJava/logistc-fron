@@ -5,6 +5,9 @@ import "../../index.css"
 
 function Circle({ s }) {
     const { t } = useTranslation()
+
+    console.log(s)
+
     const option = {
         tooltip: {
             trigger: 'item'
@@ -36,14 +39,14 @@ function Circle({ s }) {
                     show: false
                 },
                 data: [
-                    { value: s.Падгатовка.result, name: `${t("1")}` },
-                    { value: s["В граница узб"]['result'] ? s["В граница узб"]['result'] : 0, name: `${t("2")}` },
-                    { value: s["В гроница в Китай"]['result'] ? s["В гроница в Китай"]['result'] : 0, name: `${t("3")}` },
-                    { value: s["В процесс разтаможка"]['result'] ? s["В пути в Китай"]['result'] : 0, name: `${t("4")}` },
-                    { value: s["В пути в транзитном зоне"]['result'] ? s["В пути в транзитном зоне"]['result'] : 0, name: `${t("5")}` },
-                    { value: s.Гатова.result, name: `${t("6")}` },
-                    { value: s.Загрузка.result, name: `${t("7")}` },
-                    { value: s.Отправка.result, name: `${t("8")}` },
+                    { value: 1, name: `${t("1")}` },
+                    { value: 2, name: `${t("2")}` },
+                    { value: 3, name: `${t("3")}` },
+                    { value: 4, name: `${t("4")}` },
+                    { value: 5, name: `${t("5")}` },
+                    { value: 6, name: `${t("6")}` },
+                    { value: 7, name: `${t("7")}` },
+                    { value: 8, name: `${t("8")}` },
                 ]
             }
         ]
