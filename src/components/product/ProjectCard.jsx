@@ -8,7 +8,6 @@ import axios from "axios";
 import { url, config } from "../api";
 import LoadingBtn from "../loading/Loading";
 import { toast } from "react-toastify";
-
 function ProjectCard({
   setProduct,
   i,
@@ -69,7 +68,6 @@ function ProjectCard({
         .catch(() => setIsLoading(false))
     }
   }
-
   const editPorjectStatus = () => {
     let status = document.getElementById('productStatusEdit').value,
       id = projectList.id
@@ -84,9 +82,6 @@ function ProjectCard({
         toast.warning(t('projectStatusEdErr'))
       })
   }
-
-
-
   return (
     <>
       {projects ? <tr
@@ -159,7 +154,6 @@ function ProjectCard({
         </td>
         <td className="px-6 py-4">{projects ? projects.transport : ''}</td>
         <td className="px-6 py-4">{projects ? projects.date.slice(0, projects.date.indexOf(" ")) : ''}</td>
-
         <td className="px-6 py-4">
           <a
             onClick={() => {
@@ -197,9 +191,6 @@ function ProjectCard({
           </Link>
         </td>
       </tr> : ""}
-
-     
-
       {historyList && (
         <ProjectModal
           isOpen={isModalOpen}
@@ -210,5 +201,4 @@ function ProjectCard({
     </>
   );
 }
-
 export default ProjectCard;

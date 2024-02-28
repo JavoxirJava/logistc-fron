@@ -1,10 +1,6 @@
 import { useTranslation } from "react-i18next";
-
-
 const ProjectModal = ({ isOpen, onClose, projectList }) => {
-
     const { t } = useTranslation();
-
     if (!isOpen) return null;
     const allAddressList = projectList.allAddress;
     return (
@@ -44,5 +40,4 @@ const ProjectModal = ({ isOpen, onClose, projectList }) => {
         </div>
     );
 };
-
 export default ProjectModal;

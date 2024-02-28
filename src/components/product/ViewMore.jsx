@@ -6,23 +6,17 @@ import ReactPaginate from "react-paginate";
 import img from "../empty.png";
 import { useTranslation } from "react-i18next";
 import ProductModal from "./HistoryModal";
-
 const ViewMore = ({ lang }) => {
   const [projectIdInfo, setProjectIdInfo] = useState(null);
   const [page, setPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
-
   const [historyList, setHistoryList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const closeModal = () => setIsModalOpen(false);
   const openModal = () => setIsModalOpen(true);
-
   let projectId = sessionStorage.getItem("projectIdViewMore");
   let projectName = sessionStorage.getItem("projectNameViewMore");
-
   const { t } = useTranslation();
-
   useEffect(() => {
     getProjectInfo();
   }, [projectId]);
@@ -30,7 +24,6 @@ const ViewMore = ({ lang }) => {
   useEffect(() => {
     getProjectInfo();
   }, [lang]);
-
   const getProjectInfo = () => {
     axios
       .get(
