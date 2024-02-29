@@ -236,6 +236,7 @@ const translateEn = {
   projectStatusEditd: "Change project status",
   listWarning : "Please add at least one product",
   allProducts: "All products",
+  cashierNotFoundd: "Checkout information is available",
   
 }
 

@@ -232,7 +232,8 @@ const translateRu = {
   projectStatusEdit: "Изменить статус проекта",
   numberOfSeats: "Cколько",
   allProducts: "Все продукты",
-  listWarning : "Пожалуйста, добавьте хотя бы один товар"
+  listWarning : "Пожалуйста, добавьте хотя бы один товар",
+  cashierNotFoundd : "Информация о кассе доступна"
 };
 
 export default translateRu;

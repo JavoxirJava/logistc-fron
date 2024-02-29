@@ -54,7 +54,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
     // get project
     const getProject = () => {
         axios
-            .get(`${url}project/list?lang=${lang}`, config)
+            .get(`${url}project/all?lang=${lang}`, config)
             .then((res) => setProjectId(res.data.body))
             .catch(() => console.log("error"));
     };
@@ -99,7 +99,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.warning(res.data.message)
+                        toast.warning(t('cashierNotFoundd'))
                         setCasseir(null)
                     }
                 })
@@ -110,7 +110,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.warning(res.data.message)
+                        toast.warning(t('cashierNotFoundd'))
                         setCasseir(null)
                     }
                 })
@@ -121,7 +121,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.warning(res.data.message)
+                        toast.warning(t('cashierNotFoundd'))
                         setCasseir(null)
                     }
                 })
@@ -132,7 +132,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
                     else if (res.data.success === false) {
-                        toast.warning(res.data.message)
+                        toast.warning(t('cashierNotFoundd'))
                         setCasseir(null)
                     }
                 })
@@ -149,7 +149,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                     setCasseir(res.data.body)
                 } else if (res.data.success === false) {
                     setCasseir(null)
-                    toast.warning(res.data.message)
+                    toast.warning(t('cashierNotFoundd'))
                 }
             }).catch(() => {})
     }
