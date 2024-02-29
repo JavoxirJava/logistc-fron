@@ -36,7 +36,8 @@ function Product({ lang, projectId, setProjectId }) {
   const [userId, setUserId] = useState(null);
   const [drops, setDrops] = useState(false);
   const [dropsP, setDropsP] = useState(false);
-  const [isModalDown, setIsModalDown] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [isModalDown, setIsModalDown] = useState(false);
 
   const closeDown = () => setIsModalDown(false);
   const openDown = () => setIsModalDown(true);
@@ -173,6 +174,7 @@ function Product({ lang, projectId, setProjectId }) {
   }
 
   function addProject() {
+    setLoading(true)
     let data = { ...product2 };
     axios
       .post(`${url}project`, data, config)
@@ -180,10 +182,13 @@ function Product({ lang, projectId, setProjectId }) {
         toast.success(t("success"));
         setProductObj2(null);
         getProject(pagination2, 4);
+        setLoading(false)
+        openProjectCan()
       })
       .catch((err) => {
         toast.error(t("error"));
         console.log(err);
+        setLoading(false)
       });
   }
 
@@ -214,6 +219,7 @@ function Product({ lang, projectId, setProjectId }) {
         toast.success(t("success"));
         setProductObj2(null);
         getProject(pagination, 4);
+        openEditProjectCan()
       })
       .catch((err) => {
         toast.error(t("error"));
@@ -427,6 +433,7 @@ function Product({ lang, projectId, setProjectId }) {
 
         {/* project */}
         <OffcanvasProject
+        loading={loading}
           isAdd={true}
           getProduct={getProject}
           setProduct={setProductObj2}
@@ -440,7 +447,8 @@ function Product({ lang, projectId, setProjectId }) {
           lang={lang}
         />
         <OffcanvasProject
-          isAdd={false}
+        loading={loading}
+        isAdd={false}
           getProduct={getProject}
           setProduct={setProductObj2}
           product={product}

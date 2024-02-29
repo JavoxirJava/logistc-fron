@@ -39,6 +39,8 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   const [className, setClassName] = useState(false);
   const [loadingP, setLoadingP] = useState(false);
   const [drops, setDrops] = useState(false);
+  const [loading, setLoading] = useState(false);
+
 
   const inputDrop = () => setDrops(false);
   const selectDrop = () => setDrops(true);
@@ -202,16 +204,20 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   }
 
   function addWerhouse() {
+    setLoading(true)
     let data = { ...product2 };
     axios
       .post(`${url}wareHouse`, data, config)
       .then(() => {
+        setLoading(false);
         toast.success(t("success"));
         setProductObj2(null);
         getWerhouse(pagination2, 4);
+        openProjectCan()
       })
       .catch((err) => {
         toast.error(t("error"));
+        setLoading(false)
       });
   }
 
@@ -230,24 +236,29 @@ function Product({ lang, werHouseId, setWerHouseId }) {
       });
   }
   function editProject() {
+    setLoading(true)
     let data = { ...product2 };
     axios
       .put(`${url}wareHouse/${product}`, data, config)
       .then(() => {
         toast.success(t("success"));
+        setLoading(false)
         setProductObj2(null);
         getWerhouse(pagination2, 4);
+        openEditProjectCan()
       })
       .catch((err) => {
         toast.error(t("error"));
-        console.log(err);
+        setLoading(false)
       });
   }
 
   function deleteWerhouse() {
+    setLoading(true)
     axios
       .delete(`${url}wareHouse?id=${product}`, config)
       .then(() => {
+        setLoading(false)
         toast.success(t("success"));
         setProductObj2(null);
         getWerhouse(pagination2, 4);
@@ -255,6 +266,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
       .catch((err) => {
         toast.error(t("error"));
         console.log(err);
+        setLoading(false)
       });
   }
 
@@ -476,6 +488,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         {/* project */}
         <OffcanvasProject
           isAdd={true}
+          loading={loading}
           getProduct={getWerhouse}
           setProduct={setProductObj2}
           product=""
@@ -490,6 +503,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         />
         <OffcanvasProject
           isAdd={false}
+          loading={loading}
           getProduct={getWerhouse}
           setProduct={setProductObj2}
           product={product}

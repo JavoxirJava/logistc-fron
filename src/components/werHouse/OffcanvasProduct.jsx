@@ -3,8 +3,10 @@ import Offcanvas from "../Offcanvas";
 import {byId, byIdObj, config, getUsers, url} from "../api";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
+import LoadingBtn from "../loading/Loading";
 
 function OffcanvasProduct({
+                                loading,
                               isOffcanvasOpen, handleToggleOffcanvas, name, lang, onSave, product,
                               werHouseId, setProduct, getProduct, isAdd, setUserId
                           }) {
@@ -311,16 +313,19 @@ function OffcanvasProduct({
                         {t("close")}
                     </button>
                     <button
+                        disabled={loading}
                         onClick={async () => {
                             await setData();
                             await onSave();
                             await getProduct(0, 4);
-                            handleToggleOffcanvas();
+                            // handleToggleOffcanvas();
                             inputDelete2()
                             topFunction()
                         }}
-                        className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-blue-700 text-sm font-medium text-white"
-                    >{name}</button>
+                        className={`${loading ? "bg-gray-700 cursor-not-allowed opacity-70" : "bg-blue-700"} inline-flex justify-center w-[45%] rounded-md shadow-sm py-2  text-sm font-medium text-white`}
+                    >
+                        {loading ? <LoadingBtn/> : name}
+                    </button>
                 </div>
             </div>
         </Offcanvas>
