@@ -5,11 +5,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { logo } from "../../../assets";
+import LoadingBtn from "../../loading/Loading";
 
-function UserNavBar({ dashboard, product, client, history, changeLang }) {
+function UserNavBar({ dashboard, product, client, history, changeLang, lang }) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [ismodalClose, setIsModalClose] = useState(true);
   const [me, setMe] = useState(null);
   const [meId, setMeId] = useState("");
@@ -31,27 +33,30 @@ function UserNavBar({ dashboard, product, client, history, changeLang }) {
 
 
 
-  const editUser = () => {
-    axios
-      .put(
-        url + "user/client",
-        {
-          id: meId.id,
-          name: byId("name"),
-          idNumber: byId("idNumber"),
-          phoneNumber: byId("phoneNumber"),
-          password: byId("password"),
-        },
-        config
-      )
-      .then(() => {
+  const editUser = async () => {
+    setLoading(true)
+    let editdata = {
+      name: byId("name"),
+      phoneNumber: byId("phoneNumber"),
+      password: byId("password"),
+    }
+    await axios.put(`${url}user/client?name=${editdata.name}&phoneNumber=${editdata.phoneNumber}&password=${editdata.password}`,
+      '', config).then(() => {
         toast.success(t("success"));
-        openModal();
-        logout();
-      })
-      .catch(() => {
+        setLoading(false)
+      }).catch(() => {
         toast.error(t("error"));
+        setLoading(false)
       });
+    await axios.post(`${url}user/login?phoneNumber=${byId("phoneNumber")}&password=${byId("password")}`)
+      .then(res => {
+        sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
+        sessionStorage.setItem("role", res.data.message)
+        openModal();
+        getMe(setMe, lang);
+      }).catch(err => {
+        console.log('error', err);
+      })
   };
 
   useEffect(() => {
@@ -250,7 +255,7 @@ function UserNavBar({ dashboard, product, client, history, changeLang }) {
                 <div className="">
                   <div className="bg-slate-200 py-8  flex flex-col justify-center items-center relative">
                     <i
-                      class="fa-solid fa-xmark absolute top-5 right-5 text-2xl"
+                      class="fa-solid fa-xmark cursor-pointer absolute top-5 right-5 text-2xl"
                       onClick={() => {
                         openModal();
                       }}
@@ -271,15 +276,7 @@ function UserNavBar({ dashboard, product, client, history, changeLang }) {
                         className="w-full border-2 text-gray-800 border-gray-200 p-2 rounded-xl outline-none focus:border-blue-400 duration-500"
                       />
                     </div>
-                    <div className=" font-bold text-black text-[1.1rem]">
-                      <p className="opacity-50 pb-0 mb-0 mt-2">{t("addclient5")}</p>
-                      <input
-                        type="text"
-                        defaultValue={me.idNumber}
-                        id="idNumber"
-                        className="w-full border-2 text-gray-800 border-gray-200 p-2 rounded-xl outline-none focus:border-blue-400 duration-500"
-                      />
-                    </div>
+                    
                     <div className=" font-bold text-black text-[1.1rem]">
                       <p className="opacity-50 pb-0 mb-0 mt-2">{t("addclient7")}</p>
                       <input
@@ -316,14 +313,7 @@ function UserNavBar({ dashboard, product, client, history, changeLang }) {
                       </div>
                     </div>
                     <div className="flex justify-between items-center mt-3 font-bold text-white">
-                      <button
-                        className="bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg"
-                        onClick={() => {
-                          editUser();
-                        }}
-                      >
-                        {t("edit")}
-                      </button>
+                     
                       <button
                         className="bg-red-600 px-5 py-1.5 rounded-lg shadow-lg"
                         onClick={() => {
@@ -331,6 +321,14 @@ function UserNavBar({ dashboard, product, client, history, changeLang }) {
                         }}
                       >
                         {t("logout")}
+                      </button>
+                      <button
+                        className="bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg"
+                        onClick={() => {
+                          editUser();
+                        }}
+                      >
+                        {loading ? <LoadingBtn/> : t("edit")}
                       </button>
                     </div>
                   </div>
