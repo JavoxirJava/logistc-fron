@@ -60,7 +60,8 @@ function Dashboard({ changeLanguage, lang }) {
             <div className="h-[400px] rounded all-shadow w-full">
               {productStatistics2 && (
                 <LineChart productStatistics2={productStatistics2} />
-              )}
+
+)}
             </div>
           </div>
         </div>

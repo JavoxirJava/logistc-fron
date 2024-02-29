@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import EChartsReact from 'echarts-for-react';
 import { useTranslation } from "react-i18next";
 import "../../index.css"
 
 function Circle({ s }) {
+    const [circleData, setCircleData] = useState(s['data-1'])
 
     const { t } = useTranslation()
     const option = {
@@ -36,16 +37,9 @@ function Circle({ s }) {
                 labelLine: {
                     show: false
                 },
-                data: [
-                    { value: s.Падгатовка.result, name: `${t("1")}` },
-                    { value: s["В граница узб"]['result'] ? s["В граница узб"]['result'] : 0, name: `${t("2")}` },
-                    { value: s["В гроница в Китай"]['result'] ? s["В гроница в Китай"]['result'] : 0, name: `${t("3")}` },
-                    { value: s["В процесс разтаможка"]['result'] ? s["В пути в Китай"]['result'] : 0, name: `${t("4")}` },
-                    { value: s["В пути в транзитном зоне"]['result'] ? s["В пути в транзитном зоне"]['result'] : 0, name: `${t("5")}` },
-                    { value: s.Гатова.result, name: `${t("6")}` },
-                    { value: s.Загрузка.result, name: `${t("7")}` },
-                    { value: s.Отправка.result, name: `${t("8")}` },
-                ]
+                data: circleData.map(item => {
+                    return {value: item.names.length, name: item.status}
+                })
             }
         ]
     }
