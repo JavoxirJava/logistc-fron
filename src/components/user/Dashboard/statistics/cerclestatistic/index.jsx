@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import "../../index.css";
 
 function Circle({ s }) {
-  const [circleData, setCircleData] = useState(s["data-1"]);
   const { t } = useTranslation();
 
   const option = {
@@ -36,8 +35,8 @@ function Circle({ s }) {
         labelLine: {
           show: false,
         },
-        data: circleData
-          ? circleData.map((item) => {
+        data: s
+          ? s.map((item) => {
               return { value: item.names.length, name: item.status };
             })
           : [

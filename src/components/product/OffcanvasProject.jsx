@@ -37,10 +37,11 @@ function OffcanvasProject({
                 });
             }).catch(() => console.log("img ketmadi"))
         else setProduct({
+
             name: byId(`name${isAdd}`),
             transport: byId(`transport${isAdd}`),
             status: byId(`productStatus${isAdd}`),
-            fileId: null,
+            fileId: 0,
             projectId: byId(`project${isAdd}`),
             comment: byId(`comment${isAdd}`)
         });

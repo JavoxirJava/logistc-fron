@@ -118,7 +118,6 @@ const ViewMoreW = ({lang}) => {
                 setProductObj2(null);
             }).catch((err) => {
             toast.error(t("error"));
-            console.log(err);
         });
     }
 
@@ -286,6 +285,7 @@ const ViewMoreW = ({lang}) => {
                                             onChange={(e) =>
                                                 addProductIds(e.target.checked, item)
                                             }
+                                            defaultChecked={false}
                                             type="checkbox"
                                             className="w-5 h-5"
                                         />
@@ -378,7 +378,7 @@ const ViewMoreW = ({lang}) => {
                             <button type="button" onClick={() => {
                                 closePro()
                                 tozalovchi()
-                            }} className="btm-close">
+                            }} className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
                                 {t("close")}
                             </button>
                             <button
@@ -386,7 +386,7 @@ const ViewMoreW = ({lang}) => {
                                     closePro();
                                     showProjectInfoModal();
                                 }}
-                                className="btmn"
+                                className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                             >
                                 {t("addd")}
                             </button>
