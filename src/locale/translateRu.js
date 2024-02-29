@@ -233,7 +233,8 @@ const translateRu = {
   numberOfSeats: "Cколько",
   allProducts: "Все продукты",
   listWarning : "Пожалуйста, добавьте хотя бы один товар",
-  cashierNotFoundd : "Информация о кассе доступна"
+  cashierNotFoundd : "Информация о кассе доступна",
+  projectCount : "Количество проектов",
 };
 
 export default translateRu;
