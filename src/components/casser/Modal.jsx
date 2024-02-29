@@ -118,6 +118,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                         setProjectIdVal(e.target.value)
                                         projectNameFunc(e.target.value)
                                     }}
+                                    disabled={!projectId}
                                     className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                     <option selected disabled>{t("select")}</option>
                                     {projectId && projectId.map((item) => (

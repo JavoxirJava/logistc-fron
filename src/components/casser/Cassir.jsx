@@ -54,7 +54,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
     // get project
     const getProject = () => {
         axios
-            .get(`${url}project/all?lang=${lang}`, config)
+            .get(`${url}project/list?lang=${lang}`, config)
             .then((res) => setProjectId(res.data.body))
             .catch(() => console.log("error"));
     };
