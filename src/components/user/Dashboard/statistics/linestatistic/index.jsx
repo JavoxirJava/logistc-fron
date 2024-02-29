@@ -1,10 +1,10 @@
 import React from 'react';
-import "../../index.css"
 import { useTranslation } from "react-i18next";
 import EChartsReact from 'echarts-for-react';
+import "../../index.css"
 
 function LineChart({ productStatistics2 }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const option = {
     tooltip: {
@@ -24,12 +24,18 @@ function LineChart({ productStatistics2 }) {
     series: []
   };
 
+  let previousMonth = '';
+
   productStatistics2.forEach(item => {
-    option.xAxis.data.push(`${item.month} ${item.year}`);
+    const monthYear = `${item.month} ${item.year}`;
+    if (monthYear !== previousMonth) {
+      option.xAxis.data.push(monthYear);
+      previousMonth = monthYear;
+    }
     option.series.push({
-      name: item.names.join(', '), // Join series names into a comma-separated list
+      name: item.names.join(', '),
       type: 'bar',
-      data: [[`${item.month} ${item.year}`, item.names.length, item.status]]
+      data: [[monthYear, item.names.length, item.status]] // Assuming status array length represents count
     });
   });
 

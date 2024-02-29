@@ -21,7 +21,6 @@ import Managers from "./components/managers/Clients";
 import ViewMore from "./components/product/ViewMore";
 import Cassir from "./components/casser/Cassir";
 import ViewMoreW from "./components/werHouse/ViewMore";
-import CassirDashboard from './components/cashierPanel/Cassir'
 
 
 i18n.use(initReactI18next).init({
@@ -81,7 +80,6 @@ function App() {
                         />
                     }
                 />
-                {/* <Route path="/cashier-dashboard" element={<CassirDashboard lang={lang}/>}/> */}
                 <Route
                     path="/project"
                     element={
