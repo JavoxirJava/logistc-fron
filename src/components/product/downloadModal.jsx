@@ -17,8 +17,8 @@ const DownloadModal = ({ isOpen, projects, closeDown }) => {
 
   useEffect(() => {
     setOptions(projects ? projects.map(p => {
-      return { value: p ? p.id : 0, label: p ? p.name :"" }
-    }) : { value: 1, label: 'Project not found' })
+      return { value: p ? p.id : 0, label: p ? p.name : "" }
+    }) : { value: 1, label: t('notfound') })
   }, [projects])
 
   useEffect(() => {
