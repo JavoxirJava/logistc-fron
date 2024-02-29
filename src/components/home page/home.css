@@ -3,6 +3,7 @@
 * {
   scroll-behavior: smooth;
 }
+
 .shipping {
   width: 300px;
   height: 300px;
@@ -15,80 +16,86 @@
   right: 16%;
 }
 
-@media (max-width: 2000px) {
+@media (max-width: 2110px) {
   .languageSelect {
-    right: 15%;
+    right: 12%;
   }
 }
 
-@media (max-width: 1900px) {
+@media (max-width: 1890px) {
   .languageSelect {
-    right: 6%;
+    right: 8%;
   }
 }
 
-@media (max-width: 1750px) {
+@media (max-width: 1700px) {
   .languageSelect {
     right: 5%;
   }
 }
 
-@media (max-width: 1670px) {
+@media (max-width: 1590px) {
   .languageSelect {
-    right: 2%;
+    right: 1%;
   }
 }
 
-@media (max-width: 1560px) {
+@media (max-width: 1487px) {
   .languageSelect {
-    right: 2%;
+    right: 0;
   }
 }
 
-@media (max-width: 1465px) {
+@media (max-width: 1426px) {
   .languageSelect {
-    right: 22%;
+    right: 18%;
   }
 }
 
-@media (max-width: 915px) {
+@media (max-width: 1270px) {
   .languageSelect {
-    right: 24%;
+    right: 15%;
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
   .languageSelect {
-    right: 27%;
+    left: 8%;
+    right: 80%;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 800px) {
   .languageSelect {
-    right: 30%;
+    left: 9%;
+    right: 76%;
   }
 }
 
-@media (max-width: 610px) {
+@media (max-width: 680px) {
   .languageSelect {
-    right: 35%;
+    left: 11%;
+    right: 69%;
   }
 }
 
-@media (max-width: 490px) {
+@media (max-width: 508px) {
   .languageSelect {
-    right: 35%;
+    left: 12%;
+    right: 64%;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
   .languageSelect {
-    right: 45%;
+    left: 13%;
+    right: 60%;
   }
 }
 
-@media (max-width: 355px) {
+@media (max-width: 370px) {
   .languageSelect {
+    left: 14%;
     right: 55%;
   }
 }

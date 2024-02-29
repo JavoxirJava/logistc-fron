@@ -115,9 +115,10 @@ const DashboardProductCard = ({ lang }) => {
               <th scope="col" class="px-6 py-3">{t("totalWeight")}</th>
               <th scope="col" class="px-6 py-3">{t("date")}</th>
               <th scope="col" class="px-6 py-3">{t("comment")}</th>
-              <th scope="col" class="px-6 py-3">{t("productAdd7x")}</th>
+              <th scope="col" class="px-6 py-3">{t("statuss")}</th>
+              {/* <th scope="col" class="px-6 py-3">{t("productAdd7x")}</th>
               <th scope="col" class="px-6 py-3">{t("productAdd7y")}</th>
-              <th scope="col" class="px-6 py-3">{t("productAdd7z")}</th>
+              <th scope="col" class="px-6 py-3">{t("productAdd7z")}</th> */}
             </tr>
           </thead>
           <tbody>
@@ -140,9 +141,9 @@ const DashboardProductCard = ({ lang }) => {
                     {item ? item.date.slice(0, item.date.indexOf(" ")) : ""}
                   </td>
                   <td className="px-6 py-4">{item ? item.comment : ""}</td>
-                  <td className="px-6 py-4">{item.x}</td>
-                  <td className="px-6 py-4">{item.y}</td>
-                  <td className="px-6 py-4">{item.z}</td>
+                  <td className="px-6 py-4">{item.status}</td>
+                  {/* <td className="px-6 py-4">{item.y}</td>
+                  <td className="px-6 py-4">{item.z}</td> */}
                 </tr>
               ))) : (
               <tr className="bg-white border-b">
