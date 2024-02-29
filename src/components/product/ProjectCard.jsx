@@ -68,20 +68,22 @@ function ProjectCard({
         .catch(() => setIsLoading(false))
     }
   }
-  const editPorjectStatus = () => {
-    let status = document.getElementById('productStatusEdit').value,
-      id = projectList.id
-    axios.put(`${url}project/status?status=${status}&projectId=${id}`, '', config)
-      .then(() => {
-        setIsModalOpenStatus(false)
-        toast.success(t('projectStatusEd'))
-        getProduct(pagination, 4)
-        document.getElementById('productStatusEdit').value = 0
-      }).catch(() => {
-        document.getElementById('productStatusEdit').value = 0
-        toast.warning(t('projectStatusEdErr'))
-      })
+  const editPorjectStatus = (status) => {
+    let id = projectList.id
+    if (!!(status && id)) {
+      axios.put(`${url}project/status?status=${status}&projectId=${id}`, '', config)
+        .then(() => {
+          setIsModalOpenStatus(false)
+          toast.success(t('projectStatusEd'))
+          getProduct(pagination, 4)
+          // document.getElementById('productStatusEdit').value = 0
+        }).catch(() => {
+          // document.getElementById('productStatusEdit').value = 0
+          toast.warning(t('projectStatusEdErr'))
+        })
+    } else toast.warning(t('projectStatusUpdate'))
   }
+
   return (
     <>
       {projects ? <tr
@@ -97,16 +99,18 @@ function ProjectCard({
         <td className="px-6 py-4">{projects ? projects.name : ''}</td>
         <td
           className="px-6 py-4 hover:cursor-pointer hover:underline hover:text-blue-500"
-          onClick={() => {
-            // openSelectHandler()
-            setProjectList(projects)
-          }}>
+        >
           <select
-            onChange={editPorjectStatus}
+            onClick={() => {
+              setProjectList(projects)
+            }}
+            onChange={(e) => {
+              editPorjectStatus(e.target.value)
+            }}
             id={`productStatusEdit`}
             className="text-black w-40 p-1 cursor-pointer border rounded-md focus:outline-0"
           >
-            <option selected disabled value='0'>
+            <option selected disabled>
               {projects.status}
             </option>
             <option value="1">

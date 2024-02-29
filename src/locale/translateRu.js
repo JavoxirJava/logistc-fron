@@ -232,9 +232,10 @@ const translateRu = {
   projectStatusEdit: "Изменить статус проекта",
   numberOfSeats: "Cколько",
   allProducts: "Все продукты",
-  listWarning : "Пожалуйста, добавьте хотя бы один товар",
-  cashierNotFoundd : "Информация о кассе доступна",
-  projectCount : "Количество проектов",
+  listWarning: "Пожалуйста, добавьте хотя бы один товар",
+  cashierNotFoundd: "Информация о кассе доступна",
+  projectCount: "Количество проектов",
+  projectStatusUpdate: "Произошла ошибка при попытке изменить статус.",
 };
 
 export default translateRu;

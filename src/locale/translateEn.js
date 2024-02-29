@@ -238,6 +238,7 @@ const translateEn = {
   allProducts: "All products",
   cashierNotFoundd: "Checkout information is available",
   projectCount: "Project Count",
+  projectStatusUpdate: "An error occurred while trying to edit the status",
   
 }
 
