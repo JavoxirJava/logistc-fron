@@ -47,7 +47,7 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                             htmlFor={`start`}
                             className="block text-gray-700 text-sm font-bold my-2"
                         >
-                            {t("start")} <span className="text-red-400"><sup>*required</sup></span>
+                            {t("start")} <span className="text-red-400"><sup>*{t('required')}</sup></span>
                         </label>
                         <input
                             id={`start`}
@@ -62,7 +62,7 @@ const DownloadModal = ({ isOpen, closeDown }) => {
                             htmlFor={`end`}
                             className="block text-gray-700 text-sm font-bold my-2"
                         >
-                            {t("end")} <span className="text-red-400"><sup>*required</sup></span>
+                            {t("end")} <span className="text-red-400"><sup>*{t('required')}</sup></span>
                         </label>
                         <input
                             id={`end`}

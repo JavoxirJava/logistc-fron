@@ -101,6 +101,10 @@ const translateEn = {
   productAdd8: 'Product status',
   productAdd9: 'Select warehouse',
   productSearch: '🔍 Search...',
+  productSearchIdnumber: '🔍 ID Number...',
+  projectNameSearch: '🔍 Project name...',
+  productNameSearch: '🔍 Product name...',
+  wereHouseNameSearch: '🔍 Warehouse name...',
   close: "Close",
   add: "Add Project",
   save: "Save",
@@ -120,6 +124,7 @@ const translateEn = {
   customPrice: "Custom price",
   costChines:'China cost',
   select: "Select project",
+  selectProject: "Select project search",
   success: "Successfully completed!",
   error: "Something is error.",
   notFoundFile: "File not found",
@@ -239,6 +244,7 @@ const translateEn = {
   cashierNotFoundd: "Checkout information is available",
   projectCount: "Project Count",
   projectStatusUpdate: "An error occurred while trying to edit the status",
+  required: "required",
   
 }
 

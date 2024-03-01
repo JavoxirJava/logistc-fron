@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 
-const ProjectModal = ({ isOpen, deleteWerhouse,  onClose }) => {
+const ProjectModal = ({ isOpen, deleteWerhouse,  onClose, getWerhouse }) => {
 
     const { t } = useTranslation();
 
@@ -30,6 +30,7 @@ const ProjectModal = ({ isOpen, deleteWerhouse,  onClose }) => {
                 onClick={() => {
                   deleteWerhouse()
                   onClose()
+                  getWerhouse()
                 }}
                 className="btmn ">
                 {t("delete")}

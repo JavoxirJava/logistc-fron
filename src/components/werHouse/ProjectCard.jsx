@@ -103,7 +103,7 @@ function ProjectCard({
         </td>
       </tr>
       <DownloadModal wereHouseId={wereHouseId} isOpen={isModalDown} closeDown={closeDown} />
-      <ProjectModal isOpen={isModalOpen} deleteWerhouse={deleteWerhouse} onClose={closeModal} />
+      <ProjectModal isOpen={isModalOpen} getWerhouse={getWerhouse} deleteWerhouse={deleteWerhouse} onClose={closeModal} />
     </>
   );
 }

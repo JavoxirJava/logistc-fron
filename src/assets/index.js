@@ -7,6 +7,7 @@ import bir from "./icon.png"
 import ikki from "./ikki.png"
 import footerga from "./home/foterga.png"
 import load from "./home/load.svg"
+import admin from "./admin.png"
 
 export {
     kamaz,
@@ -17,5 +18,6 @@ export {
     footerga,
     load,
     bir,
-    ikki
+    ikki,
+    admin
 }

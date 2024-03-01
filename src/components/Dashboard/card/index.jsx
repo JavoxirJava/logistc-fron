@@ -97,7 +97,7 @@ const DashboardProductCard = ({ lang }) => {
         <div className="flex justify-between items-center w-full md:px-3 ">
           <input
             type="search"
-            placeholder="🔍..."
+            placeholder={t('productNameSearch')}
             onChange={searchProduct}
             className="lg:w-4/12 px-3 h-10 focus:outline-0 border sm:mt-0 mt-2"
           />

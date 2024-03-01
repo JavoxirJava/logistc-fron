@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { byId, config, getMe, url } from "../api";
-import { logo } from "../../assets";
+import { admin, logo } from "../../assets";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
@@ -255,7 +255,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="h-8 w-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src={admin}
                       alt="img"
                     />
                   </button>
@@ -269,7 +269,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                   <div className="bg-slate-200 sm:p-8 p-3 flex justify-center items-center relative">
                     <img
                       className="rounded-full w-24 h-24"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src={admin}
                       alt="img"
                     />
                     <i
@@ -350,7 +350,7 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                     ></i>
                     <img
                       className="rounded-full w-24 h-24"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src={admin}
                       alt="img"
                     />
                   </div>
