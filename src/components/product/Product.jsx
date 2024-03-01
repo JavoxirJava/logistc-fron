@@ -112,14 +112,7 @@ function Product({ lang, projectId, setProjectId }) {
   //         }).catch((error) => console.error("Xatolik yuz berdi:", error));
   // };
 
-  // function setObj() {
-  //   return {
-  //     id: product ? product.productId : 0,
-  //     latitude: coordinates[0],
-  //     longitude: coordinates[1],
-  //     address: sessionStorage.getItem("address"),
-  //   };
-  // }
+  
 
   const getProject = (page, size) => {
     axios

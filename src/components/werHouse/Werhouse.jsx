@@ -206,6 +206,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   function addWerhouse() {
     setLoading(true)
     let data = { ...product2 };
+    if(data.name !== undefined){
     axios
       .post(`${url}wareHouse`, data, config)
       .then(() => {
@@ -219,7 +220,15 @@ function Product({ lang, werHouseId, setWerHouseId }) {
         toast.error(t("error"));
         setLoading(false)
       });
+    }else{
+      
+      toast.error(t("Warehouse name is not empty"));
+      setLoading(false);
+      
+      
+    }
   }
+  
 
   function editProduct() {
     let data = { ...product2 };
@@ -391,6 +400,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               </button>
               <h1>
                 <b>{t("werhouse")}</b>
+               
               </h1>
 
               {/* <span className="me-5 pt-1.5 float-end">
