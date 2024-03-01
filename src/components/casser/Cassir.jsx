@@ -12,6 +12,7 @@ import CashierNavBar from "../user/navbar/NavBarCashier";
 const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
     const [cassier, setCasseir] = useState(null);
     const [projectId, setProjectId] = useState(null);
+    const [projectIdIn, setProjectIdIn] = useState(null);
     const [nextModal, setNextModal] = useState(false);
     const [userId, setUserId] = useState(null);
     const [productId, setProductId] = useState(null);
@@ -70,7 +71,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
     // get product id
     const getProduct = (id) => {
         axios
-            .get(`${url}product/list?userId=${id}&lang=${lang}`, config)
+            .get(`${url}product/list?userId=${id}&projectId=${projectIdIn}&lang=${lang}`, config)
             .then((res) => setProductId(res.data.body))
             .catch(() => console.log("error user id"));
     };
@@ -170,6 +171,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                         <div className="flex justify-start items-center">
                             <Modal
                                 projectId={projectId}
+                                setProjectIdIn={setProjectIdIn}
                                 userId={userId}
                                 productId={productId}
                                 getCassier={getCassier}
