@@ -156,6 +156,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                                 </select>
                                 <select
                                     id="measure"
+                                    disabled={!productId}
                                     onChange={e => setMeassureVal(e.target.value)}
                                     className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                     <option selected disabled>{t("kubkg")}</option>
