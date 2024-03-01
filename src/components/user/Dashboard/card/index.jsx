@@ -112,7 +112,7 @@ const DashboardProductCard = ({ className, lang }) => {
 
   const closeModal = () => setIsModalOpen(false);
 
-  console.log();
+  console.log(data);
   return (
     <div className="radius">
       <div className="mb-5 flex items-center">
@@ -159,9 +159,7 @@ const DashboardProductCard = ({ className, lang }) => {
               <th scope="col" class="px-6 py-3">
                 {t("photo")}
               </th>
-              <th scope="col" class="px-6 py-3">
-                {t("owner")}
-              </th>
+              
               <th scope="col" class="px-6 py-3">
                 
                 {t("productName")}
@@ -172,9 +170,7 @@ const DashboardProductCard = ({ className, lang }) => {
               <th scope="col" class="px-6 py-3">
                 {t("date")}
               </th>
-              <th scope="col" class="px-6 py-3">
-                {t("productCount")}
-              </th>
+             
               <th scope="col" class="px-6 py-3">
                 {/* Total Weight */}
                 {t("totalWeight")}
@@ -221,14 +217,12 @@ const DashboardProductCard = ({ className, lang }) => {
                         alt="img"
                       />
                     </th>
-                  <td className="px-6 py-4">{item ? item.owner : ""}</td>
-                  <td className="px-6 py-4">{item ? item.productName : ""}</td>
+                  <td className="px-6 py-4">{item ? item.name : ""}</td>
                   <td className="px-6 py-4">{item ? item.comment : ""}</td>
                   <td className="px-6 py-4">{item ? item.date : ""}</td>
-                  <td className="px-6 py-4">{item ? item.productCount : ""}</td>
-                  <td className="px-6 py-4">{item ? item.totalWeight : ""}</td>
-                  <td className="px-6 py-4">{item ? item.totalKub : ""} </td>
-                  <td className="px-6 py-4">{item.currentStatus ? item.currentStatus : t("noStatus")} </td>
+                  <td className="px-6 py-4">{item ? item.totalWeight : ""} {t("kg")}</td>
+                  <td className="px-6 py-4">{item ? item.totalKub : ""} {t("sm")}<sup>3</sup></td>
+                  <td className="px-6 py-4">{item.status ? item.status : t("noStatus")} </td>
                   {/* <td className="px-6 py-4">
                       <a href="#" className="text-yellow-500 font-bold">
                       {t("wiew")}
