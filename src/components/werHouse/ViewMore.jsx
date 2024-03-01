@@ -212,7 +212,7 @@ const ViewMoreW = ({ lang }) => {
         <input
           type="search"
           onChange={searchHandler}
-          placeholder={t("productSearch")}
+          placeholder={t("productNameSearch")}
           className="lg:w-5/12 w-[100%] md:mx-0 mx-3 px-4 h-10 focus:outline-0 border rounded-md"
         />
       </div>

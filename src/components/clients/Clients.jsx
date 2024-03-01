@@ -211,7 +211,7 @@ const Clients = ({ changeLanguage, lang }) => {
               className="py-2 px-4 w-100 bg-slate-100 rounded-lg border border-slate-300
                         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-200 shadow-md
                         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
-              placeholder={t("productSearch")}
+              placeholder={t("productSearchIdnumber")}
             />
             <div className="flex md:flex-row flex-col gap-5">
               <button

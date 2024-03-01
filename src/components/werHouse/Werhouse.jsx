@@ -376,7 +376,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
             <div className="mt-4 flex flex-wrap justify-between">
               <input
                 type="search"
-                placeholder={t("productSearch")}
+                placeholder={t("wereHouseNameSearch")}
                 onChange={searchProject}
                 className="lg:w-4/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
               />
