@@ -241,6 +241,7 @@ const translateRu = {
   cashierNotFoundd: "Информация о кассе доступна",
   projectCount: "Количество проектов",
   projectStatusUpdate: "Произошла ошибка при попытке изменить статус.",
+  required: "необходимый",
 };
 
 export default translateRu;
