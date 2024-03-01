@@ -84,13 +84,8 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
             .catch((err) => console.log("error page: ", err));
     };
 
-    const styles = {
-        loading:
-            "animate-pulse hover:cursor-wait my-3 w-full h-7 bg-sky-200 rounded",
-    };
-
     const searchHandler = () => {
-        byIdObj('projectIdFilter').value = t("select")
+        byIdObj('projectIdFilter').value = t("selectProject")
         let addData = {
             startCashier: byIdObj('startCashier').value ? byIdObj('startCashier').value : null,
             endCashier: byIdObj('endCashier').value ? byIdObj('endCashier').value : null
@@ -99,10 +94,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
             axios.get(`${url}cashier/search?lang=${lang}`, config)
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
-                    else if (res.data.success === false) {
-                        toast.warning(t('cashierNotFoundd'))
-                        setCasseir(null)
-                    }
+                    else if (res.data.success === false) setCasseir(null)
                 })
                 .catch(() => console.log('Error'))
         }
@@ -110,10 +102,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
             axios.get(`${url}cashier/search?start=${addData.startCashier}&finish=${addData.endCashier}&lang=${lang}`, config)
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
-                    else if (res.data.success === false) {
-                        toast.warning(t('cashierNotFoundd'))
-                        setCasseir(null)
-                    }
+                    else if (res.data.success === false) setCasseir(null)
                 })
                 .catch(() => console.log('Error'))
         }
@@ -121,10 +110,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
             axios.get(`${url}cashier/search?finish=${addData.endCashier}&lang=${lang}`, config)
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
-                    else if (res.data.success === false) {
-                        toast.warning(t('cashierNotFoundd'))
-                        setCasseir(null)
-                    }
+                    else if (res.data.success === false) setCasseir(null)
                 })
                 .catch(() => console.log('Error'))
         }
@@ -132,10 +118,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
             axios.get(`${url}cashier/search?start=${addData.startCashier}&lang=${lang}`, config)
                 .then(res => {
                     if (res.data.success === true) setCasseir(res.data.body)
-                    else if (res.data.success === false) {
-                        toast.warning(t('cashierNotFoundd'))
-                        setCasseir(null)
-                    }
+                    else if (res.data.success === false) setCasseir(null)
                 })
                 .catch(() => console.log('Error'))
         }
@@ -146,13 +129,9 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
         byIdObj('endCashier').value = ''
         axios.get(`${url}cashier/search?lang=${lang}&projectId=${id}`, config)
             .then(res => {
-                if (res.data.success === true) {
-                    setCasseir(res.data.body)
-                } else if (res.data.success === false) {
-                    setCasseir(null)
-                    toast.warning(t('cashierNotFoundd'))
-                }
-            }).catch(() => {})
+                if (res.data.success === true) setCasseir(res.data.body)
+                else if (res.data.success === false) setCasseir(null)
+            }).catch(() => { })
     }
 
     return (
@@ -183,12 +162,12 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                         <DownloadModal isOpen={isModalDown} closeDown={closeDown} />
                         <div className="flex justify-start flex-wrap sm:flex-nowrap xl:justify-end w-full mt-7 xl:mt-0">
                             <div className="flex flex-col w-full xl:w-48 mt-3 sm:mt-0 sm:mr-2">
-                                <label htmlFor="projectIdFilter">{t("select")}</label>
+                                <label htmlFor="projectIdFilter">{t("selectProject")}</label>
                                 <select
                                     id="projectIdFilter"
                                     onChange={e => selectFilterHandler(e.target.value)}
                                     className="px-5 py-2.5 duration-300 text-sm text-gray-900 outline-0 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
-                                    <option selected disabled>{t("select")}</option>
+                                    <option selected disabled>{t("selectProject")}</option>
                                     {projectId && projectId.map((item) => (
                                         <option value={item.projectId} key={item.projectId}>{item.name}</option>
                                     ))}

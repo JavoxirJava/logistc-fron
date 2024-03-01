@@ -120,6 +120,7 @@ const translateEn = {
   customPrice: "Custom price",
   costChines:'China cost',
   select: "Select project",
+  selectProject: "Select project search",
   success: "Successfully completed!",
   error: "Something is error.",
   notFoundFile: "File not found",
