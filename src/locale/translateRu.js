@@ -105,6 +105,7 @@ const translateRu = {
   enterPrice: "Введите цену",
   priceForRoad: "Цена за дорогу",
   select: "Выберите проект",
+  selectProject: "Выберите поиск проекта",
   addd: "Добавить",
   more: "Посмотреть больше",
   addWer: "Добавить cклад",

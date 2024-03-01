@@ -6,7 +6,7 @@ import { config, url } from '../api';
 import { useTranslation } from "react-i18next";
 import LoadingBtn from '../loading/Loading';
 
-const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }) => {
+const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, userId, productId }) => {
     const [showModal, setShowModal] = useState(false);
     const [nextModal, setNextModal] = useState(false);
     const [productKub, setProductKub] = useState(null)
@@ -50,8 +50,8 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
         }
         axios.post(`${url}cashier/one`, addData, config)
             .then(res => {
-                if(res.data.success === true) toast.success(res.data.message)
-                if(res.data.success === false) toast.warning(t("listWarning"))
+                if (res.data.success === true) toast.success(res.data.message)
+                if (res.data.success === false) toast.warning(t("listWarning"))
                 setNextModal(false);
                 getCassier();
                 setTotalPrice(0)
@@ -117,6 +117,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, userId, productId }
                                         getUser(e.target.value)
                                         setProjectIdVal(e.target.value)
                                         projectNameFunc(e.target.value)
+                                        setProjectIdIn(e.target.value)
                                     }}
                                     disabled={!projectId}
                                     className=" p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
