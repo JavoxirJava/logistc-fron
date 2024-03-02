@@ -206,29 +206,24 @@ function Product({ lang, werHouseId, setWerHouseId }) {
   function addWerhouse() {
     setLoading(true)
     let data = { ...product2 };
-    if(data.name !== undefined){
-    axios
-      .post(`${url}wareHouse`, data, config)
-      .then(() => {
-        setLoading(false);
-        toast.success(t("success"));
-        setProductObj2(null);
-        getWerhouse(pagination2, 4);
-        openProjectCan()
-      })
-      .catch((err) => {
-        toast.error(t("error"));
-        setLoading(false)
-      });
-    }else{
-      
-      toast.error(t("Warehouse name is not empty"));
+    if (data.name !== undefined) {
+      axios.post(`${url}wareHouse`, data, config)
+        .then(() => {
+          setLoading(false);
+          toast.success(t("success"));
+          setProductObj2(null);
+          getWerhouse(pagination2, 4);
+          openProjectCan()
+        }).catch((err) => {
+          toast.error(t("error"));
+          setLoading(false)
+        });
+    } else {
+      toast.error(t("requiredWareHouseCanvas"));
       setLoading(false);
-      
-      
     }
   }
-  
+
 
   function editProduct() {
     let data = { ...product2 };
@@ -400,7 +395,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               </button>
               <h1>
                 <b>{t("werhouse")}</b>
-               
+
               </h1>
 
               {/* <span className="me-5 pt-1.5 float-end">
@@ -444,7 +439,7 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                       {t("more")}
                     </th>
                     <th scope="col" class="px-6 py-3">
-                    {t("download")}
+                      {t("download")}
                     </th>
 
                   </tr>
@@ -468,17 +463,17 @@ function Product({ lang, werHouseId, setWerHouseId }) {
                       />
                     ))
                   ) : (
-                   <tr>
+                    <tr>
                       <th></th>
                       <th></th>
                       <th></th>
                       <th></th>
-                     <Empty />
+                      <Empty />
                       <th></th>
                       <th></th>
                       <th></th>
                       <th></th>
-                   </tr>
+                    </tr>
                   )}
                 </tbody>
               </table>

@@ -50,7 +50,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
         }
         axios.post(`${url}cashier/one`, addData, config)
             .then(res => {
-                if (res.data.success === true) toast.success(res.data.message)
+                if (res.data.success === true) toast.success(t('cashierSuccessfullySaved'))
                 if (res.data.success === false) toast.warning(t("listWarning"))
                 setNextModal(false);
                 getCassier();
@@ -68,6 +68,36 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                 console.log("Error adding information: ", err);
                 setIsLoading(false)
             })
+    }
+
+    const trueFalseCashierModal = () => {
+        function isObjectValid(obj) {
+            for (let key in obj) {
+                if (!obj[key]) {
+                    return false; // Agar inputlardan birortasi bulsa xam (undefined, null, false, 0, NaN, ''), false qaytariladi
+                }
+            }
+            return true; // xammasi 100% tuldirilsa true qaytaradi
+        }
+
+        let result = isObjectValid({
+            projectId: Number(projectIdVal),
+            userId: Number(userIdVal),
+            productId: Number(productIdVal),
+            measure: meassureVal,
+            priceOfKub: Number(dataVAlue),
+            totalKub: Number(kubAndKgVAlue),
+            priceForRoad: Number(priceForRoad),
+            customsClearancePrice: Number(customsClearancePrice),
+            cct: Number(cct),
+            costChina: Number(costChina),
+            totalPrice: Number(totalPrice)
+        })
+        
+        if (result === true) {
+            setNextModal(true)
+            setShowModal(false)
+        } else toast.warning(t('cashierWarningNextBtn'))
     }
 
     const idFunc = (item) => {
@@ -236,10 +266,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                                     {t('close')}
                                 </button>
                                 <button
-                                    onClick={() => {
-                                        setNextModal(true)
-                                        setShowModal(false)
-                                    }}
+                                    onClick={trueFalseCashierModal}
                                     className='py-2 px-8 bg-[#16A34A] rounded-md text-white active:scale-95 hover:shadow-lg hover:shadow-green-200 duration-300'>
                                     {t("next")}
                                 </button>

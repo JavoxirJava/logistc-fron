@@ -9,6 +9,7 @@ import OffcanvasProduct from "./OffcanvasProduct";
 import { toast } from "react-toastify";
 import ProductDModal from "./productModl";
 import AddProjectInfoModal from "./AddProjectInfoModal";
+import ImageViewModal from "../ImageViewModal";
 
 const ViewMoreW = ({ lang }) => {
   const [product2, setProductObj2] = useState(null);
@@ -25,6 +26,8 @@ const ViewMoreW = ({ lang }) => {
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isImageOpenModal, setIsImageOpenModal] = useState(false);
+  const [imageId, setImageId] = useState(null);
 
   let projectId = sessionStorage.getItem("warehouseIdViewMore");
   let projectName = sessionStorage.getItem("warehouseNameViewMore");
@@ -275,10 +278,12 @@ const ViewMoreW = ({ lang }) => {
                     <th className="px-6 py-5">{currentPage * 5 + (i + 1)}</th>
                     <th className="px-6 py-5 flex justify-center items-center">
                       <img
-                        src={
-                          item.attachmentId ? getFile + item.attachmentId : img
-                        }
-                        className="w-10 h-10 object-cover rounded-full scale-150"
+                        onClick={() => {
+                          setImageId(item.attachmentId ? item.attachmentId : toast.warning(t('imgNotFound')));
+                          item.attachmentId ? setIsImageOpenModal(true) : setIsImageOpenModal(false)
+                        }}
+                        src={item.attachmentId ? getFile + item.attachmentId : img}
+                        className="w-10 h-10 object-cover rounded-full scale-150 hover:cursor-pointer"
                         alt="img"
                       />
                     </th>
@@ -395,10 +400,15 @@ const ViewMoreW = ({ lang }) => {
         deleteProduc={deleteProduct}
       />
 
+      <ImageViewModal
+        setIsImageOpenModal={setIsImageOpenModal}
+        isImageOpenModal={isImageOpenModal}
+        imageId={imageId}
+      />
+
       <div
-        className={`fixed ${
-          ModalPro ? "block" : "hidden"
-        } inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full`}
+        className={`fixed ${ModalPro ? "block" : "hidden"
+          } inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full`}
       >
         <div className="relative top-20 mx-auto p-5 border md:w-96 w-[200px] shadow-lg rounded-md bg-white">
           <div>

@@ -242,6 +242,10 @@ const translateRu = {
   projectCount: "Количество проектов",
   projectStatusUpdate: "Произошла ошибка при попытке изменить статус.",
   required: "необходимый",
+  requiredWareHouseCanvas: "Необходимо указать название склада.",
+  cashierSuccessfullySaved: "Данные успешно сохранены",
+  cashierWarningNextBtn: "Все поля должны быть заполнены. Пожалуйста, проверьте информацию еще раз",
+  imgNotFound: "Изображение не доступно",
 };
 
 export default translateRu;
