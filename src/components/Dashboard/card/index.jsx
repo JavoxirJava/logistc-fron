@@ -10,6 +10,8 @@ import Pagination, {
 import { useTranslation } from "react-i18next";
 import { changeLanguage } from "i18next";
 import ReactPaginate from "react-paginate";
+import { toast } from "react-toastify";
+import ImageViewModal from "../../ImageViewModal";
 
 const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -46,6 +48,8 @@ const DashboardProductCard = ({ lang }) => {
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [pagination, setPagination] = useState(0);
+  const [isImageOpenModal, setIsImageOpenModal] = useState(false);
+  const [imageId, setImageId] = useState(null);
 
   useEffect(() => {
     getProduct();
@@ -133,9 +137,13 @@ const DashboardProductCard = ({ lang }) => {
                   >{(currentPage * 5) + (i + 1)}</th>
                   <td className="px-6 py-4">
                     <img
+                      onClick={() => {
+                        setImageId(item.attachmentId ? item.attachmentId : toast.warning(t('imgNotFound')));
+                        item.attachmentId ? setIsImageOpenModal(true) : setIsImageOpenModal(false)
+                      }}
                       src={item.attachmentId ? getFile + item.attachmentId : ''}
                       alt="img"
-                      className="w-10 h-10 rounded-full scale-125" />
+                      className="w-10 h-10 object-cover rounded-full scale-125 hover:cursor-pointer" />
                   </td>
                   <td className="px-6 py-4">{item ? item.name : ""}</td>
                   <td className="px-6 py-4">{item ? item.totalKub : ""} {item ? <span>{t('sm')} <sup>3</sup></span> : ''}</td>
@@ -170,6 +178,11 @@ const DashboardProductCard = ({ lang }) => {
           previousClassName="prevBtn"
         />
       </div>
+      <ImageViewModal
+        setIsImageOpenModal={setIsImageOpenModal}
+        isImageOpenModal={isImageOpenModal}
+        imageId={imageId}
+      />
     </div>
   );
 };
