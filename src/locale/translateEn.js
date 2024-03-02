@@ -248,6 +248,7 @@ const translateEn = {
   requiredWareHouseCanvas: "Warehouse name must not be empty",
   cashierSuccessfullySaved: "Data saved successfully",
   cashierWarningNextBtn: "All fields must be filled. Please check the information again",
+  imgNotFound: "Image not available",
   
 }
 
