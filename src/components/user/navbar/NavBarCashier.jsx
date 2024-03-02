@@ -183,44 +183,80 @@ function CashierNavBar({ dashboard, lang }) {
                       onClick={openGetMe}
                     ></i>
                   </div>
-                  {me && (
-                    <div className="bg-slate-200 px-8 py-6">
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">{t("addclient3")}</p>
-                        <p className="mt-0 pt-0 text-black">{me.name}</p>
-                      </div>
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">{t("addclient5")}</p>
-                        <p className="mt-0 pt-0 text-black">
-                          {me.idNumber ? me.idNumber : "none"}
-                        </p>
-                      </div>
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">
-                          {t("addclient7")}
-                        </p>
-                        <p className="mt-0 pt-0 text-black">{me.phoneNumber}</p>
-                      </div>
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">{t("addclient9")}</p>
-                        <p className="mt-0 pt-0 text-black">{me.password}</p>
-                      </div>
-                      <div className="flex justify-between items-center mt-3 font-bold text-white">
+                  <div className="bg-slate-200 sm:px-8 px-2 py-6">
+                    {me ? (
+                      <>
+                        <div className=" font-bold text-black text-[1.1rem]">
+                          <p className="opacity-50 pb-0 mb-0 mt-2">
+                            {t("addclient3")}
+                          </p>
+                          <p className="mt-0 pt-0 text-black">{me.name}</p>
+                        </div>
+                        <div className=" font-bold text-black text-[1.1rem]">
+                          <p className="opacity-50 pb-0 mb-0 mt-2">
+                            {t("addclient5")}
+                          </p>
+                          <p className="mt-0 pt-0 text-black">
+                            {me.idNumber ? me.idNumber : "none"}
+                          </p>
+                        </div>
+                        <div className=" font-bold text-black text-[1.1rem]">
+                          <p className="opacity-50 pb-0 mb-0 mt-2">
+                            {t("addclient7")}
+                          </p>
+                          <p className="mt-0 pt-0 text-black">
+                            {me.phoneNumber}
+                          </p>
+                        </div>
+                        <div className=" font-bold text-black password text-[1.1rem]">
+                          <p className="opacity-50 pb-0 mb-0 mt-2">
+                            {t("addclient9")}
+                          </p>
+
+                          <p className="mt-0 pt-0 nuqta text-black">......</p>
+                          <p className="mt-0 pt-0 parol text-black">
+                            {me.password}
+                          </p>
+                        </div>
+                        <div className="flex justify-between items-center mt-3 font-bold text-white">
+                          <button
+                            className="bg-yellow-500 px-5 py-1.5 rounded-lg
+                                                shadow-lg active:scale-95 duration-200"
+                            onClick={() => {
+                              setMeId(me);
+                              openModal();
+                              openGetMe();
+                            }}
+                          >
+                            {t("edit")}
+                          </button>
+                          <button
+                            className="bg-red-600 px-5 py-1.5 rounded-lg
+                                                shadow-lg active:scale-95 duration-200"
+                            onClick={() => {
+                              logout();
+                              openGetMe();
+                            }}
+                          >
+                            {t("logout")}
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="flex justify-center items-center mt-3 font-bold text-white">
                         <button
-                          className="bg-yellow-500 px-5 py-1.5 rounded-lg shadow-lg active:scale-95 duration-200"
-                          onClick={() => {
-                            setMeId(me);
-                            openModal();
-                            openGetMe();
-                          }}>{t("edit")}</button>
-                        <button className="bg-red-600 px-5 py-1.5 rounded-lg shadow-lg active:scale-95 duration-200"
+                          className="bg-red-600 px-5 py-1.5 rounded-lg
+                                                shadow-lg active:scale-95 duration-200"
                           onClick={() => {
                             logout();
                             openGetMe();
-                          }}>{t("logout")}</button>
+                          }}
+                        >
+                          {t("logout")}
+                        </button>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

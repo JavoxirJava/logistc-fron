@@ -20,10 +20,26 @@ function OffcanvasProject({
                               loading,
                           }) {
     const [users, setUsers] = useState(null);
+    const [input, setInput] = useState(true);
+    const [all, setAll] = useState(true);
     const {t} = useTranslation();
+
     useEffect(() => {
         getUsers(setUsers, lang);
     }, []);
+
+    useEffect(() => {
+        if (input == false) {
+            setAll(false);
+        }
+        else if (loading == false) {
+            setAll(false);
+        }
+        else {
+            setAll(true)
+        }
+    }, [input]);
+
     function setData() {
         const img = new FormData();
         img.append('file', document.getElementById(`file${isAdd}`).files[0]);
@@ -39,7 +55,6 @@ function OffcanvasProject({
                 });
             }).catch(() => console.log("img ketmadi"))
         else setProduct({
-
             name: byId(`name${isAdd}`),
             transport: byId(`transport${isAdd}`),
             status: byId(`productStatus${isAdd}`),
@@ -47,6 +62,21 @@ function OffcanvasProject({
             projectId: byId(`project${isAdd}`),
             comment: byId(`comment${isAdd}`)
         });
+    }
+
+    const validation = () => {
+        if (
+        document.getElementById(`name${isAdd}`).value !== '' &&
+        document.getElementById(`transport${isAdd}`).value !== 0 &&
+        document.getElementById(`productStatus${isAdd}`).value !== 0 &&
+        document.getElementById(`project${isAdd}`).value !== '' &&
+        document.getElementById(`comment${isAdd}`).value !== ''
+        ) {
+            setInput(false)
+        }
+        else {
+            setInput(true)
+        }
     }
 
 
@@ -66,6 +96,8 @@ function OffcanvasProject({
         document.getElementById(`comment${isAdd}`).value = ''
     }
 
+    
+
     return (
         <Offcanvas
             className="pt-20"
@@ -83,6 +115,7 @@ function OffcanvasProject({
                     {t("productAdd3")}  
                 </label>
                 <input
+                onChange={validation}
                     id={`name${isAdd}`}
                     placeholder={t("productAdd3")}
                     defaultValue={product ? product.name : ''}
@@ -107,7 +140,8 @@ function OffcanvasProject({
                     {t("productAdd2")}
                 </label>
                 <select
-                    id={`transport${isAdd}`}
+                onChange={validation}
+                id={`transport${isAdd}`}
                     className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
                 >
                     <option selected disabled value='0'>
@@ -136,7 +170,8 @@ function OffcanvasProject({
                     {t("projectStatus")}
                 </label>
                 <select
-                    id={`productStatus${isAdd}`}
+                onChange={validation}
+                id={`productStatus${isAdd}`}
                     className="block w-full p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
                 >
                     <option selected disabled value='0'>
@@ -195,7 +230,8 @@ function OffcanvasProject({
                     {t("projectId")}
                 </label>
                 <input
-                    id={`project${isAdd}`}
+                onChange={validation}
+                id={`project${isAdd}`}
                     placeholder={t("projectId")}
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
@@ -206,7 +242,8 @@ function OffcanvasProject({
                     {t("comment")}
                 </label>
                 <textarea
-                    id={`comment${isAdd}`}
+                onChange={validation}
+                id={`comment${isAdd}`}
                     placeholder={t("comment")}
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 ></textarea>
@@ -222,14 +259,14 @@ function OffcanvasProject({
                         {t("close")}
                     </button>
                     <button
-                    disabled={loading}
+                    disabled={all}
                         onClick={async () => {
                             await setData();
                             await onSave();
                             await getProduct(0, 4);
                             inputDelete2()
                         }}
-                        className={`${loading ? "bg-gray-600 cursor-not-allowed opacity-70" : "bg-blue-700"} inline-flex justify-center w-[45%] rounded-md shadow-sm py-2  text-sm font-medium text-white`}
+                        className={`${all ? "bg-gray-600 cursor-not-allowed opacity-70" : "bg-blue-700"} inline-flex justify-center w-[45%] rounded-md shadow-sm py-2  text-sm font-medium text-white`}
                     >
                         {loading ? <LoadingBtn/> : name}
                         

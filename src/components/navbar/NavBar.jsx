@@ -8,7 +8,15 @@ import { useTranslation } from "react-i18next";
 import "./style.css";
 import DropdownA from "./NavDrop";
 
-function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }) {
+function NavBar({
+  dashboard,
+  product,
+  client,
+  history,
+  cassier,
+  werhouse,
+  lang,
+}) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenm, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,8 +25,8 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
   const [meId, setMeId] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
       setIsOpen(false);
       setIsModalOpen(false);
     }
@@ -38,28 +46,39 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
   };
 
   const editUser = async () => {
-    await axios.put(url + "user/" + meId.id,
-      {
-        id: meId.id,
-        name: byId("name"),
-        idNumber: byId("idNumber"),
-        phoneNumber: byId("phoneNumber"),
-        password: byId("password"),
-      },
-      config).then(() => {
+    await axios
+      .put(
+        url + "user/" + meId.id,
+        {
+          id: meId.id,
+          name: byId("name"),
+          idNumber: byId("idNumber"),
+          phoneNumber: byId("phoneNumber"),
+          password: byId("password"),
+        },
+        config
+      )
+      .then(() => {
         toast.success(t("success"));
-      }).catch(() => {
+      })
+      .catch(() => {
         toast.error(t("error"));
       });
-    await axios.post(`${url}user/login?phoneNumber=${byId("phoneNumber")}&password=${byId("password")}`)
-      .then(res => {
+    await axios
+      .post(
+        `${url}user/login?phoneNumber=${byId("phoneNumber")}&password=${byId(
+          "password"
+        )}`
+      )
+      .then((res) => {
         sessionStorage.setItem("jwtKey", `Bearer ${res.data.body}`);
-        sessionStorage.setItem("role", res.data.message)
+        sessionStorage.setItem("role", res.data.message);
         openModal();
         getMe(setMe, lang);
-      }).catch(err => {
-        console.log('error', err);
       })
+      .catch((err) => {
+        console.log("error", err);
+      });
   };
 
   useEffect(() => {
@@ -70,8 +89,8 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
     getMe(setMe, lang);
   }, [lang]);
 
-  const onUser = () => document.getElementById("user").click()
-  const onManager = () => document.getElementById("manager").click()
+  const onUser = () => document.getElementById("user").click();
+  const onManager = () => document.getElementById("manager").click();
 
   return (
     <div className="">
@@ -122,8 +141,9 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
               </button>
 
               <div
-                className={`${isOpenMenu ? "inline" : "hidden  "
-                  } absolute lg:w-80 w-52 bg-slate-400 top-12 
+                className={`${
+                  isOpenMenu ? "inline" : "hidden  "
+                } absolute lg:w-80 w-52 bg-slate-400 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
               >
                 <div className="bg-slate-200 p-5 flex justify-center items-center relative">
@@ -179,8 +199,6 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                         {t("cassier")}
                       </Link>
                     </li>
-                    
-
                   </ul>
                 </div>
               </div>
@@ -198,28 +216,28 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                   <Link
                     to="/dashboard"
                     className={`${dashboard} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                  // aria-current="page"
+                    // aria-current="page"
                   >
                     {t("dashboard")}
                   </Link>
                   <Link
                     to="/project"
                     className={`${product} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                  // aria-current="page"
+                    // aria-current="page"
                   >
                     {t("produkt")}
                   </Link>
                   <Link
                     to="/warehouse"
                     className={`${werhouse} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                  // aria-current="page"
+                    // aria-current="page"
                   >
                     {t("werhouse")}
                   </Link>
                   <Link
                     to="/users"
                     className={`${client} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                  // aria-current="page"
+                    // aria-current="page"
                   >
                     {t("users")}
                   </Link>
@@ -227,12 +245,10 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                   <Link
                     to="/cassier"
                     className={`${cassier} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                  // aria-current="page"
+                    // aria-current="page"
                   >
-
                     {t("cassier")}
                   </Link>
-                 
                 </div>
               </div>
             </div>
@@ -262,8 +278,9 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                 </div>
 
                 <div
-                  className={`${isOpenm ? "inline" : "hidden"
-                    } absolute lg:w-80 w-72 media-nav bg-slate-400 lg:-right-8 right-1 top-12 
+                  className={`${
+                    isOpenm ? "inline" : "hidden"
+                  } absolute lg:w-80 w-72 media-nav bg-slate-400 lg:-right-8 right-1 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
                 >
                   <div className="bg-slate-200 sm:p-8 p-3 flex justify-center items-center relative">
@@ -277,48 +294,67 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                       onClick={openGetMe}
                     ></i>
                   </div>
-                  {me && (
-                    <div className="bg-slate-200 sm:px-8 px-2 py-6">
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">
-                          {t("addclient3")}
-                        </p>
-                        <p className="mt-0 pt-0 text-black">{me.name}</p>
-                      </div>
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">
-                          {t("addclient5")}
-                        </p>
-                        <p className="mt-0 pt-0 text-black">
-                          {me.idNumber ? me.idNumber : "none"}
-                        </p>
-                      </div>
-                      <div className=" font-bold text-black text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">
-                          {t("addclient7")}
-                        </p>
-                        <p className="mt-0 pt-0 text-black">{me.phoneNumber}</p>
-                      </div>
-                      <div className=" font-bold text-black password text-[1.1rem]">
-                        <p className="opacity-50 pb-0 mb-0 mt-2">
-                          {t("addclient9")}
-                        </p>
+                  <div className="bg-slate-200 sm:px-8 px-2 py-6">
+                    {me ? (
+                      <>
+                        <div className=" font-bold text-black text-[1.1rem]">
+                          <p className="opacity-50 pb-0 mb-0 mt-2">
+                            {t("addclient3")}
+                          </p>
+                          <p className="mt-0 pt-0 text-black">{me.name}</p>
+                        </div>
+                        <div className=" font-bold text-black text-[1.1rem]">
+                          <p className="opacity-50 pb-0 mb-0 mt-2">
+                            {t("addclient5")}
+                          </p>
+                          <p className="mt-0 pt-0 text-black">
+                            {me.idNumber ? me.idNumber : "none"}
+                          </p>
+                        </div>
+                        <div className=" font-bold text-black text-[1.1rem]">
+                          <p className="opacity-50 pb-0 mb-0 mt-2">
+                            {t("addclient7")}
+                          </p>
+                          <p className="mt-0 pt-0 text-black">
+                            {me.phoneNumber}
+                          </p>
+                        </div>
+                        <div className=" font-bold text-black password text-[1.1rem]">
+                          <p className="opacity-50 pb-0 mb-0 mt-2">
+                            {t("addclient9")}
+                          </p>
 
-                        <p className="mt-0 pt-0 nuqta text-black">......</p>
-                        <p className="mt-0 pt-0 parol text-black">{me.password}</p>
-                      </div>
-                      <div className="flex justify-between items-center mt-3 font-bold text-white">
-                        <button
-                          className="bg-yellow-500 px-5 py-1.5 rounded-lg
+                          <p className="mt-0 pt-0 nuqta text-black">......</p>
+                          <p className="mt-0 pt-0 parol text-black">
+                            {me.password}
+                          </p>
+                        </div>
+                        <div className="flex justify-between items-center mt-3 font-bold text-white">
+                          <button
+                            className="bg-yellow-500 px-5 py-1.5 rounded-lg
                                                 shadow-lg active:scale-95 duration-200"
-                          onClick={() => {
-                            setMeId(me);
-                            openModal();
-                            openGetMe();
-                          }}
-                        >
-                          {t("edit")}
-                        </button>
+                            onClick={() => {
+                              setMeId(me);
+                              openModal();
+                              openGetMe();
+                            }}
+                          >
+                            {t("edit")}
+                          </button>
+                          <button
+                            className="bg-red-600 px-5 py-1.5 rounded-lg
+                                                shadow-lg active:scale-95 duration-200"
+                            onClick={() => {
+                              logout();
+                              openGetMe();
+                            }}
+                          >
+                            {t("logout")}
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="flex justify-center items-center mt-3 font-bold text-white">
                         <button
                           className="bg-red-600 px-5 py-1.5 rounded-lg
                                                 shadow-lg active:scale-95 duration-200"
@@ -330,8 +366,8 @@ function NavBar({ dashboard, product, client, history, cassier, werhouse, lang }
                           {t("logout")}
                         </button>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
