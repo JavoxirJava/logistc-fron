@@ -246,6 +246,8 @@ const translateEn = {
   projectStatusUpdate: "An error occurred while trying to edit the status",
   required: "required",
   requiredWareHouseCanvas: "Warehouse name must not be empty",
+  cashierSuccessfullySaved: "Data saved successfully",
+  cashierWarningNextBtn: "All fields must be filled. Please check the information again",
   
 }
 
