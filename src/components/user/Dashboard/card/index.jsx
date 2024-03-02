@@ -10,6 +10,8 @@ import Pagination, {
 } from "react-responsive-pagination";
 import { useTranslation } from "react-i18next";
 import { changeLanguage } from "i18next";
+import { toast } from "react-toastify";
+import ImageViewModal from "../../../ImageViewModal";
 
 const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -48,6 +50,8 @@ const DashboardProductCard = ({ className, lang }) => {
   const [pagination, setPagination] = useState(0);
   const [searchBy, setSearchBy] = useState(null);
   const [drops, setDrops] = useState(false);
+  const [isImageOpenModal, setIsImageOpenModal] = useState(false);
+  const [imageId, setImageId] = useState(false);
 
   const inputDrop = () => setDrops(false);
   const selectDrop = () => setDrops(true);
@@ -159,9 +163,9 @@ const DashboardProductCard = ({ className, lang }) => {
               <th scope="col" class="px-6 py-3">
                 {t("photo")}
               </th>
-              
+
               <th scope="col" class="px-6 py-3">
-                
+
                 {t("productName")}
               </th>
               <th scope="col" class="px-6 py-3">
@@ -170,7 +174,7 @@ const DashboardProductCard = ({ className, lang }) => {
               <th scope="col" class="px-6 py-3">
                 {t("date")}
               </th>
-             
+
               <th scope="col" class="px-6 py-3">
                 {/* Total Weight */}
                 {t("totalWeight")}
@@ -209,14 +213,16 @@ const DashboardProductCard = ({ className, lang }) => {
                       : (pagination - 1) * 4 + (i + 1)}
                   </th>
                   <th className="px-6 py-5 flex justify-center items-center">
-                      <img
-                        src={
-                          item.attachmentId ? getFile + item.attachmentId : img
-                        }
-                        className="w-10 h-10 object-cover rounded-full scale-150"
-                        alt="img"
-                      />
-                    </th>
+                    <img
+                      onClick={() => {
+                        setImageId(item.attachmentId ? item.attachmentId : toast.warning(t('imgNotFound')));
+                        item.attachmentId ? setIsImageOpenModal(true) : setIsImageOpenModal(false)
+                      }}
+                      src={item.attachmentId ? getFile + item.attachmentId : img}
+                      className="w-10 h-10 object-cover hover:cursor-pointer rounded-full scale-150"
+                      alt="img"
+                    />
+                  </th>
                   <td className="px-6 py-4">{item ? item.name : ""}</td>
                   <td className="px-6 py-4">{item ? item.comment : ""}</td>
                   <td className="px-6 py-4">{item ? item.date : ""}</td>
@@ -243,6 +249,11 @@ const DashboardProductCard = ({ className, lang }) => {
           onPageChange={setPagination}
         />
       </div>
+      <ImageViewModal
+        setIsImageOpenModal={setIsImageOpenModal}
+        isImageOpenModal={isImageOpenModal}
+        imageId={imageId}
+      />
     </div>
   );
 };
