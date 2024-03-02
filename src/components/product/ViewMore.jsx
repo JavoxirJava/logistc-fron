@@ -6,12 +6,16 @@ import ReactPaginate from "react-paginate";
 import img from "../empty.png";
 import { useTranslation } from "react-i18next";
 import ProductModal from "./HistoryModal";
+import ImageViewModal from "../ImageViewModal";
+import { toast } from "react-toastify";
 const ViewMore = ({ lang }) => {
   const [projectIdInfo, setProjectIdInfo] = useState(null);
   const [page, setPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [historyList, setHistoryList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isImageOpenModal, setIsImageOpenModal] = useState(false);
+  const [imageId, setImageId] = useState(null);
   const closeModal = () => setIsModalOpen(false);
   const openModal = () => setIsModalOpen(true);
   let projectId = sessionStorage.getItem("projectIdViewMore");
@@ -113,10 +117,14 @@ const ViewMore = ({ lang }) => {
                     <th className="px-6 py-5">{currentPage * 5 + (i + 1)}</th>
                     <th className="px-6 py-5 flex justify-center items-center">
                       <img
+                        onClick={() => {
+                          setImageId(item.attachmentId ? item.attachmentId : toast.warning(t('imgNotFound')));
+                          item.attachmentId ? setIsImageOpenModal(true) : setIsImageOpenModal(false)
+                        }}
                         src={
                           item.attachmentId ? getFile + item.attachmentId : img
                         }
-                        className="w-10 h-10 object-cover rounded-full scale-150"
+                        className="w-10 h-10 object-cover rounded-full scale-150 hover:cursor-pointer"
                         alt="img"
                       />
                     </th>
@@ -173,6 +181,11 @@ const ViewMore = ({ lang }) => {
           onClose={closeModal}
         />
       )}
+      <ImageViewModal
+        imageId={imageId}
+        isImageOpenModal={isImageOpenModal}
+        setIsImageOpenModal={setIsImageOpenModal}
+      />
     </div>
   );
 };

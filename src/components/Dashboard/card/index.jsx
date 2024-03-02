@@ -132,7 +132,10 @@ const DashboardProductCard = ({ lang }) => {
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                   >{(currentPage * 5) + (i + 1)}</th>
                   <td className="px-6 py-4">
-                    <img src={item.attachmentId ? getFile + item.attachmentId : ''} alt="img" className="w-10 h-10 rounded-full scale-125" />
+                    <img
+                      src={item.attachmentId ? getFile + item.attachmentId : ''}
+                      alt="img"
+                      className="w-10 h-10 rounded-full scale-125" />
                   </td>
                   <td className="px-6 py-4">{item ? item.name : ""}</td>
                   <td className="px-6 py-4">{item ? item.totalKub : ""} {item ? <span>{t('sm')} <sup>3</sup></span> : ''}</td>

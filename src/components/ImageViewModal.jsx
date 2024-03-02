@@ -8,10 +8,8 @@ const ImageViewModal = ({ imageId, isImageOpenModal, setIsImageOpenModal }) => {
                 <i onClick={() => setIsImageOpenModal(false)} className="fa-solid fa-square-xmark fa-flip-both fa-2xl text-white hover:text-slate-900 duration-200 cursor-pointer"></i>
             </div>
             <div className='w-full h-full flex justify-center items-center'>
-                <div className="zoom-modal w-[75%] h-[75%] shadow-lg overflow-hidden rounded-xl bg-white">
-                    <div>
-                        <img className='w-full h-full' src={getFile + imageId} alt="dietailsImg" />
-                    </div>
+                <div className="zoom-modal w-[75%] h-[75%] overflow-hidden">
+                    <img className='w-full h-full object-contain' src={getFile + imageId} alt="dietailsImg" />
                 </div>
             </div>
         </div>
