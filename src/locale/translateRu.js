@@ -242,6 +242,7 @@ const translateRu = {
   projectCount: "Количество проектов",
   projectStatusUpdate: "Произошла ошибка при попытке изменить статус.",
   required: "необходимый",
+  requiredWareHouseCanvas: "Необходимо указать название склада.",
 };
 
 export default translateRu;
