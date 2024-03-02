@@ -11,7 +11,7 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
       className="fixed top-0 left-0 w-full   h-screen flex items-center justify-center bg-gray-800 
             bg-opacity-75 z-10 sm:px-0 px-3"
     >
-      <div className="bg-slate-300 rounded-lg overflow-hidden shadow-md w-full sm:w-[50%]">
+      <div className="zoom-modal bg-slate-300 rounded-lg overflow-hidden shadow-md w-full sm:w-[50%]">
         <div className="bg-blue-800 py-5 flex justify-around items-center relative">
           <h1 className="text-2xl text-sky-200">
             {historyList && historyList.productName}
@@ -62,10 +62,16 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
               {historyList && historyList.productCount}
             </p>
           </div>
-          <div className="mt-2 w-full text-center">
+          <div className="mt-2 w-1/2 text-center">
+            <p className="pb-0 mb-0 opacity-50">{t("totalWeight")}</p>
+            <p className="mt-0 pt-0 font-semibold">
+              {historyList && historyList.totalWeight} ({t('kg')})
+            </p>
+          </div>
+          <div className="mt-2 w-1/2 text-center">
             <p className="pb-0 mb-0 opacity-50">{t("totalKub")}</p>
             <p className="mt-0 pt-0 font-semibold">
-              {historyList && historyList.totalKub}
+              {historyList && historyList.totalKub} ({t('sm')}<sup>3</sup>)
             </p>
           </div>
         </div>

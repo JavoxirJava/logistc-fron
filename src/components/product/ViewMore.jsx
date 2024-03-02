@@ -125,8 +125,8 @@ const ViewMore = ({ lang }) => {
                     <td className="px-6 py-5">{item.comment}</td>
                     <td className="px-6 py-5">{item.date}</td>
                     <td className="px-6 py-5">{item.productCount}</td>
-                    <td className="px-6 py-5">{item.totalWeight}</td>
-                    <td className="px-6 py-5">{item.totalKub}</td>
+                    <td className="px-6 py-5">{item.totalWeight} {t('kg')}</td>
+                    <td className="px-6 py-5">{item.totalKub} {t('sm')}<sup>3</sup></td>
                     <td className="px-6 py-4">
                       <a
                         onClick={() => {
