@@ -84,6 +84,7 @@ function ProjectCard({
     } else toast.warning(t('projectStatusUpdate'))
   }
 
+
   return (
     <>
       {projects ? <tr
@@ -158,6 +159,9 @@ function ProjectCard({
         </td>
         <td className="px-6 py-4">{projects ? projects.transport : ''}</td>
         <td className="px-6 py-4">{projects ? projects.date.slice(0, projects.date.indexOf(" ")) : ''}</td>
+        <td className="px-6 py-4">{projects ? projects.productCount : 0}</td>
+        <td className="px-6 py-4">{projects ? projects.productTotalKg : 0} {t("kg")}</td>
+        <td className="px-6 py-4">{projects ? projects.productTotalKub : 0} {t("sm")}<sup>3</sup></td>
         <td className="px-6 py-4">
           <a
             onClick={() => {
@@ -171,6 +175,8 @@ function ProjectCard({
             {t("edit")}
           </a>
         </td>
+
+       
         <td className="px-6 py-4">
           <Link
             onClick={() => {

@@ -44,6 +44,8 @@ const Modal = ({ isOpen, onClose }) => {
 };
 
 const DashboardProductCard = ({ className, lang }) => {
+  const [modal, setModal] = useState(false);
+  const [modalin, setModalin] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [data, setProduct] = useState(null);
   const [totalPage, setTotalPage] = useState(1);
@@ -71,12 +73,28 @@ const DashboardProductCard = ({ className, lang }) => {
     else getProduct(Math.floor(pagination - 1), 4);
   }, [pagination]);
 
+
+  const openModal = () => {setModal(true)}
+  const closeModal = () => {setModal(false)}
+
   function getProduct(page, size) {
     axios
-      .get(`${url}product/user/products?page=${page}&size=${size}&lang=${lang}`, config)
+      .get(
+        `${url}product/user/products?page=${page}&size=${size}&lang=${lang}`,
+        config
+      )
       .then((res) => {
         setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
         setProduct(res.data.body.object);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function getInfo(id) {
+    axios
+      .get(`${url}cashier/user?productId=${id}&lang=${lang}`, config)
+      .then((res) => {
+        setModalin(res.data.body);
       })
       .catch((err) => console.log(err));
   }
@@ -102,7 +120,6 @@ const DashboardProductCard = ({ className, lang }) => {
         .catch((err) => console.log(err));
   }
 
-
   function searchByName() {
     switch (searchBy) {
       case "Project name":
@@ -114,9 +131,7 @@ const DashboardProductCard = ({ className, lang }) => {
     }
   }
 
-  const closeModal = () => setIsModalOpen(false);
 
-  console.log(data);
   return (
     <div className="radius">
       <div className="mb-5 flex items-center">
@@ -144,7 +159,7 @@ const DashboardProductCard = ({ className, lang }) => {
           ) : (
             <input
               type="search"
-              placeholder={t('productNameSearch')}
+              placeholder={t("productNameSearch")}
               defaultValue=""
               onChange={searchProduct}
               className="lg:w-4/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
@@ -165,7 +180,6 @@ const DashboardProductCard = ({ className, lang }) => {
               </th>
 
               <th scope="col" class="px-6 py-3">
-
                 {t("productName")}
               </th>
               <th scope="col" class="px-6 py-3">
@@ -185,6 +199,9 @@ const DashboardProductCard = ({ className, lang }) => {
               <th scope="col" class="px-6 py-3">
                 {t("statuss")}
               </th>
+              <th scope="col" class="px-6 py-3">
+                {t("wiew")}
+              </th>
               {/* <th scope="col" class="px-6 py-3">
                 {t("wiew")}
               </th> */}
@@ -200,10 +217,7 @@ const DashboardProductCard = ({ className, lang }) => {
           <tbody>
             {data &&
               data.map((item, i) => (
-                <tr
-                  className="bg-white border-b"
-                  key={i}
-                >
+                <tr className="bg-white border-b" key={i}>
                   <th
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
@@ -215,10 +229,18 @@ const DashboardProductCard = ({ className, lang }) => {
                   <th className="px-6 py-5 flex justify-center items-center">
                     <img
                       onClick={() => {
-                        setImageId(item.attachmentId ? item.attachmentId : toast.warning(t('imgNotFound')));
-                        item.attachmentId ? setIsImageOpenModal(true) : setIsImageOpenModal(false)
+                        setImageId(
+                          item.attachmentId
+                            ? item.attachmentId
+                            : toast.warning(t("imgNotFound"))
+                        );
+                        item.attachmentId
+                          ? setIsImageOpenModal(true)
+                          : setIsImageOpenModal(false);
                       }}
-                      src={item.attachmentId ? getFile + item.attachmentId : img}
+                      src={
+                        item.attachmentId ? getFile + item.attachmentId : img
+                      }
                       className="w-10 h-10 object-cover hover:cursor-pointer rounded-full scale-150"
                       alt="img"
                     />
@@ -226,15 +248,34 @@ const DashboardProductCard = ({ className, lang }) => {
                   <td className="px-6 py-4">{item ? item.name : ""}</td>
                   <td className="px-6 py-4">{item ? item.comment : ""}</td>
                   <td className="px-6 py-4">{item ? item.date : ""}</td>
-                  <td className="px-6 py-4">{item ? item.totalWeight : ""} {t("kg")}</td>
-                  <td className="px-6 py-4">{item ? item.totalKub : ""} {t("sm")}<sup>3</sup></td>
-                  <td className="px-6 py-4">{item.status ? item.status : t("noStatus")} </td>
+                  <td className="px-6 py-4">
+                    {item ? item.totalWeight : ""} {t("kg")}
+                  </td>
+                  <td className="px-6 py-4">
+                    {item ? item.totalKub : ""} {t("sm")}
+                    <sup>3</sup>
+                  </td>
+                  <td className="px-6 py-4">
+                    {item.status ? item.status : t("noStatus")}{" "}
+                  </td>
+                  <td className="px-6 py-4">
+                    <a
+                      onClick={() => {
+                        getInfo(item.id)
+                        openModal()
+                      }}
+                      href="#"
+                      className="font-medium text-[#16A34A] hover:underline"
+                    >
+                      {t("wiew")}
+                    </a>
+                  </td>
+
                   {/* <td className="px-6 py-4">
                       <a href="#" className="text-yellow-500 font-bold">
                       {t("wiew")}
                       </a>
                   </td> */}
-
                 </tr>
               ))}
           </tbody>
@@ -254,6 +295,78 @@ const DashboardProductCard = ({ className, lang }) => {
         isImageOpenModal={isImageOpenModal}
         imageId={imageId}
       />
+
+      {modal && (
+        <div className="zoom-modal justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div className="relative md:w-[100%] w-[80vw] my-6 mx-auto max-w-3xl">
+            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-6">
+              <div className="flex items-center justify-between border-b pb-2 rounded-t">
+                <h3 className="text-2xl font-semibold">{t("wiew")}</h3>
+                <button
+                  className="p-1 ml-auto border-0 text-4xl hover:scale-110 duration-200"
+                  onClick={closeModal}
+                >
+                  ×
+                </button>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("productName")}:</p>
+                <p className="font-bold">
+                  {modalin && modalin.productName}
+                </p>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("userName")}:</p>
+                <p className="font-bold">{modalin && modalin.username}</p>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("projectName")}:</p>
+                <p className="font-bold">
+                  {modalin && modalin.projectName}
+                </p>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("date")}:</p>
+                <p className="font-bold">
+                  {modalin && modalin.createdAt}
+                </p>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("measure")}:</p>
+                <p className="font-bold">
+                  {modalin && modalin.totalKub}{" "}
+                  {modalin && modalin.measure}
+                </p>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("cct")}:</p>
+                <p className="font-bold">{modalin && modalin.cct} $</p>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("price")}:</p>
+                <p className="font-bold">
+                  {modalin && modalin.priceOfKub} $
+                </p>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("totalPrice")}:</p>
+                <p className="font-bold">
+                  {modalin && modalin.totalPrice} $
+                </p>
+              </div>
+
+              <div className="flex md:justify-end justify-center  mt-4">
+                <button
+                  onClick={closeModal}
+                  className="py-2 px-8 mr-3 bg-red-500 rounded-md text-white active:scale-95 hover:shadow-lg hover:shadow-red-200 duration-300"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

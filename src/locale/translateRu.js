@@ -246,6 +246,7 @@ const translateRu = {
   cashierSuccessfullySaved: "Данные успешно сохранены",
   cashierWarningNextBtn: "Все поля должны быть заполнены. Пожалуйста, проверьте информацию еще раз",
   imgNotFound: "Изображение не доступно",
+  calculated: "Рассчитано"
 };
 
 export default translateRu;

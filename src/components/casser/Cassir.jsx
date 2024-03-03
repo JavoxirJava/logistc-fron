@@ -84,6 +84,14 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
             .catch((err) => console.log("error page: ", err));
     };
 
+    const cashierActive = (id) => {
+        axios.post(`${url}cashier/active?cashierId=${id}`, '', config)
+        .then(() => {
+            getCassier()
+        })
+        .catch(()=> {})
+    }
+
     const searchHandler = () => {
         byIdObj('projectIdFilter').value = t("selectProject")
         let addData = {
@@ -133,6 +141,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                 else if (res.data.success === false) setCasseir(null)
             }).catch(() => { })
     }
+
 
     return (
         <div className="min-h-screen">
@@ -206,6 +215,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                                     <th className="px-6 py-3">{t("date")}</th>
                                     <th className="px-6 py-3">{t("price")}</th>
                                     <th className="px-6 py-3">{t("action")}</th>
+                                    <th className="px-6 py-3">{t("calculated")}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -233,11 +243,16 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                                                     {t("wiew")}
                                                 </a>
                                             </td>
+                                            <td class="px-6 py-4">
+                                                <input onChange={() => {
+                                                    cashierActive(item.id)
+                                                }} checked={item.active} type="checkbox" className="w-5 h-5"/>
+                                            </td>
                                         </tr>
                                     ))
                                 ) : (
                                     <tr className="odd:bg-white even:bg-gray-50 border-b ">
-                                        <td colSpan="7" className="px-4 py-4">
+                                        <td colSpan="8" className="px-4 py-4">
                                             <h1 className="text-center text-xl text-black">{t("notfound")}</h1>
                                         </td>
                                     </tr>

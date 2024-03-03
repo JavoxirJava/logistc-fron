@@ -249,7 +249,7 @@ const translateEn = {
   cashierSuccessfullySaved: "Data saved successfully",
   cashierWarningNextBtn: "All fields must be filled. Please check the information again",
   imgNotFound: "Image not available",
-  
+  calculated: "Calculated"
 }
 
 export default translateEn

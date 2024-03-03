@@ -378,6 +378,15 @@ function Product({ lang, projectId, setProjectId }) {
                     <th scope="col" class="px-6 py-3">
                       {t("date")}
                     </th>
+                    <th scope="col" class="px-6 py-3">
+                      {t("productCount")}
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      {t("totalWeight")}
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      {t("totalKub")}
+                    </th>
                     {/* <th scope="col" class="px-6 py-3">
                       Total Price
                     </th> */}

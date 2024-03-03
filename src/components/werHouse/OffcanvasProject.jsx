@@ -19,6 +19,8 @@ function OffcanvasProject({
   setUserId,
 }) {
   const [users, setUsers] = useState(null);
+  const [input, setInput] = useState(true);
+  const [all, setAll] = useState(true);
   const [coordinates, setCoordinates] = useState([55.75, 37.57]);
 
   const { t } = useTranslation();
@@ -26,6 +28,15 @@ function OffcanvasProject({
   useEffect(() => {
     getUsers(setUsers, lang);
   }, []);
+
+  useEffect(() => {
+    if (loading || input == false) {
+        setAll(false);
+    }
+    else {
+        setAll(true)
+    }
+}, [input]);
 
   const handleClick = (e) => {
     const coords = e.get("coords");
@@ -58,6 +69,17 @@ const inputDelete2 = () => {
     document.getElementById(`name${isAdd}`).value =''
 }
 
+const validation = () => {
+  if (
+    document.getElementById(`name${isAdd}`).value !== ''
+    ) {
+      setInput(false)
+  }
+  else {
+      setInput(true)
+  }
+}
+
 
   return (
     <Offcanvas
@@ -79,6 +101,7 @@ const inputDelete2 = () => {
           {t("warehouseName")}
         </label>
         <input
+          onChange={validation}
           id={`name${isAdd}`}
           placeholder={t("warehouseName")}
           defaultValue={newWereHouseName ? newWereHouseName.name : ""}
@@ -96,14 +119,14 @@ const inputDelete2 = () => {
             {t("close")}
           </button>
           <button
-          disabled={loading}
+          disabled={all}
             onClick={async () => {
               await setData();
               await onSave();
               await getProduct(0, 4);
               inputDelete2()
             }}
-            className={`${loading ? "bg-gray-700 opacity-70 cursor-not-allowed" : "bg-blue-700"} inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 text-sm font-medium text-white`}
+            className={`${all ? "bg-gray-700 opacity-70 cursor-not-allowed" : "bg-blue-700"} inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 text-sm font-medium text-white`}
           >
             {loading ? <LoadingBtn/> : name}
           </button>

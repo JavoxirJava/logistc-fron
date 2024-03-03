@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Offcanvas from "../Offcanvas";
 import {byId, config, getUsers, url} from "../api";
 import {useTranslation} from "react-i18next";
@@ -23,6 +23,7 @@ function OffcanvasProject({
     const [input, setInput] = useState(true);
     const [all, setAll] = useState(true);
     const {t} = useTranslation();
+    const fileInputRef = useRef(null);
 
     useEffect(() => {
         getUsers(setUsers, lang);
@@ -67,7 +68,8 @@ function OffcanvasProject({
         document.getElementById(`transport${isAdd}`).value !== "0" &&
         document.getElementById(`productStatus${isAdd}`).value !== "0" &&
         document.getElementById(`project${isAdd}`).value !== '' &&
-        document.getElementById(`comment${isAdd}`).value !== ''
+        document.getElementById(`comment${isAdd}`).value !== '' &&
+        fileInputRef.current.value != null
         ) {
             setInput(false)
         }
@@ -83,8 +85,8 @@ function OffcanvasProject({
         document.getElementById(`productStatus${isAdd}`).value = product ? product.status : 0
         document.getElementById(`project${isAdd}`).value = product ? product.projectId : ''
         document.getElementById(`comment${isAdd}`).value = product ? product.comment : ''
-        document.getElementById(`file${isAdd}`).file = product ? product.fileId : null
-        // byId(`file${isAdd}`) = product ? product.fileId : 0
+        // document.getElementById(`file${isAdd}`).file = product ? product.fileId : null
+        fileInputRef.current.value = null;
     }
 
     const inputDelete2 = () => {
@@ -93,7 +95,7 @@ function OffcanvasProject({
         document.getElementById(`productStatus${isAdd}`).value = 0
         document.getElementById(`project${isAdd}`).value = ''
         document.getElementById(`comment${isAdd}`).value = ''
-        byId(`file${isAdd}`).file = null
+        fileInputRef.current.value = null;
     }
 
     
@@ -128,6 +130,7 @@ function OffcanvasProject({
                     {t("file")}
                 </label>
                 <input
+                ref={fileInputRef}
                     id={`file${isAdd}`}
                     type="file"
                     className="shadow appearance-none border rounded w-full py-2.5 px-4 mb-3 text-gray-700 bg-slate-50 leading-tight focus:outline-none focus:shadow-outline"
