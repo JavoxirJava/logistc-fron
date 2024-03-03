@@ -29,10 +29,7 @@ function OffcanvasProject({
     }, []);
 
     useEffect(() => {
-        if (input == false) {
-            setAll(false);
-        }
-        else if (loading == false) {
+        if (loading || input == false) {
             setAll(false);
         }
         else {
@@ -67,8 +64,8 @@ function OffcanvasProject({
     const validation = () => {
         if (
         document.getElementById(`name${isAdd}`).value !== '' &&
-        document.getElementById(`transport${isAdd}`).value !== 0 &&
-        document.getElementById(`productStatus${isAdd}`).value !== 0 &&
+        document.getElementById(`transport${isAdd}`).value !== "0" &&
+        document.getElementById(`productStatus${isAdd}`).value !== "0" &&
         document.getElementById(`project${isAdd}`).value !== '' &&
         document.getElementById(`comment${isAdd}`).value !== ''
         ) {
@@ -86,6 +83,8 @@ function OffcanvasProject({
         document.getElementById(`productStatus${isAdd}`).value = product ? product.status : 0
         document.getElementById(`project${isAdd}`).value = product ? product.projectId : ''
         document.getElementById(`comment${isAdd}`).value = product ? product.comment : ''
+        document.getElementById(`file${isAdd}`).file = product ? product.fileId : null
+        // byId(`file${isAdd}`) = product ? product.fileId : 0
     }
 
     const inputDelete2 = () => {
@@ -94,6 +93,7 @@ function OffcanvasProject({
         document.getElementById(`productStatus${isAdd}`).value = 0
         document.getElementById(`project${isAdd}`).value = ''
         document.getElementById(`comment${isAdd}`).value = ''
+        byId(`file${isAdd}`).file = null
     }
 
     
@@ -253,6 +253,7 @@ function OffcanvasProject({
                         onClick={() =>{ 
                             handleToggleOffcanvas()
                             inputDelete()
+                            setAll(true)
                         }}
                         className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-gray-500 text-sm font-medium text-white"
                     >

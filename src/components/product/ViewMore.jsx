@@ -102,11 +102,11 @@ const ViewMore = ({ lang }) => {
                 <th className="px-6 py-3">{t("photo")}</th>
                 <th className="px-6 py-3">{t("owner")}</th>
                 <th className="px-6 py-3">{t("productName")}</th>
-                <th className="px-6 py-3">{t("productAdd34")}</th>
                 <th className="px-6 py-3">{t("date")}</th>
                 <th className="px-6 py-3">{t("productCount")}</th>
                 <th className="px-6 py-3">{t("totalWeight")}</th>
                 <th className="px-6 py-3">{t("totalKub")}</th>
+                <th className="px-6 py-3">{t("productAdd34")}</th>
                 <th className="px-6 py-3">{t("wiew")}</th>
               </tr>
             </thead>
@@ -130,11 +130,11 @@ const ViewMore = ({ lang }) => {
                     </th>
                     <td className="px-6 py-5">{item.owner}</td>
                     <td className="px-6 py-5">{item.productName}</td>
-                    <td className="px-6 py-5">{item.comment}</td>
                     <td className="px-6 py-5">{item.date}</td>
                     <td className="px-6 py-5">{item.productCount}</td>
                     <td className="px-6 py-5">{item.totalWeight} {t('kg')}</td>
                     <td className="px-6 py-5">{item.totalKub} {t('sm')}<sup>3</sup></td>
+                    <td className="px-6 py-5">{item.comment}</td>
                     <td className="px-6 py-4">
                       <a
                         onClick={() => {
