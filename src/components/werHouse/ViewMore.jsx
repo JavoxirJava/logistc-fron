@@ -156,7 +156,7 @@ const ViewMoreW = ({ lang }) => {
       wareHouseId: projectId,
       productCountDtoS
     }
-    
+
     // axios
     //   .post(`${url}product/change-warehouse-to-project`, addData, config)
     //   .then(() => {
@@ -270,7 +270,7 @@ const ViewMoreW = ({ lang }) => {
             <b>{t("products")}</b>
           </h1>
           <div className="bg-slate-50 shadow-md shadow-slate-100 py-2 rounded-lg flex justify-between items-center">
-            <span className="mx-4 text-black font-semibold">{resultKg} ({t('kg')})</span>
+            <span className="ms-4 text-black font-semibold">{resultKg} ({t('kg')})</span>
             <span className="mx-4 text-black font-semibold">{resultKub} ({t('sm')}<sup>3</sup>)</span>
           </div>
         </div>
@@ -318,7 +318,14 @@ const ViewMoreW = ({ lang }) => {
                     <td className="px-6 py-5 overflow-x-auto">
                       {item.date.slice(0, item.date.indexOf(" "))}
                     </td>
-                    <td className="px-6 py-5">{item.productCount}</td>
+                    <td className="px-6 py-5">
+                      {item.productCount}
+                      <input
+                        type="number"
+                        // disabled={products.length > 0 ? false : true}
+                        className={`${products.length > 0 ? 'visible' : 'hidden'} ms-1.5 w-24 ps-3 py-1 outline-0 bg-slate-100 rounded-lg border border-slate-300 duration-200`}
+                        placeholder={t("count")} />
+                    </td>
                     <td className="px-6 py-5">
                       {item.totalWeight} {t("kg")}
                     </td>
