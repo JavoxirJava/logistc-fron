@@ -73,7 +73,7 @@ function Product({ lang, projectId, setProjectId }) {
   useEffect(() => {
     if ((pagination2 - 1) * 4 < 0) setPagination2(0);
     else getProject(Math.floor(pagination2 - 1), 4);
-    console.log(pagination2);
+    // console.log(pagination2);
   }, [pagination2]);
 
   useEffect(() => {
