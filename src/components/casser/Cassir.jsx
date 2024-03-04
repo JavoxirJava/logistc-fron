@@ -49,7 +49,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
             .then((res) => {
                 setCasseir(res.data.body.object);
                 setPage(res.data.body.totalPage)
-            }).catch((err) => console.log('error', err))
+            }).catch(() => console.log(`cashier/all?lang=${lang}: error`))
     };
 
     // get project
@@ -57,7 +57,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
         axios
             .get(`${url}project/list?lang=${lang}`, config)
             .then((res) => setProjectId(res.data.body))
-            .catch(() => console.log("error"));
+            .catch(() => console.log(`project/list?lang=${lang}: error`));
     };
 
     // get user
@@ -65,7 +65,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
         axios
             .get(`${url}user/project?projectId=${id}&lang=${lang}`, config)
             .then((res) => setUserId(res.data.body))
-            .catch(() => console.log("error user id"));
+            .catch(() => console.log(`user/project?projectId=${id}&lang=${lang}: error`));
     };
 
     // get product id
@@ -73,7 +73,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
         axios
             .get(`${url}product/list?userId=${id}&projectId=${projectIdIn}&lang=${lang}`, config)
             .then((res) => setProductId(res.data.body))
-            .catch(() => console.log("error user id"));
+            .catch(() => console.log(`product/list?userId=${id}&projectId=${projectIdIn}&lang=${lang}: error`));
     };
 
     const handelPageClick = (event) => {
