@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import NavBar from "../navbar/NavBar";
 import axios from "axios";
-import { config, getFile, url } from "../api";
+import { byId, config, getFile, url } from "../api";
 import ReactPaginate from "react-paginate";
 import img from "../empty.png";
 import { useTranslation } from "react-i18next";
@@ -144,10 +144,10 @@ const ViewMoreW = ({ lang }) => {
   }
 
   function addtoProduct() {
-    let productCountDtoS = products.map((product) => {
+    let productCountDtoS = products.map(product => {
       return {
         productId: product.productId,
-        count: product.productCount
+        count: byId(`count${product.productId}`)
       };
     });
 
@@ -156,6 +156,7 @@ const ViewMoreW = ({ lang }) => {
       wareHouseId: projectId,
       productCountDtoS
     }
+    console.log(addData);
 
     // axios
     //   .post(`${url}product/change-warehouse-to-project`, addData, config)
@@ -319,9 +320,11 @@ const ViewMoreW = ({ lang }) => {
                       {item.date.slice(0, item.date.indexOf(" "))}
                     </td>
                     <td className="px-6 py-5">
-                      {item.productCount}
+                      <span className={`${products.length > 0 ? 'hidden' : 'visible'}`}>{item.productCount}</span>
                       <input
                         type="number"
+                        defaultValue={item.productCount}
+                        id={`count${item.productId}`}
                         // disabled={products.length > 0 ? false : true}
                         className={`${products.length > 0 ? 'visible' : 'hidden'} ms-1.5 w-24 ps-3 py-1 outline-0 bg-slate-100 rounded-lg border border-slate-300 duration-200`}
                         placeholder={t("count")} />
