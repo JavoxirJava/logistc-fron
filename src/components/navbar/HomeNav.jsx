@@ -73,10 +73,10 @@ function HomeNav({hom,abou,services,gallery, changeLang}) {
                             >
                                 <div className="bg-slate-200 p-5 flex justify-center items-center relative">
                                     <i
-                                        class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
+                                        className="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
                                         onClick={openMenu}
                                     ></i>
-                                    <ul class="list-none">
+                                    <ul className="list-none">
                                         <li className="my-2" onClick={openMenu}>
                                             <a
                                                 href={hom}

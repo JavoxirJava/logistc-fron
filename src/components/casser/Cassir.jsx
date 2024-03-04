@@ -232,18 +232,18 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                                             <td className="px-6 py-4">{item.productName}</td>
                                             <td className="px-6 py-4">{item.createdAt}</td>
                                             <td className="px-6 py-4">{item.totalPrice}</td>
-                                            <td class="px-6 py-4">
+                                            <td className="px-6 py-4">
                                                 <a
                                                     onClick={() => {
                                                         openModal();
                                                         setProductObj(item);
                                                     }}
                                                     href="#"
-                                                    class="font-medium text-[#2e46c0] hover:underline">
+                                                    className="font-medium text-[#2e46c0] hover:underline">
                                                     {t("wiew")}
                                                 </a>
                                             </td>
-                                            <td class="px-6 py-4">
+                                            <td className="px-6 py-4">
                                                 <input onChange={() => {
                                                     cashierActive(item.id)
                                                 }} checked={item.active} type="checkbox" className="w-5 h-5"/>

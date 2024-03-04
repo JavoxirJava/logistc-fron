@@ -148,7 +148,7 @@ function NavBar({
               >
                 <div className="bg-slate-200 p-5 flex justify-center items-center relative">
                   <i
-                    class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
+                    className="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
                     onClick={openMenu}
                   ></i>
                   <ul class="list-none me-3">
@@ -290,7 +290,7 @@ function NavBar({
                       alt="img"
                     />
                     <i
-                      class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
+                      className="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
                       onClick={openGetMe}
                     ></i>
                   </div>
@@ -379,7 +379,7 @@ function NavBar({
                 <div className="">
                   <div className="bg-slate-200 py-8  flex flex-col justify-center items-center relative">
                     <i
-                      class="fa-solid fa-xmark absolute top-5 right-5 text-2xl"
+                      className="fa-solid fa-xmark absolute top-5 right-5 text-2xl"
                       onClick={() => {
                         openModal();
                       }}

@@ -108,21 +108,21 @@ const DashboardProductCard = ({ lang }) => {
         </div>
       </div>
       <p className="mb-3">{t("cardCurrent")}: {currentPage + 1}</p>
-      <div class="relative overflow-x-auto  sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr className="bg-slate-200">
-              <th scope="col" class="px-6 py-3">#</th>
-              <th scope="col" class="px-6 py-3">{t('photo')}</th>
-              <th scope="col" class="px-6 py-3">{t('card4')} {t("client2")}</th>
-              <th scope="col" class="px-6 py-3">{t("totalKub")}</th>
-              <th scope="col" class="px-6 py-3">{t("totalWeight")}</th>
-              <th scope="col" class="px-6 py-3">{t("date")}</th>
-              <th scope="col" class="px-6 py-3">{t("comment")}</th>
-              <th scope="col" class="px-6 py-3">{t("statuss")}</th>
-              {/* <th scope="col" class="px-6 py-3">{t("productAdd7x")}</th>
-              <th scope="col" class="px-6 py-3">{t("productAdd7y")}</th>
-              <th scope="col" class="px-6 py-3">{t("productAdd7z")}</th> */}
+      <div className="relative overflow-x-auto  sm:rounded-lg">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr classNameName="bg-slate-200">
+              <th scope="col" className="px-6 py-3">#</th>
+              <th scope="col" className="px-6 py-3">{t('photo')}</th>
+              <th scope="col" className="px-6 py-3">{t('card4')} {t("client2")}</th>
+              <th scope="col" className="px-6 py-3">{t("totalKub")}</th>
+              <th scope="col" className="px-6 py-3">{t("totalWeight")}</th>
+              <th scope="col" className="px-6 py-3">{t("date")}</th>
+              <th scope="col" className="px-6 py-3">{t("comment")}</th>
+              <th scope="col" className="px-6 py-3">{t("statuss")}</th>
+              {/* <th scope="col" className="px-6 py-3">{t("productAdd7x")}</th>
+              <th scope="col" className="px-6 py-3">{t("productAdd7y")}</th>
+              <th scope="col" className="px-6 py-3">{t("productAdd7z")}</th> */}
             </tr>
           </thead>
           <tbody>
