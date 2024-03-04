@@ -24,6 +24,8 @@ const ViewMoreW = ({ lang }) => {
   const [ModalPro, setProOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [products, setProducts] = useState([]);
+  const [productListCountKg, setProductListCountKg] = useState([]);
+  const [productListCountKub, setProductListCountKub] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isImageOpenModal, setIsImageOpenModal] = useState(false);
@@ -62,7 +64,6 @@ const ViewMoreW = ({ lang }) => {
   }
 
   const getProjectInfo = () => {
-    console.log("kelopdis", products);
     axios
       .get(
         `${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=0&size=5`,
@@ -143,27 +144,33 @@ const ViewMoreW = ({ lang }) => {
   }
 
   function addtoProduct() {
-    let data = [...products.map((p) => p.productId)];
+    let productCountDtoS = products.map((product) => {
+      return {
+        productId: product.productId,
+        count: product.productCount
+      };
+    });
 
-    let datas = {
-      productIds: data,
+    let addData = {
       projectId: document.getElementById("projects").value,
       wareHouseId: projectId,
-    };
-    axios
-      .post(`${url}product/change-warehouse-to-project`, datas, config)
-      .then(() => {
-        toast.success(t("success"));
-        getProjectInfo();
-        setProductObj2(null);
-        showProjectInfoModal();
-        tozalovchi();
-      })
-      .catch((err) => {
-        toast.error(t("error"));
-        console.log(err);
-        tozalovchi();
-      });
+      productCountDtoS
+    }
+    
+    // axios
+    //   .post(`${url}product/change-warehouse-to-project`, addData, config)
+    //   .then(() => {
+    //     toast.success(t("success"));
+    //     getProjectInfo();
+    //     setProductObj2(null);
+    //     showProjectInfoModal();
+    //     tozalovchi();
+    //   })
+    //   .catch((err) => {
+    //     toast.error(t("error"));
+    //     console.log(err);
+    //     tozalovchi();
+    //   });
   }
 
   function editProduct() {
@@ -201,11 +208,27 @@ const ViewMoreW = ({ lang }) => {
   }
 
   function addProductIds(checked, item) {
-    if (checked) setProducts([...products, item]);
-    else
-      setProducts(
-        products.filter((product) => product.productId !== item.productId)
-      );
+    if (checked) {
+      setProducts([...products, item]);
+      setProductListCountKg([...productListCountKg, item])
+      setProductListCountKub([...productListCountKub, item])
+    }
+    else {
+      setProducts(products.filter((product) => product.productId !== item.productId))
+      setProductListCountKg(productListCountKg.filter((product) => product.productId !== item.productId))
+      setProductListCountKub(productListCountKub.filter((product) => product.productId !== item.productId))
+    }
+  }
+
+  let dataKg = [...productListCountKg.map(kg => kg.totalWeight)],
+    dataKub = [...productListCountKub.map(kub => kub.totalKub)],
+    resultKg = 0,
+    resultKub = 0
+  for (let i = 0; i < dataKg.length; i++) {
+    resultKg += dataKg[i]
+  }
+  for (let i = 0; i < dataKub.length; i++) {
+    resultKub += dataKub[i]
   }
 
   return (
@@ -242,11 +265,14 @@ const ViewMoreW = ({ lang }) => {
               {t("addproject")}
             </button>
           </div>
-          <h1 className="md:ml-0 ml-5">
-            <b className="text-blue-500">{projectName}</b> {"  "}
+          <h1 className="flex justify-between items-center">
+            <b className="text-blue-500 mr-3">{projectName}</b>
             <b>{t("products")}</b>
           </h1>
-          <span></span>
+          <div className="bg-slate-50 shadow-md shadow-slate-100 py-2 rounded-lg flex justify-between items-center">
+            <span className="mx-4 text-black font-semibold">{resultKg} ({t('kg')})</span>
+            <span className="mx-4 text-black font-semibold">{resultKub} ({t('sm')}<sup>3</sup>)</span>
+          </div>
         </div>
       </div>
       <div className="product-main flex justify-center items-start overflow-hidden w-full">
@@ -327,7 +353,9 @@ const ViewMoreW = ({ lang }) => {
                     </td>
                     <td className="px-6 py-4">
                       <input
-                        onChange={(e) => addProductIds(e.target.checked, item)}
+                        onChange={(e) => {
+                          addProductIds(e.target.checked, item)
+                        }}
                         defaultChecked={false}
                         type="checkbox"
                         className="w-5 h-5"
