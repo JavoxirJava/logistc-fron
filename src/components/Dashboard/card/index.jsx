@@ -111,7 +111,7 @@ const DashboardProductCard = ({ lang }) => {
       <div className="relative overflow-x-auto  sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr classNameName="bg-slate-200">
+            <tr className="bg-slate-200">
               <th scope="col" className="px-6 py-3">#</th>
               <th scope="col" className="px-6 py-3">{t('photo')}</th>
               <th scope="col" className="px-6 py-3">{t('card4')} {t("client2")}</th>
