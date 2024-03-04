@@ -220,7 +220,7 @@ function OffcanvasProduct({
               htmlFor={`idNumberX${isAdd}`}
               className="block text-gray-700 text-sm font-bold mt-3"
             >
-              {t("productAdd7x")}
+              {t("productAdd7x")} ({t("sm")})
             </label>
             <input
               type="number"
@@ -240,7 +240,7 @@ function OffcanvasProduct({
               htmlFor={`idNumberY${isAdd}`}
               className="block text-gray-700 text-sm font-bold mt-3"
             >
-              {t("productAdd7y")}
+              {t("productAdd7y")} ({t("sm")})
             </label>
             <input
               type="number"
@@ -260,7 +260,7 @@ function OffcanvasProduct({
               htmlFor={`idNumberZ${isAdd}`}
               className="block text-gray-700 text-sm font-bold mt-3"
             >
-              {t("productAdd7z")}
+              {t("productAdd7z")} ({t("sm")})
             </label>
             <input
               type="number"
@@ -387,6 +387,7 @@ function OffcanvasProduct({
               handleToggleOffcanvas();
               inputDelete();
               topFunction();
+              setInput(true)
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-gray-500 text-sm font-medium text-white"
           >

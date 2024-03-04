@@ -223,7 +223,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='customsClearancePrice'>{t("customPrice")}</label>
+                                    <label htmlFor='customsClearancePrice'>{t("summaRastamojka")}</label>
                                     <input
                                         id='customsClearancePrice'
                                         onChange={e => setCustomsClearancePrice(e.target.value)}
@@ -232,21 +232,21 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='cct'>{t("cct")}</label>
+                                    <label htmlFor='cct'>{t("summaCct")}</label>
                                     <input
                                         id='cct'
                                         onChange={e => setCct(e.target.value)}
                                         type='number'
-                                        placeholder={`${t("enter")} ${t("cct")}`}
+                                        placeholder={`${t("enter")} ${t("summaCct")}`}
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-[49%] mt-4'>
-                                    <label htmlFor='costChina'>{t("costChina")}</label>
+                                    <label htmlFor='costChina'>{t("summaChina")}</label>
                                     <input
                                         id='costChina'
                                         onChange={e => setCostChina(e.target.value)}
                                         type='number'
-                                        placeholder={`${t("enter")} ${t("costChina")}`}
+                                        placeholder={`${t("enter")} ${t("summaChina")}`}
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 " />
                                 </div>
                                 <div className='flex flex-col w-full mt-4'>
@@ -317,15 +317,15 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                                 <p className='font-bold'>{priceForRoad && priceForRoad} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>{t('customPrice')}:</p>
+                                <p>{t('summaRastamojka')}:</p>
                                 <p className='font-bold'>{customsClearancePrice && customsClearancePrice} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>{t("cct")}:</p>
+                                <p>{t("summaCct")}:</p>
                                 <p className='font-bold'>{cct && cct} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
-                                <p>{t("costChina")}:</p>
+                                <p>{t("summaChina")}:</p>
                                 <p className='font-bold'>{costChina && costChina} $</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>

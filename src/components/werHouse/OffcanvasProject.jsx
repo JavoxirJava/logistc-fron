@@ -113,6 +113,7 @@ const validation = () => {
             onClick={() => {
               handleToggleOffcanvas()
               inputDelete()
+              setInput(true)
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-gray-500 text-sm font-medium text-white"
           >

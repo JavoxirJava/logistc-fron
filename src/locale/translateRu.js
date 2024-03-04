@@ -208,7 +208,7 @@ const translateRu = {
   projectStatusEdErr: "Ошибка редактирования статуса проекта",
   sm: "см",
   measure: "Измерять",
-  totalPrice: "Итоговая цена",
+  totalPrice: "Общая сумма",
   cct: "Ccт",
   costChines:'Cost China',
   totalpriceand:'Общий ценовой результат',
@@ -246,7 +246,10 @@ const translateRu = {
   cashierSuccessfullySaved: "Данные успешно сохранены",
   cashierWarningNextBtn: "Все поля должны быть заполнены. Пожалуйста, проверьте информацию еще раз",
   imgNotFound: "Изображение не доступно",
-  calculated: "Рассчитано"
+  calculated: "Рассчитано",
+  summaCct: "Сумма сст",
+  summaChina: "Расход в китай",
+  summaRastamojka: "Сумма растаможка",
 };
 
 export default translateRu;
