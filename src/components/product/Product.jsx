@@ -359,41 +359,41 @@ function Product({ lang, projectId, setProjectId }) {
                 {t("cardCurrent")}: {pagination2}
               </span>
             </div>
-            <div class="relative overflow-x-auto  sm:rounded-lg">
-              <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+            <div className="relative overflow-x-auto  sm:rounded-lg">
+              <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                   <tr>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       №
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("client2")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("card2")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("transport")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("date")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("productCount")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("totalWeight")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("totalKub")}
                     </th>
-                    {/* <th scope="col" class="px-6 py-3">
+                    {/* <th scope="col" className="px-6 py-3">
                       Total Price
                     </th> */}
-                    <th colSpan='4' scope="col" class="px-6 py-3 text-center">
+                    <th colSpan='4' scope="col" className="px-6 py-3 text-center">
                       {t("action")}
                     </th>
-                    {/* <th scope="col" class="px-6 py-3 text-center">
+                    {/* <th scope="col" className="px-6 py-3 text-center">
                       {t("download")}
                     </th> */}
                   </tr>

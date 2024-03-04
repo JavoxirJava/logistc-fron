@@ -411,34 +411,34 @@ function Product({ lang, werHouseId, setWerHouseId }) {
               <span></span>
             </div>
             <div className="mt-4 flex flex-wrap justify-between overflow-x-auto">
-              <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       №
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("client2")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("totalKub")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("productCount")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("totalWeight")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("edit")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("delete")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("more")}
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" className="px-6 py-3">
                       {t("download")}
                     </th>
 

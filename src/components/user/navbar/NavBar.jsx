@@ -119,10 +119,10 @@ function UserNavBar({ dashboard, product, client, history, changeLang, lang }) {
               >
                 <div className="bg-slate-200 p-5 flex justify-center items-center relative">
                   <i
-                    class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
+                    className="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
                     onClick={openMenu}
                   ></i>
-                  <ul class="list-none">
+                  <ul className="list-none">
                     <li className="my-2" onClick={openMenu}>
                       <Link
                         to="/user-dashboard"
@@ -192,7 +192,7 @@ function UserNavBar({ dashboard, product, client, history, changeLang, lang }) {
                       alt="img"
                     />
                     <i
-                      class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
+                      className="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
                       onClick={openGetMe}
                     ></i>
                   </div>
@@ -281,7 +281,7 @@ function UserNavBar({ dashboard, product, client, history, changeLang, lang }) {
                 <div className="">
                   <div className="bg-slate-200 py-8  flex flex-col justify-center items-center relative">
                     <i
-                      class="fa-solid fa-xmark cursor-pointer absolute top-5 right-5 text-2xl"
+                      className="fa-solid fa-xmark cursor-pointer absolute top-5 right-5 text-2xl"
                       onClick={() => {
                         openModal();
                       }}

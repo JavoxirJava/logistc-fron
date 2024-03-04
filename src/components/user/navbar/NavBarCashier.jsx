@@ -116,10 +116,10 @@ function CashierNavBar({ dashboard, lang }) {
                 className={`${isOpenMenu ? "inline" : "hidden"} absolute lg:w-80 w-52 bg-slate-400 top-12 rounded-3xl shadow-lg overflow-hidden z-20`}>
                 <div className="bg-slate-200 p-5 flex justify-center items-center relative">
                   <i
-                    class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
+                    className="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
                     onClick={openMenu}
                   ></i>
-                  <ul class="list-none">
+                  <ul className="list-none">
                     <li className="my-2" onClick={openMenu}>
                       <Link
                         to="/cashier-dashboard"
@@ -179,7 +179,7 @@ function CashierNavBar({ dashboard, lang }) {
                       alt="img"
                     />
                     <i
-                      class="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
+                      className="fa-solid fa-xmark absolute top-5 right-5 text-2xl cursor-pointer"
                       onClick={openGetMe}
                     ></i>
                   </div>
@@ -268,7 +268,7 @@ function CashierNavBar({ dashboard, lang }) {
                 <div className="">
                   <div className="bg-slate-200 py-8  flex flex-col justify-center items-center relative">
                     <i
-                      class="fa-solid fa-xmark absolute top-5 right-5 text-2xl"
+                      className="fa-solid fa-xmark absolute top-5 right-5 text-2xl"
                       onClick={() => {
                         openModal();
                       }}
