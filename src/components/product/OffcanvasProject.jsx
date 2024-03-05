@@ -108,7 +108,7 @@ function OffcanvasProject({
             onClose={handleToggleOffcanvas}
             inputDelete={inputDelete}
         >
-            <div onChange={setData}>
+            <div>
                 {/* Name input  */}
                 <label
                     htmlFor={`name${isAdd}`}
@@ -130,6 +130,7 @@ function OffcanvasProject({
                     {t("file")}
                 </label>
                 <input
+                onChange={setData}
                 ref={fileInputRef}
                     id={`file${isAdd}`}
                     type="file"
@@ -269,6 +270,7 @@ function OffcanvasProject({
                             await onSave();
                             await getProduct(0, 4);
                             inputDelete2()
+                            console.log(setData);
                         }}
                         className={`${all ? "bg-gray-600 cursor-not-allowed opacity-70" : "bg-blue-700"} inline-flex justify-center w-[45%] rounded-md shadow-sm py-2  text-sm font-medium text-white`}
                     >
