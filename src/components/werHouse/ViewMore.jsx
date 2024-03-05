@@ -156,22 +156,21 @@ const ViewMoreW = ({ lang }) => {
       wareHouseId: projectId,
       productCountDtoS
     }
-    console.log(addData);
 
-    // axios
-    //   .post(`${url}product/change-warehouse-to-project`, addData, config)
-    //   .then(() => {
-    //     toast.success(t("success"));
-    //     getProjectInfo();
-    //     setProductObj2(null);
-    //     showProjectInfoModal();
-    //     tozalovchi();
-    //   })
-    //   .catch((err) => {
-    //     toast.error(t("error"));
-    //     console.log(err);
-    //     tozalovchi();
-    //   });
+    axios
+      .post(`${url}product/change-warehouse-to-project`, addData, config)
+      .then(() => {
+        toast.success(t("success"));
+        getProjectInfo();
+        setProductObj2(null);
+        showProjectInfoModal();
+        tozalovchi();
+      })
+      .catch((err) => {
+        toast.error(t("error"));
+        console.log(err);
+        tozalovchi();
+      });
   }
 
   function editProduct() {
