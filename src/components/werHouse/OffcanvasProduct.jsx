@@ -156,10 +156,11 @@ function OffcanvasProduct({
   };
 
   const options =
-    users &&
+    users ?
     users.map((item) => {
       return { value: item.userId, label: item.name };
-    });
+    })
+    : []
 
   const handleChange = (event) => {
     setSelectValue(event.value);
