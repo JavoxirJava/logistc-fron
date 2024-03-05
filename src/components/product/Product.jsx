@@ -468,7 +468,6 @@ function Product({ lang, projectId, setProjectId }) {
           isAdd={true}
           getProduct={getProduct}
           setProduct={setProductObj2}
-          product=""
           handleToggleOffcanvas={handleToggleOffcanvas}
           isOffcanvasOpen={isOffcanvasOpen}
           name={t("addProduct")}
