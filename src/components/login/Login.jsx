@@ -21,7 +21,7 @@ function Login({setCashierUrl}) {
 
     function login() {
         setIsLoading(true);
-        axios.post(`${url}user/login?phoneNumber=${byId("username")}&password=${byId("password")}`)
+        axios.post(`${url}user/login?idNumber=${byId("username")}&password=${byId("password")}`)
             .then((res) => {
                 if (res.data) {
                     setCashierUrl(res.data.message)
@@ -54,7 +54,7 @@ function Login({setCashierUrl}) {
             </div>
             <div className="md:w-[400px] h-[360px] rounded-2xl box z-10 md:py-10 md:px-12 px-5 py-10 flex flex-col">
 
-                <p>{t("login2")}</p>
+                <p>{t("idNumber")}</p>
                 <input
                     id="username"
                     disabled={isLoading}

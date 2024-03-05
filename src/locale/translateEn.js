@@ -253,6 +253,7 @@ const translateEn = {
   summaCct: "Cct amount",
   summaChina: "Consumption to China",
   summaRastamojka: "Customs clearance amount",
+  idNumber: "Id number",
 }
 
 export default translateEn

@@ -250,6 +250,7 @@ const translateRu = {
   summaCct: "Сумма сст",
   summaChina: "Расход в китай",
   summaRastamojka: "Сумма растаможка",
+  idNumber: "Идентификационный номер",
 };
 
 export default translateRu;
