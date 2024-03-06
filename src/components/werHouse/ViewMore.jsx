@@ -42,9 +42,9 @@ const ViewMoreW = ({ lang }) => {
   const showProjectInfoModal = () => setShowModal(!showModal);
   const tozalovchi = () => {
     setProducts([])
-    checkbox.current.checked = false
+    // e.target.checked = false
+    // checkbox.current.checked = false
     // products.map(product => document.getElementById(`count${product.productId}`).checked = false)
-    
   }
 
   const { t } = useTranslation();
@@ -361,10 +361,7 @@ const ViewMoreW = ({ lang }) => {
                       <input
                         onChange={(e) => {
                           addProductIds(e.target.checked, item)
-                          // tozalovchi()
                         }}
-                        ref={checkbox}
-                        // defaultChecked={false}
                         type="checkbox"
                         className="w-5 h-5"
                       />
@@ -470,7 +467,6 @@ const ViewMoreW = ({ lang }) => {
               <button
                 type="button"
                 onClick={() => {
-                  
                   closePro();
                   tozalovchi();
                 }}
