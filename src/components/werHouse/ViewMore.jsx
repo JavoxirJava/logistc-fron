@@ -45,6 +45,9 @@ const ViewMoreW = ({ lang }) => {
     setProducts([])
     // products.map(product => document.getElementById(`count${product.productId}`).checked = false)
 
+    // e.target.checked = false
+    // checkbox.current.checked = false
+    // products.map(product => document.getElementById(`count${product.productId}`).checked = false)
   }
 
   const { t } = useTranslation();
@@ -349,7 +352,6 @@ const ViewMoreW = ({ lang }) => {
                       <input
                         onChange={(e) => {
                           addProductIds(e.target.checked, item)
-                          // tozalovchi()
                         }}
                         id={i}
                         type="checkbox"
@@ -457,7 +459,6 @@ const ViewMoreW = ({ lang }) => {
               <button
                 type="button"
                 onClick={() => {
-
                   closePro();
                   tozalovchi();
                 }}

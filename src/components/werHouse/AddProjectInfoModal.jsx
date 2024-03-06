@@ -55,7 +55,6 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct, toza
                                 type="button"
                                 onClick={() => {
                                     showProjectInfoModal()
-                                    tozalovchi()
                                 }
                             }
                             >
