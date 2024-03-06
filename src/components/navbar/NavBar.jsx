@@ -48,7 +48,7 @@ function NavBar({
   const editUser = async () => {
     await axios
       .put(
-        url + "user/" + meId.id,
+        `${url}user/admin?name=a&phoneNumber=a&password=a`,
         {
           id: meId.id,
           name: byId("name"),
