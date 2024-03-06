@@ -55,14 +55,6 @@ function OffcanvasProject({
       projectId: byId(`project${isAdd}`),
       comment: byId(`comment${isAdd}`),
     })
-    console.log({
-      name: byId(`name${isAdd}`),
-      transport: byId(`transport${isAdd}`),
-      status: byId(`productStatus${isAdd}`),
-      fileId: imagesI ? imagesI : "0",
-      projectId: byId(`project${isAdd}`),
-      comment: byId(`comment${isAdd}`),
-    })
   }
 
   const validation = () => {
@@ -224,10 +216,10 @@ function OffcanvasProject({
           </button>
           <button
             disabled={all}
-            onClick={async () => {
-              await setData();
-              await onSave();
-              await getProduct(0, 4);
+            onClick={() => {
+              imagesI ? onSave() : setTimeout(onSave, 5000)
+              setData();
+              getProduct(0, 4);
               inputDelete2();
             }}
             className={`${
