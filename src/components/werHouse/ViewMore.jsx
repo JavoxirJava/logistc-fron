@@ -28,6 +28,7 @@ const ViewMoreW = ({ lang }) => {
   const [loading, setLoading] = useState(false);
   const [isImageOpenModal, setIsImageOpenModal] = useState(false);
   const [imageId, setImageId] = useState(null);
+  const [check, setCheck] = useState(true);
   const checkbox = useRef(false);
 
   let projectId = sessionStorage.getItem("warehouseIdViewMore");
@@ -42,9 +43,8 @@ const ViewMoreW = ({ lang }) => {
   const showProjectInfoModal = () => setShowModal(!showModal);
   const tozalovchi = () => {
     setProducts([])
-    checkbox.current.checked = false
     // products.map(product => document.getElementById(`count${product.productId}`).checked = false)
-    
+
   }
 
   const { t } = useTranslation();
@@ -68,39 +68,32 @@ const ViewMoreW = ({ lang }) => {
   }
 
   const getProjectInfo = () => {
-    axios
-      .get(
-        `${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=0&size=5`,
-        config
-      )
-      .then((res) => {
-        if (res.data.message === "List empty") setProjectIdInfo(null);
-        else {
-          setProjectIdInfo(res.data.body.object);
-          setPage(res.data.body.totalPage);
-        }
-      })
-      .catch((err) => console.log("product/ware-house yulida error!", err));
+    axios.get(
+      `${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=0&size=5`,
+      config
+    ).then((res) => {
+      if (res.data.message === "List empty") setProjectIdInfo(null);
+      else {
+        setProjectIdInfo(res.data.body.object);
+        setPage(res.data.body.totalPage);
+      }
+    }).catch((err) => console.log("product/ware-house yulida error!", err));
   };
 
   const getProject = () => {
-    axios
-      .get(`${url}project/all?lang=${lang}`, config)
+    axios.get(`${url}project/all?lang=${lang}`, config)
       .then((res) => {
         setProject(res.data.body);
-      })
-      .catch((err) => console.log("wareHouse/product yulida error!", err));
+      }).catch((err) => console.log("wareHouse/product yulida error!", err));
   };
 
   const handelPageClick = (event) => {
     const pageNumber = event.selected;
     setCurrentPage(pageNumber);
-    axios
-      .get(
-        `${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=${pageNumber}&size=5`,
-        config
-      )
-      .then((res) => setProjectIdInfo(res.data.body.object))
+    axios.get(
+      `${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=${pageNumber}&size=5`,
+      config
+    ).then((res) => setProjectIdInfo(res.data.body.object))
       .catch((err) => console.log("error page: ", err));
   };
 
@@ -112,17 +105,14 @@ const ViewMoreW = ({ lang }) => {
   const searchHandler = (e) => {
     let data = e.target.value;
     if (data) {
-      axios
-        .get(
-          `${url}wareHouse/product/search?userName=${data}&lang=${lang}`,
-          config
-        )
-        .then((res) =>
-          res.data.success === false
-            ? setProjectIdInfo([{ comment: "Not found 😊" }])
-            : setProjectIdInfo(res.data.body)
-        )
-        .catch(() => setProjectIdInfo(null));
+      axios.get(
+        `${url}wareHouse/product/search?userName=${data}&lang=${lang}`,
+        config
+      ).then((res) =>
+        res.data.success === false
+          ? setProjectIdInfo([{ comment: "Not found 😊" }])
+          : setProjectIdInfo(res.data.body)
+      ).catch(() => setProjectIdInfo(null));
     } else {
       getProjectInfo();
       setProjectIdInfo(null);
@@ -141,7 +131,7 @@ const ViewMoreW = ({ lang }) => {
         setProductObj2(null);
         handleToggleOffcanvas();
       })
-      .catch((err) => {
+      .catch(() => {
         toast.error(t("error"));
         setLoading(false);
       });
@@ -161,16 +151,18 @@ const ViewMoreW = ({ lang }) => {
       productCountDtoS
     }
 
-    axios
-      .post(`${url}product/change-warehouse-to-project`, addData, config)
+    axios.post(`${url}product/change-warehouse-to-project`, addData, config)
       .then(() => {
         tozalovchi();
         toast.success(t("success"));
         getProjectInfo();
         setProductObj2(null);
         showProjectInfoModal();
-      })
-      .catch((err) => {
+        setCheck(false)
+        setTimeout(() => {
+          setCheck(true)
+        }, 200);
+      }).catch((err) => {
         tozalovchi();
         toast.error(t("error"));
         console.log(err);
@@ -180,16 +172,14 @@ const ViewMoreW = ({ lang }) => {
   function editProduct() {
     setLoading(true);
     let data = { ...product2 };
-    axios
-      .put(`${url}product?id=${product.productId}`, data, config)
+    axios.put(`${url}product?id=${product.productId}`, data, config)
       .then(() => {
         toast.success(t("success"));
         setLoading(false);
         getProjectInfo();
         setProductObj2(null);
         openEdit();
-      })
-      .catch((err) => {
+      }).catch(() => {
         toast.error(t("error"));
         setLoading(false);
       });
@@ -200,12 +190,10 @@ const ViewMoreW = ({ lang }) => {
       .delete(
         `${url}product/ware-house?wareHouseId=${projectId}&productId=${product.productId}`,
         config
-      )
-      .then(() => {
+      ).then(() => {
         getProjectInfo();
         toast.success(t("success"));
-      })
-      .catch(() => {
+      }).catch(() => {
         toast.error(t("error"));
         // console.log(err);
       });
@@ -292,7 +280,7 @@ const ViewMoreW = ({ lang }) => {
               </tr>
             </thead>
             <tbody className="text-[1rem] text-gray-700 bg-white text-center">
-              {projectIdInfo ? (
+              {projectIdInfo && check ? (
                 projectIdInfo.map((item, i) => (
                   <tr
                     key={i}
@@ -363,8 +351,7 @@ const ViewMoreW = ({ lang }) => {
                           addProductIds(e.target.checked, item)
                           // tozalovchi()
                         }}
-                        ref={checkbox}
-                        // defaultChecked={false}
+                        id={i}
                         type="checkbox"
                         className="w-5 h-5"
                       />
@@ -470,7 +457,7 @@ const ViewMoreW = ({ lang }) => {
               <button
                 type="button"
                 onClick={() => {
-                  
+
                   closePro();
                   tozalovchi();
                 }}
