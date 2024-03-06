@@ -24,8 +24,6 @@ const ViewMoreW = ({ lang }) => {
   const [ModalPro, setProOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [products, setProducts] = useState([]);
-  const [productListCountKg, setProductListCountKg] = useState([]);
-  const [productListCountKub, setProductListCountKub] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isImageOpenModal, setIsImageOpenModal] = useState(false);
@@ -41,7 +39,10 @@ const ViewMoreW = ({ lang }) => {
   const openPro = () => setProOpen(true);
   const closePro = () => setProOpen(false);
   const showProjectInfoModal = () => setShowModal(!showModal);
-  const tozalovchi = () => setProducts([]);
+  const tozalovchi = () => {
+    setProducts([]);
+    products.map(product => document.getElementById(`count${product.productId}`).checked = false)
+  }
 
   const { t } = useTranslation();
 
@@ -160,16 +161,16 @@ const ViewMoreW = ({ lang }) => {
     axios
       .post(`${url}product/change-warehouse-to-project`, addData, config)
       .then(() => {
+        tozalovchi();
         toast.success(t("success"));
         getProjectInfo();
         setProductObj2(null);
         showProjectInfoModal();
-        tozalovchi();
       })
       .catch((err) => {
+        tozalovchi();
         toast.error(t("error"));
         console.log(err);
-        tozalovchi();
       });
   }
 
@@ -208,27 +209,20 @@ const ViewMoreW = ({ lang }) => {
   }
 
   function addProductIds(checked, item) {
-    if (checked) {
-      setProducts([...products, item]);
-      setProductListCountKg([...productListCountKg, item])
-      setProductListCountKub([...productListCountKub, item])
-    }
-    else {
-      setProducts(products.filter((product) => product.productId !== item.productId))
-      setProductListCountKg(productListCountKg.filter((product) => product.productId !== item.productId))
-      setProductListCountKub(productListCountKub.filter((product) => product.productId !== item.productId))
-    }
+    if (checked) setProducts([...products, item]);
+    else setProducts(products.filter((product) => product.productId !== item.productId))
   }
 
-  let dataKg = [...productListCountKg.map(kg => kg.totalWeight)],
-    dataKub = [...productListCountKub.map(kub => kub.totalKub)],
+  let dataKg = [...products.map(kg => kg.kg)],
+    dataKub = [...products.map(kub => kub.kub)],
+    dataCount = [...products.map(count => count.productCount)],
     resultKg = 0,
     resultKub = 0
   for (let i = 0; i < dataKg.length; i++) {
-    resultKg += dataKg[i]
+    resultKg = resultKg + (dataKg[i] * dataCount[i])
   }
   for (let i = 0; i < dataKub.length; i++) {
-    resultKub += dataKub[i]
+    resultKub = resultKg + (dataKub[i] * dataCount[i])
   }
 
   return (
