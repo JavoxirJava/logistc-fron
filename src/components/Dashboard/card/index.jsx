@@ -2,16 +2,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { config, getFile, url } from "../../api";
-import Dropdown from "./Dropdown";
 import "../../product/product.css";
-import Pagination, {
-  bootstrap5PaginationPreset,
-} from "react-responsive-pagination";
 import { useTranslation } from "react-i18next";
-import { changeLanguage } from "i18next";
 import ReactPaginate from "react-paginate";
 import { toast } from "react-toastify";
 import ImageViewModal from "../../ImageViewModal";
+import img from '../../empty.png'
 
 const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -141,7 +137,7 @@ const DashboardProductCard = ({ lang }) => {
                         setImageId(item.attachmentId ? item.attachmentId : toast.warning(t('imgNotFound')));
                         item.attachmentId ? setIsImageOpenModal(true) : setIsImageOpenModal(false)
                       }}
-                      src={item.attachmentId ? getFile + item.attachmentId : ''}
+                      src={item.attachmentId ? getFile + item.attachmentId : img}
                       alt="img"
                       className="w-10 h-10 object-cover rounded-full scale-125 hover:cursor-pointer" />
                   </td>
