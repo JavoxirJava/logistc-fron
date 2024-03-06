@@ -158,9 +158,7 @@ function OffcanvasProduct({
       })
       : []
 
-  const handleChange = (event) => {
-    setSelectValue(event.value);
-  };
+  const handleChange = (event) => setSelectValue(event.value);
 
   return (
     <Offcanvas
@@ -181,6 +179,11 @@ function OffcanvasProduct({
           id={`userId${isAdd}`}
           options={options}
         />
+        {/* <select>
+          {users && users.map(user => (
+            <option value="">{user.name}</option>
+          ))}
+        </select> */}
 
         <label
           htmlFor={`productFile${isAdd}`}
