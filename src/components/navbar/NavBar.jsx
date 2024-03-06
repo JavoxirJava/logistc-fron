@@ -141,9 +141,8 @@ function NavBar({
               </button>
 
               <div
-                className={`${
-                  isOpenMenu ? "inline" : "hidden  "
-                } absolute lg:w-80 w-52 bg-slate-400 top-12 
+                className={`${isOpenMenu ? "inline" : "hidden  "
+                  } absolute lg:w-80 w-52 bg-slate-400 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
               >
                 <div className="bg-slate-200 p-5 flex justify-center items-center relative">
@@ -205,39 +204,41 @@ function NavBar({
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <img
-                  className="h-10 w-auto hidden lg:inline"
-                  src={logo}
-                  alt="Your Company"
-                />
+                <Link to='/dashboard'>
+                  <img
+                    className="h-10 w-auto hidden lg:inline"
+                    src={logo}
+                    alt="Your Company"
+                  />
+                </Link>
               </div>
               <div className="hidden sm:ml-6 lg:block">
                 <div className="flex space-x-4">
                   <Link
                     to="/dashboard"
                     className={`${dashboard} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
                     {t("dashboard")}
                   </Link>
                   <Link
                     to="/project"
                     className={`${product} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
                     {t("produkt")}
                   </Link>
                   <Link
                     to="/warehouse"
                     className={`${werhouse} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
                     {t("werhouse")}
                   </Link>
                   <Link
                     to="/users"
                     className={`${client} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
                     {t("users")}
                   </Link>
@@ -245,7 +246,7 @@ function NavBar({
                   <Link
                     to="/cassier"
                     className={`${cassier} text-gray-500 hover:text-slate-900 mx-5 px-2 py-2 text-sm font-medium duration-300`}
-                    // aria-current="page"
+                  // aria-current="page"
                   >
                     {t("cassier")}
                   </Link>
@@ -278,9 +279,8 @@ function NavBar({
                 </div>
 
                 <div
-                  className={`${
-                    isOpenm ? "inline" : "hidden"
-                  } absolute lg:w-80 w-72 media-nav bg-slate-400 lg:-right-8 right-1 top-12 
+                  className={`${isOpenm ? "inline" : "hidden"
+                    } absolute lg:w-80 w-72 media-nav bg-slate-400 lg:-right-8 right-1 top-12 
                                     rounded-3xl shadow-lg overflow-hidden z-20`}
                 >
                   <div className="bg-slate-200 sm:p-8 p-3 flex justify-center items-center relative">
