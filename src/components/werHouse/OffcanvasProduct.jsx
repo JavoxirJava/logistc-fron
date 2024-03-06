@@ -27,6 +27,7 @@ function OffcanvasProduct({
   const [input, setInput] = useState(true);
   const [all, setAll] = useState(true);
   const [selectV, setSelectValue] = useState(null);
+  const [imagesI, setImagesI] = useState(null);
 
   const selectValue = useRef(null);
   const { t } = useTranslation();
@@ -51,31 +52,29 @@ function OffcanvasProduct({
     document.documentElement.scrollTop = 0;
   }
 
-  async function setData() {
+  const imagesIdIn = () => {
     const data = new FormData();
-    data.append(
-      "file",
-      document.getElementById(`productFile${isAdd}`).files[0]
-    );
-    await axios
-      .post(`${url}attachment/image`, data, config)
-      .then((res) => {
-        setProduct({
-          name: byId(`productName${isAdd}`),
-          comment: byId(`comment${isAdd}`),
-          wareHouseId: werHouseId,
-          x: byId(`idNumberX${isAdd}`),
-          y: byId(`idNumberY${isAdd}`),
-          z: byId(`idNumberZ${isAdd}`),
-          kg: byId(`productWeight${isAdd}`),
-          kub: kubSum,
-          count: byId(`numberOfSeats${isAdd}`),
-          totalWeight: totalKgSum,
-          totalKub: totalKubSum,
-          attachmentId: res.data.body ? res.data.body : null,
-        });
-      })
-      .catch((err) => console.log(err));
+    data.append("file", document.getElementById(`productFile${isAdd}`).files[0]);
+    axios.post(`${url}attachment/image`, data, config)
+      .then(res => setImagesI(res.data.body))
+      .catch(() => setImagesI(null))
+  }
+
+  function setData() {
+    setProduct({
+      name: byId(`productName${isAdd}`),
+      comment: byId(`comment${isAdd}`),
+      wareHouseId: werHouseId,
+      x: byId(`idNumberX${isAdd}`),
+      y: byId(`idNumberY${isAdd}`),
+      z: byId(`idNumberZ${isAdd}`),
+      kg: byId(`productWeight${isAdd}`),
+      kub: kubSum,
+      count: byId(`numberOfSeats${isAdd}`),
+      totalWeight: totalKgSum,
+      totalKub: totalKubSum,
+      attachmentId: imagesI,
+    });
     setUserId(selectV);
   }
 
@@ -116,7 +115,7 @@ function OffcanvasProduct({
       : "";
     // document.getElementById(`userId${isAdd}`).value = null;
     document.getElementById(`productFile${isAdd}`).value = null;
-    
+
     setKubSum(product ? product.kub : 0);
     setTotalKgSum(product ? product.totalWeight : 0);
     setTotalKubSum(product ? product.totalKub : 0);
@@ -157,10 +156,10 @@ function OffcanvasProduct({
 
   const options =
     users ?
-    users.map((item) => {
-      return { value: item.userId, label: item.name };
-    })
-    : []
+      users.map((item) => {
+        return { value: item.userId, label: item.name };
+      })
+      : []
 
   const handleChange = (event) => {
     setSelectValue(event.value);
@@ -193,7 +192,10 @@ function OffcanvasProduct({
           {t("productPhoto")}
         </label>
         <input
-          onChange={validation}
+          onChange={() => {
+            validation()
+            imagesIdIn()
+          }}
           id={`productFile${isAdd}`}
           className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
@@ -397,16 +399,14 @@ function OffcanvasProduct({
           <button
             disabled={all}
             onClick={async () => {
-              await setData();
               await onSave();
+              await setData();
               await getProduct(0, 4);
-              // handleToggleOffcanvas();
               inputDelete2();
               topFunction();
             }}
-            className={`${
-              all ? "bg-gray-700 cursor-not-allowed opacity-70" : "bg-blue-700"
-            } inline-flex justify-center w-[45%] rounded-md shadow-sm py-2  text-sm font-medium text-white`}
+            className={`${all ? "bg-gray-700 cursor-not-allowed opacity-70" : "bg-blue-700"
+              } inline-flex justify-center w-[45%] rounded-md shadow-sm py-2  text-sm font-medium text-white`}
           >
             {loading ? <LoadingBtn /> : name}
           </button>
