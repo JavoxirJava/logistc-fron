@@ -158,10 +158,7 @@ function OffcanvasProduct({
       })
       : []
 
-  const handleChange = (event) => {
-    setSelectValue(event.value);
-    console.log(event);
-  };
+  const handleChange = (event) => setSelectValue(event.value);
 
   return (
     <Offcanvas
