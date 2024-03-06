@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NavBar from "../navbar/NavBar";
 import axios from "axios";
 import { byId, config, getFile, url } from "../api";
@@ -28,6 +28,7 @@ const ViewMoreW = ({ lang }) => {
   const [loading, setLoading] = useState(false);
   const [isImageOpenModal, setIsImageOpenModal] = useState(false);
   const [imageId, setImageId] = useState(null);
+  const checkbox = useRef(false);
 
   let projectId = sessionStorage.getItem("warehouseIdViewMore");
   let projectName = sessionStorage.getItem("warehouseNameViewMore");
@@ -40,8 +41,10 @@ const ViewMoreW = ({ lang }) => {
   const closePro = () => setProOpen(false);
   const showProjectInfoModal = () => setShowModal(!showModal);
   const tozalovchi = () => {
-    setProducts([]);
-    products.map(product => document.getElementById(`count${product.productId}`).checked = false)
+    setProducts([])
+    checkbox.current.checked = false
+    // products.map(product => document.getElementById(`count${product.productId}`).checked = false)
+    
   }
 
   const { t } = useTranslation();
@@ -358,8 +361,10 @@ const ViewMoreW = ({ lang }) => {
                       <input
                         onChange={(e) => {
                           addProductIds(e.target.checked, item)
+                          // tozalovchi()
                         }}
-                        defaultChecked={false}
+                        ref={checkbox}
+                        // defaultChecked={false}
                         type="checkbox"
                         className="w-5 h-5"
                       />
@@ -465,6 +470,7 @@ const ViewMoreW = ({ lang }) => {
               <button
                 type="button"
                 onClick={() => {
+                  
                   closePro();
                   tozalovchi();
                 }}
