@@ -35,9 +35,6 @@ function OffcanvasProduct({
   useEffect(() => {
     getUsers(setUsers, lang);
   }, []);
-  useEffect(() => {
-    console.log(selectV);
-  }, [selectV]);
 
   useEffect(() => {
     if (loading || input == false) {
@@ -398,10 +395,11 @@ function OffcanvasProduct({
           </button>
           <button
             disabled={all}
-            onClick={async () => {
-              await onSave();
-              await setData();
-              await getProduct(0, 4);
+            onClick={() => {
+              // onSave();
+              imagesI ? onSave() : setTimeout(onSave, 5000)
+              setData();
+              getProduct(0, 4);
               inputDelete2();
               topFunction();
             }}
