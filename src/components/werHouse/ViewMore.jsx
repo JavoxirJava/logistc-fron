@@ -169,10 +169,12 @@ const ViewMoreW = ({ lang }) => {
         getProjectInfo();
         setProductObj2(null);
         showProjectInfoModal();
+        document.getElementById("projects").value = 0
       })
       .catch((err) => {
         tozalovchi();
         toast.error(t("error"));
+        document.getElementById("projects").value = 0
         console.log(err);
       });
   }
@@ -451,7 +453,7 @@ const ViewMoreW = ({ lang }) => {
                 id={`projects`}
                 className="block w-full  p-2 border rounded-md shadow-sm focus:outline-0 mb-4"
               >
-                <option selected disabled>
+                <option selected disabled value={0}>
                   {t("select")}
                 </option>
 
@@ -469,6 +471,8 @@ const ViewMoreW = ({ lang }) => {
                 onClick={() => {
                   closePro();
                   tozalovchi();
+                  getProjectInfo()
+                  document.getElementById("projects").value = 0
                 }}
                 className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
               >
