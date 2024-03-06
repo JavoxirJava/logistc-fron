@@ -107,7 +107,8 @@ function OffcanvasProject({
       onClose={handleToggleOffcanvas}
       inputDelete={inputDelete}
     >
-      <div>
+      <div onChange={setData}>
+
         {/* Name input  */}
         <label
           htmlFor={`name${isAdd}`}
