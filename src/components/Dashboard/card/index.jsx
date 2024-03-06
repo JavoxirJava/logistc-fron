@@ -148,7 +148,7 @@ const DashboardProductCard = ({ lang }) => {
                     {item ? item.date.slice(0, item.date.indexOf(" ")) : ""}
                   </td>
                   <td className="px-6 py-4">{item ? item.comment : ""}</td>
-                  <td className="px-6 py-4">{item.status}</td>
+                  <td className="px-6 py-4">{item.status ? item.status : t('noStatus')}</td>
                   {/* <td className="px-6 py-4">{item.y}</td>
                   <td className="px-6 py-4">{item.z}</td> */}
                 </tr>
