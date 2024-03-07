@@ -21,7 +21,12 @@ function Login({setCashierUrl}) {
 
     function login() {
         setIsLoading(true);
-        axios.post(`${url}user/login?idNumber=${byId("username")}&password=${byId("password")}`)
+        let data = {
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value
+        }
+        
+        axios.post(`${url}user/login?idNumber=${data.username}&password=${data.password}`, '')
             .then((res) => {
                 if (res.data) {
                     setCashierUrl(res.data.message)
@@ -31,12 +36,12 @@ function Login({setCashierUrl}) {
                     else if (res.data.message === "ROLE_ADMIN") byIdObj("dashboard").click();
                     else if (res.data.message === "ROLE_MANAGER") byIdObj("dashboard").click();
                     else if (res.data.message === "ROLE_CASHIER") byIdObj("cashier-dashboard").click();
-                    else toast.error(t("notfound"));
-                } else toast.error(t("notfound"));
+                    else toast.error(t("usernotfound"));
+                } else toast.error(t("usernotfound"));
                 setIsLoading(false);
             }).catch(err => {
                 setIsLoading(false);
-                toast.error(t("notfound"));
+                toast.error(t("usernotfound"));
             });
     }
 
@@ -53,7 +58,6 @@ function Login({setCashierUrl}) {
                 <img className="absolute top-20 right-10 md:right-0 w-[24rem] " src={ikki} alt="jfj" />
             </div>
             <div className="md:w-[400px] h-[360px] rounded-2xl box z-10 md:py-10 md:px-12 px-5 py-10 flex flex-col">
-
                 <p>{t("idNumber")}</p>
                 <input
                     id="username"

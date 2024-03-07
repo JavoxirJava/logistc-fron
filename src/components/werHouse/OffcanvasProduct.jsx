@@ -30,6 +30,7 @@ function OffcanvasProduct({
   const [imagesI, setImagesI] = useState(null);
 
   const selectValue = useRef(null);
+  const selectv = useRef(null);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -181,12 +182,7 @@ function OffcanvasProduct({
           id={`userId${isAdd}`}
           options={options}
         />
-        {/* <select>
-          {users && users.map(user => (
-            <option value="">{user.name}</option>
-          ))}
-        </select> */}
-
+        
         <label
           htmlFor={`productFile${isAdd}`}
           className="block text-gray-700 text-sm font-bold mt-3"

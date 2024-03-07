@@ -155,6 +155,7 @@ const translateEn = {
   status5: "To the border of China",
   status6: "Moved",
   notfound: 'Not Found',
+  usernotfound: 'User not Found',
   searchBy: "Search by",
   dropdown1: "Product TN code",
   dropdown2: "Product status",
