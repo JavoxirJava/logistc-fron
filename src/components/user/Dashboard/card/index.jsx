@@ -61,7 +61,7 @@ const DashboardProductCard = ({ lang }) => {
         }
         else {
           setModalin(null)
-          toast.warning('tasdiqlanmagan')
+          toast.warning(t("kasserHisob"))
         }
       })
       .catch((err) => console.log(err));

@@ -252,6 +252,7 @@ const translateRu = {
   summaChina: "Расход в китай",
   summaRastamojka: "Сумма растаможка",
   idNumber: "Идентификационный номер",
+  kasserHisob: "Этот товар не был учтен кассиром",
 };
 
 export default translateRu;

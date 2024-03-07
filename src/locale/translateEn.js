@@ -255,6 +255,7 @@ const translateEn = {
   summaChina: "Consumption to China",
   summaRastamojka: "Customs clearance amount",
   idNumber: "Id number",
+  kasserHisob: "This product has not been counted by the cashier",
 }
 
 export default translateEn
