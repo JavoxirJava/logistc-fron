@@ -29,6 +29,7 @@ const Clients = ({ changeLanguage, lang }) => {
   const [totalPage, setTotalPage] = useState(null);
   const [totalManager, setTotalManager] = useState(null);
   const [totalCasher, setTotalCasher] = useState(null);
+  const [errorInput, setErrorInput] = useState(null);
   const [pagination, setPagination] = useState(0);
   const [paginationM, setPaginationM] = useState(0);
   const [paginationC, setPaginationC] = useState(0);
@@ -323,8 +324,8 @@ const Clients = ({ changeLanguage, lang }) => {
             <input
               id="nameC"
               className="py-2 px-4 w-full bg-white rounded-lg mb-5 border border-slate-300
-                        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-                        focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+              focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+              focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
               placeholder={t("addclient4")}
             />
 
@@ -332,12 +333,20 @@ const Clients = ({ changeLanguage, lang }) => {
               {t("addclient5")}
             </label>
             <input
+              onChange={e => {
+                let value = e.target.value
+                if (!/^[a-zA-Z0-9]*$/.test(value)) {
+                  setErrorInput('Only numbers and letters are allowed!')
+                  document.getElementById('idNumberC').value = ''
+                } else setErrorInput(null)
+              }}
               id="idNumberC"
-              className="py-2 px-4 w-full bg-white rounded-lg mb-5 border border-slate-300
-                        focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
-                        focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
+              className={`${errorInput ? 'border-red-500 focus:border-red-500 placeholder:text-red-500 focus:placeholder:text-red-500 mb-0' : 'mb-5'} py-2 px-4 w-full bg-white rounded-lg border border-slate-300
+              focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
+              focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium`}
               placeholder={t("addclient6")}
             />
+            {errorInput && <p className="text-red-500 text-sm mb-3.5 ml-3 p-0">{errorInput}</p>}
 
             <label htmlFor="phoneNumberC" className="ml-3.5">
               {t("addclient7")}
