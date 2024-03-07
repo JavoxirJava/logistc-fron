@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const Offcanvas = ({ isOpen, onClose, name, children, isAdd, newWereHouseName, inputDelete }) => {
+const Offcanvas = ({ isOpen, name, children, inputDelete }) => {
     useEffect(() => {
         inputDelete()
     }, [])
