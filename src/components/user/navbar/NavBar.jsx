@@ -60,8 +60,12 @@ function UserNavBar({ dashboard, product, client, history, changeLang, lang }) {
   };
 
   useEffect(() => {
-    getMe(setMe);
+    getMe(setMe, lang);
   }, []);
+
+  useEffect(() => {
+    getMe(setMe, lang);
+  }, [lang]);
 
   return (
     <div className="">

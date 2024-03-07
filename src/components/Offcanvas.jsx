@@ -7,6 +7,7 @@ const Offcanvas = ({ isOpen, onClose, name, children, isAdd, newWereHouseName, i
 
     useEffect(() => {
         inputDelete()
+        // console.log(window.scrollTo);
     }, [isOpen])
     return (
         <div
