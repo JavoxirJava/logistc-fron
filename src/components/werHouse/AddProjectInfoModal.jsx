@@ -41,8 +41,8 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct, toza
                                 <tbody>
                                 <tr>
                                     <td>{products.length}</td>
-                                    <td>{products.map(p => p.totalWeight).reduce((a, b) => a + b)}</td>
-                                    <td>{products.map(p => p.totalKub).reduce((a, b) => a + b)}</td>
+                                    <td>{products.map(p => p).reduce((i, p) => i + (p.kg * p.productCount), 0)} ({t('kg')})</td>
+                                    <td>{products.map(p => p).reduce((i, p) => i + (p.kub * p.productCount), 0)} ({t('sm')})</td>
                                 </tr>
                                 </tbody>
                             </table>}

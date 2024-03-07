@@ -211,18 +211,6 @@ const ViewMoreW = ({ lang }) => {
     else setProducts(products.filter((product) => product.productId !== item.productId))
   }
 
-  let dataKg = [...products.map(kg => kg.kg)],
-    dataKub = [...products.map(kub => kub.kub)],
-    dataCount = [...products.map(count => count.productCount)],
-    resultKg = 0,
-    resultKub = 0
-  for (let i = 0; i < dataKg.length; i++) {
-    resultKg = resultKg + (dataKg[i] * dataCount[i])
-  }
-  for (let i = 0; i < dataKub.length; i++) {
-    resultKub = resultKg + (dataKub[i] * dataCount[i])
-  }
-
   return (
     <div className="w-full h-screen background overflow-x-hidden ">
       <NavBar lang={lang} />
@@ -262,8 +250,8 @@ const ViewMoreW = ({ lang }) => {
             <b>{t("products")}</b>
           </h1>
           <div className="bg-slate-50 shadow-md shadow-slate-100 py-2 rounded-lg flex justify-between items-center">
-            <span className="ms-4 text-black font-semibold">{resultKg} ({t('kg')})</span>
-            <span className="mx-4 text-black font-semibold">{resultKub} ({t('sm')}<sup>3</sup>)</span>
+            <span className="ms-4 text-black font-semibold">{products.map(p => p).reduce((i, p) => i + (p.kg * p.productCount), 0)} ({t('kg')})</span>
+            <span className="mx-4 text-black font-semibold">{products.map(p => p).reduce((i, p) => i + (p.kub * p.productCount), 0)} ({t('sm')}<sup>3</sup>)</span>
           </div>
         </div>
       </div>
@@ -316,6 +304,14 @@ const ViewMoreW = ({ lang }) => {
                         type="number"
                         defaultValue={item.productCount}
                         id={`count${item.productId}`}
+                        onChange={(e) => {
+                          setProducts(products.map((product) => {
+                            if (product.productId === item.productId) {
+                              product.productCount = e.target.value;
+                            }
+                            return product;
+                          }));
+                        }}
                         // disabled={products.length > 0 ? false : true}
                         className={`${products.length > 0 ? 'visible' : 'hidden'} ms-1.5 w-24 ps-3 py-1 outline-0 bg-slate-100 rounded-lg border border-slate-300 duration-200`}
                         placeholder={t("count")} />
