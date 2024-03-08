@@ -57,6 +57,7 @@ const DashboardProductCard = ({ lang }) => {
       .then((res) => {
         if (res.data.body.active === true) {
           setModalin(res.data.body)
+          console.log(res.data.body)
           openModal()
         }
         else {
@@ -87,6 +88,7 @@ const DashboardProductCard = ({ lang }) => {
         })
         .catch((err) => console.log(err));
   }
+
 
   return (
     <div className="radius">
