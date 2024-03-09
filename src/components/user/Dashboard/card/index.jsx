@@ -108,46 +108,15 @@ const DashboardProductCard = ({ lang }) => {
         <table className="w-full text-sm text-left rtl:text-right text-gray-500">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
-              <th scope="col" className="px-6 py-3">
-                №
-              </th>
-              <th scope="col" className="px-6 py-3">
-                {t("photo")}
-              </th>
-
-              <th scope="col" className="px-6 py-3">
-                {t("productName")}
-              </th>
-              <th scope="col" className="px-6 py-3">
-                {t("comment")}
-              </th>
-              <th scope="col" className="px-6 py-3">
-                {t("date")}
-              </th>
-
-              <th scope="col" className="px-6 py-3">
-                {/* Total Weight */}
-                {t("totalWeight")}
-              </th>
-              <th scope="col" className="px-6 py-3">
-                {t("totalKub")}
-              </th>
-              <th scope="col" className="px-6 py-3">
-                {t("statuss")}
-              </th>
-              <th scope="col" className="px-6 py-3">
-                {t("wiew")}
-              </th>
-              {/* <th scope="col" className="px-6 py-3">
-                {t("wiew")}
-              </th> */}
-              {/* <th scope="col" className="px-6 py-3">
-                      Total Price
-                    </th> */}
-
-              {/* <th scope="col" className="px-6 py-3 text-center">
-                      {t("download")}
-                    </th> */}
+              <th scope="col" className="px-6 py-3">№</th>
+              <th scope="col" className="px-6 py-3">{t("photo")}</th>
+              <th scope="col" className="px-6 py-3">{t("productName")}</th>
+              <th scope="col" className="px-6 py-3">{t("totalWeight")}</th>
+              <th scope="col" className="px-6 py-3">{t("totalKub")}</th>
+              <th scope="col" className="px-6 py-3">{t("statuss")}</th>
+              <th scope="col" className="px-6 py-3">{t("date")}</th>
+              <th scope="col" className="px-6 py-3">{t("comment")}</th>
+              <th scope="col" className="px-6 py-3">{t("wiew")}</th>
             </tr>
           </thead>
           <tbody>
@@ -182,8 +151,6 @@ const DashboardProductCard = ({ lang }) => {
                     />
                   </th>
                   <td className="px-6 py-4">{item ? item.name : ""}</td>
-                  <td className="px-6 py-4">{item ? item.comment : ""}</td>
-                  <td className="px-6 py-4">{item ? item.date : ""}</td>
                   <td className="px-6 py-4">
                     {item ? item.totalWeight : ""} {t("kg")}
                   </td>
@@ -194,6 +161,8 @@ const DashboardProductCard = ({ lang }) => {
                   <td className="px-6 py-4">
                     {item.status ? item.status : t("noStatus")}{" "}
                   </td>
+                  <td className="px-6 py-4">{item ? item.date : ""}</td>
+                  <td className="px-6 py-4">{item ? item.comment : ""}</td>
                   <td className="px-6 py-4">
                     <a
                       onClick={() => getInfo(item.id)}
@@ -231,7 +200,7 @@ const DashboardProductCard = ({ lang }) => {
 
       {modal && (
         <div className="zoom-modal justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-          <div className="relative md:w-[100%] w-[80vw] my-6 mx-auto max-w-3xl">
+          <div className="relative md:w-[100%] w-[80vw] mx-auto max-w-3xl">
             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-6">
               <div className="flex items-center justify-between border-b pb-2 rounded-t">
                 <h3 className="text-2xl font-semibold">{t("wiew")}</h3>
@@ -266,20 +235,27 @@ const DashboardProductCard = ({ lang }) => {
               </div>
               <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
                 <p>{t("measure")}:</p>
-                <p className="font-bold">
-                  {modalin && modalin.totalKub}{" "}
-                  {modalin && modalin.measure}
-                </p>
+                <p className="font-bold">{modalin && modalin.totalKub} {modalin && modalin.measure}</p>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("price")} {modalin && modalin.measure}:</p>
+                <p className="font-bold">{modalin && modalin.priceOfKub} $</p>
               </div>
               <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
                 <p>{t("cct")}:</p>
                 <p className="font-bold">{modalin && modalin.cct} $</p>
               </div>
               <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
-                <p>{t("price")}:</p>
-                <p className="font-bold">
-                  {modalin && modalin.priceOfKub} $
-                </p>
+                <p>{t("summaChina")}:</p>
+                <p className="font-bold">{modalin && modalin.costChina} $</p>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("summaRastamojka")}:</p>
+                <p className="font-bold">{modalin && modalin.customsClearancePrice} $</p>
+              </div>
+              <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                <p>{t("priceForRoad")}:</p>
+                <p className="font-bold">{modalin && modalin.priceForRoad} $</p>
               </div>
               <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
                 <p>{t("totalPrice")}:</p>

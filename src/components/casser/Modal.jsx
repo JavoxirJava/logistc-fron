@@ -29,9 +29,9 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
     const { t } = useTranslation();
 
     useEffect(() => {
-        let data = Number(kubAndKgVAlue) + Number(priceForRoad) + Number(customsClearancePrice) + Number(cct) + Number(costChina)
+        let data = Number(priceForRoad) + Number(customsClearancePrice) + Number(cct) + Number(costChina)
         setTotalPrice(data)
-    }, [kubAndKgVAlue, priceForRoad, customsClearancePrice, cct, costChina])
+    }, [priceForRoad, customsClearancePrice, cct, costChina])
 
     const addCasser = () => {
         setIsLoading(true)
@@ -101,12 +101,12 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
     }
 
     const idFunc = (item) => {
-        setProductKub(productId.find(i => i.id === item))
-        setProductKg(productId.find(i => i.id === item))
+        setProductKub(productId.find(i => i.id == item))
+        setProductKg(productId.find(i => i.id == item))
     }
 
-    const projectNameFunc = pjN => setProjectFilterName(projectId && projectId.find(n => n.projectId === pjN))
-    const productNameFunc = pdN => setProductFilterName(productId && productId.find(n => n.id === pdN))
+    const projectNameFunc = pjN => setProjectFilterName(projectId && projectId.find(n => n.projectId == pjN))
+    const productNameFunc = pdN => setProductFilterName(productId && productId.find(n => n.id == pdN))
     const userNameFunc = uN => setUserFilterName(userId && userId.find(n => n.id == uN))
 
 
@@ -116,7 +116,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
 
     const selectKubAndKg = () => {
         if (meassureVal == 'kub') setKubANdKgVAlue(Number(productKub.totalKub) * dataVAlue)
-        if (meassureVal == 'kg') setKubANdKgVAlue(Number(productKg.totalWeight) * dataVAlue)
+        if (meassureVal == 'kg') setKubANdKgVAlue(Number(productKg.totalWight) * dataVAlue)
     }
 
     return (
@@ -167,7 +167,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                                     className="  p-2 md:w-[23%] w-full mx-1 md:mt-4 mt-2 duration-300 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 ">
                                     <option selected disabled>{t("productSUser")}</option>
                                     {userId && userId.map((item) => (
-                                        <option value={item.id} key={item.id}>{item.user}</option>
+                                        <option value={item.id} key={item.id}>{item.name}</option>
                                     ))}
                                 </select>
                                 <select
@@ -201,6 +201,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                                         onChange={e => setDataVAlue(e.target.value)}
                                         id='priceOfKub'
                                         type="number"
+                                        disabled={!meassureVal}
                                         placeholder={t("enterPrice")}
                                         className="bg-gray-50 duration-300 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg focus:ring-blue-500  focus:border-blue-500 p-2.5 " />
                                 </div>
@@ -261,7 +262,11 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                             </form>
                             <div className='flex md:justify-end justify-center  mt-4'>
                                 <button
-                                    onClick={() => setShowModal(false)}
+                                    onClick={() => {
+                                        setTotalPrice(0)
+                                        setKubANdKgVAlue(0)
+                                        setShowModal(false)
+                                    }}
                                     className='py-2 px-8 mr-3 bg-red-500 rounded-md text-white active:scale-95 hover:shadow-lg hover:shadow-red-200 duration-300'>
                                     {t('close')}
                                 </button>
@@ -294,7 +299,7 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
                                 <p>{t("userName")}:</p>
-                                <p className='font-bold'>{userFilterName && userFilterName.user}</p>
+                                <p className='font-bold'>{userFilterName && userFilterName.name}</p>
                             </div>
                             <div className='flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium'>
                                 <p>{t('productName')}:</p>
@@ -334,7 +339,11 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
                             </div>
                             <div className='flex md:justify-end justify-center  mt-4'>
                                 <button
-                                    onClick={() => setNextModal(false)}
+                                    onClick={() => {
+                                        setTotalPrice(0)
+                                        setKubANdKgVAlue(0)
+                                        setNextModal(false)
+                                    }}
                                     className='py-2 px-8 mr-3 bg-red-500 rounded-md text-white active:scale-95 hover:shadow-lg hover:shadow-red-200 duration-300'>
                                     {t('close')}
                                 </button>

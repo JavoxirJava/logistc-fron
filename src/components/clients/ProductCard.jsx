@@ -15,7 +15,7 @@ function ProductCard({ className, product }) {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  
+
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
       setIsModalOpen(false)
@@ -83,31 +83,31 @@ function ProductCard({ className, product }) {
           </div>
         </div>
         <div className="h-3/6 card-col-row w-full flex media-product">
-        <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-10">
-        <div className="w-[25%]">
-            <p className="opacity-70">{t("client5")}</p>
-            <p className="font-bold text-[.9rem] text-orange-500">
-              {product ? product.allProduct : 0}
-            </p>
+          <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-10">
+            <div className="w-[25%]">
+              <p className="opacity-70">{t("client5")}</p>
+              <p className="font-bold text-[.9rem] text-orange-500">
+                {product ? product.allProduct : 0}
+              </p>
+            </div>
+            <div className="w-[25%]">
+              <p className="opacity-70">{t("1")}</p>
+              <p className="font-bold text-[.9rem] text-green-500">
+                {product ? product.падгатовка : 0}
+              </p>
+            </div>
           </div>
-          <div className="w-[25%]">
-            <p className="opacity-70">{t("1")}</p>
-            <p className="font-bold text-[.9rem] text-green-500">
-              {product ? product.Падгатовка : 0}
-            </p>
+          <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-10">
+            <div className="w-[35%]">
+              <p className="opacity-70">{t("gotov")}</p>
+              <p className="font-bold text-[.9rem] text-purple-600">
+                {product ? product.гатова : 0}
+              </p>
+            </div>
+
           </div>
-        </div>
-        <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-10">
-        <div className="w-[35%]">
-            <p className="opacity-70">{t("gotov")}</p>
-            <p className="font-bold text-[.9rem] text-purple-600">
-              {product ? product.Гатова : 0}
-            </p>
-          </div>
-         
-        </div>
-          
-          
+
+
         </div>
       </div>
       <div className="card-col w-3/12 flex justify-center my-auto h-10">
@@ -140,9 +140,8 @@ function ProductCard({ className, product }) {
                   id="nameCl"
                   disabled={isLoading ? true : false}
                   defaultValue={userId.name}
-                  className={`w-full ${
-                    isLoading ? "cursor-not-allowed" : ""
-                  } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
+                  className={`w-full ${isLoading ? "cursor-not-allowed" : ""
+                    } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
                   placeholder={t("addclient4")}
                 />
               </div>
@@ -159,9 +158,8 @@ function ProductCard({ className, product }) {
                   id="idNumberCl"
                   defaultValue={userId.idNumber}
                   disabled={isLoading ? true : false}
-                  className={`w-full ${
-                    isLoading ? "cursor-not-allowed" : ""
-                  } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
+                  className={`w-full ${isLoading ? "cursor-not-allowed" : ""
+                    } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
                   placeholder={t("addclient6")}
                 />
               </div>
@@ -177,9 +175,8 @@ function ProductCard({ className, product }) {
                   id="phoneNumberCl"
                   defaultValue={userId.phoneNumber}
                   disabled={isLoading ? true : false}
-                  className={`w-full ${
-                    isLoading ? "cursor-not-allowed" : ""
-                  } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
+                  className={`w-full ${isLoading ? "cursor-not-allowed" : ""
+                    } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
                   placeholder={t("addclient8")}
                 />
               </div>
@@ -197,9 +194,8 @@ function ProductCard({ className, product }) {
                     defaultValue={userId.password}
                     disabled={isLoading ? true : false}
                     type={showPassword ? "text" : "password"}
-                    className={`w-full ${
-                      isLoading ? "cursor-not-allowed" : ""
-                    } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
+                    className={`w-full ${isLoading ? "cursor-not-allowed" : ""
+                      } border-2 text-black border-gray-200 p-3 rounded-xl outline-none focus:border-blue-400 focus:bg-gray-300 duration-500`}
                     placeholder={t("addclient10")}
                   />
                   <button

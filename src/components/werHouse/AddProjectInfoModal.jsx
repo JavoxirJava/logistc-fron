@@ -42,7 +42,7 @@ function AddProjectInfoModal({showProjectInfoModal, products, addToProduct, toza
                                 <tr>
                                     <td>{products.length}</td>
                                     <td>{products.map(p => p).reduce((i, p) => i + (p.kg * p.productCount), 0)} ({t('kg')})</td>
-                                    <td>{products.map(p => p).reduce((i, p) => i + (p.kub * p.productCount), 0)} ({t('sm')})</td>
+                                    <td>{products.map(p => p).reduce((i, p) => i + (p.kub * p.productCount), 0)} ({t('sm')}<sup>3</sup>)</td>
                                 </tr>
                                 </tbody>
                             </table>}

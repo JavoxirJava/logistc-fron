@@ -86,10 +86,10 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
 
     const cashierActive = (id) => {
         axios.post(`${url}cashier/active?cashierId=${id}`, '', config)
-        .then(() => {
-            getCassier()
-        })
-        .catch(()=> {})
+            .then(() => {
+                getCassier()
+            })
+            .catch(() => { })
     }
 
     const searchHandler = () => {
@@ -141,7 +141,6 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                 else if (res.data.success === false) setCasseir(null)
             }).catch(() => { })
     }
-
 
     return (
         <div className="min-h-screen">
@@ -246,7 +245,7 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                                             <td className="px-6 py-4">
                                                 <input onChange={() => {
                                                     cashierActive(item.id)
-                                                }} checked={item.active} type="checkbox" className="w-5 h-5"/>
+                                                }} checked={item.active} type="checkbox" className="w-5 h-5" />
                                             </td>
                                         </tr>
                                     ))
@@ -318,12 +317,24 @@ const Cassir = ({ changeLanguage, lang, cashierUrl }) => {
                                 <p className="font-bold">{productobj && productobj.totalKub} {productobj && productobj.measure}</p>
                             </div>
                             <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                                <p>{t("price")} {productobj && productobj.measure}:</p>
+                                <p className="font-bold">{productobj && productobj.priceOfKub} $</p>
+                            </div>
+                            <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
                                 <p>{t("cct")}:</p>
                                 <p className="font-bold">{productobj && productobj.cct} $</p>
                             </div>
                             <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
-                                <p>{t("price")}:</p>
-                                <p className="font-bold">{productobj && productobj.priceOfKub} $</p>
+                                <p>{t("summaChina")}:</p>
+                                <p className="font-bold">{productobj && productobj.costChina} $</p>
+                            </div>
+                            <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                                <p>{t("summaRastamojka")}:</p>
+                                <p className="font-bold">{productobj && productobj.customsClearancePrice} $</p>
+                            </div>
+                            <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
+                                <p>{t("priceForRoad")}:</p>
+                                <p className="font-bold">{productobj && productobj.priceForRoad} $</p>
                             </div>
                             <div className="flex justify-between items-center mt-3 border-b-2 border-dotted pb-1 text-[1.1rem] font-medium">
                                 <p>{t("totalPrice")}:</p>
