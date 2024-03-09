@@ -29,9 +29,9 @@ const Modal = ({ getCassier, getUser, getProduct, projectId, setProjectIdIn, use
     const { t } = useTranslation();
 
     useEffect(() => {
-        let data = Number(kubAndKgVAlue) + Number(priceForRoad) + Number(customsClearancePrice) + Number(cct) + Number(costChina)
+        let data = Number(priceForRoad) + Number(customsClearancePrice) + Number(cct) + Number(costChina)
         setTotalPrice(data)
-    }, [kubAndKgVAlue, priceForRoad, customsClearancePrice, cct, costChina])
+    }, [priceForRoad, customsClearancePrice, cct, costChina])
 
     const addCasser = () => {
         setIsLoading(true)
