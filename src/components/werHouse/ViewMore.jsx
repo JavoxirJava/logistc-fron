@@ -305,10 +305,9 @@ const ViewMoreW = ({ lang }) => {
                         defaultValue={item.productCount}
                         id={`count${item.productId}`}
                         onChange={(e) => {
-                          setProducts(products.map((product) => {
-                            if (product.productId === item.productId) {
-                              product.productCount = e.target.value;
-                            }
+                          setProducts(products.map(product => {
+                            if (product.productId === item.productId)
+                              product.productCount = e.target.value
                             return product;
                           }));
                         }}
