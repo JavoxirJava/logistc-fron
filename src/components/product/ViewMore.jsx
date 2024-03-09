@@ -94,8 +94,8 @@ const ViewMore = ({ lang }) => {
         </h1>
       </div>
       <div className="product-main flex justify-center items-start overflow-hidden w-full">
-        <div className="lg:px-0 md:px-10 lg:py-0 sm:py-5 px-3 mt-8 w-screen lg:w-[90%] overflow-x-auto">
-          <table className="w-full rounded-2xl overflow-hidden text-gray-500">
+        <div className="lg:px-0 md:px-10 lg:py-0 sm:py-5 px-3 mt-8 w-screen lg:w-[90%] ">
+          <table className="w-full rounded-2xl overflow-hidden text-gray-500 overflow-x-auto">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50">
               <tr>
                 <th className="px-6 py-3">№</th>
