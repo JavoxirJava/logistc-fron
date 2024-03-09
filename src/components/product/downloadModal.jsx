@@ -96,7 +96,7 @@ const DownloadModal = ({ isOpen, projects, closeDown }) => {
             onChange={(selectedOptions) => setSelectedValues(selectedOptions)}
           />
           <div className="flex justify-between mt-7">
-            <button type="button" onClick={closeDown} className="btm-close">
+            <button type="button" onClick={closeDown} className="btm-close ">
               {t("close")}
             </button>
             <button
