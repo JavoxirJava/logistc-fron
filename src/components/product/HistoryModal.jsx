@@ -4,7 +4,7 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
   const { t } = useTranslation();
 
   if (!isOpen) return null;
-  
+
   const allAddressList = historyList.status;
   return (
     <div
@@ -26,12 +26,6 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
         </div>
         <div className="sm:px-20 px-3 sm:py-6 py-3 flex justify-between items-center flex-wrap">
           <div className="mt-2 w-1/3 text-center">
-            <p className="pb-0 mb-0 opacity-50">{t("comment")}</p>
-            <p className="mt-0 pt-0 font-semibold">
-              {historyList && historyList.comment}
-            </p>
-          </div>
-          <div className="mt-2 w-1/3 text-center">
             <p className="pb-0 mb-0 opacity-50">{t("weiw2")}</p>
             <p className="mt-0 pt-0 font-semibold">
               {historyList && historyList.owner}
@@ -40,14 +34,21 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
           <div className="mt-2 w-1/3 text-center">
             <p className="pb-0 mb-0 opacity-50">{t("weiw3")}</p>
             <p className="mt-0 pt-0 font-semibold">
-              {historyList && historyList.date.slice(0, historyList.date.indexOf(" "))}{" "}
+              {historyList &&
+                historyList.date.slice(0, historyList.date.indexOf(" "))}{" "}
+            </p>
+          </div>
+          <div className="mt-2 w-1/3 text-center">
+            <p className="pb-0 mb-0 opacity-50">{t("totalKub")}</p>
+            <p className="mt-0 pt-0 font-semibold">
+              {historyList && historyList.totalKub} ({t("sm")}
+              <sup>3</sup>)
             </p>
           </div>
           <div className="mt-2 w-1/3 text-center">
             <p className="pb-0 mb-0 opacity-50">{t("kg")}</p>
             <p className="mt-0 pt-0 font-semibold">
-              {historyList &&
-                historyList.kg}
+              {historyList && historyList.kg}
             </p>
           </div>
           <div className="mt-2 w-1/3 text-center">
@@ -65,13 +66,13 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
           <div className="mt-2 w-1/2 text-center">
             <p className="pb-0 mb-0 opacity-50">{t("totalWeight")}</p>
             <p className="mt-0 pt-0 font-semibold">
-              {historyList && historyList.totalWeight} ({t('kg')})
+              {historyList && historyList.totalWeight} ({t("kg")})
             </p>
           </div>
           <div className="mt-2 w-1/2 text-center">
-            <p className="pb-0 mb-0 opacity-50">{t("totalKub")}</p>
+            <p className="pb-0 mb-0 opacity-50">{t("comment")}</p>
             <p className="mt-0 pt-0 font-semibold">
-              {historyList && historyList.totalKub} ({t('sm')}<sup>3</sup>)
+              {historyList && historyList.comment}
             </p>
           </div>
         </div>
@@ -81,7 +82,9 @@ const ProductModal = ({ isOpen, onClose, historyList }) => {
               allAddressList.map((item) => (
                 <div className="flex flex-col textga1">
                   <div className="pb-6 pl-0 w-[100px] overflow-x-auto scrollbar textga2">
-                    <p className="w-[250px]" title={item} >{item}</p>
+                    <p className="w-[250px]" title={item}>
+                      {item}
+                    </p>
                   </div>
                   <div className="h-[4px] w-[120px] flex relative justify-center items-center bg-slate-900">
                     <div className="w-[30px] h-[30px] rounded-full absolute left-0 bg-blue-700"></div>

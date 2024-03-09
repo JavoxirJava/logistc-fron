@@ -15,7 +15,7 @@ Select({changeLang, className, value}) {
                 onChange={changeLang}
                 value={value}>
                 <option selected={false} className="bg-slate-100 " value="en">
-                    {t("en")}
+                    ENG
                 </option>
                 <option selected={true} className="bg-slate-100" value="ru">
                     {t("ru")}
