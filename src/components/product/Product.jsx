@@ -119,7 +119,7 @@ function Product({ lang, projectId, setProjectId }) {
       .get(`${url}project/page?page=${page}&size=${size}&lang=${lang}`, config)
       .then((res) => {
         setTotalPage2(
-          res.data.body.totalPage ? res.data.body.totalPage - 1 : 2
+          res.data.body.totalPage ? res.data.body.totalPage - 1 : 1
         );
         setProject(res.data.body.object);
       })

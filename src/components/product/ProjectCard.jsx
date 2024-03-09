@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import ProductModal from "./HistoryModal";
 import ProjectModal from "./projectModal";
 import { Link } from "react-router-dom";
-import DownloadModal from "./downloadModal";
 import axios from "axios";
 import { url, config } from "../api";
 import LoadingBtn from "../loading/Loading";
