@@ -214,23 +214,23 @@ const ViewMoreW = ({ lang }) => {
   return (
     <div className="w-full h-screen background overflow-x-hidden ">
       <NavBar lang={lang} />
-      <div className="mt-32 flex justify-start md:ml-20 ml-0  w-full">
+      <div className="mt-32 flex justify-start px-3.5 md:px-16 w-full">
         <input
           type="search"
           onChange={searchHandler}
           placeholder={t("productNameSearch")}
-          className="lg:w-5/12 w-[100%] md:mx-0 mx-3 px-4 h-10 focus:outline-0 border rounded-md"
+          className="lg:w-3/12 sm:w-5/12 w-full px-4 h-10 focus:outline-0 border rounded-md"
         />
       </div>
       <div className="flex w-full justify-center ">
         <div className="flex md:w-[89%] w-full md:flex-row flex-col justify-between mt-5 ps-3.5 lg:ps-0">
-          <div className="flex md:justify-start gap-5">
+          <div className="flex md:justify-start gap-5 pr-3">
             <button
               onClick={() => {
                 handleToggleOffcanvas();
                 topFunction();
               }}
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-8  rounded"
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 px-5 lg:px-8 rounded"
             >
               {t("productAdd1")}
             </button>
@@ -240,16 +240,16 @@ const ViewMoreW = ({ lang }) => {
                 // else toast.warning('Please add at least one product')
                 else toast.warning(t("listWarning"));
               }}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-8  rounded"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-5 lg:px-8 rounded"
             >
               {t("addproject")}
             </button>
           </div>
-          <h1 className="flex justify-start lg:justify-between items-center">
+          <h1 className="flex justify-start lg:justify-between mt-3 lg:mt-0 items-center">
             <b className="text-blue-500 mr-3">{projectName}</b>
             <b>{t("products")}</b>
           </h1>
-          <div className="bg-slate-50 w-48 shadow-md shadow-slate-100 py-2 rounded-lg flex justify-start lg:justify-between items-center">
+          <div className="bg-slate-50 w-48 shadow-md shadow-slate-100 py-2 mt-3 lg:mt-0 rounded-lg flex justify-start lg:justify-between items-center">
             <span className="ms-4 text-black font-semibold">{products.map(p => p).reduce((i, p) => i + (p.kg * p.productCount), 0)} ({t('kg')})</span>
             <span className="mx-4 text-black font-semibold">{products.map(p => p).reduce((i, p) => i + (p.kub * p.productCount), 0)} ({t('sm')}<sup>3</sup>)</span>
           </div>
