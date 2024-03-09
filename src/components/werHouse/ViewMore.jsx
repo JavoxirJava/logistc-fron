@@ -223,8 +223,8 @@ const ViewMoreW = ({ lang }) => {
         />
       </div>
       <div className="flex w-full justify-center ">
-        <div className="flex md:w-[89%] w-full md:flex-row flex-col justify-between mt-5">
-          <div className="flex md:justify-start justify-center gap-5">
+        <div className="flex md:w-[89%] w-full md:flex-row flex-col justify-between mt-5 ps-3.5 lg:ps-0">
+          <div className="flex md:justify-start gap-5">
             <button
               onClick={() => {
                 handleToggleOffcanvas();
@@ -245,11 +245,11 @@ const ViewMoreW = ({ lang }) => {
               {t("addproject")}
             </button>
           </div>
-          <h1 className="flex justify-between items-center">
+          <h1 className="flex justify-start lg:justify-between items-center">
             <b className="text-blue-500 mr-3">{projectName}</b>
             <b>{t("products")}</b>
           </h1>
-          <div className="bg-slate-50 shadow-md shadow-slate-100 py-2 rounded-lg flex justify-between items-center">
+          <div className="bg-slate-50 w-48 shadow-md shadow-slate-100 py-2 rounded-lg flex justify-start lg:justify-between items-center">
             <span className="ms-4 text-black font-semibold">{products.map(p => p).reduce((i, p) => i + (p.kg * p.productCount), 0)} ({t('kg')})</span>
             <span className="mx-4 text-black font-semibold">{products.map(p => p).reduce((i, p) => i + (p.kub * p.productCount), 0)} ({t('sm')}<sup>3</sup>)</span>
           </div>
