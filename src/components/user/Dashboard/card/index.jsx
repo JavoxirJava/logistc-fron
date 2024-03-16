@@ -57,7 +57,6 @@ const DashboardProductCard = ({ lang }) => {
       .then((res) => {
         if (res.data.body.active === true) {
           setModalin(res.data.body)
-          console.log(res.data.body)
           openModal()
         }
         else {
@@ -70,23 +69,16 @@ const DashboardProductCard = ({ lang }) => {
 
   function searchProduct(e) {
     let text = e.target.value;
-    if (text === "") getProduct(pagination, 4);
-    else if (text === "all") getProduct(pagination, 4);
-    else
-      axios
-        .get(`${url}product/user/search?name=${text}&lang=${lang}`, config)
-        .then((res) => {
-          if (res.data.body) {
-            if (res.data.body.length > 4)
-              setProduct(
-                res.data.body.map((item, i) => {
-                  if (i < 4) return item;
-                })
-              );
-            else setProduct(res.data.body);
-          } else setProduct([]);
-        })
-        .catch((err) => console.log(err));
+    if (!text) getProduct(pagination, 4);
+    else axios.get(`${url}product/user/search?productName=${text}&lang=${lang}`, config)
+      .then((res) => {
+        if (res.data.success === true) setProduct(res.data.body);
+        else if (res.data.success === false) setProduct(null);
+      })
+      .catch((err) => {
+        console.log(err)
+        setProduct(null)
+      });
   }
 
 
@@ -97,9 +89,8 @@ const DashboardProductCard = ({ lang }) => {
           <input
             type="search"
             placeholder={t("productNameSearch")}
-            defaultValue=""
             onChange={searchProduct}
-            className="lg:w-4/12 ps-2 h-10 focus:outline-0 border sm:mt-0 mt-2"
+            className="lg:w-4/12 px-3 h-10 focus:outline-0 border sm:mt-0 mt-2"
           />
         </div>
       </div>
