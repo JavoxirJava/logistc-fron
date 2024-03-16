@@ -46,13 +46,13 @@ function CasherCard({ className, product }) {
       <div className="card-col w-full">
         <div className=" card-col-row w-full flex media-product">
           <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-10">
-            <div className="w-[20%]">
+            <div className="p-2">
               <p className="opacity-70">{t("client1")}</p>
               <p className="font-bold text-[.9rem]">
                 {product ? product.idNumber : 0}
               </p>
             </div>
-            <div className="w-[30%]">
+            <div className="p-2">
               <p className="opacity-70">{t("client2")}</p>
               <p className="font-bold text-[.9rem]">
                 {product ? product.name : "First Name"}
@@ -60,13 +60,13 @@ function CasherCard({ className, product }) {
             </div>
           </div>
           <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-14">
-            <div className="w-[30%]">
+            <div className="p-2">
               <p className="opacity-70">{t("client3")}</p>
               <p className="font-bold text-[.9rem]">
                 {product ? product.phoneNumber : "No number"}
               </p>
             </div>
-            <div className="w-[25%] password">
+            <div className="p-2 password">
               <p className="opacity-70">{t("client4")}</p>
               <p className="font-bold nuqta text-[.9rem]">
                 {product ? "......" : "No password"}

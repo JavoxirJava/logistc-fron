@@ -204,7 +204,7 @@ const Clients = ({ changeLanguage, lang }) => {
         lang={lang}
       />
       <div className="clients-bg background b flex lg:flex-row flex-col pt-20">
-        <div className="lg:w-2/5 md:w-4/5 w-full lg:pl-10 md:px-0 px-2 ">
+        <div className="lg:w-1/2 md:w-4/5 w-full lg:pl-10 md:px-0 px-2 ">
           <div className="flex gap-4 flex-col md:flex-row   justify-between items-center">
             <input
               type={t("history3")}
