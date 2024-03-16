@@ -46,18 +46,18 @@ function ProductCard({ className, product }) {
 
   return (
     <div
-      className={`flex flex-col md:flex-row rounded-lg card-main border border-blue-300 w-full px-2 py-2 bg-blue-100 ${className}`}
+      className={`flex flex-col md:flex-row rounded-lg card-main border border-blue-300 px-2 py-2 bg-blue-100 ${className}`}
     >
       <div className="card-col w-full">
-        <div className=" card-col-row w-full flex media-product">
+        <div className="card-col-row w-full flex media-product">
           <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-10">
-            <div className="w-[20%]">
+            <div className="">
               <p className="opacity-70">{t("client1")}</p>
               <p className="font-bold text-[.9rem]">
                 {product ? product.idNumber : 0}
               </p>
             </div>
-            <div className="w-[30%]">
+            <div className="">
               <p className="opacity-70">{t("client2")}</p>
               <p className="font-bold text-[.9rem]">
                 {product ? product.name : "First Name"}
@@ -65,13 +65,13 @@ function ProductCard({ className, product }) {
             </div>
           </div>
           <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-14">
-            <div className="w-[30%]">
+            <div className="">
               <p className="opacity-70">{t("client3")}</p>
               <p className="font-bold text-[.9rem]">
                 {product ? product.phoneNumber : "No number"}
               </p>
             </div>
-            <div className="w-[25%] password">
+            <div className=" password">
               <p className="opacity-70">{t("client4")}</p>
               <p className="font-bold nuqta text-[.9rem]">
                 {product ? "......" : "No password"}
@@ -84,13 +84,13 @@ function ProductCard({ className, product }) {
         </div>
         <div className="h-3/6 card-col-row w-full flex media-product">
           <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-10">
-            <div className="w-[25%]">
+            <div className="">
               <p className="opacity-70">{t("client5")}</p>
               <p className="font-bold text-[.9rem] text-orange-500">
                 {product ? product.allProduct : 0}
               </p>
             </div>
-            <div className="w-[25%]">
+            <div className="">
               <p className="opacity-70">{t("1")}</p>
               <p className="font-bold text-[.9rem] text-green-500">
                 {product ? product.падгатовка : 0}
@@ -98,7 +98,7 @@ function ProductCard({ className, product }) {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row w-full gap-3 md:gap-20 lg:gap-3 xl:gap-10">
-            <div className="w-[35%]">
+            <div className="">
               <p className="opacity-70">{t("gotov")}</p>
               <p className="font-bold text-[.9rem] text-purple-600">
                 {product ? product.гатова : 0}
