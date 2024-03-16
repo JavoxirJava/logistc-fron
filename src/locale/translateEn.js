@@ -169,7 +169,7 @@ const translateEn = {
   login4: 'Password',
   login5: 'Enter password',
   weiw1: 'TN code',
-  weiw2: 'Ower',
+  weiw2: 'Owner',
   weiw3: 'Created',
   weiw4: 'Measure',
   weiw5: 'Measure Count',
