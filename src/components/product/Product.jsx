@@ -220,6 +220,7 @@ function Product({ lang, projectId, setProjectId }) {
         console.log(err);
       });
   }
+ 
 
   function searchProduct(e) {
     let text = e.target.value;
@@ -410,6 +411,7 @@ function Product({ lang, projectId, setProjectId }) {
                         className="mt-5"
                         openEdit={openEditProjectCan}
                         projects={item}
+                        product={product}
                         setProduct={setProduct}
                         setProductObj={setProductObj}
                       />

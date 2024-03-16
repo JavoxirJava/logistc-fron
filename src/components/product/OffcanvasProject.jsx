@@ -153,7 +153,7 @@ function OffcanvasProject({
           </option>
           <option value="1">{t("auto")}</option>
           <option value="2">{t("avia")}</option>
-          <option value="3">{t("JD")}</option>
+          <option value="3">{t("jd")}</option>
         </select>
         <label
           htmlFor={`productStatus${isAdd}`}

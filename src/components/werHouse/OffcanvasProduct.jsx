@@ -199,6 +199,7 @@ function OffcanvasProduct({
         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
         focus:placeholder:text-slate-800 placeholder:duration-300 placeholder:font-medium"
           type="file"
+          placeholder="salom"
         />
         <label
           htmlFor={`productName${isAdd}`}
@@ -309,7 +310,7 @@ function OffcanvasProduct({
               id={`productKub${isAdd}`}
               placeholder={0 + " " + t("productAddKub")}
               disabled
-              value={`${kubSum} (sm)`}
+              value={`${kubSum} (sm³)`}
               // defaultValue={product ? product.idNumber + " " + t('productAddKub') : 0 + " " + t('(sm)')}
               className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
           focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md

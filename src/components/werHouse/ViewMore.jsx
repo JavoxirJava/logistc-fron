@@ -162,6 +162,10 @@ const ViewMoreW = ({ lang }) => {
         setProductObj2(null);
         showProjectInfoModal();
         document.getElementById("projects").value = 0
+        setCheck(false)
+        setTimeout(() => {
+          setCheck(true)
+        }, 200);
       })
       .catch((err) => {
         setCheck(false)

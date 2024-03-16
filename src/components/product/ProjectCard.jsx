@@ -6,7 +6,9 @@ import axios from "axios";
 import { url, config } from "../api";
 import LoadingBtn from "../loading/Loading";
 import { toast } from "react-toastify";
+import DeleteModal from "./deleteModal";
 function ProjectCard({
+  product,
   setProduct,
   i,
   className,
@@ -22,6 +24,7 @@ function ProjectCard({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenStatus, setIsModalOpenStatus] = useState(false);
   const [isLoading, setIsLoading] = useState(false)
+  const [deleteModal, setDeleteModal] = useState(false)
 
   const openSelectHandler = () => setIsModalOpenStatus(!isModalOpenStatus)
 
@@ -34,6 +37,8 @@ function ProjectCard({
   // console.log(projects.status);
   const closeModal = () => setIsModalOpen(false);
   const openModal = () => setIsModalOpen(true);
+  const closeDelete = () => setDeleteModal(false);
+  const openDelete = () => setDeleteModal(true);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -82,6 +87,19 @@ function ProjectCard({
     } else toast.warning(t('projectStatusUpdate'))
   }
 
+  function deleteProject() {
+    axios
+      .put(`${url}project?id=${product.id}`, config)
+      .then(() => {
+        toast.success(t("success"));
+        getProduct(pagination, 4);
+        closeModal()
+      })
+      .catch((err) => {
+        toast.error(t("error"));
+        console.log(err);
+      });
+  }
 
   return (
     <>
@@ -173,7 +191,18 @@ function ProjectCard({
             {t("edit")}
           </a>
         </td>
-
+        <td className="px-6 py-4">
+          <a
+            onClick={() => {
+              openDelete();
+              setProductObj(projects);
+            }}
+            href="#"
+            className="font-medium text-[#f85151] hover:underline"
+          >
+            {t("delete")}
+          </a>
+        </td>
        
         <td className="px-6 py-4">
           <Link
@@ -206,6 +235,7 @@ function ProjectCard({
           onClose={closeModal}
         />
       )}
+      <DeleteModal isOpen={deleteModal} onClose={closeDelete} getProject={getProduct} deleteProject={deleteProject}/>
     </>
   );
 }
