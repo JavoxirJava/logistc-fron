@@ -413,6 +413,7 @@ function Product({ lang, projectId, setProjectId }) {
                         projects={item}
                         product={product}
                         setProduct={setProduct}
+                        setProject={setProject}
                         setProductObj={setProductObj}
                       />
                     ))

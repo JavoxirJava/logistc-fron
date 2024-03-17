@@ -10,6 +10,7 @@ import DeleteModal from "./deleteModal";
 function ProjectCard({
   product,
   setProduct,
+  setProject,
   i,
   className,
   projects,
@@ -92,6 +93,7 @@ function ProjectCard({
       .delete(`${url}project/${product.id}`, config)
       .then(() => {
         toast.success(t("success"));
+        setProject(null)
         getProduct(pagination, 4);
         closeDelete()
       })
