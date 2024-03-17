@@ -89,11 +89,11 @@ function ProjectCard({
 
   function deleteProject() {
     axios
-      .put(`${url}project?id=${product.id}`, config)
+      .delete(`${url}project/${product.id}`, config)
       .then(() => {
         toast.success(t("success"));
         getProduct(pagination, 4);
-        closeModal()
+        closeDelete()
       })
       .catch((err) => {
         toast.error(t("error"));

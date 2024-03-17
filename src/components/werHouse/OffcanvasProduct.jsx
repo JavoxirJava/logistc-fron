@@ -30,7 +30,7 @@ function OffcanvasProduct({
   const [imagesI, setImagesI] = useState(null);
 
   const selectValue = useRef(null);
-  const selectv = useRef(null);
+  const selecto = useRef(null);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -194,6 +194,7 @@ function OffcanvasProduct({
             validation()
             imagesIdIn()
           }}
+          accept="image/*"
           id={`productFile${isAdd}`}
           className="py-2 px-4 w-full bg-gray-200 rounded-lg border border-slate-300
         focus:outline-0 focus:border-slate-500 duration-300 focus:bg-slate-100 shadow-md
