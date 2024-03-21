@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Offcanvas from "../Offcanvas";
-import { byId, byIdObj, config, getUsers, url } from "../api";
+import { byId, byIdObj, config, getUserList, getUsers, url } from "../api";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import LoadingBtn from "../loading/Loading";
@@ -29,12 +29,18 @@ function OffcanvasProduct({
   const [selectV, setSelectValue] = useState(null);
   const [imagesI, setImagesI] = useState(null);
 
+  
+  // const [inputValue, setInputValue] = useState('');
+  // const [options, setOptions] = useState([]);
+  // const [showOptions, setShowOptions] = useState(false);
+
   const selectValue = useRef(null);
   const selecto = useRef(null);
   const { t } = useTranslation();
 
   useEffect(() => {
-    getUsers(setUsers, lang);
+    // getUsers(setUsers, lang);
+    getUserList(setUsers, lang)
   }, []);
 
   useEffect(() => {
@@ -44,6 +50,7 @@ function OffcanvasProduct({
       setAll(true);
     }
   }, [input]);
+
 
   function topFunction() {
     document.body.scrollTop = 0;
@@ -155,13 +162,37 @@ function OffcanvasProduct({
   const options =
     users ?
       users.map((item) => {
-        return { value: item.userId, label: item.name };
+        return { value: item.userId, label: `${item.name} ${'______    '} #${item.idNumber}` };
       })
       : []
 
   const handleChange = (event) => {
     setSelectValue(event.value)
   };
+
+//   useEffect(() => {
+//     const fetchOptions = async () => {
+//         if (inputValue.trim() !== '') {
+//             try {
+//                 const response = await fetch(`YOUR_API_ENDPOINT?search=${inputValue}`);
+//                 const data = await response.json();
+//                 setOptions(data.results);
+//                 setShowOptions(true);
+//             } catch (error) {
+//                 console.error("Error fetching options:", error);
+//             }
+//         } else {
+//             setOptions([]);
+//             setShowOptions(false);
+//         }
+//     };
+
+//     const delayDebounce = setTimeout(() => {
+//         fetchOptions();
+//     }, 300); // Debounce the API call
+
+//     return () => clearTimeout(delayDebounce);
+// }, [inputValue]);
 
   return (
     <Offcanvas
@@ -182,6 +213,42 @@ function OffcanvasProduct({
           id={`userId${isAdd}`}
           options={options}
         />
+        {/* <div style={{ position: 'relative', display: 'inline-block' }}>
+            <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onFocus={() => setShowOptions(true)}
+                onBlur={() => setTimeout(() => setShowOptions(false), 200)}
+                placeholder="Qidiruv..."
+                style={{ width: '200px' }}
+            />
+            {showOptions && (
+                <div
+                    style={{
+                        position: 'absolute',
+                        border: '1px solid #ddd',
+                        borderTop: 'none',
+                        width: '200px',
+                        zIndex: 1000,
+                        backgroundColor: '#fff',
+                    }}
+                >
+                    {options.map((option, index) => (
+                        <div
+                            key={index}
+                            onMouseDown={() => {
+                                setInputValue(option.label);
+                                setShowOptions(false);
+                            }}
+                            style={{ padding: '10px', cursor: 'pointer' }}
+                        >
+                            {option.label}
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div> */}
         
         <label
           htmlFor={`productFile${isAdd}`}

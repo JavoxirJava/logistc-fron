@@ -57,4 +57,8 @@ export function getUsers(setUser, lang) {
     axios.get(`${url}user?lang=${lang}`, config).then(res => setUser(res.data.body.object)).catch(err => {});
 }
 
+export function getUserList(setUserList, lang) {
+    axios.get(`${url}user/list?lang=${lang}`, config).then(res => setUserList(res.data.body)).catch(err => {});
+}
+
 export const getFile = `${url}attachment/getFile/`
