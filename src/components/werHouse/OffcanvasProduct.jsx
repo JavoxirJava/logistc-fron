@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Offcanvas from "../Offcanvas";
-import { byId, byIdObj, config, getUserList, getUsers, url } from "../api";
+import { byId, byIdObj, config, getUserSearch, getUsers, url } from "../api";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import LoadingBtn from "../loading/Loading";
@@ -29,18 +29,16 @@ function OffcanvasProduct({
   const [selectV, setSelectValue] = useState(null);
   const [imagesI, setImagesI] = useState(null);
 
-  
-  // const [inputValue, setInputValue] = useState('');
-  // const [options, setOptions] = useState([]);
-  // const [showOptions, setShowOptions] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [options, setOptions] = useState([]);
+  const [showOptions, setShowOptions] = useState(false);
 
   const selectValue = useRef(null);
   const selecto = useRef(null);
   const { t } = useTranslation();
 
   useEffect(() => {
-    // getUsers(setUsers, lang);
-    getUserList(setUsers, lang)
+    getUsers(setUsers, lang);
   }, []);
 
   useEffect(() => {
@@ -51,7 +49,6 @@ function OffcanvasProduct({
     }
   }, [input]);
 
-
   function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -59,11 +56,15 @@ function OffcanvasProduct({
 
   const imagesIdIn = () => {
     const data = new FormData();
-    data.append("file", document.getElementById(`productFile${isAdd}`).files[0]);
-    axios.post(`${url}attachment/image`, data, config)
-      .then(res => setImagesI(res.data.body))
-      .catch(() => setImagesI(null))
-  }
+    data.append(
+      "file",
+      document.getElementById(`productFile${isAdd}`).files[0]
+    );
+    axios
+      .post(`${url}attachment/image`, data, config)
+      .then((res) => setImagesI(res.data.body))
+      .catch(() => setImagesI(null));
+  };
 
   function setData() {
     setProduct({
@@ -97,6 +98,9 @@ function OffcanvasProduct({
     setTotalKubSum(dataNumber * kubSum);
   };
   const inputDelete = () => {
+    setInputValue(product
+      ? product.owner
+      : "");
     document.getElementById(`productName${isAdd}`).value = product
       ? product.productName
       : "";
@@ -136,7 +140,8 @@ function OffcanvasProduct({
     document.getElementById(`numberOfSeats${isAdd}`).value = "";
     document.getElementById(`productFile${isAdd}`).value = null;
     // document.getElementById(`userId${isAdd}`).value = null;
-    setSelectValue(null)
+    setSelectValue(null);
+    setInputValue(null)
     setKubSum(0);
     setTotalKgSum(0);
     setTotalKubSum(0);
@@ -150,6 +155,7 @@ function OffcanvasProduct({
       document.getElementById(`idNumberY${isAdd}`).value !== "" &&
       document.getElementById(`idNumberZ${isAdd}`).value !== "" &&
       document.getElementById(`productWeight${isAdd}`).value !== "" &&
+      inputValue !== "" &&
       document.getElementById(`numberOfSeats${isAdd}`).value !== ""
       // document.getElementById(`userId${isAdd}`).value !== null
     ) {
@@ -159,40 +165,34 @@ function OffcanvasProduct({
     }
   };
 
-  const options =
-    users ?
-      users.map((item) => {
-        return { value: item.userId, label: `${item.name} ${'______    '} #${item.idNumber}` };
-      })
-      : []
+  // const options =
+  //   users ?
+  //     users.map((item) => {
+  //       return { value: item.userId, label: `${item.name} ${'______    '} ${'    '} ${'    '}  ${'    '} ${'    '} #${item.userId}` };
+  //     })
+  //     : []
 
   const handleChange = (event) => {
-    setSelectValue(event.value)
+    setSelectValue(event.value);
   };
 
-//   useEffect(() => {
-//     const fetchOptions = async () => {
-//         if (inputValue.trim() !== '') {
-//             try {
-//                 const response = await fetch(`YOUR_API_ENDPOINT?search=${inputValue}`);
-//                 const data = await response.json();
-//                 setOptions(data.results);
-//                 setShowOptions(true);
-//             } catch (error) {
-//                 console.error("Error fetching options:", error);
-//             }
-//         } else {
-//             setOptions([]);
-//             setShowOptions(false);
-//         }
-//     };
 
-//     const delayDebounce = setTimeout(() => {
-//         fetchOptions();
-//     }, 300); // Debounce the API call
-
-//     return () => clearTimeout(delayDebounce);
-// }, [inputValue]);
+    const searchUsers = () => {
+        let text = inputValue;
+        if (text === "") setUsers();
+        else
+          axios
+            .get(`${url}user/search?idNumber=${inputValue}&lang=${lang}`, config)
+            .then((res) => {
+              if (res.data.success === true) setUsers(res.data.body);
+              else if (res.data.success === false) setUsers(null);
+              setShowOptions(true);
+            })
+            .catch((err) => setUsers(null));
+      // };
+    }
+    
+ 
 
   return (
     <Offcanvas
@@ -208,48 +208,77 @@ function OffcanvasProduct({
         >
           {t("productSUser")}
         </label>
-        <Select
+        {/* <Select
           onChange={handleChange}
           id={`userId${isAdd}`}
           options={options}
-        />
-        {/* <div style={{ position: 'relative', display: 'inline-block' }}>
-            <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onFocus={() => setShowOptions(true)}
-                onBlur={() => setTimeout(() => setShowOptions(false), 200)}
-                placeholder="Qidiruv..."
-                style={{ width: '200px' }}
-            />
-            {showOptions && (
-                <div
-                    style={{
-                        position: 'absolute',
-                        border: '1px solid #ddd',
-                        borderTop: 'none',
-                        width: '200px',
-                        zIndex: 1000,
-                        backgroundColor: '#fff',
-                    }}
-                >
-                    {options.map((option, index) => (
-                        <div
-                            key={index}
-                            onMouseDown={() => {
-                                setInputValue(option.label);
-                                setShowOptions(false);
-                            }}
-                            style={{ padding: '10px', cursor: 'pointer' }}
-                        >
-                            {option.label}
-                        </div>
-                    ))}
-                </div>
-            )}
-        </div> */}
-        
+        /> */}
+        <div
+          className="w-full"
+          style={{ position: "relative", display: "inline-block" }}
+        >
+          <input
+            type="text"
+            value={inputValue}
+            id={`userSearch${isAdd}`}
+            onChange={(e) => {
+              setInputValue(e.target.value);
+              searchUsers()
+            }}
+            onFocus={() => setShowOptions(true)}
+            onBlur={() => setTimeout(() => setShowOptions(false), 100)}
+            placeholder={t("productSearchIdnumber")}
+            className=" w-full px-4 h-10 focus:outline-0 border rounded-md"
+          />
+          {showOptions && (
+            <div className="w-full h-80 overflow-y-auto absolute">
+              <div
+                className="w-full"
+                style={{
+                  position: "absolute",
+                  border: "1px solid #ddd",
+                  borderTop: "none",
+                  zIndex: 1000,
+                  backgroundColor: "#fff",
+                }}
+              >
+                {users ? (
+                  users.map((option, index) => (
+                    <div className="flex justify-between">
+                      <div
+                        key={index}
+                        onMouseDown={() => {
+                          setInputValue(option.name);
+                          setSelectValue(option.userId)
+                          setShowOptions(false);
+                        }}
+                        style={{ padding: "10px", cursor: "pointer" }}
+                      >
+                        {option.name}
+                      </div>
+                      <div
+                        key={index}
+                        onMouseDown={() => {
+                          setSelectValue(option.userId)
+                          setInputValue(option.name);
+                          setShowOptions(false);
+                        }}
+                        style={{ padding: "10px", cursor: "pointer" }}
+                      >
+                        {option.idNumber}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div style={{ padding: "10px", cursor: "pointer" }}>
+                    {t("usernotfound")}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+
         <label
           htmlFor={`productFile${isAdd}`}
           className="block text-gray-700 text-sm font-bold mt-3"
@@ -258,8 +287,8 @@ function OffcanvasProduct({
         </label>
         <input
           onChange={() => {
-            validation()
-            imagesIdIn()
+            validation();
+            imagesIdIn();
           }}
           accept="image/*"
           id={`productFile${isAdd}`}
@@ -276,7 +305,6 @@ function OffcanvasProduct({
           {t("productName")}
         </label>
         <input
-          ref={selectValue}
           onChange={validation}
           id={`productName${isAdd}`}
           placeholder={t("productName")}
@@ -457,7 +485,7 @@ function OffcanvasProduct({
               handleToggleOffcanvas();
               inputDelete();
               topFunction();
-              setInput(true)
+              setInput(true);
             }}
             className="inline-flex justify-center w-[45%] rounded-md shadow-sm py-2 bg-gray-500 text-sm font-medium text-white"
           >
@@ -467,14 +495,15 @@ function OffcanvasProduct({
             disabled={all}
             onClick={() => {
               // onSave();
-              imagesI ? onSave() : setTimeout(onSave, 5000)
+              imagesI ? onSave() : setTimeout(onSave, 5000);
               setData();
               getProduct(0, 4);
               inputDelete2();
               topFunction();
             }}
-            className={`${all ? "bg-gray-700 cursor-not-allowed opacity-70" : "bg-blue-700"
-              } inline-flex justify-center w-[45%] rounded-md shadow-sm py-2  text-sm font-medium text-white`}
+            className={`${
+              all ? "bg-gray-700 cursor-not-allowed opacity-70" : "bg-blue-700"
+            } inline-flex justify-center w-[45%] rounded-md shadow-sm py-2  text-sm font-medium text-white`}
           >
             {loading ? <LoadingBtn /> : name}
           </button>
