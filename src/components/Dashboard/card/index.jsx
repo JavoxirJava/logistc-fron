@@ -67,6 +67,7 @@ const DashboardProductCard = ({ lang }) => {
       .then((res) => {
         // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
         setTotalPage(res.data.body.totalPage);
+        console.log(res.data.body)
         setProduct(res.data.body.object);
       })
       .catch((err) => console.log(err));
@@ -142,8 +143,8 @@ const DashboardProductCard = ({ lang }) => {
                       className="w-10 h-10 object-cover rounded-full scale-125 hover:cursor-pointer" />
                   </td>
                   <td className="px-6 py-4">{item ? item.name : ""}</td>
-                  <td className="px-6 py-4">{item ? item.totalKub : ""} {item ? <span>{t('sm')} <sup>3</sup></span> : ''}</td>
-                  <td className="px-6 py-4">{item ? item.totalWeight : ""} {item ? <span>{t('kg')}</span> : ''}</td>
+                  <td className="px-6 py-4">{item ? item.totalKub.toFixed(3) : ""} {item ? <span>{t('sm')} <sup>3</sup></span> : ''}</td>
+                  <td className="px-6 py-4">{item ? item.totalWeight.toFixed(3) : ""} {item ? <span>{t('kg')}</span> : ''}</td>
                   <td className="px-6 py-4">
                     {item ? item.date.slice(0, item.date.indexOf(" ")) : ""}
                   </td>

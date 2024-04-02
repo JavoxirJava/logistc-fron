@@ -298,7 +298,7 @@ const ViewMoreW = ({ lang }) => {
                       />
                     </th>
                     <td className="px-6 py-5">{item.owner}</td>
-                    <td className="px-6 py-5">{item.productName}</td>
+                    <td className="px-6 py-5">{item.name}</td>
                     <td className="px-6 py-5 overflow-x-auto">
                       {item.date.slice(0, item.date.indexOf(" "))}
                     </td>
@@ -320,10 +320,10 @@ const ViewMoreW = ({ lang }) => {
                         placeholder={t("count")} />
                     </td>
                     <td className="px-6 py-5">
-                      {item.totalWeight} {t("kg")}
+                      {item.totalWeight.toFixed(3)} {t("kg")}
                     </td>
                     <td className="px-6 py-5">
-                      {item.totalKub} {t("sm")}
+                      {item.totalKub.toFixed(3)} {t("sm")}
                       <sup>3</sup>
                     </td>
                     <td className="px-6 py-5">{item.comment}</td>

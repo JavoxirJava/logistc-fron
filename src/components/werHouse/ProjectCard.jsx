@@ -50,9 +50,9 @@ function ProjectCard({
          {(pagination - 1) * 4 < 0 ? i + 1 : (pagination - 1) * 4 + (i + 1)}
         </th>
         <td className="px-6 py-4">{projects.name}</td>
-        <td className="px-6 py-4">{projects.totalKub ? projects.totalKub : 0} {t("sm")}<sup>3</sup></td>
+        <td className="px-6 py-4">{projects.totalKub ? projects.totalKub.toFixed(3) : 0} {t("sm")}<sup>3</sup></td>
         <td className="px-6 py-4">{projects.productCount ?projects.productCount : 0}</td>
-        <td className="px-6 py-4">{projects.totalWeight ? projects.totalWeight : 0} {t("kg")}</td>
+        <td className="px-6 py-4">{projects.totalWeight ? projects.totalWeight.toFixed(3) : 0} {t("kg")}</td>
         <td className="px-6 py-4">
           <a
             onClick={() => {
