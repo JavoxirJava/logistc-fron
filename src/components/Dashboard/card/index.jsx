@@ -67,7 +67,6 @@ const DashboardProductCard = ({ lang }) => {
       .then((res) => {
         // setTotalPage(res.data.body.totalPage ? res.data.body.totalPage - 1 : 2);
         setTotalPage(res.data.body.totalPage);
-        console.log(res.data.body)
         setProduct(res.data.body.object);
       })
       .catch((err) => console.log(err));
@@ -87,7 +86,7 @@ const DashboardProductCard = ({ lang }) => {
   const handelPageClick = (event) => {
     const pageNumber = event.selected;
     setCurrentPage(pageNumber);
-    axios.get(`${url}product?page=${pageNumber}&size=5&lang=${lang}`, config)
+    axios.get(`${url}product?page=${pageNumber}&size=10&lang=${lang}`, config)
       .then((res) => setProduct(res.data.body.object))
       .catch((err) => console.log("error page: ", err));
   };
@@ -131,7 +130,7 @@ const DashboardProductCard = ({ lang }) => {
                   <th
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >{(currentPage * 5) + (i + 1)}</th>
+                  >{(currentPage * 10) + (i + 1)}</th>
                   <td className="px-6 py-4">
                     <img
                       onClick={() => {

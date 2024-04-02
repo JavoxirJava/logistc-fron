@@ -143,10 +143,10 @@ const DashboardProductCard = ({ lang }) => {
                   </th>
                   <td className="px-6 py-4">{item ? item.name : ""}</td>
                   <td className="px-6 py-4">
-                    {item ? item.totalWeight : ""} {t("kg")}
+                    {item ? item.totalWeight.toFixed(3) : ""} {t("kg")}
                   </td>
                   <td className="px-6 py-4">
-                    {item ? item.totalKub : ""} {t("sm")}
+                    {item ? item.totalKub.toFixed(3) : ""} {t("sm")}
                     <sup>3</sup>
                   </td>
                   <td className="px-6 py-4">

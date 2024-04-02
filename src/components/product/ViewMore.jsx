@@ -31,7 +31,7 @@ const ViewMore = ({ lang }) => {
   const getProjectInfo = () => {
     axios
       .get(
-        `${url}product/project?projectId=${projectId}&lang=${lang}&page=0&size=5`,
+        `${url}product/project?projectId=${projectId}&lang=${lang}&page=0&size=10`,
         config
       )
       .then((res) => {
@@ -46,7 +46,7 @@ const ViewMore = ({ lang }) => {
     setCurrentPage(pageNumber);
     axios
       .get(
-        `${url}product/project?projectId=${projectId}&lang=${lang}&page=${pageNumber}&size=5`,
+        `${url}product/project?projectId=${projectId}&lang=${lang}&page=${pageNumber}&size=10`,
         config
       )
       .then((res) => setProjectIdInfo(res.data.body.object))
@@ -114,7 +114,7 @@ const ViewMore = ({ lang }) => {
               {projectIdInfo ? (
                 projectIdInfo.map((item, i) => (
                   <tr className="border-b transition duration-300 ease-in-out ">
-                    <th className="px-6 py-5">{currentPage * 5 + (i + 1)}</th>
+                    <th className="px-6 py-5">{(currentPage * 10) + (i + 1)}</th>
                     <th className="px-6 py-5 flex justify-center items-center">
                       <img
                         onClick={() => {

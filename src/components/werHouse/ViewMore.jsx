@@ -72,7 +72,7 @@ const ViewMoreW = ({ lang }) => {
 
   const getProjectInfo = () => {
     axios.get(
-      `${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=0&size=5`,
+      `${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=0&size=10`,
       config
     ).then((res) => {
       if (res.data.message === "List empty") setProjectIdInfo(null);
@@ -94,7 +94,7 @@ const ViewMoreW = ({ lang }) => {
     const pageNumber = event.selected;
     setCurrentPage(pageNumber);
     axios.get(
-      `${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=${pageNumber}&size=5`,
+      `${url}product/ware-house?warehouseId=${projectId}&lang=${lang}&page=${pageNumber}&size=10`,
       config
     ).then((res) => setProjectIdInfo(res.data.body.object))
       .catch((err) => console.log("error page: ", err));
@@ -285,7 +285,7 @@ const ViewMoreW = ({ lang }) => {
                     key={i}
                     className="border-b transition duration-300 ease-in-out hover:bg-gray-300"
                   >
-                    <th className="px-6 py-5">{currentPage * 5 + (i + 1)}</th>
+                    <th className="px-6 py-5">{(currentPage * 10) + (i + 1)}</th>
                     <th className="px-6 py-5 flex justify-center items-center">
                       <img
                         onClick={() => {
