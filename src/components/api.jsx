@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const url = 'http://137.184.13.215:8090/'
+export const url = 'http://137.184.13.215:8080/'
 // export const url = 'http://192.168.153.154/'
 export const byIdObj = (id) => document.getElementById(id);
 export const byId = (id) => byIdObj(id) ? byIdObj(id).value : '';
