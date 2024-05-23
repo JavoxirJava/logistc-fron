@@ -200,7 +200,7 @@ const translateRu = {
   addclient10: "Введите пароль",
   userName: "Имя пользователя",
   projectName: "Название проекта",
-  productName: "Наименование товара",
+  // productName: "Наименование товара",
   productAdd7x: 'Х',
   productAdd7y: 'Й',
   productAdd7z: 'З',
